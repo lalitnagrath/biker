@@ -28,91 +28,103 @@
 {% endblock %}
 
 {% block content %}
-<article class="article-page">
+<article class="article-editorial">
     <div class="container">
-        <header class="article-header">
-            <div class="article-meta">
-                <span class="article-category">{{ article.tags[0] if article.tags else 'Guide' }}</span>
-                <span class="article-date">{{ article.date | default('') }}</span>
-                <span class="article-reading-time">{{ article.reading_time | default('') }}</span>
+        <header class="article-hero">
+            <div class="article-hero-trust">
+                <span class="trust-badge">&#10003; Expert Guide</span>
+                <span class="trust-badge">{{ article.reading_time | default('') }}</span>
+            </div>
+            <div class="article-hero-meta">
+                <span class="article-category-label">{{ article.tags[0] if article.tags else 'Guide' }}</span>
+                <span class="article-date-label">{{ article.date | default('') }}</span>
             </div>
             <h1>{{ article.title }}</h1>
-            <p class="article-author">By {{ article.author | default('BikeReview Team') }}</p>
+            <p class="article-hero-desc">{{ article.description }}</p>
+            <div class="article-hero-author">
+                <div class="author-avatar">{{ (article.author | default('BR'))[:2] }}</div>
+                <div class="author-info">
+                    <span class="author-name">{{ article.author | default('BikeReview Team') }}</span>
+                    <span class="author-role">Expert Reviewer</span>
+                </div>
+            </div>
         </header>
 
         <div class="article-layout">
-            <div class="article-content">
+            <div class="article-content-editorial">
                 {{ article_html | safe }}
             </div>
 
             <aside class="article-sidebar">
-                {% if article.related_products %}
-                <div class="sidebar-widget">
-                    <h3>Recommended Products</h3>
-                    {% for slug in article.related_products %}
-                    {% set rp = all_products | selectattr('slug', 'equalto', slug) | first %}
-                    {% if rp %}
-                    <div class="sidebar-product">
-                        <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
-                            <div class="sidebar-product-name">{{ rp.title }}</div>
-                            <div class="sidebar-product-rating">{{ rp.rating }} ★</div>
-                            <div class="sidebar-product-price">₹{{ rp.price | int }}</div>
-                        </a>
+                <div class="sidebar-sticky">
+                    {% if article.related_products %}
+                    <div class="sidebar-card">
+                        <h3>Recommended Products</h3>
+                        {% for slug in article.related_products %}
+                        {% set rp = all_products | selectattr('slug', 'equalto', slug) | first %}
+                        {% if rp %}
+                        <div class="sidebar-product-card">
+                            <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
+                                <div class="sidebar-product-name">{{ rp.title }}</div>
+                                <div class="sidebar-product-rating">{{ rp.rating }} ★</div>
+                                <div class="sidebar-product-price">₹{{ rp.price | int }}</div>
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                     {% endif %}
-                    {% endfor %}
-                </div>
-                {% endif %}
 
-                {% if article.related_motorcycles %}
-                <div class="sidebar-widget">
-                    <h3>Related Motorcycles</h3>
-                    <ul>
-                        {% for slug in article.related_motorcycles %}
-                        {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
-                        {% if rm %}
-                        <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
+                    {% if article.related_motorcycles %}
+                    <div class="sidebar-card">
+                        <h3>Related Motorcycles</h3>
+                        <ul class="sidebar-links">
+                            {% for slug in article.related_motorcycles %}
+                            {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
+                            {% if rm %}
+                            <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
 
-                {% if related_articles %}
-                <div class="sidebar-widget">
-                    <h3>More Guides</h3>
-                    <ul>
-                        {% for ra in related_articles %}
-                        {% if ra.slug != article.slug %}
-                        <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
+                    {% if related_articles %}
+                    <div class="sidebar-card">
+                        <h3>More Guides</h3>
+                        <ul class="sidebar-links">
+                            {% for ra in related_articles %}
+                            {% if ra.slug != article.slug %}
+                            <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
 
-                <div class="sidebar-widget popular-motorcycles">
-                    <h3>Popular Motorcycles</h3>
-                    <ul>
-                        {% for bike in all_motorcycles[:5] %}
-                        <li><a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html">{{ bike.brand }} {{ bike.model }}</a></li>
-                        {% endfor %}
-                    </ul>
+                    <div class="sidebar-card">
+                        <h3>Popular Motorcycles</h3>
+                        <ul class="sidebar-links">
+                            {% for bike in all_motorcycles[:5] %}
+                            <li><a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html">{{ bike.brand }} {{ bike.model }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </aside>
         </div>
 
         {% if prev_article or next_article %}
-        <nav class="article-nav">
+        <nav class="article-nav-editorial">
             {% if prev_article %}
             <a href="{{ base_path }}articles/{{ prev_article.slug }}/index.html" class="article-nav-prev">
-                <span class="nav-label">Previous</span>
+                <span class="nav-label">&larr; Previous</span>
                 <span class="nav-title">{{ prev_article.title }}</span>
             </a>
             {% endif %}
             {% if next_article %}
             <a href="{{ base_path }}articles/{{ next_article.slug }}/index.html" class="article-nav-next">
-                <span class="nav-label">Next</span>
+                <span class="nav-label">Next &rarr;</span>
                 <span class="nav-title">{{ next_article.title }}</span>
             </a>
             {% endif %}

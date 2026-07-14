@@ -27,7 +27,7 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-        { "@type": "Question", "name": "What is the price of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.brand }} {{ motorcycle.model }} is priced at ₹{{ motorcycle.price }} (ex-showroom). On-road prices may vary depending on your city and variant." } },
+        { "@type": "Question", "name": "What is the price of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.brand }} {{ motorcycle.model }} is priced at {{ motorcycle.price }} (ex-showroom). On-road prices may vary depending on your city and variant." } },
         { "@type": "Question", "name": "What is the mileage of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.brand }} {{ motorcycle.model }} offers a mileage of approximately {{ motorcycle.mileage }}." } },
         { "@type": "Question", "name": "Is {{ motorcycle.brand }} {{ motorcycle.model }} good for long rides?", "acceptedAnswer": { "@type": "Answer", "text": "{% if motorcycle.type == 'Adventure' %}Yes, the {{ motorcycle.model }} is designed for adventure touring and long-distance rides.{% elif motorcycle.type == 'Cruiser' %}Yes, the {{ motorcycle.model }} is a comfortable cruiser suitable for long highway rides.{% else %}The {{ motorcycle.model }} is primarily designed for city commuting and short weekend rides, but can handle moderate long-distance touring with proper accessories.{% endif %}" } }
     ]
@@ -36,282 +36,317 @@
 {% endblock %}
 
 {% block content %}
-<div class="motorcycle-page">
+<section class="bike-hero">
     <div class="container">
-        <div class="motorcycle-hero">
-            <div class="motorcycle-hero-image">
+        <div class="bike-hero-grid">
+            <div class="bike-hero-image">
                 {% if motorcycle.image %}
                 <img src="{{ base_path }}{{ motorcycle.image }}" alt="{{ motorcycle.brand }} {{ motorcycle.model }}" loading="lazy">
                 {% else %}
-                <div class="placeholder-image large-placeholder">{{ motorcycle.brand[0] }}{{ motorcycle.model[0] }}</div>
+                <div class="bike-placeholder-large" style="background: {% if motorcycle.brand == 'Royal Enfield' %}#8b4513{% elif motorcycle.brand == 'Honda' %}#cc0000{% elif motorcycle.brand == 'TVS' %}#003366{% elif motorcycle.brand == 'KTM' %}#ff6600{% else %}#003366{% endif %}">
+                    <span class="bike-placeholder-icon">&#128666;</span>
+                </div>
                 {% endif %}
             </div>
-            <div class="motorcycle-hero-content">
-                <span class="motorcycle-brand-badge">{{ motorcycle.brand }}</span>
+            <div class="bike-hero-content">
+                <div class="bike-hero-trust">
+                    <span class="trust-badge">&#10003; Expert Reviewed</span>
+                    <span class="trust-badge">Updated July 2026</span>
+                </div>
+                <span class="bike-hero-brand">{{ motorcycle.brand }}</span>
                 <h1>{{ motorcycle.brand }} {{ motorcycle.model }}</h1>
-                <p class="motorcycle-type">{{ motorcycle.type }} | {{ motorcycle.engine }}</p>
-                <div class="motorcycle-price">MRP {{ motorcycle.price }}</div>
-                <p class="motorcycle-description">{{ motorcycle.description }}</p>
-                <div class="motorcycle-highlights">
-                    {% for highlight in motorcycle.highlights %}
-                    <span class="highlight-tag">{{ highlight }}</span>
+                <p class="bike-hero-subtitle">{{ motorcycle.type }} &middot; {{ motorcycle.engine }} &middot; {{ motorcycle.power }}</p>
+                <div class="bike-hero-price">{{ motorcycle.price }}</div>
+                <div class="bike-hero-highlights">
+                    {% for highlight in motorcycle.highlights[:4] %}
+                    <span class="highlight-chip">{{ highlight }}</span>
                     {% endfor %}
                 </div>
-                <div class="motorcycle-hero-actions">
-                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-accent">View Accessories</a>
-                    <a href="#who-should-buy" class="btn btn-outline">Who Should Buy?</a>
+                <div class="bike-hero-actions">
+                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-accent btn-lg">Find Accessories &rarr;</a>
+                    <a href="#who-should-buy" class="btn btn-outline btn-lg">Who Should Buy?</a>
+                </div>
+                <div class="bike-hero-quick-specs">
+                    <div class="quick-spec"><span class="spec-label">Engine</span><span class="spec-value">{{ motorcycle.engine }}</span></div>
+                    <div class="quick-spec"><span class="spec-label">Power</span><span class="spec-value">{{ motorcycle.power }}</span></div>
+                    <div class="quick-spec"><span class="spec-label">Torque</span><span class="spec-value">{{ motorcycle.torque }}</span></div>
+                    <div class="quick-spec"><span class="spec-label">Mileage</span><span class="spec-value">{{ motorcycle.mileage }}</span></div>
+                    <div class="quick-spec"><span class="spec-label">Weight</span><span class="spec-value">{{ motorcycle.weight }}</span></div>
+                    <div class="quick-spec"><span class="spec-label">Fuel Tank</span><span class="spec-value">{{ motorcycle.fuel_capacity }}</span></div>
                 </div>
             </div>
         </div>
-
-        <div class="motorcycle-tabs">
-            <nav class="tab-nav">
-                <button class="tab-btn active" data-tab="overview">Overview</button>
-                <button class="tab-btn" data-tab="specs">Specifications</button>
-                <button class="tab-btn" data-tab="accessories">Top Accessories</button>
-                <button class="tab-btn" data-tab="gear">Recommended Gear</button>
-                <button class="tab-btn" data-tab="guides">Maintenance</button>
-                <button class="tab-btn" data-tab="faq">FAQ</button>
-            </nav>
-
-            <div class="tab-content active" id="overview">
-                <div class="motorcycle-content-grid">
-                    <div class="main-content">
-                        <section class="content-section" id="who-should-buy">
-                            <h2>Who Should Buy the {{ motorcycle.model }}?</h2>
-                            <div class="who-should-buy">
-                                <div class="wsb-item">
-                                    <h3>&#10003; Ideal For</h3>
-                                    <ul>
-                                        {% for use in motorcycle.ideal_for %}
-                                        <li>{{ use }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                                <div class="wsb-item">
-                                    <h3>&#10003; Available Variants</h3>
-                                    <ul>
-                                        {% for variant in motorcycle.variants %}
-                                        <li>{{ variant }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="content-section">
-                            <h2>Why Riders Love It</h2>
-                            <div class="pros-cons">
-                                <div class="pros">
-                                    <h3>&#10003; Pros</h3>
-                                    <ul>{% for pro in motorcycle.pros %}<li>{{ pro }}</li>{% endfor %}</ul>
-                                </div>
-                                <div class="cons">
-                                    <h3>&#10007; Cons</h3>
-                                    <ul>{% for con in motorcycle.cons %}<li>{{ con }}</li>{% endfor %}</ul>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="content-section">
-                            <h2>Key Highlights</h2>
-                            <div class="highlights-list">
-                                {% for highlight in motorcycle.highlights %}
-                                <div class="highlight-item">
-                                    <span class="highlight-check">&#10003;</span>
-                                    <span>{{ highlight }}</span>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </section>
-                    </div>
-                    <aside class="sidebar">
-                        <div class="sidebar-widget">
-                            <h3>Quick Facts</h3>
-                            <ul class="quick-facts">
-                                <li><strong>Engine:</strong> {{ motorcycle.engine }}</li>
-                                <li><strong>Power:</strong> {{ motorcycle.power }}</li>
-                                <li><strong>Torque:</strong> {{ motorcycle.torque }}</li>
-                                <li><strong>Weight:</strong> {{ motorcycle.weight }}</li>
-                                <li><strong>Mileage:</strong> {{ motorcycle.mileage }}</li>
-                                <li><strong>Fuel Capacity:</strong> {{ motorcycle.fuel_capacity }}</li>
-                                <li><strong>Price:</strong> {{ motorcycle.price }}</li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-widget">
-                            <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-accent btn-block">View All Accessories</a>
-                        </div>
-                        <div class="sidebar-widget">
-                            <h3>Maintenance Guides</h3>
-                            <ul class="guide-links">
-                                <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html">Chain Maintenance</a></li>
-                                <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/index.html">Washing Guide</a></li>
-                                <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/index.html">Tyre Pressure</a></li>
-                                <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/index.html">Engine Oil</a></li>
-                            </ul>
-                        </div>
-                    </aside>
-                </div>
-            </div>
-
-            <div class="tab-content" id="specs">
-                <h2>Full Specifications</h2>
-                <table class="specs-table full-specs">
-                    <tr><td>Brand</td><td>{{ motorcycle.brand }}</td></tr>
-                    <tr><td>Model</td><td>{{ motorcycle.model }}</td></tr>
-                    <tr><td>Engine</td><td>{{ motorcycle.engine }}</td></tr>
-                    <tr><td>Power</td><td>{{ motorcycle.power }}</td></tr>
-                    <tr><td>Torque</td><td>{{ motorcycle.torque }}</td></tr>
-                    <tr><td>Transmission</td><td>{{ motorcycle.transmission }}</td></tr>
-                    <tr><td>Type</td><td>{{ motorcycle.type }}</td></tr>
-                    <tr><td>Fuel Type</td><td>{{ motorcycle.fuel_type }}</td></tr>
-                    <tr><td>Price (Ex-showroom)</td><td>MRP {{ motorcycle.price }}</td></tr>
-                    <tr><td>Mileage</td><td>{{ motorcycle.mileage }}</td></tr>
-                    <tr><td>Kerb Weight</td><td>{{ motorcycle.weight }}</td></tr>
-                    <tr><td>Fuel Capacity</td><td>{{ motorcycle.fuel_capacity }}</td></tr>
-                    <tr><td>Brakes</td><td>{{ motorcycle.brakes }}</td></tr>
-                    <tr><td>Front Suspension</td><td>{{ motorcycle.suspension.split('(')[0] | trim }} (Front)</td></tr>
-                    <tr><td>Rear Suspension</td><td>{{ motorcycle.suspension.split('(')[2] if '(' in motorcycle.suspension else 'Twin shock absorbers' }}</td></tr>
-                    <tr><td>Front Tyre</td><td>{{ motorcycle.tyres.split('(')[0] | trim }}</td></tr>
-                    <tr><td>Rear Tyre</td><td>{{ motorcycle.tyres.split('(')[1].replace(')', '') if '(' in motorcycle.tyres else motorcycle.tyres }}</td></tr>
-                </table>
-            </div>
-
-            <div class="tab-content" id="accessories">
-                <h2>Top Accessories for {{ motorcycle.model }}</h2>
-                <p>Essential accessories every {{ motorcycle.model }} owner should consider.</p>
-                {% if related_products %}
-                <div class="product-grid compact">
-                    {% for product in related_products[:6] %}
-                    <div class="product-card">
-                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-card-image">
-                            {% if product.image and 'products/' in product.image %}
-                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
-                            {% else %}
-                            <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
-                            {% endif %}
-                        </a>
-                        <div class="product-card-content">
-                            <div class="product-card-category">{{ product.category }}</div>
-                            <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
-                            <div class="product-rating">
-                                <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                                <span class="rating-value">{{ product.rating }}</span>
-                            </div>
-                            <div class="product-price">₹{{ product.price | int }}</div>
-                            <div class="product-card-actions">
-                                <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Details</a>
-                                {% if product.affiliate_url %}
-                                <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-outline" style="margin-top: 20px;">View All Accessories &rarr;</a>
-                {% else %}
-                <p>No accessories currently available for this motorcycle.</p>
-                {% endif %}
-            </div>
-
-            <div class="tab-content" id="gear">
-                <h2>Recommended Gear for {{ motorcycle.model }}</h2>
-                <p>Every rider needs proper gear. Here are our top picks that pair well with your {{ motorcycle.model }}.</p>
-                <div class="gear-categories">
-                    <div class="gear-category">
-                        <h3>&#128665; Helmets</h3>
-                        <p>Protect your head with a quality helmet that matches your riding style.</p>
-                        <a href="{{ base_path }}categories/helmet/index.html" class="btn btn-sm">Browse Helmets</a>
-                    </div>
-                    <div class="gear-category">
-                        <h3>&#129508; Gloves</h3>
-                        <p>Grip the handlebars with confidence. Choose from summer, winter, or all-season options.</p>
-                        <a href="{{ base_path }}categories/gloves/index.html" class="btn btn-sm">Browse Gloves</a>
-                    </div>
-                    <div class="gear-category">
-                        <h3>&#129509; Jackets</h3>
-                        <p>Stay protected and stylish with CE-certified riding jackets.</p>
-                        <a href="{{ base_path }}categories/jacket/index.html" class="btn btn-sm">Browse Jackets</a>
-                    </div>
-                    <div class="gear-category">
-                        <h3>&#128241; Phone Mounts</h3>
-                        <p>Navigate safely with vibration-free phone mounts.</p>
-                        <a href="{{ base_path }}categories/phone-mount/index.html" class="btn btn-sm">Browse Phone Mounts</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="guides">
-                <h2>Maintenance & Care Guides</h2>
-                <p>Keep your {{ motorcycle.model }} running perfectly with these expert guides.</p>
-                <div class="guides-grid">
-                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html" class="guide-card">
-                        <div class="guide-icon">&#9881;</div>
-                        <h3>Chain Maintenance</h3>
-                        <p>Keep your chain clean and lubricated for optimal performance</p>
-                    </a>
-                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/index.html" class="guide-card">
-                        <div class="guide-icon">&#128167;</div>
-                        <h3>Washing Guide</h3>
-                        <p>How to wash your motorcycle properly</p>
-                    </a>
-                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/index.html" class="guide-card">
-                        <div class="guide-icon">&#127744;</div>
-                        <h3>Tyre Pressure Guide</h3>
-                        <p>Optimal tyre pressures for your bike</p>
-                    </a>
-                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/index.html" class="guide-card">
-                        <div class="guide-icon">&#128737;</div>
-                        <h3>Engine Oil Guide</h3>
-                        <p>Best engine oils for your motorcycle</p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="tab-content" id="faq">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <h3>What is the price of {{ motorcycle.brand }} {{ motorcycle.model }}?</h3>
-                        <p>The {{ motorcycle.brand }} {{ motorcycle.model }} is priced at ₹{{ motorcycle.price }} (ex-showroom). On-road prices may vary depending on your city and variant.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>What is the mileage of {{ motorcycle.model }}?</h3>
-                        <p>The {{ motorcycle.brand }} {{ motorcycle.model }} offers a mileage of approximately {{ motorcycle.mileage }}.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Is {{ motorcycle.model }} good for long rides?</h3>
-                        <p>{% if motorcycle.type == 'Adventure' %}Yes, the {{ motorcycle.model }} is designed for adventure touring and long-distance rides. Its comfortable ergonomics and large fuel tank make it ideal for extended journeys.{% elif motorcycle.type == 'Cruiser' %}Yes, the {{ motorcycle.model }} is a comfortable cruiser suitable for long highway rides. The relaxed riding position and torquey engine make highway cruising effortless.{% else %}The {{ motorcycle.model }} is primarily designed for city commuting and short weekend rides. However, with proper accessories like a comfortable seat and windscreen, it can handle moderate long-distance touring.{% endif %}</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>What are the best accessories for {{ motorcycle.model }}?</h3>
-                        <p>Essential accessories for the {{ motorcycle.model }} include a quality helmet, phone mount, crash guard, and bike cover. For touring, consider adding saddlebags and a tank bag. Check out our <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html">complete accessories guide</a>.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How often should I service my {{ motorcycle.model }}?</h3>
-                        <p>Regular service intervals for the {{ motorcycle.model }} are every 3,000-5,000 km or every 3 months, whichever comes first. Always follow the manufacturer's recommended service schedule.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {% if related_articles %}
-        <section class="related-content">
-            <h2>Related Articles</h2>
-            <div class="article-grid">
-                {% for article in related_articles %}
-                <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="article-card">
-                    <div class="article-card-content">
-                        <span class="reading-time">{{ article.reading_time }}</span>
-                        <h3>{{ article.title }}</h3>
-                        <p>{{ article.description }}</p>
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
-        </section>
-        {% endif %}
     </div>
-</div>
+</section>
+
+<section class="bike-content-section">
+    <div class="container">
+        <div class="bike-layout">
+            <div class="bike-main">
+                <div class="editorial-nav">
+                    <a href="#who-should-buy" class="editorial-nav-link active">Overview</a>
+                    <a href="#specs" class="editorial-nav-link">Specifications</a>
+                    <a href="#accessories" class="editorial-nav-link">Top Accessories</a>
+                    <a href="#gear" class="editorial-nav-link">Recommended Gear</a>
+                    <a href="#guides" class="editorial-nav-link">Maintenance</a>
+                    <a href="#faq" class="editorial-nav-link">FAQ</a>
+                </div>
+
+                <section class="editorial-section" id="who-should-buy">
+                    <h2>Who Should Buy the {{ motorcycle.model }}?</h2>
+                    <div class="who-should-buy-grid">
+                        <div class="wsb-card wsb-ideal">
+                            <h3>&#10003; Ideal For</h3>
+                            <ul>
+                                {% for use in motorcycle.ideal_for %}
+                                <li>{{ use }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="wsb-card wsb-variants">
+                            <h3>&#9881; Available Variants</h3>
+                            <ul>
+                                {% for variant in motorcycle.variants %}
+                                <li>{{ variant }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="editorial-section">
+                    <h2>Why Riders Love the {{ motorcycle.model }}</h2>
+                    <div class="pros-cons-editorial">
+                        <div class="pros-editorial">
+                            <h3>&#10003; Pros</h3>
+                            <ul>{% for pro in motorcycle.pros %}<li>{{ pro }}</li>{% endfor %}</ul>
+                        </div>
+                        <div class="cons-editorial">
+                            <h3>&#10007; Cons</h3>
+                            <ul>{% for con in motorcycle.cons %}<li>{{ con }}</li>{% endfor %}</ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="specs">
+                    <h2>Full Specifications</h2>
+                    <div class="specs-table-editorial">
+                        <table>
+                            <tr><td>Brand</td><td>{{ motorcycle.brand }}</td></tr>
+                            <tr><td>Model</td><td>{{ motorcycle.model }}</td></tr>
+                            <tr><td>Engine</td><td>{{ motorcycle.engine }}</td></tr>
+                            <tr><td>Power</td><td>{{ motorcycle.power }}</td></tr>
+                            <tr><td>Torque</td><td>{{ motorcycle.torque }}</td></tr>
+                            <tr><td>Transmission</td><td>{{ motorcycle.transmission }}</td></tr>
+                            <tr><td>Type</td><td>{{ motorcycle.type }}</td></tr>
+                            <tr><td>Fuel Type</td><td>{{ motorcycle.fuel_type }}</td></tr>
+                            <tr><td>Price (Ex-showroom)</td><td>{{ motorcycle.price }}</td></tr>
+                            <tr><td>Mileage</td><td>{{ motorcycle.mileage }}</td></tr>
+                            <tr><td>Kerb Weight</td><td>{{ motorcycle.weight }}</td></tr>
+                            <tr><td>Fuel Capacity</td><td>{{ motorcycle.fuel_capacity }}</td></tr>
+                            <tr><td>Brakes</td><td>{{ motorcycle.brakes }}</td></tr>
+                            <tr><td>Front Suspension</td><td>{{ motorcycle.suspension.split('(')[0] | trim }} (Front)</td></tr>
+                            <tr><td>Rear Suspension</td><td>{{ motorcycle.suspension.split('(')[2] if '(' in motorcycle.suspension else 'Twin shock absorbers' }}</td></tr>
+                            <tr><td>Front Tyre</td><td>{{ motorcycle.tyres.split('(')[0] | trim }}</td></tr>
+                            <tr><td>Rear Tyre</td><td>{{ motorcycle.tyres.split('(')[1].replace(')', '') if '(' in motorcycle.tyres else motorcycle.tyres }}</td></tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="accessories">
+                    <h2>Top Accessories for the {{ motorcycle.model }}</h2>
+                    <p class="section-desc">Essential accessories that every {{ motorcycle.model }} owner should consider. We've tested each product and ranked them by quality, value, and compatibility.</p>
+                    {% if related_products %}
+                    <div class="accessory-showcase">
+                        {% for product in related_products[:6] %}
+                        <div class="accessory-card">
+                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="accessory-card-image">
+                                {% if product.image and 'products/' in product.image %}
+                                <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                                {% else %}
+                                <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                                {% endif %}
+                                {% if loop.index <= 3 %}
+                                <span class="accessory-rank">#{{ loop.index }} Pick</span>
+                                {% endif %}
+                            </a>
+                            <div class="accessory-card-content">
+                                <span class="accessory-category">{{ product.category }}</span>
+                                <h4><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h4>
+                                <div class="accessory-rating">
+                                    <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                                    <span>{{ product.rating }}</span>
+                                </div>
+                                <div class="accessory-bestfor">Best For: <strong>{{ product.best_for }}</strong></div>
+                                <div class="accessory-price">₹{{ product.price | int }}</div>
+                                <div class="accessory-actions">
+                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Review</a>
+                                    {% if product.affiliate_url %}
+                                    <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Buy on Amazon</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-outline btn-lg" style="margin-top:24px;">View All Accessories &rarr;</a>
+                    {% else %}
+                    <p>No accessories currently available for this motorcycle.</p>
+                    {% endif %}
+                </section>
+
+                <section class="editorial-section" id="gear">
+                    <h2>Recommended Gear for {{ motorcycle.model }}</h2>
+                    <p class="section-desc">Every rider needs proper gear. Here are our top categories that pair well with your {{ motorcycle.model }}.</p>
+                    <div class="gear-grid">
+                        <a href="{{ base_path }}best/helmet/index.html" class="gear-card">
+                            <div class="gear-icon">&#128665;</div>
+                            <h3>Best Helmets</h3>
+                            <p>Protect your head with a quality helmet</p>
+                            <span class="gear-cta">View Rankings &rarr;</span>
+                        </a>
+                        <a href="{{ base_path }}best/gloves/index.html" class="gear-card">
+                            <div class="gear-icon">&#129508;</div>
+                            <h3>Best Gloves</h3>
+                            <p>Grip with confidence in any weather</p>
+                            <span class="gear-cta">View Rankings &rarr;</span>
+                        </a>
+                        <a href="{{ base_path }}best/jacket/index.html" class="gear-card">
+                            <div class="gear-icon">&#129509;</div>
+                            <h3>Best Jackets</h3>
+                            <p>Stay protected and stylish</p>
+                            <span class="gear-cta">View Rankings &rarr;</span>
+                        </a>
+                        <a href="{{ base_path }}best/phone-mount/index.html" class="gear-card">
+                            <div class="gear-icon">&#128241;</div>
+                            <h3>Best Phone Mounts</h3>
+                            <p>Navigate safely with vibration-free mounts</p>
+                            <span class="gear-cta">View Rankings &rarr;</span>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="guides">
+                    <h2>Maintenance & Care Guides</h2>
+                    <div class="guides-grid-editorial">
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html" class="guide-card-editorial">
+                            <div class="guide-icon-editorial">&#9881;</div>
+                            <h3>Chain Maintenance</h3>
+                            <p>Keep your chain clean and lubricated</p>
+                        </a>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/index.html" class="guide-card-editorial">
+                            <div class="guide-icon-editorial">&#128167;</div>
+                            <h3>Washing Guide</h3>
+                            <p>How to wash your motorcycle properly</p>
+                        </a>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/index.html" class="guide-card-editorial">
+                            <div class="guide-icon-editorial">&#127744;</div>
+                            <h3>Tyre Pressure Guide</h3>
+                            <p>Optimal tyre pressures for your bike</p>
+                        </a>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/index.html" class="guide-card-editorial">
+                            <div class="guide-icon-editorial">&#128737;</div>
+                            <h3>Engine Oil Guide</h3>
+                            <p>Best engine oils for your motorcycle</p>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="faq">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">What is the price of {{ motorcycle.brand }} {{ motorcycle.model }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>The {{ motorcycle.brand }} {{ motorcycle.model }} is priced at {{ motorcycle.price }} (ex-showroom). On-road prices may vary depending on your city and variant.</p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">What is the mileage of {{ motorcycle.model }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>The {{ motorcycle.brand }} {{ motorcycle.model }} offers a mileage of approximately {{ motorcycle.mileage }}.</p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">Is {{ motorcycle.model }} good for long rides? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>{% if motorcycle.type == 'Adventure' %}Yes, the {{ motorcycle.model }} is designed for adventure touring and long-distance rides. Its comfortable ergonomics and large fuel tank make it ideal for extended journeys.{% elif motorcycle.type == 'Cruiser' %}Yes, the {{ motorcycle.model }} is a comfortable cruiser suitable for long highway rides. The relaxed riding position and torquey engine make highway cruising effortless.{% else %}The {{ motorcycle.model }} is primarily designed for city commuting and short weekend rides. However, with proper accessories like a comfortable seat and windscreen, it can handle moderate long-distance touring.{% endif %}</p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">What are the best accessories for {{ motorcycle.model }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>Essential accessories for the {{ motorcycle.model }} include a quality helmet, phone mount, crash guard, and bike cover. For touring, consider adding saddlebags and a tank bag. Check out our <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html">complete accessories guide</a>.</p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">How often should I service my {{ motorcycle.model }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>Regular service intervals for the {{ motorcycle.model }} are every 3,000-5,000 km or every 3 months, whichever comes first. Always follow the manufacturer's recommended service schedule.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="bike-sidebar">
+                <div class="sidebar-sticky">
+                    <div class="sidebar-card sidebar-cta">
+                        <h3>Find {{ motorcycle.model }} Accessories</h3>
+                        <p>Browse our curated list of the best accessories for your bike.</p>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-accent btn-block">View All Accessories</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Specs</h3>
+                        <ul class="sidebar-specs">
+                            <li><span>Engine</span><strong>{{ motorcycle.engine }}</strong></li>
+                            <li><span>Power</span><strong>{{ motorcycle.power }}</strong></li>
+                            <li><span>Torque</span><strong>{{ motorcycle.torque }}</strong></li>
+                            <li><span>Weight</span><strong>{{ motorcycle.weight }}</strong></li>
+                            <li><span>Mileage</span><strong>{{ motorcycle.mileage }}</strong></li>
+                            <li><span>Fuel Tank</span><strong>{{ motorcycle.fuel_capacity }}</strong></li>
+                            <li><span>Price</span><strong>{{ motorcycle.price }}</strong></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Maintenance Guides</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html">Chain Maintenance</a></li>
+                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/index.html">Washing Guide</a></li>
+                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/index.html">Tyre Pressure</a></li>
+                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/index.html">Engine Oil</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+{% if related_articles %}
+<section class="section section-gray">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Related Articles</h2>
+                <p class="section-subtitle">Helpful guides for {{ motorcycle.model }} owners</p>
+            </div>
+        </div>
+        <div class="guides-showcase-grid">
+            {% for article in related_articles %}
+            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    <div class="placeholder-image guide-placeholder">{{ article.tags[0] if article.tags else 'Guide' }}</div>
+                    <span class="guide-showcase-time">{{ article.reading_time }}</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.description }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
 {% endblock %}

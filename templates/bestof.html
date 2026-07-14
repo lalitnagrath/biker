@@ -13,48 +13,62 @@
 {% endblock %}
 
 {% block content %}
-<div class="bestof-page">
+<section class="bestof-hero-section">
     <div class="container">
-        <div class="bestof-hero">
+        <div class="bestof-hero-content">
+            <div class="bestof-hero-trust">
+                <span class="trust-badge">&#10003; Expert Tested</span>
+                <span class="trust-badge">Updated July 2026</span>
+                <span class="trust-badge">{{ products | length }} Products Reviewed</span>
+            </div>
             <h1>{{ page_title }}</h1>
-            <p class="bestof-description">{{ page_description }}</p>
-            <div class="bestof-meta">
-                <span class="bestof-count">{{ products | length }} Products Reviewed</span>
-                <span class="bestof-updated">Last Updated: July 2026</span>
+            <p class="bestof-hero-desc">{{ page_description }}</p>
+            <div class="bestof-hero-score">
+                <span class="bestof-hero-count">{{ products | length }} Products Tested</span>
+                <span class="bestof-hero-divider">&middot;</span>
+                <span class="bestof-hero-date">Last Updated: July 2026</span>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="bestof-content">
+<section class="bestof-content-section">
+    <div class="container">
+        <div class="bestof-layout">
             <div class="bestof-main">
-                <div class="bestof-intro">
-                    <h2>Our Top Picks</h2>
-                    <p>We've tested and reviewed {{ products | length }} {{ category | lower }} to help you find the perfect one for your needs. Our recommendations are based on quality, value, user reviews, and expert testing.</p>
+                <div class="bestof-intro-editorial">
+                    <h2>Our Top Picks at a Glance</h2>
+                    <p>We've tested and reviewed {{ products | length }} {{ category | lower }} to help you find the perfect one. Our recommendations are based on quality, value, user reviews, and expert testing.</p>
                 </div>
 
-                <div class="comparison-table-wrapper">
-                    <table class="comparison-table">
+                <div class="comparison-table-editorial">
+                    <table>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Product</th>
-                                <th>Rating</th>
-                                <th>Best For</th>
-                                <th>Price</th>
-                                <th>Editor Score</th>
+                                <th class="rank-col">#</th>
+                                <th class="product-col">Product</th>
+                                <th class="rating-col">Rating</th>
+                                <th class="bestfor-col">Best For</th>
+                                <th class="price-col">Price</th>
+                                <th class="score-col">Score</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for product in products %}
-                            <tr>
-                                <td class="rank-cell">{{ loop.index }}</td>
-                                <td><a href="{{ base_path }}products/{{ product.slug }}/index.html" style="font-weight:600">{{ product.title }}</a></td>
-                                <td class="rating-cell">
+                            <tr{% if loop.index == 1 %} class="top-pick"{% endif %}>
+                                <td class="rank-col"><span class="rank-badge {% if loop.index == 1 %}rank-gold{% elif loop.index == 2 %}rank-silver{% elif loop.index == 3 %}rank-bronze{% endif %}">{{ loop.index }}</span></td>
+                                <td class="product-col">
+                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html">
+                                        <strong>{{ product.title }}</strong>
+                                    </a>
+                                </td>
+                                <td class="rating-col">
                                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                     <span>{{ product.rating }}</span>
                                 </td>
-                                <td class="best-for">{% if loop.index == 1 %}Best Overall{% elif loop.index == 2 %}Runner Up{% elif loop.index == 3 %}Best Value{% else %}Alternative{% endif %}</td>
-                                <td class="price-cell">₹{{ product.price | int }}</td>
-                                <td><span class="score-big">{{ product.editor_rating }}</span>/10</td>
+                                <td class="bestfor-col">{% if loop.index == 1 %}Best Overall{% elif loop.index == 2 %}Runner Up{% elif loop.index == 3 %}Best Value{% else %}Alternative{% endif %}</td>
+                                <td class="price-col">₹{{ product.price | int }}</td>
+                                <td class="score-col"><span class="score-badge">{{ product.editor_rating }}</span>/10</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -62,53 +76,58 @@
                 </div>
 
                 {% for product in products %}
-                <div class="bestof-card {% if loop.index <= 3 %}top-pick{% endif %}">
+                <div class="bestof-product-editorial {% if loop.index == 1 %}top-pick-editorial{% endif %}">
                     {% if loop.index <= 3 %}
-                    <div class="bestof-rank">#{{ loop.index }}</div>
+                    <div class="bestof-product-rank">
+                        <span class="rank-number {% if loop.index == 1 %}rank-gold{% elif loop.index == 2 %}rank-silver{% else %}rank-bronze{% endif %}">#{{ loop.index }}</span>
+                        {% if loop.index == 1 %}<span class="rank-label">Top Pick</span>{% elif loop.index == 2 %}<span class="rank-label">Runner Up</span>{% else %}<span class="rank-label">Best Value</span>{% endif %}
+                    </div>
                     {% endif %}
-                    <div class="bestof-card-inner">
-                        <div class="bestof-card-image">
+                    <div class="bestof-product-grid">
+                        <div class="bestof-product-image">
                             {% if product.image and 'products/' in product.image %}
                             <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
                             {% else %}
                             <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
                             {% endif %}
                         </div>
-                        <div class="bestof-card-content">
-                            <div class="bestof-card-header">
-                                <div class="product-card-category">{{ product.category }} - {{ product.type }}</div>
-                                <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
-                                <div class="product-rating">
+                        <div class="bestof-product-content">
+                            <div class="bestof-product-header">
+                                <span class="product-category-label">{{ product.category }}</span>
+                                <div class="product-hero-rating">
                                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                     <span class="rating-value">{{ product.rating }}</span>
                                     <span class="review-count">({{ product.reviews | int }} reviews)</span>
                                 </div>
                             </div>
-                            <div class="bestof-card-body">
-                                <div class="bestof-price">₹{{ product.price | int }}</div>
-                                <div class="bestof-verdict">{{ product.verdict }}</div>
-                                <div class="bestof-proscons">
-                                    <div class="bestof-pros">
-                                        {% for pro in product.pros[:3] %}
-                                        <span class="pro-item">&#10003; {{ pro }}</span>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="bestof-cons">
-                                        {% for con in product.cons[:2] %}
-                                        <span class="con-item">&#10007; {{ con }}</span>
-                                        {% endfor %}
-                                    </div>
+                            <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                            <div class="bestfor-inline">
+                                <span class="bestfor-label">Best For:</span>
+                                <span class="bestfor-value">{{ product.best_for }}</span>
+                            </div>
+                            <div class="bestof-product-verdict">{{ product.verdict }}</div>
+                            <div class="pros-cons-inline">
+                                <div class="pros-inline">
+                                    {% for pro in product.pros[:3] %}
+                                    <span class="pro-item">&#10003; {{ pro }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="cons-inline">
+                                    {% for con in product.cons[:2] %}
+                                    <span class="con-item">&#10007; {{ con }}</span>
+                                    {% endfor %}
                                 </div>
                             </div>
-                            <div class="bestof-card-footer">
-                                <div class="bestof-editor-score">
+                            <div class="bestof-product-footer">
+                                <div class="bestof-product-score">
                                     <span class="score-number">{{ product.editor_rating }}</span>
                                     <span class="score-label">/10</span>
                                 </div>
-                                <div class="bestof-actions">
-                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">View Review</a>
+                                <div class="bestof-product-price">₹{{ product.price | int }}</div>
+                                <div class="bestof-product-actions">
+                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Full Review</a>
                                     {% if product.affiliate_url %}
-                                    <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                                    <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Buy on Amazon</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -117,58 +136,64 @@
                 </div>
                 {% endfor %}
 
-                <div class="bestof-faq">
+                <section class="editorial-section">
                     <h2>Frequently Asked Questions</h2>
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <h3>What is the best {{ category | lower }} for motorcycles?</h3>
-                            <p>Based on our testing, the <strong>{{ products[0].title }}</strong> is our top recommendation for its excellent balance of quality, features, and value.</p>
+                    <div class="faq-accordion">
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">What is the best {{ category | lower }} for motorcycles? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>Based on our testing, the <strong>{{ products[0].title }}</strong> is our top recommendation for its excellent balance of quality, features, and value.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h3>How much should I spend on a {{ category | lower }}?</h3>
-                            <p>For a good quality {{ category | lower }}, expect to spend between ₹500 to ₹5,000 depending on the brand and features. Budget options start around ₹300 while premium options can go up to ₹10,000.</p>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">How much should I spend on a {{ category | lower }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>For a good quality {{ category | lower }}, expect to spend between ₹500 to ₹5,000 depending on the brand and features. Budget options start around ₹300 while premium options can go up to ₹10,000.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h3>Which brand makes the best {{ category | lower }}?</h3>
-                            <p>Top brands in this category include {% for p in products[:3] %}{{ p.brand }}{% if not loop.last %}, {% endif %}{% endfor %}. Each offers different strengths depending on your budget and requirements.</p>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">Which brand makes the best {{ category | lower }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>Top brands in this category include {% for p in products[:3] %}{{ p.brand }}{% if not loop.last %}, {% endif %}{% endfor %}. Each offers different strengths depending on your budget and requirements.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
 
             <aside class="bestof-sidebar">
-                <div class="sidebar-widget">
-                    <h3>Quick Links</h3>
-                    <ul class="quick-links">
-                        <li><a href="{{ base_path }}categories/{{ category_slug }}/index.html">All {{ category }} Products</a></li>
-                        <li><a href="{{ base_path }}categories/index.html">All Categories</a></li>
-                        <li><a href="{{ base_path }}motorcycles/index.html">Browse by Bike</a></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-widget">
-                    <h3>Related Best-Of Pages</h3>
-                    <ul class="quick-links">
-                        <li><a href="{{ base_path }}best/helmet/index.html">Best Helmets</a></li>
-                        <li><a href="{{ base_path }}best/phone-mount/index.html">Best Phone Mounts</a></li>
-                        <li><a href="{{ base_path }}best/gloves/index.html">Best Riding Gloves</a></li>
-                        <li><a href="{{ base_path }}best/jacket/index.html">Best Riding Jackets</a></li>
-                        <li><a href="{{ base_path }}best/engine-oil/index.html">Best Engine Oil</a></li>
-                        <li><a href="{{ base_path }}best/chain-lube/index.html">Best Chain Lubes</a></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-widget">
-                    <h3>Why Trust Us?</h3>
-                    <ul class="trust-list">
-                        <li>&#10003; 500+ products tested</li>
-                        <li>&#10003; 150+ buying guides</li>
-                        <li>&#10003; Updated weekly</li>
-                        <li>&#10003; Amazon affiliate disclosures</li>
-                    </ul>
+                <div class="sidebar-sticky">
+                    <div class="sidebar-card sidebar-cta">
+                        <h3>Quick Links</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="{{ base_path }}categories/{{ category_slug }}/index.html">All {{ category }} Products</a></li>
+                            <li><a href="{{ base_path }}categories/index.html">All Categories</a></li>
+                            <li><a href="{{ base_path }}motorcycles/index.html">Browse by Bike</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Rankings</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="{{ base_path }}best/helmet/index.html">Best Helmets</a></li>
+                            <li><a href="{{ base_path }}best/phone-mount/index.html">Best Phone Mounts</a></li>
+                            <li><a href="{{ base_path }}best/gloves/index.html">Best Riding Gloves</a></li>
+                            <li><a href="{{ base_path }}best/jacket/index.html">Best Riding Jackets</a></li>
+                            <li><a href="{{ base_path }}best/engine-oil/index.html">Best Engine Oil</a></li>
+                            <li><a href="{{ base_path }}best/chain-lube/index.html">Best Chain Lubes</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card sidebar-trust">
+                        <h3>Why Trust Us?</h3>
+                        <ul class="trust-list">
+                            <li>&#10003; 500+ products tested</li>
+                            <li>&#10003; 150+ buying guides</li>
+                            <li>&#10003; Updated weekly</li>
+                            <li>&#10003; Amazon affiliate disclosures</li>
+                        </ul>
+                    </div>
                 </div>
             </aside>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

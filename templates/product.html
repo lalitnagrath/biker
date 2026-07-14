@@ -27,119 +27,188 @@
 {% endblock %}
 
 {% block content %}
-<article class="product-page">
+<section class="product-hero-editorial">
     <div class="container">
-        <div class="product-hero">
+        <div class="product-hero-grid">
             <div class="product-hero-image">
                 {% if product.image and 'products/' in product.image %}
                 <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
                 {% else %}
-                <div class="placeholder-image large-placeholder">{{ product.brand }}</div>
+                <div class="placeholder-image product-placeholder-lg">{{ product.brand }}</div>
                 {% endif %}
             </div>
             <div class="product-hero-content">
-                <div class="product-category-badge">{{ product.category }}</div>
+                <div class="product-hero-trust">
+                    <span class="trust-badge">&#10003; Expert Tested</span>
+                    <span class="trust-badge">Updated July 2026</span>
+                </div>
+                <span class="product-category-label">{{ product.category }}</span>
                 <h1>{{ product.title }}</h1>
-                <div class="product-rating-large">
+                <div class="product-hero-rating">
                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                     <span class="rating-value">{{ product.rating }}</span>
                     <span class="review-count">({{ product.reviews | int }} reviews)</span>
                 </div>
-                <div class="product-price-large">₹{{ product.price | int }}</div>
-                <p class="product-verdict">{{ product.verdict }}</p>
-                <div class="product-actions">
+                <div class="product-hero-bestfor">
+                    <span class="bestfor-label">Best For:</span>
+                    <span class="bestfor-value">{{ product.best_for }}</span>
+                </div>
+                <div class="product-hero-score">
+                    <div class="score-circle">
+                        <span class="score-number">{{ product.editor_rating }}</span>
+                        <span class="score-label">/10</span>
+                    </div>
+                    <div class="score-text">
+                        <span class="score-title">Editor's Score</span>
+                        <span class="score-subtitle">Based on hands-on testing</span>
+                    </div>
+                </div>
+                <div class="product-hero-price">₹{{ product.price | int }}</div>
+                <div class="product-hero-actions">
                     {% if product.affiliate_url %}
-                    <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-lg" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                    <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-lg" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon &rarr;</a>
                     {% endif %}
                     <a href="#pros-cons" class="btn btn-outline btn-lg">Read Full Review</a>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="product-details">
+<section class="product-content-section">
+    <div class="container">
+        <div class="product-layout">
             <div class="product-main">
-                <section class="product-section" id="pros-cons">
+                <div class="editorial-nav">
+                    <a href="#pros-cons" class="editorial-nav-link active">Pros & Cons</a>
+                    <a href="#verdict" class="editorial-nav-link">Verdict</a>
+                    <a href="#specs" class="editorial-nav-link">Specifications</a>
+                    <a href="#best-for" class="editorial-nav-link">Best For</a>
+                    <a href="#faq" class="editorial-nav-link">FAQ</a>
+                </div>
+
+                <section class="editorial-section" id="pros-cons">
                     <h2>Pros & Cons</h2>
-                    <div class="pros-cons-grid">
-                        <div class="pros">
-                            <h3>&#10003; Pros</h3>
+                    <div class="pros-cons-editorial">
+                        <div class="pros-editorial">
+                            <h3>&#10003; What We Like</h3>
                             <ul>{% for pro in product.pros %}<li>{{ pro }}</li>{% endfor %}</ul>
                         </div>
-                        <div class="cons">
-                            <h3>&#10007; Cons</h3>
+                        <div class="cons-editorial">
+                            <h3>&#10007; What Could Be Better</h3>
                             <ul>{% for con in product.cons %}<li>{{ con }}</li>{% endfor %}</ul>
                         </div>
                     </div>
                 </section>
 
-                <section class="product-section">
-                    <h2>Specifications</h2>
-                    <table class="specs-table">
-                        <tr><td>Brand</td><td>{{ product.brand }}</td></tr>
-                        <tr><td>Category</td><td>{{ product.category }}</td></tr>
-                        <tr><td>Type</td><td>{{ product.type }}</td></tr>
-                        <tr><td>Price</td><td>₹{{ product.price | int }}</td></tr>
-                        <tr><td>User Rating</td><td>{{ product.rating }} / 5</td></tr>
-                        <tr><td>Reviews</td><td>{{ product.reviews | int }}</td></tr>
-                        <tr><td>Editor Rating</td><td>{{ product.editor_rating }} / 10</td></tr>
-                    </table>
-                </section>
-
-                <section class="product-section">
-                    <h2>Who Should Buy the {{ product.title }}?</h2>
-                    <p>The <strong>{{ product.title }}</strong> is best suited for: <strong>{{ product.best_for }}</strong></p>
-                </section>
-
-                <section class="product-section">
+                <section class="editorial-section" id="verdict">
                     <h2>Our Verdict</h2>
-                    <div class="verdict-box">
-                        <div class="verdict-rating">
-                            <span class="rating-number">{{ product.editor_rating }}</span>
-                            <span class="rating-label">/10</span>
+                    <div class="verdict-editorial">
+                        <div class="verdict-score-large">
+                            <span class="verdict-number">{{ product.editor_rating }}</span>
+                            <span class="verdict-label">/10</span>
                         </div>
-                        <div class="verdict-text"><p>{{ product.verdict }}</p></div>
+                        <div class="verdict-text">
+                            <p>{{ product.verdict }}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="specs">
+                    <h2>Specifications</h2>
+                    <div class="specs-table-editorial">
+                        <table>
+                            <tr><td>Brand</td><td>{{ product.brand }}</td></tr>
+                            <tr><td>Category</td><td>{{ product.category }}</td></tr>
+                            <tr><td>Type</td><td>{{ product.type }}</td></tr>
+                            <tr><td>Price</td><td>₹{{ product.price | int }}</td></tr>
+                            <tr><td>User Rating</td><td>{{ product.rating }} / 5</td></tr>
+                            <tr><td>Reviews</td><td>{{ product.reviews | int }}</td></tr>
+                            <tr><td>Editor Rating</td><td>{{ product.editor_rating }} / 10</td></tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="best-for">
+                    <h2>Who Should Buy the {{ product.title }}?</h2>
+                    <div class="bestfor-editorial">
+                        <div class="bestfor-card">
+                            <h3>Best For</h3>
+                            <p>{{ product.best_for }}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="editorial-section" id="faq">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">What is the {{ product.title }}? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>The {{ product.title }} is a {{ product.category | lower }} by {{ product.brand }}. {{ product.verdict }}</p>
+                            </div>
+                        </div>
+                        <div class="faq-accordion-item">
+                            <button class="faq-accordion-header">Is the {{ product.title }} worth buying? <span class="faq-toggle">+</span></button>
+                            <div class="faq-accordion-content">
+                                <p>{{ product.verdict }} It scores {{ product.editor_rating }}/10 in our review.</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
 
             <aside class="product-sidebar">
-                <div class="sidebar-widget">
-                    <h3>Product Details</h3>
-                    <ul class="product-quick-facts">
-                        <li><strong>Brand:</strong> {{ product.brand }}</li>
-                        <li><strong>Category:</strong> {{ product.category }}</li>
-                        <li><strong>Price:</strong> ₹{{ product.price | int }}</li>
-                        <li><strong>Rating:</strong> {{ product.rating }} / 5</li>
-                        <li><strong>Best For:</strong> {{ product.best_for }}</li>
-                    </ul>
-                    {% if product.affiliate_url %}
-                    <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-block" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                <div class="sidebar-sticky">
+                    <div class="sidebar-card sidebar-buy-box">
+                        <div class="buy-box-price">₹{{ product.price | int }}</div>
+                        <div class="buy-box-rating">
+                            <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                            <span>{{ product.rating }} ({{ product.reviews | int }} reviews)</span>
+                        </div>
+                        {% if product.affiliate_url %}
+                        <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-block" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon</a>
+                        {% endif %}
+                        <p class="buy-box-note">Price last checked: July 2026</p>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Product Details</h3>
+                        <ul class="sidebar-specs">
+                            <li><span>Brand</span><strong>{{ product.brand }}</strong></li>
+                            <li><span>Category</span><strong>{{ product.category }}</strong></li>
+                            <li><span>Price</span><strong>₹{{ product.price | int }}</strong></li>
+                            <li><span>Rating</span><strong>{{ product.rating }} / 5</strong></li>
+                            <li><span>Best For</span><strong>{{ product.best_for }}</strong></li>
+                        </ul>
+                    </div>
+                    {% if related_products %}
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul class="sidebar-related">
+                            {% for rp in related_products %}
+                            <li>
+                                <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
+                                    <span class="related-name">{{ rp.title }}</span>
+                                    <span class="related-rating">{{ rp.rating }} ★</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    {% if related_articles %}
+                    <div class="sidebar-card">
+                        <h3>Related Guides</h3>
+                        <ul class="sidebar-links">
+                            {% for ra in related_articles %}
+                            <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                     {% endif %}
                 </div>
-
-                {% if related_products %}
-                <div class="sidebar-widget">
-                    <h3>Related Products</h3>
-                    <ul class="related-products-list">
-                        {% for rp in related_products %}
-                        <li><a href="{{ base_path }}products/{{ rp.slug }}/index.html"><span class="rp-name">{{ rp.title }}</span><span class="rp-rating">{{ rp.rating }} ★</span></a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-
-                {% if related_articles %}
-                <div class="sidebar-widget">
-                    <h3>Related Articles</h3>
-                    <ul class="related-articles-list">
-                        {% for ra in related_articles %}
-                        <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
             </aside>
         </div>
     </div>
-</article>
+</section>
 {% endblock %}

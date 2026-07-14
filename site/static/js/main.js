@@ -7,6 +7,13 @@ if (mobileMenuToggle && mainNav) {
         mainNav.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
     });
+    // Close menu when clicking a link
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+        });
+    });
 }
 
 // ===== Search =====
@@ -20,24 +27,22 @@ const heroSearch = document.getElementById('heroSearch');
 function openSearch() {
     if (searchOverlay) {
         searchOverlay.classList.add('active');
-        searchInput.focus();
+        if (searchInput) searchInput.focus();
     }
 }
 
 function closeSearch() {
     if (searchOverlay) {
         searchOverlay.classList.remove('active');
-        searchInput.value = '';
-        searchResults.innerHTML = '';
+        if (searchInput) searchInput.value = '';
+        if (searchResults) searchResults.innerHTML = '';
     }
 }
 
 if (searchToggle) searchToggle.addEventListener('click', openSearch);
 if (searchClose) searchClose.addEventListener('click', closeSearch);
 if (heroSearch) {
-    heroSearch.addEventListener('focus', () => {
-        openSearch();
-    });
+    heroSearch.addEventListener('focus', openSearch);
 }
 
 if (searchOverlay) {
@@ -56,22 +61,17 @@ document.addEventListener('keydown', (e) => {
 
 // ===== Search Data =====
 const searchData = [];
-
-// Populate search data from JSON
 if (typeof siteData !== 'undefined') {
-    // Motorcycles
     if (siteData.motorcycles) {
         siteData.motorcycles.forEach(bike => {
             searchData.push({
                 type: 'Motorcycle',
                 title: bike.brand + ' ' + bike.model,
                 url: 'motorcycles/' + bike.slug + '/index.html',
-                excerpt: bike.engine + ' | ' + bike.type + ' | MRP ' + bike.price
+                excerpt: bike.engine + ' | ' + bike.type + ' | ' + bike.price
             });
         });
     }
-
-    // Products
     if (siteData.products) {
         siteData.products.forEach(product => {
             searchData.push({
@@ -82,8 +82,6 @@ if (typeof siteData !== 'undefined') {
             });
         });
     }
-
-    // Brands
     if (siteData.brands) {
         siteData.brands.forEach(brand => {
             searchData.push({
@@ -94,12 +92,10 @@ if (typeof siteData !== 'undefined') {
             });
         });
     }
-
-    // Articles
     if (siteData.articles) {
         siteData.articles.forEach(article => {
             searchData.push({
-                type: 'Article',
+                type: 'Guide',
                 title: article.title,
                 url: 'articles/' + article.slug + '/index.html',
                 excerpt: article.reading_time + ' | ' + (article.tags ? article.tags.join(', ') : '')
@@ -111,16 +107,11 @@ if (typeof siteData !== 'undefined') {
 // ===== Search Functionality =====
 if (searchInput) {
     let debounceTimer;
-
     searchInput.addEventListener('input', (e) => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
             const query = e.target.value.toLowerCase().trim();
-
-            if (query.length < 2) {
-                searchResults.innerHTML = '';
-                return;
-            }
+            if (query.length < 2) { searchResults.innerHTML = ''; return; }
 
             const results = searchData.filter(item =>
                 item.title.toLowerCase().includes(query) ||
@@ -144,24 +135,115 @@ if (searchInput) {
     });
 }
 
-// ===== Tab Navigation =====
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
+// ===== Hero Search Suggestions =====
+const heroSuggestions = document.getElementById('heroSuggestions');
+if (heroSuggestions) {
+    heroSuggestions.querySelectorAll('.suggestion').forEach(suggestion => {
+        suggestion.addEventListener('click', () => {
+            const url = suggestion.dataset.url;
+            if (url) window.location.href = url;
+        });
+    });
+}
 
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const tab = btn.dataset.tab;
+// ===== Bike Filters (Homepage) =====
+const bikeShowcase = document.getElementById('bikeShowcase');
+const filterBtns = document.querySelectorAll('.filter-btn');
 
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
+if (bikeShowcase) {
+    let selectedFilter = 'all';
 
-        btn.classList.add('active');
-        const content = document.getElementById(tab);
-        if (content) content.classList.add('active');
+    function filterBikes() {
+        const cards = bikeShowcase.querySelectorAll('.bike-showcase-card');
+        cards.forEach(card => {
+            const brand = card.dataset.brand;
+            const show = selectedFilter === 'all' || brand === selectedFilter;
+            card.style.display = show ? '' : 'none';
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedFilter = btn.dataset.filter;
+            filterBikes();
+        });
+    });
+}
+
+// ===== FAQ Accordions =====
+document.querySelectorAll('.faq-accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const item = header.closest('.faq-accordion-item');
+        const wasActive = item.classList.contains('active');
+
+        // Close all siblings
+        item.closest('.faq-accordion').querySelectorAll('.faq-accordion-item').forEach(i => i.classList.remove('active'));
+
+        if (!wasActive) item.classList.add('active');
     });
 });
 
-// ===== Filter Functionality =====
+// ===== Editorial Nav Scroll Spy =====
+const editorialNavLinks = document.querySelectorAll('.editorial-nav-link');
+if (editorialNavLinks.length > 0) {
+    editorialNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    editorialNavLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // Scroll spy
+    const sections = document.querySelectorAll('.editorial-section, [id]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                if (id) {
+                    editorialNavLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                    });
+                }
+            }
+        });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+
+    sections.forEach(section => {
+        if (section.id) observer.observe(section);
+    });
+}
+
+// ===== Sticky CTA =====
+const stickyCta = document.getElementById('stickyCta');
+const stickyCtaBtn = document.getElementById('stickyCtaBtn');
+
+if (stickyCta && stickyCtaBtn) {
+    // Find affiliate link on page
+    const affiliateLink = document.querySelector('[data-amazon-url]');
+    if (affiliateLink) {
+        stickyCtaBtn.href = affiliateLink.dataset.amazonUrl;
+
+        let lastScrollY = 0;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const showCta = scrollY > 400 && scrollY > lastScrollY;
+            stickyCta.classList.toggle('visible', showCta);
+            lastScrollY = scrollY;
+        }, { passive: true });
+    }
+}
+
+// ===== Product Filters (Category Page) =====
 const filterForm = document.getElementById('filterForm');
 const productList = document.getElementById('productList');
 
@@ -172,72 +254,42 @@ if (filterForm && productList) {
     const ratingFilter = document.getElementById('ratingFilter');
 
     function applyFilters() {
-        const products = Array.from(productList.querySelectorAll('.product-card-horizontal'));
+        const products = Array.from(productList.querySelectorAll('.product-card-editorial'));
         const sort = sortFilter ? sortFilter.value : 'rating';
         const brand = brandFilter ? brandFilter.value : '';
         const priceRange = priceFilter ? priceFilter.value : '';
         const minRating = ratingFilter ? parseFloat(ratingFilter.value) || 0 : 0;
 
-        // Filter
         products.forEach(product => {
             const pRating = parseFloat(product.dataset.rating) || 0;
             const pPrice = parseInt(product.dataset.price) || 0;
             const pBrand = product.dataset.brand || '';
-
             let show = true;
-
             if (brand && pBrand !== brand) show = false;
             if (minRating && pRating < minRating) show = false;
-
             if (priceRange) {
                 const [min, max] = priceRange.split('-').map(Number);
                 if (pPrice < min || pPrice > max) show = false;
             }
-
             product.style.display = show ? '' : 'none';
         });
 
-        // Sort
         const visibleProducts = products.filter(p => p.style.display !== 'none');
-
         visibleProducts.sort((a, b) => {
             switch (sort) {
-                case 'rating':
-                    return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
-                case 'price-low':
-                    return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-                case 'price-high':
-                    return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-                case 'reviews':
-                    return parseInt(b.dataset.reviews) - parseInt(a.dataset.reviews);
-                default:
-                    return 0;
+                case 'rating': return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+                case 'price-low': return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+                case 'price-high': return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+                case 'reviews': return parseInt(b.dataset.reviews) - parseInt(a.dataset.reviews);
+                default: return 0;
             }
         });
-
         visibleProducts.forEach(product => productList.appendChild(product));
     }
 
     [sortFilter, brandFilter, priceFilter, ratingFilter].forEach(filter => {
         if (filter) filter.addEventListener('change', applyFilters);
     });
-}
-
-// ===== Lazy Loading =====
-if ('IntersectionObserver' in window) {
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    lazyImages.forEach(img => imageObserver.observe(img));
 }
 
 // ===== Smooth Scroll =====
@@ -250,53 +302,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// ===== Bike Filters (Homepage) =====
-const bikeGrid = document.getElementById('bikeGrid');
-const brandFilterBtns = document.querySelectorAll('.brand-filter-btn');
-const typeFilterBtns = document.querySelectorAll('.type-filter-btn');
-
-if (bikeGrid) {
-    let selectedBrand = 'all';
-    let selectedType = 'all';
-
-    function filterBikes() {
-        const cards = bikeGrid.querySelectorAll('.bike-card');
-        cards.forEach(card => {
-            const brand = card.dataset.brand;
-            const type = card.dataset.type;
-            const showBrand = selectedBrand === 'all' || brand === selectedBrand;
-            const showType = selectedType === 'all' || type === selectedType;
-            card.style.display = (showBrand && showType) ? '' : 'none';
-        });
-    }
-
-    brandFilterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            brandFilterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            selectedBrand = btn.dataset.brand;
-            filterBikes();
-        });
-    });
-
-    typeFilterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            typeFilterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            selectedType = btn.dataset.type;
-            filterBikes();
-        });
-    });
-}
-
-// ===== Hero Search Suggestions =====
-const heroSuggestions = document.getElementById('heroSuggestions');
-if (heroSuggestions) {
-    heroSuggestions.querySelectorAll('.suggestion').forEach(suggestion => {
-        suggestion.addEventListener('click', () => {
-            const url = suggestion.dataset.url;
-            if (url) window.location.href = url;
-        });
-    });
-}

@@ -169,77 +169,79 @@ def download_image(url, save_path, timeout=30):
 
 
 def merge_bike_deals(products, deals_by_asin):
-    """Merge bike-deals data into products based on ASIN matching, then title keywords."""
+    """Merge bike-deals data into products: images from all matches, prices only from ASIN matches."""
     merged_count = 0
-    
-    # Build a searchable list of deals
-    all_deals = list(deals_by_asin.values())
     
     for product in products:
         asin = product.get('asin', '')
         deal = None
+        match_type = None
         
-        # Try ASIN match first
+        # ASIN match = high confidence, safe to update price + image
         if asin and asin in deals_by_asin:
             deal = deals_by_asin[asin]
+            match_type = 'asin'
         else:
-            # Try title keyword matching
+            # Title keyword match = low confidence, only update image
             product_title = product.get('title', '').lower()
             product_brand = product.get('brand', '').lower()
             product_category = product.get('category', '').lower()
             
+            cat_keywords = {
+                'helmet': ['helmet'],
+                'phone mount': ['phone mount', 'phone holder', 'mobile holder'],
+                'chain lube': ['chain lube', 'chain lubricant'],
+                'chain cleaner': ['chain clean', 'chain cleaner'],
+                'engine oil': ['engine oil'],
+                'bike cover': ['bike cover', 'bike body cover'],
+                'tyre inflator': ['tyre inflator', 'air pump'],
+                'gloves': ['riding gloves', 'bike gloves'],
+                'jacket': ['riding jacket'],
+            }
+            keywords = cat_keywords.get(product_category, [])
+            
             best_score = 0
-            for d in all_deals:
+            for d in deals_by_asin.values():
                 deal_title = d.get('itemInfo', {}).get('title', {}).get('displayValue', '').lower()
                 
-                # Score based on keyword matches
+                cat_match = False
                 score = 0
-                # Brand match is strong signal
-                if product_brand and product_brand in deal_title:
-                    score += 10
-                # Category keywords
-                cat_keywords = {
-                    'helmet': ['helmet'],
-                    'phone mount': ['phone', 'mount', 'holder'],
-                    'chain lube': ['chain', 'lube', 'lubricant'],
-                    'chain cleaner': ['chain', 'clean'],
-                    'engine oil': ['engine', 'oil', '10w'],
-                    'bike cover': ['cover', 'body cover'],
-                    'tyre inflator': ['tyre', 'inflator', 'air', 'pump'],
-                    'gloves': ['glove'],
-                    'jacket': ['jacket'],
-                }
-                keywords = cat_keywords.get(product_category, [])
                 for kw in keywords:
                     if kw in deal_title:
-                        score += 5
+                        score += 10
+                        cat_match = True
+                
+                if not cat_match:
+                    continue
+                
+                if product_brand and product_brand in deal_title:
+                    score += 5
                 
                 if score > best_score:
                     best_score = score
                     deal = d
+                    match_type = 'title'
         
         if deal:
-            # Get large image URL
+            # Always try to get image URL (safe)
             images = deal.get('images', {})
             primary = images.get('primary', {})
             large_img = primary.get('large', {})
             image_url = large_img.get('url', '')
-            
-            # Get price from listings
-            offers = deal.get('offersV2', {})
-            listings = offers.get('listings', [])
-            price = None
-            for listing in listings:
-                if listing.get('isBuyBoxWinner'):
-                    price_money = listing.get('price', {}).get('money', {})
-                    price = price_money.get('amount')
-                    break
-            
-            # Update product data
             if image_url:
                 product['amazon_image_url'] = image_url
-            if price:
-                product['price'] = int(price)
+            
+            # Only update price from ASIN match (high confidence)
+            if match_type == 'asin':
+                offers = deal.get('offersV2', {})
+                listings = offers.get('listings', [])
+                for listing in listings:
+                    if listing.get('isBuyBoxWinner'):
+                        price_money = listing.get('price', {}).get('money', {})
+                        price = price_money.get('amount')
+                        if price:
+                            product['price'] = int(price)
+                        break
             
             merged_count += 1
     
@@ -702,8 +704,10 @@ class SiteGenerator:
             output_path='articles/index.html',
         )
         context['articles'] = sorted_articles
+        context['featured_products'] = get_featured_products(self.data['products'])
+        context['all_products'] = self.data['products']
+        context['motorcycles'] = self.data['motorcycles']
         content = self.render_template('home.html', context)
-        # Reuse home template for articles listing - or we could make a dedicated one
         self.write_page('articles/index.html', content)
 
     def generate_sitemap(self):
@@ -846,6 +850,10 @@ Sitemap: {self.base_url}/sitemap.xml
             canonical_url=f'{self.base_url}/search/',
             output_path='search/index.html',
         )
+        context['featured_products'] = get_featured_products(self.data['products'])
+        context['all_products'] = self.data['products']
+        context['motorcycles'] = self.data['motorcycles']
+        context['articles'] = self.data['articles']
         content = self.render_template('home.html', context)
         self.write_page('search/index.html', content)
 
