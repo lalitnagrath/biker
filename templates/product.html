@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block schemas %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ product.title }}",
+    "description": "{{ product.verdict }}",
+    "brand": { "@type": "Brand", "name": "{{ product.brand }}" },
+    "offers": { "@type": "Offer", "price": "{{ product.price }}", "priceCurrency": "INR", "availability": "https://schema.org/InStock" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ product.rating }}", "reviewCount": "{{ product.reviews }}" }
+}
+</script>
+{% if product.affiliate_url %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        { "@type": "Question", "name": "What is the {{ product.title }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ product.title }} is a {{ product.category | lower }} by {{ product.brand }}. {{ product.verdict }}" } },
+        { "@type": "Question", "name": "Is the {{ product.title }} worth buying?", "acceptedAnswer": { "@type": "Answer", "text": "{{ product.verdict }} It scores {{ product.editor_rating }}/10 in our review." } }
+    ]
+}
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<article class="product-page">
+    <div class="container">
+        <div class="product-hero">
+            <div class="product-hero-image">
+                {% if product.image and 'products/' in product.image %}
+                <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                {% else %}
+                <div class="placeholder-image large-placeholder">{{ product.brand }}</div>
+                {% endif %}
+            </div>
+            <div class="product-hero-content">
+                <div class="product-category-badge">{{ product.category }}</div>
+                <h1>{{ product.title }}</h1>
+                <div class="product-rating-large">
+                    <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                    <span class="rating-value">{{ product.rating }}</span>
+                    <span class="review-count">({{ product.reviews | int }} reviews)</span>
+                </div>
+                <div class="product-price-large">₹{{ product.price | int }}</div>
+                <p class="product-verdict">{{ product.verdict }}</p>
+                <div class="product-actions">
+                    {% if product.affiliate_url %}
+                    <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-lg" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                    {% endif %}
+                    <a href="#pros-cons" class="btn btn-outline btn-lg">Read Full Review</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-details">
+            <div class="product-main">
+                <section class="product-section" id="pros-cons">
+                    <h2>Pros & Cons</h2>
+                    <div class="pros-cons-grid">
+                        <div class="pros">
+                            <h3>&#10003; Pros</h3>
+                            <ul>{% for pro in product.pros %}<li>{{ pro }}</li>{% endfor %}</ul>
+                        </div>
+                        <div class="cons">
+                            <h3>&#10007; Cons</h3>
+                            <ul>{% for con in product.cons %}<li>{{ con }}</li>{% endfor %}</ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="product-section">
+                    <h2>Specifications</h2>
+                    <table class="specs-table">
+                        <tr><td>Brand</td><td>{{ product.brand }}</td></tr>
+                        <tr><td>Category</td><td>{{ product.category }}</td></tr>
+                        <tr><td>Type</td><td>{{ product.type }}</td></tr>
+                        <tr><td>Price</td><td>₹{{ product.price | int }}</td></tr>
+                        <tr><td>User Rating</td><td>{{ product.rating }} / 5</td></tr>
+                        <tr><td>Reviews</td><td>{{ product.reviews | int }}</td></tr>
+                        <tr><td>Editor Rating</td><td>{{ product.editor_rating }} / 10</td></tr>
+                    </table>
+                </section>
+
+                <section class="product-section">
+                    <h2>Who Should Buy the {{ product.title }}?</h2>
+                    <p>The <strong>{{ product.title }}</strong> is best suited for: <strong>{{ product.best_for }}</strong></p>
+                </section>
+
+                <section class="product-section">
+                    <h2>Our Verdict</h2>
+                    <div class="verdict-box">
+                        <div class="verdict-rating">
+                            <span class="rating-number">{{ product.editor_rating }}</span>
+                            <span class="rating-label">/10</span>
+                        </div>
+                        <div class="verdict-text"><p>{{ product.verdict }}</p></div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="product-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Product Details</h3>
+                    <ul class="product-quick-facts">
+                        <li><strong>Brand:</strong> {{ product.brand }}</li>
+                        <li><strong>Category:</strong> {{ product.category }}</li>
+                        <li><strong>Price:</strong> ₹{{ product.price | int }}</li>
+                        <li><strong>Rating:</strong> {{ product.rating }} / 5</li>
+                        <li><strong>Best For:</strong> {{ product.best_for }}</li>
+                    </ul>
+                    {% if product.affiliate_url %}
+                    <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-block" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                    {% endif %}
+                </div>
+
+                {% if related_products %}
+                <div class="sidebar-widget">
+                    <h3>Related Products</h3>
+                    <ul class="related-products-list">
+                        {% for rp in related_products %}
+                        <li><a href="{{ base_path }}products/{{ rp.slug }}/index.html"><span class="rp-name">{{ rp.title }}</span><span class="rp-rating">{{ rp.rating }} ★</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if related_articles %}
+                <div class="sidebar-widget">
+                    <h3>Related Articles</h3>
+                    <ul class="related-articles-list">
+                        {% for ra in related_articles %}
+                        <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </aside>
+        </div>
+    </div>
+</article>
+{% endblock %}

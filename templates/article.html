@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block schemas %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ article.title }}",
+    "description": "{{ article.description }}",
+    "author": { "@type": "Person", "name": "{{ article.author | default('BikeReview Team') }}" },
+    "datePublished": "{{ article.date | default('') }}",
+    "dateModified": "{{ article.date | default('') }}",
+    "publisher": { "@type": "Organization", "name": "BikeReview India" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ canonical_url }}" }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site_url }}" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "{{ site_url }}articles/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ article.title }}", "item": "{{ canonical_url }}" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="article-page">
+    <div class="container">
+        <header class="article-header">
+            <div class="article-meta">
+                <span class="article-category">{{ article.tags[0] if article.tags else 'Guide' }}</span>
+                <span class="article-date">{{ article.date | default('') }}</span>
+                <span class="article-reading-time">{{ article.reading_time | default('') }}</span>
+            </div>
+            <h1>{{ article.title }}</h1>
+            <p class="article-author">By {{ article.author | default('BikeReview Team') }}</p>
+        </header>
+
+        <div class="article-layout">
+            <div class="article-content">
+                {{ article_html | safe }}
+            </div>
+
+            <aside class="article-sidebar">
+                {% if article.related_products %}
+                <div class="sidebar-widget">
+                    <h3>Recommended Products</h3>
+                    {% for slug in article.related_products %}
+                    {% set rp = all_products | selectattr('slug', 'equalto', slug) | first %}
+                    {% if rp %}
+                    <div class="sidebar-product">
+                        <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
+                            <div class="sidebar-product-name">{{ rp.title }}</div>
+                            <div class="sidebar-product-rating">{{ rp.rating }} ★</div>
+                            <div class="sidebar-product-price">₹{{ rp.price | int }}</div>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if article.related_motorcycles %}
+                <div class="sidebar-widget">
+                    <h3>Related Motorcycles</h3>
+                    <ul>
+                        {% for slug in article.related_motorcycles %}
+                        {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
+                        {% if rm %}
+                        <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if related_articles %}
+                <div class="sidebar-widget">
+                    <h3>More Guides</h3>
+                    <ul>
+                        {% for ra in related_articles %}
+                        {% if ra.slug != article.slug %}
+                        <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div class="sidebar-widget popular-motorcycles">
+                    <h3>Popular Motorcycles</h3>
+                    <ul>
+                        {% for bike in all_motorcycles[:5] %}
+                        <li><a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html">{{ bike.brand }} {{ bike.model }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        {% if prev_article or next_article %}
+        <nav class="article-nav">
+            {% if prev_article %}
+            <a href="{{ base_path }}articles/{{ prev_article.slug }}/index.html" class="article-nav-prev">
+                <span class="nav-label">Previous</span>
+                <span class="nav-title">{{ prev_article.title }}</span>
+            </a>
+            {% endif %}
+            {% if next_article %}
+            <a href="{{ base_path }}articles/{{ next_article.slug }}/index.html" class="article-nav-next">
+                <span class="nav-label">Next</span>
+                <span class="nav-title">{{ next_article.title }}</span>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+    </div>
+</article>
+{% endblock %}

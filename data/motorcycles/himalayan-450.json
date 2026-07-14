@@ -1,0 +1,45 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Himalayan 450",
+    "slug": "royal-enfield-himalayan-450",
+    "engine": "452cc",
+    "power": "40 bhp",
+    "torque": "40 Nm",
+    "transmission": "6-speed",
+    "type": "Adventure",
+    "fuel_type": "Petrol",
+    "price": "2,69,000",
+    "price_numeric": 269000,
+    "mileage": "30 kmpl",
+    "weight": "196 kg",
+    "fuel_capacity": "17 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Upside Down Forks (Front), Monoshock (Rear)",
+    "tyres": "90/90-21 (Front), 140/80-17 (Rear)",
+    "description": "The Royal Enfield Himalayan 450 is a purpose-built adventure tourer designed to conquer mountains and highways alike. With its liquid-cooled engine, long-travel suspension, and adventure-ready features, it's built to take you anywhere your heart desires.",
+    "highlights": [
+        "Liquid-cooled engine",
+        "Adventure-ready design",
+        "Long-travel suspension",
+        "Switchable ABS",
+        "TFT display with navigation"
+    ],
+    "pros": [
+        "Excellent off-road capability",
+        "Comfortable for long tours",
+        "Good ground clearance",
+        "Advanced features",
+        "Strong engine performance"
+    ],
+    "cons": [
+        "Tall seat height",
+        "Premium pricing",
+        "Heavy for pure off-road",
+        "Complex maintenance",
+        "Limited dealer network"
+    ],
+    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets", "Tank Bag", "Saddle Bag", "Tail Bag"],
+    "ideal_for": ["Adventure touring", "Long-distance rides", "Mountain roads", "Highway touring"],
+    "variants": ["Pass", "Explore", "Hanle Black"]
+}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block schemas %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site_url }}"},
+        {"@type": "ListItem", "position": 2, "name": "Motorcycles", "item": "{{ site_url }}motorcycles/"},
+        {"@type": "ListItem", "position": 3, "name": "{{ motorcycle.brand }} {{ motorcycle.model }}", "item": "{{ site_url }}motorcycles/{{ motorcycle.slug }}/"},
+        {"@type": "ListItem", "position": 4, "name": "Accessories", "item": "{{ canonical_url }}"}
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="accessories-page">
+    <div class="container">
+        <header class="page-header">
+            <h1>{{ motorcycle.brand }} {{ motorcycle.model }} — Best Accessories</h1>
+            <p>Complete guide to the best accessories and gear for your {{ motorcycle.brand }} {{ motorcycle.model }}</p>
+        </header>
+
+        {% for section in accessory_sections %}
+        <section class="accessory-section">
+            <h2>{{ section.title }}</h2>
+            <p class="section-description">{{ section.description }}</p>
+            <div class="product-grid compact">
+                {% for product in section.products %}
+                <div class="product-card">
+                    <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-card-image">
+                        {% if product.image and 'products/' in product.image %}
+                        <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                        {% else %}
+                        <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                        {% endif %}
+                    </a>
+                    <div class="product-card-content">
+                        <div class="product-card-category">{{ product.category }}</div>
+                        <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                        <div class="product-rating">
+                            <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                            <span class="rating-value">{{ product.rating }}</span>
+                            <span class="review-count">({{ product.reviews | int }})</span>
+                        </div>
+                        <div class="product-price">₹{{ product.price | int }}</div>
+                        <p class="product-verdict">{{ product.verdict[:120] }}...</p>
+                        <div class="product-card-actions">
+                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Details</a>
+                            {% if product.affiliate_url %}
+                            <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+
+        <section class="section">
+            <h2>Accessories by Category</h2>
+            <div class="tags-cloud">
+                {% for cat in motorcycle.categories %}
+                <a href="{{ base_path }}categories/{{ cat | lower | replace(' ', '-') }}/index.html" class="tag">{{ cat }}</a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="related-content">
+            <h2>Related Guides</h2>
+            <div class="article-grid">
+                {% for article in related_articles %}
+                <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="article-card">
+                    <div class="article-card-content">
+                        <span class="reading-time">{{ article.reading_time }}</span>
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.description }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

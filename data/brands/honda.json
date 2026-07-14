@@ -1,0 +1,13 @@
+{
+    "name": "Honda",
+    "slug": "honda",
+    "founded": 1948,
+    "country": "Japan",
+    "headquarters": "Tokyo, Japan",
+    "description": "Honda is one of the world's largest motorcycle manufacturers, known for building reliable, refined, and fuel-efficient motorcycles. In India, Honda has established a strong presence with its premium Big Wing range and popular commuter lineup.",
+    "logo": "images/brands/honda.svg",
+    "website": "https://www.hondabigwing.in",
+    "popular_models": ["honda-hness-cb350", "honda-cb350rs"],
+    "price_range": "0.75 - 3.50 Lakh",
+    "segments": ["Premium Commuter", "Roadster", "Scooter", "Sport"]
+}

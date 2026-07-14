@@ -1,0 +1,45 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Hunter 350",
+    "slug": "royal-enfield-hunter-350",
+    "engine": "349cc",
+    "power": "20.2 bhp",
+    "torque": "27 Nm",
+    "transmission": "5-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "1,49,900",
+    "price_numeric": 149900,
+    "mileage": "36 kmpl",
+    "weight": "177 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
+    "description": "The Royal Enfield Hunter 350 is a modern roadster designed for the urban rider. With its agile handling, compact dimensions, and peppy engine, it brings a fresh perspective to the Royal Enfield lineup while staying true to the brand's heritage.",
+    "highlights": [
+        "Lightest Royal Enfield",
+        "Agile city handling",
+        "Modern retro design",
+        "TFT instrument cluster",
+        "USB charging port"
+    ],
+    "pros": [
+        "Light and easy to handle",
+        "Good for beginners",
+        "Comfortable riding position",
+        "Value for money",
+        "Fun to ride in city"
+    ],
+    "cons": [
+        "Not ideal for long highway rides",
+        "Wind blast at high speeds",
+        "Small fuel tank",
+        "Limited luggage options",
+        "Could use more power"
+    ],
+    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves"],
+    "ideal_for": ["Urban commuting", "Beginner riders", "City exploration", "Short weekend rides"],
+    "variants": ["Retro", "Metro"]
+}

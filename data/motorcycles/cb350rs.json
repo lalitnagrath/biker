@@ -1,0 +1,45 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "CB350RS",
+    "slug": "honda-cb350rs",
+    "engine": "348.36cc",
+    "power": "20.8 bhp",
+    "torque": "30 Nm",
+    "transmission": "5-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "1,96,500",
+    "price_numeric": 196500,
+    "mileage": "35 kmpl",
+    "weight": "179 kg",
+    "fuel_capacity": "15 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The Honda CB350RS is a sportier take on the H'ness CB350, featuring a more aggressive design and sportier ergonomics. It targets younger riders who want retro charm with a modern sporty edge.",
+    "highlights": [
+        "Sporty retro design",
+        "Monoshock rear suspension",
+        "Honda reliability",
+        "Assist & slipper clutch",
+        "Split seats"
+    ],
+    "pros": [
+        "Sporty handling",
+        "Refined engine",
+        "Good build quality",
+        "Comfortable for daily use",
+        "Modern features"
+    ],
+    "cons": [
+        "Slightly aggressive riding position",
+        "Not ideal for long tours",
+        "Limited aftermarket parts",
+        "Basic instrument cluster",
+        "Premium pricing"
+    ],
+    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves"],
+    "ideal_for": ["Young riders", "City commuting", "Sporty riding", "Weekend fun"],
+    "variants": ["Standard"]
+}

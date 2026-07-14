@@ -1,0 +1,13 @@
+{
+    "name": "Hero",
+    "slug": "hero",
+    "founded": 1984,
+    "country": "India",
+    "headquarters": "New Delhi, India",
+    "description": "Hero MotoCorp is the world's largest motorcycle manufacturer by volume. Known for its reliable and affordable motorcycles, Hero has a massive presence in the Indian market with models ranging from commuters to premium segments.",
+    "logo": "images/brands/hero.svg",
+    "website": "https://www.heromotocorp.com",
+    "popular_models": ["maverick-440", "karan", "xtreme-160r"],
+    "price_range": "0.70 - 2.50 Lakh",
+    "segments": ["Commuter", "Sport", "Premium"]
+}

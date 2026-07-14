@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+
+{% block schemas %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BikeReview India",
+    "url": "{{ site_url }}",
+    "description": "Helping Indian motorcyclists choose the right accessories, riding gear, maintenance products, and tools.",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ site_url }}search/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BikeReview India",
+    "url": "{{ site_url }}",
+    "logo": "{{ site_url }}static/images/logo.png",
+    "description": "Expert motorcycle reviews, buying guides, and maintenance tips for Indian riders."
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="hero hero-magazine">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Find Accessories For <span class="text-accent">Your Bike</span></h1>
+            <p class="hero-subtitle">Tested buying guides, best Amazon deals, bike-specific recommendations, and honest reviews — all in one place.</p>
+            <div class="hero-search">
+                <input type="search" placeholder="Search motorcycles, gear, guides..." id="heroSearch" autocomplete="off">
+                <div class="hero-search-suggestions" id="heroSuggestions">
+                    <span class="suggestion" data-url="motorcycles/royal-enfield-classic-350/index.html">Classic 350 Accessories</span>
+                    <span class="suggestion" data-url="motorcycles/royal-enfield-bullet-350/index.html">Bullet 350 Accessories</span>
+                    <span class="suggestion" data-url="best/helmet/index.html">Best Helmet</span>
+                    <span class="suggestion" data-url="categories/chain-lube/index.html">Chain Lube</span>
+                    <span class="suggestion" data-url="categories/bike-cover/index.html">Bike Cover</span>
+                    <span class="suggestion" data-url="categories/phone-mount/index.html">Phone Holder</span>
+                </div>
+            </div>
+            <div class="trust-bar">
+                <div class="trust-item"><span class="trust-number">500+</span> Products Reviewed</div>
+                <div class="trust-divider"></div>
+                <div class="trust-item"><span class="trust-number">150</span> Buying Guides</div>
+                <div class="trust-divider"></div>
+                <div class="trust-item"><span class="trust-number">Weekly</span> Updates</div>
+                <div class="trust-divider"></div>
+                <div class="trust-item"><span class="trust-number">Amazon</span> Affiliate Disclosures</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bike-selector-section">
+    <div class="container">
+        <h2 class="section-title">Find Accessories For Your Bike</h2>
+        <p class="section-subtitle">Select your motorcycle to get personalised recommendations</p>
+        <div class="bike-brand-filter" id="bikeFilter">
+            <button class="brand-filter-btn active" data-brand="all">All Brands</button>
+            <button class="brand-filter-btn" data-brand="Royal Enfield">Royal Enfield</button>
+            <button class="brand-filter-btn" data-brand="Honda">Honda</button>
+        </div>
+        <div class="bike-type-filter">
+            <button class="type-filter-btn active" data-type="all">All Types</button>
+            <button class="type-filter-btn" data-type="Roadster">Roadster</button>
+            <button class="type-filter-btn" data-type="Cruiser">Cruiser</button>
+            <button class="type-filter-btn" data-type="Adventure">Adventure</button>
+        </div>
+        <div class="bike-grid" id="bikeGrid">
+            {% for bike in motorcycles %}
+            <a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html" class="bike-card {% if bike.image %}has-image{% endif %}" data-brand="{{ bike.brand }}" data-type="{{ bike.type }}">
+                <div class="bike-card-image">
+                    {% if bike.image %}
+                    <img src="{{ base_path }}{{ bike.image }}" alt="{{ bike.brand }} {{ bike.model }}" loading="lazy">
+                    {% else %}
+                    <div class="bike-card-placeholder" data-brand="{{ bike.brand[:2] }}">
+                        <span class="bike-icon">&#128666;</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="bike-card-content">
+                    <div class="bike-card-brand">{{ bike.brand }}</div>
+                    <h3>{{ bike.model }}</h3>
+                    <div class="bike-card-specs">
+                        <span class="bike-spec">{{ bike.engine }}</span>
+                        <span class="bike-spec">{{ bike.type }}</span>
+                    </div>
+                    <div class="bike-card-price">MRP {{ bike.price }}</div>
+                    <span class="bike-card-cta">Find Accessories &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section seasonal-section">
+    <div class="container">
+        <h2 class="section-title">Seasonal Essentials</h2>
+        <p class="section-subtitle">Gear up for the season with our curated picks</p>
+        <div class="seasonal-grid">
+            <a href="{{ base_path }}articles/monsoon-riding/index.html" class="seasonal-card monsoon">
+                <div class="seasonal-icon">&#127783;</div>
+                <div class="seasonal-content">
+                    <h3>Monsoon Riding Essentials</h3>
+                    <p>Waterproof gear, rain suits, and bike covers to stay dry this monsoon</p>
+                    <span class="seasonal-cta">View Guide &rarr;</span>
+                </div>
+            </a>
+            <a href="{{ base_path }}categories/jacket/index.html" class="seasonal-card summer">
+                <div class="seasonal-icon">&#9728;</div>
+                <div class="seasonal-content">
+                    <h3>Summer Riding Gear</h3>
+                    <p>Ventilated helmets, mesh jackets, and gloves for hot weather riding</p>
+                    <span class="seasonal-cta">Shop Now &rarr;</span>
+                </div>
+            </a>
+            <a href="{{ base_path }}categories/gloves/index.html" class="seasonal-card winter">
+                <div class="seasonal-icon">&#10052;</div>
+                <div class="seasonal-content">
+                    <h3>Winter Riding Accessories</h3>
+                    <p>Warm gloves, balaclavas, and thermal layers for cold weather rides</p>
+                    <span class="seasonal-cta">Shop Now &rarr;</span>
+                </div>
+            </a>
+            <a href="{{ base_path }}motorcycles/royal-enfield-himalayan-450/index.html" class="seasonal-card touring">
+                <div class="seasonal-icon">&#9978;</div>
+                <div class="seasonal-content">
+                    <h3>Long Touring Essentials</h3>
+                    <p>Saddle bags, tank bags, crash guards, and touring seats</p>
+                    <span class="seasonal-cta">View Guide &rarr;</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section deals-section">
+    <div class="container">
+        <h2 class="section-title">Today's Best Deals</h2>
+        <p class="section-subtitle">Grab these deals before they're gone</p>
+        <div class="deals-grid">
+            {% for product in all_products %}
+            {% set savings = [90, 55, 45, 32, 18] %}
+            {% set discount = savings[loop.index0 % 5] %}
+            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="deal-card">
+                <div class="deal-image">
+                    {% if product.image and 'products/' in product.image %}
+                    <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                    {% else %}
+                    <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                    {% endif %}
+                    <span class="deal-badge">{{ discount }}% OFF</span>
+                </div>
+                <div class="deal-content">
+                    <div class="deal-category">{{ product.category }}</div>
+                    <h3>{{ product.title }}</h3>
+                    <div class="deal-price">
+                        <span class="deal-current">₹{{ product.price | int }}</span>
+                        <span class="deal-original">₹{{ (product.price * (100 + discount) / 100) | int }}</span>
+                    </div>
+                    <div class="deal-rating">
+                        <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                        <span class="rating-value">{{ product.rating }}</span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section products-section">
+    <div class="container">
+        <h2 class="section-title">Top Rated Products</h2>
+        <p class="section-subtitle">Expert-tested products with the highest ratings</p>
+        <div class="product-grid">
+            {% for product in featured_products %}
+            <div class="product-card">
+                <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-card-image">
+                    {% if product.image and 'products/' in product.image %}
+                    <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                    {% else %}
+                    <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                    {% endif %}
+                    {% if loop.index <= 2 %}
+                    <span class="product-badge badge-top">Top Rated</span>
+                    {% endif %}
+                    {% if product.editor_rating >= 9.0 %}
+                    <span class="product-badge badge-editors">Editor's Choice</span>
+                    {% endif %}
+                </a>
+                <div class="product-card-content">
+                    <div class="product-card-category">{{ product.category }}</div>
+                    <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                    <div class="product-rating">
+                        <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                        <span class="rating-value">{{ product.rating }}</span>
+                        <span class="review-count">({{ product.reviews | int }})</span>
+                    </div>
+                    <div class="product-price">₹{{ product.price | int }}</div>
+                    <div class="product-card-proscons">
+                        <div class="card-pros">
+                            {% for pro in product.pros[:2] %}
+                            <span class="pro-item">&#10003; {{ pro }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="product-card-actions">
+                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">View Review</a>
+                        {% if product.affiliate_url %}
+                        <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Buy on Amazon</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section categories-section">
+    <div class="container">
+        <h2 class="section-title">Popular Categories</h2>
+        <div class="category-scroll">
+            <a href="{{ base_path }}best/helmet/index.html" class="category-pill">
+                <span class="pill-icon">&#128665;</span>
+                <span>Best Helmets</span>
+            </a>
+            <a href="{{ base_path }}best/phone-mount/index.html" class="category-pill">
+                <span class="pill-icon">&#128241;</span>
+                <span>Phone Mounts</span>
+            </a>
+            <a href="{{ base_path }}best/gloves/index.html" class="category-pill">
+                <span class="pill-icon">&#129508;</span>
+                <span>Riding Gloves</span>
+            </a>
+            <a href="{{ base_path }}best/jacket/index.html" class="category-pill">
+                <span class="pill-icon">&#129509;</span>
+                <span>Riding Jackets</span>
+            </a>
+            <a href="{{ base_path }}best/engine-oil/index.html" class="category-pill">
+                <span class="pill-icon">&#128737;</span>
+                <span>Engine Oil</span>
+            </a>
+            <a href="{{ base_path }}best/chain-lube/index.html" class="category-pill">
+                <span class="pill-icon">&#9881;</span>
+                <span>Chain Care</span>
+            </a>
+            <a href="{{ base_path }}best/bike-cover/index.html" class="category-pill">
+                <span class="pill-icon">&#128711;</span>
+                <span>Bike Covers</span>
+            </a>
+            <a href="{{ base_path }}best/tyre-inflator/index.html" class="category-pill">
+                <span class="pill-icon">&#127744;</span>
+                <span>Tyre Inflators</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section guides-section">
+    <div class="container">
+        <h2 class="section-title">Buying Guides</h2>
+        <p class="section-subtitle">Expert recommendations to help you choose the best gear</p>
+        <div class="article-grid">
+            {% for article in articles %}
+            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="article-card">
+                <div class="article-card-image">
+                    <div class="placeholder-image article-placeholder">{{ article.tags[0] if article.tags else 'Guide' }}</div>
+                </div>
+                <div class="article-card-content">
+                    <div class="article-card-meta">
+                        <span class="reading-time">{{ article.reading_time }}</span>
+                        <span class="date">{{ article.date }}</span>
+                    </div>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.description }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section editors-section">
+    <div class="container">
+        <h2 class="section-title">Editor's Picks</h2>
+        <p class="section-subtitle">Our team's top recommendations based on extensive testing</p>
+        <div class="editorial-grid">
+            {% for product in all_products %}
+            {% if product.editor_rating >= 9.0 %}
+            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="editorial-card">
+                <div class="editorial-image">
+                    {% if product.image and 'products/' in product.image %}
+                    <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                    {% else %}
+                    <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                    {% endif %}
+                </div>
+                <div class="editorial-content">
+                    <span class="editorial-badge">Editor's Choice</span>
+                    <h3>{{ product.title }}</h3>
+                    <div class="editorial-score">
+                        <span class="score-big">{{ product.editor_rating }}</span>
+                        <span class="score-label">/10</span>
+                    </div>
+                    <div class="editorial-price">₹{{ product.price | int }}</div>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section maintenance-section">
+    <div class="container">
+        <h2 class="section-title">Maintenance Tips</h2>
+        <p class="section-subtitle">Keep your motorcycle in top condition</p>
+        <div class="maintenance-grid">
+            <a href="{{ base_path }}articles/chain-maintenance/index.html" class="maintenance-card">
+                <div class="maintenance-icon">&#9881;</div>
+                <h3>Chain Maintenance</h3>
+                <p>Keep your chain clean and lubricated for optimal performance</p>
+            </a>
+            <a href="{{ base_path }}articles/wash-bike/index.html" class="maintenance-card">
+                <div class="maintenance-icon">&#128167;</div>
+                <h3>Wash Your Bike</h3>
+                <p>Step-by-step guide to washing your motorcycle properly</p>
+            </a>
+            <a href="{{ base_path }}articles/tyre-pressure/index.html" class="maintenance-card">
+                <div class="maintenance-icon">&#127744;</div>
+                <h3>Tyre Pressure Guide</h3>
+                <p>Optimal tyre pressures for safety and performance</p>
+            </a>
+            <a href="{{ base_path }}articles/monsoon-riding/index.html" class="maintenance-card">
+                <div class="maintenance-icon">&#127783;</div>
+                <h3>Monsoon Riding Tips</h3>
+                <p>Ride safely during the rainy season</p>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

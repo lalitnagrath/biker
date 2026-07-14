@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{% block title %}{{ meta_title | default('BikeReview India - Motorcycle Reviews, Buying Guides & Maintenance Tips') }}{% endblock %}</title>
+    <meta name="description" content="{{ meta_description | default('Helping Indian motorcyclists choose the right accessories, riding gear, maintenance products, and tools.') }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ meta_title | default('BikeReview India') }}">
+    <meta property="og:description" content="{{ meta_description | default('Expert motorcycle reviews, buying guides, and maintenance tips for Indian riders.') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:site_name" content="BikeReview India">
+    {% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ meta_title | default('BikeReview India') }}">
+    <meta name="twitter:description" content="{{ meta_description | default('Expert motorcycle reviews, buying guides, and maintenance tips for Indian riders.') }}">
+
+    <!-- Schemas -->
+    {% block schemas %}{% endblock %}
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ base_path }}static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="{{ base_path }}index.html" class="logo">
+                <span class="logo-icon">&#x1F3CD;</span>
+                <span class="logo-text">BikeReview<span class="logo-accent">India</span></span>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li class="has-dropdown">
+                        <a href="{{ base_path }}brands/index.html">Brands</a>
+                        <ul class="dropdown">
+                            {% for brand in brands %}
+                            <li><a href="{{ base_path }}brands/{{ brand.slug }}/index.html">{{ brand.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="{{ base_path }}motorcycles/index.html">Motorcycles</a>
+                        <ul class="dropdown">
+                            {% for motorcycle in motorcycles %}
+                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/index.html">{{ motorcycle.brand }} {{ motorcycle.model }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li><a href="{{ base_path }}categories/index.html">Products</a></li>
+                    <li><a href="{{ base_path }}articles/index.html">Articles</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="search" id="searchInput" placeholder="Search motorcycles, products, articles..." autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Close search">&times;</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <main class="site-main">
+        {% block breadcrumbs %}
+        {% if breadcrumbs %}
+        <div class="breadcrumbs">
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="{{ base_path }}index.html">Home</a></li>
+                        {% for crumb in breadcrumbs %}
+                        <li{% if loop.last %} aria-current="page"{% endif %}>
+                            {% if crumb.url %}
+                            <a href="{{ crumb.url }}">{{ crumb.name }}</a>
+                            {% else %}
+                            {{ crumb.name }}
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>BikeReview India</h3>
+                    <p>Helping Indian motorcyclists choose the right accessories, riding gear, maintenance products, and tools.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Popular Brands</h4>
+                    <ul>
+                        {% for brand in brands[:4] %}
+                        <li><a href="{{ base_path }}brands/{{ brand.slug }}/index.html">{{ brand.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{{ base_path }}categories/index.html">All Products</a></li>
+                        <li><a href="{{ base_path }}articles/index.html">Buying Guides</a></li>
+                        <li><a href="{{ base_path }}motorcycles/index.html">Motorcycles</a></li>
+                        <li><a href="{{ base_path }}sitemap.xml">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Affiliate Disclosure</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BikeReview India. All rights reserved.</p>
+                <p class="affiliate-disclosure">As an Amazon Associate, we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ base_path }}static/js/main.js"></script>
+</body>
+</html>

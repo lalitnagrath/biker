@@ -1,0 +1,13 @@
+{
+    "name": "Royal Enfield",
+    "slug": "royal-enfield",
+    "founded": 1901,
+    "country": "United Kingdom / India",
+    "headquarters": "Chennai, India",
+    "description": "Royal Enfield is the world's oldest motorcycle brand in continuous production. Known for its iconic retro-styled motorcycles, Royal Enfield has become synonymous with classic motorcycling in India. Their motorcycles are celebrated for their timeless design, thumping exhaust note, and accessible pricing.",
+    "logo": "images/brands/royal-enfield.svg",
+    "website": "https://www.royalenfield.com",
+    "popular_models": ["royal-enfield-bullet-350", "royal-enfield-classic-350", "royal-enfield-hunter-350", "royal-enfield-himalayan-450", "royal-enfield-guerrilla-450"],
+    "price_range": "1.50 - 3.50 Lakh",
+    "segments": ["Cruiser", "Roadster", "Adventure", "Modern Classic"]
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Suzuki",
+    "slug": "suzuki",
+    "founded": 1909,
+    "country": "Japan",
+    "headquarters": "Hamamatsu, Japan",
+    "description": "Suzuki Motor Corporation is a Japanese multinational that produces motorcycles, automobiles, and other motorized products. In India, Suzuki is known for its premium Access scooter and the popular Gixxer range of motorcycles.",
+    "logo": "images/brands/suzuki.svg",
+    "website": "https://www.suzukimotorcycle.co.in",
+    "popular_models": ["gixxer-sf-250", "gixxer-250", "v-strom-sx"],
+    "price_range": "0.80 - 2.00 Lakh",
+    "segments": ["Sport", "Touring", "Scooter"]
+}

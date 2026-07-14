@@ -1,0 +1,13 @@
+{
+    "name": "TVS",
+    "slug": "tvs",
+    "founded": 1978,
+    "country": "India",
+    "headquarters": "Chennai, India",
+    "description": "TVS Motor Company is one of India's largest two-wheeler manufacturers, known for producing reliable and innovative motorcycles and scooters. Their Apache range has been popular among performance enthusiasts.",
+    "logo": "images/brands/tvs.svg",
+    "website": "https://www.tvsapache.com",
+    "popular_models": ["apache-rtr-310", "apache-rtr-200", "ronin"],
+    "price_range": "0.75 - 2.50 Lakh",
+    "segments": ["Sport", "Cruiser", "Scooter", "Commuter"]
+}

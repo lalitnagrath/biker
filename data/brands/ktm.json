@@ -1,0 +1,13 @@
+{
+    "name": "KTM",
+    "slug": "ktm",
+    "founded": 1934,
+    "country": "Austria",
+    "headquarters": "Mattscheid, Austria",
+    "description": "KTM is an Austrian motorcycle and sports car manufacturer known for its high-performance off-road and street motorcycles. In India, KTM motorcycles are manufactured by Bajaj Auto and are popular among young riders for their aggressive styling and performance.",
+    "logo": "images/brands/ktm.svg",
+    "website": "https://www.ktm.com/in",
+    "popular_models": ["duke-390", "rc-390", "duke-200", "duke-250"],
+    "price_range": "1.80 - 3.50 Lakh",
+    "segments": ["Naked Sport", "Supersport", "Adventure"]
+}

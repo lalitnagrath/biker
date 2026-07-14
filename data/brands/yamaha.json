@@ -1,0 +1,13 @@
+{
+    "name": "Yamaha",
+    "slug": "yamaha",
+    "founded": 1955,
+    "country": "Japan",
+    "headquarters": "Hamamatsu, Japan",
+    "description": "Yamaha Motor Company is a Japanese multinational manufacturer of motorcycles, marine engines, and other motorized products. Known for performance-oriented motorcycles with cutting-edge technology, Yamaha has a strong following among Indian enthusiasts.",
+    "logo": "images/brands/yamaha.svg",
+    "website": "https://www.yamahamotor.co.in",
+    "popular_models": ["mt-15", "r15", "fz-s", "xzendor-15"],
+    "price_range": "1.00 - 2.00 Lakh",
+    "segments": ["Sport", "Naked", "Touring", "Scooter"]
+}

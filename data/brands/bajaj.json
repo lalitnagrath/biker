@@ -1,0 +1,13 @@
+{
+    "name": "Bajaj",
+    "slug": "bajaj",
+    "founded": 1940,
+    "country": "India",
+    "headquarters": "Pune, India",
+    "description": "Bajaj Auto is one of India's largest motorcycle manufacturers, known for producing affordable, fuel-efficient motorcycles. The company also partners with KTM and has a strong presence in the Indian market with its Pulsar and Dominar lineup.",
+    "logo": "images/brands/bajaj.svg",
+    "website": "https://www.bajajauto.com",
+    "popular_models": ["pulsar-n250", "dominar-400", "pulsar-f250"],
+    "price_range": "0.80 - 2.50 Lakh",
+    "segments": ["Sport", "Cruiser", "Commuter"]
+}

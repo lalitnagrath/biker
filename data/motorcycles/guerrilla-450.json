@@ -1,0 +1,45 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Guerrilla 450",
+    "slug": "royal-enfield-guerrilla-450",
+    "engine": "452cc",
+    "power": "40 bhp",
+    "torque": "40 Nm",
+    "transmission": "6-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "2,49,000",
+    "price_numeric": 249000,
+    "mileage": "28 kmpl",
+    "weight": "185 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Upside Down Forks (Front), Monoshock (Rear)",
+    "tyres": "120/70-17 (Front), 160/60-17 (Rear)",
+    "description": "The Royal Enfield Guerrilla 450 is a modern roadster that combines performance with everyday usability. Built on the same platform as the Himalayan 450, it offers a more urban-focused experience with its aggressive styling and sporty ergonomics.",
+    "highlights": [
+        "Liquid-cooled engine",
+        "Aggressive roadster design",
+        "Sporty riding position",
+        "Modern TFT display",
+        "Quick-shifter option"
+    ],
+    "pros": [
+        "Strong engine performance",
+        "Agile handling",
+        "Modern features",
+        "Good build quality",
+        "Value for money"
+    ],
+    "cons": [
+        "Aggressive riding position",
+        "Limited touring comfort",
+        "Small fuel tank",
+        "Wind blast at speed",
+        "New model, long-term reliability unknown"
+    ],
+    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets"],
+    "ideal_for": ["Urban riding", "Performance enthusiasts", "City commuting", "Weekend sport rides"],
+    "variants": ["Shadow", "Gold", "Smoke"]
+}
