@@ -1,0 +1,268 @@
+{
+  "generated": "2026-07-15",
+  "description": "All motorcycles currently sold in India by major brands",
+  "brands": [
+    {
+      "brand": "Royal Enfield",
+      "country": "UK/India",
+      "models": [
+        {"model": "Hunter 350", "slug": "hunter-350", "engine_cc": 349, "type": "Naked"},
+        {"model": "Classic 350", "slug": "classic-350", "engine_cc": 349, "type": "Retro Classic"},
+        {"model": "Bullet 350", "slug": "bullet-350", "engine_cc": 349, "type": "Cruiser"},
+        {"model": "Meteor 350", "slug": "meteor-350", "engine_cc": 349, "type": "Cruiser"},
+        {"model": "Goan Classic 350", "slug": "goan-classic-350", "engine_cc": 349, "type": "Cruiser"},
+        {"model": "Guerrilla 450", "slug": "guerrilla-450", "engine_cc": 452, "type": "Naked"},
+        {"model": "Scram 440", "slug": "scram-440", "engine_cc": 440, "type": "Scrambler"},
+        {"model": "Himalayan 450", "slug": "himalayan-450", "engine_cc": 452, "type": "Adventure"},
+        {"model": "Interceptor 650", "slug": "interceptor-650", "engine_cc": 648, "type": "Roadster"},
+        {"model": "Continental GT 650", "slug": "continental-gt-650", "engine_cc": 648, "type": "Cafe Racer"},
+        {"model": "Super Meteor 650", "slug": "super-meteor-650", "engine_cc": 648, "type": "Cruiser"},
+        {"model": "Shotgun 650", "slug": "shotgun-650", "engine_cc": 648, "type": "Cruiser"},
+        {"model": "Classic 650", "slug": "classic-650", "engine_cc": 648, "type": "Retro Classic"},
+        {"model": "Bear 650", "slug": "bear-650", "engine_cc": 648, "type": "Scrambler"},
+        {"model": "Bullet 650", "slug": "bullet-650", "engine_cc": 648, "type": "Cruiser"},
+        {"model": "Flying Flea C6", "slug": "flying-flea-c6", "engine_cc": 0, "type": "Electric"}
+      ]
+    },
+    {
+      "brand": "Honda",
+      "country": "Japan",
+      "models": [
+        {"model": "Shine 100", "slug": "shine-100", "engine_cc": 99, "type": "Commuter"},
+        {"model": "Shine 125", "slug": "shine-125", "engine_cc": 124, "type": "Commuter"},
+        {"model": "SP 125", "slug": "sp-125", "engine_cc": 124, "type": "Commuter"},
+        {"model": "SP160", "slug": "sp160", "engine_cc": 163, "type": "Commuter"},
+        {"model": "CB125 Hornet", "slug": "cb125-hornet", "engine_cc": 124, "type": "Naked"},
+        {"model": "Unicorn", "slug": "unicorn", "engine_cc": 163, "type": "Commuter"},
+        {"model": "Hornet 2.0", "slug": "hornet-20", "engine_cc": 184, "type": "Naked"},
+        {"model": "NX200", "slug": "nx200", "engine_cc": 184, "type": "Adventure"},
+        {"model": "CB300F", "slug": "cb300f", "engine_cc": 294, "type": "Naked"},
+        {"model": "H'ness CB350", "slug": "hness-cb350", "engine_cc": 348, "type": "Retro Classic"},
+        {"model": "CB350", "slug": "cb350", "engine_cc": 348, "type": "Retro Classic"},
+        {"model": "CB350RS", "slug": "cb350rs", "engine_cc": 348, "type": "Scrambler"},
+        {"model": "CB350C", "slug": "cb350c", "engine_cc": 348, "type": "Cruiser"},
+        {"model": "NX500", "slug": "nx500", "engine_cc": 471, "type": "Adventure"},
+        {"model": "CB750 Hornet", "slug": "cb750-hornet", "engine_cc": 755, "type": "Naked"},
+        {"model": "XL750 Transalp", "slug": "xl750-transalp", "engine_cc": 755, "type": "Adventure"},
+        {"model": "CB1000 Hornet SP", "slug": "cb1000-hornet-sp", "engine_cc": 999, "type": "Naked"},
+        {"model": "CBR1000RR-R Fireblade SP", "slug": "cbr1000rr-r-fireblade-sp", "engine_cc": 999, "type": "Supersport"},
+        {"model": "Gold Wing Tour", "slug": "gold-wing-tour", "engine_cc": 1833, "type": "Touring"}
+      ]
+    },
+    {
+      "brand": "KTM",
+      "country": "Austria",
+      "models": [
+        {"model": "160 Duke", "slug": "160-duke", "engine_cc": 160, "type": "Naked"},
+        {"model": "200 Duke", "slug": "200-duke", "engine_cc": 200, "type": "Naked"},
+        {"model": "250 Duke", "slug": "250-duke", "engine_cc": 250, "type": "Naked"},
+        {"model": "390 Duke", "slug": "390-duke", "engine_cc": 390, "type": "Naked"},
+        {"model": "390 Duke R", "slug": "390-duke-r", "engine_cc": 390, "type": "Naked"},
+        {"model": "RC 160", "slug": "rc-160", "engine_cc": 160, "type": "Supersport"},
+        {"model": "RC 200", "slug": "rc-200", "engine_cc": 200, "type": "Supersport"},
+        {"model": "RC 390", "slug": "rc-390", "engine_cc": 390, "type": "Supersport"},
+        {"model": "250 Adventure", "slug": "250-adventure", "engine_cc": 250, "type": "Adventure"},
+        {"model": "390 Adventure", "slug": "390-adventure", "engine_cc": 390, "type": "Adventure"},
+        {"model": "390 Adventure X", "slug": "390-adventure-x", "engine_cc": 390, "type": "Adventure"},
+        {"model": "390 Adventure S", "slug": "390-adventure-s", "engine_cc": 390, "type": "Adventure"},
+        {"model": "390 Adventure R", "slug": "390-adventure-r", "engine_cc": 390, "type": "Adventure"},
+        {"model": "390 Enduro R", "slug": "390-enduro-r", "engine_cc": 390, "type": "Enduro"},
+        {"model": "890 Duke R", "slug": "890-duke-r", "engine_cc": 889, "type": "Naked"},
+        {"model": "890 Adventure R", "slug": "890-adventure-r", "engine_cc": 889, "type": "Adventure"},
+        {"model": "1290 Super Adventure S", "slug": "1290-super-adventure-s", "engine_cc": 1301, "type": "Adventure"},
+        {"model": "1390 Super Duke R", "slug": "1390-super-duke-r", "engine_cc": 1390, "type": "Naked"}
+      ]
+    },
+    {
+      "brand": "Yamaha",
+      "country": "Japan",
+      "models": [
+        {"model": "FZ-Fi", "slug": "fz-fi", "engine_cc": 149, "type": "Naked"},
+        {"model": "FZ-S Fi", "slug": "fz-s-fi", "engine_cc": 149, "type": "Naked"},
+        {"model": "FZ-S Fi Hybrid", "slug": "fz-s-fi-hybrid", "engine_cc": 149, "type": "Naked"},
+        {"model": "FZ-X", "slug": "fz-x", "engine_cc": 149, "type": "Roadster"},
+        {"model": "FZ-X Hybrid", "slug": "fz-x-hybrid", "engine_cc": 149, "type": "Roadster"},
+        {"model": "XSR 155", "slug": "xsr-155", "engine_cc": 155, "type": "Retro"},
+        {"model": "MT-15 Version 2.0", "slug": "mt-15-v2", "engine_cc": 155, "type": "Naked"},
+        {"model": "R15S", "slug": "r15s", "engine_cc": 155, "type": "Supersport"},
+        {"model": "R15 V4", "slug": "r15-v4", "engine_cc": 155, "type": "Supersport"},
+        {"model": "R15M", "slug": "r15m", "engine_cc": 155, "type": "Supersport"},
+        {"model": "R3", "slug": "r3", "engine_cc": 321, "type": "Supersport"},
+        {"model": "MT-03", "slug": "mt-03", "engine_cc": 321, "type": "Naked"}
+      ]
+    },
+    {
+      "brand": "Hero MotoCorp",
+      "country": "India",
+      "models": [
+        {"model": "HF Deluxe", "slug": "hf-deluxe", "engine_cc": 97, "type": "Commuter"},
+        {"model": "Splendor+", "slug": "splendor-plus", "engine_cc": 97, "type": "Commuter"},
+        {"model": "Glamour", "slug": "glamour", "engine_cc": 125, "type": "Commuter"},
+        {"model": "Super Splendor XTEC", "slug": "super-splendor-xtec", "engine_cc": 125, "type": "Commuter"},
+        {"model": "Xtreme 125R", "slug": "xtreme-125r", "engine_cc": 125, "type": "Naked"},
+        {"model": "Xtreme 160R", "slug": "xtreme-160r", "engine_cc": 160, "type": "Naked"},
+        {"model": "Xtreme 160R 4V", "slug": "xtreme-160r-4v", "engine_cc": 160, "type": "Naked"},
+        {"model": "Xpulse 200 4V", "slug": "xpulse-200-4v", "engine_cc": 200, "type": "Adventure"},
+        {"model": "Xpulse 210", "slug": "xpulse-210", "engine_cc": 210, "type": "Adventure"},
+        {"model": "Xtreme 250R", "slug": "xtreme-250r", "engine_cc": 250, "type": "Naked"},
+        {"model": "Karizma XMR", "slug": "karizma-xmr", "engine_cc": 210, "type": "Supersport"},
+        {"model": "Mavrick 440", "slug": "mavrick-440", "engine_cc": 440, "type": "Roadster"}
+      ]
+    },
+    {
+      "brand": "Bajaj",
+      "country": "India",
+      "models": [
+        {"model": "Platina 100", "slug": "platina-100", "engine_cc": 102, "type": "Commuter"},
+        {"model": "Platina 110", "slug": "platina-110", "engine_cc": 110, "type": "Commuter"},
+        {"model": "CT 110X", "slug": "ct-110x", "engine_cc": 110, "type": "Commuter"},
+        {"model": "Freedom 125", "slug": "freedom-125", "engine_cc": 125, "type": "Commuter"},
+        {"model": "Pulsar 125", "slug": "pulsar-125", "engine_cc": 125, "type": "Naked"},
+        {"model": "Pulsar N125", "slug": "pulsar-n125", "engine_cc": 125, "type": "Naked"},
+        {"model": "Pulsar NS125", "slug": "pulsar-ns125", "engine_cc": 125, "type": "Naked"},
+        {"model": "Pulsar 150", "slug": "pulsar-150", "engine_cc": 150, "type": "Naked"},
+        {"model": "Pulsar NS160", "slug": "pulsar-ns160", "engine_cc": 160, "type": "Naked"},
+        {"model": "Pulsar N160", "slug": "pulsar-n160", "engine_cc": 160, "type": "Naked"},
+        {"model": "Pulsar 180", "slug": "pulsar-180", "engine_cc": 180, "type": "Naked"},
+        {"model": "Pulsar NS200", "slug": "pulsar-ns200", "engine_cc": 200, "type": "Naked"},
+        {"model": "Pulsar N250", "slug": "pulsar-n250", "engine_cc": 250, "type": "Naked"},
+        {"model": "Pulsar 220F", "slug": "pulsar-220f", "engine_cc": 220, "type": "Naked"},
+        {"model": "Pulsar RS200", "slug": "pulsar-rs200", "engine_cc": 200, "type": "Supersport"},
+        {"model": "Pulsar NS400Z", "slug": "pulsar-ns400z", "engine_cc": 400, "type": "Naked"},
+        {"model": "Dominar 250", "slug": "dominar-250", "engine_cc": 250, "type": "Touring"},
+        {"model": "Dominar 400", "slug": "dominar-400", "engine_cc": 373, "type": "Touring"},
+        {"model": "Avenger Street 160", "slug": "avenger-street-160", "engine_cc": 160, "type": "Cruiser"},
+        {"model": "Avenger 220 Street", "slug": "avenger-220-street", "engine_cc": 220, "type": "Cruiser"},
+        {"model": "Avenger Cruise 220", "slug": "avenger-cruise-220", "engine_cc": 220, "type": "Cruiser"}
+      ]
+    },
+    {
+      "brand": "TVS",
+      "country": "India",
+      "models": [
+        {"model": "Sport", "slug": "sport", "engine_cc": 100, "type": "Commuter"},
+        {"model": "Radeon", "slug": "radeon", "engine_cc": 110, "type": "Commuter"},
+        {"model": "Star City Plus", "slug": "star-city-plus", "engine_cc": 110, "type": "Commuter"},
+        {"model": "Raider 125", "slug": "raider-125", "engine_cc": 125, "type": "Commuter"},
+        {"model": "Apache RTR 160 2V", "slug": "apache-rtr-160-2v", "engine_cc": 160, "type": "Naked"},
+        {"model": "Apache RTR 160 4V", "slug": "apache-rtr-160-4v", "engine_cc": 160, "type": "Naked"},
+        {"model": "Apache RTR 180", "slug": "apache-rtr-180", "engine_cc": 180, "type": "Naked"},
+        {"model": "Ronin", "slug": "ronin", "engine_cc": 226, "type": "Roadster"},
+        {"model": "Apache RTR 200 4V", "slug": "apache-rtr-200-4v", "engine_cc": 200, "type": "Naked"},
+        {"model": "Apache RTX 300", "slug": "apache-rtx-300", "engine_cc": 299, "type": "Adventure"},
+        {"model": "Apache RTR 310", "slug": "apache-rtr-310", "engine_cc": 312, "type": "Naked"},
+        {"model": "Apache RR 310", "slug": "apache-rr-310", "engine_cc": 312, "type": "Supersport"}
+      ]
+    },
+    {
+      "brand": "Suzuki",
+      "country": "Japan",
+      "models": [
+        {"model": "Gixxer", "slug": "gixxer", "engine_cc": 155, "type": "Naked"},
+        {"model": "Gixxer SF", "slug": "gixxer-sf", "engine_cc": 155, "type": "Supersport"},
+        {"model": "Gixxer 250", "slug": "gixxer-250", "engine_cc": 249, "type": "Naked"},
+        {"model": "Gixxer SF 250", "slug": "gixxer-sf-250", "engine_cc": 249, "type": "Supersport"},
+        {"model": "Gixxer SF 250 Flex Fuel", "slug": "gixxer-sf-250-flex-fuel", "engine_cc": 249, "type": "Supersport"},
+        {"model": "V-Strom SX", "slug": "v-strom-sx", "engine_cc": 249, "type": "Adventure"},
+        {"model": "GSX-8R", "slug": "gsx-8r", "engine_cc": 776, "type": "Supersport"},
+        {"model": "V-Strom 800 DE", "slug": "v-strom-800-de", "engine_cc": 823, "type": "Adventure"},
+        {"model": "Hayabusa", "slug": "hayabusa", "engine_cc": 1340, "type": "Hyper Sport"}
+      ]
+    },
+    {
+      "brand": "Triumph",
+      "country": "UK",
+      "models": [
+        {"model": "Speed T4", "slug": "speed-t4", "engine_cc": 400, "type": "Naked"},
+        {"model": "Speed 400", "slug": "speed-400", "engine_cc": 400, "type": "Naked"},
+        {"model": "Scrambler 400 X", "slug": "scrambler-400-x", "engine_cc": 400, "type": "Scrambler"},
+        {"model": "Scrambler 400 XC", "slug": "scrambler-400-xc", "engine_cc": 400, "type": "Scrambler"},
+        {"model": "Thruxton 400", "slug": "thruxton-400", "engine_cc": 400, "type": "Cafe Racer"},
+        {"model": "Trident 660", "slug": "trident-660", "engine_cc": 660, "type": "Naked"},
+        {"model": "Tiger Sport 660", "slug": "tiger-sport-660", "engine_cc": 660, "type": "Adventure"},
+        {"model": "Daytona 660", "slug": "daytona-660", "engine_cc": 660, "type": "Supersport"},
+        {"model": "Speed Twin 900", "slug": "speed-twin-900", "engine_cc": 900, "type": "Roadster"},
+        {"model": "Scrambler 900", "slug": "scrambler-900", "engine_cc": 900, "type": "Scrambler"},
+        {"model": "Bonneville T100", "slug": "bonneville-t100", "engine_cc": 900, "type": "Roadster"},
+        {"model": "Bonneville T120", "slug": "bonneville-t120", "engine_cc": 900, "type": "Roadster"},
+        {"model": "Bonneville T120 Black", "slug": "bonneville-t120-black", "engine_cc": 900, "type": "Roadster"},
+        {"model": "Bonneville Bobber", "slug": "bonneville-bobber", "engine_cc": 900, "type": "Cruiser"},
+        {"model": "Bonneville Speedmaster", "slug": "bonneville-speedmaster", "engine_cc": 900, "type": "Cruiser"},
+        {"model": "Street Triple 765", "slug": "street-triple-765", "engine_cc": 765, "type": "Naked"},
+        {"model": "Street Triple 765 RS", "slug": "street-triple-765-rs", "engine_cc": 765, "type": "Naked"},
+        {"model": "Speed Twin 1200", "slug": "speed-twin-1200", "engine_cc": 1200, "type": "Roadster"},
+        {"model": "Speed Twin 1200 RS", "slug": "speed-twin-1200-rs", "engine_cc": 1200, "type": "Roadster"},
+        {"model": "Speed Triple 1200", "slug": "speed-triple-1200", "engine_cc": 1160, "type": "Naked"},
+        {"model": "Speed Triple 1200 RS", "slug": "speed-triple-1200-rs", "engine_cc": 1160, "type": "Naked"},
+        {"model": "Tiger 900", "slug": "tiger-900", "engine_cc": 888, "type": "Adventure"},
+        {"model": "Tiger 1200", "slug": "tiger-1200", "engine_cc": 1215, "type": "Adventure"},
+        {"model": "Rocket 3", "slug": "rocket-3", "engine_cc": 2458, "type": "Cruiser"}
+      ]
+    },
+    {
+      "brand": "Kawasaki",
+      "country": "Japan",
+      "models": [
+        {"model": "Ninja 300", "slug": "ninja-300", "engine_cc": 296, "type": "Supersport"},
+        {"model": "Ninja 500", "slug": "ninja-500", "engine_cc": 451, "type": "Supersport"},
+        {"model": "Ninja 650", "slug": "ninja-650", "engine_cc": 649, "type": "Sport Touring"},
+        {"model": "Versys 650", "slug": "versys-650", "engine_cc": 649, "type": "Adventure"},
+        {"model": "Z900", "slug": "z900", "engine_cc": 948, "type": "Naked"},
+        {"model": "Ninja ZX-6R", "slug": "ninja-zx-6r", "engine_cc": 636, "type": "Supersport"},
+        {"model": "Versys 1100", "slug": "versys-1100", "engine_cc": 1099, "type": "Adventure"},
+        {"model": "Ninja ZX-10R", "slug": "ninja-zx-10r", "engine_cc": 998, "type": "Supersport"}
+      ]
+    },
+    {
+      "brand": "BMW Motorrad",
+      "country": "Germany",
+      "models": [
+        {"model": "G 310 R", "slug": "g-310-r", "engine_cc": 313, "type": "Naked"},
+        {"model": "G 310 RR", "slug": "g-310-rr", "engine_cc": 313, "type": "Supersport"},
+        {"model": "G 310 GS", "slug": "g-310-gs", "engine_cc": 313, "type": "Adventure"},
+        {"model": "F 900 GS", "slug": "f-900-gs", "engine_cc": 895, "type": "Adventure"},
+        {"model": "F 900 GS Adventure", "slug": "f-900-gs-adventure", "engine_cc": 895, "type": "Adventure"},
+        {"model": "S 1000 RR", "slug": "s-1000-rr", "engine_cc": 999, "type": "Supersport"},
+        {"model": "S 1000 R", "slug": "s-1000-r", "engine_cc": 999, "type": "Naked"},
+        {"model": "S 1000 XR", "slug": "s-1000-xr", "engine_cc": 999, "type": "Sport Touring"},
+        {"model": "R 1300 GS", "slug": "r-1300-gs", "engine_cc": 1300, "type": "Adventure"},
+        {"model": "R 1300 GS Adventure", "slug": "r-1300-gs-adventure", "engine_cc": 1300, "type": "Adventure"}
+      ]
+    },
+    {
+      "brand": "Harley-Davidson",
+      "country": "USA",
+      "models": [
+        {"model": "X440", "slug": "x440", "engine_cc": 440, "type": "Roadster"},
+        {"model": "X440 T", "slug": "x440-t", "engine_cc": 440, "type": "Roadster"},
+        {"model": "Nightster", "slug": "nightster", "engine_cc": 975, "type": "Cruiser"},
+        {"model": "Nightster Special", "slug": "nightster-special", "engine_cc": 975, "type": "Cruiser"},
+        {"model": "Sportster S", "slug": "sportster-s", "engine_cc": 1252, "type": "Roadster"},
+        {"model": "Pan America 1250 Special", "slug": "pan-america-1250-special", "engine_cc": 1252, "type": "Adventure"},
+        {"model": "Pan America 1250 ST", "slug": "pan-america-1250-st", "engine_cc": 1252, "type": "Adventure"},
+        {"model": "Fat Boy", "slug": "fat-boy", "engine_cc": 1868, "type": "Cruiser"},
+        {"model": "Heritage Classic", "slug": "heritage-classic", "engine_cc": 1868, "type": "Cruiser"},
+        {"model": "Street Glide", "slug": "street-glide", "engine_cc": 1868, "type": "Touring"},
+        {"model": "Road Glide", "slug": "road-glide", "engine_cc": 1868, "type": "Touring"}
+      ]
+    }
+  ],
+  "summary": {
+    "total_brands": 12,
+    "total_models": 172,
+    "brands_by_count": {
+      "Royal Enfield": 16,
+      "Honda": 19,
+      "KTM": 18,
+      "Yamaha": 12,
+      "Hero MotoCorp": 12,
+      "Bajaj": 21,
+      "TVS": 12,
+      "Suzuki": 9,
+      "Triumph": 24,
+      "Kawasaki": 8,
+      "BMW Motorrad": 10,
+      "Harley-Davidson": 11
+    }
+  }
+}

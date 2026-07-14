@@ -25,6 +25,26 @@
     ]
 }
 </script>
+{% if article.faq %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {% for item in article.faq %}
+        {
+            "@type": "Question",
+            "name": "{{ item.question }}",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ item.answer }}"
+            }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -129,6 +149,25 @@
             </a>
             {% endif %}
         </nav>
+        {% endif %}
+
+        {% if article.faq %}
+        <section class="faq-section" style="margin-top: 48px;">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                {% for item in article.faq %}
+                <div class="faq-accordion-item">
+                    <button class="faq-accordion-header" aria-expanded="false">
+                        <span>{{ item.question }}</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>{{ item.answer }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
         {% endif %}
     </div>
 </article>

@@ -85,6 +85,7 @@ def load_all_data():
         'motorcycles': [],
         'products': [],
         'articles': [],
+        'bike_models': [],
     }
 
     # Load brands
@@ -110,6 +111,16 @@ def load_all_data():
                 data['products'].extend(products)
             else:
                 data['products'].append(products)
+
+    # Load bike models catalog (all motorcycles sold in India)
+    bike_models_file = DATA_DIR / 'all-motorcycles-india.json'
+    if bike_models_file.exists():
+        raw = load_json_file(bike_models_file)
+        for brand_group in raw.get('brands', []):
+            for model in brand_group.get('models', []):
+                model['brand'] = brand_group['brand']
+                model['brand_country'] = brand_group.get('country', '')
+                data['bike_models'].append(model)
 
     # Load articles
     if ARTICLES_DIR.exists():
@@ -254,6 +265,92 @@ def render_markdown(text):
     return markdown.markdown(text, extensions=extensions)
 
 
+def replace_product_placeholders(html, products, base_path='./'):
+    """Replace {{ products:Category limit=N }} placeholders with product cards.
+    
+    Supports:
+    - {{ products:Helmet limit=5 }}
+    - {{ products:Phone Mount limit=3 }}
+    - {{ products:Chain Lube limit=3 }}
+    """
+    placeholder_pattern = re.compile(
+        r'\{\{\s*products:([^}]+?)\s*\}\}'
+    )
+    
+    def render_product_cards(match):
+        raw = match.group(1).strip()
+        
+        limit = 4
+        limit_match = re.search(r'limit=(\d+)', raw)
+        if limit_match:
+            limit = int(limit_match.group(1))
+            raw = re.sub(r'limit=\d+', '', raw).strip()
+        
+        category = raw.strip()
+        
+        matched = [
+            p for p in products
+            if p.get('category', '').lower() == category.lower()
+        ]
+        
+        if not matched:
+            return ''
+        
+        matched.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
+        matched = matched[:limit]
+        
+        cards_html = '<div class="product-inline-grid">\n'
+        for product in matched:
+            price = int(product.get('price', 0))
+            rating = product.get('rating', 0)
+            reviews = int(product.get('reviews', 0))
+            slug = product.get('slug', '')
+            title = product.get('title', '')
+            brand = product.get('brand', '')
+            verdict = product.get('verdict', '')
+            affiliate_url = product.get('affiliate_url', '')
+            image = product.get('image', '')
+            editor_rating = product.get('editor_rating', 0)
+            
+            image_html = ''
+            if image and 'products/' in image:
+                image_html = f'<img src="{base_path}{image}" alt="{title}" loading="lazy">'
+            else:
+                image_html = f'<div class="placeholder-image product-placeholder">{brand}</div>'
+            
+            buy_btn = ''
+            if affiliate_url:
+                buy_btn = f'<a href="{affiliate_url}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>'
+            
+            stars_html = '★' * int(rating) + '☆' * (5 - int(rating))
+            
+            cards_html += f'''<div class="product-inline-card">
+    <div class="product-inline-image">
+        {image_html}
+    </div>
+    <div class="product-inline-content">
+        <div class="product-inline-brand">{brand}</div>
+        <h4><a href="{base_path}products/{slug}/index.html">{title}</a></h4>
+        <div class="product-inline-rating">
+            <span class="stars">{stars_html}</span>
+            <span class="rating-value">{rating}</span>
+            <span class="review-count">({reviews})</span>
+        </div>
+        <div class="product-inline-price">₹{price:,}</div>
+        <p class="product-inline-verdict">{verdict[:150]}{'...' if len(verdict) > 150 else ''}</p>
+        <div class="product-inline-actions">
+            <a href="{base_path}products/{slug}/index.html" class="btn btn-sm">Details</a>
+            {buy_btn}
+        </div>
+    </div>
+</div>
+'''
+        cards_html += '</div>\n'
+        return cards_html
+    
+    return placeholder_pattern.sub(render_product_cards, html)
+
+
 def build_product_categories(products):
     """Group products by category."""
     categories = defaultdict(list)
@@ -264,12 +361,46 @@ def build_product_categories(products):
 
 
 def match_products_to_motorcycle(bike, products):
-    """Match products to a motorcycle based on categories."""
-    bike_cats = [c.lower() for c in bike.get('categories', [])]
+    """Match products to a motorcycle using compatible_bikes field.
+    
+    Compatibility rules:
+    - compatible_bikes: ["*"] means universal, fits every motorcycle
+    - compatible_bikes: ["royal-enfield-classic-350"] means only for that bike
+    - compatible_bikes: ["brand:royal-enfield"] means all Royal Enfield bikes
+    - compatible_bikes: ["type:cruiser"] means all cruiser-type bikes
+    - If compatible_bikes is missing/empty, product is NOT shown on any motorcycle page
+    """
+    bike_slug = bike.get('slug', '')
+    bike_brand = bike.get('brand', '').lower()
+    bike_type = bike.get('type', '').lower()
+    
     matched = []
     for product in products:
-        if product.get('category', '').lower() in bike_cats:
+        compat = product.get('compatible_bikes', [])
+        if not compat:
+            continue
+        
+        isCompatible = False
+        for entry in compat:
+            entry_lower = entry.lower()
+            if entry_lower == '*':
+                isCompatible = True
+                break
+            elif entry_lower.startswith('brand:'):
+                if entry_lower[6:] == bike_brand:
+                    isCompatible = True
+                    break
+            elif entry_lower.startswith('type:'):
+                if entry_lower[5:] == bike_type:
+                    isCompatible = True
+                    break
+            elif entry_lower == bike_slug:
+                isCompatible = True
+                break
+        
+        if isCompatible:
             matched.append(product)
+    
     return matched
 
 
@@ -681,6 +812,9 @@ class SiteGenerator:
                 canonical_url=f"{self.base_url}/articles/{slug}/",
                 output_path=f'articles/{slug}/index.html',
             )
+            html_content = replace_product_placeholders(
+                html_content, self.data['products'], context['base_path']
+            )
             context['article'] = article
             context['article_html'] = html_content
             context['all_products'] = self.data['products']
@@ -983,6 +1117,7 @@ Sitemap: {self.base_url}/sitemap.xml
         print(f"    - {len(self.data['brands'])} brands")
         print(f"    - {len(self.data['motorcycles'])} motorcycles")
         print(f"    - {len(self.data['products'])} products")
+        print(f"    - {len(self.data['bike_models'])} bike models catalog")
         print(f"    - {len(self.data['articles'])} articles")
         print(f"    - {len(self.categories)} categories")
         print()
