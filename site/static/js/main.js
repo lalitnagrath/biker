@@ -292,6 +292,50 @@ if (filterForm && productList) {
     });
 }
 
+// ===== Moto FAQ Accordions =====
+document.querySelectorAll('.moto-faq-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const item = header.closest('.moto-faq-item');
+        const wasActive = item.classList.contains('active');
+        item.closest('.moto-faq-accordion').querySelectorAll('.moto-faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    });
+});
+
+// ===== Moto TOC Scroll Spy =====
+const motoTocLinks = document.querySelectorAll('.moto-toc-link');
+if (motoTocLinks.length > 0) {
+    motoTocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    motoTocLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    const motoSections = document.querySelectorAll('.moto-section[id]');
+    const motoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                if (id) {
+                    motoTocLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                    });
+                }
+            }
+        });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    motoSections.forEach(section => motoObserver.observe(section));
+}
+
 // ===== Smooth Scroll =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {

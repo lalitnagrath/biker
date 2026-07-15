@@ -50,7 +50,7 @@ TEMPLATES_DIR = BASE_DIR / 'templates'
 STATIC_DIR = BASE_DIR / 'static'
 ARTICLES_DIR = BASE_DIR / 'articles'
 OUTPUT_DIR = BASE_DIR / 'site'
-AFFILIATE_ID = '0x23uyx-21'
+AFFILIATE_ID = 'helpfulsurfer-21'
 SITE_NAME = 'BikeReview India'
 DEFAULT_BASE_URL = 'https://www.bikereview.in'
 
@@ -242,6 +242,11 @@ def merge_bike_deals(products, deals_by_asin):
             if image_url:
                 product['amazon_image_url'] = image_url
             
+            # Update affiliate URL from deals data (real working links)
+            detail_url = deal.get('detailPageURL', '')
+            if detail_url:
+                product['affiliate_url'] = detail_url
+            
             # Only update price from ASIN match (high confidence)
             if match_type == 'asin':
                 offers = deal.get('offersV2', {})
@@ -266,66 +271,59 @@ def render_markdown(text):
 
 
 def replace_product_placeholders(html, products, base_path='./'):
-    """Replace {{ products:Category limit=N }} placeholders with product cards.
+    """Replace {{ products:... }} and {{ product_pick:... }} placeholders.
     
     Supports:
-    - {{ products:Helmet limit=5 }}
-    - {{ products:Phone Mount limit=3 }}
-    - {{ products:Chain Lube limit=3 }}
+    - {{ products:Category limit=N }} — product grid
+    - {{ product_pick:Category pick=editors }} — single card with badge
+    - {{ product_pick:Category pick=best-value }} — single card with badge
+    - {{ product_pick:Category pick=premium }} — single card with badge
     """
     placeholder_pattern = re.compile(
-        r'\{\{\s*products:([^}]+?)\s*\}\}'
+        r'\{\{\s*(products|product_pick):([^}]+?)\s*\}\}'
     )
-    
-    def render_product_cards(match):
-        raw = match.group(1).strip()
-        
-        limit = 4
-        limit_match = re.search(r'limit=(\d+)', raw)
-        if limit_match:
-            limit = int(limit_match.group(1))
-            raw = re.sub(r'limit=\d+', '', raw).strip()
-        
-        category = raw.strip()
-        
-        matched = [
-            p for p in products
-            if p.get('category', '').lower() == category.lower()
-        ]
-        
-        if not matched:
-            return ''
-        
-        matched.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
-        matched = matched[:limit]
-        
-        cards_html = '<div class="product-inline-grid">\n'
-        for product in matched:
-            price = int(product.get('price', 0))
-            rating = product.get('rating', 0)
-            reviews = int(product.get('reviews', 0))
-            slug = product.get('slug', '')
-            title = product.get('title', '')
-            brand = product.get('brand', '')
-            verdict = product.get('verdict', '')
-            affiliate_url = product.get('affiliate_url', '')
-            image = product.get('image', '')
-            editor_rating = product.get('editor_rating', 0)
-            
-            image_html = ''
-            if image and 'products/' in image:
-                image_html = f'<img src="{base_path}{image}" alt="{title}" loading="lazy">'
-            else:
-                image_html = f'<div class="placeholder-image product-placeholder">{brand}</div>'
-            
-            buy_btn = ''
-            if affiliate_url:
-                buy_btn = f'<a href="{affiliate_url}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>'
-            
-            stars_html = '★' * int(rating) + '☆' * (5 - int(rating))
-            
-            cards_html += f'''<div class="product-inline-card">
-    <div class="product-inline-image">
+
+    def make_card(product, base_path, pick_label=''):
+        price = int(product.get('price', 0))
+        rating = product.get('rating', 0)
+        reviews = int(product.get('reviews', 0))
+        slug = product.get('slug', '')
+        title = product.get('title', '')
+        brand = product.get('brand', '')
+        best_for = product.get('best_for', '')
+        verdict = product.get('verdict', '')
+        affiliate_url = product.get('affiliate_url', '')
+        image = product.get('image', '')
+
+        image_html = ''
+        if image and 'images/' in image:
+            image_html = f'<img src="{base_path}{image}" alt="{title}" loading="lazy">'
+        else:
+            image_html = f'<div class="placeholder-image product-placeholder">{brand}</div>'
+
+        buy_btn = ''
+        if affiliate_url:
+            buy_btn = f'<a href="{affiliate_url}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>'
+
+        stars_html = '★' * int(rating) + '☆' * (5 - int(rating))
+
+        pick_html = ''
+        if pick_label:
+            pick_class = pick_label.lower().replace(' ', '-').replace("'", "")
+            pick_names = {
+                'editors': "Editor's Pick",
+                'best-value': 'Best Value',
+                'premium': 'Premium Pick',
+            }
+            display = pick_names.get(pick_class, pick_label)
+            pick_html = f'<span class="pick-badge {pick_class}">{display}</span>'
+
+        card  = '<div class="product-inline-card'
+        if pick_label:
+            card += ' pick-item'
+        card += '">\n'
+        card += f'''    <div class="product-inline-image">
+        {pick_html}
         {image_html}
     </div>
     <div class="product-inline-content">
@@ -337,18 +335,57 @@ def replace_product_placeholders(html, products, base_path='./'):
             <span class="review-count">({reviews})</span>
         </div>
         <div class="product-inline-price">₹{price:,}</div>
-        <p class="product-inline-verdict">{verdict[:150]}{'...' if len(verdict) > 150 else ''}</p>
+        <p class="product-inline-verdict">{"Best for: " + best_for if best_for else verdict[:150]}<br><em>{verdict[:120]}</em></p>
         <div class="product-inline-actions">
             <a href="{base_path}products/{slug}/index.html" class="btn btn-sm">Details</a>
             {buy_btn}
         </div>
     </div>
-</div>
-'''
-        cards_html += '</div>\n'
-        return cards_html
-    
-    return placeholder_pattern.sub(render_product_cards, html)
+</div>\n'''
+        return card
+
+    def render_products(raw):
+        limit = 4
+        limit_match = re.search(r'limit=(\d+)', raw)
+        if limit_match:
+            limit = int(limit_match.group(1))
+            raw = re.sub(r'limit=\d+', '', raw).strip()
+
+        pick = None
+        pick_match = re.search(r'pick=([\w-]+)', raw)
+        if pick_match:
+            pick = pick_match.group(1)
+            raw = re.sub(r'pick=[\w-]+', '', raw).strip()
+
+        category = raw.strip()
+
+        matched = [
+            p for p in products
+            if p.get('category', '').lower() == category.lower()
+        ]
+        if not matched:
+            return ''
+
+        matched.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
+
+        if pick:
+            # Pick mode: only first item, show as a single card with badge
+            product = matched[0]
+            return '<div class="product-inline-grid">\n' + make_card(product, base_path, pick) + '</div>\n'
+
+        matched = matched[:limit]
+        cards = '\n'.join(make_card(p, base_path) for p in matched)
+        return '<div class="product-inline-grid">\n' + cards + '</div>\n'
+
+    def replace_match(match):
+        command = match.group(1)
+        args = match.group(2)
+        if command == 'product_pick':
+            return render_products(args + ' limit=1')
+        else:
+            return render_products(args)
+
+    return placeholder_pattern.sub(replace_match, html)
 
 
 def build_product_categories(products):
@@ -594,6 +631,7 @@ class SiteGenerator:
             context['related_articles'] = related[:4]
 
             content = self.render_template('motorcycle.html', context)
+            content = replace_product_placeholders(content, self.data['products'], context['base_path'])
             self.write_page(f'motorcycles/{bike["slug"]}/index.html', content)
 
     def generate_motorcycle_accessories(self):
