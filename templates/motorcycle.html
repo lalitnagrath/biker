@@ -179,7 +179,7 @@
 
                     <div class="moto-accessory-nav-grid">
                         {% for nav in accessory_nav %}
-                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/{{ nav.slug }}/" class="moto-accessory-nav-card">
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="moto-accessory-nav-card">
                             <span class="moto-accessory-nav-icon">{{ nav.icon | safe }}</span>
                             <span class="moto-accessory-nav-name">{{ nav.name }}</span>
                             <span class="moto-accessory-nav-arrow">&rarr;</span>
@@ -374,7 +374,7 @@
                                 </div>
 
                                 <div class="moto-must-have-footer">
-                                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/{{ item.slug }}/" class="btn btn-sm btn-outline">View All {{ item.count }} {{ item.category }}s &rarr;</a>
+                                    <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-sm btn-outline">View All {{ item.count }} {{ item.category }}s &rarr;</a>
                                     <a href="{{ base_path }}best/{{ item.slug }}/index.html" class="btn btn-sm btn-outline">{{ item.category }} Buying Guide &rarr;</a>
                                 </div>
                             </div>
@@ -725,7 +725,7 @@
                                     <strong>Solution:</strong> {{ problem.solution }}
                                 </div>
                                 {% if problem.product_category %}
-                                <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/{{ problem.product_category.lower().replace(' ', '-') }}/" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
+                                <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -947,7 +947,7 @@
 
                     <div class="moto-category-cards">
                         {% for cat in accessory_categories %}
-                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/{{ cat.slug }}/" class="moto-category-card">
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="moto-category-card">
                             <span class="moto-category-card-icon">{{ cat.icon | safe }}</span>
                             <h3>{{ cat.name }}</h3>
                             <p>{{ cat.description }}</p>

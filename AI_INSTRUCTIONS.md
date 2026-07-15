@@ -240,3 +240,16 @@ The build should generate a report showing:
 - Images downloaded
 - Images missing
 - Images skipped
+
+
+Do not use downloaded motorcycle images directly.
+
+Every motorcycle image must go through an image processing pipeline:
+
+1. Remove transparent or empty borders.
+2. Center the motorcycle.
+3. Normalize image size.
+4. Ensure the motorcycle occupies 75–85% of the frame.
+5. Export optimized WebP and JPG versions.
+
+The final processed image should look visually consistent with every other motorcycle on the website.
