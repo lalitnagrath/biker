@@ -1,0 +1,13 @@
+{
+    "name": "Shell",
+    "slug": "shell",
+    "founded": 1907,
+    "country": "Netherlands",
+    "headquarters": "The Hague, Netherlands",
+    "description": "Shell is a British-Dutch multinational oil and gas company, one of the world's largest energy companies. Shell Advance and Shell Rimula are their motorcycle and small engine oil brands respectively. Their fully synthetic and semi-synthetic motorcycle oils are widely used in India for their proven engine protection technology.",
+    "logo": "images/brands/shell.svg",
+    "website": "https://www.shell.com",
+    "popular_models": ["shell-advance-ax7-10w40", "shell-advance-ultra-10w40", "shell-advance-ax3-10w30", "shell-brake-fluid-dot4", "shell-coolant"],
+    "price_range": "₹300 - ₹2,000",
+    "segments": ["Engine Oil", "Brake Fluid", "Coolant"]
+}

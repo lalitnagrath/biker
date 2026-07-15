@@ -1,0 +1,63 @@
+{
+    "brand": "Hero MotoCorp",
+    "brand_slug": "hero",
+    "model": "Mavrick 440",
+    "slug": "hero-mavrick-440",
+    "engine": "440cc",
+    "power": "27.5 bhp",
+    "torque": "36 Nm",
+    "transmission": "6-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "2,00,000",
+    "price_numeric": 200000,
+    "mileage": "32 kmpl",
+    "weight": "187 kg",
+    "fuel_capacity": "13.5 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The Hero Mavrick 440 is Hero MotoCorp's premium roadster that marks the brand's entry into the middleweight segment. With its torquey 440cc engine, retro-modern design, and refined ride quality, it delivers a compelling blend of character and everyday usability.",
+    "highlights": [
+        "440cc torquey engine",
+        "Retro-modern roadster design",
+        "Assist and slipper clutch",
+        "Fully digital instrument cluster",
+        "USD front forks"
+    ],
+    "pros": [
+        "Strong low and mid-range torque",
+        "Comfortable and relaxed ergonomics",
+        "Good build quality and fit-finish",
+        "Confident highway cruising",
+        "Distinctive roadster styling"
+    ],
+    "cons": [
+        "Heavier than some competitors",
+        "Vibrations at certain RPM",
+        "Limited aftermarket ecosystem",
+        "Fuel tank could be larger",
+        "Seat height may feel tall for some"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Jackets",
+        "Gloves",
+        "Bike Cover",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Highway touring",
+        "Weekend cruising",
+        "Daily commuting",
+        "Roadster enthusiasts"
+    ],
+    "variants": [
+        "Base",
+        "Advanced",
+        "Connected"
+    ],
+    "image": "static/images/motorcycles/hero-mavrick-440.jpg"
+}

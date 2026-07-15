@@ -1,0 +1,13 @@
+{
+    "name": "Motul",
+    "slug": "motul",
+    "founded": 1853,
+    "country": "France",
+    "headquarters": "Paris, France",
+    "description": "Motul is a French multinational company that produces high-performance lubricants for engines and industrial applications. Founded in 1853, Motul has been at the forefront of synthetic oil technology and is the official lubricant partner for numerous motorsport events worldwide. Their motorcycle-specific oils are highly regarded for engine protection and performance.",
+    "logo": "images/brands/motul.svg",
+    "website": "https://www.motul.com",
+    "popular_models": ["motul-7100-10w40", "motul-5100-10w40", "motul-3100-10w30", "motul-chain-clean", "motul-fork-oil"],
+    "price_range": "₹400 - ₹3,500",
+    "segments": ["Engine Oil", "Chain Maintenance", "Brake Fluid", "Fork Oil"]
+}

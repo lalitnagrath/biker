@@ -1,0 +1,62 @@
+{
+    "brand": "Hero MotoCorp",
+    "brand_slug": "hero",
+    "model": "Xpulse 200 4V",
+    "slug": "hero-xpulse-200-4v",
+    "engine": "199.6cc",
+    "power": "19.1 bhp",
+    "torque": "17.35 Nm",
+    "transmission": "5-speed",
+    "type": "Adventure",
+    "fuel_type": "Petrol",
+    "price": "1,30,000",
+    "price_numeric": 130000,
+    "mileage": "40 kmpl",
+    "weight": "159 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "90/90-21 (Front), 120/80-18 (Rear)",
+    "description": "The Hero Xpulse 200 4V is an accessible adventure motorcycle built for riders who crave off-road exploration and touring versatility. With long-travel suspension, upright ergonomics, and a capable engine, it opens up trails and highways with equal confidence.",
+    "highlights": [
+        "4-valve oil-cooled engine",
+        "21-inch front wheel for off-road",
+        "Long-travel suspension",
+        "Instrument cluster with navigation",
+        "Rally-inspired design"
+    ],
+    "pros": [
+        "Capable off-road performer",
+        "Comfortable for long-distance touring",
+        "Affordable adventure bike",
+        "Lightweight and easy to handle off tarmac",
+        "Good ground clearance"
+    ],
+    "cons": [
+        "High seat height intimidating for shorter riders",
+        "Highway performance modest",
+        "Wind blast without accessories",
+        "Vibrations at sustained speeds",
+        "Limited dealer support for accessories"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Saddle Bag",
+        "Tank Bag",
+        "Phone Mount",
+        "Gloves",
+        "Bike Cover"
+    ],
+    "ideal_for": [
+        "Off-road trails",
+        "Adventure touring",
+        "Rural and highway riding",
+        "Explorer riders"
+    ],
+    "variants": [
+        "Base",
+        "Pro"
+    ],
+    "image": "static/images/motorcycles/hero-xpulse-200-4v.jpg"
+}

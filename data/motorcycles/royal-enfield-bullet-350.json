@@ -1,0 +1,63 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Bullet 350",
+    "slug": "royal-enfield-bullet-350",
+    "engine": "349cc",
+    "power": "20.2 bhp",
+    "torque": "27 Nm",
+    "transmission": "5-speed",
+    "type": "Cruiser",
+    "fuel_type": "Petrol",
+    "price": "1,75,000",
+    "price_numeric": 175000,
+    "mileage": "38 kmpl",
+    "weight": "191 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "100/90-19 (Front), 120/80-18 (Rear)",
+    "description": "The Royal Enfield Bullet 350 is the bike that built a legacy, known for its unmistakable thump and rugged character. Updated with the new J-series engine, it retains its old-school charm while offering a smoother and more reliable ride.",
+    "highlights": [
+        "Legendary thump sound",
+        "Iconic design lineage",
+        "Robust build quality",
+        "New J-series engine",
+        "Dual-channel ABS"
+    ],
+    "pros": [
+        "Unmatched road presence",
+        "Strong low-end torque",
+        "Comfortable for long rides",
+        "Affordable maintenance",
+        "Strong community following"
+    ],
+    "cons": [
+        "Dated design for some tastes",
+        "Heavier than competitors",
+        "Basic features on base models",
+        "Vibrations at high speeds",
+        "Narrow service network in remote areas"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Highway cruising",
+        "Heritage enthusiasts",
+        "Long-distance touring",
+        "Rural and highway commuting"
+    ],
+    "variants": [
+        "Bullet 350",
+        "Bullet 350 ES"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-bullet-350.jpg"
+}

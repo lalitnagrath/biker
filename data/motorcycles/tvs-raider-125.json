@@ -1,0 +1,60 @@
+{
+    "brand": "TVS",
+    "brand_slug": "tvs",
+    "model": "Raider 125",
+    "slug": "tvs-raider-125",
+    "engine": "124.8cc",
+    "power": "11.2 bhp",
+    "torque": "11.2 Nm",
+    "transmission": "5-speed",
+    "type": "Commuter",
+    "fuel_type": "Petrol",
+    "price": "90,000",
+    "price_numeric": 90000,
+    "mileage": "55 kmpl",
+    "weight": "103 kg",
+    "fuel_capacity": "10 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "80/100-17 (Front), 100/90-17 (Rear)",
+    "description": "The TVS Raider 125 redefines the commuter segment with its sporty design and feature-loaded package. Equipped with a refined engine, Eco and Power modes, and a TFT display, it offers a premium daily riding experience at an accessible price.",
+    "highlights": [
+        "Eco and Power riding modes",
+        "TFT instrument display",
+        "All-LED headlamp",
+        "USB charging port",
+        "Sporty commuter design"
+    ],
+    "pros": [
+        "Excellent fuel efficiency",
+        "Feature-packed for the segment",
+        "Peppy engine for city use",
+        "Lightweight and easy to manoeuvre",
+        "Comfortable riding posture"
+    ],
+    "cons": [
+        "Limited highway capability",
+        "Drum rear brake feels inadequate",
+        "Seat cushioning could be better",
+        "No rear disc brake option on base",
+        "Vibrations at sustained high RPM"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "Office runs",
+        "College commuting",
+        "City errands"
+    ],
+    "variants": [
+        "Drum",
+        "Disc"
+    ],
+    "image": "static/images/motorcycles/tvs-raider-125.jpg"
+}

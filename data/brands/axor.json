@@ -1,0 +1,13 @@
+{
+    "name": "Axor",
+    "slug": "axor",
+    "founded": 2015,
+    "country": "India",
+    "headquarters": "New Delhi, India",
+    "description": "Axor is an Indian helmet and riding gear brand known for offering premium quality at accessible prices. Their helmets are ECE and DOT certified, featuring advanced polycarbonate shells and efficient ventilation systems. Axor has quickly gained popularity among Indian riders for its stylish designs and safety standards.",
+    "logo": "images/brands/axor.svg",
+    "website": "https://www.axorhelmets.com",
+    "popular_models": ["axor-apex-full-face", "axor-rapid-full-face", "axor-street-open-face", "axor-venom-gloves", "axor-jet-full-face"],
+    "price_range": "₹2,500 - ₹8,000",
+    "segments": ["Full Face Helmets", "Open Face Helmets", "Riding Gloves"]
+}

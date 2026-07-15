@@ -1,0 +1,62 @@
+{
+    "brand": "TVS",
+    "brand_slug": "tvs",
+    "model": "Apache RTR 310",
+    "slug": "tvs-apache-rtr-310",
+    "engine": "312.2cc",
+    "power": "35.6 bhp",
+    "torque": "28.7 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,50,000",
+    "price_numeric": 250000,
+    "mileage": "30 kmpl",
+    "weight": "164 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Mono-shock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The TVS Apache RTR 310 is a performance naked that pushes the boundaries of the Apache lineage. Featuring a BMW co-developed engine, advanced electronics, and sharp styling, it delivers an uncompromising streetfighter experience for the serious rider.",
+    "highlights": [
+        "BMW co-developed 312cc engine",
+        "Ride-by-wire throttle",
+        "TFT instrument cluster",
+        "Traction control system",
+        "Cornering ABS"
+    ],
+    "pros": [
+        "Thrilling performance with strong mid-range",
+        "Advanced electronics suite",
+        "Sharp and confident handling",
+        "Premium build quality",
+        "Excellent highway stability"
+    ],
+    "cons": [
+        "Premium pricing",
+        "Aggressive riding posture",
+        "Wind blast without fly screen",
+        "Heat management in traffic",
+        "Limited dealer network in smaller towns"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Jackets",
+        "Gloves",
+        "Bike Cover",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Performance enthusiasts",
+        "Highway touring",
+        "Spirited weekend rides",
+        "Track days"
+    ],
+    "variants": [
+        "Standard",
+        "TTK"
+    ],
+    "image": "static/images/motorcycles/tvs-apache-rtr-310.jpg"
+}

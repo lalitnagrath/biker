@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-editorial">
+    <div class="container">
+        <div class="hero-main">
+            <span class="hero-tag">Search</span>
+            <h1>Find <span class="text-accent">Motorcycles, Guides &amp; Accessories</span></h1>
+            <p class="hero-subtitle">Search our complete database of motorcycles, buying guides, and product recommendations.</p>
+            <div class="hero-search">
+                <input type="search" placeholder="Search motorcycles, products, guides..." id="heroSearch" autocomplete="off">
+                <div class="hero-search-suggestions" id="heroSuggestions">
+                    <span class="suggestion" data-url="best/helmet/index.html">Best Helmets</span>
+                    <span class="suggestion" data-url="best/phone-mount/index.html">Best Phone Mounts</span>
+                    <span class="suggestion" data-url="best/engine-oil/index.html">Best Engine Oil</span>
+                    <span class="suggestion" data-url="articles/chain-maintenance/index.html">Chain Maintenance</span>
+                    <span class="suggestion" data-url="motorcycles/royal-enfield-classic-350/index.html">Classic 350 Guide</span>
+                </div>
+            </div>
+            <div class="hero-trust-bar">
+                <div class="trust-item"><span class="trust-icon">&#128269;</span><span class="trust-text"><strong>Expert Tested</strong><br>Every product reviewed</span></div>
+                <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Weekly Updates</strong><br>Fresh recommendations</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div id="searchResultsContainer" style="display: none;">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Search Results</h2>
+                    <p class="section-subtitle" id="searchResultsCount"></p>
+                </div>
+            </div>
+            <div id="searchResultsList"></div>
+        </div>
+        <div id="searchNoResults" style="display: none;">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">No Results Found</h2>
+                    <p class="section-subtitle">Try a different search term or browse our categories below.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

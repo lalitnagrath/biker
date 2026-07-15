@@ -1,0 +1,64 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Dominar 400",
+    "slug": "bajaj-dominar-400",
+    "engine": "373cc",
+    "power": "40 bhp",
+    "torque": "35 Nm",
+    "transmission": "6-speed",
+    "type": "Touring",
+    "fuel_type": "Petrol",
+    "price": "2,30,000",
+    "price_numeric": 230000,
+    "mileage": "28 kmpl",
+    "weight": "187 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The Bajaj Dominar 400 is a powerful sports tourer built for riders who demand performance and comfort on long rides. Equipped with a liquid-cooled 373cc engine, slipper clutch, and dual-channel ABS, it is one of the most capable touring motorcycles in its segment.",
+    "highlights": [
+        "Liquid-cooled 373cc engine",
+        "40 bhp power output",
+        "Slipper clutch",
+        "Dual-channel ABS",
+        "Upside-down front forks"
+    ],
+    "pros": [
+        "Powerful engine with strong top-end",
+        "Excellent for long-distance touring",
+        "Stable and planted at high speeds",
+        "Good suspension and braking",
+        "Great value for a 400cc tourer"
+    ],
+    "cons": [
+        "Heavy weight affects low-speed agility",
+        "Fuel efficiency is average",
+        "Heat management in traffic",
+        "Basic dash design",
+        "Could use more ground clearance"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Saddle Bag",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "Long-distance touring",
+        "Highway cruising",
+        "Adventure touring",
+        "Mountain road trips"
+    ],
+    "variants": [
+        "Dominar 400 Standard"
+    ],
+    "image": "static/images/motorcycles/bajaj-dominar-400.jpg"
+}

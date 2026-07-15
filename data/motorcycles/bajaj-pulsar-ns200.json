@@ -1,0 +1,63 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar NS200",
+    "slug": "bajaj-pulsar-ns200",
+    "engine": "199cc",
+    "power": "24.5 bhp",
+    "torque": "18.6 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,35,000",
+    "price_numeric": 135000,
+    "mileage": "40 kmpl",
+    "weight": "156 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "100/80-17 (Front), 130/70-17 (Rear)",
+    "description": "The Bajaj Pulsar NS200 is a performance-oriented naked streetfighter known for its powerful engine and sharp handling. With aggressive styling and a perimeter frame, it delivers an thrilling ride whether in the city or on the highway.",
+    "highlights": [
+        "Triple-spark DTS-i engine",
+        "Perimeter frame for sharp handling",
+        "Aggressive streetfighter design",
+        "Liquid-cooled engine",
+        "Powerful 24.5 bhp output"
+    ],
+    "pros": [
+        "Excellent acceleration and top speed",
+        "Sharp and responsive handling",
+        "Good build quality and fit-finish",
+        "Comfortable for city and highway",
+        "Strong aftermarket support"
+    ],
+    "cons": [
+        "Slightly stiff suspension on bad roads",
+        "Vibrations at high RPM",
+        "No ABS on base variant",
+        "Average fuel efficiency",
+        "Seat could be more comfortable"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Spirited city riding",
+        "Highway cruising",
+        "College commuters",
+        "Weekend twisties"
+    ],
+    "variants": [
+        "NS200 Standard",
+        "NS200 ABS"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-ns200.jpg"
+}

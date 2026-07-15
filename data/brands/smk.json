@@ -1,0 +1,13 @@
+{
+    "name": "SMK",
+    "slug": "smk",
+    "founded": 2016,
+    "country": "India",
+    "headquarters": "New Delhi, India",
+    "description": "SMK (Studds Modular Kinematics) is a premium helmet brand from the house of Studds, India's largest helmet manufacturer. SMK helmets are designed with advanced safety features including multi-density EPS liners and pinlock-ready visors. The brand targets riders seeking premium features at mid-range pricing.",
+    "logo": "images/brands/smk.svg",
+    "website": "https://www.smkhelmets.com",
+    "popular_models": ["smk-hybrid-full-face", "smk-stellar-full-face", "smk-twister-full-face", "smk-iflow-full-face", "smk-eclipse-open-face"],
+    "price_range": "₹3,000 - ₹10,000",
+    "segments": ["Full Face Helmets", "Modular Helmets", "Open Face Helmets"]
+}

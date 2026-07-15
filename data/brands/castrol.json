@@ -1,0 +1,13 @@
+{
+    "name": "Castrol",
+    "slug": "castrol",
+    "founded": 1899,
+    "country": "United Kingdom",
+    "headquarters": "London, United Kingdom",
+    "description": "Castrol is a British global brand of industrial and automotive lubricants. Known for their pioneering work in lubricant technology, Castrol has a long heritage of innovation dating back to 1899. Their Power1 and Activ series are widely popular among Indian motorcycle riders for reliable engine protection.",
+    "logo": "images/brands/castrol.svg",
+    "website": "https://www.castrol.com",
+    "popular_models": ["castrol-power1-10w50", "castrol-activ-10w30", "castrol-power1-4t-10w40", "castrol-brake-fluid", "castrol-chain-lube"],
+    "price_range": "₹350 - ₹2,500",
+    "segments": ["Engine Oil", "Brake Fluid", "Chain Maintenance", "Coolant"]
+}

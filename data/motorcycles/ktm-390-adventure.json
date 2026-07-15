@@ -1,0 +1,65 @@
+{
+    "brand": "KTM",
+    "brand_slug": "ktm",
+    "model": "390 Adventure",
+    "slug": "ktm-390-adventure",
+    "engine": "373.3cc",
+    "power": "43 bhp",
+    "torque": "37 Nm",
+    "transmission": "6-speed",
+    "type": "Adventure",
+    "fuel_type": "Petrol",
+    "price": "3,15,000",
+    "price_numeric": 315000,
+    "mileage": "28 kmpl",
+    "weight": "178 kg",
+    "fuel_capacity": "14.5 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "100/90-19 (Front), 150/60-17 (Rear)",
+    "description": "The KTM 390 Adventure is a versatile adventure tourer built for both on-road and off-road escapades. With its tall stance, capable suspension, and powerful engine, it's ready to take on any terrain.",
+    "highlights": [
+        "Adventure-ready design",
+        "Long-travel suspension",
+        "Cornering ABS",
+        "Tall windscreen",
+        "Off-road capable"
+    ],
+    "pros": [
+        "Versatile for all terrains",
+        "Comfortable long-distance touring",
+        "Advanced safety features",
+        "Good ground clearance",
+        "Capable off-road performance"
+    ],
+    "cons": [
+        "Tall seat height",
+        "Heavy for off-road",
+        "Wind blast without windscreen",
+        "Expensive maintenance",
+        "Stiff suspension on-road"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Adventure touring",
+        "Off-road riding",
+        "Long-distance touring",
+        "Exploration trips"
+    ],
+    "variants": [
+        "Standard",
+        "WP"
+    ],
+    "image": "static/images/motorcycles/ktm-390-adventure.jpg"
+}

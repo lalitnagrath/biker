@@ -1,0 +1,64 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Dominar 250",
+    "slug": "bajaj-dominar-250",
+    "engine": "249cc",
+    "power": "27 bhp",
+    "torque": "23.5 Nm",
+    "transmission": "6-speed",
+    "type": "Touring",
+    "fuel_type": "Petrol",
+    "price": "1,80,000",
+    "price_numeric": 180000,
+    "mileage": "35 kmpl",
+    "weight": "180 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
+    "description": "The Bajaj Dominar 250 is a purpose-built tourer designed for long-distance riding comfort. With its torquey engine, upright ergonomics, and wind protection, it is an excellent choice for riders who love exploring highways and mountain roads.",
+    "highlights": [
+        "Perimeter frame for stability",
+        "Liquid-cooled 249cc engine",
+        "Upright touring ergonomics",
+        "Dual disc brakes with ABS",
+        "Slipper clutch"
+    ],
+    "pros": [
+        "Excellent highway stability",
+        "Comfortable long-distance ergonomics",
+        "Smooth and refined engine",
+        "Good braking performance",
+        "Feature-rich for the price"
+    ],
+    "cons": [
+        "Heavy for city traffic",
+        "Slightly underpowered for aggressive touring",
+        "Middling ground clearance",
+        "Basic instrument cluster",
+        "Limited aftermarket parts"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Saddle Bag",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "Highway touring",
+        "Long-distance rides",
+        "Mountain road trips",
+        "Weekend getaways"
+    ],
+    "variants": [
+        "Dominar 250 Standard"
+    ],
+    "image": "static/images/motorcycles/bajaj-dominar-250.jpg"
+}

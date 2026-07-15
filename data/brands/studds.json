@@ -1,0 +1,13 @@
+{
+    "name": "Studds",
+    "slug": "studds",
+    "founded": 1972,
+    "country": "India",
+    "headquarters": "Gurugram, Haryana",
+    "description": "Studds is India's largest helmet manufacturer with a legacy spanning over five decades. Founded in 1972, the company produces a wide range of helmets catering to all price segments. Studds helmets are ISI and DOT certified, and they export to over 40 countries worldwide, making them a household name in Indian motorcycling.",
+    "logo": "images/brands/studds.svg",
+    "website": "https://www.studds.com",
+    "popular_models": ["studds-phoenix-full-face", "studds-thunder-d2-full-face", "studds-viper-full-face", "studds-ninja-open-face", "studds-tiger-half-face"],
+    "price_range": "₹700 - ₹4,000",
+    "segments": ["Full Face Helmets", "Open Face Helmets", "Half Helmets"]
+}

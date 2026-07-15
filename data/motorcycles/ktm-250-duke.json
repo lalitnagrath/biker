@@ -1,0 +1,62 @@
+{
+    "brand": "KTM",
+    "brand_slug": "ktm",
+    "model": "250 Duke",
+    "slug": "ktm-250-duke",
+    "engine": "248.8cc",
+    "power": "30 bhp",
+    "torque": "24 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,09,000",
+    "price_numeric": 209000,
+    "mileage": "32 kmpl",
+    "weight": "159 kg",
+    "fuel_capacity": "13.4 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The KTM 250 Duke is a streetfighter that delivers pure adrenaline in the quarter-litre segment. With its powerful engine, sharp styling, and aggressive stance, it's built for riders who want performance without compromise.",
+    "highlights": [
+        "Powerful 248.8cc engine",
+        "Aggressive streetfighter design",
+        "USD front forks",
+        "TFT display",
+        "Ride-by-wire throttle"
+    ],
+    "pros": [
+        "Excellent power-to-weight ratio",
+        "Sharp and responsive handling",
+        "Premium build quality",
+        "Track-capable performance",
+        "Aggressive styling"
+    ],
+    "cons": [
+        "Stiff suspension for daily use",
+        "Can get hot in traffic",
+        "Higher seat height",
+        "Premium pricing",
+        "Wind blast at high speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Sporty city riding",
+        "Track days",
+        "Aggressive riding style",
+        "Performance enthusiasts"
+    ],
+    "variants": [
+        "Standard",
+        "BS6"
+    ],
+    "image": "static/images/motorcycles/ktm-250-duke.jpg"
+}

@@ -25,6 +25,23 @@
     "description": "Expert motorcycle reviews, buying guides, and maintenance tips for Indian riders."
 }
 </script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Motorcycles",
+    "itemListElement": [
+        {% for bike in motorcycles %}
+        {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "url": "{{ site_url }}motorcycles/{{ bike.slug }}/",
+            "name": "{{ bike.brand }} {{ bike.model }}"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
@@ -32,39 +49,39 @@
     <div class="container">
         <div class="hero-grid">
             <div class="hero-main">
-                <span class="hero-tag">Editor's Pick of the Week</span>
-                <h1>Find the Best Accessories <span class="text-accent">For Your Bike</span></h1>
-                <p class="hero-subtitle">We test, compare, and review motorcycle gear so you don't have to. Expert recommendations backed by real-world testing.</p>
-                <div class="hero-search">
-                    <input type="search" placeholder="Search helmets, jackets, phone mounts..." id="heroSearch" autocomplete="off">
-                    <div class="hero-search-suggestions" id="heroSuggestions">
-                        <span class="suggestion" data-url="best/helmet/index.html">Best Helmet</span>
-                        <span class="suggestion" data-url="best/phone-mount/index.html">Best Phone Mount</span>
-                        <span class="suggestion" data-url="best/gloves/index.html">Best Gloves</span>
-                        <span class="suggestion" data-url="best/jacket/index.html">Best Jacket</span>
-                        <span class="suggestion" data-url="motorcycles/royal-enfield-classic-350/index.html">Classic 350 Accessories</span>
-                        <span class="suggestion" data-url="best/engine-oil/index.html">Best Engine Oil</span>
-                    </div>
+                <span class="hero-tag">India's Motorcycle Knowledge Hub</span>
+                <h1>Everything Your Motorcycle Needs <span class="text-accent">in One Place</span></h1>
+                <p class="hero-subtitle">Helping Indian riders choose the best accessories, riding gear, maintenance products, and motorcycles. Research-backed advice you can trust.</p>
+                <div class="hero-actions">
+                    {% if featured_bike %}
+                    <a href="{{ base_path }}motorcycles/{{ featured_bike.slug }}/accessories/index.html" class="btn btn-accent btn-lg">Browse Your Motorcycle</a>
+                    {% else %}
+                    <a href="{{ base_path }}motorcycles/index.html" class="btn btn-accent btn-lg">Browse Motorcycles</a>
+                    {% endif %}
+                    <a href="{{ base_path }}articles/index.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white;">Explore Buying Guides</a>
                 </div>
                 <div class="hero-trust-bar">
-                    <div class="trust-item"><span class="trust-icon">&#9733;</span><span class="trust-text"><strong>Expert Tested</strong><br>Every product reviewed</span></div>
+                    <div class="trust-item"><span class="trust-icon">&#10003;</span><span class="trust-text"><strong>Expert Tested</strong><br>Every product reviewed</span></div>
                     <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Weekly Updates</strong><br>Fresh recommendations</span></div>
-                    <div class="trust-item"><span class="trust-icon">&#10003;</span><span class="trust-text"><strong>India Focused</strong><br>INR prices, local buying</span></div>
+                    <div class="trust-item"><span class="trust-icon">&#127470;&#127475;</span><span class="trust-text"><strong>India Focused</strong><br>INR prices, local buying</span></div>
                 </div>
             </div>
-            {% if featured_products %}
+            {% if featured_bike %}
             <div class="hero-featured">
                 <div class="hero-featured-card">
-                    {% if featured_products[0].image and 'products/' in featured_products[0].image %}
-                    <img src="{{ base_path }}{{ featured_products[0].image }}" alt="{{ featured_products[0].title }}">
+                    {% if featured_bike.image %}
+                    <img src="{{ base_path }}{{ featured_bike.image }}" alt="{{ featured_bike.brand }} {{ featured_bike.model }}" loading="eager">
                     {% else %}
-                    <div class="placeholder-image product-placeholder-lg">{{ featured_products[0].brand }}</div>
+                    <div class="placeholder-image product-placeholder-lg">{{ featured_bike.brand[:2] }}</div>
                     {% endif %}
                     <div class="hero-featured-content">
-                        <span class="featured-badge">Editor's Choice</span>
-                        <h3>{{ featured_products[0].title }}</h3>
-                        <div class="featured-score"><span class="score">{{ featured_products[0].editor_rating }}</span>/10</div>
-                        <a href="{{ base_path }}products/{{ featured_products[0].slug }}/index.html" class="btn btn-accent">Read Review</a>
+                        <span class="featured-badge">Featured Motorcycle</span>
+                        <h3>{{ featured_bike.brand }} {{ featured_bike.model }}</h3>
+                        <div class="hero-featured-meta">
+                            <span>{{ featured_bike.engine }}</span>
+                            <span>{{ featured_bike.type }}</span>
+                        </div>
+                        <a href="{{ base_path }}motorcycles/{{ featured_bike.slug }}/index.html" class="btn btn-accent">Explore Bike &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -73,12 +90,35 @@
     </div>
 </section>
 
-<section class="section">
+<section class="section-stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">{{ stats.guides }}+</span>
+                <span class="stat-label">Buying Guides</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">{{ stats.products_reviewed }}+</span>
+                <span class="stat-label">Products Reviewed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">{{ stats.motorcycles }}+</span>
+                <span class="stat-label">Motorcycles Covered</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">Updated Weekly</span>
+                <span class="stat-label">Fresh Content</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-gray">
     <div class="container">
         <div class="section-header">
             <div>
                 <h2 class="section-title">Browse by Motorcycle</h2>
-                <p class="section-subtitle">Find accessories, gear, and maintenance tips for your specific bike</p>
+                <p class="section-subtitle">Select your motorcycle to find the best accessories, gear, and maintenance tips</p>
             </div>
             <a href="{{ base_path }}motorcycles/index.html" class="section-link">View All &rarr;</a>
         </div>
@@ -108,8 +148,7 @@
                         <span>{{ bike.engine }}</span>
                         <span>{{ bike.type }}</span>
                     </div>
-                    <div class="bike-showcase-price">{{ bike.price }}</div>
-                    <span class="bike-showcase-cta">Find Accessories &rarr;</span>
+                    <span class="bike-showcase-cta">Explore Accessories &rarr;</span>
                 </div>
             </a>
             {% endfor %}
@@ -117,171 +156,166 @@
     </div>
 </section>
 
-<section class="section section-dark">
+<section class="section">
     <div class="container">
-        <div class="section-header section-header-light">
+        <div class="section-header">
             <div>
-                <h2 class="section-title">Best Of Lists</h2>
-                <p class="section-subtitle">Our expert-tested top picks for every category</p>
+                <h2 class="section-title">Popular Motorcycle Accessories</h2>
+                <p class="section-subtitle">Find the right gear and maintenance products for your ride</p>
             </div>
         </div>
-        <div class="bestof-showcase">
-            <a href="{{ base_path }}best/helmet/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#128665;</div>
-                <h3>Best Helmets</h3>
-                <p>Top-rated helmets for safety and comfort</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. {{ products[0].title if products else 'Studds Ninja' }}</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+        <div class="accessories-grid">
+            <a href="{{ base_path }}best/helmet/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#128665;</div>
+                <h3>Helmets</h3>
+                <p>Full face, flip-up &amp; open face options</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/phone-mount/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#128241;</div>
-                <h3>Best Phone Mounts</h3>
-                <p>Secure, vibration-free phone holders</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. {{ products[3].title if products|length > 3 else 'BOBO BM17' }}</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/phone-mount/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#128241;</div>
+                <h3>Phone Mounts</h3>
+                <p>Secure handlebar phone holders</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/gloves/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#129508;</div>
-                <h3>Best Gloves</h3>
-                <p>Protective riding gloves for all seasons</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. Rynox Air Mesh</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/gloves/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#129508;</div>
+                <h3>Riding Gloves</h3>
+                <p>Summer, winter &amp; all-season gloves</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/jacket/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#129509;</div>
-                <h3>Best Jackets</h3>
-                <p>CE-certified riding jackets</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. Safari Storm</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/jacket/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#129509;</div>
+                <h3>Riding Jackets</h3>
+                <p>CE-certified mesh &amp; textile jackets</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/engine-oil/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#128737;</div>
-                <h3>Best Engine Oil</h3>
-                <p>Premium engine oils for performance</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. Motul 7100</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/engine-oil/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#128737;</div>
+                <h3>Engine Oil</h3>
+                <p>Mineral, semi-synthetic &amp; fully synthetic</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/chain-lube/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#9881;</div>
-                <h3>Best Chain Care</h3>
-                <p>Chain lubes and cleaners</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. Motul Chain Clean</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/chain-lube/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#9881;</div>
+                <h3>Chain Lube</h3>
+                <p>Keep your chain smooth &amp; protected</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/bike-cover/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#128711;</div>
-                <h3>Best Bike Covers</h3>
-                <p>Weather-proof motorcycle covers</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. Moto Care Premium</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/bike-cover/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#128711;</div>
+                <h3>Bike Cover</h3>
+                <p>Waterproof &amp; UV-resistant covers</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}best/tyre-inflator/index.html" class="bestof-showcase-card">
-                <div class="bestof-showcase-icon">&#127744;</div>
-                <h3>Best Tyre Inflators</h3>
-                <p>Portable tyre inflators</p>
-                <div class="bestof-showcase-preview">
-                    <span class="preview-item">1. Roboclean Digital</span>
-                </div>
-                <span class="bestof-showcase-cta">View Rankings &rarr;</span>
+            <a href="{{ base_path }}best/tyre-inflator/index.html" class="accessory-card-home">
+                <div class="accessory-icon">&#127744;</div>
+                <h3>Tyre Inflator</h3>
+                <p>Portable air compressors for emergencies</p>
+                <span class="accessory-cta">Explore &rarr;</span>
             </a>
         </div>
     </div>
 </section>
 
 {% if featured_products %}
-<section class="section">
+<section class="section section-gray">
     <div class="container">
         <div class="section-header">
             <div>
-                <h2 class="section-title">Top Rated Products</h2>
-                <p class="section-subtitle">Our editors' highest-rated products with "Best For" recommendations</p>
+                <h2 class="section-title">Top Product Recommendations</h2>
+                <p class="section-subtitle">Our editors' top-rated products for every category</p>
             </div>
             <a href="{{ base_path }}categories/index.html" class="section-link">View All Products &rarr;</a>
         </div>
-        {% if featured_products %}
-        <div class="product-showcase">
-            {% for product in featured_products %}
-            <div class="product-showcase-card">
-                <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-showcase-image">
-                    {% if product.image and 'products/' in product.image %}
+        <div class="product-reco-grid">
+            {% for product in featured_products[:6] %}
+            <div class="product-reco-card">
+                <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-reco-image">
+                    {% if product.image and 'images/' in product.image %}
                     <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
                     {% else %}
                     <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
                     {% endif %}
-                    {% if loop.index == 1 %}
-                    <span class="product-rank">#1 Pick</span>
-                    {% elif loop.index == 2 %}
-                    <span class="product-rank rank-alt">#2 Pick</span>
-                    {% endif %}
-                    {% if product.editor_rating >= 9.0 %}
-                    <span class="product-badge-editors">Editor's Choice</span>
+                    {% if loop.index <= 3 %}
+                    <span class="product-reco-rank">#{{ loop.index }} Pick</span>
                     {% endif %}
                 </a>
-                <div class="product-showcase-content">
-                    <div class="product-showcase-header">
-                        <span class="product-showcase-category">{{ product.category }}</span>
-                        <div class="product-showcase-rating">
-                            <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                            <span class="rating-value">{{ product.rating }}</span>
-                            <span class="review-count">({{ product.reviews | int }})</span>
-                        </div>
-                    </div>
+                <div class="product-reco-content">
+                    <span class="product-reco-category">{{ product.category }}</span>
                     <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
-                    <div class="product-showcase-bestfor">
-                        <span class="bestfor-label">Best For:</span>
-                        <span class="bestfor-value">{{ product.best_for }}</span>
+                    <div class="product-reco-rating">
+                        <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                        <span class="rating-value">{{ product.rating }}</span>
                     </div>
-                    <div class="product-showcase-verdict">{{ product.verdict[:120] }}...</div>
-                    <div class="product-showcase-footer">
-                        <div class="product-showcase-score">
-                            <span class="score-number">{{ product.editor_rating }}</span>
-                            <span class="score-label">/10</span>
-                        </div>
-                        <div class="product-showcase-price">₹{{ product.price | int }}</div>
-                        <div class="product-showcase-actions">
-                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Full Review</a>
-                            {% if product.affiliate_url %}
-                            <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Buy on Amazon</a>
-                            {% endif %}
-                        </div>
+                    <p class="product-reco-desc">{{ product.best_for or product.verdict[:100] }}</p>
+                    <div class="product-reco-footer">
+                        <span class="product-reco-price">₹{{ product.price | int }}</span>
+                        {% if product.affiliate_url %}
+                        <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-        {% endif %}
-        {% endif %}
     </div>
 </section>
+{% endif %}
 
-<section class="section section-gray">
+{% if editors_picks %}
+<section class="section">
     <div class="container">
         <div class="section-header">
             <div>
-                <h2 class="section-title">Buying Guides</h2>
+                <h2 class="section-title">Editor's Picks</h2>
+                <p class="section-subtitle">Our top recommended products across key categories</p>
+            </div>
+        </div>
+        <div class="editors-picks-grid">
+            {% for pick in editors_picks %}
+            <a href="{{ base_path }}products/{{ pick.slug }}/index.html" class="editors-pick-card">
+                <div class="editors-pick-badge">{{ pick.pick_label }}</div>
+                <div class="editors-pick-image">
+                    {% if pick.image and 'images/' in pick.image %}
+                    <img src="{{ base_path }}{{ pick.image }}" alt="{{ pick.title }}" loading="lazy">
+                    {% else %}
+                    <div class="placeholder-image product-placeholder">{{ pick.brand }}</div>
+                    {% endif %}
+                </div>
+                <div class="editors-pick-content">
+                    <span class="editors-pick-category">{{ pick.category }}</span>
+                    <h3>{{ pick.title }}</h3>
+                    <div class="editors-pick-rating">
+                        <span class="stars">{{ '★' * (pick.rating | int) }}{{ '☆' * (5 - pick.rating | int) }}</span>
+                        <span class="rating-value">{{ pick.rating }}</span>
+                    </div>
+                    <span class="editors-pick-cta">View Details &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header section-header-light">
+            <div>
+                <h2 class="section-title">Featured Buying Guides</h2>
                 <p class="section-subtitle">In-depth guides to help you make the right choice</p>
             </div>
             <a href="{{ base_path }}articles/index.html" class="section-link">All Guides &rarr;</a>
         </div>
         <div class="guides-showcase">
-            {% for article in articles %}
+            {% for article in articles[:4] %}
             <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="guide-showcase-card">
                 <div class="guide-showcase-image">
-                    <div class="placeholder-image guide-placeholder">{{ article.tags[0] if article.tags else 'Guide' }}</div>
+                    {% if article.tags %}
+                    <div class="placeholder-image guide-placeholder">{{ article.tags[0] }}</div>
+                    {% else %}
+                    <div class="placeholder-image guide-placeholder">Guide</div>
+                    {% endif %}
                     <span class="guide-showcase-time">{{ article.reading_time }}</span>
                 </div>
                 <div class="guide-showcase-content">
@@ -292,7 +326,8 @@
                         {% endif %}
                     </div>
                     <h3>{{ article.title }}</h3>
-                    <p>{{ article.description }}</p>
+                    <p>{{ article.description[:120] }}...</p>
+                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
                 </div>
             </a>
             {% endfor %}
@@ -304,35 +339,149 @@
     <div class="container">
         <div class="section-header">
             <div>
-                <h2 class="section-title">Maintenance Tips</h2>
-                <p class="section-subtitle">Keep your motorcycle running like new</p>
+                <h2 class="section-title">Latest Articles</h2>
+                <p class="section-subtitle">Fresh content from our editorial team</p>
+            </div>
+            <a href="{{ base_path }}articles/index.html" class="section-link">All Articles &rarr;</a>
+        </div>
+        <div class="guides-showcase">
+            {% for article in articles[4:8] %}
+            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    {% if article.tags %}
+                    <div class="placeholder-image guide-placeholder">{{ article.tags[0] }}</div>
+                    {% else %}
+                    <div class="placeholder-image guide-placeholder">Article</div>
+                    {% endif %}
+                    <span class="guide-showcase-time">{{ article.reading_time }}</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <div class="guide-showcase-meta">
+                        <span class="guide-showcase-date">{{ article.date }}</span>
+                        {% if article.tags %}
+                        <span class="guide-showcase-tag">{{ article.tags[0] }}</span>
+                        {% endif %}
+                    </div>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.description[:120] }}...</p>
+                    <span class="guide-showcase-cta">Read Article &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+            {% if articles|length < 4 %}
+            <a href="{{ base_path }}articles/chain-maintenance/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    <div class="placeholder-image guide-placeholder">Maintenance</div>
+                    <span class="guide-showcase-time">8 min read</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <div class="guide-showcase-meta">
+                        <span class="guide-showcase-date">2025-01-15</span>
+                        <span class="guide-showcase-tag">maintenance</span>
+                    </div>
+                    <h3>Complete Guide to Chain Maintenance</h3>
+                    <p>Learn how to properly maintain your motorcycle chain for optimal performance and longevity.</p>
+                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
+                </div>
+            </a>
+            <a href="{{ base_path }}articles/wash-bike/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    <div class="placeholder-image guide-placeholder">Cleaning</div>
+                    <span class="guide-showcase-time">6 min read</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <div class="guide-showcase-meta">
+                        <span class="guide-showcase-date">2025-01-10</span>
+                        <span class="guide-showcase-tag">cleaning</span>
+                    </div>
+                    <h3>How to Wash Your Motorcycle</h3>
+                    <p>Step-by-step guide to washing and detailing your motorcycle safely and effectively.</p>
+                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
+                </div>
+            </a>
+            <a href="{{ base_path }}articles/tyre-pressure/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    <div class="placeholder-image guide-placeholder">Safety</div>
+                    <span class="guide-showcase-time">5 min read</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <div class="guide-showcase-meta">
+                        <span class="guide-showcase-date">2025-01-08</span>
+                        <span class="guide-showcase-tag">safety</span>
+                    </div>
+                    <h3>Tyre Pressure Guide for Indian Roads</h3>
+                    <p>Optimal tyre pressure settings for safety, handling, and tyre life on Indian roads.</p>
+                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
+                </div>
+            </a>
+            <a href="{{ base_path }}articles/monsoon-riding/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    <div class="placeholder-image guide-placeholder">Riding Tips</div>
+                    <span class="guide-showcase-time">7 min read</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <div class="guide-showcase-meta">
+                        <span class="guide-showcase-date">2025-01-05</span>
+                        <span class="guide-showcase-tag">riding tips</span>
+                    </div>
+                    <h3>Monsoon Riding Tips</h3>
+                    <p>Stay safe and dry during the rainy season with expert advice for Indian monsoons.</p>
+                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-gray">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Recently Updated</h2>
+                <p class="section-subtitle">Fresh content and latest product reviews</p>
             </div>
         </div>
-        <div class="maintenance-showcase">
-            <a href="{{ base_path }}articles/chain-maintenance/index.html" class="maintenance-showcase-card">
-                <div class="maintenance-showcase-icon">&#9881;</div>
-                <h3>Chain Maintenance</h3>
-                <p>Clean, lube, and adjust your chain for maximum life and performance</p>
-                <span class="maintenance-showcase-cta">Read Guide &rarr;</span>
+        <div class="recently-updated-grid">
+            <div class="recently-card">
+                <span class="recently-badge recently-new">Updated This Week</span>
+                <h3>Buying Guides</h3>
+                <p>Our latest guides with updated prices, new product releases, and refreshed recommendations.</p>
+                <a href="{{ base_path }}articles/index.html" class="btn btn-sm btn-outline">View Guides &rarr;</a>
+            </div>
+            <div class="recently-card">
+                <span class="recently-badge recently-review">New Reviews</span>
+                <h3>Product Reviews</h3>
+                <p>Recently reviewed products with hands-on testing, pros &amp; cons, and detailed verdicts.</p>
+                <a href="{{ base_path }}categories/index.html" class="btn btn-sm btn-outline">View Products &rarr;</a>
+            </div>
+            <div class="recently-card">
+                <span class="recently-badge recently-price">Price Updates</span>
+                <h3>Latest Prices</h3>
+                <p>Updated prices across all product categories. Check the best deals on Amazon India.</p>
+                <a href="{{ base_path }}best/helmet/index.html" class="btn btn-sm btn-outline">Check Prices &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Browse by Brand</h2>
+                <p class="section-subtitle">Explore motorcycles from India's top brands</p>
+            </div>
+        </div>
+        <div class="brand-grid">
+            {% for brand in brands %}
+            <a href="{{ base_path }}brands/{{ brand.slug }}/index.html" class="brand-card">
+                <div class="brand-card-icon">{% if brand.logo %}<img src="{{ base_path }}{{ brand.logo }}" alt="{{ brand.name }}" loading="lazy">{% else %}<span class="brand-initial">{{ brand.name[:1] }}</span>{% endif %}</div>
+                <h3>{{ brand.name }}</h3>
+                <p>{{ brand.price_range }}</p>
+                <span class="brand-card-cta">Explore &rarr;</span>
             </a>
-            <a href="{{ base_path }}articles/wash-bike/index.html" class="maintenance-showcase-card">
-                <div class="maintenance-showcase-icon">&#128167;</div>
-                <h3>How to Wash Your Bike</h3>
-                <p>Step-by-step guide to washing and detailing your motorcycle</p>
-                <span class="maintenance-showcase-cta">Read Guide &rarr;</span>
-            </a>
-            <a href="{{ base_path }}articles/tyre-pressure/index.html" class="maintenance-showcase-card">
-                <div class="maintenance-showcase-icon">&#127744;</div>
-                <h3>Tyre Pressure Guide</h3>
-                <p>Optimal tyre pressures for safety, handling, and tyre life</p>
-                <span class="maintenance-showcase-cta">Read Guide &rarr;</span>
-            </a>
-            <a href="{{ base_path }}articles/monsoon-riding/index.html" class="maintenance-showcase-card">
-                <div class="maintenance-showcase-icon">&#127783;</div>
-                <h3>Monsoon Riding Tips</h3>
-                <p>Stay safe and dry during the rainy season with expert advice</p>
-                <span class="maintenance-showcase-cta">Read Guide &rarr;</span>
-            </a>
+            {% endfor %}
         </div>
     </div>
 </section>

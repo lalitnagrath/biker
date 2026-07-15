@@ -1,0 +1,67 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Shotgun 650",
+    "slug": "royal-enfield-shotgun-650",
+    "engine": "648cc",
+    "power": "47 bhp",
+    "torque": "52 Nm",
+    "transmission": "6-speed",
+    "type": "Cruiser",
+    "fuel_type": "Petrol",
+    "price": "3,30,000",
+    "price_numeric": 330000,
+    "mileage": "25 kmpl",
+    "weight": "212 kg",
+    "fuel_capacity": "13.8 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD Fork (Front), Monoshock (Rear)",
+    "tyres": "120/70-18 (Front), 150/70-17 (Rear)",
+    "description": "The Royal Enfield Shotgun 650 is a custom-inspired cruiser that blends bobber attitude with modern engineering. With its chunky tyres, wide handlebar, and muscular stance, it offers a bold and distinctive presence on the road with comfortable cruising capability.",
+    "highlights": [
+        "Custom-inspired bobber design",
+        "Chunky dual-purpose tyres",
+        "USD front forks",
+        "Single-seat bobber style",
+        "648cc parallel-twin engine"
+    ],
+    "pros": [
+        "Striking road presence",
+        "Comfortable for cruising",
+        "Strong twin-cylinder performance",
+        "Good ground clearance",
+        "Custom culture appeal"
+    ],
+    "cons": [
+        "Single seat limits pillion use",
+        "Heavier than expected",
+        "Wind blast at highway speeds",
+        "Basic instrument cluster",
+        "Premium pricing"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Engine Oil",
+        "Chain Cleaner"
+    ],
+    "ideal_for": [
+        "Custom cruiser enthusiasts",
+        "Solo touring",
+        "City cruising",
+        "Style-focused riders"
+    ],
+    "variants": [
+        "Hestival Blue",
+        "Stencil White",
+        "Drift Red",
+        "Sheet Metal"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-shotgun-650.jpg"
+}

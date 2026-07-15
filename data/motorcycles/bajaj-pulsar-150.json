@@ -1,0 +1,65 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar 150",
+    "slug": "bajaj-pulsar-150",
+    "engine": "149cc",
+    "power": "14 bhp",
+    "torque": "13.4 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,10,000",
+    "price_numeric": 110000,
+    "mileage": "50 kmpl",
+    "weight": "144 kg",
+    "fuel_capacity": "15 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "80/100-17 (Front), 100/90-17 (Rear)",
+    "description": "The Bajaj Pulsar 150 is one of India's most iconic and best-selling motorcycles. Known for its bulletproof reliability and peppy performance, it has been the go-to choice for millions of riders who want a sporty commuter at an affordable price.",
+    "highlights": [
+        "Iconic Pulsar DNA",
+        "Proven DTS-i engine",
+        "Comfortable split seats",
+        "Large 15-liter fuel tank",
+        "Trusted brand reliability"
+    ],
+    "pros": [
+        "Extremely reliable and proven",
+        "Excellent fuel efficiency",
+        "Affordable to buy and maintain",
+        "Comfortable for daily use",
+        "Widespread service network"
+    ],
+    "cons": [
+        "Dated design compared to newer models",
+        "Twin-shock rear feels basic",
+        "Lacks modern features",
+        "Vibrations at higher speeds",
+        "Braking could be better"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Chain Cleaner",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "Budget riders",
+        "Rural and urban use",
+        "First-time buyers"
+    ],
+    "variants": [
+        "Pulsar 150 Standard",
+        "Pulsar 150 Twin Disc",
+        "Pulsar 150 Neon"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-150.jpg"
+}

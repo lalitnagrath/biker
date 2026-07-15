@@ -1,0 +1,62 @@
+{
+    "brand": "Suzuki",
+    "brand_slug": "suzuki",
+    "model": "Gixxer 250",
+    "slug": "suzuki-gixxer-250",
+    "engine": "249cc",
+    "power": "26.5 bhp",
+    "torque": "22.2 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,75,000",
+    "price_numeric": 175000,
+    "mileage": "35 kmpl",
+    "weight": "156 kg",
+    "fuel_capacity": "12.5 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
+    "description": "The Suzuki Gixxer 250 is a premium naked motorcycle that delivers a refined yet exciting riding experience. With its smooth engine and balanced chassis, it excels in both city and highway environments.",
+    "highlights": [
+        "Smooth 249cc engine",
+        "Premium build quality",
+        "Oil-cooled engine",
+        "LED lighting",
+        "Digital display"
+    ],
+    "pros": [
+        "Smooth power delivery",
+        "Excellent build quality",
+        "Comfortable ergonomics",
+        "Good fuel efficiency",
+        "Reliable performance"
+    ],
+    "cons": [
+        "Conservative styling",
+        "Could use more power",
+        "Basic electronics",
+        "Limited accessories",
+        "Wind blast at speed"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Commuting",
+        "Highway touring",
+        "Weekend rides",
+        "All-rounder usage"
+    ],
+    "variants": [
+        "Standard",
+        "ABS"
+    ],
+    "image": "static/images/motorcycles/suzuki-gixxer-250.jpg"
+}

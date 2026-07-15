@@ -1,0 +1,13 @@
+{
+    "name": "BOBO",
+    "slug": "bobs",
+    "founded": 2015,
+    "country": "India",
+    "headquarters": "Bengaluru, Karnataka",
+    "description": "BOBO is an Indian brand specializing in motorcycle phone mounts and accessories. They offer a range of waterproof and vibration-dampening phone holders designed for two-wheeler handlebars. BOBO phone mounts have gained immense popularity in India for their secure grip, easy installation, and affordable pricing.",
+    "logo": "images/brands/bobs.svg",
+    "website": "https://www.bobostore.in",
+    "popular_models": ["bobs-waterproof-phone-mount", "bobs-visor-phone-mount", "bobs-handlebar-phone-holder", "bobs-xpro-vibration-dampener", "bobs-ram-mount-adapter"],
+    "price_range": "₹300 - ₹1,500",
+    "segments": ["Phone Mounts", "Vibration Dampeners", "Handlebar Accessories"]
+}

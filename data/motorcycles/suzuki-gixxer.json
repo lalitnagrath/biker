@@ -1,0 +1,62 @@
+{
+    "brand": "Suzuki",
+    "brand_slug": "suzuki",
+    "model": "Gixxer",
+    "slug": "suzuki-gixxer",
+    "engine": "155cc",
+    "power": "13.6 bhp",
+    "torque": "13.8 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,15,000",
+    "price_numeric": 115000,
+    "mileage": "40 kmpl",
+    "weight": "140 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "100/80-17 (Front), 140/60-17 (Rear)",
+    "description": "The Suzuki Gixxer is a sporty commuter that combines daily usability with aggressive styling. With its refined engine and comfortable ergonomics, it offers a perfect balance of performance and practicality.",
+    "highlights": [
+        "Sporty naked design",
+        "Refined engine",
+        "Comfortable riding position",
+        "Digital instrument cluster",
+        "LED headlamp"
+    ],
+    "pros": [
+        "Excellent fuel efficiency",
+        "Comfortable for daily use",
+        "Low maintenance costs",
+        "Refined engine",
+        "Easy to maneuver"
+    ],
+    "cons": [
+        "Could use more power",
+        "Basic features",
+        "Wind blast at high speeds",
+        "Limited top-end performance",
+        "Basic suspension"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "City riding",
+        "Beginner riders",
+        "Fuel-efficient riding"
+    ],
+    "variants": [
+        "Standard",
+        "ABS"
+    ],
+    "image": "static/images/motorcycles/suzuki-gixxer.jpg"
+}

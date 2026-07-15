@@ -1,0 +1,62 @@
+{
+    "brand": "Yamaha",
+    "brand_slug": "yamaha",
+    "model": "R15 V4",
+    "slug": "yamaha-r15-v4",
+    "engine": "155cc",
+    "power": "18.6 bhp",
+    "torque": "14.1 Nm",
+    "transmission": "6-speed",
+    "type": "Supersport",
+    "fuel_type": "Petrol",
+    "price": "1,80,000",
+    "price_numeric": 180000,
+    "mileage": "46 kmpl",
+    "weight": "141 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Linked-type monocross (Rear)",
+    "tyres": "100/80-17 (Front), 140/70-17 (Rear)",
+    "description": "The Yamaha R15 V4 is the latest iteration of Yamaha's iconic supersport motorcycle, carrying forward the R-DNA with cutting-edge technology. Its variable valve actuation engine, delta box frame, and aerodynamic bodywork make it the benchmark in the 150cc sportbike segment.",
+    "highlights": [
+        "Variable Valve Actuation (VVA)",
+        "Aerodynamic R-series design",
+        "Assist and slipper clutch",
+        "Delta box frame",
+        "Traction control system"
+    ],
+    "pros": [
+        "Track-proven chassis and dynamics",
+        "Excellent high-rev engine character",
+        "Superb handling and cornering",
+        "Premium fit and finish",
+        "Strong resale value"
+    ],
+    "cons": [
+        "Aggressive riding posture",
+        "Pillion seat impractical for daily use",
+        "Premium pricing for 155cc",
+        "Wind blast without accessories",
+        "Service costs higher than rivals"
+    ],
+    "categories": [
+        "Helmet",
+        "Jackets",
+        "Gloves",
+        "Crash Guard",
+        "Phone Mount",
+        "Bike Cover",
+        "Chain Lube"
+    ],
+    "ideal_for": [
+        "Track days",
+        "Sport riding",
+        "Weekend canyon runs",
+        "Young sportbike enthusiasts"
+    ],
+    "variants": [
+        "Standard",
+        "M"
+    ],
+    "image": "static/images/motorcycles/yamaha-r15-v4.jpg"
+}

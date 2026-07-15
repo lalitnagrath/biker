@@ -1,0 +1,13 @@
+{
+    "name": "Raida",
+    "slug": "raida",
+    "founded": 2015,
+    "country": "India",
+    "headquarters": "Pune, Maharashtra",
+    "description": "Raida is an Indian brand offering motorcycle luggage, riding gear, and accessories. Their product lineup includes saddlebags, tank bags, gloves, and other touring essentials designed for Indian conditions. Raida has earned a reputation for producing reliable and affordable touring gear for adventure riders.",
+    "logo": "images/brands/raida.svg",
+    "website": "https://www.raida.co.in",
+    "popular_models": ["raida-phantom-saddlebag", "raida-explorer-tankbag", "raida-trail-gloves", "raida-summit-jacket", "raida-drybag-40l"],
+    "price_range": "₹800 - ₹10,000",
+    "segments": ["Saddlebags", "Tank Bags", "Riding Gloves", "Riding Jackets"]
+}

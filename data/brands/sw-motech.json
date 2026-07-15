@@ -1,0 +1,13 @@
+{
+    "name": "SW-Motech",
+    "slug": "sw-motech",
+    "founded": 1999,
+    "country": "Germany",
+    "headquarters": "Bad Wünnenberg, Germany",
+    "description": "SW-Motech is a German motorcycle accessories manufacturer specializing in luggage systems, crash protection, and ergonomics. Founded in 1999, they produce high-quality tank bags, panniers, engine guards, and foot pegs designed for adventure and touring motorcycles. SW-Motech products are engineered in Germany and are known for their precision fit and durability.",
+    "logo": "images/brands/sw-motech.svg",
+    "website": "https://www.sw-motech.com",
+    "popular_models": ["sw-motech-tank-bag", "sw-motech-crash-bar", "sw-motech-quick-lock-pannier", "sw-motech-foot-pegs", "sw-motech-headlight-guard"],
+    "price_range": "₹2,000 - ₹25,000",
+    "segments": ["Tank Bags", "Crash Guards", "Panniers", "Foot Pegs"]
+}

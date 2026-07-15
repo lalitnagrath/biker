@@ -1,0 +1,62 @@
+{
+    "brand": "Triumph",
+    "brand_slug": "triumph",
+    "model": "Speed 400",
+    "slug": "triumph-speed-400",
+    "engine": "398.15cc",
+    "power": "39.5 bhp",
+    "torque": "37.5 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,33,000",
+    "price_numeric": 233000,
+    "mileage": "30 kmpl",
+    "weight": "176 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The Triumph Speed 400 is a modern roadster that combines British heritage with contemporary performance. With its refined engine and premium build quality, it offers an exhilarating yet refined riding experience.",
+    "highlights": [
+        "398cc liquid-cooled engine",
+        "Premium build quality",
+        "USD front forks",
+        "Digital display",
+        "Ride-by-wire"
+    ],
+    "pros": [
+        "Excellent build quality",
+        "Smooth power delivery",
+        "Comfortable riding position",
+        "Premium components",
+        "Refined engine"
+    ],
+    "cons": [
+        "Premium pricing",
+        "Limited service network",
+        "Could use more features",
+        "Wind blast at speed",
+        "Limited accessories"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Urban commuting",
+        "Weekend rides",
+        "Style-conscious riders",
+        "Premium motorcycle enthusiasts"
+    ],
+    "variants": [
+        "Standard",
+        "Ride"
+    ],
+    "image": "static/images/motorcycles/triumph-speed-400.jpg"
+}

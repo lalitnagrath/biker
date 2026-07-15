@@ -1,0 +1,64 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar N250",
+    "slug": "bajaj-pulsar-n250",
+    "engine": "249cc",
+    "power": "24.5 bhp",
+    "torque": "21.5 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,50,000",
+    "price_numeric": 150000,
+    "mileage": "38 kmpl",
+    "weight": "162 kg",
+    "fuel_capacity": "14 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "100/80-17 (Front), 130/70-17 (Rear)",
+    "description": "The Bajaj Pulsar N250 is a premium naked streetfighter that brings refined performance with its oil-cooled 249cc engine. Featuring a new-gen design and modern tech, it targets riders seeking a blend of power, comfort, and everyday usability.",
+    "highlights": [
+        "Oil-cooled 249cc engine",
+        "Next-gen Pulsar design",
+        "Rear monoshock suspension",
+        "All-digital instrument cluster",
+        "USB charging port"
+    ],
+    "pros": [
+        "Smooth and refined engine",
+        "Comfortable for long rides",
+        "Modern features and design",
+        "Good low-end and mid-range torque",
+        "Excellent value in the 250cc segment"
+    ],
+    "cons": [
+        "Top-end performance is modest",
+        "No liquid cooling",
+        "Slightly heavy for beginners",
+        "Seat could be wider",
+        "Limited accessory ecosystem"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "Highway touring",
+        "Daily commuting",
+        "Weekend rides",
+        "Upgrading from smaller bikes"
+    ],
+    "variants": [
+        "N250 Standard",
+        "N250 ABS"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-n250.jpg"
+}

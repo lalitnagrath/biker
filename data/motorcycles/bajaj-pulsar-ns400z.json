@@ -1,0 +1,63 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar NS400Z",
+    "slug": "bajaj-pulsar-ns400z",
+    "engine": "373cc",
+    "power": "40 bhp",
+    "torque": "35 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,00,000",
+    "price_numeric": 200000,
+    "mileage": "30 kmpl",
+    "weight": "175 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Upside-down Fork (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The Bajaj Pulsar NS400Z is the most powerful Pulsar ever, packing a 373cc engine into a naked streetfighter package. It combines raw performance with modern features like ride-by-wire, traction control, and a full-color TFT display for an unmatched riding experience.",
+    "highlights": [
+        "Most powerful Pulsar ever",
+        "Ride-by-wire throttle",
+        "Traction control system",
+        "Full-color TFT display",
+        "Upside-down front forks"
+    ],
+    "pros": [
+        "Exceptional power-to-weight ratio",
+        "Modern electronics package",
+        "Aggressive and muscular design",
+        "Confidence-inspiring handling",
+        "Excellent braking performance"
+    ],
+    "cons": [
+        "Premium pricing for a Pulsar",
+        "Aggressive stance limits comfort",
+        "Heat management in slow traffic",
+        "Limited touring ability without windscreen",
+        "Higher insurance costs"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "Performance enthusiasts",
+        "Street riding",
+        "Twisty road carving",
+        "Upgrading to 400cc naked"
+    ],
+    "variants": [
+        "NS400Z Standard"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-ns400z.jpg"
+}

@@ -1,0 +1,63 @@
+{
+    "brand": "KTM",
+    "brand_slug": "ktm",
+    "model": "RC 200",
+    "slug": "ktm-rc-200",
+    "engine": "199.5cc",
+    "power": "25 bhp",
+    "torque": "19 Nm",
+    "transmission": "6-speed",
+    "type": "Supersport",
+    "fuel_type": "Petrol",
+    "price": "2,14,000",
+    "price_numeric": 214000,
+    "mileage": "35 kmpl",
+    "weight": "154 kg",
+    "fuel_capacity": "13.7 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The KTM RC 200 is a full-faioled supersport motorcycle that brings track-ready performance to the 200cc segment. With its aerodynamic design and sporty ergonomics, it's built for speed enthusiasts.",
+    "highlights": [
+        "Full-fairing design",
+        "Track-oriented ergonomics",
+        "USD front forks",
+        "Racing-inspired styling",
+        "Aggressive riding position"
+    ],
+    "pros": [
+        "Excellent track performance",
+        "Sharp and responsive handling",
+        "Aerodynamic efficiency",
+        "Premium build quality",
+        "Sporty exhaust note"
+    ],
+    "cons": [
+        "Aggressive riding position",
+        "Wind blast at high speeds",
+        "Higher seat height",
+        "Limited storage",
+        "Firm ride quality"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Track days",
+        "Sporty riding",
+        "Weekend racing",
+        "Performance enthusiasts"
+    ],
+    "variants": [
+        "Standard",
+        "BS6"
+    ],
+    "image": "static/images/motorcycles/ktm-rc-200.jpg"
+}

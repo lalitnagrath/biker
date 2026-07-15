@@ -1,0 +1,62 @@
+{
+    "brand": "Hero MotoCorp",
+    "brand_slug": "hero",
+    "model": "Xtreme 160R 4V",
+    "slug": "hero-xtreme-160r-4v",
+    "engine": "163.2cc",
+    "power": "16.9 bhp",
+    "torque": "14.6 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,10,000",
+    "price_numeric": 110000,
+    "mileage": "48 kmpl",
+    "weight": "144 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Mono-shock (Rear)",
+    "tyres": "100/80-17 (Front), 130/70-17 (Rear)",
+    "description": "The Hero Xtreme 160R 4V is a sporty naked motorcycle that combines bold design with a refined 4-valve engine. With its sharp handling, lightweight chassis, and modern features, it delivers an engaging and confident ride for the urban enthusiast.",
+    "highlights": [
+        "4-valve engine for better breathing",
+        "Aggressive streetfighter design",
+        "Fully digital instrument cluster",
+        "LED lighting all around",
+        "Assist and slipper clutch"
+    ],
+    "pros": [
+        "Sharp and responsive handling",
+        "Good low to mid-range performance",
+        "Lightweight and agile in traffic",
+        "Modern features and design",
+        "Comfortable riding position"
+    ],
+    "cons": [
+        "Top-end performance modest",
+        "Wind blast at highway speeds",
+        "Limited brand cachet against rivals",
+        "Pillion seat space tight",
+        "No ride modes"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Gloves",
+        "Tyre Inflator"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "College students",
+        "City riding",
+        "Entry-level sport riding"
+    ],
+    "variants": [
+        "Standard",
+        "Pro"
+    ],
+    "image": "static/images/motorcycles/hero-xtreme-160r-4v.jpg"
+}

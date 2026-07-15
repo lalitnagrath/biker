@@ -1,0 +1,64 @@
+{
+    "brand": "KTM",
+    "brand_slug": "ktm",
+    "model": "390 Duke",
+    "slug": "ktm-390-duke",
+    "engine": "373.3cc",
+    "power": "43 bhp",
+    "torque": "37 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,95,000",
+    "price_numeric": 295000,
+    "mileage": "28 kmpl",
+    "weight": "169 kg",
+    "fuel_capacity": "13.4 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The KTM 390 Duke is the ultimate naked streetfighter in its class. With a powerful engine, cutting-edge electronics, and track-focused performance, it redefines what a sub-400cc motorcycle can do.",
+    "highlights": [
+        "43 bhp power output",
+        "Cornering ABS",
+        "TFT color display",
+        "Quickshifter",
+        "Lean-angle sensors"
+    ],
+    "pros": [
+        "Best-in-class power",
+        "Track-ready performance",
+        "Advanced electronics",
+        "Excellent braking",
+        "Premium components"
+    ],
+    "cons": [
+        "Stiff ride quality",
+        "Gets hot in traffic",
+        "Expensive maintenance",
+        "Seat comfort could improve",
+        "Wind blast at highway speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Performance riding",
+        "Track days",
+        "Weekend canyon carving",
+        "Enthusiast riders"
+    ],
+    "variants": [
+        "Standard",
+        "RP",
+        "BS6"
+    ],
+    "image": "static/images/motorcycles/ktm-390-duke.jpg"
+}

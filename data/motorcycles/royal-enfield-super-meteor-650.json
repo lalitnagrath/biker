@@ -1,0 +1,67 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Super Meteor 650",
+    "slug": "royal-enfield-super-meteor-650",
+    "engine": "648cc",
+    "power": "47 bhp",
+    "torque": "52 Nm",
+    "transmission": "6-speed",
+    "type": "Cruiser",
+    "fuel_type": "Petrol",
+    "price": "3,50,000",
+    "price_numeric": 350000,
+    "mileage": "24 kmpl",
+    "weight": "241 kg",
+    "fuel_capacity": "15.7 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD Fork (Front), Twin shock absorbers (Rear)",
+    "tyres": "100/90-19 (Front), 150/80-16 (Rear)",
+    "description": "The Royal Enfield Super Meteor 650 is a full-size cruiser built for effortless long-distance touring with maximum comfort. Featuring a low seat height, forward-set footpegs, and the proven 648cc twin, it is designed to eat up miles on the highway.",
+    "highlights": [
+        "Low cruiser seat height",
+        "Forward-set footpegs",
+        "USD front forks",
+        "Tripper navigation pod",
+        "15.7L fuel tank"
+    ],
+    "pros": [
+        "Exceptional highway comfort",
+        "Stable high-speed cruising",
+        "Torquey twin-cylinder engine",
+        "Premium build and fit-finish",
+        "Excellent touring range"
+    ],
+    "cons": [
+        "Very heavy at 241 kg",
+        "Difficult to maneuver in city",
+        "Expensive for the segment",
+        "Limited cornering clearance",
+        "Requires experienced rider"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Saddle Bag",
+        "Engine Oil",
+        "Chain Cleaner"
+    ],
+    "ideal_for": [
+        "Highway touring",
+        "Long-distance cruising",
+        "Two-up touring",
+        "Comfort-oriented riders"
+    ],
+    "variants": [
+        "Astral",
+        "Interstellar",
+        "Celebration"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-super-meteor-650.jpg"
+}

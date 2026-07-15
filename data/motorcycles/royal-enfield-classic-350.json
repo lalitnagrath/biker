@@ -1,0 +1,65 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Classic 350",
+    "slug": "royal-enfield-classic-350",
+    "engine": "349cc",
+    "power": "20.2 bhp",
+    "torque": "27 Nm",
+    "transmission": "5-speed",
+    "type": "Retro Classic",
+    "fuel_type": "Petrol",
+    "price": "2,00,000",
+    "price_numeric": 200000,
+    "mileage": "36 kmpl",
+    "weight": "195 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "100/90-19 (Front), 120/80-18 (Rear)",
+    "description": "The Royal Enfield Classic 350 carries forward the iconic design language that defined an era of motorcycling in India. Built on the modern J-platform engine, it blends timeless retro aesthetics with refined performance for a nostalgic yet capable ride.",
+    "highlights": [
+        "Iconic retro design",
+        "New J-series engine",
+        "Dual-channel ABS",
+        "Comfortable touring seat",
+        "Tripper navigation display"
+    ],
+    "pros": [
+        "Timeless classic styling",
+        "Smooth and refined engine",
+        "Comfortable upright seating",
+        "Strong resale value",
+        "Excellent build quality"
+    ],
+    "cons": [
+        "Heavy for city traffic",
+        "Slight vibrations at high RPM",
+        "Basic instrument cluster on base variants",
+        "Limited ground clearance",
+        "Narrow tyres for the segment"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Retro enthusiasts",
+        "Daily commuting",
+        "Weekend cruising",
+        "Heritage lovers"
+    ],
+    "variants": [
+        "Halcyon",
+        "Signals",
+        "Dark",
+        "Reborn"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-classic-350.jpg"
+}

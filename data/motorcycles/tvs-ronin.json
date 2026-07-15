@@ -1,0 +1,62 @@
+{
+    "brand": "TVS",
+    "brand_slug": "tvs",
+    "model": "Ronin",
+    "slug": "tvs-ronin",
+    "engine": "225.9cc",
+    "power": "20.4 bhp",
+    "torque": "19.9 Nm",
+    "transmission": "5-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "1,70,000",
+    "price_numeric": 170000,
+    "mileage": "42 kmpl",
+    "weight": "162 kg",
+    "fuel_capacity": "14 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Dual shock absorbers (Rear)",
+    "tyres": "100/90-17 (Front), 120/80-17 (Rear)",
+    "description": "The TVS Ronin is a modern-retro roadster that celebrates the spirit of motorcycle culture. With its distinctive styling, comfortable ergonomics, and versatile performance, it is designed for riders who appreciate timeless design and everyday practicality.",
+    "highlights": [
+        "Unique retro-modern design",
+        "All-LED lighting",
+        "SmartXonnect Bluetooth",
+        "Dual-disc brakes with ABS",
+        "Wide handlebar for upright riding"
+    ],
+    "pros": [
+        "Comfortable and relaxed riding posture",
+        "Torquey engine for effortless city riding",
+        "Distinctive head-turning design",
+        "Good fuel efficiency",
+        "Well-damped suspension"
+    ],
+    "cons": [
+        "Not suited for aggressive riding",
+        "Lacks outright top-end performance",
+        "Limited aftermarket accessories",
+        "Pillion seat average comfort",
+        "Some may find it underpowered"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Gloves",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "Relaxed cruising",
+        "Daily commuting",
+        "Cafe hopping",
+        "Weekend leisure rides"
+    ],
+    "variants": [
+        "Single Channel ABS",
+        "Dual Channel ABS"
+    ],
+    "image": "static/images/motorcycles/tvs-ronin.jpg"
+}

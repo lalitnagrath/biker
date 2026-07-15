@@ -1,0 +1,62 @@
+{
+    "brand": "Hero MotoCorp",
+    "brand_slug": "hero",
+    "model": "Splendor+",
+    "slug": "hero-splendor-plus",
+    "engine": "97.2cc",
+    "power": "8.02 bhp",
+    "torque": "8.05 Nm",
+    "transmission": "4-speed",
+    "type": "Commuter",
+    "fuel_type": "Petrol",
+    "price": "75,000",
+    "price_numeric": 75000,
+    "mileage": "65 kmpl",
+    "weight": "112 kg",
+    "fuel_capacity": "9.8 liters",
+    "brakes": "Drum (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Swingarm with 2-step adjustable hydraulic shock absorbers (Rear)",
+    "tyres": "2.75-18 (Front), 2.75-18 (Rear)",
+    "description": "The Hero Splendor+ is India's best-selling motorcycle and the undisputed king of commuters. Known for its bulletproof reliability, exceptional mileage, and low maintenance costs, it has been the trusted choice of millions of Indian families for decades.",
+    "highlights": [
+        "i3S start-stop technology",
+        "Exceptional fuel economy",
+        "Legendary reliability",
+        "Low maintenance costs",
+        "Wide service network"
+    ],
+    "pros": [
+        "Industry-leading fuel efficiency",
+        "Extremely low maintenance",
+        "Comfortable for daily use",
+        "Strong resale value",
+        "Ubiquitous service availability"
+    ],
+    "cons": [
+        "Basic features and design",
+        "Not suited for highway rides",
+        "Limited performance",
+        "No disc brake option",
+        "Dated styling"
+    ],
+    "categories": [
+        "Helmet",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Chain Cleaner"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "Family use",
+        "Rural riding",
+        "Budget-conscious buyers"
+    ],
+    "variants": [
+        "Kick Drum Spoke",
+        "Self Drum Spoke",
+        "Self Drum Alloy",
+        "Self Disc Alloy"
+    ],
+    "image": "static/images/motorcycles/hero-splendor-plus.jpg"
+}

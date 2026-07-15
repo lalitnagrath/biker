@@ -1,0 +1,61 @@
+{
+    "brand": "Yamaha",
+    "brand_slug": "yamaha",
+    "model": "FZ-S Fi",
+    "slug": "yamaha-fz-s-fi",
+    "engine": "149cc",
+    "power": "12.4 bhp",
+    "torque": "13.3 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,20,000",
+    "price_numeric": 120000,
+    "mileage": "50 kmpl",
+    "weight": "135 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Monocross (Rear)",
+    "tyres": "100/80-17 (Front), 140/60-17 (Rear)",
+    "description": "The Yamaha FZ-S Fi is a muscular street naked designed for the style-conscious urban rider. With its fuel-injected engine, bold design language, and comfortable ergonomics, it offers a balanced and refined riding experience for everyday use.",
+    "highlights": [
+        "Fuel-injected engine",
+        "Muscular tank design",
+        "LED headlamp",
+        "Single-channel ABS",
+        "Side stand engine cut-off"
+    ],
+    "pros": [
+        "Refined and smooth engine",
+        "Excellent fuel economy",
+        "Comfortable for daily commute",
+        "Bold and masculine styling",
+        "Low maintenance costs"
+    ],
+    "cons": [
+        "Lacks outright performance",
+        "Drum rear brake not confidence-inspiring",
+        "Suspension setup slightly stiff",
+        "No ride modes or connected features",
+        "Seat comfort on long rides average"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "City riding",
+        "College commute",
+        "Short rides"
+    ],
+    "variants": [
+        "Standard",
+        "Dark"
+    ],
+    "image": "static/images/motorcycles/yamaha-fz-s-fi.jpg"
+}

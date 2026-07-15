@@ -1,0 +1,62 @@
+{
+    "brand": "TVS",
+    "brand_slug": "tvs",
+    "model": "Apache RR 310",
+    "slug": "tvs-apache-rr-310",
+    "engine": "312.2cc",
+    "power": "34 bhp",
+    "torque": "27.3 Nm",
+    "transmission": "6-speed",
+    "type": "Supersport",
+    "fuel_type": "Petrol",
+    "price": "2,70,000",
+    "price_numeric": 270000,
+    "mileage": "29 kmpl",
+    "weight": "174 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Aluminium swingarm with mono-shock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The TVS Apache RR 310 is a full-faired supersport motorcycle born from the TVS-BMW partnership. With its race-bred chassis, aerodynamic fairing, and potent engine, it delivers track-worthy performance with everyday usability for the aspiring sport rider.",
+    "highlights": [
+        "BMW co-developed 312cc engine",
+        "Full aero fairing design",
+        "Aerodynamic windscreen",
+        "Race-tuned exhaust",
+        "Clip-on handlebars"
+    ],
+    "pros": [
+        "Thrilling top-end performance",
+        "Stable and planted at high speeds",
+        "Track-capable chassis",
+        "Aggressive supersport styling",
+        "Well-integrated windscreen"
+    ],
+    "cons": [
+        "Aggressive riding posture not for everyone",
+        "Aggressive riding posture tiring in traffic",
+        "Heat management in slow traffic",
+        "Expensive maintenance",
+        "Limited ground clearance"
+    ],
+    "categories": [
+        "Helmet",
+        "Jackets",
+        "Gloves",
+        "Crash Guard",
+        "Phone Mount",
+        "Bike Cover",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Track days",
+        "Highway blasting",
+        "Weekend sport rides",
+        "Performance enthusiasts"
+    ],
+    "variants": [
+        "Standard",
+        "TTK"
+    ],
+    "image": "static/images/motorcycles/tvs-apache-rr-310.jpg"
+}

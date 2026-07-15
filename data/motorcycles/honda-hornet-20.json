@@ -1,0 +1,62 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "Hornet 2.0",
+    "slug": "honda-hornet-20",
+    "engine": "184cc",
+    "power": "17.3 bhp",
+    "torque": "16.1 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,35,000",
+    "price_numeric": 135000,
+    "mileage": "45 kmpl",
+    "weight": "142 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Upside Down Fork (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
+    "description": "The Honda Hornet 2.0 is a sporty naked motorcycle designed for riders who want aggressive styling and spirited performance. With its sharp design, USD front forks, and punchy engine, it delivers an exciting riding experience in the sub-200cc segment.",
+    "highlights": [
+        "Upside down front forks",
+        "X-shaped LED tail lamp",
+        "Fully digital instrument cluster",
+        "Aggressive streetfighter styling",
+        "Assist and slipper clutch"
+    ],
+    "pros": [
+        "Sharp and muscular design",
+        "Sporty handling dynamics",
+        "Good low-end torque",
+        "LED lighting all around",
+        "Comfortable city riding"
+    ],
+    "cons": [
+        "Vibrations at high RPM",
+        "No rear tyre hugger",
+        "Limited top-end power",
+        "Basic seat padding",
+        "Wind blast at highway speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Phone Mount",
+        "Bike Cover",
+        "Gloves",
+        "Chain Lube",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "City riding",
+        "College students",
+        "Spirited weekend rides",
+        "Sporty commuters"
+    ],
+    "variants": [
+        "Standard",
+        "Pearl Igneous Black"
+    ],
+    "image": "static/images/motorcycles/honda-hornet-20.jpg"
+}

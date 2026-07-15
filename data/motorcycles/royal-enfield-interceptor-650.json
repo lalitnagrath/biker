@@ -1,0 +1,68 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Interceptor 650",
+    "slug": "royal-enfield-interceptor-650",
+    "engine": "648cc",
+    "power": "47 bhp",
+    "torque": "52 Nm",
+    "transmission": "6-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "3,00,000",
+    "price_numeric": 300000,
+    "mileage": "25 kmpl",
+    "weight": "202 kg",
+    "fuel_capacity": "13.7 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "100/90-18 (Front), 130/70-18 (Rear)",
+    "description": "The Royal Enfield Interceptor 650 is a twin-cylinder roadster that revived Royal Enfield's global presence with its accessible performance and classic 1960s California aesthetic. Its parallel-twin engine offers smooth power delivery and a refined riding experience.",
+    "highlights": [
+        "648cc parallel-twin engine",
+        "Classic 1960s styling",
+        "Slipper clutch",
+        "Dual-channel ABS",
+        "Comfortable roadster ergonomics"
+    ],
+    "pros": [
+        "Smooth twin-cylinder power",
+        "Timeless roadster design",
+        "Great value for a twin-cylinder",
+        "Comfortable for long rides",
+        "Strong aftermarket support"
+    ],
+    "cons": [
+        "Slightly heavy for beginners",
+        "No wind protection",
+        "Basic instrument cluster",
+        "Heats up in heavy traffic",
+        "Limited electronics"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Saddle Bag",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Weekend touring",
+        "Highway cruising",
+        "City riding",
+        "Retro roadster enthusiasts"
+    ],
+    "variants": [
+        "Banana Yellow",
+        "Orange Crush",
+        "Ravine Red",
+        "Silver Spectre",
+        "Park Avenue"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-interceptor-650.jpg"
+}

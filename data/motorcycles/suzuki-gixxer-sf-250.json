@@ -1,0 +1,63 @@
+{
+    "brand": "Suzuki",
+    "brand_slug": "suzuki",
+    "model": "Gixxer SF 250",
+    "slug": "suzuki-gixxer-sf-250",
+    "engine": "249cc",
+    "power": "26.5 bhp",
+    "torque": "22.2 Nm",
+    "transmission": "6-speed",
+    "type": "Supersport",
+    "fuel_type": "Petrol",
+    "price": "1,95,000",
+    "price_numeric": 195000,
+    "mileage": "33 kmpl",
+    "weight": "161 kg",
+    "fuel_capacity": "12.5 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
+    "description": "The Suzuki Gixxer SF 250 is a fully-faired sport motorcycle that combines style with performance. With its aerodynamic design and refined engine, it's perfect for riders who want a sporty yet comfortable ride.",
+    "highlights": [
+        "Full-fairing design",
+        "Aerodynamic styling",
+        "Oil-cooled engine",
+        "LED lighting",
+        "Sporty ergonomics"
+    ],
+    "pros": [
+        "Excellent aerodynamics",
+        "Smooth power delivery",
+        "Good wind protection",
+        "Refined engine",
+        "Comfortable sport touring"
+    ],
+    "cons": [
+        "Could use more power",
+        "Basic electronics",
+        "Limited storage",
+        "Wind blast without screen",
+        "Conservative styling"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Sport touring",
+        "Highway riding",
+        "Commuting",
+        "Weekend sport rides"
+    ],
+    "variants": [
+        "Standard",
+        "ABS"
+    ],
+    "image": "static/images/motorcycles/suzuki-gixxer-sf-250.jpg"
+}

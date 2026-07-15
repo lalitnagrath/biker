@@ -1,0 +1,63 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "Dio",
+    "slug": "honda-dio",
+    "engine": "110cc",
+    "power": "7.65 bhp",
+    "torque": "9 Nm",
+    "transmission": "CVT",
+    "type": "Scooter",
+    "fuel_type": "Petrol",
+    "price": "70,000",
+    "price_numeric": 70000,
+    "mileage": "55 kmpl",
+    "weight": "104 kg",
+    "fuel_capacity": "5.3 liters",
+    "brakes": "Drum (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Spring loaded hydraulic (Rear)",
+    "tyres": "90/100-10 (Front), 90/100-10 (Rear)",
+    "description": "The Honda Dio is a sporty and compact scooter designed for young urban riders. With its sharp styling, lightweight frame, and peppy engine, it offers effortless manoeuvrability and hassle-free daily commuting.",
+    "highlights": [
+        "Sporty and youthful design",
+        "LED headlamp",
+        "Combi-braking system",
+        "External fuel filler",
+        "Under-seat storage"
+    ],
+    "pros": [
+        "Lightweight and easy to handle",
+        "Peppy engine for city use",
+        "Stylish and sporty appearance",
+        "Good fuel efficiency",
+        "Compact and easy to park"
+    ],
+    "cons": [
+        "Small wheel size limits stability",
+        "No disc brake option",
+        "Limited under-seat storage",
+        "Basic instrument cluster",
+        "Not suitable for highway use"
+    ],
+    "categories": [
+        "Helmet",
+        "Scooter Cover",
+        "Mobile Holder",
+        "Lock",
+        "Floor Mat",
+        "Gloves",
+        "Rain Cover"
+    ],
+    "ideal_for": [
+        "College students",
+        "Short city commutes",
+        "Market errands",
+        "First-time scooter buyers"
+    ],
+    "variants": [
+        "Standard",
+        "Smart",
+        "Smart Deluxe"
+    ],
+    "image": "static/images/motorcycles/honda-dio.jpg"
+}

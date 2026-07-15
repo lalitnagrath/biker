@@ -1,0 +1,62 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar N160",
+    "slug": "bajaj-pulsar-n160",
+    "engine": "160cc",
+    "power": "16 bhp",
+    "torque": "14.65 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,20,000",
+    "price_numeric": 120000,
+    "mileage": "48 kmpl",
+    "weight": "147 kg",
+    "fuel_capacity": "14 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "90/90-17 (Front), 120/80-17 (Rear)",
+    "description": "The Bajaj Pulsar N160 is a modern commuter streetfighter with the new Pulsar design language. It delivers a refined ride with impressive fuel efficiency, making it ideal for riders who want a stylish daily motorcycle without burning a hole in their pocket.",
+    "highlights": [
+        "New-gen Pulsar styling",
+        "Refined 160cc engine",
+        "Monoshock rear suspension",
+        "Long 14-liter fuel tank",
+        "Digital instrument console"
+    ],
+    "pros": [
+        "Excellent fuel economy",
+        "Lightweight and nimble",
+        "Comfortable seat and ergonomics",
+        "Modern styling at an affordable price",
+        "Good low-end torque for city riding"
+    ],
+    "cons": [
+        "Lacks high-speed refinement",
+        "Drum rear brake could be better",
+        "No liquid or oil cooling",
+        "Basic switchgear quality",
+        "Wind blast at highway speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Daily office commute",
+        "City riding",
+        "Budget-conscious buyers",
+        "First motorcycle purchase"
+    ],
+    "variants": [
+        "N160 Standard",
+        "N160 ABS"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-n160.jpg"
+}

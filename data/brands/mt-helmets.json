@@ -1,0 +1,13 @@
+{
+    "name": "MT Helmets",
+    "slug": "mt-helmets",
+    "founded": 1968,
+    "country": "Spain",
+    "headquarters": "Barcelona, Spain",
+    "description": "MT Helmets is a Spanish helmet manufacturer with over 50 years of experience in producing motorcycle safety gear. The company offers a comprehensive range of helmets from budget-friendly options to premium models with advanced features. MT Helmets are ECE certified and exported to more than 70 countries, combining European design with accessible pricing.",
+    "logo": "images/brands/mt-helmets.svg",
+    "website": "https://www.mthelmets.com",
+    "popular_models": ["mt-helmets-thunder-full-face", "mt-helmets-stinger-full-face", "mt-helmets-blade-full-face", "mt-helmets-strap-open-face", "mt-helmets-stream-full-face"],
+    "price_range": "₹3,000 - ₹12,000",
+    "segments": ["Full Face Helmets", "Open Face Helmets", "Modular Helmets"]
+}

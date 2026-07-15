@@ -1,0 +1,62 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar NS160",
+    "slug": "bajaj-pulsar-ns160",
+    "engine": "160cc",
+    "power": "17.2 bhp",
+    "torque": "14.6 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,15,000",
+    "price_numeric": 115000,
+    "mileage": "45 kmpl",
+    "weight": "148 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "90/90-17 (Front), 120/80-17 (Rear)",
+    "description": "The Bajaj Pulsar NS160 combines the aggressive streetfighter DNA of the NS family with a refined 160cc engine. It offers a perfect balance of performance and efficiency for riders who want style without compromising on mileage.",
+    "highlights": [
+        "Refined 160cc DTS-i engine",
+        "Aggressive NS design language",
+        "Monoshock rear suspension",
+        "Adequate power for daily use",
+        "Excellent fuel efficiency"
+    ],
+    "pros": [
+        "Great balance of power and mileage",
+        "Lightweight and easy to maneuver",
+        "Comfortable riding posture",
+        "Stylish streetfighter looks",
+        "Low maintenance costs"
+    ],
+    "cons": [
+        "Not as powerful as NS200",
+        "Drum brake on rear feels inadequate",
+        "Average build quality in some parts",
+        "Limited high-speed stability",
+        "Basic instrument cluster"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Daily city commuting",
+        "College students",
+        "Budget performance seekers",
+        "First-time sportbike buyers"
+    ],
+    "variants": [
+        "NS160 Standard",
+        "NS160 ABS"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-ns160.jpg"
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Rynox",
+    "slug": "rynox",
+    "founded": 2012,
+    "country": "India",
+    "headquarters": "Mumbai, Maharashtra",
+    "description": "Rynox is a leading Indian brand specializing in premium motorcycle riding gear. They offer a wide range of jackets, gloves, boots, and pants designed for both touring and adventure riders. Known for their CE-rated protection and value-for-money proposition, Rynox has become a trusted name among Indian motorcyclists.",
+    "logo": "images/brands/rynox.svg",
+    "website": "https://www.rynoxgears.com",
+    "popular_models": ["rynox-air-mesh-jacket", "rynox-rapier-jacket", "rynox-storm-gloves", "rynox-terrain-gloves", "rynox-commander-pants"],
+    "price_range": "₹1,500 - ₹15,000",
+    "segments": ["Riding Jackets", "Riding Gloves", "Riding Boots", "Riding Pants"]
+}

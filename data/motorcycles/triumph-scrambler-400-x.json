@@ -1,0 +1,63 @@
+{
+    "brand": "Triumph",
+    "brand_slug": "triumph",
+    "model": "Scrambler 400 X",
+    "slug": "triumph-scrambler-400-x",
+    "engine": "398.15cc",
+    "power": "39.5 bhp",
+    "torque": "37.5 Nm",
+    "transmission": "6-speed",
+    "type": "Scrambler",
+    "fuel_type": "Petrol",
+    "price": "2,63,000",
+    "price_numeric": 263000,
+    "mileage": "28 kmpl",
+    "weight": "185 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "100/90-19 (Front), 140/80-17 (Rear)",
+    "description": "The Triumph Scrambler 400 X is a rugged scrambler designed for both on-road and light off-road adventures. With its distinctive styling and capable suspension, it's built for riders who want versatility with character.",
+    "highlights": [
+        "Scrambler styling",
+        "Off-road capable suspension",
+        "19-inch front wheel",
+        "Wide handlebars",
+        "Digital display"
+    ],
+    "pros": [
+        "Versatile for all terrains",
+        "Distinctive styling",
+        "Good ground clearance",
+        "Comfortable upright position",
+        "Premium build quality"
+    ],
+    "cons": [
+        "Heavier than road bikes",
+        "Stiff ride on tarmac",
+        "Limited wind protection",
+        "Premium pricing",
+        "Limited service network"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Scrambling",
+        "Light off-road",
+        "Urban adventure",
+        "Style-conscious riders"
+    ],
+    "variants": [
+        "Standard"
+    ],
+    "image": "static/images/motorcycles/triumph-scrambler-400-x.jpg"
+}

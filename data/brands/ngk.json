@@ -1,0 +1,13 @@
+{
+    "name": "NGK",
+    "slug": "ngk",
+    "founded": 1936,
+    "country": "Japan",
+    "headquarters": "Nagoya, Japan",
+    "description": "NGK Spark Plugs Co., Ltd. is a Japanese company and the world's largest manufacturer of spark plugs. Founded in 1936, NGK supplies OEM spark plugs to major motorcycle manufacturers globally. Their iridium and platinum spark plugs are popular among riders seeking improved engine performance and fuel efficiency.",
+    "logo": "images/brands/ngk.svg",
+    "website": "https://www.ngk.com",
+    "popular_models": ["ngk-iridium-ix-cr9e", "ngk-standard-cr7h", "ngk-iridium-cpr8ea", "ngk-racing-laser-iridium", "ngk-surface-spark"],
+    "price_range": "₹100 - ₹1,500",
+    "segments": ["Spark Plugs", "Ignition Coils", "Oxygen Sensors"]
+}

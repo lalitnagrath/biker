@@ -1,0 +1,13 @@
+{
+    "name": "Viaterra",
+    "slug": "viaterra",
+    "founded": 2013,
+    "country": "India",
+    "headquarters": "Bengaluru, Karnataka",
+    "description": "Viaterra is an Indian motorcycle luggage and accessories brand focused on adventure touring. They design and manufacture saddlebags, tank bags, tail bags, and other luggage solutions specifically for Indian motorcycles. Viaterra products are known for their durability, waterproofing, and thoughtful design for long-distance touring.",
+    "logo": "images/brands/viaterra.svg",
+    "website": "https://www.viaterragears.com",
+    "popular_models": ["viaterra-hays-saddlebag", "viaterra-kriega-saddlebag", "viaterra-burton-tankbag", "viaterra-slingshot-tailbag", "viaterra-royal-drybag"],
+    "price_range": "₹1,500 - ₹12,000",
+    "segments": ["Saddlebags", "Tank Bags", "Tail Bags", "Dry Bags"]
+}

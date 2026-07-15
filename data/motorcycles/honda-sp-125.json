@@ -1,0 +1,62 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "SP 125",
+    "slug": "honda-sp-125",
+    "engine": "124cc",
+    "power": "10.7 bhp",
+    "torque": "10.9 Nm",
+    "transmission": "5-speed",
+    "type": "Commuter",
+    "fuel_type": "Petrol",
+    "price": "85,000",
+    "price_numeric": 85000,
+    "mileage": "65 kmpl",
+    "weight": "116 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Hydraulic (Rear)",
+    "tyres": "80/100-18 (Front), 100/80-18 (Rear)",
+    "description": "The Honda SP 125 is a premium commuter motorcycle designed for daily riders who want efficiency without compromising on style. With its advanced engine technology and modern features, it sets a new benchmark in the 125cc commuter segment.",
+    "highlights": [
+        "Programmed Fuel Injection",
+        "Fully digital instrument cluster",
+        "LED headlamp",
+        "ESG-start-stop system",
+        "Chrome accents and sporty design"
+    ],
+    "pros": [
+        "Excellent fuel efficiency",
+        "Smooth and refined engine",
+        "Lightweight and easy to manoeuvre",
+        "Modern features for its class",
+        "Low maintenance costs"
+    ],
+    "cons": [
+        "Limited power for highway use",
+        "Basic rear suspension",
+        "Small fuel tank capacity",
+        "No rear disc brake as standard",
+        "Wind blast at higher speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Bike Cover",
+        "Chain Lube",
+        "Lock",
+        "Mobile Holder",
+        "Gloves",
+        "Tool Kit"
+    ],
+    "ideal_for": [
+        "Daily office commute",
+        "City errands",
+        "Student riders",
+        "Budget-conscious buyers"
+    ],
+    "variants": [
+        "Drum",
+        "Disc"
+    ],
+    "image": "static/images/motorcycles/honda-sp-125.jpg"
+}

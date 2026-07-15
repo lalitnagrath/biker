@@ -1,0 +1,62 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "CB350",
+    "slug": "honda-cb350",
+    "engine": "348cc",
+    "power": "20.8 bhp",
+    "torque": "30 Nm",
+    "transmission": "5-speed",
+    "type": "Retro Classic",
+    "fuel_type": "Petrol",
+    "price": "2,00,000",
+    "price_numeric": 200000,
+    "mileage": "40 kmpl",
+    "weight": "184 kg",
+    "fuel_capacity": "15 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin hydraulic (Rear)",
+    "tyres": "100/90-19 (Front), 150/60-17 (Rear)",
+    "description": "The Honda CB350 carries forward the legacy of classic Honda motorcycles with a modern twist. Featuring a refined long-stroke engine and premium hardware, it delivers a relaxed and enjoyable riding experience for both city and highway use.",
+    "highlights": [
+        "Honda Selectable Torque Control",
+        "Retro-modern design language",
+        "Full LED headlamp",
+        "Assist and slipper clutch",
+        "Eco and Sport riding modes"
+    ],
+    "pros": [
+        "Refined and torquey engine",
+        "Comfortable ergonomics",
+        "Superior fit and finish",
+        "Strong low-end and mid-range",
+        "Excellent fuel efficiency"
+    ],
+    "cons": [
+        "Limited top-end performance",
+        "Could be lighter",
+        "Conservative design",
+        "Limited colour options",
+        "Slightly premium pricing"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Tail Bag",
+        "Bike Cover",
+        "Chain Lube",
+        "Gloves",
+        "Phone Mount"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "Weekend cruising",
+        "Highway touring",
+        "Retro bike enthusiasts"
+    ],
+    "variants": [
+        "Standard",
+        "Vintage"
+    ],
+    "image": "static/images/motorcycles/honda-cb350.jpg"
+}

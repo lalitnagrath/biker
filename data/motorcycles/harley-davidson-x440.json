@@ -1,0 +1,63 @@
+{
+    "brand": "Harley-Davidson",
+    "brand_slug": "harley-davidson",
+    "model": "X440",
+    "slug": "harley-davidson-x440",
+    "engine": "440cc",
+    "power": "27 bhp",
+    "torque": "38 Nm",
+    "transmission": "6-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "2,39,000",
+    "price_numeric": 239000,
+    "mileage": "28 kmpl",
+    "weight": "190 kg",
+    "fuel_capacity": "13.5 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "100/90-19 (Front), 140/70-17 (Rear)",
+    "description": "The Harley-Davidson X440 is a modern roadster that brings the iconic Harley DNA to the Indian market. With its torquey engine and unmistakable styling, it delivers a authentic American motorcycle experience.",
+    "highlights": [
+        "Harley-Davidson DNA",
+        "Torquey engine",
+        "Premium build quality",
+        "Distinctive styling",
+        "Modern electronics"
+    ],
+    "pros": [
+        "Iconic brand appeal",
+        "Strong low-end torque",
+        "Comfortable ergonomics",
+        "Premium components",
+        "Good ground clearance"
+    ],
+    "cons": [
+        "Heavy weight",
+        "Premium pricing",
+        "Limited service network",
+        "Wind blast at speed",
+        "Could use more power"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Urban cruising",
+        "Brand enthusiasts",
+        "Weekend rides",
+        "Style-conscious riders"
+    ],
+    "variants": [
+        "Standard",
+        "Denim"
+    ],
+    "image": "static/images/motorcycles/harley-davidson-x440.jpg"
+}

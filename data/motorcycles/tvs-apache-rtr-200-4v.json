@@ -1,0 +1,63 @@
+{
+    "brand": "TVS",
+    "brand_slug": "tvs",
+    "model": "Apache RTR 200 4V",
+    "slug": "tvs-apache-rtr-200-4v",
+    "engine": "197.75cc",
+    "power": "20.8 bhp",
+    "torque": "17.25 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,40,000",
+    "price_numeric": 140000,
+    "mileage": "40 kmpl",
+    "weight": "154 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Mono-shock (Rear)",
+    "tyres": "90/90-17 (Front), 130/70-17 (Rear)",
+    "description": "The TVS Apache RTR 200 4V is a premium naked street bike that offers a perfect blend of performance and practicality. Equipped with race-derived technology and multiple ride modes, it delivers an exhilarating riding experience with confidence-inspiring handling.",
+    "highlights": [
+        "Three ride modes (Rain, Road, Sport)",
+        "Race-derived 4-valve engine",
+        "Adjustable rear suspension",
+        "SmartXonnect Bluetooth console",
+        "A-RT slipper clutch"
+    ],
+    "pros": [
+        "Versatile ride modes for different conditions",
+        "Strong mid-range performance",
+        "Well-balanced chassis",
+        "Good braking with dual discs",
+        "Connected features via app"
+    ],
+    "cons": [
+        "Seat comfort on long rides average",
+        "Engine can feel strained at top end",
+        "No ABS as standard on base variant",
+        "Rear suspension can be bouncy solo",
+        "Styling polarizing for some"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Enthusiast commuting",
+        "Weekend canyon carving",
+        "Highway touring",
+        "College campuses"
+    ],
+    "variants": [
+        "Single Channel ABS",
+        "Dual Channel ABS",
+        "Race Edition"
+    ],
+    "image": "static/images/motorcycles/tvs-apache-rtr-200-4v.jpg"
+}

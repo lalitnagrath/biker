@@ -1,0 +1,61 @@
+{
+    "brand": "Hero MotoCorp",
+    "brand_slug": "hero",
+    "model": "Karizma XMR",
+    "slug": "hero-karizma-xmr",
+    "engine": "210cc",
+    "power": "25.5 bhp",
+    "torque": "20.4 Nm",
+    "transmission": "6-speed",
+    "type": "Supersport",
+    "fuel_type": "Petrol",
+    "price": "1,80,000",
+    "price_numeric": 180000,
+    "mileage": "38 kmpl",
+    "weight": "163 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "100/80-17 (Front), 140/70-17 (Rear)",
+    "description": "The Hero Karizma XMR revives an iconic nameplate as a full-faired supersport motorcycle built for speed enthusiasts. With a liquid-cooled 210cc engine, aerodynamic fairing, and race-bred components, it promises an adrenaline-fueled riding experience.",
+    "highlights": [
+        "Liquid-cooled 210cc engine",
+        "Aerodynamic full fairing",
+        "Assist and slipper clutch",
+        "Fully digital TFT display",
+        "Slip-on exhaust"
+    ],
+    "pros": [
+        "Strong top-end performance",
+        "Agile and sporty handling",
+        "Aggressive supersport design",
+        "Good braking performance",
+        "Comfortable for a faired bike"
+    ],
+    "cons": [
+        "Pillion seat very compact",
+        "Aggressive riding posture",
+        "Wind blast without accessories",
+        "Heat in slow traffic",
+        "Limited dealer familiarity with model"
+    ],
+    "categories": [
+        "Helmet",
+        "Jackets",
+        "Gloves",
+        "Crash Guard",
+        "Phone Mount",
+        "Bike Cover",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Sport riding",
+        "Weekend blasts",
+        "Young enthusiasts",
+        "Commuting with flair"
+    ],
+    "variants": [
+        "Standard"
+    ],
+    "image": "static/images/motorcycles/hero-karizma-xmr.jpg"
+}

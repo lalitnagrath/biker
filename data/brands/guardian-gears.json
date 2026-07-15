@@ -1,0 +1,13 @@
+{
+    "name": "Guardian Gears",
+    "slug": "guardian-gears",
+    "founded": 2016,
+    "country": "India",
+    "headquarters": "Chennai, Tamil Nadu",
+    "description": "Guardian Gears is an Indian motorcycle luggage brand specializing in saddlebags and touring accessories. They offer a range of soft and semi-rigid luggage solutions tailored for Indian motorcycles. The brand is known for its practical designs, waterproof construction, and competitive pricing for touring enthusiasts.",
+    "logo": "images/brands/guardian-gears.svg",
+    "website": "https://www.guardiangears.com",
+    "popular_models": ["guardian-gears-vulture-saddlebag", "guardian-gears-eagle-tailbag", "guardian-gears-hawk-tankbag", "guardian-gears-drybag-30l", "guardian-gears-pannier-liner"],
+    "price_range": "₹1,200 - ₹8,000",
+    "segments": ["Saddlebags", "Tail Bags", "Tank Bags", "Dry Bags"]
+}

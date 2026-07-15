@@ -1,0 +1,13 @@
+{
+    "name": "Bosch",
+    "slug": "bosch",
+    "founded": 1886,
+    "country": "Germany",
+    "headquarters": "Gerlingen, Germany",
+    "description": "Robert Bosch GmbH is a German multinational engineering and technology company founded in 1886. In the motorcycle segment, Bosch is renowned for its spark plugs, brake systems, and electrical components. Bosch spark plugs and parts are trusted by motorcycle manufacturers worldwide for their reliability and performance.",
+    "logo": "images/brands/bosch.svg",
+    "website": "https://www.bosch.com",
+    "popular_models": ["bosch-spark-plug-cr8h", "bosch-brake-pads", "bosch-air-filter", "bosch-ir-spark-plug", "bosch-fuel-filter"],
+    "price_range": "₹150 - ₹3,000",
+    "segments": ["Spark Plugs", "Brake Pads", "Air Filters", "Electrical Parts"]
+}

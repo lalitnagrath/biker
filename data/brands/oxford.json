@@ -1,0 +1,13 @@
+{
+    "name": "Oxford",
+    "slug": "oxford",
+    "founded": 1973,
+    "country": "United Kingdom",
+    "headquarters": "Banbury, United Kingdom",
+    "description": "Oxford Products Ltd is a UK-based company known for manufacturing motorcycle accessories and security products. Founded in 1973, Oxford produces a wide range of products including heated grips, locks, covers, and maintenance products. Their heated grips and disc locks are particularly popular among riders worldwide for their quality and reliability.",
+    "logo": "images/brands/oxford.svg",
+    "website": "https://www.oxfordproducts.com",
+    "popular_models": ["oxford-heated-grips", "oxford-disc-lock", "oxford-bike-cover", "oxford-chain-lock", "oxford-tank-pads"],
+    "price_range": "₹500 - ₹8,000",
+    "segments": ["Security Locks", "Heated Grips", "Bike Covers", "Tank Pads"]
+}

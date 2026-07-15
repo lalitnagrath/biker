@@ -1,0 +1,61 @@
+{
+    "brand": "Triumph",
+    "brand_slug": "triumph",
+    "model": "Speed T4",
+    "slug": "triumph-speed-t4",
+    "engine": "398.15cc",
+    "power": "35 bhp",
+    "torque": "34 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,00,000",
+    "price_numeric": 200000,
+    "mileage": "32 kmpl",
+    "weight": "172 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
+    "description": "The Triumph Speed T4 is an accessible entry point into the Triumph world. With a slightly detuned engine for better usability, it offers the same premium build quality and British charm at a more affordable price.",
+    "highlights": [
+        "Affordable Triumph",
+        "Refined engine",
+        "Premium components",
+        "Digital display",
+        "Ride-by-wire"
+    ],
+    "pros": [
+        "Accessible pricing",
+        "Good power delivery",
+        "Comfortable ergonomics",
+        "Premium build quality",
+        "Refined engine"
+    ],
+    "cons": [
+        "Slightly less power",
+        "Limited features",
+        "Wind blast at speed",
+        "Limited service network",
+        "Basic electronics"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Urban commuting",
+        "Entry-level Triumph",
+        "Weekend rides",
+        "Style-conscious riders"
+    ],
+    "variants": [
+        "Standard"
+    ],
+    "image": "static/images/motorcycles/triumph-speed-t4.jpg"
+}

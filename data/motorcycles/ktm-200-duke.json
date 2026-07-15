@@ -1,0 +1,62 @@
+{
+    "brand": "KTM",
+    "brand_slug": "ktm",
+    "model": "200 Duke",
+    "slug": "ktm-200-duke",
+    "engine": "199.5cc",
+    "power": "25 bhp",
+    "torque": "19 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,85,000",
+    "price_numeric": 185000,
+    "mileage": "35 kmpl",
+    "weight": "150 kg",
+    "fuel_capacity": "13.4 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Monoshock (Rear)",
+    "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
+    "description": "The KTM 200 Duke is a lightweight streetfighter that packs a punch in the 200cc segment. With its agile handling and aggressive design, it's perfect for riders who want KTM's signature performance at an accessible price.",
+    "highlights": [
+        "Lightweight chassis",
+        "Aggressive styling",
+        "USD front forks",
+        "Sporty exhaust note",
+        "Ride-by-wire"
+    ],
+    "pros": [
+        "Light and nimble handling",
+        "Excellent power delivery",
+        "Premium build quality",
+        "Track-capable performance",
+        "Aggressive looks"
+    ],
+    "cons": [
+        "Wind blast at high speeds",
+        "Stiff ride quality",
+        "Higher seat height",
+        "Limited luggage options",
+        "Can get hot in traffic"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "City commuting",
+        "Sporty riding",
+        "Beginner sport riders",
+        "Weekend blasts"
+    ],
+    "variants": [
+        "Standard",
+        "BS6"
+    ],
+    "image": "static/images/motorcycles/ktm-200-duke.jpg"
+}

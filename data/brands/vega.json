@@ -1,0 +1,13 @@
+{
+    "name": "Vega",
+    "slug": "vega",
+    "founded": 1991,
+    "country": "India",
+    "headquarters": "Chennai, Tamil Nadu",
+    "description": "Vega is one of India's most recognized helmet brands, offering affordable safety gear for two-wheeler riders. Established in 1991, Vega produces helmets across various segments from basic commuter helmets to premium full-face models. Their products are ISI certified and are widely available across India at competitive prices.",
+    "logo": "images/brands/vega.svg",
+    "website": "https://www.vegahelmets.com",
+    "popular_models": ["vega-crux-full-face", "vega-dream-full-face", "vega-nxt-full-face", "vega-solo-open-face", "vega-eclipse-half-face"],
+    "price_range": "₹500 - ₹3,000",
+    "segments": ["Full Face Helmets", "Open Face Helmets", "Half Helmets"]
+}

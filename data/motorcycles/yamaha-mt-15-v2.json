@@ -1,0 +1,62 @@
+{
+    "brand": "Yamaha",
+    "brand_slug": "yamaha",
+    "model": "MT-15 V2",
+    "slug": "yamaha-mt-15-v2",
+    "engine": "155cc",
+    "power": "18.4 bhp",
+    "torque": "14.1 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,70,000",
+    "price_numeric": 170000,
+    "mileage": "47 kmpl",
+    "weight": "141 kg",
+    "fuel_capacity": "10 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD (Front), Linked-type monocross (Rear)",
+    "tyres": "100/80-17 (Front), 140/70-17 (Rear)",
+    "description": "The Yamaha MT-15 V2 is the naked streetfighter version of the beloved R15, offering the same high-revving engine in a more aggressive and compact package. Its lightweight chassis, delta box frame, and sharp styling make it a favourite among young urban riders.",
+    "highlights": [
+        "VVA engine technology",
+        "Delta box frame",
+        "Assist and slipper clutch",
+        "Bluetooth connectivity",
+        "LED headlight with DRL"
+    ],
+    "pros": [
+        "Incredible handling and agility",
+        "High-revving and responsive engine",
+        "Lightweight and flickable",
+        "Modern features and connectivity",
+        "Distinctive streetfighter looks"
+    ],
+    "cons": [
+        "Small fuel tank",
+        "Pillion seating comfort average",
+        "No ABS on base variant",
+        "Expensive for a 150cc naked",
+        "Wind blast at higher speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Gloves",
+        "Tyre Inflator"
+    ],
+    "ideal_for": [
+        "Urban riding",
+        "College commute",
+        "Spirited back road rides",
+        "Young enthusiast riders"
+    ],
+    "variants": [
+        "Standard",
+        "Dark"
+    ],
+    "image": "static/images/motorcycles/yamaha-mt-15-v2.jpg"
+}

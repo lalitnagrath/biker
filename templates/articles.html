@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-editorial">
+    <div class="container">
+        <div class="hero-main">
+            <span class="hero-tag">Buying Guides &amp; Maintenance Tips</span>
+            <h1>Motorcycle <span class="text-accent">Articles</span></h1>
+            <p class="hero-subtitle">Expert buying guides, maintenance tips, and riding advice for Indian motorcyclists. Research-backed content you can trust.</p>
+            <div class="hero-trust-bar">
+                <div class="trust-item"><span class="trust-icon">&#128269;</span><span class="trust-text"><strong>Expert Tested</strong><br>Every product reviewed</span></div>
+                <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Weekly Updates</strong><br>Fresh recommendations</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">All Guides</h2>
+                <p class="section-subtitle">In-depth guides to help you make the right choice</p>
+            </div>
+        </div>
+        <div class="guides-showcase">
+            {% for article in articles %}
+            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="guide-showcase-card">
+                <div class="guide-showcase-image">
+                    {% if article.tags %}
+                    <div class="placeholder-image guide-placeholder">{{ article.tags[0] }}</div>
+                    {% else %}
+                    <div class="placeholder-image guide-placeholder">Guide</div>
+                    {% endif %}
+                    <span class="guide-showcase-time">{{ article.reading_time }}</span>
+                </div>
+                <div class="guide-showcase-content">
+                    <div class="guide-showcase-meta">
+                        <span class="guide-showcase-date">{{ article.date }}</span>
+                        {% if article.tags %}
+                        <span class="guide-showcase-tag">{{ article.tags[0] }}</span>
+                        {% endif %}
+                    </div>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.description }}</p>
+                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Scram 440",
+    "slug": "royal-enfield-scram-440",
+    "engine": "440cc",
+    "power": "25.4 bhp",
+    "torque": "34 Nm",
+    "transmission": "5-speed",
+    "type": "Scrambler",
+    "fuel_type": "Petrol",
+    "price": "2,20,000",
+    "price_numeric": 220000,
+    "mileage": "33 kmpl",
+    "weight": "185 kg",
+    "fuel_capacity": "15 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "100/90-21 (Front), 120/90-17 (Rear)",
+    "description": "The Royal Enfield Scram 440 is a rugged scrambler-style motorcycle built for both urban streets and light off-road trails. With its upright ergonomics, wide handlebar, and capable suspension, it offers a versatile riding experience for adventure seekers.",
+    "highlights": [
+        "Scrambler-style design",
+        "Long-travel suspension",
+        "Wide handlebar for control",
+        "Dual-purpose tyres",
+        "Single-cylinder torque"
+    ],
+    "pros": [
+        "Versatile on-road and off-road",
+        "Comfortable upright riding position",
+        "Good low-end torque",
+        "Reasonable weight and handling",
+        "Strong and rugged build"
+    ],
+    "cons": [
+        "Vibrations at highway speeds",
+        "Basic instrument console",
+        "Seat could be more cushioned",
+        "Limited top-end power",
+        "Wind blast at higher speeds"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Engine Oil",
+        "Chain Cleaner"
+    ],
+    "ideal_for": [
+        "Urban scrambler riding",
+        "Light off-road trails",
+        "Daily commuting",
+        "Adventure-ready city bikes"
+    ],
+    "variants": [
+        "Base",
+        "Midnight"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-scram-440.jpg"
+}

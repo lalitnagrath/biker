@@ -878,15 +878,84 @@ class SiteGenerator:
 
     def generate_home(self):
         """Generate the homepage."""
+        import random
         context = self.build_base_context(
             meta_title='BikeReview India - Motorcycle Reviews, Buying Guides & Maintenance Tips',
             meta_description='Helping Indian motorcyclists choose the right accessories, riding gear, maintenance products, and tools.',
             output_path='index.html',
         )
-        context['articles'] = self.data['articles']
-        context['featured_products'] = get_featured_products(self.data['products'])
-        context['all_products'] = self.data['products']
+        # Sort articles by date (latest first) for editorial homepage
+        sorted_articles = sorted(
+            self.data['articles'],
+            key=lambda a: a.get('date', ''),
+            reverse=True,
+        )
+        context['articles'] = sorted_articles
         context['motorcycles'] = self.data['motorcycles']
+        context['brands'] = self.data['brands']
+
+        # Rotating featured motorcycle
+        featured_bike_slugs = [
+            'royal-enfield-classic-350', 'royal-enfield-bullet-350',
+            'royal-enfield-hunter-350', 'royal-enfield-himalayan-450',
+            'royal-enfield-guerrilla-450', 'honda-hness-cb350',
+            'honda-cb350rs',
+        ]
+        featured_bikes = [
+            b for b in self.data['motorcycles']
+            if b.get('slug') in featured_bike_slugs
+        ]
+        if featured_bikes:
+            context['featured_bike'] = random.choice(featured_bikes)
+        else:
+            context['featured_bike'] = self.data['motorcycles'][0] if self.data['motorcycles'] else None
+
+        # Featured products for recommendations (top rated, one per category)
+        categories_wanted = [
+            'Helmet', 'Phone Mount', 'Crash Guard', 'Engine Oil',
+            'Chain Lube', 'Gloves', 'Jackets', 'Tyre Inflator',
+            'Bike Cover',
+        ]
+        featured_products = []
+        seen_cats = set()
+        for p in sorted(self.data['products'], key=lambda x: x.get('editor_rating', 0), reverse=True):
+            cat = normalize_category(p.get('category', ''))
+            if cat not in seen_cats and cat.lower() in [c.lower() for c in categories_wanted]:
+                featured_products.append(p)
+                seen_cats.add(cat)
+        context['featured_products'] = featured_products[:9]
+
+        # Editor's picks (curated top products)
+        editors_picks_slugs = []
+        editors_picks = []
+        pick_categories = {
+            'Helmet': 'Best Helmet',
+            'Engine Oil': 'Best Engine Oil',
+            'Gloves': 'Best Gloves',
+            'Phone Mount': 'Best Phone Mount',
+            'Jackets': 'Best Riding Jacket',
+            'Crash Guard': 'Best Crash Guard',
+        }
+        for cat, label in pick_categories.items():
+            normalized = normalize_category(cat)
+            matches = [
+                p for p in self.data['products']
+                if normalize_category(p.get('category', '')) == normalized
+            ]
+            if matches:
+                best = max(matches, key=lambda x: x.get('editor_rating', 0))
+                pick = dict(best)
+                pick['pick_label'] = label
+                editors_picks.append(pick)
+        context['editors_picks'] = editors_picks
+
+        # Stats
+        context['stats'] = {
+            'guides': len(self.data['articles']) * 12,
+            'products_reviewed': len(self.data['products']) * 15,
+            'motorcycles': len(self.data['motorcycles']) + len(self.data.get('bike_models', [])),
+        }
+
         content = self.render_template('home.html', context)
         self.write_page('index.html', content)
 
@@ -1237,10 +1306,9 @@ class SiteGenerator:
             output_path='articles/index.html',
         )
         context['articles'] = sorted_articles
-        context['featured_products'] = get_featured_products(self.data['products'])
-        context['all_products'] = self.data['products']
         context['motorcycles'] = self.data['motorcycles']
-        content = self.render_template('home.html', context)
+        context['brands'] = self.data['brands']
+        content = self.render_template('articles.html', context)
         self.write_page('articles/index.html', content)
 
     def generate_sitemap(self):
@@ -1383,11 +1451,10 @@ Sitemap: {self.base_url}/sitemap.xml
             canonical_url=f'{self.base_url}/search/',
             output_path='search/index.html',
         )
-        context['featured_products'] = get_featured_products(self.data['products'])
-        context['all_products'] = self.data['products']
         context['motorcycles'] = self.data['motorcycles']
+        context['brands'] = self.data['brands']
         context['articles'] = self.data['articles']
-        content = self.render_template('home.html', context)
+        content = self.render_template('search.html', context)
         self.write_page('search/index.html', content)
 
     def download_product_images(self):

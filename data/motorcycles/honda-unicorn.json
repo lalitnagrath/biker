@@ -1,0 +1,62 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "Unicorn",
+    "slug": "honda-unicorn",
+    "engine": "163cc",
+    "power": "12.7 bhp",
+    "torque": "14 Nm",
+    "transmission": "5-speed",
+    "type": "Commuter",
+    "fuel_type": "Petrol",
+    "price": "1,10,000",
+    "price_numeric": 110000,
+    "mileage": "50 kmpl",
+    "weight": "140 kg",
+    "fuel_capacity": "13 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Mono suspension (Rear)",
+    "tyres": "80/100-18 (Front), 100/80-18 (Rear)",
+    "description": "The Honda Unicorn is a well-rounded commuter motorcycle that delivers a smooth and refined ride. Known for its exceptional comfort and build quality, it remains a top choice for riders seeking a reliable daily motorcycle.",
+    "highlights": [
+        "Mono suspension rear setup",
+        "Honda Eco Technology",
+        "Silent start ACG motor",
+        "Comfortable long seat",
+        "Engine kill switch"
+    ],
+    "pros": [
+        "Smooth and refined engine",
+        "Excellent ride comfort",
+        "Reliable Honda engineering",
+        "Good fuel efficiency",
+        "Low maintenance costs"
+    ],
+    "cons": [
+        "Dated styling",
+        "Average acceleration",
+        "No fully digital console",
+        "Basic instrument cluster",
+        "Limited sporty appeal"
+    ],
+    "categories": [
+        "Helmet",
+        "Bike Cover",
+        "Chain Lube",
+        "Phone Mount",
+        "Seat Cover",
+        "Gloves",
+        "Lock"
+    ],
+    "ideal_for": [
+        "Daily office commute",
+        "Comfort-focused riders",
+        "Family use",
+        "Long city rides"
+    ],
+    "variants": [
+        "Standard",
+        "Disc"
+    ],
+    "image": "static/images/motorcycles/honda-unicorn.jpg"
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Rolon",
+    "slug": "rolon",
+    "founded": 1987,
+    "country": "India",
+    "headquarters": "Noida, Uttar Pradesh",
+    "description": "Rolon is India's largest manufacturer of motorcycle chains and sprockets. Founded in 1987, the company supplies OEM chains to major motorcycle manufacturers including Hero, Bajaj, TVS, and Honda. Rolon also offers aftermarket performance chains and sprocket kits known for their durability and precise engineering.",
+    "logo": "images/brands/rolon.svg",
+    "website": "https://www.rolon.in",
+    "popular_models": ["rolon-chain-set-108l", "rolon-oo-ring-chain", "rolon-front-sprocket", "rolon-rear-sprocket", "rolon-chain-lube"],
+    "price_range": "₹200 - ₹3,000",
+    "segments": ["Chains", "Sprockets", "Chain Maintenance"]
+}

@@ -1,0 +1,64 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Guerrilla 450",
+    "slug": "royal-enfield-guerrilla-450",
+    "engine": "452cc",
+    "power": "40 bhp",
+    "torque": "40 Nm",
+    "transmission": "6-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "2,40,000",
+    "price_numeric": 240000,
+    "mileage": "32 kmpl",
+    "weight": "185 kg",
+    "fuel_capacity": "11 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "USD Fork (Front), Monoshock (Rear)",
+    "tyres": "120/70-17 (Front), 160/60-17 (Rear)",
+    "description": "The Royal Enfield Guerrilla 450 is a streetfighter-style naked motorcycle that brings aggressive styling and agile performance to the mid-weight segment. Powered by the liquid-cooled Sherpa engine, it delivers an exciting ride for urban streets and twisty roads.",
+    "highlights": [
+        "Aggressive streetfighter design",
+        "Liquid-cooled Sherpa engine",
+        "Wide rear tyre",
+        "TFT display",
+        "USD front forks"
+    ],
+    "pros": [
+        "Sharp and nimble handling",
+        "Strong mid-range performance",
+        "Lightweight and agile",
+        "Modern styling",
+        "Comfortable for city and highway"
+    ],
+    "cons": [
+        "Small fuel tank",
+        "Wind blast at high speeds",
+        "Limited touring capability",
+        "Engine noise at high RPM",
+        "New model with limited track record"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Engine Oil"
+    ],
+    "ideal_for": [
+        "Urban street riding",
+        "Twisty road carving",
+        "Daily commuting",
+        "Sporty weekend rides"
+    ],
+    "variants": [
+        "Dash",
+        "Flash"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-guerrilla-450.jpg"
+}

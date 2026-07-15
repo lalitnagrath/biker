@@ -1,0 +1,62 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "Pulsar NS125",
+    "slug": "bajaj-pulsar-ns125",
+    "engine": "124.4cc",
+    "power": "12 bhp",
+    "torque": "11 Nm",
+    "transmission": "5-speed",
+    "type": "Naked",
+    "fuel_type": "Petrol",
+    "price": "1,00,000",
+    "price_numeric": 100000,
+    "mileage": "52 kmpl",
+    "weight": "140 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "80/100-17 (Front), 100/90-17 (Rear)",
+    "description": "The Bajaj Pulsar NS125 brings the aggressive streetfighter styling of the NS family to the entry-level segment. It offers sporty design elements and a refined engine that delivers excellent mileage, making it perfect for young riders and daily commuters.",
+    "highlights": [
+        "Streetfighter design at entry level",
+        "Refined 124cc DTS-i engine",
+        "Monoshock rear suspension",
+        "Excellent fuel economy",
+        "Sporty handlebar and riding stance"
+    ],
+    "pros": [
+        "Very fuel efficient",
+        "Lightweight and easy to handle",
+        "Sporty looks for the price",
+        "Low running costs",
+        "Good for new riders"
+    ],
+    "cons": [
+        "Low power for highway use",
+        "Basic braking setup",
+        "Build quality could improve",
+        "Limited features",
+        "Small seat for pillion"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "College students",
+        "City commuting",
+        "Fuel efficiency seekers",
+        "Entry-level sporty riders"
+    ],
+    "variants": [
+        "NS125 Standard",
+        "NS125 ABS"
+    ],
+    "image": "static/images/motorcycles/bajaj-pulsar-ns125.jpg"
+}

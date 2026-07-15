@@ -1,0 +1,61 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "CB350RS",
+    "slug": "honda-cb350rs",
+    "engine": "348cc",
+    "power": "20.8 bhp",
+    "torque": "30 Nm",
+    "transmission": "5-speed",
+    "type": "Scrambler",
+    "fuel_type": "Petrol",
+    "price": "2,10,000",
+    "price_numeric": 210000,
+    "mileage": "38 kmpl",
+    "weight": "178 kg",
+    "fuel_capacity": "15 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin hydraulic (Rear)",
+    "tyres": "100/90-19 (Front), 150/60-17 (Rear)",
+    "description": "The Honda CB350RS is a scrambler-styled motorcycle built for riders who crave a sportier, more adventurous look. With its flat seat, wide handlebar, and rugged design cues, it brings an energetic and youthful character to the CB350 platform.",
+    "highlights": [
+        "Scrambler styling with sporty cues",
+        "Assist and slipper clutch",
+        "All-LED lighting",
+        "Upswept exhaust design",
+        "Dual-purpose tyres"
+    ],
+    "pros": [
+        "Aggressive and sporty look",
+        "Light and nimble handling",
+        "Comfortable upright seating",
+        "Strong engine performance",
+        "Good ground clearance"
+    ],
+    "cons": [
+        "Firm seat for long rides",
+        "Limited wind protection",
+        "No riding modes",
+        "Pricier than standard CB350",
+        "Limited luggage options"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Backpack",
+        "Bike Cover",
+        "Gloves",
+        "Tyre Inflator",
+        "Phone Mount"
+    ],
+    "ideal_for": [
+        "Urban riding",
+        "Light off-road trails",
+        "Short highway trips",
+        "Style-conscious riders"
+    ],
+    "variants": [
+        "Standard"
+    ],
+    "image": "static/images/motorcycles/honda-cb350rs.jpg"
+}

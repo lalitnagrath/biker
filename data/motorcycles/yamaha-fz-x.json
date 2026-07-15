@@ -1,0 +1,61 @@
+{
+    "brand": "Yamaha",
+    "brand_slug": "yamaha",
+    "model": "FZ-X",
+    "slug": "yamaha-fz-x",
+    "engine": "149cc",
+    "power": "12.4 bhp",
+    "torque": "13.3 Nm",
+    "transmission": "5-speed",
+    "type": "Roadster",
+    "fuel_type": "Petrol",
+    "price": "1,30,000",
+    "price_numeric": 130000,
+    "mileage": "48 kmpl",
+    "weight": "139 kg",
+    "fuel_capacity": "10 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Linked-type monocross (Rear)",
+    "tyres": "100/80-17 (Front), 140/60-17 (Rear)",
+    "description": "The Yamaha FZ-X is a rugged-looking roadster that blends retro-modern design with Yamaha's reliable engineering. Its upright riding position, comfortable ergonomics, and utilitarian style make it a versatile choice for urban and light trail adventures.",
+    "highlights": [
+        "Retro-modern scrambler design",
+        "LED headlamp with DRL",
+        "Single-channel ABS",
+        "Bluetooth connectivity",
+        "Flat and wide seat"
+    ],
+    "pros": [
+        "Comfortable upright riding posture",
+        "Retro styling stands out",
+        "Good low-end torque for city use",
+        "Lightweight and manoeuvrable",
+        "Reliable Yamaha engine"
+    ],
+    "cons": [
+        "Limited performance on highways",
+        "No traction control",
+        "Small fuel tank",
+        "Pillion grab rail average design",
+        "Not ideal for off-road use"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tank Bag",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Urban commuting",
+        "Weekend exploring",
+        "Casual road trips",
+        "Style-conscious riders"
+    ],
+    "variants": [
+        "Standard"
+    ],
+    "image": "static/images/motorcycles/yamaha-fz-x.jpg"
+}

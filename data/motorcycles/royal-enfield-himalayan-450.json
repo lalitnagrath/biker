@@ -9,39 +9,38 @@
     "transmission": "6-speed",
     "type": "Adventure",
     "fuel_type": "Petrol",
-    "price": "2,69,000",
-    "price_numeric": 269000,
+    "price": "2,85,000",
+    "price_numeric": 285000,
     "mileage": "30 kmpl",
     "weight": "196 kg",
     "fuel_capacity": "17 liters",
     "brakes": "Disc (Front), Disc (Rear)",
-    "suspension": "Upside Down Forks (Front), Monoshock (Rear)",
+    "suspension": "USD Fork (Front), Monoshock (Rear)",
     "tyres": "90/90-21 (Front), 140/80-17 (Rear)",
-    "description": "The Royal Enfield Himalayan 450 is a purpose-built adventure tourer designed to conquer mountains and highways alike. With its liquid-cooled engine, long-travel suspension, and adventure-ready features, it's built to take you anywhere your heart desires.",
+    "description": "The Royal Enfield Himalayan 450 is a purpose-built adventure motorcycle designed to conquer mountains, highways, and everything in between. With a liquid-cooled engine, long-travel suspension, and a 21-inch front wheel, it is built for serious off-road exploration.",
     "highlights": [
         "Liquid-cooled engine",
-        "Adventure-ready design",
         "Long-travel suspension",
-        "Switchable ABS",
-        "TFT display with navigation"
+        "21-inch front wheel",
+        "TFT instrument cluster",
+        "Switchable ABS"
     ],
     "pros": [
-        "Excellent off-road capability",
+        "Capable off-road performer",
         "Comfortable for long tours",
-        "Good ground clearance",
-        "Advanced features",
-        "Strong engine performance"
+        "Excellent ground clearance",
+        "Good fuel range with 17L tank",
+        "Modern tech and connectivity"
     ],
     "cons": [
-        "Tall seat height",
+        "Tall seat height for short riders",
+        "Heavy for technical trails",
+        "Engine heat in slow traffic",
         "Premium pricing",
-        "Heavy for pure off-road",
-        "Complex maintenance",
-        "Limited dealer network"
+        "Limited aftermarket accessories"
     ],
     "categories": [
         "Helmet",
-        "Phone Mount",
         "Crash Guard",
         "Bike Cover",
         "Chain Lube",
@@ -50,18 +49,18 @@
         "Jackets",
         "Tank Bag",
         "Saddle Bag",
-        "Tail Bag"
+        "Engine Oil"
     ],
     "ideal_for": [
         "Adventure touring",
-        "Long-distance rides",
-        "Mountain roads",
-        "Highway touring"
+        "Off-road exploration",
+        "Long-distance highway rides",
+        "Mountain and hill riding"
     ],
     "variants": [
+        "Base",
         "Pass",
-        "Explore",
-        "Hanle Black"
+        "Explore"
     ],
     "image": "static/images/motorcycles/royal-enfield-himalayan-450.jpg"
 }

@@ -1,0 +1,60 @@
+{
+    "brand": "Bajaj",
+    "brand_slug": "bajaj",
+    "model": "CT 110X",
+    "slug": "bajaj-ct-110x",
+    "engine": "110cc",
+    "power": "8.6 bhp",
+    "torque": "9.81 Nm",
+    "transmission": "4-speed",
+    "type": "Commuter",
+    "fuel_type": "Petrol",
+    "price": "55,000",
+    "price_numeric": 55000,
+    "mileage": "65 kmpl",
+    "weight": "118 kg",
+    "fuel_capacity": "10.5 liters",
+    "brakes": "Drum (Front), Drum (Rear)",
+    "suspension": "Hydraulic (Front), Spring-in-spring (Rear)",
+    "tyres": "2.75-17 (Front), 3.00-17 (Rear)",
+    "description": "The Bajaj CT 110X is a rugged and practical commuter motorcycle built for everyday use. With its muscular tank, robust build, and exceptional fuel economy, it is designed for riders who need a dependable workhorse for daily commutes and light deliveries.",
+    "highlights": [
+        "Muscular tank design",
+        "Exceptional fuel economy",
+        "Rugged and durable build",
+        "Spring-in-spring rear suspension",
+        "Carrying capacity for daily use"
+    ],
+    "pros": [
+        "Outstanding fuel efficiency",
+        "Very low maintenance costs",
+        "Comfortable for bumpy roads",
+        "Strong and durable frame",
+        "Excellent value for money"
+    ],
+    "cons": [
+        "Basic styling",
+        "No disc brake option",
+        "Limited performance for highways",
+        "Basic instrument cluster",
+        "Small fuel tank"
+    ],
+    "categories": [
+        "Helmet",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Engine Oil",
+        "Chain Cleaner"
+    ],
+    "ideal_for": [
+        "Daily commuting",
+        "Budget-conscious riders",
+        "Rural and semi-urban use",
+        "Light delivery work"
+    ],
+    "variants": [
+        "CT 110X Standard"
+    ],
+    "image": "static/images/motorcycles/bajaj-ct-110x.jpg"
+}

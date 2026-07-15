@@ -1,0 +1,13 @@
+{
+    "name": "STRIFF",
+    "slug": "striff",
+    "founded": 2017,
+    "country": "India",
+    "headquarters": "New Delhi, India",
+    "description": "STRIFF is an Indian brand offering affordable motorcycle phone mounts, mounts, and riding accessories. They provide budget-friendly yet reliable solutions for mounting smartphones on two-wheelers. STRIFF has built a strong presence on e-commerce platforms with their versatile and easy-to-install phone holders.",
+    "logo": "images/brands/striff.svg",
+    "website": "https://www.striff.in",
+    "popular_models": ["striff-mobile-holder", "striff-waterproof-phone-case", "striff-visor-mount", "striff-handlebar-mount", "striff-rearview-mirror-mount"],
+    "price_range": "₹200 - ₹800",
+    "segments": ["Phone Mounts", "Phone Cases", "Mirror Accessories"]
+}

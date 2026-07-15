@@ -1,0 +1,67 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Continental GT 650",
+    "slug": "royal-enfield-continental-gt-650",
+    "engine": "648cc",
+    "power": "47 bhp",
+    "torque": "52 Nm",
+    "transmission": "6-speed",
+    "type": "Cafe Racer",
+    "fuel_type": "Petrol",
+    "price": "3,10,000",
+    "price_numeric": 310000,
+    "mileage": "25 kmpl",
+    "weight": "198 kg",
+    "fuel_capacity": "12.5 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "100/90-18 (Front), 130/70-18 (Rear)",
+    "description": "The Royal Enfield Continental GT 650 is a cafe racer inspired by the classic British racing heritage. With clip-on handlebars, a rear-set footpeg position, and the same smooth twin-cylinder engine, it delivers an engaging and sporty riding posture.",
+    "highlights": [
+        "Cafe racer ergonomics",
+        "Clip-on handlebars",
+        "648cc parallel-twin engine",
+        "Sporty riding stance",
+        "Dual-channel ABS"
+    ],
+    "pros": [
+        "Engaging sporty handling",
+        "Excellent twin-cylinder refinement",
+        "Iconic cafe racer styling",
+        "Strong build quality",
+        "Good value for a performance bike"
+    ],
+    "cons": [
+        "Aggressive seating for long rides",
+        "Wind blast without fairing",
+        "Limited pillion comfort",
+        "No windscreen on stock model",
+        "Basic electronics suite"
+    ],
+    "categories": [
+        "Helmet",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Engine Oil",
+        "Chain Cleaner"
+    ],
+    "ideal_for": [
+        "Cafe racer enthusiasts",
+        "Spirited backroad rides",
+        "Weekend sport riding",
+        "Style-conscious riders"
+    ],
+    "variants": [
+        "Ventura Blue",
+        "Mr Clean",
+        "Downtown Drag",
+        "Rocker Red",
+        "British Racing Green"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-continental-gt-650.jpg"
+}

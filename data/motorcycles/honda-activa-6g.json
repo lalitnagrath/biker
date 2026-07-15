@@ -1,0 +1,63 @@
+{
+    "brand": "Honda",
+    "brand_slug": "honda",
+    "model": "Activa 6G",
+    "slug": "honda-activa-6g",
+    "engine": "110cc",
+    "power": "7.79 bhp",
+    "torque": "8.79 Nm",
+    "transmission": "CVT",
+    "type": "Scooter",
+    "fuel_type": "Petrol",
+    "price": "75,000",
+    "price_numeric": 75000,
+    "mileage": "60 kmpl",
+    "weight": "107 kg",
+    "fuel_capacity": "5.3 liters",
+    "brakes": "Drum (Front), Drum (Rear)",
+    "suspension": "Telescopic (Front), Spring loaded hydraulic (Rear)",
+    "tyres": "90/100-10 (Front), 90/100-10 (Rear)",
+    "description": "The Honda Activa 6G is India's best-selling scooter, offering unmatched reliability and practicality. With its refined engine, enhanced features, and proven build quality, it continues to be the go-to choice for millions of Indian families.",
+    "highlights": [
+        "BS6-compliant engine",
+        "External fuel filler cap",
+        "LED headlamp",
+        "Combi-braking system",
+        "Engine start-stop switch"
+    ],
+    "pros": [
+        "Most trusted scooter brand",
+        "Excellent fuel efficiency",
+        "Smooth and reliable engine",
+        "Spacious under-seat storage",
+        "Wide service network"
+    ],
+    "cons": [
+        "Conservative styling",
+        "Drum brakes on all variants",
+        "Small wheel size",
+        "No digital instrument cluster",
+        "Basic suspension setup"
+    ],
+    "categories": [
+        "Helmet",
+        "Scooter Cover",
+        "Mobile Holder",
+        "Lock",
+        "Floor Mat",
+        "Seat Cover",
+        "Rain Cover"
+    ],
+    "ideal_for": [
+        "Family commuting",
+        "Daily errands",
+        "Office commute",
+        "Senior citizens"
+    ],
+    "variants": [
+        "Standard",
+        "Standard OLED",
+        "Premium"
+    ],
+    "image": "static/images/motorcycles/honda-activa-6g.jpg"
+}

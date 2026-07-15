@@ -1,0 +1,65 @@
+{
+    "brand": "Suzuki",
+    "brand_slug": "suzuki",
+    "model": "V-Strom SX",
+    "slug": "suzuki-v-strom-sx",
+    "engine": "249cc",
+    "power": "26.5 bhp",
+    "torque": "22.2 Nm",
+    "transmission": "6-speed",
+    "type": "Adventure",
+    "fuel_type": "Petrol",
+    "price": "2,10,000",
+    "price_numeric": 210000,
+    "mileage": "32 kmpl",
+    "weight": "167 kg",
+    "fuel_capacity": "12 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Monoshock (Rear)",
+    "tyres": "100/90-19 (Front), 140/70-17 (Rear)",
+    "description": "The Suzuki V-Strom SX is an adventure tourer built for long-distance comfort and versatility. With its upright riding position, windscreen, and capable engine, it's ready for both city streets and open highways.",
+    "highlights": [
+        "Adventure touring design",
+        "Tall windscreen",
+        "Upright riding position",
+        "LED headlamp",
+        "Digital display"
+    ],
+    "pros": [
+        "Comfortable for long rides",
+        "Good wind protection",
+        "Versatile performance",
+        "Refined engine",
+        "Good ground clearance"
+    ],
+    "cons": [
+        "Limited off-road ability",
+        "Basic suspension",
+        "Could use more power",
+        "Wind noise at speed",
+        "Limited luggage options"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Touring",
+        "Long-distance riding",
+        "Highway cruising",
+        "Adventure exploration"
+    ],
+    "variants": [
+        "Standard",
+        "ABS"
+    ],
+    "image": "static/images/motorcycles/suzuki-v-strom-sx.jpg"
+}

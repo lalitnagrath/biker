@@ -1,0 +1,66 @@
+{
+    "brand": "Royal Enfield",
+    "brand_slug": "royal-enfield",
+    "model": "Meteor 350",
+    "slug": "royal-enfield-meteor-350",
+    "engine": "349cc",
+    "power": "20.2 bhp",
+    "torque": "27 Nm",
+    "transmission": "5-speed",
+    "type": "Cruiser",
+    "fuel_type": "Petrol",
+    "price": "2,00,000",
+    "price_numeric": 200000,
+    "mileage": "37 kmpl",
+    "weight": "191 kg",
+    "fuel_capacity": "15 liters",
+    "brakes": "Disc (Front), Disc (Rear)",
+    "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
+    "tyres": "100/90-19 (Front), 140/70-17 (Rear)",
+    "description": "The Royal Enfield Meteor 350 is a modern cruiser built for comfortable highway cruising and effortless city riding. Equipped with the refined J-series engine and the innovative Tripper navigation pod, it represents the new age of Royal Enfield touring.",
+    "highlights": [
+        "Tripper navigation pod",
+        "Ergonomic cruiser stance",
+        "Smooth J-series engine",
+        "Full LED lighting",
+        "USB charging port"
+    ],
+    "pros": [
+        "Excellent highway comfort",
+        "Modern features and tech",
+        "Smooth and refined engine",
+        "Good fuel tank range",
+        "Well-built and reliable"
+    ],
+    "cons": [
+        "Heavy for stop-and-go traffic",
+        "Wind blast without accessories",
+        "Price premium over competitors",
+        "Pillion seat comfort could improve",
+        "Limited colour options on base"
+    ],
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Saddle Bag"
+    ],
+    "ideal_for": [
+        "Highway touring",
+        "City commuting",
+        "Weekend getaways",
+        "Cruiser enthusiasts"
+    ],
+    "variants": [
+        "Fireball",
+        "Stellar",
+        "Supernova"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-meteor-350.jpg"
+}
