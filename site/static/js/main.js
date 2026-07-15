@@ -7,11 +7,62 @@ if (mobileMenuToggle && mainNav) {
         mainNav.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
     });
-    // Close menu when clicking a link
-    mainNav.querySelectorAll('a').forEach(link => {
+    // Close menu when clicking a nav link (leaf links only, not parent toggles)
+    mainNav.querySelectorAll('.dropdown a, .mega-model-link, .mega-view-all').forEach(link => {
         link.addEventListener('click', () => {
             mainNav.classList.remove('active');
             mobileMenuToggle.classList.remove('active');
+        });
+    });
+}
+
+// ===== Mobile Menu Accordion =====
+document.querySelectorAll('.main-nav .has-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        if (window.innerWidth > 768) return;
+        e.preventDefault();
+        const parent = trigger.parentElement;
+        const wasExpanded = parent.classList.contains('expanded');
+        // Close all sibling accordions
+        parent.parentElement.querySelectorAll(':scope > .has-dropdown').forEach(item => {
+            item.classList.remove('expanded');
+        });
+        if (!wasExpanded) parent.classList.add('expanded');
+    });
+});
+
+// ===== Mega Menu Desktop Hover =====
+const megaMenu = document.querySelector('.mega-menu');
+const megaBrandLinks = document.querySelectorAll('.mega-brand-link');
+const megaModels = document.getElementById('megaModels');
+
+if (megaBrandLinks.length && megaModels) {
+    // Build a map of brand -> models from the DOM data attributes
+    const navData = {};
+    megaBrandLinks.forEach(link => {
+        const brand = link.dataset.brand;
+        const brandName = link.textContent.trim().replace(/\u203A$/, '').trim();
+        navData[brand] = brandName;
+    });
+
+    // Fetch models from inline JSON embedded by the template
+    const modelsMap = window.__navModels || {};
+
+    megaBrandLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            megaBrandLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            const brand = link.dataset.brand;
+            const bikes = modelsMap[brand] || [];
+            if (bikes.length) {
+                megaModels.innerHTML =
+                    '<div class="mega-models-title">' + link.textContent.trim().replace(/\u203A$/, '').trim() + '</div>' +
+                    '<div class="mega-models-grid">' +
+                    bikes.map(function(b) { return '<a href="' + b.url + '" class="mega-model-link">' + b.name + '</a>'; }).join('') +
+                    '</div>';
+            } else {
+                megaModels.innerHTML = '<div class="mega-models-placeholder">No models found</div>';
+            }
         });
     });
 }
@@ -149,27 +200,105 @@ if (heroSuggestions) {
 // ===== Bike Filters (Homepage) =====
 const bikeShowcase = document.getElementById('bikeShowcase');
 const filterBtns = document.querySelectorAll('.filter-btn');
+const bikeSearch = document.getElementById('bikeSearch');
+const bikeBrandFilter = document.getElementById('bikeBrandFilter');
+const bikeTypeFilter = document.getElementById('bikeTypeFilter');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+const bikeShowingCount = document.getElementById('bikeShowingCount');
 
 if (bikeShowcase) {
-    let selectedFilter = 'all';
+    const INITIAL_SHOW = 12;
+    let showingCount = 0;
+    let activeBrand = 'all';
+    let activeType = 'all';
+    let searchQuery = '';
 
-    function filterBikes() {
-        const cards = bikeShowcase.querySelectorAll('.bike-showcase-card');
-        cards.forEach(card => {
+    function getVisibleCards() {
+        const cards = Array.from(bikeShowcase.querySelectorAll('.bike-showcase-card'));
+        return cards.filter(card => {
             const brand = card.dataset.brand;
-            const show = selectedFilter === 'all' || brand === selectedFilter;
-            card.style.display = show ? '' : 'none';
+            const type = card.dataset.type || '';
+            const text = card.textContent.toLowerCase();
+            const matchBrand = activeBrand === 'all' || brand === activeBrand;
+            const matchType = activeType === 'all' || type === activeType;
+            const matchSearch = !searchQuery || text.includes(searchQuery);
+            return matchBrand && matchType && matchSearch;
         });
     }
 
+    function applyFilters() {
+        const allCards = Array.from(bikeShowcase.querySelectorAll('.bike-showcase-card'));
+        const visible = getVisibleCards();
+
+        allCards.forEach(card => card.classList.add('hidden-card'));
+        visible.slice(0, showingCount).forEach(card => card.classList.remove('hidden-card'));
+
+        if (loadMoreBtn) {
+            loadMoreBtn.style.display = showingCount >= visible.length ? 'none' : '';
+        }
+        if (bikeShowingCount) {
+            bikeShowingCount.textContent = 'Showing ' + Math.min(showingCount, visible.length) + ' of ' + visible.length + ' motorcycles';
+        }
+    }
+
+    function resetAndShow() {
+        showingCount = INITIAL_SHOW;
+        applyFilters();
+    }
+
+    // Quick filter buttons
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            selectedFilter = btn.dataset.filter;
-            filterBikes();
+            activeBrand = btn.dataset.filter;
+            if (bikeBrandFilter) bikeBrandFilter.value = activeBrand;
+            resetAndShow();
         });
     });
+
+    // Brand select
+    if (bikeBrandFilter) {
+        bikeBrandFilter.addEventListener('change', () => {
+            activeBrand = bikeBrandFilter.value;
+            filterBtns.forEach(b => {
+                b.classList.toggle('active', b.dataset.filter === activeBrand);
+            });
+            resetAndShow();
+        });
+    }
+
+    // Type select
+    if (bikeTypeFilter) {
+        bikeTypeFilter.addEventListener('change', () => {
+            activeType = bikeTypeFilter.value;
+            resetAndShow();
+        });
+    }
+
+    // Search
+    if (bikeSearch) {
+        let searchTimer;
+        bikeSearch.addEventListener('input', (e) => {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => {
+                searchQuery = e.target.value.toLowerCase().trim();
+                resetAndShow();
+            }, 200);
+        });
+    }
+
+    // Load More
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+            showingCount += INITIAL_SHOW;
+            applyFilters();
+        });
+    }
+
+    // Initial state
+    showingCount = INITIAL_SHOW;
+    applyFilters();
 }
 
 // ===== FAQ Accordions =====

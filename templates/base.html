@@ -40,14 +40,29 @@
                 </a>
                 <nav class="main-nav" id="mainNav">
                     <ul>
+                        <li class="has-dropdown has-mega">
+                            <a href="{{ base_path }}motorcycles/index.html">Motorcycles</a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-brands">
+                                    {% for brand, bikes in nav_motorcycles_by_brand.items() %}
+                                    <a href="#" class="mega-brand-link" data-brand="{{ brand | lower | replace(' ', '-') }}">{{ brand }}<span class="mega-arrow">&#8250;</span></a>
+                                    {% endfor %}
+                                    <div class="mega-divider"></div>
+                                    <a href="{{ base_path }}motorcycles/index.html" class="mega-view-all">View All Motorcycles &rarr;</a>
+                                </div>
+                                <div class="mega-menu-models" id="megaModels">
+                                    <div class="mega-models-placeholder">Hover over a brand to see models</div>
+                                </div>
+                            </div>
+                        </li>
                         <li class="has-dropdown">
-                            <a href="{{ base_path }}motorcycles/index.html">Browse by Bike</a>
+                            <a href="{{ base_path }}categories/index.html">Accessories</a>
                             <ul class="dropdown">
-                                {% for motorcycle in motorcycles %}
-                                <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/index.html">{{ motorcycle.brand }} {{ motorcycle.model }}</a></li>
+                                {% for cat in nav_accessory_categories %}
+                                <li><a href="{{ base_path }}categories/{{ cat.slug }}/">{{ cat.name }}</a></li>
                                 {% endfor %}
                                 <li class="dropdown-divider"></li>
-                                <li><a href="{{ base_path }}motorcycles/index.html" class="dropdown-all">View All Motorcycles &rarr;</a></li>
+                                <li><a href="{{ base_path }}categories/index.html" class="dropdown-all">View All Accessories &rarr;</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
@@ -55,17 +70,36 @@
                             <ul class="dropdown">
                                 <li><a href="{{ base_path }}best/helmet/index.html">Best Helmets</a></li>
                                 <li><a href="{{ base_path }}best/phone-mount/index.html">Best Phone Mounts</a></li>
+                                <li><a href="{{ base_path }}best/crash-guard/index.html">Best Crash Guards</a></li>
+                                <li><a href="{{ base_path }}best/engine-oil/index.html">Best Engine Oil</a></li>
                                 <li><a href="{{ base_path }}best/gloves/index.html">Best Riding Gloves</a></li>
                                 <li><a href="{{ base_path }}best/jacket/index.html">Best Riding Jackets</a></li>
-                                <li><a href="{{ base_path }}best/engine-oil/index.html">Best Engine Oil</a></li>
-                                <li><a href="{{ base_path }}best/chain-lube/index.html">Best Chain Lubes</a></li>
                                 <li><a href="{{ base_path }}best/bike-cover/index.html">Best Bike Covers</a></li>
+                                <li><a href="{{ base_path }}best/chain-lube/index.html">Best Chain Lubes</a></li>
                                 <li><a href="{{ base_path }}best/tyre-inflator/index.html">Best Tyre Inflators</a></li>
+                                <li><a href="{{ base_path }}best/tank-bag/index.html">Best Tank Bags</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ base_path }}categories/index.html">Products</a></li>
-                        <li><a href="{{ base_path }}articles/index.html">Guides</a></li>
-                        <li><a href="{{ base_path }}brands/index.html">Brands</a></li>
+                        <li class="has-dropdown">
+                            <a href="{{ base_path }}articles/index.html">Guides</a>
+                            <ul class="dropdown">
+                                {% for cat in nav_guide_categories %}
+                                <li><a href="{{ base_path }}articles/{{ cat.slug }}/">{{ cat.name }}</a></li>
+                                {% endfor %}
+                                <li class="dropdown-divider"></li>
+                                <li><a href="{{ base_path }}articles/index.html" class="dropdown-all">Latest Articles &rarr;</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="{{ base_path }}brands/index.html">Brands</a>
+                            <ul class="dropdown">
+                                {% for brand in nav_accessory_brands %}
+                                <li><a href="{{ base_path }}brands/{{ brand.slug }}/index.html">{{ brand.name }}</a></li>
+                                {% endfor %}
+                                <li class="dropdown-divider"></li>
+                                <li><a href="{{ base_path }}brands/index.html" class="dropdown-all">View All Brands &rarr;</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -133,9 +167,12 @@
                     <div class="footer-col">
                         <h4>Motorcycles</h4>
                         <ul>
-                            {% for motorcycle in motorcycles %}
-                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/index.html">{{ motorcycle.brand }} {{ motorcycle.model }}</a></li>
+                            {% for brand, bikes in nav_motorcycles_by_brand.items() %}
+                            {% if bikes %}
+                            <li><a href="{{ base_path }}motorcycles/{{ bikes[0].slug }}/index.html">{{ brand }}</a></li>
+                            {% endif %}
                             {% endfor %}
+                            <li><a href="{{ base_path }}motorcycles/index.html">View All</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -187,6 +224,17 @@
         </a>
     </div>
 
+    <script>
+    window.__navModels = {
+        {% for brand, bikes in nav_motorcycles_by_brand.items() %}
+        "{{ brand | lower | replace(' ', '-') }}": [
+            {% for b in bikes %}
+            {"name": "{{ b.model }}", "url": "{{ base_path }}motorcycles/{{ b.slug }}/index.html"}{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]{% if not loop.last %},{% endif %}
+        {% endfor %}
+    };
+    </script>
     <script src="{{ base_path }}static/js/main.js"></script>
 </body>
 </html>

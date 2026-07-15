@@ -58,5 +58,72 @@
         "Base",
         "Pro"
     ],
-    "image": "static/images/motorcycles/hero-xpulse-200-4v.jpg"
+    "image": "static/images/motorcycles/hero-xpulse-200-4v.jpg",
+    "seat_height": "845 mm",
+    "abs": "Single-channel",
+    "service_interval": "Every 3,000 km",
+    "fuel_tank": "13 liters",
+    "compatibility_years": [
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+    ],
+    "oem_accessories": true,
+    "aftermarket_accessories": true,
+    "common_problems": [
+        {
+            "problem": "Dust ingress in air filter",
+            "cause": "Off-road riding in dusty conditions",
+            "solution": "Clean air filter more frequently",
+            "product_category": "Engine Oil"
+        },
+        {
+            "problem": "Spoke wheel maintenance",
+            "cause": "Off-road impacts can loosen spokes",
+            "solution": "Regular spoke tension check",
+            "product_category": "Chain Lube"
+        },
+        {
+            "problem": "Water crossing electrical issues",
+            "cause": "Water entering electrical components",
+            "solution": "Waterproof connectors and regular inspection",
+            "product_category": "Bike Cover"
+        }
+    ],
+    "comparison_bikes": [
+        "royal-enfield-himalayan-450",
+        "ktm-390-adventure",
+        "suzuki-v-strom-sx"
+    ],
+    "related_articles": [
+        "chain-maintenance",
+        "monsoon-riding",
+        "wash-bike"
+    ],
+    "buying_advice": {
+        "buy_first": [
+            "Helmet",
+            "Crash Guard",
+            "Bike Cover"
+        ],
+        "avoid": [
+            "Cheap helmet replicas",
+            "Non-ISI certified gear",
+            "Generic chain lubes"
+        ],
+        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "money_saving_tips": [
+            "Buy during festive season sales for best discounts",
+            "Bundle accessories from same brand for combo deals",
+            "Invest in quality safety gear - it lasts longer",
+            "Compare prices across Amazon and local dealers"
+        ],
+        "common_mistakes": [
+            "Buying a cheap helmet to save money",
+            "Skipping crash guard - one tip-over can cost thousands",
+            "Using WD-40 as chain lube",
+            "Not checking compatibility before buying accessories"
+        ]
+    }
 }

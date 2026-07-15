@@ -458,11 +458,11 @@ def replace_product_placeholders(html, products, base_path='./'):
         affiliate_url = product.get('affiliate_url', '')
         image = product.get('image', '')
 
-        image_html = ''
-        if image and 'images/' in image:
-            image_html = f'<img src="{base_path}{image}" alt="{title}" loading="lazy">'
-        else:
-            image_html = f'<div class="placeholder-image product-placeholder">{brand}</div>'
+        # Per AI_INSTRUCTIONS.md: never render a product card without a real image
+        if not image or 'images/' not in image:
+            return ''
+        
+        image_html = f'<img src="{base_path}{image}" alt="{title}" loading="lazy">'
 
         buy_btn = ''
         if affiliate_url:
@@ -779,32 +779,32 @@ def validate_products(products: list) -> List[str]:
         
         # Missing category
         if not product.get('category'):
-            warnings.append(f"  ⚠ {title} ({slug}): Missing 'category' field")
+            warnings.append(f"  ! {title} ({slug}): Missing 'category' field")
         
         # Missing compatibility
         if not product.get('compatible_bikes'):
-            warnings.append(f"  ⚠ {title} ({slug}): Missing 'compatible_bikes' - will not appear on any motorcycle page")
+            warnings.append(f"  ! {title} ({slug}): Missing 'compatible_bikes' - will not appear on any motorcycle page")
         
         # Missing affiliate URL
         if not product.get('affiliate_url'):
-            warnings.append(f"  ⚠ {title} ({slug}): Missing 'affiliate_url' - no buy link")
+            warnings.append(f"  ! {title} ({slug}): Missing 'affiliate_url' - no buy link")
         
         # Missing image
         if not product.get('image'):
-            warnings.append(f"  ⚠ {title} ({slug}): Missing 'image' - will show placeholder")
+            warnings.append(f"  ! {title} ({slug}): Missing 'image' - will show placeholder")
         
         # Invalid category
         category = product.get('category', '')
         if category:
             normalized = normalize_category(category).lower()
             if normalized not in valid_categories:
-                warnings.append(f"  ⚠ {title} ({slug}): Unknown category '{category}' (normalized: '{normalize_category(category)}')")
+                warnings.append(f"  ! {title} ({slug}): Unknown category '{category}' (normalized: '{normalize_category(category)}')")
         
         # Duplicate ASIN check
         asin = product.get('asin', '')
         if asin:
             if asin in seen_asins:
-                warnings.append(f"  ⚠ {title} ({slug}): Duplicate ASIN '{asin}' (also in {seen_asins[asin]})")
+                warnings.append(f"  ! {title} ({slug}): Duplicate ASIN '{asin}' (also in {seen_asins[asin]})")
             else:
                 seen_asins[asin] = slug
     
@@ -820,10 +820,10 @@ def validate_motorcycles(motorcycles: list) -> List[str]:
         slug = bike.get('slug', f'unknown-{i}')
         
         if not bike.get('categories'):
-            warnings.append(f"  ⚠ {model} ({slug}): Missing 'categories' field")
+            warnings.append(f"  ! {model} ({slug}): Missing 'categories' field")
         
         if not bike.get('brand'):
-            warnings.append(f"  ⚠ {model} ({slug}): Missing 'brand' field")
+            warnings.append(f"  ! {model} ({slug}): Missing 'brand' field")
     
     return warnings
 
@@ -867,9 +867,65 @@ class SiteGenerator:
         """
         depth = output_path.count('/') if output_path else 0
         base_path = '../' * depth if depth > 0 else './'
+
+        # ===== Navigation context =====
+        # Motorcycles grouped by brand for mega menu
+        motorcycles_by_brand = {}
+        for bike in self.data['motorcycles']:
+            brand = bike.get('brand', 'Other')
+            if brand not in motorcycles_by_brand:
+                motorcycles_by_brand[brand] = []
+            motorcycles_by_brand[brand].append({
+                'model': bike.get('model', ''),
+                'slug': bike.get('slug', ''),
+            })
+        # Sort brands and models
+        sorted_nav_brands = {}
+        for brand in sorted(motorcycles_by_brand.keys()):
+            sorted_nav_brands[brand] = sorted(motorcycles_by_brand[brand], key=lambda b: b['model'])
+
+        # Accessory categories for nav dropdown
+        accessory_nav_items = [
+            {'name': 'Helmet', 'slug': 'helmet'},
+            {'name': 'Phone Mount', 'slug': 'phone-mount'},
+            {'name': 'Crash Guard', 'slug': 'crash-guard'},
+            {'name': 'Engine Oil', 'slug': 'engine-oil'},
+            {'name': 'Chain Lube', 'slug': 'chain-lube'},
+            {'name': 'Bike Cover', 'slug': 'bike-cover'},
+            {'name': 'Tank Bag', 'slug': 'tank-bag'},
+            {'name': 'Saddle Bag', 'slug': 'saddle-bag'},
+            {'name': 'Tyre Inflator', 'slug': 'tyre-inflator'},
+            {'name': 'Gloves', 'slug': 'gloves'},
+            {'name': 'Jackets', 'slug': 'jackets'},
+        ]
+
+        # Guide categories for nav
+        guide_categories = [
+            {'name': 'Maintenance', 'slug': 'maintenance'},
+            {'name': 'Buying Guides', 'slug': 'buying-guides'},
+            {'name': 'Ownership Tips', 'slug': 'ownership'},
+            {'name': 'Comparisons', 'slug': 'comparisons'},
+            {'name': 'Touring', 'slug': 'touring'},
+            {'name': 'Safety', 'slug': 'safety'},
+        ]
+
+        # Accessory brands only (exclude motorcycle manufacturers)
+        motorcycle_brand_names = {
+            'Royal Enfield', 'Honda', 'Bajaj', 'Hero', 'TVS', 'Yamaha',
+            'KTM', 'Suzuki', 'Triumph', 'Harley-Davidson', 'Kawasaki',
+        }
+        accessory_brands = [
+            b for b in self.data['brands']
+            if b['name'] not in motorcycle_brand_names
+        ][:15]
+
         return {
             'brands': self.data['brands'],
             'motorcycles': self.data['motorcycles'],
+            'nav_motorcycles_by_brand': sorted_nav_brands,
+            'nav_accessory_categories': accessory_nav_items,
+            'nav_guide_categories': guide_categories,
+            'nav_accessory_brands': accessory_brands,
             'meta_title': meta_title,
             'meta_description': meta_description,
             'canonical_url': canonical_url or self.base_url + '/',
@@ -891,8 +947,30 @@ class SiteGenerator:
             reverse=True,
         )
         context['articles'] = sorted_articles
-        context['motorcycles'] = self.data['motorcycles']
-        context['brands'] = self.data['brands']
+
+        # ===== Motorcycle manufacturer brands only (exclude accessory brands) =====
+        motorcycle_brand_names = {
+            'Royal Enfield', 'Honda', 'Bajaj', 'Hero', 'TVS', 'Yamaha',
+            'KTM', 'Suzuki', 'Triumph', 'Harley-Davidson', 'Kawasaki',
+        }
+        motorcycle_brands = [
+            b for b in self.data['brands']
+            if b['name'] in motorcycle_brand_names
+        ]
+        context['motorcycle_brands'] = motorcycle_brands
+
+        # ===== Enrich motorcycle data with accessory counts =====
+        enriched_bikes = []
+        for bike in self.data['motorcycles']:
+            b = dict(bike)
+            matched = match_products_to_motorcycle(bike, self.data['products'])
+            b['accessory_count'] = len(matched)
+            enriched_bikes.append(b)
+        context['motorcycles'] = enriched_bikes
+
+        # ===== Collect unique motorcycle types for category filter =====
+        bike_types = sorted(set(b.get('type', '') for b in enriched_bikes if b.get('type')))
+        context['bike_types'] = bike_types
 
         # Rotating featured motorcycle
         featured_bike_slugs = [
@@ -902,13 +980,13 @@ class SiteGenerator:
             'honda-cb350rs',
         ]
         featured_bikes = [
-            b for b in self.data['motorcycles']
+            b for b in enriched_bikes
             if b.get('slug') in featured_bike_slugs
         ]
         if featured_bikes:
             context['featured_bike'] = random.choice(featured_bikes)
         else:
-            context['featured_bike'] = self.data['motorcycles'][0] if self.data['motorcycles'] else None
+            context['featured_bike'] = enriched_bikes[0] if enriched_bikes else None
 
         # Featured products for recommendations (top rated, one per category)
         categories_wanted = [
@@ -949,11 +1027,12 @@ class SiteGenerator:
                 editors_picks.append(pick)
         context['editors_picks'] = editors_picks
 
-        # Stats
+        # ===== Dynamic stats (never hardcoded) =====
         context['stats'] = {
-            'guides': len(self.data['articles']) * 12,
-            'products_reviewed': len(self.data['products']) * 15,
-            'motorcycles': len(self.data['motorcycles']) + len(self.data.get('bike_models', [])),
+            'guides': len(self.data['articles']),
+            'products_reviewed': len(self.data['products']),
+            'motorcycles': len(self.data['motorcycles']),
+            'brands': len(self.data['brands']),
         }
 
         content = self.render_template('home.html', context)
@@ -1059,6 +1138,102 @@ class SiteGenerator:
                 key=lambda a: a.get('date', ''),
                 reverse=True
             )[:3]
+
+            # ===== NEW HUB PAGE DATA =====
+
+            # Quick Specs card data
+            context['quick_specs'] = {
+                'price': bike.get('price'),
+                'mileage': bike.get('mileage'),
+                'power': bike.get('power'),
+                'torque': bike.get('torque'),
+                'weight': bike.get('weight'),
+                'fuel_tank': bike.get('fuel_tank') or bike.get('fuel_capacity'),
+                'seat_height': bike.get('seat_height', 'N/A'),
+                'abs': bike.get('abs', 'N/A'),
+                'service_interval': bike.get('service_interval', 'N/A'),
+                'variants': bike.get('variants', []),
+            }
+
+            # Quick Accessory Navigation
+            context['accessory_nav'] = [
+                {'name': 'Helmet', 'icon': '&#129650;', 'slug': 'helmet'},
+                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': 'phone-mount'},
+                {'name': 'Crash Guard', 'icon': '&#128737;', 'slug': 'crash-guard'},
+                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': 'engine-oil'},
+                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': 'chain-lube'},
+                {'name': 'Bike Cover', 'icon': '&#129509;', 'slug': 'bike-cover'},
+                {'name': 'Tank Bag', 'icon': '&#128092;', 'slug': 'tank-bag'},
+                {'name': 'Riding Gloves', 'icon': '&#129508;', 'slug': 'gloves'},
+                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': 'tyre-inflator'},
+            ]
+
+            # Must Have Accessories with budget/best picks per category
+            must_have_categories = ['Helmet', 'Phone Mount', 'Crash Guard', 'Engine Oil', 'Chain Lube', 'Bike Cover']
+            must_have_data = []
+            for cat in must_have_categories:
+                cat_products = get_products_by_category(matched, cat)
+                if cat_products:
+                    budget = min(cat_products, key=lambda p: p.get('price', 99999))
+                    best = max(cat_products, key=lambda p: p.get('editor_rating', 0))
+                    must_have_data.append({
+                        'category': cat,
+                        'slug': cat.lower().replace(' ', '-'),
+                        'budget_pick': budget,
+                        'best_pick': best,
+                        'count': len(cat_products),
+                    })
+            context['must_have_data'] = must_have_data
+
+            # Comparison bikes
+            comparison_slugs = bike.get('comparison_bikes', [])
+            context['comparison_bikes'] = [
+                m for m in self.data['motorcycles'] if m.get('slug') in comparison_slugs
+            ]
+
+            # Related motorcycles (same type)
+            bike_type_hub = bike.get('type', '').lower()
+            context['related_motorcycles'] = [
+                m for m in self.data['motorcycles']
+                if m['slug'] != bike['slug'] and m.get('type', '').lower() == bike_type_hub
+            ][:6]
+
+            # Related accessory category cards
+            context['accessory_categories'] = [
+                {'name': 'Helmet', 'slug': 'helmet', 'description': 'Safety first', 'icon': '&#129650;'},
+                {'name': 'Phone Mount', 'slug': 'phone-mount', 'description': 'Navigation', 'icon': '&#128241;'},
+                {'name': 'Crash Guard', 'slug': 'crash-guard', 'description': 'Protection', 'icon': '&#128737;'},
+                {'name': 'Bike Cover', 'slug': 'bike-cover', 'description': 'Weather guard', 'icon': '&#129509;'},
+                {'name': 'Tank Bag', 'slug': 'tank-bag', 'description': 'Storage', 'icon': '&#128092;'},
+            ]
+
+            # Related guides from bike's related_articles list
+            related_guides = []
+            for article in self.data['articles']:
+                if article.get('slug') in bike.get('related_articles', []):
+                    related_guides.append(article)
+            context['related_guides'] = related_guides[:5]
+
+            # Common problems
+            context['common_problems'] = bike.get('common_problems', [])
+
+            # Buying advice
+            context['buying_advice'] = bike.get('buying_advice', {})
+
+            # Compatibility
+            context['compatibility'] = {
+                'years': bike.get('compatibility_years', []),
+                'oem': bike.get('oem_accessories', False),
+                'aftermarket': bike.get('aftermarket_accessories', False),
+            }
+
+            # Maintenance schedule for timeline
+            context['maintenance_schedule'] = [
+                {'interval': '500 km', 'task': 'First Service', 'description': 'Basic inspection, chain lube, tyre pressure check'},
+                {'interval': '3,000 km', 'task': 'Oil Change', 'description': 'Engine oil replacement, air filter cleaning'},
+                {'interval': '6,000 km', 'task': 'Chain Service', 'description': 'Chain and sprocket inspection, valve clearance check'},
+                {'interval': '12,000 km', 'task': 'Brake Inspection', 'description': 'Brake pad replacement, fork oil change'},
+            ]
 
             content = self.render_template('motorcycle.html', context)
             content = replace_product_placeholders(content, self.data['products'], context['base_path'])
@@ -1494,7 +1669,37 @@ Sitemap: {self.base_url}/sitemap.xml
             else:
                 skipped += 1
         
-        print(f"    ✓ Downloaded {downloaded} new images, skipped {skipped} existing")
+        print(f"    * Downloaded {downloaded} new images, skipped {skipped} existing")
+
+    def validate_product_images(self):
+        """Remove products whose image files don't exist on disk.
+        
+        Per AI_INSTRUCTIONS.md: every product MUST have a real image.
+        Products without valid images are silently removed — never rendered.
+        """
+        images_dir = self.output_dir / 'static' / 'images' / 'products'
+        before = len(self.data['products'])
+        
+        valid_products = []
+        for product in self.data['products']:
+            img = product.get('image', '')
+            if not img:
+                continue
+            
+            filename = os.path.basename(img)
+            full_path = images_dir / filename
+            
+            if full_path.exists() and full_path.stat().st_size > 0:
+                # Update image path to be relative to output
+                product['image'] = f"static/images/products/{filename}"
+                valid_products.append(product)
+        
+        after = len(valid_products)
+        removed = before - after
+        self.data['products'] = valid_products
+        
+        if removed:
+            print(f"    * Filtered {removed} products without valid images ({after} remain)")
 
     def download_motorcycle_images(self):
         """Download motorcycle images from bike-deals.json."""
@@ -1562,7 +1767,19 @@ Sitemap: {self.base_url}/sitemap.xml
                         bike['image'] = local_path
             # Don't clear image if no deal found - keep existing value from JSON data
         
-        print(f"    ✓ Downloaded {downloaded} motorcycle images")
+        print(f"    * Downloaded {downloaded} motorcycle images")
+
+        # Clear image paths for bikes whose image files don't exist on disk
+        existing_images = set()
+        if images_dir.exists():
+            existing_images = {f.stem for f in images_dir.glob('*.jpg')}
+        
+        for bike in self.data['motorcycles']:
+            img_path = bike.get('image', '')
+            if img_path:
+                slug = img_path.split('/')[-1].replace('.jpg', '')
+                if slug not in existing_images:
+                    bike.pop('image', None)
 
     def generate(self):
         """Generate the complete static site."""
@@ -1587,10 +1804,16 @@ Sitemap: {self.base_url}/sitemap.xml
         # Copy static assets first (needed for image download directory)
         print("  Copying static assets...")
         self.copy_static_assets()
-        print("    ✓ CSS, JS, and images")
+        print("    * CSS, JS, and images")
 
         # Download product images from Amazon (before generating pages)
         self.download_product_images()
+        
+        # Validate product images — remove products without real images
+        self.validate_product_images()
+        
+        # Rebuild categories after filtering products
+        self.categories = build_product_categories(self.data['products'])
         
         # Download motorcycle images
         self.download_motorcycle_images()
@@ -1599,46 +1822,46 @@ Sitemap: {self.base_url}/sitemap.xml
         print("\n  Generating pages...")
 
         self.generate_home()
-        print("    ✓ Homepage")
+        print("    * Homepage")
 
         self.generate_brand_pages()
-        print(f"    ✓ {len(self.data['brands'])} brand pages")
+        print(f"    * {len(self.data['brands'])} brand pages")
 
         self.generate_motorcycle_pages()
-        print(f"    ✓ {len(self.data['motorcycles'])} motorcycle pages")
+        print(f"    * {len(self.data['motorcycles'])} motorcycle pages")
 
         self.generate_motorcycle_accessories()
-        print(f"    ✓ {len(self.data['motorcycles'])} accessory pages")
+        print(f"    * {len(self.data['motorcycles'])} accessory pages")
 
         self.generate_maintenance_pages()
-        print(f"    ✓ {len(self.data['motorcycles']) * 4} maintenance pages")
+        print(f"    * {len(self.data['motorcycles']) * 4} maintenance pages")
 
         self.generate_product_pages()
-        print(f"    ✓ {len(self.data['products'])} product pages")
+        print(f"    * {len(self.data['products'])} product pages")
 
         self.generate_category_pages()
-        print(f"    ✓ {len(self.categories) + 1} category pages")
+        print(f"    * {len(self.categories) + 1} category pages")
 
         self.generate_bestof_pages()
-        print("    ✓ 8 best-of pages")
+        print("    * 8 best-of pages")
 
         self.generate_article_pages()
-        print(f"    ✓ {len(self.data['articles'])} article pages")
+        print(f"    * {len(self.data['articles'])} article pages")
 
         self.generate_search_page()
-        print("    ✓ Search page")
+        print("    * Search page")
 
         # Generate SEO files
         print("\n  Generating SEO files...")
         self.generate_sitemap()
-        print("    ✓ sitemap.xml")
+        print("    * sitemap.xml")
 
         self.generate_robots()
-        print("    ✓ robots.txt")
+        print("    * robots.txt")
 
         # Generate search data
         self.generate_search_data()
-        print("    ✓ Search data (search-data.js)")
+        print("    * Search data (search-data.js)")
 
         # ===== Validation Report =====
         print(f"\n{'='*60}")
@@ -1671,9 +1894,9 @@ Sitemap: {self.base_url}/sitemap.xml
         for cat in sorted(all_categories):
             count = get_category_product_count(self.data['products'], cat)
             if count > 0:
-                print(f"    ✓ {cat:<20s} {count} product{'s' if count != 1 else ''}")
+                print(f"    * {cat:<20s} {count} product{'s' if count != 1 else ''}")
             else:
-                print(f"    ⚠ {cat:<20s} 0 products")
+                print(f"    ! {cat:<20s} 0 products")
         
         print()
 
@@ -1688,9 +1911,9 @@ Sitemap: {self.base_url}/sitemap.xml
             
             model = f"{bike['brand']} {bike['model']}"
             if matched:
-                print(f"    ✓ {model:<30s} {len(matched)} products in {len(categories_found)} categories")
+                print(f"    * {model:<30s} {len(matched)} products in {len(categories_found)} categories")
             else:
-                print(f"    ⚠ {model:<30s} No products matched")
+                print(f"    ! {model:<30s} No products matched")
         
         print(f"\n{'='*60}")
         print(f"  Generation complete!")

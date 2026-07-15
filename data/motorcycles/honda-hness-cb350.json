@@ -58,5 +58,71 @@
         "DLX",
         "DLX Pro"
     ],
-    "image": "static/images/motorcycles/honda-hness-cb350.jpg"
+    "image": "static/images/motorcycles/honda-hness-cb350.jpg",
+    "seat_height": "800 mm",
+    "abs": "Dual-channel",
+    "service_interval": "Every 3,000 km",
+    "fuel_tank": "15 liters",
+    "compatibility_years": [
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+    ],
+    "oem_accessories": true,
+    "aftermarket_accessories": true,
+    "common_problems": [
+        {
+            "problem": "Rust on exhaust and fenders",
+            "cause": "Classic design with more exposed metal",
+            "solution": "Regular cleaning and anti-rust treatment",
+            "product_category": "Bike Cover"
+        },
+        {
+            "problem": "Seat discomfort on long rides",
+            "cause": "Stock seat padding may be firm",
+            "solution": "Consider aftermarket gel seat or seat cover",
+            "product_category": "Seat Cover"
+        },
+        {
+            "problem": "Battery drain in cold weather",
+            "cause": "Older battery or parasitic drain",
+            "solution": "Check battery health, use trickle charger",
+            "product_category": "Tyre Inflator"
+        }
+    ],
+    "comparison_bikes": [
+        "royal-enfield-bullet-350",
+        "royal-enfield-hunter-350"
+    ],
+    "related_articles": [
+        "chain-maintenance",
+        "best-engine-oil",
+        "wash-bike"
+    ],
+    "buying_advice": {
+        "buy_first": [
+            "Helmet",
+            "Crash Guard",
+            "Bike Cover"
+        ],
+        "avoid": [
+            "Cheap helmet replicas",
+            "Non-ISI certified gear",
+            "Generic chain lubes"
+        ],
+        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "money_saving_tips": [
+            "Buy during festive season sales for best discounts",
+            "Bundle accessories from same brand for combo deals",
+            "Invest in quality safety gear - it lasts longer",
+            "Compare prices across Amazon and local dealers"
+        ],
+        "common_mistakes": [
+            "Buying a cheap helmet to save money",
+            "Skipping crash guard - one tip-over can cost thousands",
+            "Using WD-40 as chain lube",
+            "Not checking compatibility before buying accessories"
+        ]
+    }
 }

@@ -182,3 +182,61 @@ Every page should answer the rider's question first and recommend products only 
 The goal is to become the most useful motorcycle buying and maintenance resource for Indian riders.
 
 Content quality, trust, and user experience take priority over affiliate revenue.
+
+
+# Asset Validation Rules
+
+Before generating any HTML page, validate every asset referenced by the page.
+
+This includes:
+
+- Product images
+- Motorcycle images
+- Brand logos
+- Category images
+- Icons
+# Motorcycle Image Acquisition
+
+Motorcycle images are mandatory.
+
+Never use placeholder motorcycle images in production.
+
+## Image Source Priority
+
+For every motorcycle:
+
+1. Check if a verified local image already exists.
+2. If not, download the official motorcycle image from the manufacturer's official website or official media/press resources.
+3. Store the downloaded image locally using the project's naming convention.
+4. Validate the image before using it.
+
+Do not repeatedly download images that already exist locally.
+
+## Validation
+
+Every motorcycle image must:
+
+- Match the correct motorcycle model.
+- Be free of watermarks.
+- Have good resolution (minimum 800px wide preferred).
+- Be suitable for website display.
+- Be stored inside the local motorcycle image directory.
+
+## Fallback
+
+If an official manufacturer image cannot be found:
+
+1. Try other approved image sources configured by the project.
+2. If no suitable image can be obtained, record the motorcycle in `reports/missing_motorcycle_images.json`.
+3. Do not generate placeholder motorcycle images.
+
+## Build Rule
+
+Motorcycle images should be acquired and validated before HTML generation.
+
+The build should generate a report showing:
+
+- Images found locally
+- Images downloaded
+- Images missing
+- Images skipped

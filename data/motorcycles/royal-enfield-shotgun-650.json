@@ -63,5 +63,72 @@
         "Drift Red",
         "Sheet Metal"
     ],
-    "image": "static/images/motorcycles/royal-enfield-shotgun-650.jpg"
+    "image": "static/images/motorcycles/royal-enfield-shotgun-650.jpg",
+    "seat_height": "790 mm",
+    "abs": "Dual-channel",
+    "service_interval": "Every 3,000 km",
+    "fuel_tank": "13.8 liters",
+    "compatibility_years": [
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+    ],
+    "oem_accessories": true,
+    "aftermarket_accessories": true,
+    "common_problems": [
+        {
+            "problem": "Rust on chrome parts",
+            "cause": "Humid climate and water exposure",
+            "solution": "Regular waxing and anti-rust spray",
+            "product_category": "Bike Cover"
+        },
+        {
+            "problem": "Engine heating in traffic",
+            "cause": "Air-cooled engine in stop-and-go traffic",
+            "solution": "Allow adequate warm-up, avoid prolonged idling",
+            "product_category": "Engine Oil"
+        },
+        {
+            "problem": "Chain noise after rain",
+            "cause": "Water washes away chain lubricant",
+            "solution": "Re-lubricate chain after riding in rain",
+            "product_category": "Chain Lube"
+        }
+    ],
+    "comparison_bikes": [
+        "royal-enfield-classic-350",
+        "royal-enfield-meteor-350",
+        "honda-hness-cb350"
+    ],
+    "related_articles": [
+        "chain-maintenance",
+        "best-engine-oil",
+        "wash-bike"
+    ],
+    "buying_advice": {
+        "buy_first": [
+            "Helmet",
+            "Crash Guard",
+            "Bike Cover"
+        ],
+        "avoid": [
+            "Cheap helmet replicas",
+            "Non-ISI certified gear",
+            "Generic chain lubes"
+        ],
+        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "money_saving_tips": [
+            "Buy during festive season sales for best discounts",
+            "Bundle accessories from same brand for combo deals",
+            "Invest in quality safety gear - it lasts longer",
+            "Compare prices across Amazon and local dealers"
+        ],
+        "common_mistakes": [
+            "Buying a cheap helmet to save money",
+            "Skipping crash guard - one tip-over can cost thousands",
+            "Using WD-40 as chain lube",
+            "Not checking compatibility before buying accessories"
+        ]
+    }
 }

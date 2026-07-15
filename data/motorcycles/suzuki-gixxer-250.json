@@ -58,5 +58,72 @@
         "Standard",
         "ABS"
     ],
-    "image": "static/images/motorcycles/suzuki-gixxer-250.jpg"
+    "image": "static/images/motorcycles/suzuki-gixxer-250.jpg",
+    "seat_height": "800 mm",
+    "abs": "Dual-channel",
+    "service_interval": "Every 3,000 km",
+    "fuel_tank": "12.5 liters",
+    "compatibility_years": [
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+    ],
+    "oem_accessories": true,
+    "aftermarket_accessories": true,
+    "common_problems": [
+        {
+            "problem": "Headlight vibration",
+            "cause": "Naked design transmits more vibration",
+            "solution": "Check mounting bolts, consider vibration dampeners",
+            "product_category": "Phone Mount"
+        },
+        {
+            "problem": "Chain sprocket wear",
+            "cause": "Aggressive riding style",
+            "solution": "Regular chain maintenance and lubrication",
+            "product_category": "Chain Lube"
+        },
+        {
+            "problem": "Brake pad wear",
+            "cause": "Frequent braking in city traffic",
+            "solution": "Check brake pads every 3,000 km",
+            "product_category": "Engine Oil"
+        }
+    ],
+    "comparison_bikes": [
+        "ktm-200-duke",
+        "yamaha-mt-15-v2",
+        "bajaj-pulsar-n250"
+    ],
+    "related_articles": [
+        "chain-maintenance",
+        "best-engine-oil",
+        "tyre-pressure"
+    ],
+    "buying_advice": {
+        "buy_first": [
+            "Helmet",
+            "Crash Guard",
+            "Bike Cover"
+        ],
+        "avoid": [
+            "Cheap helmet replicas",
+            "Non-ISI certified gear",
+            "Generic chain lubes"
+        ],
+        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "money_saving_tips": [
+            "Buy during festive season sales for best discounts",
+            "Bundle accessories from same brand for combo deals",
+            "Invest in quality safety gear - it lasts longer",
+            "Compare prices across Amazon and local dealers"
+        ],
+        "common_mistakes": [
+            "Buying a cheap helmet to save money",
+            "Skipping crash guard - one tip-over can cost thousands",
+            "Using WD-40 as chain lube",
+            "Not checking compatibility before buying accessories"
+        ]
+    }
 }
