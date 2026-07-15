@@ -346,3 +346,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ===== Sidebar Collapsible Sections =====
+document.querySelectorAll('.moto-sb-collapsible').forEach(header => {
+    header.addEventListener('click', () => {
+        const targetId = header.dataset.target;
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.classList.toggle('expanded');
+            const toggle = header.querySelector('.moto-sb-toggle');
+            if (toggle) {
+                toggle.style.transform = target.classList.contains('expanded') ? 'rotate(180deg)' : '';
+            }
+        }
+    });
+});

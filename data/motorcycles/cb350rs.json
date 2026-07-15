@@ -39,7 +39,23 @@
         "Basic instrument cluster",
         "Premium pricing"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves"],
-    "ideal_for": ["Young riders", "City commuting", "Sporty riding", "Weekend fun"],
-    "variants": ["Standard"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Young riders",
+        "City commuting",
+        "Sporty riding",
+        "Weekend fun"
+    ],
+    "variants": [
+        "Standard"
+    ],
+    "image": "static/images/motorcycles/honda-cb350rs.jpg"
 }

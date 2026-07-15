@@ -39,7 +39,28 @@
         "Limited ground clearance",
         "Wind protection absent"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets", "Tank Bag"],
-    "ideal_for": ["Classic motorcycle enthusiasts", "City riding", "Weekend rides", "Touring"],
-    "variants": ["Halcyon", "Signals", "Dark", "Reborn"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag"
+    ],
+    "ideal_for": [
+        "Classic motorcycle enthusiasts",
+        "City riding",
+        "Weekend rides",
+        "Touring"
+    ],
+    "variants": [
+        "Halcyon",
+        "Signals",
+        "Dark",
+        "Reborn"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-classic-350.jpg"
 }

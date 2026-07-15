@@ -29,7 +29,7 @@ from creatorsapi_python_sdk.exceptions import ApiException
 # If you prefer this method, replace None with your own values.
 DEFAULT_CREDENTIAL_ID = "amzn1.application-oa2-client.b9b4e4acd8b145de93d67e30964552f6"
 DEFAULT_CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.c54ce65e63d4bc8d44bf9ec5dbb7a368aa943b0cc84bb89a32eb77afbb0ca028"
-DEFAULT_PARTNER_TAG = "helpfulsurfer-21"
+DEFAULT_PARTNER_TAG = "0x23uyx-21"
 SEARCH_KEYWORDS = [
     'motorcycle helmet',
     'riding jacket',
@@ -43,6 +43,9 @@ SEARCH_KEYWORDS = [
     'gps tracker for bike',
     'motorcycle saddle bag',
     'tyre inflator',
+    'Crash Guard',
+    'sump guard',
+    'engine oil'
 ]
 SEARCH_INDICES = ['All']
 
@@ -66,7 +69,7 @@ def get_credentials(credential_id: str | None = None, credential_secret: str | N
     return cid, csecret
 
 def get_partner_tag(partner_tag: str | None = None) -> str:
-    tag = partner_tag or DEFAULT_PARTNER_TAG or os.environ.get('helpfulsurfer-21')
+    tag = partner_tag or DEFAULT_PARTNER_TAG or os.environ.get('AMAZON_PARTNER_TAG')
     if not tag or not tag.strip():
         raise RuntimeError(
             'Please set AMAZON_PARTNER_TAG environment variable, provide --partner-tag, '

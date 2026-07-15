@@ -39,7 +39,25 @@
         "Could use more torque",
         "Limited color options"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets"],
-    "ideal_for": ["Premium commuting", "Weekend rides", "Highway cruising", "Daily use"],
-    "variants": ["DLX", "DLX Pro"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Premium commuting",
+        "Weekend rides",
+        "Highway cruising",
+        "Daily use"
+    ],
+    "variants": [
+        "DLX",
+        "DLX Pro"
+    ],
+    "image": "static/images/motorcycles/honda-hness-cb350.jpg"
 }

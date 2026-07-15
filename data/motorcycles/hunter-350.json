@@ -39,7 +39,24 @@
         "Limited luggage options",
         "Could use more power"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves"],
-    "ideal_for": ["Urban commuting", "Beginner riders", "City exploration", "Short weekend rides"],
-    "variants": ["Retro", "Metro"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves"
+    ],
+    "ideal_for": [
+        "Urban commuting",
+        "Beginner riders",
+        "City exploration",
+        "Short weekend rides"
+    ],
+    "variants": [
+        "Retro",
+        "Metro"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-hunter-350.jpg"
 }

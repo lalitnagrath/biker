@@ -703,6 +703,11 @@ ul { list-style: none; }
 .product-inline-verdict { font-size: 0.8rem; color: var(--color-text-secondary); margin-bottom: 8px; line-height: 1.5; }
 .product-inline-actions { display: flex; gap: 6px; }
 
+/* ===== Category Summary ===== */
+.category-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--color-surface-alt); border-radius: var(--radius); margin-bottom: 12px; border: 1px solid var(--color-border-light); }
+.category-count { font-size: 0.85rem; font-weight: 600; color: var(--color-text-secondary); }
+.category-summary .btn { font-size: 0.75rem; padding: 6px 12px; }
+
 /* ===== Maintenance Schedule Table ===== */
 .maintenance-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; }
 .maintenance-table th { background: var(--color-primary); color: white; padding: 12px 16px; text-align: left; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
@@ -771,7 +776,8 @@ ul { list-style: none; }
     .moto-checklist-grid { grid-template-columns: 1fr; }
     .moto-internal-links { grid-template-columns: 1fr; }
     .moto-articles-grid { grid-template-columns: 1fr; }
-    .moto-sidebar-sticky { position: static; }
+    .moto-sidebar-sticky { position: static; max-height: none; overflow-y: visible; }
+    .moto-layout { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
     .moto-hero-actions { flex-direction: column; }
@@ -1039,21 +1045,78 @@ ul { list-style: none; }
 .moto-article-content p { font-size: 0.85rem; color: var(--color-text-secondary); }
 
 /* ===== Sidebar ===== */
-.moto-sidebar-sticky { position: sticky; top: calc(var(--header-height) + 52px); }
-.moto-sidebar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px; }
-.moto-sidebar-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--color-border); }
-.moto-sidebar-buy-box { background: var(--color-accent-light); border-color: var(--color-accent); }
-.moto-sidebar-price { font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
-.moto-sidebar-price-note { font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 14px; }
-.moto-sidebar-specs { display: flex; flex-direction: column; gap: 10px; }
-.moto-sidebar-specs li { display: flex; justify-content: space-between; font-size: 0.85rem; }
-.moto-sidebar-specs li span { color: var(--color-text-muted); }
-.moto-sidebar-specs li strong { font-weight: 600; }
-.moto-sidebar-highlights { display: flex; flex-direction: column; gap: 8px; }
-.moto-sidebar-highlights li { font-size: 0.85rem; color: var(--color-text-secondary); }
-.moto-sidebar-links { display: flex; flex-direction: column; gap: 8px; }
-.moto-sidebar-links a { font-size: 0.85rem; color: var(--color-text-secondary); transition: color var(--transition); }
-.moto-sidebar-links a:hover { color: var(--color-accent); }
-.moto-sidebar-related { display: flex; flex-direction: column; gap: 8px; }
-.moto-sidebar-related a { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--color-text-secondary); }
-.moto-sidebar-related a:hover { color: var(--color-accent); }
+.moto-sidebar-sticky { position: sticky; top: calc(var(--header-height) + 52px); max-height: calc(100vh - var(--header-height) - 60px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--color-border) transparent; }
+.moto-sidebar-sticky::-webkit-scrollbar { width: 4px; }
+.moto-sidebar-sticky::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+.moto-sidebar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 12px; }
+.moto-sb-title { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--color-border); cursor: default; }
+.moto-sb-icon { font-size: 0.9rem; opacity: 0.6; flex-shrink: 0; }
+.moto-sb-toggle { margin-left: auto; font-size: 0.7rem; opacity: 0.4; transition: transform var(--transition); }
+.moto-sb-collapsible { cursor: pointer; user-select: none; }
+.moto-sb-collapsible:hover { color: var(--color-accent); }
+.moto-sb-collapse { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.moto-sb-collapse.expanded { max-height: 600px; }
+
+/* Top Picks */
+.moto-sb-picks { display: flex; flex-direction: column; gap: 8px; }
+.moto-sb-pick-item { display: flex; gap: 10px; align-items: center; padding: 6px; border-radius: var(--radius-md); transition: background var(--transition); text-decoration: none; color: inherit; }
+.moto-sb-pick-item:hover { background: var(--color-bg-secondary, #f5f5f5); }
+.moto-sb-pick-item img { width: 44px; height: 44px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
+.moto-sb-pick-info { display: flex; flex-direction: column; min-width: 0; }
+.moto-sb-pick-title { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.moto-sb-pick-meta { font-size: 0.7rem; color: var(--color-text-muted); }
+
+/* Budget Setup */
+.moto-sb-budget { display: flex; flex-direction: column; gap: 0; }
+.moto-sb-budget-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--color-border); font-size: 0.78rem; text-decoration: none; color: var(--color-text-secondary); transition: color var(--transition); }
+.moto-sb-budget-item:last-of-type { border-bottom: none; }
+.moto-sb-budget-item:hover { color: var(--color-accent); }
+.moto-sb-budget-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 8px; }
+.moto-sb-budget-price { font-weight: 600; color: var(--color-text-primary); flex-shrink: 0; }
+.moto-sb-budget-total { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; margin-top: 4px; border-top: 2px solid var(--color-accent); font-size: 0.85rem; font-weight: 700; }
+
+/* Touring Setup */
+.moto-sb-touring { display: flex; flex-direction: column; gap: 6px; }
+.moto-sb-touring-item { display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: var(--radius-sm); text-decoration: none; color: inherit; transition: background var(--transition); }
+.moto-sb-touring-item:hover { background: var(--color-bg-secondary, #f5f5f5); }
+.moto-sb-touring-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent); }
+.moto-sb-touring-name { font-size: 0.78rem; font-weight: 600; }
+.moto-sb-touring-price { font-size: 0.75rem; color: var(--color-text-muted); }
+
+/* Maintenance Schedule */
+.moto-sb-maint-item { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid var(--color-border); }
+.moto-sb-maint-item:last-child { border-bottom: none; }
+.moto-sb-maint-interval { font-size: 0.78rem; font-weight: 700; color: var(--color-accent); }
+.moto-sb-maint-tasks { font-size: 0.73rem; color: var(--color-text-secondary); line-height: 1.5; }
+
+/* Related Guides */
+.moto-sb-guides { display: flex; flex-direction: column; gap: 6px; }
+.moto-sb-guide-item { display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: var(--radius-sm); text-decoration: none; color: inherit; transition: background var(--transition); }
+.moto-sb-guide-item:hover { background: var(--color-bg-secondary, #f5f5f5); }
+.moto-sb-guide-title { font-size: 0.78rem; font-weight: 600; line-height: 1.3; }
+.moto-sb-guide-meta { font-size: 0.68rem; color: var(--color-text-muted); }
+
+/* Similar Motorcycles */
+.moto-sb-similar { display: flex; flex-direction: column; gap: 0; }
+.moto-sb-similar-item { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--color-border); font-size: 0.8rem; text-decoration: none; color: var(--color-text-secondary); transition: color var(--transition); }
+.moto-sb-similar-item:last-child { border-bottom: none; }
+.moto-sb-similar-item:hover { color: var(--color-accent); }
+.moto-sb-similar-name { font-weight: 600; }
+.moto-sb-similar-price { font-size: 0.75rem; color: var(--color-text-muted); }
+
+/* Trending Accessories */
+.moto-sb-trending { display: flex; flex-direction: column; gap: 0; }
+.moto-sb-trending-item { display: flex; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--color-border); text-decoration: none; color: inherit; transition: opacity var(--transition); }
+.moto-sb-trending-item:last-child { border-bottom: none; }
+.moto-sb-trending-item:hover { opacity: 0.7; }
+.moto-sb-trending-rank { width: 22px; height: 22px; background: var(--color-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+.moto-sb-trending-info { display: flex; flex-direction: column; min-width: 0; }
+.moto-sb-trending-name { font-size: 0.78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.moto-sb-trending-meta { font-size: 0.68rem; color: var(--color-text-muted); }
+
+/* Recently Updated */
+.moto-sb-recent { display: flex; flex-direction: column; gap: 6px; }
+.moto-sb-recent-item { display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: var(--radius-sm); text-decoration: none; color: inherit; transition: background var(--transition); }
+.moto-sb-recent-item:hover { background: var(--color-bg-secondary, #f5f5f5); }
+.moto-sb-recent-title { font-size: 0.78rem; font-weight: 600; line-height: 1.3; }
+.moto-sb-recent-date { font-size: 0.68rem; color: var(--color-text-muted); }

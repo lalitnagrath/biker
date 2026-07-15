@@ -39,7 +39,26 @@
         "Drum rear brake on base variant",
         "Long service intervals"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets"],
-    "ideal_for": ["City commuting", "Highway cruising", "Long-distance touring", "Daily riding"],
-    "variants": ["Standard", "Redditch", "Signals"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "City commuting",
+        "Highway cruising",
+        "Long-distance touring",
+        "Daily riding"
+    ],
+    "variants": [
+        "Standard",
+        "Redditch",
+        "Signals"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-bullet-350.jpg"
 }

@@ -39,7 +39,26 @@
         "Wind blast at speed",
         "New model, long-term reliability unknown"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets"],
-    "ideal_for": ["Urban riding", "Performance enthusiasts", "City commuting", "Weekend sport rides"],
-    "variants": ["Shadow", "Gold", "Smoke"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets"
+    ],
+    "ideal_for": [
+        "Urban riding",
+        "Performance enthusiasts",
+        "City commuting",
+        "Weekend sport rides"
+    ],
+    "variants": [
+        "Shadow",
+        "Gold",
+        "Smoke"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-guerrilla-450.jpg"
 }

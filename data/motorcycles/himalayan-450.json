@@ -39,7 +39,29 @@
         "Complex maintenance",
         "Limited dealer network"
     ],
-    "categories": ["Helmet", "Phone Mount", "Crash Guard", "Bike Cover", "Chain Lube", "Tyre Inflator", "Gloves", "Jackets", "Tank Bag", "Saddle Bag", "Tail Bag"],
-    "ideal_for": ["Adventure touring", "Long-distance rides", "Mountain roads", "Highway touring"],
-    "variants": ["Pass", "Explore", "Hanle Black"]
+    "categories": [
+        "Helmet",
+        "Phone Mount",
+        "Crash Guard",
+        "Bike Cover",
+        "Chain Lube",
+        "Tyre Inflator",
+        "Gloves",
+        "Jackets",
+        "Tank Bag",
+        "Saddle Bag",
+        "Tail Bag"
+    ],
+    "ideal_for": [
+        "Adventure touring",
+        "Long-distance rides",
+        "Mountain roads",
+        "Highway touring"
+    ],
+    "variants": [
+        "Pass",
+        "Explore",
+        "Hanle Black"
+    ],
+    "image": "static/images/motorcycles/royal-enfield-himalayan-450.jpg"
 }

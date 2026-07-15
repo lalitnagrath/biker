@@ -245,6 +245,7 @@
                             <div class="moto-must-have-content">
                                 <h3>Helmet</h3>
                                 <p>Non-negotiable. Protect your head with a quality helmet that meets safety standards.</p>
+                                {% raw %}{{ category_summary:Helmet }}{% endraw %}
                                 <div class="moto-must-have-products">
                                    {% raw %} {{ products:Helmet limit=2 }}{% endraw %}
                                 </div>
@@ -256,6 +257,7 @@
                             <div class="moto-must-have-content">
                                 <h3>Phone Mount</h3>
                                 <p>Navigate safely without holding your phone. Vibration-free mounts protect your camera.</p>
+                                {% raw %}{{ category_summary:Phone Mount }}{% endraw %}
                                 <div class="moto-must-have-products">
                                    {% raw %} {{ products:Phone Mount limit=2 }}{% endraw %}
                                 </div>
@@ -267,6 +269,7 @@
                             <div class="moto-must-have-content">
                                 <h3>Crash Guard</h3>
                                 <p>Protect your bike and yourself in case of a fall. Essential for new and experienced riders alike.</p>
+                                {% raw %}{{ category_summary:Crash Guard }}{% endraw %}
                                 <div class="moto-must-have-products">
                                    {% raw %} {{ products:Crash Guard limit=2 }}{% endraw %}
                                 </div>
@@ -278,6 +281,7 @@
                             <div class="moto-must-have-content">
                                 <h3>Bike Cover</h3>
                                 <p>Keep your {{ motorcycle.model }} looking new. Protect from sun, rain, and dust.</p>
+                                {% raw %}{{ category_summary:Bike Cover }}{% endraw %}
                                 <div class="moto-must-have-products">
                                    {% raw %} {{ products:Bike Cover limit=2 }}{% endraw %}
                                 </div>
@@ -289,6 +293,7 @@
                             <div class="moto-must-have-content">
                                 <h3>Chain Lube</h3>
                                 <p>A well-lubricated chain ensures smooth rides and extends chain life significantly.</p>
+                                {% raw %}{{ category_summary:Chain Lube }}{% endraw %}
                                 <div class="moto-must-have-products">
                                    {% raw %} {{ products:Chain Lube limit=2 }}{% endraw %}
                                 </div>
@@ -1108,57 +1113,141 @@
             {# ===== SIDEBAR ===== #}
             <aside class="moto-sidebar">
                 <div class="moto-sidebar-sticky">
-                    <div class="moto-sidebar-card moto-sidebar-buy-box">
-                        <h3>Buy {{ motorcycle.model }}</h3>
-                        <div class="moto-sidebar-price">{{ motorcycle.price }}</div>
-                        <div class="moto-sidebar-price-note">Ex-showroom price</div>
-                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html" class="btn btn-accent btn-block">Shop Accessories</a>
-                    </div>
 
+                    {# Card 1: Top Picks #}
+                    {% if sidebar_top_picks %}
                     <div class="moto-sidebar-card">
-                        <h3>Quick Specs</h3>
-                        <ul class="moto-sidebar-specs">
-                            <li><span>Engine</span><strong>{{ motorcycle.engine }}</strong></li>
-                            <li><span>Power</span><strong>{{ motorcycle.power }}</strong></li>
-                            <li><span>Torque</span><strong>{{ motorcycle.torque }}</strong></li>
-                            <li><span>Weight</span><strong>{{ motorcycle.weight }}</strong></li>
-                            <li><span>Mileage</span><strong>{{ motorcycle.mileage }}</strong></li>
-                            <li><span>Fuel Tank</span><strong>{{ motorcycle.fuel_capacity }}</strong></li>
-                            <li><span>Transmission</span><strong>{{ motorcycle.transmission }}</strong></li>
-                            <li><span>Type</span><strong>{{ motorcycle.type }}</strong></li>
-                        </ul>
-                    </div>
-
-                    <div class="moto-sidebar-card">
-                        <h3>Highlights</h3>
-                        <ul class="moto-sidebar-highlights">
-                            {% for highlight in motorcycle.highlights %}
-                            <li>&#10003; {{ highlight }}</li>
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9733;</span> Top Picks</h3>
+                        <div class="moto-sb-picks">
+                            {% for product in sidebar_top_picks %}
+                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="moto-sb-pick-item">
+                                <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                                <div class="moto-sb-pick-info">
+                                    <span class="moto-sb-pick-title">{{ product.title }}</span>
+                                    <span class="moto-sb-pick-meta">{{ product.editor_rating }}/10 &middot; &#8377;{{ product.price }}</span>
+                                </div>
+                            </a>
                             {% endfor %}
-                        </ul>
+                        </div>
                     </div>
+                    {% endif %}
 
+                    {# Card 2: Budget Setup #}
+                    {% if sidebar_budget_setup %}
                     <div class="moto-sidebar-card">
-                        <h3>Quick Links</h3>
-                        <ul class="moto-sidebar-links">
-                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/accessories/index.html">All Accessories</a></li>
-                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html">Chain Maintenance</a></li>
-                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/index.html">Washing Guide</a></li>
-                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/index.html">Tyre Pressure</a></li>
-                            <li><a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/index.html">Engine Oil Guide</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="moto-sidebar-card">
-                        <h3>Related Bikes</h3>
-                        <ul class="moto-sidebar-related">
-                            {% for other in motorcycles %}
-                            {% if other.slug != motorcycle.slug %}
-                            <li><a href="{{ base_path }}motorcycles/{{ other.slug }}/index.html">{{ other.brand }} {{ other.model }} <span>&rarr;</span></a></li>
-                            {% endif %}
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9775;</span> Budget Setup</h3>
+                        <div class="moto-sb-budget">
+                            {% for product in sidebar_budget_setup %}
+                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="moto-sb-budget-item">
+                                <span class="moto-sb-budget-name">{{ product.title }}</span>
+                                <span class="moto-sb-budget-price">&#8377;{{ product.price }}</span>
+                            </a>
                             {% endfor %}
-                        </ul>
+                            <div class="moto-sb-budget-total">
+                                <span>Total</span>
+                                <strong>&#8377;{{ sidebar_budget_total }}</strong>
+                            </div>
+                        </div>
                     </div>
+                    {% endif %}
+
+                    {# Card 3: Touring Setup #}
+                    {% if sidebar_touring_setup %}
+                    <div class="moto-sidebar-card">
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9992;</span> Touring Setup</h3>
+                        <div class="moto-sb-touring">
+                            {% for product in sidebar_touring_setup %}
+                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="moto-sb-touring-item">
+                                <span class="moto-sb-touring-cat">{{ product.category }}</span>
+                                <span class="moto-sb-touring-name">{{ product.title }}</span>
+                                <span class="moto-sb-touring-price">&#8377;{{ product.price }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {# Card 4: Maintenance Schedule #}
+                    {% if sidebar_maintenance %}
+                    <div class="moto-sidebar-card moto-sb-maintenance">
+                        <h3 class="moto-sb-title moto-sb-collapsible" data-target="sbMaintenance">
+                            <span class="moto-sb-icon">&#9881;</span> Maintenance Schedule
+                            <span class="moto-sb-toggle">&#9662;</span>
+                        </h3>
+                        <div class="moto-sb-collapse" id="sbMaintenance">
+                            {% for item in sidebar_maintenance %}
+                            <div class="moto-sb-maint-item">
+                                <span class="moto-sb-maint-interval">{{ item.interval }}</span>
+                                <span class="moto-sb-maint-tasks">{{ item.tasks }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {# Card 5: Related Guides #}
+                    {% if related_articles %}
+                    <div class="moto-sidebar-card">
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9998;</span> Related Guides</h3>
+                        <div class="moto-sb-guides">
+                            {% for article in related_articles %}
+                            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="moto-sb-guide-item">
+                                <span class="moto-sb-guide-title">{{ article.title }}</span>
+                                <span class="moto-sb-guide-meta">{{ article.reading_time }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {# Card 6: Similar Motorcycles #}
+                    {% if sidebar_similar_bikes %}
+                    <div class="moto-sidebar-card">
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9883;</span> Similar Motorcycles</h3>
+                        <div class="moto-sb-similar">
+                            {% for other in sidebar_similar_bikes %}
+                            <a href="{{ base_path }}motorcycles/{{ other.slug }}/index.html" class="moto-sb-similar-item">
+                                <span class="moto-sb-similar-name">{{ other.brand }} {{ other.model }}</span>
+                                <span class="moto-sb-similar-price">&#8377;{{ other.price }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {# Card 7: Trending Accessories #}
+                    {% if sidebar_trending %}
+                    <div class="moto-sidebar-card">
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9829;</span> Trending Accessories</h3>
+                        <div class="moto-sb-trending">
+                            {% for product in sidebar_trending %}
+                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="moto-sb-trending-item">
+                                <span class="moto-sb-trending-rank">{{ loop.index }}</span>
+                                <div class="moto-sb-trending-info">
+                                    <span class="moto-sb-trending-name">{{ product.title }}</span>
+                                    <span class="moto-sb-trending-meta">{{ product.rating }}&#9733; &middot; {{ product.reviews }} reviews</span>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {# Card 8: Recently Updated #}
+                    {% if sidebar_recent_articles %}
+                    <div class="moto-sidebar-card">
+                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9830;</span> Recently Updated</h3>
+                        <div class="moto-sb-recent">
+                            {% for article in sidebar_recent_articles %}
+                            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="moto-sb-recent-item">
+                                <span class="moto-sb-recent-title">{{ article.title }}</span>
+                                <span class="moto-sb-recent-date">{{ article.date }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
                 </div>
             </aside>
         </div>
