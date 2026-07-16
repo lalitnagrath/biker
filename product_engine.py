@@ -122,6 +122,43 @@ VALID_CATEGORIES = {
     'knee guard',
 }
 
+# ===== Category Preferred Price Ranges (INR) =====
+# Every category has a preferred price band. The recommendation engine uses
+# these to reward fairly-priced products and to avoid recommending unusually
+# expensive products unless they clearly outperform the alternatives.
+# Keyed by normalized (lowercase) category name.
+CATEGORY_PRICE_RANGES: Dict[str, Tuple[int, int]] = {
+    'phone mount': (300, 900),
+    'helmet': (1500, 5000),
+    'chain lube': (250, 600),
+    'chain cleaner': (250, 600),
+    'bike cover': (500, 1500),
+    'tyre inflator': (1500, 3500),
+    'engine oil': (400, 1200),
+    'crash guard': (1000, 4000),
+    'gloves': (500, 2500),
+    'jackets': (2000, 8000),
+    'tank bag': (1000, 4000),
+    'saddle bag': (1500, 6000),
+    'tail bag': (1000, 4000),
+    'knee guard': (500, 2500),
+}
+
+# Brands with an established reputation for the Indian two-wheeler market.
+# Used as a small, transparent trust signal in the weighted score. This is a
+# soft bonus only; it never overrides objective factors like rating/reviews.
+TRUSTED_BRANDS = {
+    'vega', 'steelbird', 'studds', 'axor', 'ls2', 'smk', 'mt',
+    'motul', 'shell', 'castrol', 'liqui moly', 'motorex',
+    'bobo', 'tiptop', 'gubbarey', 'autofy',
+    'michelin', 'bosch', 'amazon basics', 'amazonbasics',
+}
+
+
+def preferred_price_range(category: str) -> Optional[Tuple[int, int]]:
+    """Return the (min, max) preferred price band for a category, or None."""
+    return CATEGORY_PRICE_RANGES.get(normalize_category(category).lower())
+
 # ===== Category → Buying Guide URL Mapping =====
 # Single source of truth for mapping accessory categories to buying guide slugs.
 # Used by templates and generate.py to build correct links.
@@ -176,6 +213,75 @@ def _product_key(product: dict) -> str:
         return f'title:{title}'
 
     return ''
+
+
+def product_identity_keys(product: dict) -> Set[str]:
+    """Return ALL identity keys that make a product unique on a page.
+
+    A product is a duplicate of another if they share ANY of:
+        asin, slug, normalized title, amazon/affiliate URL.
+
+    Returning the full set lets a single shared seen-set enforce every
+    uniqueness rule at once.
+    """
+    keys: Set[str] = set()
+    asin = (product.get('asin') or '').strip().lower()
+    if asin:
+        keys.add(f'asin:{asin}')
+    slug = (product.get('slug') or '').strip().lower()
+    if slug:
+        keys.add(f'slug:{slug}')
+    title = (product.get('title') or '').strip().lower()
+    if title:
+        keys.add(f'title:{title}')
+    for field in ('amazon_url', 'affiliate_url'):
+        url = (product.get(field) or '').strip().lower()
+        if url:
+            keys.add(f'url:{url}')
+    return keys
+
+
+class PageDedup:
+    """One shared seen-products set for an entire rendered page.
+
+    Enforces, across EVERY section of a page (Must Have, Sidebar,
+    Maintenance, Related Products, Featured Products, Editor's Picks,
+    Homepage, ...):
+
+        * No duplicate ASIN
+        * No duplicate slug
+        * No duplicate title
+        * No duplicate Amazon / affiliate URL
+
+    Usage:
+        dedup = PageDedup()
+        for p in candidates:
+            if dedup.add(p):      # True if newly added (unique so far)
+                render(p)
+    """
+
+    def __init__(self):
+        self._seen: Set[str] = set()
+
+    def seen(self, product: dict) -> bool:
+        """Return True if this product collides with anything already added."""
+        return bool(product_identity_keys(product) & self._seen)
+
+    def add(self, product: dict) -> bool:
+        """Register a product. Return True if it was unique, False if duplicate."""
+        keys = product_identity_keys(product)
+        if keys & self._seen:
+            return False
+        self._seen |= keys
+        return True
+
+    def filter(self, products: list) -> list:
+        """Return only the products not yet seen, registering each kept one."""
+        out = []
+        for p in products:
+            if self.add(p):
+                out.append(p)
+        return out
 
 
 def deduplicate_products(products: list) -> list:
@@ -316,6 +422,124 @@ def ranking_score(product: dict, bike: Optional[dict] = None) -> float:
     return round(score, 2)
 
 
+# ===== 3b. Weighted Recommendation Score =====
+
+def _as_int(value, default: int = 0) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _as_float(value, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def value_for_money(product: dict) -> float:
+    """Return a 0-1 value-for-money signal.
+
+    Combines quality (rating + editor rating) against price, normalized so
+    cheaper high-rated products score higher. Deterministic and bounded.
+    """
+    price = _as_float(product.get('price', 0))
+    if price <= 0:
+        return 0.0
+    rating = _as_float(product.get('rating', 0))                # 0-5
+    editor = _as_float(product.get('editor_rating', 0)) / 2.0   # 0-10 -> 0-5
+    quality = (rating + editor) / 2.0                           # 0-5
+    # Price in thousands; higher price divides down the ratio.
+    ratio = quality / max(price / 1000.0, 0.1)
+    return min(1.0, ratio / 10.0)
+
+
+def price_fit_score(product: dict, category: Optional[str] = None) -> float:
+    """Return a 0-1 score for how well a product's price fits its category band.
+
+    * Inside the preferred band              -> 1.0
+    * Below the band (cheaper)               -> 0.85 (good for a budget pick)
+    * Above the band                         -> decays toward 0 as it gets
+                                                more expensive.
+
+    This is what stops the engine recommending unusually expensive products
+    unless they clearly outperform via other factors.
+    """
+    cat = category or product.get('category', '')
+    band = preferred_price_range(cat)
+    price = _as_float(product.get('price', 0))
+    if not band or price <= 0:
+        return 0.5  # neutral when we have no reference
+    low, high = band
+    if low <= price <= high:
+        return 1.0
+    if price < low:
+        return 0.85
+    # Above the band: linear decay, hitting ~0 at 3x the upper bound.
+    overshoot = (price - high) / max(high * 2.0, 1.0)
+    return max(0.0, 1.0 - overshoot)
+
+
+# Weights for the composite recommendation score. Sum is documented, not
+# enforced, so individual factors can be tuned independently.
+_SCORE_WEIGHTS = {
+    'rating': 22.0,        # user rating quality
+    'reviews': 16.0,       # social proof (log scaled)
+    'bestseller': 6.0,     # Amazon Bestseller badge
+    'amazon_choice': 6.0,  # Amazon's Choice badge
+    'price_fit': 14.0,     # fits category preferred band
+    'value': 12.0,         # value for money
+    'discount': 8.0,       # active discount
+    'brand_trust': 6.0,    # established brand
+    'editor': 10.0,        # editorial rating
+}
+
+
+def weighted_score(product: dict, category: Optional[str] = None) -> float:
+    """Composite recommendation score. Higher = better.
+
+    Deterministic weighted blend of:
+        rating, review_count, bestseller badge, Amazon's Choice badge, price,
+        discount, value for money, category preferred price, brand trust,
+        editorial rating.
+
+    Never uses fuzzy matching or randomness, so results are stable across
+    builds even with tens of thousands of products.
+    """
+    w = _SCORE_WEIGHTS
+    score = 0.0
+
+    rating = _as_float(product.get('rating', 0))          # 0-5
+    score += w['rating'] * (rating / 5.0)
+
+    reviews = _as_int(product.get('review_count', product.get('reviews', 0)))
+    if reviews > 0:
+        # log10: 10 -> 1, 1000 -> 3, 100000 -> 5; normalize to ~0-1
+        score += w['reviews'] * min(1.0, math.log10(reviews + 1) / 5.0)
+
+    if product.get('bestseller'):
+        score += w['bestseller']
+    if product.get('amazon_choice'):
+        score += w['amazon_choice']
+
+    score += w['price_fit'] * price_fit_score(product, category)
+    score += w['value'] * value_for_money(product)
+
+    discount = _as_float(product.get('discount', 0))
+    if discount > 0:
+        score += w['discount'] * min(1.0, discount / 50.0)
+
+    brand = (product.get('brand') or '').strip().lower()
+    if brand in TRUSTED_BRANDS:
+        score += w['brand_trust']
+
+    editor = _as_float(product.get('editor_rating', 0))   # 0-10
+    score += w['editor'] * (editor / 10.0)
+
+    return round(score, 3)
+
+
 # ===== 4. Brand Diversity =====
 
 def enforce_brand_diversity(products: list, max_per_brand: int = 2) -> list:
@@ -448,11 +672,18 @@ def recommend_products(
         return []
 
     # --- Stage 2: Score ---
+    # Weighted intrinsic quality (rating, reviews, badges, price fit, value,
+    # discount, brand trust, editorial) is the primary signal. Compatibility is
+    # layered on top as a hard filter + priority boost when a bike is provided.
     scored: list = []
     for p in candidates:
-        score = ranking_score(p, bike)
-        if score >= 0:  # -1 means incompatible
-            scored.append((score, p))
+        base = weighted_score(p, category)
+        if bike is not None:
+            cp = compatibility_priority(p, bike)
+            if cp == 0:
+                continue  # incompatible: exclude entirely
+            base += (6 - cp) * 8.0  # priority 1 -> +40, priority 5 -> +8
+        scored.append((base, p))
 
     # --- Stage 3: Sort ---
     scored.sort(key=lambda x: x[0], reverse=True)
@@ -522,51 +753,46 @@ def recommend_for_category(
     if len(ranked) == 0:
         return result
 
-    used_slugs: Set[str] = set()
+    # A single shared dedup guarantees every pick is a DISTINCT product:
+    # no duplicate ASIN / slug / title / URL across the four picks.
+    picks = PageDedup()
 
-    def _pick_next(candidates: list, exclude: Set[str]) -> Optional[dict]:
-        """Return first candidate whose slug is not in exclude set, or None."""
+    def _first_unique(candidates: list) -> Optional[dict]:
         for p in candidates:
-            if p.get('slug') not in exclude:
+            if not picks.seen(p):
                 return p
         return None
 
-    # Editors choice: highest ranking score (always set when >=1 product)
-    result['editors_choice'] = ranked[0]
-    used_slugs.add(ranked[0].get('slug'))
+    def _assign(key: str, candidates: list) -> None:
+        chosen = _first_unique(candidates)
+        if chosen is not None:
+            result[key] = chosen
+            picks.add(chosen)
 
-    # Budget pick: the single distinct "other" product to pair with editors_choice.
-    # With >=2 products this MUST be a different product than editors_choice.
-    # Prefer the cheapest product with rating >= 3.5; fall back to the next
-    # ranked product (which is always distinct from editors_choice).
-    affordable = [p for p in ranked if p.get('rating', 0) >= 3.5]
-    if affordable:
-        budget_candidates = sorted(affordable, key=lambda p: p.get('price', 99999))
-        result['budget_pick'] = _pick_next(budget_candidates, used_slugs)
-    if result['budget_pick'] is None and len(ranked) >= 2:
-        result['budget_pick'] = ranked[1]
-        used_slugs.add(ranked[1].get('slug'))
-    elif result['budget_pick'] is not None:
-        used_slugs.add(result['budget_pick'].get('slug'))
+    # Editor's Choice: highest weighted score.
+    _assign('editors_choice', ranked)
 
-    # Best value: best rating-to-price ratio among remaining products
-    if len(ranked) >= 3:
-        def value_ratio(p):
-            price = p.get('price', 1)
-            rating = p.get('rating', 0) + p.get('editor_rating', 0) / 10.0
-            return rating / max(price / 1000.0, 0.1)
-        best_value_candidates = sorted(ranked, key=value_ratio, reverse=True)
-        result['best_value'] = _pick_next(best_value_candidates, used_slugs)
-        if result['best_value']:
-            used_slugs.add(result['best_value'].get('slug'))
+    # Best Value: best value-for-money among remaining.
+    best_value_order = sorted(
+        ranked, key=lambda p: value_for_money(p), reverse=True
+    )
+    _assign('best_value', best_value_order)
 
-    # Premium pick: highest-priced product with rating >= 4.0 among remaining
-    premium = [p for p in ranked if p.get('rating', 0) >= 4.0]
-    if premium:
-        premium_candidates = sorted(premium, key=lambda p: p.get('price', 0), reverse=True)
-        result['premium_pick'] = _pick_next(premium_candidates, used_slugs)
-        if result['premium_pick']:
-            used_slugs.add(result['premium_pick'].get('slug'))
+    # Budget Pick: cheapest product with a decent rating (>= 3.5), price asc.
+    affordable = [p for p in ranked if _as_float(p.get('rating', 0)) >= 3.5]
+    budget_order = sorted(
+        affordable or ranked, key=lambda p: _as_float(p.get('price', 99999))
+    )
+    _assign('budget_pick', budget_order)
+
+    # Premium Pick: highest-priced product with a strong rating (>= 4.0).
+    premium = [p for p in ranked if _as_float(p.get('rating', 0)) >= 4.0]
+    premium_order = sorted(
+        premium or ranked,
+        key=lambda p: _as_float(p.get('price', 0)),
+        reverse=True,
+    )
+    _assign('premium_pick', premium_order)
 
     return result
 
