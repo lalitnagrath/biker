@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-editorial">
+    <div class="container">
+        <div class="hero-main">
+            <span class="hero-tag">All Motorcycles</span>
+            <h1>Motorcycles in <span class="text-accent">India</span></h1>
+            <p class="hero-subtitle">Browse all motorcycles available in India. Find specifications, prices, best accessories, and buying guides.</p>
+            <div class="hero-trust-bar">
+                <div class="trust-item"><span class="trust-icon">&#128269;</span><span class="trust-text"><strong>Comprehensive Data</strong><br>All specs & prices</span></div>
+                <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Updated Regularly</strong><br>Fresh information</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Browse Motorcycles</h2>
+                <p class="section-subtitle">{{ motorcycles|length }} motorcycles from top brands</p>
+            </div>
+        </div>
+        <div class="featured-bikes-grid">
+            {% for bike in motorcycles %}
+            <a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html" class="featured-bike-card">
+                <div class="featured-bike-image">
+                    {% if bike.image %}
+                    <img src="{{ base_path }}static/images/motorcycles/{{ bike.slug }}.jpg" alt="{{ bike.brand }} {{ bike.model }}" loading="lazy" width="320" height="200">
+                    {% else %}
+                    <div class="placeholder-image motorcycle-placeholder">{{ bike.brand[0] }}{{ bike.model[0] }}</div>
+                    {% endif %}
+                </div>
+                <div class="featured-bike-info">
+                    <span class="featured-bike-brand">{{ bike.brand }}</span>
+                    <h3>{{ bike.model }}</h3>
+                    <div class="featured-bike-meta">
+                        <span>{{ bike.engine }}</span>
+                        <span>{{ bike.type }}</span>
+                    </div>
+                    {% if bike.price %}
+                    <div class="featured-bike-price">{{ bike.price }}</div>
+                    {% endif %}
+                    <span class="featured-bike-cta">Explore &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

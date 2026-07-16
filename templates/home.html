@@ -29,9 +29,9 @@
 {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Motorcycles",
+    "name": "Popular Motorcycles in India",
     "itemListElement": [
-        {% for bike in motorcycles %}
+        {% for bike in featured_bikes[:12] %}
         {
             "@type": "ListItem",
             "position": {{ loop.index }},
@@ -42,280 +42,291 @@
     ]
 }
 </script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Which helmet should I buy for motorcycle riding?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For Indian roads, a full-face helmet from brands like SMK, Steelbird, or Axor is recommended. Look for ISI and DOT certification, proper ventilation, and a comfortable fit. Our best helmets guide covers options for every budget."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Which engine oil is best for my motorcycle?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The best engine oil depends on your motorcycle type and usage. Motul 7100 10W-50 is excellent for performance bikes, while Motul 3100 10W-40 suits commuter motorcycles. Always check your owner's manual for the recommended grade."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How often should I lubricate my motorcycle chain?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lubricate your chain every 500 km for city riding, or every 300 km during highway tours. Use a quality chain lube and always clean the chain before applying fresh lubricant."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What is the best phone mount for motorcycles?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The best phone mounts are vibration-free models from Bobo, Givi, or SP Connect. They protect your phone's camera from vibration damage while providing secure hold on handlebars."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do I need a bike cover for my motorcycle?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, a waterproof bike cover protects against sun, rain, dust, and bird droppings. Look for covers with UV-resistant coating and proper ventilation to prevent moisture buildup."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What tyre inflator should I carry on rides?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A portable digital tyre inflator like the Wospr D1 or Berkley is essential for emergency repairs. Inflate your tyres to the recommended PSI (typically 28-32 for rear, 22-25 for front)."
+            }
+        }
+    ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
+
+<!-- ===== HERO SECTION ===== -->
 <section class="hero-editorial">
+    <div class="hero-bg-image" aria-hidden="true"></div>
     <div class="container">
         <div class="hero-grid">
             <div class="hero-main">
-                <span class="hero-tag">India's Motorcycle Knowledge Hub</span>
-                <h1>Everything Your Motorcycle Needs <span class="text-accent">in One Place</span></h1>
-                <p class="hero-subtitle">Helping Indian riders choose the best accessories, riding gear, maintenance products, and motorcycles. Research-backed advice you can trust.</p>
+                <h1>Find the Best Accessories, Riding Gear &amp; Maintenance Products <span class="text-accent">for Your Motorcycle</span></h1>
+                <p class="hero-subtitle">Research-backed buying guides, expert recommendations, motorcycle-specific accessories, riding gear, maintenance tips, and honest reviews for Indian riders.</p>
                 <div class="hero-actions">
                     <a href="{{ base_path }}motorcycles/index.html" class="btn btn-accent btn-lg">Find Your Motorcycle</a>
                     <a href="{{ base_path }}articles/index.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white;">Explore Buying Guides</a>
                 </div>
                 <div class="hero-trust-bar">
-                    <div class="trust-item"><span class="trust-icon">&#10003;</span><span class="trust-text"><strong>Expert Tested</strong><br>Every product reviewed</span></div>
-                    <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Weekly Updates</strong><br>Fresh recommendations</span></div>
-                    <div class="trust-item"><span class="trust-icon">&#127470;&#127475;</span><span class="trust-text"><strong>India Focused</strong><br>INR prices, local buying</span></div>
+                    <div class="trust-item"><span class="trust-icon">&#10003;</span><span class="trust-text"><strong>Expert Reviews</strong></span></div>
+                    <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Updated Regularly</strong></span></div>
+                    <div class="trust-item"><span class="trust-icon">&#127470;&#127475;</span><span class="trust-text"><strong>India Focused</strong></span></div>
                 </div>
             </div>
-            {% if featured_bike %}
-            <div class="hero-featured">
-                <div class="hero-featured-card">
-                    {% if featured_bike.image %}
-                    <img src="{{ base_path }}{{ featured_bike.image }}" alt="{{ featured_bike.brand }} {{ featured_bike.model }}" loading="eager">
-                    {% else %}
-                    <div class="placeholder-image product-placeholder-lg">{{ featured_bike.brand[:2] }}</div>
-                    {% endif %}
-                    <div class="hero-featured-content">
-                        <span class="featured-badge">Featured Motorcycle</span>
-                        <h3>{{ featured_bike.brand }} {{ featured_bike.model }}</h3>
-                        <div class="hero-featured-meta">
-                            <span>{{ featured_bike.engine }}</span>
-                            <span>{{ featured_bike.type }}</span>
-                        </div>
-                        <a href="{{ base_path }}motorcycles/{{ featured_bike.slug }}/index.html" class="btn btn-accent">Explore Bike &rarr;</a>
-                    </div>
+            <div class="hero-featured" aria-hidden="true">
+                <div class="hero-visual">
+                    <div class="hero-visual-glow"></div>
+                    <div class="hero-visual-text">&#x1F3CD;</div>
                 </div>
             </div>
-            {% endif %}
         </div>
     </div>
 </section>
 
-<section class="section-stats">
+<!-- ===== SMART SEARCH ===== -->
+<section class="section-smart-search">
     <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="stat-number">{{ stats.guides }}+</span>
-                <span class="stat-label">Buying Guides</span>
+        <div class="smart-search-wrapper">
+            <div class="smart-search-box">
+                <svg class="smart-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                <input type="text" id="smartSearchInput" class="smart-search-input" placeholder="Search your motorcycle..." autocomplete="off" aria-label="Search motorcycles">
+                <span class="smart-search-shortcut" aria-hidden="true">⌘K</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number">{{ stats.products_reviewed }}+</span>
-                <span class="stat-label">Products Reviewed</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">{{ stats.motorcycles }}+</span>
-                <span class="stat-label">Motorcycles Covered</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">{{ stats.brands }}+</span>
-                <span class="stat-label">Brands Covered</span>
+            <div class="smart-search-results" id="smartSearchResults"></div>
+        </div>
+        <div class="popular-searches">
+            <span class="popular-searches-label">Popular:</span>
+            <div class="popular-searches-list" id="popularSearches">
+                {% for search in popular_searches %}
+                <a href="{{ base_path }}motorcycles/index.html" class="popular-search-chip" data-query="{{ search }}">{{ search }}</a>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
-<section class="section section-gray">
+<!-- ===== POPULAR MOTORCYCLES ===== -->
+<section class="section">
     <div class="container">
         <div class="section-header">
             <div>
-                <h2 class="section-title">Browse by Motorcycle</h2>
-                <p class="section-subtitle">Select your motorcycle to find the best accessories, gear, and maintenance tips</p>
+                <h2 class="section-title">Popular Motorcycles</h2>
+                <p class="section-subtitle">Explore the most popular motorcycles and find the best accessories for each</p>
             </div>
-            <a href="{{ base_path }}motorcycles/index.html" class="section-link">View All &rarr;</a>
+            <a href="{{ base_path }}motorcycles/index.html" class="section-link">View All Motorcycles &rarr;</a>
         </div>
-        <div class="bike-filter-bar">
-            <div class="bike-search-wrap">
-                <input type="text" id="bikeSearch" class="bike-search-input" placeholder="Search motorcycles..." autocomplete="off">
-                <span class="bike-search-icon">&#128269;</span>
-            </div>
-            <div class="bike-filter-selects">
-                <select id="bikeBrandFilter" class="bike-select">
-                    <option value="all">All Brands</option>
-                    {% for brand in motorcycle_brands %}
-                    <option value="{{ brand.slug }}">{{ brand.name }}</option>
-                    {% endfor %}
-                </select>
-                <select id="bikeTypeFilter" class="bike-select">
-                    <option value="all">All Types</option>
-                    {% for btype in bike_types %}
-                    <option value="{{ btype }}">{{ btype }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        <div class="bike-filters" id="bikeQuickFilters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            {% for brand in motorcycle_brands %}
-            <button class="filter-btn" data-filter="{{ brand.slug }}">{{ brand.name }}</button>
-            {% endfor %}
-        </div>
-        <div class="bike-showcase" id="bikeShowcase">
-            {% for bike in motorcycles %}
-            <a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html" class="bike-showcase-card" data-brand="{{ bike.brand_slug }}" data-type="{{ bike.type }}">
-                <div class="bike-showcase-image">
+        <div class="featured-bikes-grid">
+            {% for bike in featured_bikes[:12] %}
+            <a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html" class="featured-bike-card">
+                <div class="featured-bike-image">
                     {% if bike.image %}
-                    <img src="{{ base_path }}{{ bike.image }}" alt="{{ bike.brand }} {{ bike.model }}" loading="lazy">
+                    <img src="{{ base_path }}{{ bike.image }}" alt="{{ bike.brand }} {{ bike.model }}" loading="lazy" width="320" height="200">
                     {% else %}
-                    <div class="bike-placeholder-large" style="background: {% if bike.brand == 'Royal Enfield' %}#8b4513{% elif bike.brand == 'Honda' %}#cc0000{% elif bike.brand == 'TVS' %}#003366{% elif bike.brand == 'KTM' %}#ff6600{% elif bike.brand == 'Hero' %}#003366{% elif bike.brand == 'Yamaha' %}#003399{% elif bike.brand == 'Bajaj' %}#cc0000{% else %}#003366{% endif %}">
+                    <div class="bike-placeholder-large" style="background: {% if bike.brand == 'Royal Enfield' %}linear-gradient(135deg,#8b4513,#a0522d){% elif bike.brand == 'Honda' %}linear-gradient(135deg,#cc0000,#b30000){% elif bike.brand == 'TVS' %}linear-gradient(135deg,#003366,#004080){% elif bike.brand == 'KTM' %}linear-gradient(135deg,#ff6600,#e55d00){% elif bike.brand == 'Hero' %}linear-gradient(135deg,#003366,#004d99){% elif bike.brand == 'Yamaha' %}linear-gradient(135deg,#003399,#0052cc){% elif bike.brand == 'Bajaj' %}linear-gradient(135deg,#cc0000,#990000){% else %}linear-gradient(135deg,#334155,#475569){% endif %}">
                         <span class="bike-placeholder-icon">&#128666;</span>
                         <span class="bike-placeholder-text">{{ bike.brand[:2] }}</span>
                     </div>
                     {% endif %}
                 </div>
-                <div class="bike-showcase-info">
-                    <span class="bike-showcase-brand">{{ bike.brand }}</span>
+                <div class="featured-bike-info">
+                    <span class="featured-bike-brand">{{ bike.brand }}</span>
                     <h3>{{ bike.model }}</h3>
-                    <div class="bike-showcase-meta">
+                    <div class="featured-bike-meta">
                         <span>{{ bike.engine }}</span>
                         <span>{{ bike.type }}</span>
                     </div>
-                    <div class="bike-showcase-accessories">
-                        <span class="bike-accessory-count">{{ bike.accessory_count }} Accessories</span>
-                    </div>
-                    <span class="bike-showcase-cta">Explore &rarr;</span>
+                    <span class="featured-bike-cta">Explore &rarr;</span>
                 </div>
             </a>
             {% endfor %}
         </div>
-        {% if motorcycles|length > 12 %}
-        <div class="bike-load-more" id="bikeLoadMore">
-            <button class="btn btn-outline" id="loadMoreBtn">Load More Motorcycles</button>
-            <span class="bike-showing-count" id="bikeShowingCount"></span>
-        </div>
-        {% endif %}
     </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">Popular Motorcycle Accessories</h2>
-                <p class="section-subtitle">Find the right gear and maintenance products for your ride</p>
-            </div>
-        </div>
-        <div class="accessories-grid">
-            <a href="{{ base_path }}best/helmet/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#128665;</div>
-                <h3>Helmets</h3>
-                <p>Full face, flip-up &amp; open face options</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/phone-mount/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#128241;</div>
-                <h3>Phone Mounts</h3>
-                <p>Secure handlebar phone holders</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/gloves/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#129508;</div>
-                <h3>Riding Gloves</h3>
-                <p>Summer, winter &amp; all-season gloves</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/jacket/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#129509;</div>
-                <h3>Riding Jackets</h3>
-                <p>CE-certified mesh &amp; textile jackets</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/engine-oil/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#128737;</div>
-                <h3>Engine Oil</h3>
-                <p>Mineral, semi-synthetic &amp; fully synthetic</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/chain-lube/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#9881;</div>
-                <h3>Chain Lube</h3>
-                <p>Keep your chain smooth &amp; protected</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/bike-cover/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#128711;</div>
-                <h3>Bike Cover</h3>
-                <p>Waterproof &amp; UV-resistant covers</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-            <a href="{{ base_path }}best/tyre-inflator/index.html" class="accessory-card-home">
-                <div class="accessory-icon">&#127744;</div>
-                <h3>Tyre Inflator</h3>
-                <p>Portable air compressors for emergencies</p>
-                <span class="accessory-cta">Explore &rarr;</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-{% if featured_products %}
+<!-- ===== SHOP BY ACCESSORY ===== -->
 <section class="section section-gray">
     <div class="container">
         <div class="section-header">
             <div>
-                <h2 class="section-title">Top Product Recommendations</h2>
-                <p class="section-subtitle">Our editors' top-rated products for every category</p>
+                <h2 class="section-title">Shop by Accessory</h2>
+                <p class="section-subtitle">Browse the essential categories every rider needs</p>
             </div>
-            <a href="{{ base_path }}categories/index.html" class="section-link">View All Products &rarr;</a>
+            <a href="{{ base_path }}categories/index.html" class="section-link">View All Accessories &rarr;</a>
         </div>
-        <div class="product-reco-grid">
-            {% for product in featured_products[:6] %}
-            <div class="product-reco-card">
-                <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-reco-image">
-                    {% if product.image and 'images/' in product.image %}
-                    <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
-                    {% else %}
-                    <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
-                    {% endif %}
-                    {% if loop.index <= 3 %}
-                    <span class="product-reco-rank">#{{ loop.index }} Pick</span>
-                    {% endif %}
-                </a>
-                <div class="product-reco-content">
-                    <span class="product-reco-category">{{ product.category }}</span>
-                    <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
-                    <div class="product-reco-rating">
-                        <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                        <span class="rating-value">{{ product.rating }}</span>
-                    </div>
-                    <p class="product-reco-desc">{{ product.best_for or product.verdict[:100] }}</p>
-                    <div class="product-reco-footer">
-                        <span class="product-reco-price">₹{{ product.price | int }}</span>
-                        {% if product.affiliate_url %}
-                        <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+        <div class="shop-accessory-grid">
+            <a href="{{ base_path }}best/helmet/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#129650;</div>
+                <h3>Helmets</h3>
+            </a>
+            <a href="{{ base_path }}best/phone-mount/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#128241;</div>
+                <h3>Phone Mount</h3>
+            </a>
+            <a href="{{ base_path }}best/engine-oil/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#128737;</div>
+                <h3>Engine Oil</h3>
+            </a>
+            <a href="{{ base_path }}best/crash-guard/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#128737;</div>
+                <h3>Crash Guard</h3>
+            </a>
+            <a href="{{ base_path }}best/bike-cover/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#128711;</div>
+                <h3>Bike Cover</h3>
+            </a>
+            <a href="{{ base_path }}best/tyre-inflator/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#127744;</div>
+                <h3>Tyre Inflator</h3>
+            </a>
+            <a href="{{ base_path }}best/tank-bag/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#128092;</div>
+                <h3>Tank Bag</h3>
+            </a>
+            <a href="{{ base_path }}best/gloves/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#129508;</div>
+                <h3>Gloves</h3>
+            </a>
+            <a href="{{ base_path }}best/jacket/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#129509;</div>
+                <h3>Jackets</h3>
+            </a>
+            <a href="{{ base_path }}best/chain-lube/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#9881;</div>
+                <h3>Chain Lube</h3>
+            </a>
         </div>
     </div>
 </section>
-{% endif %}
 
-{% if editors_picks %}
+<!-- ===== TRENDING BUYING GUIDES ===== -->
 <section class="section">
     <div class="container">
         <div class="section-header">
             <div>
-                <h2 class="section-title">Editor's Picks</h2>
-                <p class="section-subtitle">Our top recommended products across key categories</p>
+                <h2 class="section-title">Trending Buying Guides</h2>
+                <p class="section-subtitle">In-depth, research-backed guides to help you choose the right products</p>
+            </div>
+            <a href="{{ base_path }}best/helmet/index.html" class="section-link">All Buying Guides &rarr;</a>
+        </div>
+        <div class="trending-guides-grid">
+            {% for guide in trending_guides %}
+            <a href="{{ base_path }}best/{{ guide.slug }}/index.html" class="trending-guide-card">
+                <div class="trending-guide-icon">{{ guide.icon }}</div>
+                <h3>{{ guide.title }}</h3>
+                <p>{{ guide.description }}</p>
+                <span class="trending-guide-cta">View Guide &rarr;</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== LATEST ARTICLES ===== -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Latest Articles</h2>
+                <p class="section-subtitle">Buying guides, maintenance tips, and riding advice for Indian motorcyclists</p>
+            </div>
+            <a href="{{ base_path }}articles/index.html" class="section-link">All Articles &rarr;</a>
+        </div>
+        <div class="articles-grid">
+            {% for article in articles[:8] %}
+            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="article-card">
+                <div class="article-card-image">
+                    {% if article.tags %}
+                    <div class="placeholder-image article-placeholder">{{ article.tags[0] }}</div>
+                    {% else %}
+                    <div class="placeholder-image article-placeholder">Guide</div>
+                    {% endif %}
+                    <span class="article-card-time">{{ article.reading_time }}</span>
+                </div>
+                <div class="article-card-content">
+                    {% if article.tags %}
+                    <span class="article-card-category">{{ article.tags[0] }}</span>
+                    {% endif %}
+                    <h3>{{ article.title }}</h3>
+                    <span class="article-card-cta">Read More &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== POPULAR COMPARISONS ===== -->
+{% if comparisons %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Popular Comparisons</h2>
+                <p class="section-subtitle">Side-by-side comparisons to help you decide between popular motorcycles</p>
             </div>
         </div>
-        <div class="editors-picks-grid">
-            {% for pick in editors_picks %}
-            <a href="{{ base_path }}products/{{ pick.slug }}/index.html" class="editors-pick-card">
-                <div class="editors-pick-badge">{{ pick.pick_label }}</div>
-                <div class="editors-pick-image">
-                    {% if pick.image and 'images/' in pick.image %}
-                    <img src="{{ base_path }}{{ pick.image }}" alt="{{ pick.title }}" loading="lazy">
-                    {% else %}
-                    <div class="placeholder-image product-placeholder">{{ pick.brand }}</div>
-                    {% endif %}
-                </div>
-                <div class="editors-pick-content">
-                    <span class="editors-pick-category">{{ pick.category }}</span>
-                    <h3>{{ pick.title }}</h3>
-                    <div class="editors-pick-rating">
-                        <span class="stars">{{ '★' * (pick.rating | int) }}{{ '☆' * (5 - pick.rating | int) }}</span>
-                        <span class="rating-value">{{ pick.rating }}</span>
+        <div class="comparisons-grid">
+            {% for comp in comparisons %}
+            <a href="{{ base_path }}motorcycles/{{ comp.bike1.slug }}/index.html" class="comparison-card">
+                <div class="comparison-bikes">
+                    <div class="comparison-bike">
+                        <span class="comparison-bike-name">{{ comp.bike1.model }}</span>
+                        <span class="comparison-bike-engine">{{ comp.bike1.engine }}</span>
                     </div>
-                    <span class="editors-pick-cta">View Details &rarr;</span>
+                    <span class="comparison-vs">VS</span>
+                    <div class="comparison-bike">
+                        <span class="comparison-bike-name">{{ comp.bike2.model }}</span>
+                        <span class="comparison-bike-engine">{{ comp.bike2.engine }}</span>
+                    </div>
                 </div>
+                <span class="comparison-cta">Compare &rarr;</span>
             </a>
             {% endfor %}
         </div>
@@ -323,95 +334,158 @@
 </section>
 {% endif %}
 
-<section class="section section-dark">
-    <div class="container">
-        <div class="section-header section-header-light">
-            <div>
-                <h2 class="section-title">Featured Buying Guides</h2>
-                <p class="section-subtitle">In-depth guides to help you make the right choice</p>
-            </div>
-            <a href="{{ base_path }}articles/index.html" class="section-link">All Guides &rarr;</a>
-        </div>
-        <div class="guides-showcase">
-            {% for article in articles[:4] %}
-            <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="guide-showcase-card">
-                <div class="guide-showcase-image">
-                    {% if article.tags %}
-                    <div class="placeholder-image guide-placeholder">{{ article.tags[0] }}</div>
-                    {% else %}
-                    <div class="placeholder-image guide-placeholder">Guide</div>
-                    {% endif %}
-                    <span class="guide-showcase-time">{{ article.reading_time }}</span>
-                </div>
-                <div class="guide-showcase-content">
-                    <div class="guide-showcase-meta">
-                        <span class="guide-showcase-date">{{ article.date }}</span>
-                        {% if article.tags %}
-                        <span class="guide-showcase-tag">{{ article.tags[0] }}</span>
-                        {% endif %}
-                    </div>
-                    <h3>{{ article.title }}</h3>
-                    <p>{{ article.description[:120] }}...</p>
-                    <span class="guide-showcase-cta">Read Guide &rarr;</span>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
+<!-- ===== BROWSE BY BRAND ===== -->
 <section class="section section-gray">
     <div class="container">
         <div class="section-header">
             <div>
                 <h2 class="section-title">Browse by Brand</h2>
-                <p class="section-subtitle">Explore motorcycles from India's top brands</p>
+                <p class="section-subtitle">Explore motorcycles from India's top manufacturers</p>
             </div>
             <a href="{{ base_path }}brands/index.html" class="section-link">All Brands &rarr;</a>
         </div>
-        <div class="brand-grid">
+        <div class="brand-logo-grid">
             {% for brand in motorcycle_brands %}
-            <a href="{{ base_path }}brands/{{ brand.slug }}/index.html" class="brand-card">
-                <div class="brand-card-icon">{% if brand.logo %}<img src="{{ base_path }}{{ brand.logo }}" alt="{{ brand.name }}" loading="lazy">{% else %}<span class="brand-initial">{{ brand.name[:1] }}</span>{% endif %}</div>
-                <h3>{{ brand.name }}</h3>
-                <p>{{ brand.price_range }}</p>
-                <span class="brand-card-cta">Explore &rarr;</span>
+            <a href="{{ base_path }}brands/{{ brand.slug }}/index.html" class="brand-logo-card">
+                <div class="brand-logo-icon">
+                    {% if brand.logo %}
+                    <img src="{{ base_path }}{{ brand.logo }}" alt="{{ brand.name }} logo" loading="lazy">
+                    {% else %}
+                    <span class="brand-initial">{{ brand.name[:1] }}</span>
+                    {% endif %}
+                </div>
+                <span class="brand-logo-name">{{ brand.name }}</span>
             </a>
             {% endfor %}
         </div>
     </div>
 </section>
 
+<!-- ===== WHY TRUST US ===== -->
 <section class="section section-dark">
     <div class="container">
         <div class="section-header section-header-light">
             <div>
                 <h2 class="section-title">Why Trust BikeReview India?</h2>
-                <p class="section-subtitle">We're not just another review site. Here's what sets us apart.</p>
+                <p class="section-subtitle">We are not just another review site. Here is what sets us apart.</p>
             </div>
         </div>
-        <div class="trust-showcase">
-            <div class="trust-showcase-card">
-                <div class="trust-showcase-icon">&#128269;</div>
-                <h3>Hands-On Testing</h3>
-                <p>We physically test every product we recommend. No paid placements, no fake reviews.</p>
+        <div class="trust-features-grid">
+            <div class="trust-feature-card">
+                <div class="trust-feature-icon">&#128269;</div>
+                <h3>Independent Recommendations</h3>
+                <p>Our product picks are based solely on research, testing, and real-world performance. No paid placements or sponsored rankings.</p>
             </div>
-            <div class="trust-showcase-card">
-                <div class="trust-showcase-icon">&#128200;</div>
-                <h3>Regular Updates</h3>
-                <p>Our guides are updated weekly with the latest prices, availability, and new product releases.</p>
+            <div class="trust-feature-card">
+                <div class="trust-feature-icon">&#129513;</div>
+                <h3>Hands-On Research</h3>
+                <p>Every recommendation comes from thorough analysis of specifications, real user feedback, and compatibility with Indian conditions.</p>
             </div>
-            <div class="trust-showcase-card">
-                <div class="trust-showcase-icon">&#127470;&#127475;</div>
-                <h3>India Focused</h3>
-                <p>INR prices, Indian road conditions, and products available on Amazon India.</p>
+            <div class="trust-feature-card">
+                <div class="trust-feature-icon">&#128176;</div>
+                <h3>Updated Prices</h3>
+                <p>Prices and availability are verified regularly so you always get accurate, up-to-date information before making a purchase.</p>
             </div>
-            <div class="trust-showcase-card">
-                <div class="trust-showcase-icon">&#128196;</div>
-                <h3>Transparent Affiliates</h3>
-                <p>We clearly disclose all affiliate relationships. Our recommendations are never influenced by commissions.</p>
+            <div class="trust-feature-card">
+                <div class="trust-feature-icon">&#127470;&#127475;</div>
+                <h3>Indian Market Focused</h3>
+                <p>INR pricing, Indian road conditions, local buying options, and products available on Amazon India and other Indian retailers.</p>
+            </div>
+            <div class="trust-feature-card">
+                <div class="trust-feature-icon">&#9989;</div>
+                <h3>Honest Pros and Cons</h3>
+                <p>Every product review includes genuine advantages and disadvantages. We tell you what works and what does not.</p>
+            </div>
+            <div class="trust-feature-card">
+                <div class="trust-feature-icon">&#128260;</div>
+                <h3>Regular Content Updates</h3>
+                <p>Our guides are updated with the latest products, prices, and recommendations so you always get fresh, relevant advice.</p>
             </div>
         </div>
     </div>
 </section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Quick answers to common motorcycle accessory questions</p>
+            </div>
+        </div>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    Which helmet should I buy for motorcycle riding?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-accordion-content" role="region">
+                    <p>For Indian roads, a full-face helmet from brands like SMK, Steelbird, or Axor is recommended. Look for ISI and DOT certification, proper ventilation, and a comfortable fit. Budget between Rs 3,000 to Rs 8,000 for a good helmet. Our <a href="{{ base_path }}best/helmet/index.html">best helmets guide</a> covers options for every budget.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    Which engine oil is best for my motorcycle?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-accordion-content" role="region">
+                    <p>The best engine oil depends on your motorcycle type and usage. Motul 7100 10W-50 is excellent for performance bikes, while Motul 3100 10W-40 suits commuter motorcycles. Always check your owner's manual for the recommended grade. See our <a href="{{ base_path }}best/engine-oil/index.html">best engine oil guide</a> for detailed recommendations.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    How often should I lubricate my motorcycle chain?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-accordion-content" role="region">
+                    <p>Lubricate your chain every 500 km for city riding, or every 300 km during highway tours. Use a quality chain lube and always clean the chain before applying fresh lubricant. Check our <a href="{{ base_path }}best/chain-lube/index.html">best chain lubes</a> for top picks.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    What is the best phone mount for motorcycles?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-accordion-content" role="region">
+                    <p>The best phone mounts are vibration-free models from Bobo, Givi, or SP Connect. They protect your phone's camera from vibration damage while providing a secure hold on handlebars. Our <a href="{{ base_path }}best/phone-mount/index.html">best phone mounts guide</a> reviews all top options.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    Do I need a bike cover for my motorcycle?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-accordion-content" role="region">
+                    <p>Yes, a waterproof bike cover protects against sun, rain, dust, and bird droppings. Look for covers with UV-resistant coating and proper ventilation to prevent moisture buildup. See our <a href="{{ base_path }}best/bike-cover/index.html">best bike covers</a> for recommendations.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-header" aria-expanded="false">
+                    What tyre inflator should I carry on rides?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-accordion-content" role="region">
+                    <p>A portable digital tyre inflator is essential for emergency repairs. Look for models with digital gauges, LED lights, and 12V power compatibility. Inflate your tyres to the recommended PSI (typically 28-32 for rear, 22-25 for front). Our <a href="{{ base_path }}best/tyre-inflator/index.html">best tyre inflators guide</a> has you covered.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EDITORIAL CONTENT ===== -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="editorial-content-block">
+            <h2>Your Complete Guide to Motorcycle Accessories and Gear in India</h2>
+            <p>Finding the right <strong>motorcycle accessories in India</strong> can be overwhelming with hundreds of options across dozens of categories. Whether you are a daily commuter navigating city traffic or a touring enthusiast planning your next Himalayan adventure, having the right gear makes every ride safer and more enjoyable.</p>
+            <p>At BikeReview India, we understand that every motorcycle has different needs. A Royal Enfield Classic 350 requires different accessories than a Yamaha MT-15 or a KTM Duke 390. That is why our <strong>buying guides</strong> are motorcycle-specific, recommending products that actually fit and work with your particular model.</p>
+            <p>When it comes to <strong>riding gear</strong>, safety should never be compromised. A quality <strong>helmet</strong> is the single most important purchase any rider can make. We test and review helmets across price ranges from budget-friendly options under Rs 3,000 to premium international brands. Our guides cover full-face, modular, and open-face options suited for Indian weather conditions.</p>
+            <p><strong>Motorcycle maintenance</strong> is another area where the right products make a significant difference. Using the correct <strong>engine oil</strong> grade, maintaining your chain with quality <strong>chain lube</strong>, and protecting your bike with a good <strong>bike cover</strong> can dramatically extend your motorcycle's lifespan. Our maintenance guides break down exactly what you need and when you need it.</p>
+            <p>For riders who rely on navigation, a vibration-free <strong>phone mount</strong> is essential. Modern phone mounts protect your smartphone's camera from vibration damage while keeping your GPS visible and accessible. We have tested dozens of options to find the most reliable mounts for Indian road conditions.</p>
+            <p>Whether you are shopping for <strong>riding gloves</strong> for monsoon commutes, a <strong>crash guard</strong> for off-road adventures, or a <strong>tyre inflator</strong> for long-distance touring, our expert recommendations help you make informed decisions. Every product we recommend has been researched thoroughly, with honest pros and cons so you know exactly what to expect.</p>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

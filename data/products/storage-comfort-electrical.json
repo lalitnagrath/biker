@@ -282,38 +282,7 @@
         "best_for": "Mid-range buyers wanting solid build without premium pricing",
         "verdict": "The Like Star C1 offers a sturdy build and quick-release mechanism at a sensible mid-range price."
     },
-    {
-        "slug": "ram-mount-x-grip",
-        "title": "RAM Mount X-Grip Universal Phone Holder",
-        "brand": "RAM Mount",
-        "category": "Phone Mount",
-        "type": "Handlebar",
-        "asin": "B07QFXMBKR",
-        "rating": 4.7,
-        "reviews": 4521,
-        "price": 3499,
-        "affiliate_url": "https://www.amazon.in/dp/B07QFXMBKR?tag=0x23uyx-21",
-        "image": "images/products/ram-mount-x-grip.jpg",
-        "compatible_bikes": [
-            "royal-enfield-classic-350",
-            "royal-enfield-himalayan-450",
-            "ktm-390-duke",
-            "bajaj-dominar-400",
-            "*"
-        ],
-        "pros": [
-            "Industry-standard X-grip design",
-            "Ball-and-socket adjustability",
-            "Lifetime warranty"
-        ],
-        "cons": [
-            "Very expensive for India",
-            "Tether recommended for rough roads"
-        ],
-        "editor_rating": 8.8,
-        "best_for": "Long-distance tourers wanting a proven, durable mounting system",
-        "verdict": "The RAM X-Grip is the gold standard in phone mounts with its lifetime warranty and ball-and-socket design."
-    },
+
     {
         "slug": "viaterra-claw",
         "title": "Viaterra Claw Tank Bag 15L",

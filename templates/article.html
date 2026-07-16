@@ -77,12 +77,11 @@
 
             <aside class="article-sidebar">
                 <div class="sidebar-sticky">
-                    {% if article.related_products %}
+                    {% if sidebar_products %}
                     <div class="sidebar-card">
                         <h3>Recommended Products</h3>
-                        {% for slug in article.related_products %}
-                        {% set rp = all_products | selectattr('slug', 'equalto', slug) | first %}
-                        {% if rp %}
+                        {% for item in sidebar_products %}
+                        {% set rp = item.product %}
                         <div class="sidebar-product-card">
                             <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
                                 <div class="sidebar-product-name">{{ rp.title }}</div>
@@ -90,7 +89,6 @@
                                 <div class="sidebar-product-price">₹{{ rp.price | int }}</div>
                             </a>
                         </div>
-                        {% endif %}
                         {% endfor %}
                     </div>
                     {% endif %}

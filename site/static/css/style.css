@@ -630,7 +630,7 @@ ul { list-style: none; }
 /* ===== Footer ===== */
 .site-footer { background: var(--color-primary); color: white; }
 .footer-top { padding: 64px 0 48px; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; }
 .footer-logo { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 1.25rem; margin-bottom: 16px; }
 .footer-about p { font-size: 0.9rem; opacity: 0.7; line-height: 1.7; margin-bottom: 16px; }
 .footer-trust { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -685,7 +685,7 @@ ul { list-style: none; }
     .bike-hero-image img { height: 240px; }
     .bike-hero h1 { font-size: 1.75rem; }
     .bike-hero-quick-specs { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
     .editorial-nav { gap: 0; }
     .editorial-nav-link { padding: 10px 14px; font-size: 0.8rem; }
     .verdict-editorial { flex-direction: column; }
@@ -1481,6 +1481,158 @@ ul { list-style: none; }
 .moto-related-bike-info h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
 .moto-related-bike-specs { font-size: 0.75rem; color: var(--color-text-muted); display: block; margin-bottom: 4px; }
 .moto-related-bike-price { font-size: 0.85rem; font-weight: 700; color: var(--color-accent); }
+
+/* ==============================================
+   REDESIGNED HOMEPAGE COMPONENTS
+   ============================================== */
+
+/* ===== Hero Enhanced ===== */
+.hero-editorial { position: relative; overflow: hidden; }
+.hero-bg-image { position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><radialGradient id="g" cx="70%" cy="40%"><stop offset="0%" stop-color="%23e94560" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="%230f172a" width="1200" height="600"/><rect fill="url(%23g)" width="1200" height="600"/></svg>') center/cover no-repeat; opacity: 0.6; }
+.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+.hero-visual-glow { position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(233,69,96,0.2) 0%, transparent 70%); border-radius: 50%; animation: heroGlow 4s ease-in-out infinite; }
+.hero-visual-text { font-size: 8rem; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3)); animation: heroFloat 6s ease-in-out infinite; position: relative; z-index: 1; }
+@keyframes heroGlow { 0%,100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 1; } }
+@keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* ===== Smart Search ===== */
+.section-smart-search { background: var(--color-primary); padding: 0 0 48px; position: relative; z-index: 10; margin-top: -1px; }
+.smart-search-wrapper { position: relative; max-width: 680px; margin: 0 auto; }
+.smart-search-box { display: flex; align-items: center; gap: 12px; background: var(--color-surface); border-radius: var(--radius-xl); padding: 16px 24px; box-shadow: var(--shadow-xl); border: 2px solid transparent; transition: border-color var(--transition); }
+.smart-search-box:focus-within { border-color: var(--color-accent); }
+.smart-search-icon { flex-shrink: 0; color: var(--color-text-muted); }
+.smart-search-input { flex: 1; border: none; outline: none; font-size: 1.05rem; font-family: inherit; color: var(--color-text); background: transparent; }
+.smart-search-input::placeholder { color: var(--color-text-muted); }
+.smart-search-shortcut { background: var(--color-surface-alt); border: 1px solid var(--color-border); border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); flex-shrink: 0; }
+.smart-search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--color-surface); border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); max-height: 360px; overflow-y: auto; display: none; border: 1px solid var(--color-border); z-index: 20; }
+.smart-search-results.active { display: block; }
+.smart-search-result { display: flex; align-items: center; gap: 14px; padding: 14px 20px; transition: background var(--transition); text-decoration: none; color: inherit; border-bottom: 1px solid var(--color-border-light); }
+.smart-search-result:last-child { border-bottom: none; }
+.smart-search-result:hover { background: var(--color-bg); }
+.smart-search-result-icon { width: 40px; height: 40px; border-radius: var(--radius); background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.smart-search-result-info { min-width: 0; }
+.smart-search-result-title { font-weight: 600; font-size: 0.9rem; }
+.smart-search-result-meta { font-size: 0.78rem; color: var(--color-text-muted); }
+.popular-searches { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.popular-searches-label { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); }
+.popular-searches-list { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.popular-search-chip { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; transition: all var(--transition); border: 1px solid rgba(255,255,255,0.12); cursor: pointer; }
+.popular-search-chip:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.25); color: white; }
+
+/* ===== Featured Bikes Grid (Homepage) ===== */
+.featured-bikes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.featured-bike-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition); }
+.featured-bike-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+.featured-bike-image { height: 180px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.featured-bike-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.featured-bike-card:hover .featured-bike-image img { transform: scale(1.05); }
+.featured-bike-info { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+.featured-bike-brand { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); }
+.featured-bike-info h3 { font-size: 1.05rem; font-weight: 700; margin: 4px 0 10px; color: var(--color-text); }
+.featured-bike-meta { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.featured-bike-meta span { font-size: 0.72rem; background: var(--color-bg); padding: 4px 10px; border-radius: 4px; color: var(--color-text-secondary); font-weight: 500; }
+.featured-bike-cta { display: block; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--color-accent); padding: 10px; border: 1px solid var(--color-accent); border-radius: var(--radius); transition: all var(--transition); margin-top: auto; }
+.featured-bike-card:hover .featured-bike-cta { background: var(--color-accent); color: white; }
+
+/* ===== Shop by Accessory ===== */
+.shop-accessory-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.shop-accessory-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 32px 16px; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--radius-xl); text-decoration: none; color: inherit; transition: all var(--transition); text-align: center; }
+.shop-accessory-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+.shop-accessory-icon { font-size: 2.2rem; transition: transform 0.3s ease; }
+.shop-accessory-card:hover .shop-accessory-icon { transform: scale(1.15); }
+.shop-accessory-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--color-text); }
+
+/* ===== Trending Buying Guides ===== */
+.trending-guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.trending-guide-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 32px 28px; text-decoration: none; color: inherit; transition: all var(--transition); position: relative; overflow: hidden; }
+.trending-guide-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--color-accent); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+.trending-guide-card:hover::before { transform: scaleX(1); }
+.trending-guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+.trending-guide-icon { font-size: 2rem; margin-bottom: 14px; }
+.trending-guide-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--color-text); }
+.trending-guide-card p { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 16px; line-height: 1.5; flex: 1; }
+.trending-guide-cta { font-size: 0.85rem; font-weight: 600; color: var(--color-accent); }
+
+/* ===== Articles Grid (Homepage) ===== */
+.articles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.article-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition); text-decoration: none; color: inherit; }
+.article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.article-card-image { height: 160px; background: var(--color-surface-alt); position: relative; overflow: hidden; }
+.article-card-image .placeholder-image { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.article-card-time { position: absolute; top: 10px; right: 10px; background: var(--color-primary); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
+.article-card-content { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+.article-card-category { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-accent); margin-bottom: 8px; }
+.article-card-content h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4; color: var(--color-text); flex: 1; }
+.article-card-cta { font-size: 0.85rem; font-weight: 600; color: var(--color-accent); }
+
+/* ===== Comparisons Grid ===== */
+.comparisons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.comparison-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 24px; text-decoration: none; color: inherit; transition: all var(--transition); }
+.comparison-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+.comparison-bikes { display: flex; align-items: center; gap: 12px; justify-content: space-between; margin-bottom: 16px; }
+.comparison-bike { display: flex; flex-direction: column; align-items: center; flex: 1; text-align: center; }
+.comparison-bike-name { font-size: 0.95rem; font-weight: 700; color: var(--color-text); margin-bottom: 4px; }
+.comparison-bike-engine { font-size: 0.75rem; color: var(--color-text-muted); }
+.comparison-vs { font-size: 0.85rem; font-weight: 800; color: var(--color-accent); background: var(--color-accent-light); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.comparison-cta { display: block; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--color-accent); padding: 10px; border: 1px solid var(--color-accent); border-radius: var(--radius); transition: all var(--transition); }
+.comparison-card:hover .comparison-cta { background: var(--color-accent); color: white; }
+
+/* ===== Brand Logo Grid ===== */
+.brand-logo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.brand-logo-card { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 28px 16px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); text-decoration: none; color: inherit; transition: all var(--transition); }
+.brand-logo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+.brand-logo-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.3s ease; }
+.brand-logo-card:hover .brand-logo-icon { transform: scale(1.1); }
+.brand-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+.brand-logo-name { font-size: 0.9rem; font-weight: 700; color: var(--color-text); }
+
+/* ===== Trust Features Grid ===== */
+.trust-features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.trust-feature-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 28px; transition: all var(--transition); }
+.trust-feature-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+.trust-feature-icon { font-size: 1.8rem; margin-bottom: 14px; }
+.trust-feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: white; }
+.trust-feature-card p { font-size: 0.85rem; opacity: 0.7; line-height: 1.65; color: rgba(255,255,255,0.8); }
+
+/* ===== Editorial Content Block ===== */
+.editorial-content-block { max-width: 800px; margin: 0 auto; }
+.editorial-content-block h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.editorial-content-block p { font-size: 1rem; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 16px; }
+.editorial-content-block strong { color: var(--color-text); font-weight: 600; }
+.editorial-content-block a { color: var(--color-accent); text-decoration: underline; }
+.editorial-content-block a:hover { text-decoration: none; }
+
+/* ===== Responsive: Homepage Redesign ===== */
+@media (max-width: 1024px) {
+    .featured-bikes-grid { grid-template-columns: repeat(3, 1fr); }
+    .shop-accessory-grid { grid-template-columns: repeat(4, 1fr); }
+    .articles-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-features-grid { grid-template-columns: repeat(2, 1fr); }
+    .brand-logo-grid { grid-template-columns: repeat(4, 1fr); }
+    .comparisons-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .hero-featured { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-editorial h1 { font-size: 2rem; }
+    .hero-trust-bar { flex-direction: column; gap: 10px; }
+    .smart-search-shortcut { display: none; }
+    .featured-bikes-grid { grid-template-columns: repeat(2, 1fr); }
+    .shop-accessory-grid { grid-template-columns: repeat(3, 1fr); }
+    .trending-guides-grid { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .comparisons-grid { grid-template-columns: 1fr; }
+    .brand-logo-grid { grid-template-columns: repeat(3, 1fr); }
+    .trust-features-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .featured-bikes-grid { grid-template-columns: 1fr; }
+    .shop-accessory-grid { grid-template-columns: repeat(2, 1fr); }
+    .brand-logo-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-editorial h1 { font-size: 1.65rem; }
+    .popular-searches { flex-direction: column; }
+    .popular-searches-list { justify-content: center; }
+}
 
 /* Responsive Updates */
 @media (max-width: 1024px) {

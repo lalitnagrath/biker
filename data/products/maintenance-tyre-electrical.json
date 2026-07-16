@@ -303,45 +303,18 @@
         "best_for": "TVS bike owners and commuters wanting OEM-grade oil",
         "verdict": "TVS TRU4 10W-30 is a synthetic blend engineered for TVS engines, offering smooth operation and fuel efficiency."
     },
-    {
-        "slug": "motul-chain-lube-road-7200",
-        "title": "Motul Chain Lube Road 7200",
-        "brand": "Motul",
-        "category": "Chain Lube",
-        "type": "Spray",
-        "asin": "B00LIZLFOA",
-        "rating": 4.5,
-        "reviews": 1890,
-        "price": 450,
-        "affiliate_url": "https://www.amazon.in/dp/B00LIZLFOA?tag=0x23uyx-21",
-        "image": "images/products/motul-chain-lube-road-7200.jpg",
-        "compatible_bikes": [
-            "*"
-        ],
-        "pros": [
-            "Anti-rust protection",
-            "Long-lasting film",
-            "Easy spray application"
-        ],
-        "cons": [
-            "Slightly expensive",
-            "Can drip if over-applied"
-        ],
-        "editor_rating": 8.5,
-        "best_for": "Street and touring riders wanting premium chain lubrication",
-        "verdict": "Motul 7200 is a top-rated chain lube offering excellent lubrication and anti-corrosion protection for road use."
-    },
+
     {
         "slug": "motul-chain-paste",
-        "title": "Motul Chain Paste Lubricant",
+        "title": "Motul C5 Chain Paste Lubricant",
         "brand": "Motul",
         "category": "Chain Lube",
         "type": "Paste",
-        "asin": "B00N4Y5MBI",
-        "rating": 4.4,
-        "reviews": 1234,
+        "asin": "B008KJT2SE",
+        "rating": 4.3,
+        "reviews": 43,
         "price": 520,
-        "affiliate_url": "https://www.amazon.in/dp/B00N4Y5MBI?tag=0x23uyx-21",
+        "affiliate_url": "https://www.amazon.in/dp/B008KJT2SE?tag=0x23uyx-21",
         "image": "images/products/motul-chain-paste.jpg",
         "compatible_bikes": [
             "*"
@@ -507,15 +480,15 @@
     },
     {
         "slug": "motul-chain-clean",
-        "title": "Motul Chain Clean Degreaser",
+        "title": "Motul C1 Chain Clean Degreaser",
         "brand": "Motul",
         "category": "Chain Cleaner",
         "type": "Spray Degreaser",
-        "asin": "B00LIZLH6O",
+        "asin": "B0077ASLCU",
         "rating": 4.5,
         "reviews": 1456,
         "price": 420,
-        "affiliate_url": "https://www.amazon.in/dp/B00LIZLH6O?tag=0x23uyx-21",
+        "affiliate_url": "https://www.amazon.in/dp/B0077ASLCU?tag=0x23uyx-21",
         "image": "images/products/motul-chain-clean.jpg",
         "compatible_bikes": [
             "*"
@@ -731,15 +704,15 @@
     },
     {
         "slug": "xiaomi-portable-air-pump",
-        "title": "Xiaomi Portable Air Pump Pro",
+        "title": "Xiaomi Portable Air Compressor 2 Pro",
         "brand": "Xiaomi",
         "category": "Tyre Inflator",
         "type": "Cordless",
-        "asin": "B08DKZSC29",
-        "rating": 4.5,
-        "reviews": 2345,
-        "price": 3499,
-        "affiliate_url": "https://www.amazon.in/dp/B08DKZSC29?tag=0x23uyx-21",
+        "asin": "B0DKJS2G5T",
+        "rating": 4.9,
+        "reviews": 41,
+        "price": 4999,
+        "affiliate_url": "https://www.amazon.in/dp/B0DKJS2G5T?tag=0x23uyx-21",
         "image": "images/products/xiaomi-portable-air-pump.jpg",
         "compatible_bikes": [
             "*"

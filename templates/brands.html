@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-editorial">
+    <div class="container">
+        <div class="hero-main">
+            <span class="hero-tag">All Brands</span>
+            <h1>Motorcycle <span class="text-accent">Brands</span></h1>
+            <p class="hero-subtitle">Browse motorcycle brands in India. Find models, specifications, prices, and best accessories for each brand.</p>
+            <div class="hero-trust-bar">
+                <div class="trust-item"><span class="trust-icon">&#127470;&#127475;</span><span class="trust-text"><strong>All Major Brands</strong><br>Indian & international</span></div>
+                <div class="trust-item"><span class="trust-icon">&#128200;</span><span class="trust-text"><strong>Updated Regularly</strong><br>Fresh information</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">All Motorcycle Brands</h2>
+                <p class="section-subtitle">{{ brands|length }} brands with detailed information</p>
+            </div>
+        </div>
+        <div class="featured-bikes-grid">
+            {% for brand in brands %}
+            <a href="{{ base_path }}brands/{{ brand.slug }}/index.html" class="featured-bike-card">
+                <div class="featured-bike-image">
+                    <div class="placeholder-image motorcycle-placeholder" style="font-size: 1.2rem; font-weight: 700;">{{ brand.name }}</div>
+                </div>
+                <div class="featured-bike-info">
+                    <span class="featured-bike-brand">{{ brand.country }}</span>
+                    <h3>{{ brand.name }}</h3>
+                    <div class="featured-bike-meta">
+                        <span>{{ brand.popular_models|length }} Models</span>
+                        <span>{{ brand.price_range }}</span>
+                    </div>
+                    <span class="featured-bike-cta">Explore &rarr;</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

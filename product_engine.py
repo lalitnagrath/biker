@@ -1,0 +1,747 @@
+"""
+Product Selection Engine
+========================
+Reusable recommendation engine for selecting, ranking, and diversifying
+motorcycle accessory products from the product catalog.
+
+Every function is motorcycle-agnostic and category-agnostic.
+Feed it products + context, get curated results back.
+"""
+
+from typing import Dict, List, Optional, Tuple
+from collections import defaultdict
+import math
+
+# ===== Category Aliases =====
+# Maps every known alias to its canonical category name.
+# Case-insensitive lookup is handled by normalize_category().
+
+CATEGORY_ALIASES: Dict[str, str] = {
+    # Bike Cover
+    'motorcycle cover': 'Bike Cover',
+    'motorcycle body cover': 'Bike Cover',
+    'bike body cover': 'Bike Cover',
+    'body cover': 'Bike Cover',
+    'waterproof cover': 'Bike Cover',
+    'dust cover': 'Bike Cover',
+    'bike dust cover': 'Bike Cover',
+    # Phone Mount
+    'phone holder': 'Phone Mount',
+    'mobile holder': 'Phone Mount',
+    'mobile holder bike': 'Phone Mount',
+    'mobile mount': 'Phone Mount',
+    'handlebar mount': 'Phone Mount',
+    'phone mount bike': 'Phone Mount',
+    # Crash Guard
+    'engine guard': 'Crash Guard',
+    'leg guard': 'Crash Guard',
+    'crash protection': 'Crash Guard',
+    'frame slider': 'Crash Guard',
+    'crash bar': 'Crash Guard',
+    'engine protector': 'Crash Guard',
+    # Chain Lube
+    'chain spray': 'Chain Lube',
+    'chain lubricant': 'Chain Lube',
+    'chain wax': 'Chain Lube',
+    'chain lube spray': 'Chain Lube',
+    # Chain Cleaner
+    'chain cleaner spray': 'Chain Cleaner',
+    'chain clean': 'Chain Cleaner',
+    # Tyre Inflator
+    'air compressor': 'Tyre Inflator',
+    'tyre pump': 'Tyre Inflator',
+    'air pump': 'Tyre Inflator',
+    'portable compressor': 'Tyre Inflator',
+    'tire inflator': 'Tyre Inflator',
+    'tyre inflator pump': 'Tyre Inflator',
+    # Gloves
+    'riding gloves': 'Gloves',
+    'bike gloves': 'Gloves',
+    'racing gloves': 'Gloves',
+    'motorcycle gloves': 'Gloves',
+    # Jackets
+    'riding jacket': 'Jackets',
+    'bike jacket': 'Jackets',
+    'motorcycle jacket': 'Jackets',
+    # Helmet
+    'full face helmet': 'Helmet',
+    'modular helmet': 'Helmet',
+    'open face helmet': 'Helmet',
+    'half helmet': 'Helmet',
+    'dual visor helmet': 'Helmet',
+    # Engine Oil
+    'engine oil 10w-50': 'Engine Oil',
+    'engine oil 10w-40': 'Engine Oil',
+    'motor oil': 'Engine Oil',
+    'engine lubricant': 'Engine Oil',
+    # Tank Bag
+    'tank bag motorcycle': 'Tank Bag',
+    'motorcycle tank bag': 'Tank Bag',
+    # Saddle Bag
+    'saddlebag': 'Saddle Bag',
+    'saddle bags': 'Saddle Bag',
+    'side bag': 'Saddle Bag',
+    'pannier': 'Saddle Bag',
+    'panniers': 'Saddle Bag',
+    # Tail Bag
+    'rear bag': 'Tail Bag',
+    'seat bag': 'Tail Bag',
+    'backrest bag': 'Tail Bag',
+    # Knee Guard
+    'knee pad': 'Knee Guard',
+    'knee guard': 'Knee Guard',
+    'knee protector': 'Knee Guard',
+}
+
+# ===== Category Keyword Fallbacks =====
+# Used when exact category matching fails.
+# Keywords are checked against product category, title, and brand.
+
+CATEGORY_KEYWORDS: Dict[str, List[str]] = {
+    'helmet': ['helmet', 'headgear', 'full face', 'flip up', 'dual visor'],
+    'phone mount': ['phone mount', 'phone holder', 'mobile holder', 'handlebar mount', 'bike phone'],
+    'crash guard': ['crash guard', 'engine guard', 'leg guard', 'frame slider', 'crash bar'],
+    'bike cover': ['bike cover', 'body cover', 'motorcycle cover', 'waterproof cover', 'dust cover'],
+    'chain lube': ['chain lub', 'chain lubricant', 'chain spray', 'chain wax'],
+    'chain cleaner': ['chain clean', 'chain cleaner'],
+    'engine oil': ['engine oil', '10w-40', '10w-50', '20w-50', 'motor oil', 'engine lubricant'],
+    'tyre inflator': ['tyre inflat', 'tire inflat', 'air pump', 'air compressor', 'tyre pump'],
+    'gloves': ['riding gloves', 'bike gloves', 'gloves', 'riding glove'],
+    'jackets': ['riding jacket', 'bike jacket', 'jacket', 'riding jacket'],
+    'tank bag': ['tank bag', 'tankpack'],
+    'saddle bag': ['saddlebag', 'saddle bag', 'side bag', 'pannier'],
+    'tail bag': ['tail bag', 'rear bag', 'seat bag', 'backrest bag'],
+    'knee guard': ['knee guard', 'knee pad', 'knee protector'],
+}
+
+# ===== Valid Categories =====
+VALID_CATEGORIES = {
+    'helmet', 'phone mount', 'crash guard', 'bike cover',
+    'chain lube', 'chain cleaner', 'engine oil', 'tyre inflator',
+    'gloves', 'jackets', 'tank bag', 'saddle bag', 'tail bag',
+    'knee guard',
+}
+
+
+# ===== 1. Category Normalization =====
+
+def normalize_category(category: str) -> str:
+    """Normalize a product category name using the alias map.
+
+    Returns the canonical category name.  If no alias is found, returns
+    the original category with title case.
+    """
+    if not category:
+        return category
+    key = category.strip().lower()
+    if key in CATEGORY_ALIASES:
+        return CATEGORY_ALIASES[key]
+    return category.strip().title()
+
+
+def categories_match(cat_a: str, cat_b: str) -> bool:
+    """Check whether two category strings refer to the same canonical category."""
+    return normalize_category(cat_a).lower() == normalize_category(cat_b).lower()
+
+
+# ===== 2. Compatibility Scoring =====
+
+def compatibility_priority(product: dict, bike: dict) -> int:
+    """Return a numeric compatibility priority for *product* against *bike*.
+
+    Lower number = better match:
+        1  exact motorcycle slug match
+        2  same motorcycle brand  (brand:royal-enfield)
+        3  same motorcycle type   (type:cruiser)
+        4  universal accessory    (compatible_bikes: ["*"])
+        5  empty compatible_bikes (fallback)
+        0  not compatible at all
+    """
+    bike_slug = bike.get('slug', '').lower()
+    bike_brand = bike.get('brand', '').lower()
+    bike_type = bike.get('type', '').lower()
+
+    compat = product.get('compatible_bikes', [])
+    if not compat:
+        return 5  # empty = low-priority fallback
+
+    priority = 0
+    for entry in compat:
+        entry_lower = entry.lower()
+        if entry_lower == '*':
+            priority = max(priority, 4)
+        elif entry_lower.startswith('brand:'):
+            if entry_lower[6:] == bike_brand:
+                priority = max(priority, 2)
+        elif entry_lower.startswith('type:'):
+            if entry_lower[5:] == bike_type:
+                priority = max(priority, 3)
+        elif entry_lower == bike_slug:
+            priority = 1
+            break  # perfect match, no need to continue
+
+    return priority
+
+
+# ===== 3. Product Ranking / Scoring =====
+
+def ranking_score(product: dict, bike: Optional[dict] = None) -> float:
+    """Compute a composite ranking score for a product.
+
+    Higher = better.  Factors (in descending weight):
+
+        1. Compatibility     (if bike is provided)
+        2. Editor rating     (0-10 scale)
+        3. User rating       (0-5 scale, normalized to 0-10)
+        4. Number of reviews (log-scaled)
+        5. Price value       (lower price = better, with diminishing returns)
+        6. Popularity        (reviews * rating as a proxy)
+
+    A product with no bike context skips the compatibility factor and
+    is scored purely on its intrinsic merits.
+    """
+    score = 0.0
+
+    # --- Compatibility (weight: 30%) ---
+    if bike is not None:
+        cp = compatibility_priority(product, bike)
+        if cp == 0:
+            return -1.0  # incompatible, exclude entirely
+        # Invert: priority 1 -> 5 points, priority 5 -> 1 point
+        score += (6 - cp) * 3.0
+
+    # --- Editor rating (weight: 25%) ---
+    editor = product.get('editor_rating', 0)
+    score += editor * 2.5
+
+    # --- User rating (weight: 15%) ---
+    rating = product.get('rating', 0)
+    score += rating * 2.0  # max 5.0 * 2.0 = 10.0
+
+    # --- Reviews (weight: 15%, log-scaled) ---
+    reviews = int(product.get('reviews', 0))
+    if reviews > 0:
+        score += math.log10(reviews) * 3.0  # 1000 reviews -> 9.0
+
+    # --- Price value (weight: 10%) ---
+    price = product.get('price', 0)
+    if price > 0:
+        # Cheaper products get a small bonus; cap at 5 points
+        price_score = min(5.0, 5000.0 / max(price, 1))
+        score += price_score
+
+    # --- Popularity (weight: 5%) ---
+    popularity = min(5.0, (reviews * rating) / 5000.0)
+    score += popularity
+
+    return round(score, 2)
+
+
+# ===== 4. Brand Diversity =====
+
+def enforce_brand_diversity(products: list, max_per_brand: int = 2) -> list:
+    """Limit the number of products from any single brand.
+
+    Walks the (already sorted) list and keeps at most *max_per_brand*
+    products from each brand.  This ensures the user sees meaningful
+    choices rather than a wall of BOBO phone mounts.
+    """
+    brand_counts: Dict[str, int] = defaultdict(int)
+    diversified: list = []
+    for p in products:
+        brand = p.get('brand', '')
+        if brand_counts[brand] < max_per_brand:
+            diversified.append(p)
+            brand_counts[brand] += 1
+    return diversified
+
+
+def brand_diversity_score(products: list) -> float:
+    """Return a 0-1 diversity score. 1.0 = all different brands."""
+    if not products:
+        return 0.0
+    brands = {p.get('brand', '') for p in products}
+    return len(brands) / len(products)
+
+
+# ===== 5. Product Count Management =====
+
+MIN_PRODUCTS = 3
+PREFERRED_PRODUCTS = 5
+MAX_PRODUCTS = 8
+
+
+def select_product_count(matched: int) -> int:
+    """Decide how many products to display based on availability.
+
+    Returns:
+        MIN_PRODUCTS (3) if 3-4 products match
+        PREFERRED_PRODUCTS (5) if 5-7 products match
+        MAX_PRODUCTS (8) if 8+ products match
+        matched if fewer than 3
+    """
+    if matched <= MIN_PRODUCTS:
+        return matched
+    if matched <= PREFERRED_PRODUCTS:
+        return PREFERRED_PRODUCTS
+    return min(matched, MAX_PRODUCTS)
+
+
+# ===== 6. Product Search (Full-Text) =====
+
+def find_products_by_category(
+    products: list,
+    category: str,
+) -> list:
+    """Find ALL products matching a category.
+
+    Search order:
+        1. Exact match on normalized category
+        2. Case-insensitive substring match on category
+        3. Keyword fallback (category + title + best_for)
+
+    Returns unsorted list of matching products.
+    """
+    normalized = normalize_category(category)
+
+    # 1. Exact normalized category match
+    matched = [
+        p for p in products
+        if normalize_category(p.get('category', '')).lower() == normalized.lower()
+    ]
+    if matched:
+        return matched
+
+    # 2. Case-insensitive substring on category field
+    normalized_lower = normalized.lower()
+    matched = [
+        p for p in products
+        if normalized_lower in p.get('category', '').lower()
+    ]
+    if matched:
+        return matched
+
+    # 3. Keyword fallback: check category, title, and best_for
+    keywords = CATEGORY_KEYWORDS.get(normalized_lower, [])
+    for kw in keywords:
+        matched = [
+            p for p in products
+            if kw in p.get('category', '').lower()
+            or kw in p.get('title', '').lower()
+            or kw in p.get('best_for', '').lower()
+        ]
+        if matched:
+            return matched
+
+    return []
+
+
+# ===== 7. Main Recommendation Pipeline =====
+
+def recommend_products(
+    products: list,
+    category: str,
+    bike: Optional[dict] = None,
+    min_count: int = MIN_PRODUCTS,
+    preferred_count: int = PREFERRED_PRODUCTS,
+    max_count: int = MAX_PRODUCTS,
+) -> list:
+    """End-to-end product recommendation for a single category.
+
+    Pipeline:
+        1. Search all products matching the category (full catalog)
+        2. Score each product (compatibility + intrinsic quality)
+        3. Filter out incompatible products (score < 0)
+        4. Sort by score descending
+        5. Enforce brand diversity (max 2 per brand)
+        6. Trim to target count
+
+    If fewer than *min_count* products survive, tries fallbacks:
+        - Universal products first
+        - Then any product in the same category family
+
+    Returns the final curated list, sorted by ranking score.
+    """
+    # --- Stage 1: Search ---
+    candidates = find_products_by_category(products, category)
+
+    if not candidates:
+        return []
+
+    # --- Stage 2: Score ---
+    scored: list = []
+    for p in candidates:
+        score = ranking_score(p, bike)
+        if score >= 0:  # -1 means incompatible
+            scored.append((score, p))
+
+    # --- Stage 3: Sort ---
+    scored.sort(key=lambda x: x[0], reverse=True)
+    ranked = [p for _, p in scored]
+
+    # --- Stage 4: Brand diversity ---
+    diversified = enforce_brand_diversity(ranked, max_per_brand=2)
+
+    # --- Stage 5: Trim to count ---
+    target = select_product_count(len(diversified))
+    if target < min_count and len(diversified) >= min_count:
+        target = min_count
+    result = diversified[:target]
+
+    # --- Stage 6: Fallback if too few ---
+    if len(result) < min_count and bike:
+        # Try universal products (compatible with all bikes)
+        universal = find_products_by_category(products, category)
+        seen_slugs = {p.get('slug') for p in result}
+        for p in universal:
+            if p.get('slug') not in seen_slugs:
+                compat = p.get('compatible_bikes', [])
+                if '*' in [c.lower() for c in compat]:
+                    score = ranking_score(p, bike)
+                    if score >= 0:
+                        result.append(p)
+                        seen_slugs.add(p.get('slug'))
+                        if len(result) >= min_count:
+                            break
+
+    return result
+
+
+def recommend_for_category(
+    products: list,
+    category: str,
+    bike: Optional[dict] = None,
+) -> dict:
+    """Recommend products with editorial picks assigned.
+
+    Returns a dict:
+        {
+            'category': 'Phone Mount',
+            'products': [...],         # ranked, diversified list
+            'count': 5,
+            'editors_choice': {...},   # highest score
+            'best_value': {...},       # best rating/price ratio
+            'budget_pick': {...},      # cheapest with decent rating
+            'premium_pick': {...},     # highest-priced with good rating
+        }
+    """
+    ranked = recommend_products(products, category, bike)
+
+    result = {
+        'category': normalize_category(category),
+        'products': ranked,
+        'count': len(ranked),
+        'editors_choice': None,
+        'best_value': None,
+        'budget_pick': None,
+        'premium_pick': None,
+    }
+
+    if len(ranked) == 0:
+        return result
+
+    # Editors choice: highest ranking score
+    result['editors_choice'] = ranked[0]
+
+    # Best value: best rating-to-price ratio
+    if len(ranked) >= 2:
+        def value_ratio(p):
+            price = p.get('price', 1)
+            rating = p.get('rating', 0) + p.get('editor_rating', 0) / 10.0
+            return rating / max(price / 1000.0, 0.1)
+        result['best_value'] = max(ranked, key=value_ratio)
+
+    # Budget pick: cheapest product with rating >= 3.5
+    affordable = [p for p in ranked if p.get('rating', 0) >= 3.5]
+    if affordable:
+        result['budget_pick'] = min(affordable, key=lambda p: p.get('price', 99999))
+
+    # Premium pick: highest-priced product with rating >= 4.0
+    premium = [p for p in ranked if p.get('rating', 0) >= 4.0]
+    if premium:
+        result['premium_pick'] = max(premium, key=lambda p: p.get('price', 0))
+
+    # Avoid duplicates: if editors_choice == budget_pick, try next budget
+    if (result['budget_pick'] and result['editors_choice']
+            and result['budget_pick'].get('slug') == result['editors_choice'].get('slug')):
+        remaining = [p for p in ranked if p.get('slug') != result['editors_choice'].get('slug')]
+        if remaining:
+            result['budget_pick'] = min(remaining, key=lambda p: p.get('price', 99999))
+
+    return result
+
+
+# ===== 8. Sidebar Recommendations =====
+
+def _infer_categories_from_article(article: dict) -> List[str]:
+    """Infer product categories from article metadata.
+
+    Uses tags and title to find relevant product categories.
+    Returns a list of canonical category names.
+    """
+    tag_to_category = {
+        'helmet': 'Helmet',
+        'helmets': 'Helmet',
+        'phone-mount': 'Phone Mount',
+        'phone-holder': 'Phone Mount',
+        'mobile-mount': 'Phone Mount',
+        'navigation': 'Phone Mount',
+        'crash-guard': 'Crash Guard',
+        'engine-guard': 'Crash Guard',
+        'protection': 'Crash Guard',
+        'engine-oil': 'Engine Oil',
+        'oil': 'Engine Oil',
+        'maintenance': 'Engine Oil',
+        'chain-lube': 'Chain Lube',
+        'chain': 'Chain Lube',
+        'bike-cover': 'Bike Cover',
+        'cover': 'Bike Cover',
+        'gloves': 'Gloves',
+        'riding-gloves': 'Gloves',
+        'jackets': 'Jackets',
+        'riding-jacket': 'Jackets',
+        'riding-jackets': 'Jackets',
+        'tank-bag': 'Tank Bag',
+        'saddle-bag': 'Saddle Bag',
+        'tail-bag': 'Tail Bag',
+        'tyre-inflator': 'Tyre Inflator',
+        'tyre': 'Tyre Inflator',
+        'tire': 'Tyre Inflator',
+        'touring': 'Tank Bag',
+        'washing': 'Cleaning Kit',
+        'wash': 'Cleaning Kit',
+        'cleaning': 'Cleaning Kit',
+        'clean': 'Cleaning Kit',
+        'rain': 'Rain Gear',
+        'monsoon': 'Rain Gear',
+        'knee-guard': 'Knee Guard',
+        'knee': 'Knee Guard',
+        'buying-guide': None,
+        'review': None,
+        'tips': None,
+        'safety': None,
+        'riding': None,
+        'india': None,
+    }
+
+    categories = []
+    seen = set()
+
+    # Check tags first
+    for tag in article.get('tags', []):
+        tag_lower = tag.lower().strip()
+        cat = tag_to_category.get(tag_lower)
+        if cat and cat not in seen:
+            categories.append(cat)
+            seen.add(cat)
+
+    # Also check title for category hints
+    title_lower = article.get('title', '').lower()
+    for keyword, cat in tag_to_category.items():
+        if cat and cat not in seen and keyword in title_lower:
+            categories.append(cat)
+            seen.add(cat)
+
+    # Fallback: check slug for category hints (works even without YAML parsing)
+    slug_lower = article.get('slug', '').lower()
+    for keyword, cat in tag_to_category.items():
+        if cat and cat not in seen and keyword in slug_lower:
+            categories.append(cat)
+            seen.add(cat)
+
+    # Final fallback: check body text for category keywords
+    if not categories:
+        body_lower = article.get('body', '').lower()[:2000]
+        for keyword, cat in tag_to_category.items():
+            if cat and cat not in seen and keyword in body_lower:
+                categories.append(cat)
+                seen.add(cat)
+                if len(categories) >= 3:
+                    break
+
+    return categories
+
+
+def recommend_sidebar_products(
+    products: list,
+    bike: Optional[dict] = None,
+    article: Optional[dict] = None,
+    product: Optional[dict] = None,
+    max_products: int = 5,
+) -> list:
+    """Recommend products for sidebar display.
+
+    Uses the SAME engine as main content (find_products_by_category +
+    ranking_score + enforce_brand_diversity).  There is only one product
+    recommendation engine in the project.
+
+    Context:
+        motorcycle pages  -> pass bike=...
+        article pages     -> pass article=...
+        product pages     -> pass product=...
+
+    Returns a list of dicts:
+        [{'product': {...}, 'category': str, 'reason': str}, ...]
+
+    Returns empty list if no suitable products found — the sidebar widget
+    should be hidden completely in that case.
+    """
+    candidates = []
+
+    if bike is not None:
+        # Motorcycle page: filter to compatible products, best per category
+        for p in products:
+            cp = compatibility_priority(p, bike)
+            if cp > 0:
+                candidates.append(p)
+
+        # Pick best product per category, sorted by ranking_score
+        best_by_cat: Dict[str, dict] = {}
+        for p in candidates:
+            cat = normalize_category(p.get('category', ''))
+            if cat not in best_by_cat or ranking_score(p, bike) > ranking_score(best_by_cat[cat], bike):
+                best_by_cat[cat] = p
+
+        ranked = sorted(best_by_cat.values(), key=lambda p: ranking_score(p, bike), reverse=True)
+        diversified = enforce_brand_diversity(ranked, max_per_brand=2)
+
+        return [
+            {
+                'product': p,
+                'category': normalize_category(p.get('category', '')),
+                'reason': 'Best compatible product for your motorcycle',
+            }
+            for p in diversified[:max_products]
+        ]
+
+    elif article is not None:
+        # Article page: infer categories from article metadata
+        cats = _infer_categories_from_article(article)
+        if not cats:
+            return []
+
+        seen_slugs = set()
+        results = []
+        for cat in cats:
+            matched = find_products_by_category(products, cat)
+            if not matched:
+                continue
+            matched.sort(key=lambda p: ranking_score(p), reverse=True)
+            diverse = enforce_brand_diversity(matched, max_per_brand=1)
+            for p in diverse:
+                if p.get('slug') not in seen_slugs:
+                    results.append({
+                        'product': p,
+                        'category': cat,
+                        'reason': f'Recommended for {cat.lower()}',
+                    })
+                    seen_slugs.add(p.get('slug'))
+                    if len(results) >= max_products:
+                        return results
+
+        return results
+
+    elif product is not None:
+        # Product page: same category products
+        cat = normalize_category(product.get('category', ''))
+        matched = find_products_by_category(products, cat)
+        matched = [p for p in matched if p.get('slug') != product.get('slug')]
+        matched.sort(key=lambda p: ranking_score(p), reverse=True)
+        diversified = enforce_brand_diversity(matched, max_per_brand=2)
+
+        return [
+            {
+                'product': p,
+                'category': cat,
+                'reason': f'Similar {cat.lower()} product',
+            }
+            for p in diversified[:max_products]
+        ]
+
+    return []
+
+
+# ===== 9. Validation & Reporting =====
+
+def validate_category_products(
+    products: list,
+    categories: Optional[list] = None,
+) -> dict:
+    """Validate product distribution across categories.
+
+    Returns a dict with:
+        'categories': {category: count}
+        'empty': [categories with 0 products]
+        'understocked': [categories with < 3 products]
+        'report': formatted string for console output
+    """
+    if categories is None:
+        categories = sorted(VALID_CATEGORIES)
+
+    cat_counts: Dict[str, int] = defaultdict(int)
+    for p in products:
+        cat = normalize_category(p.get('category', '')).lower()
+        cat_counts[cat] += 1
+
+    empty = []
+    understocked = []
+    report_lines = []
+
+    for cat in sorted(categories):
+        cat_lower = cat.lower()
+        count = cat_counts.get(cat_lower, 0)
+        label = cat.ljust(20)
+        if count == 0:
+            report_lines.append(f'    ! {label} 0 products  *** EMPTY ***')
+            empty.append(cat)
+        elif count < MIN_PRODUCTS:
+            report_lines.append(f'    ~ {label} {count} products (below minimum {MIN_PRODUCTS})')
+            understocked.append(cat)
+        else:
+            report_lines.append(f'    * {label} {count} products')
+
+    report = '\n'.join(report_lines)
+    return {
+        'categories': dict(cat_counts),
+        'empty': empty,
+        'understocked': understocked,
+        'report': report,
+    }
+
+
+def validate_motorcycle_products(
+    motorcycle: dict,
+    products: list,
+    target_categories: Optional[list] = None,
+) -> dict:
+    """Validate product availability for a specific motorcycle.
+
+    Returns a dict:
+        'matched': total matched products
+        'categories_found': set of category names
+        'categories_missing': categories with 0 products
+        'category_counts': {category: count}
+    """
+    if target_categories is None:
+        target_categories = list(VALID_CATEGORIES)
+
+    cat_counts: Dict[str, int] = defaultdict(int)
+
+    for p in products:
+        cp = compatibility_priority(p, motorcycle)
+        if cp > 0:
+            cat = normalize_category(p.get('category', ''))
+            cat_counts[cat] += 1
+
+    categories_found = set(cat_counts.keys())
+    categories_missing = [
+        c for c in target_categories
+        if normalize_category(c) not in categories_found
+    ]
+
+    return {
+        'matched': sum(cat_counts.values()),
+        'categories_found': categories_found,
+        'categories_missing': categories_missing,
+        'category_counts': dict(cat_counts),
+    }

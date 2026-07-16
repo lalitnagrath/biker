@@ -181,11 +181,12 @@
                             <li><span>Best For</span><strong>{{ product.best_for }}</strong></li>
                         </ul>
                     </div>
-                    {% if related_products %}
+                    {% if sidebar_products %}
                     <div class="sidebar-card">
                         <h3>Related Products</h3>
                         <ul class="sidebar-related">
-                            {% for rp in related_products %}
+                            {% for item in sidebar_products %}
+                            {% set rp = item.product %}
                             <li>
                                 <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
                                     <span class="related-name">{{ rp.title }}</span>

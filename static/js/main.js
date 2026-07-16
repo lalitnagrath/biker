@@ -197,6 +197,124 @@ if (heroSuggestions) {
     });
 }
 
+// ===== Smart Search (Homepage) =====
+const smartSearchInput = document.getElementById('smartSearchInput');
+const smartSearchResults = document.getElementById('smartSearchResults');
+const popularSearchChips = document.querySelectorAll('.popular-search-chip');
+
+if (smartSearchInput && smartSearchResults) {
+    let smartDebounce;
+
+    function buildSearchIndex() {
+        if (typeof siteData === 'undefined') return [];
+        var items = [];
+        if (siteData.motorcycles) {
+            siteData.motorcycles.forEach(function(bike) {
+                items.push({
+                    type: 'bike',
+                    icon: '\uD83D\uDE97',
+                    title: bike.brand + ' ' + bike.model,
+                    meta: bike.engine + ' \u00B7 ' + bike.type + ' \u00B7 \u20B9' + bike.price,
+                    url: 'motorcycles/' + bike.slug + '/index.html'
+                });
+            });
+        }
+        if (siteData.products) {
+            siteData.products.forEach(function(product) {
+                items.push({
+                    type: 'product',
+                    icon: '\uD83D\uDECD\uFE0F',
+                    title: product.title,
+                    meta: product.category + ' \u00B7 \u20B9' + product.price + ' \u00B7 ' + product.rating + '\u2605',
+                    url: 'products/' + product.slug + '/index.html'
+                });
+            });
+        }
+        if (siteData.articles) {
+            siteData.articles.forEach(function(article) {
+                items.push({
+                    type: 'guide',
+                    icon: '\uD83D\uDCD6',
+                    title: article.title,
+                    meta: article.reading_time,
+                    url: 'articles/' + article.slug + '/index.html'
+                });
+            });
+        }
+        return items;
+    }
+
+    var smartIndex = buildSearchIndex();
+
+    smartSearchInput.addEventListener('input', function(e) {
+        clearTimeout(smartDebounce);
+        smartDebounce = setTimeout(function() {
+            var query = e.target.value.toLowerCase().trim();
+            if (query.length < 2) {
+                smartSearchResults.classList.remove('active');
+                smartSearchResults.innerHTML = '';
+                return;
+            }
+
+            var results = smartIndex.filter(function(item) {
+                return item.title.toLowerCase().indexOf(query) !== -1 ||
+                       item.meta.toLowerCase().indexOf(query) !== -1;
+            }).slice(0, 8);
+
+            if (results.length === 0) {
+                smartSearchResults.innerHTML = '<div class="smart-search-result"><div class="smart-search-result-info"><div class="smart-search-result-title">No results found</div></div></div>';
+                smartSearchResults.classList.add('active');
+                return;
+            }
+
+            smartSearchResults.innerHTML = results.map(function(r) {
+                return '<a href="' + r.url + '" class="smart-search-result">' +
+                    '<div class="smart-search-result-icon">' + r.icon + '</div>' +
+                    '<div class="smart-search-result-info">' +
+                    '<div class="smart-search-result-title">' + r.title + '</div>' +
+                    '<div class="smart-search-result-meta">' + r.meta + '</div>' +
+                    '</div></a>';
+            }).join('');
+            smartSearchResults.classList.add('active');
+        }, 200);
+    });
+
+    smartSearchInput.addEventListener('focus', function() {
+        if (smartSearchInput.value.trim().length >= 2) {
+            smartSearchResults.classList.add('active');
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.smart-search-wrapper')) {
+            smartSearchResults.classList.remove('active');
+        }
+    });
+
+    // Popular search chips
+    popularSearchChips.forEach(function(chip) {
+        chip.addEventListener('click', function(e) {
+            e.preventDefault();
+            var query = chip.dataset.query || chip.textContent;
+            smartSearchInput.value = query;
+            smartSearchInput.dispatchEvent(new Event('input'));
+            smartSearchInput.focus();
+        });
+    });
+}
+
+// Keyboard shortcut: Cmd/Ctrl + K to focus smart search
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        var smartInput = document.getElementById('smartSearchInput');
+        if (smartInput) {
+            e.preventDefault();
+            smartInput.focus();
+            smartInput.select();
+        }
+    }
+});
+
 // ===== Bike Filters (Homepage) =====
 const bikeShowcase = document.getElementById('bikeShowcase');
 const filterBtns = document.querySelectorAll('.filter-btn');

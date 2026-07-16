@@ -165,18 +165,18 @@
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4>Motorcycles</h4>
+                        <h4>Popular Bikes</h4>
                         <ul>
+                            <li><a href="{{ base_path }}motorcycles/index.html">All Motorcycles</a></li>
                             {% for brand, bikes in nav_motorcycles_by_brand.items() %}
                             {% if bikes %}
                             <li><a href="{{ base_path }}motorcycles/{{ bikes[0].slug }}/index.html">{{ brand }}</a></li>
                             {% endif %}
                             {% endfor %}
-                            <li><a href="{{ base_path }}motorcycles/index.html">View All</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Best Of</h4>
+                        <h4>Popular Accessories</h4>
                         <ul>
                             <li><a href="{{ base_path }}best/helmet/index.html">Best Helmets</a></li>
                             <li><a href="{{ base_path }}best/phone-mount/index.html">Best Phone Mounts</a></li>
@@ -184,15 +184,31 @@
                             <li><a href="{{ base_path }}best/jacket/index.html">Best Jackets</a></li>
                             <li><a href="{{ base_path }}best/engine-oil/index.html">Best Engine Oil</a></li>
                             <li><a href="{{ base_path }}best/chain-lube/index.html">Best Chain Lube</a></li>
+                            <li><a href="{{ base_path }}best/crash-guard/index.html">Best Crash Guards</a></li>
+                            <li><a href="{{ base_path }}best/bike-cover/index.html">Best Bike Covers</a></li>
+                            <li><a href="{{ base_path }}best/tyre-inflator/index.html">Best Tyre Inflators</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Resources</h4>
+                        <h4>Buying Guides</h4>
                         <ul>
-                            <li><a href="{{ base_path }}articles/index.html">Buying Guides</a></li>
-                            <li><a href="{{ base_path }}categories/index.html">All Products</a></li>
+                            <li><a href="{{ base_path }}articles/index.html">All Guides</a></li>
+                            <li><a href="{{ base_path }}articles/maintenance/">Maintenance</a></li>
+                            <li><a href="{{ base_path }}articles/buying-guides/">Buying Guides</a></li>
+                            <li><a href="{{ base_path }}articles/ownership/">Ownership Tips</a></li>
+                            <li><a href="{{ base_path }}articles/touring/">Touring</a></li>
+                            <li><a href="{{ base_path }}articles/safety/">Safety</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Brands</h4>
+                        <ul>
                             <li><a href="{{ base_path }}brands/index.html">All Brands</a></li>
-                            <li><a href="{{ base_path }}sitemap.xml">Sitemap</a></li>
+                            {% for brand, bikes in nav_motorcycles_by_brand.items() %}
+                            {% if bikes %}
+                            <li><a href="{{ base_path }}brands/{{ brand | lower | replace(' ', '-') }}/index.html">{{ brand }}</a></li>
+                            {% endif %}
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -202,6 +218,7 @@
                             <li><a href="{{ base_path }}contact/index.html">Contact</a></li>
                             <li><a href="{{ base_path }}privacy/index.html">Privacy Policy</a></li>
                             <li><a href="{{ base_path }}affiliate-disclosure/index.html">Affiliate Disclosure</a></li>
+                            <li><a href="{{ base_path }}sitemap.xml">Sitemap</a></li>
                         </ul>
                     </div>
                 </div>
@@ -211,7 +228,7 @@
             <div class="container">
                 <div class="footer-bottom-content">
                     <p>&copy; 2026 BikeReview India. All rights reserved.</p>
-                    <p class="affiliate-disclosure">As an Amazon Associate, we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change. <a href="#">Full Affiliate Disclosure</a></p>
+                    <p class="affiliate-disclosure">As an Amazon Associate, we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change. <a href="{{ base_path }}affiliate-disclosure/index.html">Full Affiliate Disclosure</a></p>
                 </div>
             </div>
         </div>
@@ -235,6 +252,7 @@
         {% endfor %}
     };
     </script>
+    <script src="{{ base_path }}static/js/search-data.js"></script>
     <script src="{{ base_path }}static/js/main.js"></script>
 </body>
 </html>

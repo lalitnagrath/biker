@@ -26,6 +26,25 @@ from datetime import datetime
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
+from product_engine import (
+    normalize_category,
+    categories_match,
+    compatibility_priority,
+    ranking_score,
+    enforce_brand_diversity,
+    find_products_by_category,
+    recommend_products,
+    recommend_for_category,
+    recommend_sidebar_products,
+    validate_category_products as _validate_category_products,
+    validate_motorcycle_products as _validate_motorcycle_products,
+    CATEGORY_KEYWORDS,
+    VALID_CATEGORIES,
+    MIN_PRODUCTS,
+    PREFERRED_PRODUCTS,
+    MAX_PRODUCTS,
+)
+
 try:
     from jinja2 import Environment, FileSystemLoader
 except ImportError:
@@ -55,77 +74,8 @@ AFFILIATE_ID = '0x23uyx-21'
 SITE_NAME = 'BikeReview India'
 DEFAULT_BASE_URL = ''
 
-# ===== Category Normalization =====
-# Maps alias names to canonical category names used in data files
-CATEGORY_ALIASES: Dict[str, str] = {
-    # Bike Cover variants
-    'motorcycle cover': 'Bike Cover',
-    'motorcycle body cover': 'Bike Cover',
-    'bike body cover': 'Bike Cover',
-    'body cover': 'Bike Cover',
-    # Phone Mount variants
-    'phone holder': 'Phone Mount',
-    'mobile holder': 'Phone Mount',
-    'mobile holder bike': 'Phone Mount',
-    'mobile mount': 'Phone Mount',
-    'handlebar mount': 'Phone Mount',
-    # Crash Guard variants
-    'engine guard': 'Crash Guard',
-    'leg guard': 'Crash Guard',
-    'crash protection': 'Crash Guard',
-    'frame slider': 'Crash Guard',
-    # Chain Lube variants
-    'chain spray': 'Chain Lube',
-    'chain lubricant': 'Chain Lube',
-    'chain wax': 'Chain Lube',
-    # Chain Cleaner variants
-    'chain cleaner spray': 'Chain Cleaner',
-    # Tyre Inflator variants
-    'air compressor': 'Tyre Inflator',
-    'tyre pump': 'Tyre Inflator',
-    'air pump': 'Tyre Inflator',
-    'portable compressor': 'Tyre Inflator',
-    # Gloves variants
-    'riding gloves': 'Gloves',
-    'bike gloves': 'Gloves',
-    'racing gloves': 'Gloves',
-    'motorcycle gloves': 'Gloves',
-    # Jacket variants
-    'riding jacket': 'Jackets',
-    'bike jacket': 'Jackets',
-    'motorcycle jacket': 'Jackets',
-    # Helmet variants
-    'full face helmet': 'Helmet',
-    'modular helmet': 'Helmet',
-    'open face helmet': 'Helmet',
-    # Engine Oil variants
-    'engine oil 10w-50': 'Engine Oil',
-    'engine oil 10w-40': 'Engine Oil',
-    'motor oil': 'Engine Oil',
-    # Tank Bag variants
-    'tank bag motorcycle': 'Tank Bag',
-    # Saddle Bag variants
-    'saddlebag': 'Saddle Bag',
-    'saddle bags': 'Saddle Bag',
-    'side bag': 'Saddle Bag',
-    # Tail Bag variants
-    'rear bag': 'Tail Bag',
-    'seat bag': 'Tail Bag',
-}
-
-
-def normalize_category(category: str) -> str:
-    """Normalize a product category name using the alias map.
-    
-    Returns the canonical category name. If no alias is found, returns
-    the original category with title case.
-    """
-    if not category:
-        return category
-    key = category.strip().lower()
-    if key in CATEGORY_ALIASES:
-        return CATEGORY_ALIASES[key]
-    return category.strip().title()
+# Category aliases, normalize_category, and VALID_CATEGORIES
+# are now imported from product_engine.py
 
 
 def parse_front_matter(content):
@@ -397,54 +347,8 @@ def replace_product_placeholders(html, products, base_path='./'):
     )
 
     def find_products_for_category(category_name: str) -> list:
-        """Find products matching a category, using normalization and fallback."""
-        normalized = normalize_category(category_name)
-        
-        # 1. Exact match on normalized category
-        matched = [
-            p for p in products
-            if normalize_category(p.get('category', '')) == normalized
-        ]
-        if matched:
-            return matched
-        
-        # 2. Case-insensitive partial match
-        normalized_lower = normalized.lower()
-        matched = [
-            p for p in products
-            if normalized_lower in p.get('category', '').lower()
-        ]
-        if matched:
-            return matched
-        
-        # 3. Fallback: find products in similar categories
-        category_keywords = {
-            'helmet': ['helmet', 'headgear'],
-            'phone mount': ['phone', 'mount', 'holder'],
-            'crash guard': ['crash guard', 'engine guard', 'leg guard', 'frame slider'],
-            'bike cover': ['cover', 'body cover'],
-            'chain lube': ['chain', 'lube', 'lubricant'],
-            'chain cleaner': ['chain', 'clean'],
-            'engine oil': ['oil', 'engine', 'lubricant'],
-            'tyre inflator': ['tyre', 'tire', 'inflator', 'compressor', 'pump'],
-            'gloves': ['riding gloves', 'bike gloves', 'glove'],
-            'jackets': ['riding jacket', 'bike jacket', 'jacket'],
-            'tank bag': ['tank', 'bag'],
-            'saddle bag': ['saddle', 'side bag'],
-            'tail bag': ['tail', 'rear', 'seat bag'],
-        }
-        
-        keywords = category_keywords.get(normalized_lower, [])
-        for kw in keywords:
-            matched = [
-                p for p in products
-                if kw in p.get('category', '').lower()
-                or kw in p.get('title', '').lower()
-            ]
-            if matched:
-                return matched
-        
-        return []
+        """Find products matching a category, using product_engine search."""
+        return find_products_by_category(products, category_name)
 
     def make_card(product, base_path, pick_label=''):
         price = int(product.get('price', 0))
@@ -526,7 +430,11 @@ def replace_product_placeholders(html, products, base_path='./'):
         if not matched:
             return ''
 
-        matched.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
+        # Use product_engine ranking (editor_rating + rating + reviews + price)
+        matched.sort(key=lambda p: ranking_score(p), reverse=True)
+
+        # Enforce brand diversity: max 2 from same brand
+        matched = enforce_brand_diversity(matched, max_per_brand=2)
 
         if pick:
             # Pick mode: only first item, show as a single card with badge
@@ -585,75 +493,48 @@ def build_product_categories(products):
 
 
 def match_products_to_motorcycle(bike, products):
-    """Match products to a motorcycle using fallback priority.
-    
-    Matching priority:
-    1. Exact motorcycle compatibility (slug match)
-    2. Brand compatibility (brand:royal-enfield)
-    3. Type compatibility (type:cruiser)
-    4. Universal products (compatible_bikes: ["*"])
-    5. Products with empty compatible_bikes (optional fallback)
-    
-    Returns products grouped by normalized category, sorted by editor rating.
+    """Match products to a motorcycle using product_engine compatibility.
+
+    Matching priority (from product_engine):
+        1. Exact motorcycle compatibility (slug match)
+        2. Brand compatibility (brand:royal-enfield)
+        3. Type compatibility (type:cruiser)
+        4. Universal products (compatible_bikes: ["*"])
+        5. Products with empty compatible_bikes (optional fallback)
+
+    Returns products grouped by normalized category, sorted by ranking score.
     Each product includes a normalized_category field.
     """
-    bike_slug = bike.get('slug', '')
-    bike_brand = bike.get('brand', '').lower()
-    bike_type = bike.get('type', '').lower()
-    
-    # Track matched products with priority level
     matched_with_priority = []
-    
+
     for product in products:
-        compat = product.get('compatible_bikes', [])
-        priority = 0
-        
-        if not compat:
-            # Empty compatible_bikes: low priority fallback
-            priority = 5
-        else:
-            for entry in compat:
-                entry_lower = entry.lower()
-                if entry_lower == '*':
-                    priority = 4
-                    break
-                elif entry_lower.startswith('brand:'):
-                    if entry_lower[6:] == bike_brand:
-                        priority = max(priority, 2)
-                        break
-                elif entry_lower.startswith('type:'):
-                    if entry_lower[5:] == bike_type:
-                        priority = max(priority, 3)
-                        break
-                elif entry_lower == bike_slug:
-                    priority = 1
-                    break
-        
-        if priority > 0:
-            # Add normalized category to product for downstream use
+        cp = compatibility_priority(product, bike)
+        if cp > 0:
             product_copy = dict(product)
             product_copy['normalized_category'] = normalize_category(
                 product.get('category', '')
             )
-            matched_with_priority.append((priority, product_copy))
-    
-    # Sort by priority (lower = better), then by editor rating
-    matched_with_priority.sort(key=lambda x: (x[0], -x[1].get('editor_rating', 0)))
-    
+            matched_with_priority.append((cp, product_copy))
+
+    # Sort by compatibility priority, then by ranking score
+    matched_with_priority.sort(
+        key=lambda x: (x[0], -ranking_score(x[1], bike))
+    )
+
     return [item[1] for item in matched_with_priority]
 
 
 def get_products_by_category(products: list, category: str) -> list:
-    """Get products for a specific category using normalization.
+    """Get products for a specific category using normalization and ranking.
     
-    Returns products sorted by editor rating (best first).
+    Returns products sorted by ranking score (best first).
     """
     normalized = normalize_category(category)
     matched = [
         p for p in products
         if normalize_category(p.get('category', '')) == normalized
     ]
-    matched.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
+    matched.sort(key=lambda p: ranking_score(p), reverse=True)
     return matched
 
 
@@ -665,7 +546,7 @@ def get_category_product_count(products: list, category: str) -> int:
 def build_accessory_sections(bike, products):
     """Build organized accessory sections for a motorcycle.
     
-    Uses normalized categories and includes category summaries.
+    Uses normalized categories, product_engine ranking, and brand diversity.
     Sections with no products are excluded from output.
     """
     sections = [
@@ -699,11 +580,13 @@ def build_accessory_sections(bike, products):
             if product_cat in [c.lower() for c in section['categories']]:
                 section_products.append(product)
         
-        # Sort by editor rating
-        section_products.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
+        # Sort by product_engine ranking score
+        section_products.sort(key=lambda p: ranking_score(p, bike), reverse=True)
+        
+        # Enforce brand diversity
+        section_products = enforce_brand_diversity(section_products, max_per_brand=2)
         
         if section_products:
-            # Build category summary for each category in this section
             category_counts = {}
             for cat in section['categories']:
                 count = sum(
@@ -713,10 +596,14 @@ def build_accessory_sections(bike, products):
                 if count > 0:
                     category_counts[cat] = count
             
+            # Use select_product_count from product_engine
+            from product_engine import select_product_count
+            target = select_product_count(len(section_products))
+            
             result.append({
                 'title': section['title'],
                 'description': section['description'],
-                'products': section_products[:5],  # Dynamic: up to 5 products
+                'products': section_products[:target],
                 'category_counts': category_counts,
             })
 
@@ -736,20 +623,10 @@ def get_related_articles(article, all_articles):
     return related[:5]
 
 
-def get_related_products(product, all_products):
-    """Get related products in the same category."""
-    related = []
-    for other in all_products:
-        if other['slug'] == product['slug']:
-            continue
-        if other.get('category') == product.get('category'):
-            related.append(other)
-    return related[:4]
-
 
 def get_featured_products(products, count=6):
-    """Get featured products sorted by editor rating."""
-    return sorted(products, key=lambda p: p.get('editor_rating', 0), reverse=True)[:count]
+    """Get featured products sorted by ranking score."""
+    return sorted(products, key=lambda p: ranking_score(p), reverse=True)[:count]
 
 
 def validate_products(products: list) -> List[str]:
@@ -765,13 +642,6 @@ def validate_products(products: list) -> List[str]:
     """
     warnings = []
     seen_asins = {}
-    
-    # Known valid categories (normalized)
-    valid_categories = {
-        'helmet', 'phone mount', 'crash guard', 'bike cover',
-        'chain lube', 'chain cleaner', 'engine oil', 'tyre inflator',
-        'gloves', 'jackets', 'tank bag', 'saddle bag', 'tail bag',
-    }
     
     for i, product in enumerate(products):
         title = product.get('title', f'Product #{i+1}')
@@ -797,7 +667,7 @@ def validate_products(products: list) -> List[str]:
         category = product.get('category', '')
         if category:
             normalized = normalize_category(category).lower()
-            if normalized not in valid_categories:
+            if normalized not in VALID_CATEGORIES:
                 warnings.append(f"  ! {title} ({slug}): Unknown category '{category}' (normalized: '{normalize_category(category)}')")
         
         # Duplicate ASIN check
@@ -968,25 +838,59 @@ class SiteGenerator:
             enriched_bikes.append(b)
         context['motorcycles'] = enriched_bikes
 
-        # ===== Collect unique motorcycle types for category filter =====
-        bike_types = sorted(set(b.get('type', '') for b in enriched_bikes if b.get('type')))
-        context['bike_types'] = bike_types
-
-        # Rotating featured motorcycle
-        featured_bike_slugs = [
-            'royal-enfield-classic-350', 'royal-enfield-bullet-350',
-            'royal-enfield-hunter-350', 'royal-enfield-himalayan-450',
-            'royal-enfield-guerrilla-450', 'honda-hness-cb350',
-            'honda-cb350rs',
+        # ===== Featured motorcycles (8-12 popular bikes) =====
+        popular_slugs = [
+            'royal-enfield-classic-350', 'royal-enfield-hunter-350',
+            'royal-enfield-himalayan-450', 'royal-enfield-bullet-350',
+            'honda-hness-cb350', 'honda-cb350rs',
+            'bajaj-pulsar-ns200', 'yamaha-mt-15',
+            'tvS-apache-rtr-200', 'royal-enfield-guerrilla-450',
+            'hero-xpulse-200', 'bajaj-pulsar-n250',
         ]
         featured_bikes = [
             b for b in enriched_bikes
-            if b.get('slug') in featured_bike_slugs
+            if b.get('slug') in popular_slugs
         ]
-        if featured_bikes:
-            context['featured_bike'] = random.choice(featured_bikes)
-        else:
-            context['featured_bike'] = enriched_bikes[0] if enriched_bikes else None
+        if len(featured_bikes) < 8:
+            featured_bikes = enriched_bikes[:12]
+        context['featured_bikes'] = featured_bikes[:12]
+
+        # ===== Popular searches (for smart search suggestions) =====
+        context['popular_searches'] = [
+            'Hunter 350', 'Classic 350', 'CB350', 'Himalayan 450',
+            'NS200', 'MT15', 'Apache RTR 200', 'Bullet 350',
+        ]
+
+        # ===== Trending buying guides =====
+        context['trending_guides'] = [
+            {'title': 'Best Helmets', 'slug': 'helmet', 'icon': '&#129650;', 'description': 'Full face, flip-up & modular helmets reviewed'},
+            {'title': 'Best Phone Mounts', 'slug': 'phone-mount', 'icon': '&#128241;', 'description': 'Vibration-free handlebar phone holders'},
+            {'title': 'Best Engine Oil', 'slug': 'engine-oil', 'icon': '&#128737;', 'description': 'Mineral, semi-synthetic & fully synthetic oils'},
+            {'title': 'Best Crash Guards', 'slug': 'crash-guard', 'icon': '&#128737;', 'description': 'Protective engine guards for every bike'},
+            {'title': 'Best Riding Gloves', 'slug': 'gloves', 'icon': '&#129508;', 'description': 'Summer, winter & all-season riding gloves'},
+            {'title': 'Best Bike Covers', 'slug': 'bike-cover', 'icon': '&#128711;', 'description': 'Waterproof & UV-resistant motorcycle covers'},
+        ]
+
+        # ===== Comparisons data =====
+        comparisons = []
+        comparison_pairs = [
+            ('royal-enfield-hunter-350', 'honda-hness-cb350', 'Hunter 350 vs CB350'),
+            ('royal-enfield-classic-350', 'bajaj-pulsar-n250', 'Classic 350 vs Pulsar'),
+            ('bajaj-pulsar-ns200', 'tvS-apache-rtr-200', 'NS200 vs RTR 200'),
+            ('yamaha-mt-15', 'yamaha-r15', 'MT15 vs R15'),
+            ('hero-xpulse-200', 'royal-enfield-himalayan-450', 'XPulse vs Himalayan'),
+        ]
+        bike_map = {b['slug']: b for b in enriched_bikes}
+        for slug1, slug2, label in comparison_pairs:
+            b1 = bike_map.get(slug1)
+            b2 = bike_map.get(slug2)
+            if b1 and b2:
+                comparisons.append({
+                    'label': label,
+                    'bike1': b1,
+                    'bike2': b2,
+                })
+        context['comparisons'] = comparisons
 
         # Featured products for recommendations (top rated, one per category)
         categories_wanted = [
@@ -996,15 +900,14 @@ class SiteGenerator:
         ]
         featured_products = []
         seen_cats = set()
-        for p in sorted(self.data['products'], key=lambda x: x.get('editor_rating', 0), reverse=True):
+        for p in sorted(self.data['products'], key=lambda x: ranking_score(x), reverse=True):
             cat = normalize_category(p.get('category', ''))
             if cat not in seen_cats and cat.lower() in [c.lower() for c in categories_wanted]:
                 featured_products.append(p)
                 seen_cats.add(cat)
         context['featured_products'] = featured_products[:9]
 
-        # Editor's picks (curated top products)
-        editors_picks_slugs = []
+        # Editor's picks (curated top products per category)
         editors_picks = []
         pick_categories = {
             'Helmet': 'Best Helmet',
@@ -1015,14 +918,9 @@ class SiteGenerator:
             'Crash Guard': 'Best Crash Guard',
         }
         for cat, label in pick_categories.items():
-            normalized = normalize_category(cat)
-            matches = [
-                p for p in self.data['products']
-                if normalize_category(p.get('category', '')) == normalized
-            ]
-            if matches:
-                best = max(matches, key=lambda x: x.get('editor_rating', 0))
-                pick = dict(best)
+            rec = recommend_for_category(self.data['products'], cat)
+            if rec['editors_choice']:
+                pick = dict(rec['editors_choice'])
                 pick['pick_label'] = label
                 editors_picks.append(pick)
         context['editors_picks'] = editors_picks
@@ -1068,6 +966,30 @@ class SiteGenerator:
             content = self.render_template('brand.html', context)
             self.write_page(f'brands/{brand["slug"]}/index.html', content)
 
+    def generate_brand_listing(self):
+        """Generate brands index page."""
+        context = self.build_base_context(
+            meta_title='Motorcycle Brands in India - Reviews & Guides | BikeReview India',
+            meta_description='Browse all motorcycle brands in India. Find models, specifications, prices, and best accessories.',
+            canonical_url=f"{self.base_url}/brands/",
+            output_path='brands/index.html',
+        )
+        context['brands'] = sorted(self.data['brands'], key=lambda x: x['name'])
+        content = self.render_template('brands.html', context)
+        self.write_page('brands/index.html', content)
+
+    def generate_motorcycle_listing(self):
+        """Generate motorcycles index page."""
+        context = self.build_base_context(
+            meta_title='All Motorcycles in India - Specs, Prices & Accessories | BikeReview India',
+            meta_description='Browse all motorcycles available in India. Find specifications, prices, best accessories, and buying guides.',
+            canonical_url=f"{self.base_url}/motorcycles/",
+            output_path='motorcycles/index.html',
+        )
+        context['motorcycles'] = sorted(self.data['motorcycles'], key=lambda x: (x['brand'], x['model']))
+        content = self.render_template('motorcycles.html', context)
+        self.write_page('motorcycles/index.html', content)
+
     def generate_motorcycle_pages(self):
         """Generate individual motorcycle pages."""
         for bike in self.data['motorcycles']:
@@ -1083,9 +1005,8 @@ class SiteGenerator:
                 {'name': f"{bike['brand']} {bike['model']}"},
             ]
 
-            # Related products
+            # Match products to motorcycle (used for main content + sidebar)
             matched = match_products_to_motorcycle(bike, self.data['products'])
-            context['related_products'] = matched
 
             # Related articles
             related = []
@@ -1095,22 +1016,17 @@ class SiteGenerator:
                     related.append(article)
             context['related_articles'] = related[:4]
 
-            # ===== Sidebar data =====
-            # Top picks: top 3 products by editor rating
-            context['sidebar_top_picks'] = sorted(matched, key=lambda p: p.get('editor_rating', 0), reverse=True)[:3]
-
-            # Budget setup: cheapest product per category
-            budget_by_cat = {}
-            for p in matched:
-                cat = p.get('category', '')
-                if cat and (cat not in budget_by_cat or p.get('price', 99999) < budget_by_cat[cat].get('price', 99999)):
-                    budget_by_cat[cat] = p
-            context['sidebar_budget_setup'] = sorted(budget_by_cat.values(), key=lambda p: p.get('price', 0))[:5]
-            context['sidebar_budget_total'] = sum(p.get('price', 0) for p in context['sidebar_budget_setup'])
-
-            # Touring setup: helmet, jacket, saddle bag products
-            touring_cats = {'Helmet', 'Jackets', 'Saddle Bag', 'Bike Cover'}
-            context['sidebar_touring_setup'] = [p for p in matched if p.get('category') in touring_cats][:4]
+            # ===== Sidebar products (same engine as articles) =====
+            sidebar_products = recommend_sidebar_products(
+                self.data['products'], bike=bike, max_products=5,
+            )
+            context['sidebar_products'] = sidebar_products
+            # Debug output
+            bike_name = f"{bike.get('brand', '')} {bike.get('model', '')}"
+            print(f"    Sidebar [{bike_name}]: {len(sidebar_products)} products")
+            for sp in sidebar_products:
+                p = sp['product']
+                print(f"      - [{sp['category']}] {p.get('brand', '')} {p.get('title', '')[:40]} ({sp['reason']})")
 
             # Maintenance schedule (static intervals)
             context['sidebar_maintenance'] = [
@@ -1126,18 +1042,6 @@ class SiteGenerator:
                 m for m in self.data['motorcycles']
                 if m['slug'] != bike['slug'] and m.get('type', '').lower() == bike_type
             ][:4]
-
-            # Trending accessories: top 5 by reviews from all products
-            context['sidebar_trending'] = sorted(
-                self.data['products'], key=lambda p: p.get('reviews', 0), reverse=True
-            )[:5]
-
-            # Recently updated articles: top 3 by date
-            context['sidebar_recent_articles'] = sorted(
-                self.data['articles'],
-                key=lambda a: a.get('date', ''),
-                reverse=True
-            )[:3]
 
             # ===== NEW HUB PAGE DATA =====
 
@@ -1175,7 +1079,7 @@ class SiteGenerator:
                 cat_products = get_products_by_category(matched, cat)
                 if cat_products:
                     budget = min(cat_products, key=lambda p: p.get('price', 99999))
-                    best = max(cat_products, key=lambda p: p.get('editor_rating', 0))
+                    best = max(cat_products, key=lambda p: ranking_score(p, bike))
                     must_have_data.append({
                         'category': cat,
                         'slug': cat.lower().replace(' ', '-'),
@@ -1320,9 +1224,11 @@ class SiteGenerator:
                     {'name': topic['title']},
                 ]
 
-                # Related products
-                matched = match_products_to_motorcycle(bike, self.data['products'])
-                context['related_products'] = matched[:4]
+                # Sidebar products (same engine as articles)
+                sidebar_products = recommend_sidebar_products(
+                    self.data['products'], bike=bike, max_products=4,
+                )
+                context['sidebar_products'] = sidebar_products
                 context['all_products'] = self.data['products']
                 context['all_motorcycles'] = self.data['motorcycles']
 
@@ -1348,8 +1254,16 @@ class SiteGenerator:
                 {'name': product['title']},
             ]
 
-            # Related products
-            context['related_products'] = get_related_products(product, self.data['products'])
+            # Sidebar products (same engine as articles and motorcycle pages)
+            sidebar_products = recommend_sidebar_products(
+                self.data['products'], product=product, max_products=4,
+            )
+            context['sidebar_products'] = sidebar_products
+            # Debug output
+            print(f"    Sidebar [product: {product.get('slug', '')}]: {len(sidebar_products)} products")
+            for sp in sidebar_products:
+                p = sp['product']
+                print(f"      - [{sp['category']}] {p.get('brand', '')} {p.get('title', '')[:40]} ({sp['reason']})")
 
             # Related articles
             related = []
@@ -1398,7 +1312,7 @@ class SiteGenerator:
             {'slug': 'helmet', 'category': 'Helmet', 'title': 'Best Helmets', 'description': 'Find the best motorcycle helmets in India. Expert reviews, safety ratings, and buying recommendations for every budget.'},
             {'slug': 'phone-mount', 'category': 'Phone Mount', 'title': 'Best Phone Mounts', 'description': 'Top-rated motorcycle phone mounts and holders. vibration-free, secure, and easy to use options reviewed.'},
             {'slug': 'gloves', 'category': 'Gloves', 'title': 'Best Riding Gloves', 'description': 'Best motorcycle riding gloves for Indian conditions. Summer, winter, and all-season options reviewed.'},
-            {'slug': 'jacket', 'category': 'Jacket', 'title': 'Best Riding Jackets', 'description': 'Top CE-certified riding jackets for safety and comfort. Budget to premium options reviewed.'},
+            {'slug': 'jacket', 'category': 'Jackets', 'title': 'Best Riding Jackets', 'description': 'Top CE-certified riding jackets for safety and comfort. Budget to premium options reviewed.'},
             {'slug': 'engine-oil', 'category': 'Engine Oil', 'title': 'Best Engine Oil', 'description': 'Best engine oils for Indian motorcycles. Mineral, semi-synthetic, and fully synthetic options compared.'},
             {'slug': 'bike-cover', 'category': 'Bike Cover', 'title': 'Best Bike Covers', 'description': 'Best motorcycle body covers for outdoor parking. Waterproof, UV-resistant, and dustproof options.'},
             {'slug': 'chain-lube', 'category': 'Chain Lube', 'title': 'Best Chain Lubes', 'description': 'Best chain lubricants for motorcycle maintenance. Spray and drip-on options reviewed.'},
@@ -1407,13 +1321,14 @@ class SiteGenerator:
 
         for page in bestof_pages:
             category = page['category']
-            cat_products = [p for p in self.data['products'] if p.get('category', '').lower() == category.lower()]
+            cat_products = find_products_by_category(self.data['products'], category)
             
             if not cat_products:
                 continue
             
-            # Sort by editor rating
-            cat_products.sort(key=lambda p: p.get('editor_rating', 0), reverse=True)
+            # Sort by ranking score and enforce brand diversity
+            cat_products.sort(key=lambda p: ranking_score(p), reverse=True)
+            cat_products = enforce_brand_diversity(cat_products, max_per_brand=2)
             
             context = self.build_base_context(
                 meta_title=f"{page['title']} - {page['description'][:50]} | BikeReview India",
@@ -1467,6 +1382,18 @@ class SiteGenerator:
                 {'name': article.get('title', '')},
             ]
             context['related_articles'] = get_related_articles(article, sorted_articles)
+
+            # Sidebar products (same engine as motorcycle pages)
+            sidebar_products = recommend_sidebar_products(
+                self.data['products'], article=article, max_products=4,
+            )
+            context['sidebar_products'] = sidebar_products
+            # Debug output
+            print(f"    Sidebar [article: {slug}]: {len(sidebar_products)} products")
+            for sp in sidebar_products:
+                p = sp['product']
+                print(f"      - [{sp['category']}] {p.get('brand', '')} {p.get('title', '')[:40]} ({sp['reason']})")
+
             context['prev_article'] = prev_article
             context['next_article'] = next_article
 
@@ -1494,10 +1421,12 @@ class SiteGenerator:
         urls.append(f'{self.base_url}/')
 
         # Brands
+        urls.append(f'{self.base_url}/brands/')
         for brand in self.data['brands']:
             urls.append(f'{self.base_url}/brands/{brand["slug"]}/')
 
         # Motorcycles
+        urls.append(f'{self.base_url}/motorcycles/')
         for bike in self.data['motorcycles']:
             urls.append(f'{self.base_url}/motorcycles/{bike["slug"]}/')
             urls.append(f'{self.base_url}/motorcycles/{bike["slug"]}/accessories/')
@@ -1824,8 +1753,14 @@ Sitemap: {self.base_url}/sitemap.xml
         self.generate_home()
         print("    * Homepage")
 
+        self.generate_brand_listing()
+        print("    * Brands listing page")
+
         self.generate_brand_pages()
         print(f"    * {len(self.data['brands'])} brand pages")
+
+        self.generate_motorcycle_listing()
+        print("    * Motorcycles listing page")
 
         self.generate_motorcycle_pages()
         print(f"    * {len(self.data['motorcycles'])} motorcycle pages")
@@ -1884,21 +1819,23 @@ Sitemap: {self.base_url}/sitemap.xml
                 print(w)
             print()
 
-        # Category availability report
+        # Category availability report (using product_engine)
         print("  Category Product Availability:")
-        all_categories = set()
-        for product in self.data['products']:
-            cat = normalize_category(product.get('category', ''))
-            all_categories.add(cat)
-        
-        for cat in sorted(all_categories):
-            count = get_category_product_count(self.data['products'], cat)
-            if count > 0:
-                print(f"    * {cat:<20s} {count} product{'s' if count != 1 else ''}")
-            else:
-                print(f"    ! {cat:<20s} 0 products")
-        
+        cat_report = _validate_category_products(self.data['products'])
+        print(cat_report['report'])
         print()
+
+        if cat_report['empty']:
+            print(f"  WARNING: {len(cat_report['empty'])} categories have zero products!")
+            for c in cat_report['empty']:
+                print(f"    - {c}")
+            print()
+
+        if cat_report['understocked']:
+            print(f"  NOTE: {len(cat_report['understocked'])} categories have fewer than {MIN_PRODUCTS} products:")
+            for c in cat_report['understocked']:
+                print(f"    - {c}")
+            print()
 
         # Motorcycle page product matching report
         print("  Motorcycle Page Product Matching:")

@@ -996,17 +996,20 @@
             <aside class="moto-sidebar">
                 <div class="moto-sidebar-sticky">
 
-                    {# Card 1: Top Picks #}
-                    {% if sidebar_top_picks %}
+                    {# Card 1: Recommended Products (same engine as articles) #}
+                    {% if sidebar_products %}
                     <div class="moto-sidebar-card">
                         <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9733;</span> Top Picks</h3>
                         <div class="moto-sb-picks">
-                            {% for product in sidebar_top_picks %}
+                            {% for item in sidebar_products %}
+                            {% set product = item.product %}
                             <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="moto-sb-pick-item">
+                                {% if product.image %}
                                 <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                                {% endif %}
                                 <div class="moto-sb-pick-info">
                                     <span class="moto-sb-pick-title">{{ product.title }}</span>
-                                    <span class="moto-sb-pick-meta">{{ product.editor_rating }}/10 &middot; &#8377;{{ product.price }}</span>
+                                    <span class="moto-sb-pick-meta">{{ product.brand }} &middot; &#8377;{{ product.price }}</span>
                                 </div>
                             </a>
                             {% endfor %}
@@ -1014,26 +1017,7 @@
                     </div>
                     {% endif %}
 
-                    {# Card 2: Budget Setup #}
-                    {% if sidebar_budget_setup %}
-                    <div class="moto-sidebar-card">
-                        <h3 class="moto-sb-title"><span class="moto-sb-icon">&#9775;</span> Budget Setup</h3>
-                        <div class="moto-sb-budget">
-                            {% for product in sidebar_budget_setup %}
-                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="moto-sb-budget-item">
-                                <span class="moto-sb-budget-name">{{ product.title }}</span>
-                                <span class="moto-sb-budget-price">&#8377;{{ product.price }}</span>
-                            </a>
-                            {% endfor %}
-                            <div class="moto-sb-budget-total">
-                                <span>Total</span>
-                                <strong>&#8377;{{ sidebar_budget_total }}</strong>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-
-                    {# Card 3: Maintenance Schedule #}
+                    {# Card 2: Maintenance Schedule #}
                     {% if sidebar_maintenance %}
                     <div class="moto-sidebar-card moto-sb-maintenance">
                         <h3 class="moto-sb-title moto-sb-collapsible" data-target="sbMaintenance">
