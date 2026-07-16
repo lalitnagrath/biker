@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Drum (Rear)",
     "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
     "tyres": "80/100-17 (Front), 100/90-17 (Rear)",
-    "description": "The Bajaj Pulsar 150 is one of India's most iconic and best-selling motorcycles. Known for its bulletproof reliability and peppy performance, it has been the go-to choice for millions of riders who want a sporty commuter at an affordable price.",
+    "description": "India's favourite sports commuter for two decades. The Pulsar 150 proved that a commuter can be fun to ride. It is not the fastest or the most feature-loaded bike in its class anymore, but its reliability record is unmatched. Millions of riders trust it daily, and for good reason.",
     "highlights": [
         "Iconic Pulsar DNA",
         "Proven DTS-i engine",
@@ -26,18 +26,18 @@
         "Trusted brand reliability"
     ],
     "pros": [
-        "Extremely reliable and proven",
-        "Excellent fuel efficiency",
-        "Affordable to buy and maintain",
-        "Comfortable for daily use",
-        "Widespread service network"
+        "Bulletproof reliability — these engines last forever",
+        "Excellent fuel efficiency for daily riding",
+        "Cheap to buy, cheap to run",
+        "Comfortable riding position for long commutes",
+        "Service network covers every corner of India"
     ],
     "cons": [
-        "Dated design compared to newer models",
-        "Twin-shock rear feels basic",
-        "Lacks modern features",
-        "Vibrations at higher speeds",
-        "Braking could be better"
+        "Design has not aged well compared to rivals",
+        "Twin-shock rear suspension feels outdated",
+        "Missing modern features like Bluetooth",
+        "Vibrations above 80 km/h",
+        "Braking performance is average"
     ],
     "categories": [
         "Helmet",
@@ -108,25 +108,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Pulsar 150, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

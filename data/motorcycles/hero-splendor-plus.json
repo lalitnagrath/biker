@@ -17,7 +17,7 @@
     "brakes": "Drum (Front), Drum (Rear)",
     "suspension": "Telescopic (Front), Swingarm with 2-step adjustable hydraulic shock absorbers (Rear)",
     "tyres": "2.75-18 (Front), 2.75-18 (Rear)",
-    "description": "The Hero Splendor+ is India's best-selling motorcycle and the undisputed king of commuters. Known for its bulletproof reliability, exceptional mileage, and low maintenance costs, it has been the trusted choice of millions of Indian families for decades.",
+    "description": "India's all-time best-selling motorcycle. The Splendor+ is not about performance or features — it is about getting you from A to B reliably, cheaply, and without fuss. Millions of Indian families trust it daily, and that trust is built on decades of bulletproof reliability.",
     "highlights": [
         "i3S start-stop technology",
         "Exceptional fuel economy",
@@ -26,18 +26,18 @@
         "Wide service network"
     ],
     "pros": [
-        "Industry-leading fuel efficiency",
-        "Extremely low maintenance",
-        "Comfortable for daily use",
-        "Strong resale value",
-        "Ubiquitous service availability"
+        "Best fuel efficiency in its class",
+        "Maintenance costs are almost zero",
+        "Unmatched reliability and durability",
+        "Comfortable for daily city commuting",
+        "Resale value holds strong"
     ],
     "cons": [
-        "Basic features and design",
-        "Not suited for highway rides",
-        "Limited performance",
+        "Zero excitement factor",
+        "Design is from a different era",
         "No disc brake option",
-        "Dated styling"
+        "Highway rides are not recommended",
+        "Features are practically non-existent"
     ],
     "categories": [
         "Helmet",
@@ -73,22 +73,22 @@
     "aftermarket_accessories": true,
     "common_problems": [
         {
-            "problem": "Chain noise",
-            "cause": "Inadequate lubrication",
-            "solution": "Clean and lubricate chain every 500 km",
+            "problem": "Chain noise after 5,000 km",
+            "cause": "Chain stretches naturally with use, especially on Indian roads with dust and water",
+            "solution": "Clean and lubricate every 500 km. Adjust chain tension at every service.",
             "product_category": "Chain Lube"
         },
         {
-            "problem": "Seat discomfort",
-            "cause": "Stock seat not designed for long rides",
-            "solution": "Add seat cushion or upgrade seat",
-            "product_category": "Seat Cover"
+            "problem": "Seat foam flattening over time",
+            "cause": "Stock foam density is optimised for cost, not longevity",
+            "solution": "Add a gel seat cover or replace with aftermarket seat after 15,000 km.",
+            "product_category": "Bike Cover"
         },
         {
-            "problem": "Electrical issues",
-            "cause": "Loose connections from vibrations",
-            "solution": "Check wiring harness periodically",
-            "product_category": "Bike Cover"
+            "problem": "Headlight dimming in idle",
+            "cause": "Weak battery or loose wiring connections",
+            "solution": "Check battery health every 6 months. Clean terminal connections.",
+            "product_category": "Tyre Inflator"
         }
     ],
     "comparison_bikes": [
@@ -103,27 +103,27 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
-            "Crash Guard",
-            "Bike Cover"
+            "Helmet (ISI certified)",
+            "Bike Cover",
+            "Chain Lube"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap no-name helmets (even if ISI marked)",
+            "Aftermarket exhaust (noise violations, warranty void)",
+            "Overpriced alloy wheels for a commuter"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "For the Splendor+, aftermarket accessories offer better value since the bike itself is budget-focused. OEM parts are overpriced for what you get. Stick to reputed aftermarket brands.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Skip fancy accessories — the Splendor+ is built for utility, not show",
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Buying a cheap helmet to save ₹200 — your head is worth more",
+            "Skipping regular chain maintenance — it is cheap insurance",
+            "Using car shampoo on the bike — use motorcycle-specific products",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "100/80-17 (Front), 130/70-17 (Rear)",
-    "description": "The Bajaj Pulsar N250 is a premium naked streetfighter that brings refined performance with its oil-cooled 249cc engine. Featuring a new-gen design and modern tech, it targets riders seeking a blend of power, comfort, and everyday usability.",
+    "description": "The Pulsar N250 is Bajaj's most powerful naked Pulsar. It borrows the Dominar's engine DNA but wraps it in a lighter, more aggressive package. A proper streetfighter that can commute during the week and carve corners on weekends.",
     "highlights": [
         "Oil-cooled 249cc engine",
         "Next-gen Pulsar design",
@@ -26,18 +26,18 @@
         "USB charging port"
     ],
     "pros": [
-        "Smooth and refined engine",
-        "Comfortable for long rides",
-        "Modern features and design",
-        "Good low-end and mid-range torque",
-        "Excellent value in the 250cc segment"
+        "Strong mid-range makes overtaking easy",
+        "Aggressive looks match the performance",
+        "Good ground clearance for Indian roads",
+        "ABS and slipper clutch are standard",
+        "Comfortable enough for daily use"
     ],
     "cons": [
-        "Top-end performance is modest",
-        "No liquid cooling",
-        "Slightly heavy for beginners",
-        "Seat could be wider",
-        "Limited accessory ecosystem"
+        "Wind blast at highway speeds is tiring",
+        "Seat could be more comfortable for long rides",
+        "Engine heat in traffic is noticeable",
+        "Instrument cluster is basic",
+        "Limited dealer network in smaller cities"
     ],
     "categories": [
         "Helmet",
@@ -106,25 +106,25 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Pulsar N250, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

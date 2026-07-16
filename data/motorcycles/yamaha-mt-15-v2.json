@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "USD (Front), Linked-type monocross (Rear)",
     "tyres": "100/80-17 (Front), 140/70-17 (Rear)",
-    "description": "The Yamaha MT-15 V2 is the naked streetfighter version of the beloved R15, offering the same high-revving engine in a more aggressive and compact package. Its lightweight chassis, delta box frame, and sharp styling make it a favourite among young urban riders.",
+    "description": "The MT-15 is Yamaha's naked version of the R15. Same engine, same chassis, but with upright ergonomics and no fairing. It is the sensible choice for riders who want R15 performance without the aggressive riding position.",
     "highlights": [
         "VVA engine technology",
         "Delta box frame",
@@ -26,18 +26,18 @@
         "LED headlight with DRL"
     ],
     "pros": [
-        "Incredible handling and agility",
-        "High-revving and responsive engine",
-        "Lightweight and flickable",
-        "Modern features and connectivity",
-        "Distinctive streetfighter looks"
+        "Same brilliant engine as the R15",
+        "Upright position is more practical for daily use",
+        "Light and nimble in traffic",
+        "Yamaha reliability and build quality",
+        "Good fuel efficiency for a 155cc"
     ],
     "cons": [
-        "Small fuel tank",
-        "Pillion seating comfort average",
-        "No ABS on base variant",
-        "Expensive for a 150cc naked",
-        "Wind blast at higher speeds"
+        "Looks smaller than it should",
+        "Wind blast is significant at highway speeds",
+        "Seat could be more comfortable",
+        "Expensive for a 155cc naked",
+        "Pillion space is tight"
     ],
     "categories": [
         "Helmet",
@@ -104,25 +104,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the MT-15 V2, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

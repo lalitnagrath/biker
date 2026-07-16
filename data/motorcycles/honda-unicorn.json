@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Drum (Rear)",
     "suspension": "Telescopic (Front), Mono suspension (Rear)",
     "tyres": "80/100-18 (Front), 100/80-18 (Rear)",
-    "description": "The Honda Unicorn is a well-rounded commuter motorcycle that delivers a smooth and refined ride. Known for its exceptional comfort and build quality, it remains a top choice for riders seeking a reliable daily motorcycle.",
+    "description": "The Unicorn is Honda's commuter that does everything right without being exciting about it. Smooth engine, comfortable ride, and Honda reliability. It is the sensible choice for riders who want a hassle-free daily commuter.",
     "highlights": [
         "Mono suspension rear setup",
         "Honda Eco Technology",
@@ -26,18 +26,18 @@
         "Engine kill switch"
     ],
     "pros": [
-        "Smooth and refined engine",
-        "Excellent ride comfort",
-        "Reliable Honda engineering",
+        "Buttery smooth engine",
+        "Comfortable ride quality",
+        "Honda reliability is legendary",
         "Good fuel efficiency",
         "Low maintenance costs"
     ],
     "cons": [
-        "Dated styling",
-        "Average acceleration",
-        "No fully digital console",
-        "Basic instrument cluster",
-        "Limited sporty appeal"
+        "Zero excitement factor",
+        "Design is bland",
+        "Features are basic",
+        "Highway capabilities are limited",
+        "Feels underpowered with a pillion"
     ],
     "categories": [
         "Helmet",
@@ -104,25 +104,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Unicorn, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

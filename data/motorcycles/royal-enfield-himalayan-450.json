@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "USD Fork (Front), Monoshock (Rear)",
     "tyres": "90/90-21 (Front), 140/80-17 (Rear)",
-    "description": "The Royal Enfield Himalayan 450 is a purpose-built adventure motorcycle designed to conquer mountains, highways, and everything in between. With a liquid-cooled engine, long-travel suspension, and a 21-inch front wheel, it is built for serious off-road exploration.",
+    "description": "The Himalayan 450 is Royal Enfield's serious adventure bike. Liquid-cooled engine, long-travel suspension, and a 21-inch front wheel make it genuinely capable off-road. It handles the Himalayas and daily commutes with equal competence.",
     "highlights": [
         "Liquid-cooled engine",
         "Long-travel suspension",
@@ -26,18 +26,18 @@
         "Switchable ABS"
     ],
     "pros": [
-        "Capable off-road performer",
-        "Comfortable for long tours",
-        "Excellent ground clearance",
-        "Good fuel range with 17L tank",
-        "Modern tech and connectivity"
+        "Genuine off-road capability",
+        "Comfortable for multi-day tours",
+        "New liquid-cooled engine is smooth",
+        "Long-travel suspension handles everything",
+        "Royal Enfield service network is widespread"
     ],
     "cons": [
-        "Tall seat height for short riders",
-        "Heavy for technical trails",
-        "Engine heat in slow traffic",
-        "Premium pricing",
-        "Limited aftermarket accessories"
+        "Tall seat height limits rider options",
+        "Heavy for technical off-road trails",
+        "Wind protection needs an upgrade",
+        "Fuel efficiency is average",
+        "Build quality inconsistent in places"
     ],
     "categories": [
         "Helmet",
@@ -106,27 +106,27 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
+            "Helmet (adventure/dual-sport)",
             "Crash Guard",
-            "Bike Cover"
+            "Tyre Inflator"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Street tyres for serious off-road use",
+            "Cheap crash bars (they bend, not protect)",
+            "Universal-fit windscreens (poor fitment)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories for the Himalayan 450 offer perfect fitment and match the build quality. Aftermarket options are cheaper but check reviews carefully — some parts do not fit as well on premium bikes.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Using road tyres for off-road — they cannot handle trails",
+            "Skipping crash protection — adventure bikes fall, it is part of the sport",
+            "Overloading for tours — weight affects handling significantly",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

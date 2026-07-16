@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Drum (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "90/90-17 (Front), 120/80-17 (Rear)",
-    "description": "The Bajaj Pulsar NS160 combines the aggressive streetfighter DNA of the NS family with a refined 160cc engine. It offers a perfect balance of performance and efficiency for riders who want style without compromising on mileage.",
+    "description": "The Pulsar NS160 sits in the sweet spot between the NS125 and NS200. Enough power for highway overtakes, enough economy for daily commutes. It is the sensible Pulsar for riders who want sporty looks without the running costs of a bigger engine.",
     "highlights": [
         "Refined 160cc DTS-i engine",
         "Aggressive NS design language",
@@ -26,18 +26,18 @@
         "Excellent fuel efficiency"
     ],
     "pros": [
-        "Great balance of power and mileage",
-        "Lightweight and easy to maneuver",
-        "Comfortable riding posture",
-        "Stylish streetfighter looks",
-        "Low maintenance costs"
+        "Balanced power for city and highway",
+        "Aggressive naked styling",
+        "Good fuel efficiency",
+        "Comfortable ergonomics",
+        "Strong resale value"
     ],
     "cons": [
-        "Not as powerful as NS200",
-        "Drum brake on rear feels inadequate",
-        "Average build quality in some parts",
-        "Limited high-speed stability",
-        "Basic instrument cluster"
+        "Not as exciting as the NS200",
+        "Wind blast on highways",
+        "Build quality inconsistent",
+        "Service experience depends on dealer",
+        "Instrument cluster is basic"
     ],
     "categories": [
         "Helmet",
@@ -105,25 +105,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Pulsar NS160, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

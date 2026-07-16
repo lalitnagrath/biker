@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "USD (Front), Monoshock (Rear)",
     "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
-    "description": "The KTM 390 Duke is the ultimate naked streetfighter in its class. With a powerful engine, cutting-edge electronics, and track-focused performance, it redefines what a sub-400cc motorcycle can do.",
+    "description": "The 390 Duke is the bike that proved KTM could make a world-class naked streetfighter at an Indian price. 43 bhp, cornering ABS, quickshifter — it punches way above its weight class. If you want thrills without spending a fortune, this is the bike.",
     "highlights": [
         "43 bhp power output",
         "Cornering ABS",
@@ -26,18 +26,18 @@
         "Lean-angle sensors"
     ],
     "pros": [
-        "Best-in-class power",
-        "Track-ready performance",
-        "Advanced electronics",
-        "Excellent braking",
-        "Premium components"
+        "Best-in-class power delivery",
+        "Track-capable with cornering ABS",
+        "TFT display with smartphone connectivity",
+        "Quickshifter makes upshifts seamless",
+        "Premium components throughout"
     ],
     "cons": [
-        "Stiff ride quality",
-        "Gets hot in traffic",
-        "Expensive maintenance",
-        "Seat comfort could improve",
-        "Wind blast at highway speeds"
+        "Stiff suspension punishes bad roads",
+        "Engine heat is uncomfortable in traffic",
+        "Service costs are noticeably higher",
+        "Seat gets uncomfortable after an hour",
+        "Wind blast at highway speeds is exhausting"
     ],
     "categories": [
         "Helmet",
@@ -75,22 +75,22 @@
     "aftermarket_accessories": true,
     "common_problems": [
         {
-            "problem": "Headlight vibration",
-            "cause": "Naked design transmits more vibration",
-            "solution": "Check mounting bolts, consider vibration dampeners",
-            "product_category": "Phone Mount"
-        },
-        {
-            "problem": "Chain sprocket wear",
-            "cause": "Aggressive riding style",
-            "solution": "Regular chain maintenance and lubrication",
-            "product_category": "Chain Lube"
-        },
-        {
-            "problem": "Brake pad wear",
-            "cause": "Frequent braking in city traffic",
-            "solution": "Check brake pads every 3,000 km",
+            "problem": "Engine heat in city traffic",
+            "cause": "High-performance liquid-cooled engine generates significant heat at low speeds",
+            "solution": "Park in shade, avoid prolonged idling. Engine cools quickly once moving.",
             "product_category": "Engine Oil"
+        },
+        {
+            "problem": "Front forks leaking oil",
+            "cause": "USD forks are sensitive to dust and rough roads",
+            "solution": "Clean fork seals regularly. Replace fork oil every 15,000 km.",
+            "product_category": "Engine Oil"
+        },
+        {
+            "problem": "Seat comfort on long rides",
+            "cause": "Track-focused seat design prioritises grip over comfort",
+            "solution": "Aftermarket gel seat or seat pad for tours. Stock is fine for short rides.",
+            "product_category": "Bike Cover"
         }
     ],
     "comparison_bikes": [
@@ -107,25 +107,25 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories for the 390 Duke offer perfect fitment and match the build quality. Aftermarket options are cheaper but check reviews carefully — some parts do not fit as well on premium bikes.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

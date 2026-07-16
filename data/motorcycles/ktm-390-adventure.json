@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "USD (Front), Monoshock (Rear)",
     "tyres": "100/90-19 (Front), 150/60-17 (Rear)",
-    "description": "The KTM 390 Adventure is a versatile adventure tourer built for both on-road and off-road escapades. With its tall stance, capable suspension, and powerful engine, it's ready to take on any terrain.",
+    "description": "The 390 Adventure brings KTM's performance DNA to the ADV segment. It shares the 390 Duke's engine but adds long-travel suspension, a taller stance, and adventure-ready ergonomics. For riders who want a versatile bike that handles both highways and trails.",
     "highlights": [
         "Adventure-ready design",
         "Long-travel suspension",
@@ -26,18 +26,18 @@
         "Off-road capable"
     ],
     "pros": [
-        "Versatile for all terrains",
-        "Comfortable long-distance touring",
-        "Advanced safety features",
-        "Good ground clearance",
-        "Capable off-road performance"
+        "Powerful engine with good off-road manners",
+        "Long-travel suspension handles rough terrain",
+        "Cornering ABS adds safety on all surfaces",
+        "TFT display with navigation",
+        "Versatile for city, highway, and off-road"
     ],
     "cons": [
-        "Tall seat height",
-        "Heavy for off-road",
-        "Wind blast without windscreen",
-        "Expensive maintenance",
-        "Stiff suspension on-road"
+        "Seat height is tall for shorter riders",
+        "Wind protection is minimal",
+        "Service costs are higher than smaller ADVs",
+        "Weight is noticeable on technical trails",
+        "Pillion comfort is compromised"
     ],
     "categories": [
         "Helmet",
@@ -105,27 +105,27 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
+            "Helmet (adventure/dual-sport)",
             "Crash Guard",
-            "Bike Cover"
+            "Tyre Inflator"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Street tyres for serious off-road use",
+            "Cheap crash bars (they bend, not protect)",
+            "Universal-fit windscreens (poor fitment)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories for the 390 Adventure offer perfect fitment and match the build quality. Aftermarket options are cheaper but check reviews carefully — some parts do not fit as well on premium bikes.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Using road tyres for off-road — they cannot handle trails",
+            "Skipping crash protection — adventure bikes fall, it is part of the sport",
+            "Overloading for tours — weight affects handling significantly",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

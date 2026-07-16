@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "100/80-17 (Front), 130/70-17 (Rear)",
-    "description": "The Bajaj Pulsar RS200 is a fully-faired supersport motorcycle that offers track-inspired performance for the street. With its aggressive styling, twin-projector headlamps, and powerful engine, it stands out as the flagship of the Pulsar range.",
+    "description": "The RS200 is Bajaj's fully-faired sport bike. Full fairing, projector headlamp, and a refined engine make it stand out from the naked NS200. It is not a track weapon, but it is a sporty commuter that looks the part and performs well on Indian roads.",
     "highlights": [
         "Fully-faired supersport design",
         "Twin projector headlamps",
@@ -26,18 +26,18 @@
         "Clip-on handlebars"
     ],
     "pros": [
-        "Stunning supersport styling",
-        "Strong acceleration and top speed",
-        "Good aerodynamics",
-        "Feature-rich with ABS",
-        "Exciting to ride on twisties"
+        "Full fairing provides good wind protection",
+        "Projector headlamp is excellent at night",
+        "Refined engine with good mid-range",
+        "ABS as standard",
+        "Sporty looks turn heads"
     ],
     "cons": [
-        "Aggressive posture not for everyone",
-        "Heavy for a 200cc bike",
-        "Wind noise at highway speeds",
-        "Average fuel efficiency",
-        "Maintenance costs higher than NS"
+        "Weight makes it less agile than NS200",
+        "Fairing adds complexity to maintenance",
+        "Pillion seat is small and uncomfortable",
+        "Engine note is not exciting",
+        "Service costs are higher than naked Pulsars"
     ],
     "categories": [
         "Helmet",
@@ -107,25 +107,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Pulsar RS200, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

@@ -17,7 +17,7 @@
     "brakes": "Drum (Front), Drum (Rear)",
     "suspension": "Hydraulic (Front), Spring-in-spring (Rear)",
     "tyres": "2.75-17 (Front), 3.00-17 (Rear)",
-    "description": "The Bajaj CT 110X is a rugged and practical commuter motorcycle built for everyday use. With its muscular tank, robust build, and exceptional fuel economy, it is designed for riders who need a dependable workhorse for daily commutes and light deliveries.",
+    "description": "The CT 110X is a no-nonsense commuter built for riders who need a bike that just works. Muscular tank, sturdy frame, and legendary Bajaj reliability. It handles bad roads, heavy loads, and daily abuse without complaint. This is a workhorse, not a showpiece.",
     "highlights": [
         "Muscular tank design",
         "Exceptional fuel economy",
@@ -26,18 +26,18 @@
         "Carrying capacity for daily use"
     ],
     "pros": [
-        "Outstanding fuel efficiency",
-        "Very low maintenance costs",
-        "Comfortable for bumpy roads",
-        "Strong and durable frame",
-        "Excellent value for money"
+        "Incredible fuel efficiency — runs on fumes",
+        "Maintenance costs are almost negligible",
+        "Built tough for rough roads and heavy use",
+        "Comfortable seat for long commutes",
+        "Unbeatable value for money"
     ],
     "cons": [
-        "Basic styling",
-        "No disc brake option",
-        "Limited performance for highways",
-        "Basic instrument cluster",
-        "Small fuel tank"
+        "Styling is purely functional, not fashionable",
+        "No disc brake option on any variant",
+        "Highway rides are a stretch",
+        "Instrument cluster is bare-bones",
+        "Small fuel tank means frequent stops"
     ],
     "categories": [
         "Helmet",
@@ -101,27 +101,27 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
-            "Crash Guard",
-            "Bike Cover"
+            "Helmet (ISI certified)",
+            "Bike Cover",
+            "Chain Lube"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap no-name helmets (even if ISI marked)",
+            "Aftermarket exhaust (noise violations, warranty void)",
+            "Overpriced alloy wheels for a commuter"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "For the CT 110X, aftermarket accessories offer better value since the bike itself is budget-focused. OEM parts are overpriced for what you get. Stick to reputed aftermarket brands.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Skip fancy accessories — the CT 110X is built for utility, not show",
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Buying a cheap helmet to save ₹200 — your head is worth more",
+            "Skipping regular chain maintenance — it is cheap insurance",
+            "Using car shampoo on the bike — use motorcycle-specific products",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

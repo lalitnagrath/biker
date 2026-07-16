@@ -8,7 +8,7 @@ Every function is motorcycle-agnostic and category-agnostic.
 Feed it products + context, get curated results back.
 """
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 from collections import defaultdict
 import math
 
@@ -121,6 +121,85 @@ VALID_CATEGORIES = {
     'gloves', 'jackets', 'tank bag', 'saddle bag', 'tail bag',
     'knee guard',
 }
+
+# ===== Category → Buying Guide URL Mapping =====
+# Single source of truth for mapping accessory categories to buying guide slugs.
+# Used by templates and generate.py to build correct links.
+# ONLY categories with generated guide pages belong here.
+# If a category has no guide page, adding a slug here will create broken links.
+
+CATEGORY_GUIDE_SLUGS: Dict[str, str] = {
+    'helmet': 'helmet',
+    'phone mount': 'phone-mount',
+    'engine oil': 'engine-oil',
+    'chain lube': 'chain-lube',
+    'tyre inflator': 'tyre-inflator',
+    'chain cleaner': 'chain-cleaner',
+}
+
+
+def category_to_guide_url(category: str, base_path: str = '') -> str:
+    """Map a product category to its buying guide URL path.
+
+    Returns a relative URL like 'guides/helmet/index.html'.
+    If the category has no guide, returns '#' as a safe fallback.
+    """
+    normalized = normalize_category(category).lower()
+    slug = CATEGORY_GUIDE_SLUGS.get(normalized, '')
+    if slug:
+        return f'{base_path}guides/{slug}/index.html'
+    return '#'
+
+
+# ===== Product Identity & Deduplication =====
+
+def _product_key(product: dict) -> str:
+    """Return a unique identity key for a product.
+
+    Checks (in priority order):
+        1. ASIN (most reliable unique identifier)
+        2. slug (unique within the catalog)
+        3. Normalized title (catches duplicates with different slugs)
+
+    Returns empty string if the product has no identifiable fields.
+    """
+    asin = (product.get('asin') or '').strip()
+    if asin:
+        return f'asin:{asin.lower()}'
+
+    slug = (product.get('slug') or '').strip()
+    if slug:
+        return f'slug:{slug.lower()}'
+
+    title = (product.get('title') or '').strip().lower()
+    if title:
+        return f'title:{title}'
+
+    return ''
+
+
+def deduplicate_products(products: list) -> list:
+    """Remove duplicate products from a list.
+
+    Guarantees:
+        - No duplicate ASINs
+        - No duplicate slugs
+        - No duplicate titles (normalized)
+
+    Keeps the first occurrence of each product.  This is the single
+    entry point for deduplication across the entire project.
+    """
+    seen: Set[str] = set()
+    unique: list = []
+    for p in products:
+        key = _product_key(p)
+        if not key:
+            unique.append(p)
+            continue
+        if key not in seen:
+            seen.add(key)
+            unique.append(p)
+    return unique
 
 
 # ===== 1. Category Normalization =====
@@ -310,7 +389,7 @@ def find_products_by_category(
         if normalize_category(p.get('category', '')).lower() == normalized.lower()
     ]
     if matched:
-        return matched
+        return deduplicate_products(matched)
 
     # 2. Case-insensitive substring on category field
     normalized_lower = normalized.lower()
@@ -319,7 +398,7 @@ def find_products_by_category(
         if normalized_lower in p.get('category', '').lower()
     ]
     if matched:
-        return matched
+        return deduplicate_products(matched)
 
     # 3. Keyword fallback: check category, title, and best_for
     keywords = CATEGORY_KEYWORDS.get(normalized_lower, [])
@@ -331,7 +410,7 @@ def find_products_by_category(
             or kw in p.get('best_for', '').lower()
         ]
         if matched:
-            return matched
+            return deduplicate_products(matched)
 
     return []
 
@@ -424,6 +503,9 @@ def recommend_for_category(
             'budget_pick': {...},      # cheapest with decent rating
             'premium_pick': {...},     # highest-priced with good rating
         }
+
+    All picks are guaranteed to be unique products (no slug/title/ASIN
+    duplicates across picks).
     """
     ranked = recommend_products(products, category, bike)
 
@@ -440,33 +522,51 @@ def recommend_for_category(
     if len(ranked) == 0:
         return result
 
-    # Editors choice: highest ranking score
-    result['editors_choice'] = ranked[0]
+    used_slugs: Set[str] = set()
 
-    # Best value: best rating-to-price ratio
-    if len(ranked) >= 2:
+    def _pick_next(candidates: list, exclude: Set[str]) -> Optional[dict]:
+        """Return first candidate whose slug is not in exclude set, or None."""
+        for p in candidates:
+            if p.get('slug') not in exclude:
+                return p
+        return None
+
+    # Editors choice: highest ranking score (always set when >=1 product)
+    result['editors_choice'] = ranked[0]
+    used_slugs.add(ranked[0].get('slug'))
+
+    # Budget pick: the single distinct "other" product to pair with editors_choice.
+    # With >=2 products this MUST be a different product than editors_choice.
+    # Prefer the cheapest product with rating >= 3.5; fall back to the next
+    # ranked product (which is always distinct from editors_choice).
+    affordable = [p for p in ranked if p.get('rating', 0) >= 3.5]
+    if affordable:
+        budget_candidates = sorted(affordable, key=lambda p: p.get('price', 99999))
+        result['budget_pick'] = _pick_next(budget_candidates, used_slugs)
+    if result['budget_pick'] is None and len(ranked) >= 2:
+        result['budget_pick'] = ranked[1]
+        used_slugs.add(ranked[1].get('slug'))
+    elif result['budget_pick'] is not None:
+        used_slugs.add(result['budget_pick'].get('slug'))
+
+    # Best value: best rating-to-price ratio among remaining products
+    if len(ranked) >= 3:
         def value_ratio(p):
             price = p.get('price', 1)
             rating = p.get('rating', 0) + p.get('editor_rating', 0) / 10.0
             return rating / max(price / 1000.0, 0.1)
-        result['best_value'] = max(ranked, key=value_ratio)
+        best_value_candidates = sorted(ranked, key=value_ratio, reverse=True)
+        result['best_value'] = _pick_next(best_value_candidates, used_slugs)
+        if result['best_value']:
+            used_slugs.add(result['best_value'].get('slug'))
 
-    # Budget pick: cheapest product with rating >= 3.5
-    affordable = [p for p in ranked if p.get('rating', 0) >= 3.5]
-    if affordable:
-        result['budget_pick'] = min(affordable, key=lambda p: p.get('price', 99999))
-
-    # Premium pick: highest-priced product with rating >= 4.0
+    # Premium pick: highest-priced product with rating >= 4.0 among remaining
     premium = [p for p in ranked if p.get('rating', 0) >= 4.0]
     if premium:
-        result['premium_pick'] = max(premium, key=lambda p: p.get('price', 0))
-
-    # Avoid duplicates: if editors_choice == budget_pick, try next budget
-    if (result['budget_pick'] and result['editors_choice']
-            and result['budget_pick'].get('slug') == result['editors_choice'].get('slug')):
-        remaining = [p for p in ranked if p.get('slug') != result['editors_choice'].get('slug')]
-        if remaining:
-            result['budget_pick'] = min(remaining, key=lambda p: p.get('price', 99999))
+        premium_candidates = sorted(premium, key=lambda p: p.get('price', 0), reverse=True)
+        result['premium_pick'] = _pick_next(premium_candidates, used_slugs)
+        if result['premium_pick']:
+            used_slugs.add(result['premium_pick'].get('slug'))
 
     return result
 

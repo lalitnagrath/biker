@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Drum (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "80/100-17 (Front), 100/90-17 (Rear)",
-    "description": "The Bajaj Pulsar NS125 brings the aggressive streetfighter styling of the NS family to the entry-level segment. It offers sporty design elements and a refined engine that delivers excellent mileage, making it perfect for young riders and daily commuters.",
+    "description": "The Pulsar NS125 brings the aggressive naked Pulsar look to the entry-level segment. It is for riders who want the Pulsar attitude without the bigger engine costs. Handles city traffic well and does not drink fuel.",
     "highlights": [
         "Streetfighter design at entry level",
         "Refined 124cc DTS-i engine",
@@ -26,18 +26,18 @@
         "Sporty handlebar and riding stance"
     ],
     "pros": [
-        "Very fuel efficient",
-        "Lightweight and easy to handle",
-        "Sporty looks for the price",
-        "Low running costs",
-        "Good for new riders"
+        "Aggressive styling stands out in the 125cc class",
+        "Light and easy to handle in traffic",
+        "Good fuel efficiency for daily commuting",
+        "Low maintenance costs",
+        "Pulsar brand trust and resale value"
     ],
     "cons": [
-        "Low power for highway use",
-        "Basic braking setup",
-        "Build quality could improve",
-        "Limited features",
-        "Small seat for pillion"
+        "Power is adequate, not exciting",
+        "Highway capabilities are limited",
+        "Basic feature set",
+        "Rear suspension is stiff",
+        "No disc brake on rear"
     ],
     "categories": [
         "Helmet",
@@ -103,27 +103,26 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
-            "Crash Guard",
-            "Bike Cover"
+            "Helmet (ISI certified)",
+            "Bike Cover",
+            "Chain Lube"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap no-name helmets (even if ISI marked)",
+            "Aftermarket exhaust (noise violations, warranty void)",
+            "Overpriced alloy wheels for a commuter"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "For the Pulsar NS125, aftermarket accessories offer better value since the bike itself is budget-focused. OEM parts are overpriced for what you get. Stick to reputed aftermarket brands.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Buying a cheap helmet to save ₹200 — your head is worth more",
+            "Skipping regular chain maintenance — it is cheap insurance",
+            "Using car shampoo on the bike — use motorcycle-specific products",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

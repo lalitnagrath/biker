@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "USD (Front), Linked-type monocross (Rear)",
     "tyres": "100/80-17 (Front), 140/70-17 (Rear)",
-    "description": "The Yamaha R15 V4 is the latest iteration of Yamaha's iconic supersport motorcycle, carrying forward the R-DNA with cutting-edge technology. Its variable valve actuation engine, delta box frame, and aerodynamic bodywork make it the benchmark in the 150cc sportbike segment.",
+    "description": "The R15 V4 is Yamaha's track-focused sport bike. Aero bodywork, VVA technology, and a rev-happy engine make it the weapon of choice for young enthusiasts. It is not the most comfortable commuter, but on a twisty road, nothing in its class comes close.",
     "highlights": [
         "Variable Valve Actuation (VVA)",
         "Aerodynamic R-series design",
@@ -26,18 +26,18 @@
         "Traction control system"
     ],
     "pros": [
-        "Track-proven chassis and dynamics",
-        "Excellent high-rev engine character",
-        "Superb handling and cornering",
-        "Premium fit and finish",
-        "Strong resale value"
+        "Best-in-class handling and agility",
+        "Rev-happy engine rewards aggressive riding",
+        "Aero bodywork looks stunning",
+        "VVA technology adds mid-range punch",
+        "Yamaha build quality is top-notch"
     ],
     "cons": [
-        "Aggressive riding posture",
-        "Pillion seat impractical for daily use",
-        "Premium pricing for 155cc",
-        "Wind blast without accessories",
-        "Service costs higher than rivals"
+        "Aggressive position is tiring in traffic",
+        "Seat is hard for longer rides",
+        "Expensive for a 155cc bike",
+        "Pillion comfort is poor",
+        "Wind blast at highway speeds is significant"
     ],
     "categories": [
         "Helmet",
@@ -73,21 +73,21 @@
     "aftermarket_accessories": true,
     "common_problems": [
         {
-            "problem": "Chain noise",
-            "cause": "Inadequate lubrication",
-            "solution": "Clean and lubricate chain every 500 km",
+            "problem": "Aggressive riding position causes wrist fatigue",
+            "cause": "Clip-on handlebars force a forward-leaning posture",
+            "solution": "Normal for sport bikes. Take breaks every 100 km on long rides.",
+            "product_category": "Bike Cover"
+        },
+        {
+            "problem": "Chain noise and tight spots",
+            "cause": "Chain needs regular adjustment on sport bikes",
+            "solution": "Clean and lube every 500 km. Check for tight spots at every service.",
             "product_category": "Chain Lube"
         },
         {
-            "problem": "Seat discomfort",
-            "cause": "Stock seat not designed for long rides",
-            "solution": "Add seat cushion or upgrade seat",
-            "product_category": "Seat Cover"
-        },
-        {
-            "problem": "Electrical issues",
-            "cause": "Loose connections from vibrations",
-            "solution": "Check wiring harness periodically",
+            "problem": "Pillion seat is uncomfortable",
+            "cause": "Sport bike design prioritises rider over passenger",
+            "solution": "Aftermarket pillion pad helps. Short rides are fine for pillion.",
             "product_category": "Bike Cover"
         }
     ],
@@ -105,25 +105,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the R15 V4, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

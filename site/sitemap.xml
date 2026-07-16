@@ -193,12 +193,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/bajaj-avenger-street-160/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/bajaj-avenger-street-160/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -224,12 +218,6 @@
   </url>
   <url>
     <loc>/motorcycles/bajaj-ct-110x/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/bajaj-ct-110x/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -265,12 +253,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/bajaj-dominar-250/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/bajaj-dominar-250/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -296,12 +278,6 @@
   </url>
   <url>
     <loc>/motorcycles/bajaj-dominar-400/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/bajaj-dominar-400/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -337,12 +313,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/bajaj-pulsar-150/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/bajaj-pulsar-150/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -368,12 +338,6 @@
   </url>
   <url>
     <loc>/motorcycles/bajaj-pulsar-n160/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/bajaj-pulsar-n160/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -409,12 +373,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/bajaj-pulsar-n250/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/bajaj-pulsar-n250/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -440,12 +398,6 @@
   </url>
   <url>
     <loc>/motorcycles/bajaj-pulsar-ns125/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/bajaj-pulsar-ns125/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -481,12 +433,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/bajaj-pulsar-ns160/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/bajaj-pulsar-ns160/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -512,12 +458,6 @@
   </url>
   <url>
     <loc>/motorcycles/bajaj-pulsar-ns200/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/bajaj-pulsar-ns200/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -553,12 +493,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/bajaj-pulsar-ns400z/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/bajaj-pulsar-ns400z/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -584,12 +518,6 @@
   </url>
   <url>
     <loc>/motorcycles/bajaj-pulsar-rs200/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/bajaj-pulsar-rs200/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -625,12 +553,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/harley-davidson-x440/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/harley-davidson-x440/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -656,12 +578,6 @@
   </url>
   <url>
     <loc>/motorcycles/hero-karizma-xmr/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/hero-karizma-xmr/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -697,12 +613,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/hero-mavrick-440/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/hero-mavrick-440/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -728,12 +638,6 @@
   </url>
   <url>
     <loc>/motorcycles/hero-splendor-plus/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/hero-splendor-plus/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -769,12 +673,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/hero-xpulse-200-4v/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/hero-xpulse-200-4v/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -800,12 +698,6 @@
   </url>
   <url>
     <loc>/motorcycles/hero-xtreme-160r-4v/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/hero-xtreme-160r-4v/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -841,12 +733,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/honda-activa-6g/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/honda-activa-6g/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -872,12 +758,6 @@
   </url>
   <url>
     <loc>/motorcycles/honda-cb350/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/honda-cb350/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -913,12 +793,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/honda-cb350rs/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/honda-cb350rs/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -944,12 +818,6 @@
   </url>
   <url>
     <loc>/motorcycles/honda-dio/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/honda-dio/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -985,12 +853,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/honda-hness-cb350/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/honda-hness-cb350/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1016,12 +878,6 @@
   </url>
   <url>
     <loc>/motorcycles/honda-hornet-20/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/honda-hornet-20/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1057,12 +913,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/honda-shine-125/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/honda-shine-125/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1088,12 +938,6 @@
   </url>
   <url>
     <loc>/motorcycles/honda-sp-125/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/honda-sp-125/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1129,12 +973,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/honda-unicorn/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/honda-unicorn/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1160,12 +998,6 @@
   </url>
   <url>
     <loc>/motorcycles/royal-enfield-hunter-350/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/royal-enfield-hunter-350/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1201,12 +1033,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/ktm-200-duke/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/ktm-200-duke/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1232,12 +1058,6 @@
   </url>
   <url>
     <loc>/motorcycles/ktm-250-duke/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/ktm-250-duke/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1273,12 +1093,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/ktm-390-adventure/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/ktm-390-adventure/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1304,12 +1118,6 @@
   </url>
   <url>
     <loc>/motorcycles/ktm-390-duke/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/ktm-390-duke/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1345,12 +1153,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/ktm-rc-200/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/ktm-rc-200/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1376,12 +1178,6 @@
   </url>
   <url>
     <loc>/motorcycles/royal-enfield-bullet-350/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/royal-enfield-bullet-350/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1417,12 +1213,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/royal-enfield-classic-350/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/royal-enfield-classic-350/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1448,12 +1238,6 @@
   </url>
   <url>
     <loc>/motorcycles/royal-enfield-continental-gt-650/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/royal-enfield-continental-gt-650/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1489,12 +1273,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/royal-enfield-guerrilla-450/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/royal-enfield-guerrilla-450/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1520,12 +1298,6 @@
   </url>
   <url>
     <loc>/motorcycles/royal-enfield-himalayan-450/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/royal-enfield-himalayan-450/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1561,12 +1333,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/royal-enfield-interceptor-650/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/royal-enfield-interceptor-650/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1592,12 +1358,6 @@
   </url>
   <url>
     <loc>/motorcycles/royal-enfield-meteor-350/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/royal-enfield-meteor-350/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1633,12 +1393,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/royal-enfield-scram-440/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/royal-enfield-scram-440/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1664,12 +1418,6 @@
   </url>
   <url>
     <loc>/motorcycles/royal-enfield-shotgun-650/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/royal-enfield-shotgun-650/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1705,12 +1453,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/royal-enfield-super-meteor-650/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/royal-enfield-super-meteor-650/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1736,12 +1478,6 @@
   </url>
   <url>
     <loc>/motorcycles/suzuki-gixxer-250/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/suzuki-gixxer-250/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1777,12 +1513,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/suzuki-gixxer-sf-250/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/suzuki-gixxer-sf-250/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1808,12 +1538,6 @@
   </url>
   <url>
     <loc>/motorcycles/suzuki-gixxer/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/suzuki-gixxer/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1849,12 +1573,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/suzuki-v-strom-sx/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/suzuki-v-strom-sx/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1880,12 +1598,6 @@
   </url>
   <url>
     <loc>/motorcycles/triumph-scrambler-400-x/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/triumph-scrambler-400-x/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1921,12 +1633,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/triumph-speed-400/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/triumph-speed-400/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1952,12 +1658,6 @@
   </url>
   <url>
     <loc>/motorcycles/triumph-speed-t4/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/triumph-speed-t4/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1993,12 +1693,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/tvs-apache-rr-310/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/tvs-apache-rr-310/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2024,12 +1718,6 @@
   </url>
   <url>
     <loc>/motorcycles/tvs-apache-rtr-160-4v/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/tvs-apache-rtr-160-4v/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2065,12 +1753,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/tvs-apache-rtr-200-4v/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/tvs-apache-rtr-200-4v/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2096,12 +1778,6 @@
   </url>
   <url>
     <loc>/motorcycles/tvs-apache-rtr-310/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/tvs-apache-rtr-310/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2137,12 +1813,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/tvs-raider-125/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/tvs-raider-125/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2168,12 +1838,6 @@
   </url>
   <url>
     <loc>/motorcycles/tvs-ronin/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/tvs-ronin/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2209,12 +1873,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/yamaha-fz-s-fi/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/yamaha-fz-s-fi/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2240,12 +1898,6 @@
   </url>
   <url>
     <loc>/motorcycles/yamaha-fz-x/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/yamaha-fz-x/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2281,12 +1933,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/yamaha-mt-15-v2/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/yamaha-mt-15-v2/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2317,12 +1963,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>/motorcycles/yamaha-r15-v4/accessories/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>/motorcycles/yamaha-r15-v4/maintenance/chain-maintenance/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2348,12 +1988,6 @@
   </url>
   <url>
     <loc>/motorcycles/yamaha-r15m/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>/motorcycles/yamaha-r15m/accessories/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2468,6 +2102,42 @@
   </url>
   <url>
     <loc>/categories/chain-cleaner/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/guides/helmet/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/guides/phone-mount/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/guides/engine-oil/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/guides/chain-lube/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/guides/chain-cleaner/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/guides/tyre-inflator/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

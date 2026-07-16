@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Drum (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "90/90-17 (Front), 120/80-17 (Rear)",
-    "description": "The Bajaj Pulsar N160 is a modern commuter streetfighter with the new Pulsar design language. It delivers a refined ride with impressive fuel efficiency, making it ideal for riders who want a stylish daily motorcycle without burning a hole in their pocket.",
+    "description": "The Pulsar N160 brings the new-age Pulsar design to the 160cc segment. It is Bajaj's attempt to keep the Pulsar name relevant against the RTRs and Hornets. Gets the job done as a sporty commuter with enough punch for weekend rides.",
     "highlights": [
         "New-gen Pulsar styling",
         "Refined 160cc engine",
@@ -26,18 +26,18 @@
         "Digital instrument console"
     ],
     "pros": [
-        "Excellent fuel economy",
-        "Lightweight and nimble",
-        "Comfortable seat and ergonomics",
-        "Modern styling at an affordable price",
-        "Good low-end torque for city riding"
+        "Sharp, modern styling turns heads",
+        "Good low-end torque for city riding",
+        "USB charging port is a nice touch",
+        "Comfortable seat for daily use",
+        "Decent fuel efficiency"
     ],
     "cons": [
-        "Lacks high-speed refinement",
-        "Drum rear brake could be better",
-        "No liquid or oil cooling",
-        "Basic switchgear quality",
-        "Wind blast at highway speeds"
+        "High-speed stability is average",
+        "Suspension is firm on bad roads",
+        "Engine gets buzzy at high RPM",
+        "Build quality could be better",
+        "Service experience varies by dealer"
     ],
     "categories": [
         "Helmet",
@@ -105,25 +105,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Pulsar N160, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

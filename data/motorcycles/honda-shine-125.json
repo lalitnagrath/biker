@@ -104,27 +104,27 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
-            "Crash Guard",
-            "Bike Cover"
+            "Helmet (ISI certified)",
+            "Bike Cover",
+            "Chain Lube"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap no-name helmets (even if ISI marked)",
+            "Aftermarket exhaust (noise violations, warranty void)",
+            "Overpriced alloy wheels for a commuter"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "For the Shine 125, aftermarket accessories offer better value since the bike itself is budget-focused. OEM parts are overpriced for what you get. Stick to reputed aftermarket brands.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Skip fancy accessories — the Shine 125 is built for utility, not show",
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Buying a cheap helmet to save ₹200 — your head is worth more",
+            "Skipping regular chain maintenance — it is cheap insurance",
+            "Using car shampoo on the bike — use motorcycle-specific products",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

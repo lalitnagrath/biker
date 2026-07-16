@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "100/80-17 (Front), 130/70-17 (Rear)",
-    "description": "The Bajaj Pulsar NS200 is a performance-oriented naked streetfighter known for its powerful engine and sharp handling. With aggressive styling and a perimeter frame, it delivers an thrilling ride whether in the city or on the highway.",
+    "description": "The NS200 has been the go-to naked sport bike for Indian riders for over a decade. It defined the segment and still holds its own against newer rivals. Raw, aggressive, and fun to ride — the NS200 is what happens when Bajaj builds a bike for enthusiasts.",
     "highlights": [
         "Triple-spark DTS-i engine",
         "Perimeter frame for sharp handling",
@@ -26,18 +26,18 @@
         "Powerful 24.5 bhp output"
     ],
     "pros": [
-        "Excellent acceleration and top speed",
-        "Sharp and responsive handling",
-        "Good build quality and fit-finish",
-        "Comfortable for city and highway",
-        "Strong aftermarket support"
+        "Thrilling performance in its segment",
+        "Sharp handling rewards aggressive riders",
+        "Strong brakes with dual-channel ABS",
+        "Excellent value for a 200cc naked",
+        "Massive aftermarket support"
     ],
     "cons": [
-        "Slightly stiff suspension on bad roads",
-        "Vibrations at high RPM",
-        "No ABS on base variant",
-        "Average fuel efficiency",
-        "Seat could be more comfortable"
+        "Engine gets loud and buzzy at high RPM",
+        "Highway wind blast is significant",
+        "Rear seat is uncomfortable for pillion",
+        "Suspension is stiff for rough roads",
+        "Design is starting to show its age"
     ],
     "categories": [
         "Helmet",
@@ -74,21 +74,21 @@
     "aftermarket_accessories": true,
     "common_problems": [
         {
-            "problem": "Headlight vibration",
-            "cause": "Naked design transmits more vibration",
-            "solution": "Check mounting bolts, consider vibration dampeners",
-            "product_category": "Phone Mount"
+            "problem": "Engine overheating in traffic",
+            "cause": "Liquid-cooled engine struggles when air flow is minimal",
+            "solution": "Avoid idling for long periods. Use engine kill switch at signals.",
+            "product_category": "Engine Oil"
         },
         {
-            "problem": "Chain sprocket wear",
-            "cause": "Aggressive riding style",
-            "solution": "Regular chain maintenance and lubrication",
+            "problem": "Chain sprocket wear before 10,000 km",
+            "cause": "Aggressive riding style puts more stress on drivetrain",
+            "solution": "Lube chain every 500 km. Check tension and alignment regularly.",
             "product_category": "Chain Lube"
         },
         {
-            "problem": "Brake pad wear",
-            "cause": "Frequent braking in city traffic",
-            "solution": "Check brake pads every 3,000 km",
+            "problem": "Brake pad wear on front disc",
+            "cause": "Heavy reliance on front brake in city riding",
+            "solution": "Check brake pads every 3,000 km. Use both brakes evenly.",
             "product_category": "Engine Oil"
         }
     ],
@@ -106,25 +106,24 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Pulsar NS200, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

@@ -41,6 +41,8 @@ from product_engine import (
     group_products_by_category,
     count_products_by_category,
     best_per_category,
+    category_to_guide_url,
+    deduplicate_products,
     validate_category_products as _validate_category_products,
     validate_motorcycle_products as _validate_motorcycle_products,
     CATEGORY_KEYWORDS,
@@ -210,98 +212,148 @@ def download_image(url, save_path, timeout=30):
         return False
 
 
+# Identity fields that define a product and must NEVER be overwritten
+# once the product object has been created.
+_IDENTITY_FIELDS = ('asin', 'affiliate_url', 'amazon_url')
+
+_ASIN_RE = re.compile(r'(?:/dp/|/gp/product/|asin=)([A-Z0-9]{10})', re.IGNORECASE)
+_ASIN_RE_URL2 = re.compile(r'([A-Z0-9]{10})(?:[/?]|$)')
+
+
+def _extract_asin(value):
+    """Extract a 10-char Amazon ASIN from a string (URL or raw ASIN)."""
+    if not value:
+        return ''
+    m = _ASIN_RE.search(value)
+    if m:
+        return m.group(1).upper()
+    m = _ASIN_RE_URL2.search(value)
+    if m:
+        return m.group(1).upper()
+    return ''
+
+
+def _normalize_title(title):
+    """Normalize a title for exact-match comparison.
+
+    Lowercases, collapses whitespace, and strips noise tokens that vary
+    between the catalog and Amazon listings (certifications, marketing
+    copy, color/style suffixes) so two names referring to the same product
+    match exactly.
+    """
+    if not title:
+        return ''
+    t = title.lower()
+    # Remove common marketing / certification noise
+    noise = [
+        'isi certified', 'isi', 'dot certified', 'dot', 'ece', 'certified',
+        'with', 'full face', 'open face', 'flip up', 'modular', 'half face',
+        'motorcycle', 'helmet', 'bike', 'for', 'and', 'the',
+    ]
+    for n in noise:
+        t = t.replace(n, ' ')
+    # Keep alphanumerics + spaces only
+    t = re.sub(r'[^a-z0-9 ]+', ' ', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    return t
+
+
+def _parse_model(title):
+    """Extract the product model token from a title.
+
+    Models are typically the distinctive capitalized word/phrase unique to
+    the product (e.g. 'raider super', 'ray super', 'aster dx'). We take the
+    normalized title with the brand and generic category words removed.
+    """
+    if not title:
+        return ''
+    t = _normalize_title(title)
+    return t
+
+
 def merge_bike_deals(products, deals_by_asin):
-    """Merge bike-deals data into products: images from all matches, prices only from ASIN matches.
-    
-    Matching priority:
-    1. ASIN match — high confidence, updates everything (price, image, affiliate URL)
-    2. Title+brand match — medium confidence, updates image + affiliate URL
-    3. Title+category match — low confidence, updates image + affiliate URL
+    """Enrich products with Amazon image/price data WITHOUT altering identity.
+
+    Product identity (asin, affiliate_url, amazon_url) is fixed at creation
+    and must NEVER change. Fuzzy/similarity matching has been removed entirely:
+    a deal is only allowed to enrich a product when ONE of these holds:
+
+      1. Same ASIN (product.asin == deal.asin)
+      2. Same extracted Amazon ASIN (ASIN parsed from product.affiliate_url /
+         amazon_url equals deal.asin)
+      3. Exact normalized title match
+      4. Same brand AND same parsed model
+
+    Otherwise the product is left untouched. It is better to have no
+    affiliate URL than to attach the wrong Amazon product.
+
+    Only MISSING, non-identity fields are filled in:
+      - amazon_image_url (image)  — from deal images
+      - price                     — from deal Buy Box (only on a confident match)
+
+    Identity fields on the product are never written or overwritten.
     """
     merged_count = 0
-    
-    # Build search-friendly list from deals
-    all_deals = list(deals_by_asin.values())
-    
-    # Category keywords for matching — use product_engine single source of truth
-    cat_keywords = CATEGORY_KEYWORDS
-    
-    # Exclude non-motorcycle products
-    exclude_keywords = ['wall mount', 'desk stand', 'car ', 'scooty cover', 'activa', 
-                        'ear plug', 'earplug', 'earbuds', 'sleep', 'swimming']
-    
+
+    # Build a fast index of deals for exact-match strategies.
+    deals_by_asin_lc = {a.lower(): d for a, d in deals_by_asin.items()}
+    deals_by_title = {}
+    deals_by_brand_model = {}
+    for d in deals_by_asin.values():
+        dt = d.get('itemInfo', {}).get('title', {}).get('displayValue', '')
+        ntitle = _normalize_title(dt)
+        if ntitle:
+            deals_by_title.setdefault(ntitle, d)
+        dbrand = (d.get('brand') or '').strip().lower()
+        dmodel = _parse_model(dt)
+        if dbrand and dmodel:
+            deals_by_brand_model.setdefault((dbrand, dmodel), d)
+
+    def find_matching_deal(product):
+        """Return (deal, match_type) or (None, None) using only exact matches."""
+        # 1. Same ASIN
+        asin = (product.get('asin') or '').strip().upper()
+        if asin and asin.lower() in deals_by_asin_lc:
+            return deals_by_asin_lc[asin.lower()], 'asin'
+
+        # 2. Same extracted Amazon ASIN (from an existing affiliate/amazon URL)
+        for field in ('affiliate_url', 'amazon_url'):
+            url = product.get(field, '')
+            extracted = _extract_asin(url)
+            if extracted and extracted.lower() in deals_by_asin_lc:
+                return deals_by_asin_lc[extracted.lower()], 'url_asin'
+
+        # 3. Exact normalized title
+        ptitle = _normalize_title(product.get('title', ''))
+        if ptitle and ptitle in deals_by_title:
+            return deals_by_title[ptitle], 'title'
+
+        # 4. Same brand + same parsed model
+        pbrand = (product.get('brand') or '').strip().lower()
+        pmodel = _parse_model(product.get('title', ''))
+        if pbrand and pmodel and (pbrand, pmodel) in deals_by_brand_model:
+            return deals_by_brand_model[(pbrand, pmodel)], 'brand_model'
+
+        return None, None
+
     for product in products:
-        asin = product.get('asin', '')
-        deal = None
-        match_type = None
-        
-        # 1. ASIN match — highest confidence
-        if asin and asin in deals_by_asin:
-            deal = deals_by_asin[asin]
-            match_type = 'asin'
-        else:
-            # 2. Title + brand match
-            product_title = product.get('title', '').lower()
-            product_brand = product.get('brand', '').lower()
-            product_category = product.get('category', '').lower()
-            keywords = cat_keywords.get(product_category, [])
-            
-            if not keywords:
-                continue
-            
-            best_score = 0
-            for d in all_deals:
-                deal_title = d.get('itemInfo', {}).get('title', {}).get('displayValue', '').lower()
-                
-                # Skip non-motorcycle products
-                if any(ex in deal_title for ex in exclude_keywords):
-                    continue
-                
-                # Must match at least one category keyword
-                cat_score = 0
-                for kw in keywords:
-                    if kw in deal_title:
-                        cat_score += 10
-                        break
-                
-                if cat_score == 0:
-                    continue
-                
-                # Bonus for brand match
-                brand_score = 0
-                if product_brand and product_brand in deal_title:
-                    brand_score = 5
-                
-                # Bonus for exact title word matches
-                title_words = [w for w in product_title.split() if len(w) > 3]
-                word_score = sum(2 for w in title_words if w in deal_title)
-                
-                total = cat_score + brand_score + word_score
-                if total > best_score:
-                    best_score = total
-                    deal = d
-                    match_type = 'title' if total >= 15 else 'category'
-        
-        if deal:
-            # Always get image URL
-            images = deal.get('images', {})
-            primary = images.get('primary', {})
-            large_img = primary.get('large', {})
-            image_url = large_img.get('url', '')
-            if image_url:
-                product['amazon_image_url'] = image_url
-            
-            # Always update affiliate URL from deals data
-            detail_url = deal.get('detailPageURL', '')
-            if detail_url:
-                product['affiliate_url'] = detail_url
-            
-            # Update ASIN if we matched by title (so future runs use ASIN match)
-            if match_type in ('title', 'category') and not product.get('asin'):
-                product['asin'] = deal.get('asin', '')
-            
-            # Only update price from ASIN match (high confidence)
-            if match_type == 'asin':
+        deal, match_type = find_matching_deal(product)
+
+        if not deal:
+            # No confident match — leave the product untouched.
+            continue
+
+        # Enrich ONLY missing, non-identity fields.
+        images = deal.get('images', {})
+        primary = images.get('primary', {})
+        large_img = primary.get('large', {})
+        image_url = large_img.get('url', '')
+        if image_url and not product.get('amazon_image_url') and not product.get('image'):
+            product['amazon_image_url'] = image_url
+
+        # Price only from a confident (ASIN-level) match, and only if missing.
+        if match_type in ('asin', 'url_asin'):
+            if not product.get('price'):
                 offers = deal.get('offersV2', {})
                 listings = offers.get('listings', [])
                 for listing in listings:
@@ -311,9 +363,9 @@ def merge_bike_deals(products, deals_by_asin):
                         if price:
                             product['price'] = int(price)
                         break
-            
-            merged_count += 1
-    
+
+        merged_count += 1
+
     return merged_count
 
 
@@ -323,7 +375,7 @@ def render_markdown(text):
     return markdown.markdown(text, extensions=extensions)
 
 
-def replace_product_placeholders(html, products, base_path='./'):
+def replace_product_placeholders(html, products, base_path='./', exclude_slugs=None):
     """Replace {{ products:... }} and {{ product_pick:... }} placeholders.
     
     Supports:
@@ -338,7 +390,11 @@ def replace_product_placeholders(html, products, base_path='./'):
     - Dynamic counts: shows 1-5 products based on availability
     - Category summary: shows product count and "View All" link
     - No empty sections: returns empty string if no products found
+    - Cross-section deduplication: exclude_slugs prevents products already
+      shown in other sections from appearing again
     """
+    if exclude_slugs is None:
+        exclude_slugs = set()
     placeholder_pattern = re.compile(
         r'\{\{\s*(products|product_pick|category_summary):([^}]+?)\s*\}\}'
     )
@@ -423,9 +479,15 @@ def replace_product_placeholders(html, products, base_path='./'):
 
         category = raw.strip()
         matched = find_products_for_category(category)
-        
+
         if not matched:
             return ''
+
+        # Filter out products already shown in other sections
+        if exclude_slugs:
+            matched = [p for p in matched if p.get('slug') not in exclude_slugs]
+            if not matched:
+                return ''
 
         # Use product_engine ranking (editor_rating + rating + reviews + price)
         matched.sort(key=lambda p: ranking_score(p), reverse=True)
@@ -510,76 +572,6 @@ def get_category_product_count(products: list, category: str) -> int:
     return count_products_by_category(products, category)
 
 
-def build_accessory_sections(bike, products):
-    """Build organized accessory sections for a motorcycle.
-    
-    Uses normalized categories, product_engine ranking, and brand diversity.
-    Sections with no products are excluded from output.
-    """
-    sections = [
-        {
-            'title': 'Essential Accessories',
-            'description': 'Must-have accessories for every rider.',
-            'categories': ['helmet', 'phone mount', 'gloves', 'jackets'],
-        },
-        {
-            'title': 'Protection & Safety',
-            'description': 'Protect your motorcycle and yourself.',
-            'categories': ['crash guard', 'bike cover'],
-        },
-        {
-            'title': 'Maintenance Products',
-            'description': 'Keep your motorcycle in top condition.',
-            'categories': ['chain lube', 'chain cleaner', 'engine oil'],
-        },
-        {
-            'title': 'Touring & Comfort',
-            'description': 'Enhance your touring experience.',
-            'categories': ['tank bag', 'saddle bag', 'tail bag', 'tyre inflator'],
-        },
-    ]
-
-    result = []
-    for section in sections:
-        # Collect products for all categories in this section
-        section_products = []
-        for cat in section['categories']:
-            matched = find_products_by_category(products, cat)
-            section_products.extend(matched)
-
-        # Deduplicate (a product could match multiple categories)
-        seen_slugs = set()
-        unique_products = []
-        for p in section_products:
-            slug = p.get('slug', '')
-            if slug not in seen_slugs:
-                unique_products.append(p)
-                seen_slugs.add(slug)
-
-        # Sort by product_engine ranking score
-        unique_products.sort(key=lambda p: ranking_score(p, bike), reverse=True)
-        
-        # Enforce brand diversity
-        unique_products = enforce_brand_diversity(unique_products, max_per_brand=2)
-        
-        if unique_products:
-            # Count products per category using product_engine
-            category_counts = {}
-            for cat in section['categories']:
-                count = count_products_by_category(unique_products, cat)
-                if count > 0:
-                    category_counts[cat] = count
-            
-            target = select_product_count(len(unique_products))
-            
-            result.append({
-                'title': section['title'],
-                'description': section['description'],
-                'products': unique_products[:target],
-                'category_counts': category_counts,
-            })
-
-    return result
 
 
 def get_related_articles(article, all_articles):
@@ -707,6 +699,7 @@ class SiteGenerator:
         )
         self.env.globals['base_path'] = './'
         self.env.globals['site_url'] = self.base_url + '/'
+        self.env.globals['category_to_guide_url'] = category_to_guide_url
         self.page_count = 0
         self.images_downloaded = 0
 
@@ -746,29 +739,18 @@ class SiteGenerator:
             sorted_nav_brands[brand] = sorted(motorcycles_by_brand[brand], key=lambda b: b['model'])
 
         # Accessory categories for nav dropdown
-        accessory_nav_items = [
-            {'name': 'Helmet', 'slug': 'helmet'},
-            {'name': 'Phone Mount', 'slug': 'phone-mount'},
-            {'name': 'Crash Guard', 'slug': 'crash-guard'},
-            {'name': 'Engine Oil', 'slug': 'engine-oil'},
-            {'name': 'Chain Lube', 'slug': 'chain-lube'},
-            {'name': 'Bike Cover', 'slug': 'bike-cover'},
-            {'name': 'Tank Bag', 'slug': 'tank-bag'},
-            {'name': 'Saddle Bag', 'slug': 'saddle-bag'},
-            {'name': 'Tyre Inflator', 'slug': 'tyre-inflator'},
-            {'name': 'Gloves', 'slug': 'gloves'},
-            {'name': 'Jackets', 'slug': 'jackets'},
-        ]
+        # Only include categories that actually have products
+        accessory_nav_items = []
+        seen_cats = set()
+        for product in self.data['products']:
+            cat = normalize_category(product.get('category', ''))
+            slug = cat.lower().replace(' ', '-')
+            if cat not in seen_cats:
+                accessory_nav_items.append({'name': cat, 'slug': slug})
+                seen_cats.add(cat)
 
-        # Guide categories for nav
-        guide_categories = [
-            {'name': 'Maintenance', 'slug': 'maintenance'},
-            {'name': 'Buying Guides', 'slug': 'buying-guides'},
-            {'name': 'Ownership Tips', 'slug': 'ownership'},
-            {'name': 'Comparisons', 'slug': 'comparisons'},
-            {'name': 'Touring', 'slug': 'touring'},
-            {'name': 'Safety', 'slug': 'safety'},
-        ]
+        # Guide categories for nav (article category index pages)
+        guide_categories = []
 
         # Accessory brands only (exclude motorcycle manufacturers)
         motorcycle_brand_names = {
@@ -857,9 +839,8 @@ class SiteGenerator:
             {'title': 'Best Helmets', 'slug': 'helmet', 'icon': HELMET_ICON_SM, 'description': 'Full face, flip-up & modular helmets reviewed'},
             {'title': 'Best Phone Mounts', 'slug': 'phone-mount', 'icon': '&#128241;', 'description': 'Vibration-free handlebar phone holders'},
             {'title': 'Best Engine Oil', 'slug': 'engine-oil', 'icon': '&#128737;', 'description': 'Mineral, semi-synthetic & fully synthetic oils'},
-            {'title': 'Best Crash Guards', 'slug': 'crash-guard', 'icon': '&#128737;', 'description': 'Protective engine guards for every bike'},
-            {'title': 'Best Riding Gloves', 'slug': 'gloves', 'icon': '&#129508;', 'description': 'Summer, winter & all-season riding gloves'},
-            {'title': 'Best Bike Covers', 'slug': 'bike-cover', 'icon': '&#128711;', 'description': 'Waterproof & UV-resistant motorcycle covers'},
+            {'title': 'Best Chain Lube', 'slug': 'chain-lube', 'icon': '&#9881;', 'description': 'Keep your chain running smoothly'},
+            {'title': 'Best Tyre Inflators', 'slug': 'tyre-inflator', 'icon': '&#128295;', 'description': 'Portable digital & analog inflators'},
         ]
 
         # ===== Comparisons data =====
@@ -890,11 +871,16 @@ class SiteGenerator:
             'Chain Lube', 'Gloves', 'Jackets', 'Tyre Inflator',
             'Bike Cover',
         ]
-        context['featured_products'] = best_per_category(
+        featured_products = best_per_category(
             self.data['products'], categories_wanted
         )[:9]
+        context['featured_products'] = featured_products
+
+        # Track slugs already used in featured_products to avoid duplicates
+        featured_slugs = {p.get('slug') for p in featured_products}
 
         # Editor's picks (curated top products per category)
+        # Must not duplicate products already shown in featured_products
         editors_picks = []
         pick_categories = {
             'Helmet': 'Best Helmet',
@@ -906,10 +892,17 @@ class SiteGenerator:
         }
         for cat, label in pick_categories.items():
             rec = recommend_for_category(self.data['products'], cat)
-            if rec['editors_choice']:
-                pick = dict(rec['editors_choice'])
+            pick = None
+            for candidate in [rec['editors_choice'], rec['best_value'],
+                              rec['premium_pick'], rec['budget_pick']]:
+                if candidate and candidate.get('slug') not in featured_slugs:
+                    pick = candidate
+                    break
+            if pick:
+                pick = dict(pick)
                 pick['pick_label'] = label
                 editors_picks.append(pick)
+                featured_slugs.add(pick.get('slug'))
         context['editors_picks'] = editors_picks
 
         # ===== Dynamic stats (never hardcoded) =====
@@ -977,6 +970,400 @@ class SiteGenerator:
         content = self.render_template('motorcycles.html', context)
         self.write_page('motorcycles/index.html', content)
 
+    def build_motorcycle_editorial(self, bike: dict, base_path: str = '') -> dict:
+        """Build bike-specific editorial content from motorcycle data.
+
+        Generates natural, rider-focused content that avoids generic
+        AI-sounding phrases. Every piece of content answers a real
+        rider question.
+        """
+        model = bike['model']
+        brand = bike['brand']
+        btype = bike.get('type', '')
+        engine_cc = float(re.search(r'(\d+\.?\d*)', bike.get('engine', '0')).group(1))
+        power_bhp = float(re.search(r'(\d+\.?\d*)', bike.get('power', '0')).group(1))
+        weight_kg = float(re.search(r'(\d+\.?\d*)', bike.get('weight', '0')).group(1))
+        seat = bike.get('seat_height', '')
+        mileage_str = bike.get('mileage', '')
+        mileage_val = float(re.search(r'(\d+)', mileage_str).group(1)) if re.search(r'(\d+)', mileage_str) else 0
+        price_num = bike.get('price_numeric', 0)
+
+        editorial = {}
+
+        # ===== Not Ideal For =====
+        not_ideal_map = {
+            'Adventure': [
+                'Riders who only commute in city traffic',
+                'Buyers on a tight budget',
+            ],
+            'Cruiser': [
+                'Sport riding and track day enthusiasts',
+                'Off-road adventure seekers',
+            ],
+            'Sport': [
+                'Daily long-distance commuters',
+                'Riders who prioritize comfort over speed',
+            ],
+            'Naked': [
+                'Highway touring without aftermarket windscreen',
+                'Off-road adventures',
+            ],
+            'Retro Classic': [
+                'Riders seeking modern electronics',
+                'Sport-oriented riders',
+            ],
+            'Scooter': [
+                'Highway touring riders',
+                'Off-road enthusiasts',
+            ],
+            'Commuter': [
+                'Highway touring enthusiasts',
+                'Performance-oriented riders',
+            ],
+        }
+        editorial['not_ideal_for'] = not_ideal_map.get(btype, [
+            'Long-distance touring without mods',
+            'Off-road adventures',
+        ])
+
+        # ===== Riding Use Cases =====
+        use_cases = []
+
+        # Daily Riding
+        daily_desc = {
+            'Cruiser': f'The relaxed riding position makes the {model} comfortable for daily commutes. The torquey engine pulls through traffic without needing to rev hard.',
+            'Sport': f'The aggressive riding position can get tiring in heavy traffic, but the {model} shines on short city rides where its sharp handling stands out.',
+            'Adventure': f'Daily commuting on the {model} is comfortable thanks to the upright seating. The wide handlebars give good leverage in traffic, though the size takes some getting used to.',
+            'Naked': f'The {model} feels at home in city traffic. Upright ergonomics, light clutch, and responsive throttle make daily riding effortless.',
+            'Retro Classic': f'The {model} handles daily commuting well with its comfortable seat and manageable power. The classic design turns heads even in bumper-to-bumper traffic.',
+            'Commuter': f'Built for this. The {model} sips fuel, navigates tight lanes easily, and requires minimal maintenance. This is what it was designed for.',
+        }
+        use_cases.append({
+            'icon': '&#128663;',
+            'title': 'Daily Riding',
+            'description': daily_desc.get(btype, f'Well-suited for daily commuting with comfortable ergonomics and good fuel efficiency.'),
+        })
+
+        # Highway Riding
+        highway_desc = {
+            'Adventure': f'Designed for highway miles. The {model} stays stable at speed, and the wind protection reduces fatigue on long stretches.',
+            'Cruiser': f'Highway cruising is where the {model} excels. The relaxed position, strong mid-range, and planted feel at speed make long highway days enjoyable.',
+            'Sport': f'The {model} is fast on the highway, but wind blast becomes a factor after a couple of hours. A windscreen helps, but this bike rewards shorter highway stints.',
+            'Naked': f'Capable on the highway for moderate distances. Without a windscreen, you will feel the wind at higher speeds. Add a fly screen for better highway comfort.',
+            'Retro Classic': f'The {model} can handle highway rides, but it is not a tourer. Stick to moderate distances and the engine will reward you with its characterful thump.',
+            'Commuter': f'Highway rides are possible but keep them short. The {model} lacks the power and wind protection for sustained high-speed cruising.',
+        }
+        use_cases.append({
+            'icon': '&#128740;',
+            'title': 'Highway Riding',
+            'description': highway_desc.get(btype, f'Capable on highways for moderate distances. Consider adding a windscreen for better comfort.'),
+        })
+
+        # Touring
+        touring_desc = {
+            'Adventure': f'The {model} is built for touring. Comfortable seat, large tank, and luggage-ready design mean you can load up and ride for days.',
+            'Cruiser': f'Long rides on the {model} are a pleasure. The relaxed riding position, ample torque, and comfortable seat make it a solid touring machine.',
+            'Sport': f'The {model} can tour, but it requires planning. A comfortable seat, tank bag, and regular breaks make multi-day rides manageable.',
+            'Naked': f'With saddlebags and a comfortable seat, the {model} handles touring duties. It is more of a weekend getaway bike than a cross-country tourer.',
+            'Retro Classic': f'The {model} has character for days, but touring requires some mods. A better seat and saddlebags turn it into a capable weekend tourer.',
+            'Commuter': f'The {model} is not built for touring. Short weekend rides are fine, but anything longer will leave you wanting more comfort and power.',
+        }
+        use_cases.append({
+            'icon': '&#127758;',
+            'title': 'Touring',
+            'description': touring_desc.get(btype, f'With proper accessories like saddlebags and a comfortable seat, the {model} can handle touring duties.'),
+        })
+
+        # City Riding
+        city_desc = {
+            'Naked': f'Excellent in the city. The {model} is nimble, easy to filter with, and the upright position gives you great visibility in traffic.',
+            'Adventure': f'Manageable in the city, but the size can be a handful in tight spaces. The wide bars need some care between buses and autos.',
+            'Cruiser': f'The {model} cruises through city traffic comfortably. The low seat height inspires confidence, and the torque means you do not need to downshift constantly.',
+            'Sport': f'City riding is doable but not ideal. The aggressive position gets tiring, and the engine runs hot in slow traffic.',
+            'Retro Classic': f'The {model} is a city-friendly bike. Manageable weight, comfortable seat, and good low-end make it easy to ride in urban conditions.',
+            'Commuter': f'This is the {model}\u2019s natural habitat. Light, fuel-efficient, and easy to manoeuvre through traffic. It is why millions of Indians ride one.',
+        }
+        use_cases.append({
+            'icon': '&#127961;',
+            'title': 'City Riding',
+            'description': city_desc.get(btype, f'Good city motorcycle with manageable power and comfortable ergonomics for daily use.'),
+        })
+
+        editorial['riding_use_cases'] = use_cases
+
+        # ===== Buyer Setups =====
+        # Tailored based on bike type and price
+        is_premium = price_num > 250000
+        is_budget = price_num < 100000
+
+        setups = []
+
+        # Budget Rider
+        budget_items = ['Helmet (ISI certified)', 'Phone Mount', 'Chain Lube']
+        budget_cost = '2,500 - 3,000'
+        if engine_cc <= 150:
+            budget_desc = f'Just the basics to keep your {model} safe and maintained. A good helmet, phone mount for navigation, and chain lube for regular upkeep.'
+        else:
+            budget_desc = f'Start with the essentials. A certified helmet, phone mount for navigation, and chain lube to keep the drivetrain happy.'
+        setups.append({
+            'icon': '&#128665;',
+            'name': 'Budget Rider',
+            'budget': 'Under &#8377;3,000',
+            'description': budget_desc,
+            'included': budget_items,
+            'estimated_cost': f'\u20b9{budget_cost}',
+            'who': 'Students, first-time buyers, daily commuters on a budget',
+        })
+
+        # Daily Commuter
+        commuter_items = ['Helmet', 'Phone Mount', 'Bike Cover', 'Chain Lube']
+        commuter_cost = '3,500 - 5,000'
+        if mileage_val >= 50:
+            commuter_desc = f'Protect your daily ride. A proper helmet, phone mount for Google Maps, bike cover for parking, and chain lube to keep that excellent mileage consistent.'
+        else:
+            commuter_desc = f'Everything you need for the daily grind. Safety gear, navigation, and basic maintenance products to keep the {model} running smoothly.'
+        setups.append({
+            'icon': '&#128665;',
+            'name': 'Daily Commuter',
+            'budget': 'Under &#8377;5,000',
+            'description': commuter_desc,
+            'included': commuter_items,
+            'estimated_cost': f'\u20b9{commuter_cost}',
+            'who': 'Office goers, daily riders, anyone riding 20+ km daily',
+        })
+
+        # Weekend Rider
+        weekend_items = ['Everything in Commuter', 'Crash Guard', 'Riding Gloves', 'Tyre Inflator']
+        weekend_cost = '8,000 - 10,000'
+        weekend_desc = f'For Saturday morning rides and Sunday coffee runs. Crash protection, proper gloves, and a tyre inflator for peace of mind on longer rides.'
+        setups.append({
+            'icon': '&#127754;',
+            'name': 'Weekend Rider',
+            'budget': 'Under &#8377;10,000',
+            'description': weekend_desc,
+            'included': weekend_items,
+            'estimated_cost': f'\u20b9{weekend_cost}',
+            'who': 'Weekend warriors, scenic route riders, motorcycle enthusiasts',
+        })
+
+        # Touring
+        touring_items = ['Everything in Weekend', 'Riding Jacket', 'Saddle Bag', 'Tank Bag']
+        touring_cost = '15,000 - 20,000'
+        if btype in ['Adventure', 'Cruiser']:
+            touring_desc_text = f'The {model} is ready for long hauls. Luggage, riding gear, and protection for you and the bike on multi-day trips.'
+        else:
+            touring_desc_text = f'Make the {model} tour-ready. Luggage solutions, riding jacket, and gear to handle long highway stretches comfortably.'
+        setups.append({
+            'icon': '&#127758;',
+            'name': 'Touring',
+            'budget': 'Under &#8377;20,000',
+            'description': touring_desc_text,
+            'included': touring_items,
+            'estimated_cost': f'\u20b9{touring_cost}',
+            'who': 'Touring enthusiasts, long-distance riders, road trip lovers',
+        })
+
+        # Premium
+        premium_items = ['Premium Helmet', 'Premium Crash Guard', 'All Riding Gear', 'Full Luggage Set']
+        premium_desc = f'No compromises. The best gear and accessories for the {model} \u2014 because you and your bike deserve it.'
+        setups.append({
+            'icon': '&#128081;',
+            'name': 'Premium',
+            'budget': 'No Limit',
+            'description': premium_desc,
+            'included': premium_items,
+            'estimated_cost': '\u20b925,000+',
+            'who': 'Riders who want the absolute best',
+        })
+
+        editorial['buyer_setups'] = setups
+
+        # ===== Pro Tip (Must-Have section) =====
+        if btype in ['Sport']:
+            editorial['pro_tip'] = 'Helmet first, always. Then a crash guard \u2014 these bikes get dropped in parking lots. After that, riding gloves and a phone mount round out the essentials.'
+        elif btype in ['Adventure']:
+            editorial['pro_tip'] = 'Start with a quality helmet and crash guards. Adventure bikes take spills on trails, so protection is non-negotiable. Add a phone mount and tyre inflator next.'
+        elif btype in ['Cruiser']:
+            editorial['pro_tip'] = 'A good helmet is your first purchase. Then a crash guard to protect those chrome bits. Saddlebags and a backrest come next for comfortable two-up riding.'
+        elif engine_cc <= 125:
+            editorial['pro_tip'] = 'Helmet is mandatory and non-negotiable. Add a bike cover for parking and chain lube for maintenance. Keep it simple \u2014 this bike does not need much.'
+        else:
+            editorial['pro_tip'] = 'Buy your helmet and crash guard first \u2014 they protect you and the bike. Then add a phone mount for navigation and a bike cover for parking.'
+
+        # ===== Must-Have Descriptions =====
+        must_have_desc = {
+            'Helmet': 'Non-negotiable. A good helmet is the single most important piece of gear you will ever buy. Do not cheap out here.',
+            'Phone Mount': 'Mount your phone for navigation without holding it. Get a vibration-free mount \u2014 it protects your phone camera from the bike\'s vibrations.',
+            'Crash Guard': 'One tip-over in a parking lot can cost thousands in repairs. A crash guard pays for itself the first time the bike goes down.',
+            'Engine Oil': 'The lifeblood of your engine. Use the manufacturer-recommended grade \u2014 wrong oil grades cause long-term damage that warranty will not cover.',
+            'Chain Lube': 'A dry chain wears out fast and affects performance. Lube it every 500 km and it will last significantly longer.',
+            'Bike Cover': 'Sun, rain, and dust are your paint\'s enemies. A breathable cover keeps the {model} looking fresh, especially if you park outdoors.',
+            'Riding Gloves': 'Your hands are the first thing to hit the ground in a fall. Good gloves also reduce fatigue on longer rides.',
+            'Tyre Inflator': 'A flat tyre on the side of the road is every rider\'s nightmare. A portable inflator takes up no space and saves you every time.',
+        }
+        editorial['must_have_descriptions'] = must_have_desc
+
+        # ===== FAQ Items =====
+        faq_items = []
+
+        faq_items.append({
+            'question': f'What is the on-road price of {brand} {model}?',
+            'answer': f'The {brand} {model} is priced at \u20b9{bike["price"]} ex-showroom. On-road prices vary by city \u2014 expect roughly 10-15% more depending on your state\'s road tax and insurance.',
+        })
+
+        faq_items.append({
+            'question': f'What is the real-world mileage of {model}?',
+            'answer': f'The {model} delivers around {mileage_str} according to ARAI tests. In real-world city conditions, expect 10-15% less. Highway riding usually gets closer to the claimed figure.',
+        })
+
+        # Long rides FAQ
+        if btype in ['Adventure', 'Cruiser']:
+            faq_items.append({
+                'question': f'Is {model} good for long rides?',
+                'answer': f'Yes. The {model} is built for long-distance riding. { "The upright seating and wind protection keep fatigue low on highway stretches." if btype == "Adventure" else "The relaxed position and torquey engine make highway cruising effortless." }',
+            })
+        else:
+            faq_items.append({
+                'question': f'Is {model} good for long rides?',
+                'answer': f'The {model} handles moderate long-distance rides well. For multi-day touring, invest in a comfortable seat, windscreen, and luggage. It is not a dedicated tourer, but with the right setup, it gets the job done.',
+            })
+
+        # Best accessories FAQ
+        guide_links = []
+        for guide_cat in ['Helmet', 'Phone Mount', 'Engine Oil', 'Chain Lube']:
+            url = category_to_guide_url(guide_cat, base_path)
+            if url != '#':
+                guide_links.append(f'<a href="{url}">{guide_cat.lower()} guide</a>')
+        guide_text = ', '.join(guide_links) if guide_links else 'our buying guides'
+        faq_items.append({
+            'question': f'What are the best accessories for {model}?',
+            'answer': f'Start with a helmet, phone mount, and essential maintenance products. Browse {guide_text} for category-specific recommendations.',
+        })
+
+        # Service interval FAQ
+        faq_items.append({
+            'question': f'How often should I service my {model}?',
+            'answer': f'Follow the manufacturer\'s schedule \u2014 typically every {bike.get("service_interval", "3,000 km")}. Regular oil changes, chain maintenance, and brake checks keep the bike running right.',
+        })
+
+        # ABS FAQ
+        faq_items.append({
+            'question': f'Does {model} have ABS?',
+            'answer': f'Yes, the {model} comes with {bike.get("abs", "single-channel")} ABS. { "Dual-channel ABS is a significant safety advantage \u2014 both wheels are covered." if "dual" in bike.get("abs", "").lower() else "Single-channel ABS covers the front wheel, which is where most braking happens." }',
+        })
+
+        # Seat height FAQ
+        seat_mm = int(re.search(r'(\d+)', seat).group(1)) if re.search(r'(\d+)', seat) else 0
+        if seat_mm >= 800:
+            seat_answer = f'The {model} has a seat height of {seat}. Riders under 5\'6" may want to test sit before buying \u2014 flat feet at stops inspire confidence.'
+        else:
+            seat_answer = f'The {model} has a seat height of {seat}. This should work comfortably for most Indian riders.'
+        faq_items.append({
+            'question': f'What is the seat height of {model}?',
+            'answer': seat_answer,
+        })
+
+        # Beginners FAQ
+        if btype in ['Sport']:
+            faq_items.append({
+                'question': f'Is {model} good for beginners?',
+                'answer': f'The {model} has {power_bhp} bhp \u2014 it is a serious machine. Experienced riders will love it, but complete beginners should consider starting with something smaller and upgrading once they have the basics down.',
+            })
+        elif btype in ['Adventure'] and engine_cc > 400:
+            faq_items.append({
+                'question': f'Is {model} good for beginners?',
+                'answer': f'The {model} is a large, powerful motorcycle. Riders with some experience will handle it well, but beginners should look at smaller adventure bikes first and work their way up.',
+            })
+        else:
+            faq_items.append({
+                'question': f'Is {model} good for beginners?',
+                'answer': f'Yes. The {model} is well-balanced with manageable power, making it suitable for new riders. Just invest in proper safety gear and take it easy while you build confidence.',
+            })
+
+        # Touring FAQ
+        if btype in ['Adventure', 'Cruiser']:
+            faq_items.append({
+                'question': f'Is {model} good for touring?',
+                'answer': f'Absolutely. The {model} is designed for touring with comfortable ergonomics and a large fuel tank. {"Load up the saddlebags and hit the highway \u2014 this is what it was built for." if btype == "Adventure" else "The relaxed position and strong mid-range make long highway days enjoyable."}',
+            })
+        else:
+            faq_items.append({
+                'question': f'Is {model} good for touring?',
+                'answer': f'The {model} can tour, but it needs some setup. A comfortable seat, windscreen, and saddlebags make a big difference. It is more suited for weekend trips than cross-country adventures.',
+            })
+
+        # Top speed FAQ (using actual power data instead of hardcoded 120-130)
+        if power_bhp >= 40:
+            top_speed = '150+ km/h'
+        elif power_bhp >= 25:
+            top_speed = '120-140 km/h'
+        elif power_bhp >= 15:
+            top_speed = '100-120 km/h'
+        elif power_bhp >= 10:
+            top_speed = '85-100 km/h'
+        else:
+            top_speed = '80-90 km/h'
+        faq_items.append({
+            'question': f'What is the top speed of {model}?',
+            'answer': f'The {model} can reach around {top_speed} depending on rider weight, road conditions, and wind. These are approximate figures \u2014 we do not recommend testing top speed on public roads.',
+        })
+
+        editorial['faq_items'] = faq_items
+
+        # ===== New Owner Tips =====
+        new_owner_tips = []
+
+        # First service tip
+        new_owner_tips.append({
+            'icon': '&#9881;',
+            'title': 'First Service',
+            'description': f'Schedule your first service at {bike.get("service_interval", "500-1000 km")}. Do not skip it — the first service breaks in the engine properly.',
+            'link': f'{bike.get("slug", "")}/maintenance/engine-oil/index.html',
+            'link_text': 'Engine Oil Guide',
+        })
+
+        # Break-in period tip
+        if engine_cc > 150:
+            new_owner_tips.append({
+                'icon': '&#128161;',
+                'title': 'Break-In Period',
+                'description': 'Keep RPMs under 4000 for the first 500 km. Vary your speed, do not cruise at constant RPM, and avoid hard acceleration. This sets up your engine for years of reliable service.',
+                'link': '',
+                'link_text': '',
+            })
+
+        # Basic maintenance tip
+        new_owner_tips.append({
+            'icon': '&#128295;',
+            'title': 'Basic Maintenance',
+            'description': 'Check tyre pressure weekly. A properly inflated tyre improves mileage, handling, and safety. Keep the chain clean and lubed every 500 km.',
+            'link': f'{bike.get("slug", "")}/maintenance/tyre-pressure/index.html',
+            'link_text': 'Tyre Pressure Guide',
+        })
+
+        # Insurance tip
+        new_owner_tips.append({
+            'icon': '&#128179;',
+            'title': 'Insurance',
+            'description': 'Get comprehensive insurance for at least the first year. Third-party only covers damage to others, not your bike. Add zero-depreciation if available.',
+            'link': '',
+            'link_text': '',
+        })
+
+        # Parking tip
+        if btype in ['Sport', 'Naked']:
+            new_owner_tips.append({
+                'icon': '&#128205;',
+                'title': 'Parking',
+                'description': 'Always use the side stand on level ground. These bikes are top-heavy and prone to tip-overs in parking lots. A crash guard is cheap insurance.',
+                'link': '',
+                'link_text': '',
+            })
+
+        editorial['new_owner_tips'] = new_owner_tips
+
+        return editorial
+
     def generate_motorcycle_pages(self):
         """Generate individual motorcycle pages."""
         for bike in self.data['motorcycles']:
@@ -992,6 +1379,9 @@ class SiteGenerator:
                 {'name': f"{bike['brand']} {bike['model']}"},
             ]
 
+            # Build bike-specific editorial content
+            editorial = self.build_motorcycle_editorial(bike, context['base_path'])
+
             # Match products to motorcycle (used for main content + sidebar)
             matched = match_products_to_motorcycle(bike, self.data['products'])
 
@@ -1003,10 +1393,63 @@ class SiteGenerator:
                     related.append(article)
             context['related_articles'] = related[:4]
 
-            # ===== Sidebar products (same engine as articles) =====
+            # ===== NEW HUB PAGE DATA =====
+
+            # Quick Specs card data
+            context['quick_specs'] = {
+                'price': bike.get('price'),
+                'mileage': bike.get('mileage'),
+                'power': bike.get('power'),
+                'torque': bike.get('torque'),
+                'weight': bike.get('weight'),
+                'fuel_tank': bike.get('fuel_tank') or bike.get('fuel_capacity'),
+                'seat_height': bike.get('seat_height', 'N/A'),
+                'abs': bike.get('abs', 'N/A'),
+                'service_interval': bike.get('service_interval', 'N/A'),
+                'variants': bike.get('variants', []),
+            }
+
+            # Quick Accessory Navigation
+            context['accessory_nav'] = [
+                {'name': 'Helmet', 'icon': HELMET_ICON_SM, 'slug': 'helmet', 'guide_url': category_to_guide_url('Helmet', context['base_path'])},
+                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': 'phone-mount', 'guide_url': category_to_guide_url('Phone Mount', context['base_path'])},
+                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': 'engine-oil', 'guide_url': category_to_guide_url('Engine Oil', context['base_path'])},
+                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': 'chain-lube', 'guide_url': category_to_guide_url('Chain Lube', context['base_path'])},
+                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': 'tyre-inflator', 'guide_url': category_to_guide_url('Tyre Inflator', context['base_path'])},
+            ]
+
+            # Must Have Accessories with budget/best picks per category
+            # Uses recommend_for_category from product_engine — single source of truth
+            must_have_categories = ['Helmet', 'Phone Mount', 'Crash Guard', 'Engine Oil', 'Chain Lube', 'Bike Cover']
+            must_have_data = []
+            seen_slugs = set()
+            for cat in must_have_categories:
+                rec = recommend_for_category(matched, cat, bike)
+                if rec['count'] > 0:
+                    must_have_data.append({
+                        'category': cat,
+                        'slug': cat.lower().replace(' ', '-'),
+                        'budget_pick': rec['budget_pick'],
+                        'best_pick': rec['editors_choice'],
+                        'count': rec['count'],
+                        'guide_url': category_to_guide_url(cat, context['base_path']),
+                    })
+                    if rec['budget_pick']:
+                        seen_slugs.add(rec['budget_pick']['slug'])
+                    if rec['editors_choice']:
+                        seen_slugs.add(rec['editors_choice']['slug'])
+            context['must_have_data'] = must_have_data
+
+            # ===== Sidebar products (excludes products shown in Must Have) =====
             sidebar_products = recommend_sidebar_products(
                 self.data['products'], bike=bike, max_products=5,
             )
+            sidebar_products = [
+                sp for sp in sidebar_products
+                if sp['product'].get('slug') not in seen_slugs
+            ]
+            for sp in sidebar_products:
+                seen_slugs.add(sp['product'].get('slug'))
             context['sidebar_products'] = sidebar_products
             # Debug output
             bike_name = f"{bike.get('brand', '')} {bike.get('model', '')}"
@@ -1030,73 +1473,6 @@ class SiteGenerator:
                 if m['slug'] != bike['slug'] and m.get('type', '').lower() == bike_type
             ][:4]
 
-            # ===== NEW HUB PAGE DATA =====
-
-            # Quick Specs card data
-            context['quick_specs'] = {
-                'price': bike.get('price'),
-                'mileage': bike.get('mileage'),
-                'power': bike.get('power'),
-                'torque': bike.get('torque'),
-                'weight': bike.get('weight'),
-                'fuel_tank': bike.get('fuel_tank') or bike.get('fuel_capacity'),
-                'seat_height': bike.get('seat_height', 'N/A'),
-                'abs': bike.get('abs', 'N/A'),
-                'service_interval': bike.get('service_interval', 'N/A'),
-                'variants': bike.get('variants', []),
-            }
-
-            # Quick Accessory Navigation
-            context['accessory_nav'] = [
-                {'name': 'Helmet', 'icon': HELMET_ICON_SM, 'slug': 'helmet'},
-                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': 'phone-mount'},
-                {'name': 'Crash Guard', 'icon': '&#128737;', 'slug': 'crash-guard'},
-                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': 'engine-oil'},
-                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': 'chain-lube'},
-                {'name': 'Bike Cover', 'icon': '&#129509;', 'slug': 'bike-cover'},
-                {'name': 'Tank Bag', 'icon': '&#128092;', 'slug': 'tank-bag'},
-                {'name': 'Riding Gloves', 'icon': '&#129508;', 'slug': 'gloves'},
-                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': 'tyre-inflator'},
-            ]
-
-            # Must Have Accessories with budget/best picks per category
-            # Uses recommend_for_category from product_engine — single source of truth
-            must_have_categories = ['Helmet', 'Phone Mount', 'Crash Guard', 'Engine Oil', 'Chain Lube', 'Bike Cover']
-            must_have_data = []
-            for cat in must_have_categories:
-                rec = recommend_for_category(matched, cat, bike)
-                if rec['count'] > 0:
-                    must_have_data.append({
-                        'category': cat,
-                        'slug': cat.lower().replace(' ', '-'),
-                        'budget_pick': rec['budget_pick'],
-                        'best_pick': rec['editors_choice'],
-                        'count': rec['count'],
-                    })
-            context['must_have_data'] = must_have_data
-
-            # Comparison bikes
-            comparison_slugs = bike.get('comparison_bikes', [])
-            context['comparison_bikes'] = [
-                m for m in self.data['motorcycles'] if m.get('slug') in comparison_slugs
-            ]
-
-            # Related motorcycles (same type)
-            bike_type_hub = bike.get('type', '').lower()
-            context['related_motorcycles'] = [
-                m for m in self.data['motorcycles']
-                if m['slug'] != bike['slug'] and m.get('type', '').lower() == bike_type_hub
-            ][:6]
-
-            # Related accessory category cards
-            context['accessory_categories'] = [
-                {'name': 'Helmet', 'slug': 'helmet', 'description': 'Safety first', 'icon': HELMET_ICON_SM},
-                {'name': 'Phone Mount', 'slug': 'phone-mount', 'description': 'Navigation', 'icon': '&#128241;'},
-                {'name': 'Crash Guard', 'slug': 'crash-guard', 'description': 'Protection', 'icon': '&#128737;'},
-                {'name': 'Bike Cover', 'slug': 'bike-cover', 'description': 'Weather guard', 'icon': '&#129509;'},
-                {'name': 'Tank Bag', 'slug': 'tank-bag', 'description': 'Storage', 'icon': '&#128092;'},
-            ]
-
             # Related guides from bike's related_articles list
             related_guides = []
             for article in self.data['articles']:
@@ -1107,15 +1483,18 @@ class SiteGenerator:
             # Common problems
             context['common_problems'] = bike.get('common_problems', [])
 
-            # Buying advice
-            context['buying_advice'] = bike.get('buying_advice', {})
-
-            # Compatibility
-            context['compatibility'] = {
-                'years': bike.get('compatibility_years', []),
-                'oem': bike.get('oem_accessories', False),
-                'aftermarket': bike.get('aftermarket_accessories', False),
+            # Buying advice - use editorial version if available, fallback to JSON
+            raw_advice = bike.get('buying_advice', {})
+            context['buying_advice'] = {
+                'buy_first': raw_advice.get('buy_first', ['Helmet', 'Crash Guard', 'Bike Cover']),
+                'avoid': raw_advice.get('avoid', ['Cheap helmet replicas', 'Non-ISI certified gear', 'Generic chain lubes']),
+                'oem_vs_aftermarket': raw_advice.get('oem_vs_aftermarket', ''),
+                'money_saving_tips': raw_advice.get('money_saving_tips', []),
+                'common_mistakes': raw_advice.get('common_mistakes', []),
             }
+
+            # Editorial content (riding use cases, not ideal for, buyer setups, etc.)
+            context['editorial'] = editorial
 
             # Maintenance schedule for timeline
             context['maintenance_schedule'] = [
@@ -1126,39 +1505,11 @@ class SiteGenerator:
             ]
 
             content = self.render_template('motorcycle.html', context)
-            content = replace_product_placeholders(content, self.data['products'], context['base_path'])
-            self.write_page(f'motorcycles/{bike["slug"]}/index.html', content)
-
-    def generate_motorcycle_accessories(self):
-        """Generate accessory pages for each motorcycle."""
-        for bike in self.data['motorcycles']:
-            matched = match_products_to_motorcycle(bike, self.data['products'])
-            sections = build_accessory_sections(bike, matched)
-
-            context = self.build_base_context(
-                meta_title=f"{bike['brand']} {bike['model']} - Best Accessories | BikeReview India",
-                meta_description=f"Best accessories for {bike['brand']} {bike['model']}. Helmets, phone mounts, crash guards, and more.",
-                canonical_url=f"{self.base_url}/motorcycles/{bike['slug']}/accessories/",
-                output_path=f'motorcycles/{bike["slug"]}/accessories/index.html',
+            content = replace_product_placeholders(
+                content, self.data['products'], context['base_path'],
+                exclude_slugs=seen_slugs,
             )
-            context['motorcycle'] = bike
-            context['accessory_sections'] = sections
-            context['breadcrumbs'] = [
-                {'name': 'Motorcycles', 'url': f'{self.base_url}/motorcycles/'},
-                {'name': f"{bike['brand']} {bike['model']}", 'url': f'{self.base_url}/motorcycles/{bike["slug"]}/'},
-                {'name': 'Accessories'},
-            ]
-
-            # Related articles
-            related = []
-            for article in self.data['articles']:
-                related_bikes = article.get('related_motorcycles', [])
-                if bike['slug'] in related_bikes:
-                    related.append(article)
-            context['related_articles'] = related[:4]
-
-            content = self.render_template('motorcycle-accessories.html', context)
-            self.write_page(f'motorcycles/{bike["slug"]}/accessories/index.html', content)
+            self.write_page(f'motorcycles/{bike["slug"]}/index.html', content)
 
     def generate_maintenance_pages(self):
         """Generate maintenance pages for each motorcycle."""
@@ -1297,11 +1648,9 @@ class SiteGenerator:
         bestof_pages = [
             {'slug': 'helmet', 'category': 'Helmet', 'title': 'Best Helmets', 'description': 'Find the best motorcycle helmets in India. Expert reviews, safety ratings, and buying recommendations for every budget.'},
             {'slug': 'phone-mount', 'category': 'Phone Mount', 'title': 'Best Phone Mounts', 'description': 'Top-rated motorcycle phone mounts and holders. vibration-free, secure, and easy to use options reviewed.'},
-            {'slug': 'gloves', 'category': 'Gloves', 'title': 'Best Riding Gloves', 'description': 'Best motorcycle riding gloves for Indian conditions. Summer, winter, and all-season options reviewed.'},
-            {'slug': 'jacket', 'category': 'Jackets', 'title': 'Best Riding Jackets', 'description': 'Top CE-certified riding jackets for safety and comfort. Budget to premium options reviewed.'},
             {'slug': 'engine-oil', 'category': 'Engine Oil', 'title': 'Best Engine Oil', 'description': 'Best engine oils for Indian motorcycles. Mineral, semi-synthetic, and fully synthetic options compared.'},
-            {'slug': 'bike-cover', 'category': 'Bike Cover', 'title': 'Best Bike Covers', 'description': 'Best motorcycle body covers for outdoor parking. Waterproof, UV-resistant, and dustproof options.'},
             {'slug': 'chain-lube', 'category': 'Chain Lube', 'title': 'Best Chain Lubes', 'description': 'Best chain lubricants for motorcycle maintenance. Spray and drip-on options reviewed.'},
+            {'slug': 'chain-cleaner', 'category': 'Chain Cleaner', 'title': 'Best Chain Cleaners', 'description': 'Best chain cleaners for motorcycle maintenance. Spray and gel options reviewed.'},
             {'slug': 'tyre-inflator', 'category': 'Tyre Inflator', 'title': 'Best Tyre Inflators', 'description': 'Best portable tyre inflators and air compressors for motorcycles. Digital and analog options reviewed.'},
         ]
 
@@ -1311,14 +1660,11 @@ class SiteGenerator:
             # Handles: search, scoring, brand diversity, count management, fallbacks
             cat_products = recommend_products(self.data['products'], category)
             
-            if not cat_products:
-                continue
-            
             context = self.build_base_context(
                 meta_title=f"{page['title']} - {page['description'][:50]} | BikeReview India",
                 meta_description=page['description'],
-                canonical_url=f"{self.base_url}/best/{page['slug']}/",
-                output_path=f'best/{page["slug"]}/index.html',
+                canonical_url=f"{self.base_url}/guides/{page['slug']}/",
+                output_path=f'guides/{page["slug"]}/index.html',
             )
             context['page_title'] = f"Best {category} for Motorcycles in India (2026)"
             context['page_description'] = page['description']
@@ -1326,12 +1672,12 @@ class SiteGenerator:
             context['category'] = category
             context['category_slug'] = page['slug']
             context['breadcrumbs'] = [
-                {'name': 'Best Of', 'url': f'{self.base_url}/best/'},
+                {'name': 'Guides', 'url': f'{self.base_url}/guides/'},
                 {'name': page['title']},
             ]
 
             content = self.render_template('bestof.html', context)
-            self.write_page(f'best/{page["slug"]}/index.html', content)
+            self.write_page(f'guides/{page["slug"]}/index.html', content)
 
     def generate_article_pages(self):
         """Generate article pages."""
@@ -1413,7 +1759,6 @@ class SiteGenerator:
         urls.append(f'{self.base_url}/motorcycles/')
         for bike in self.data['motorcycles']:
             urls.append(f'{self.base_url}/motorcycles/{bike["slug"]}/')
-            urls.append(f'{self.base_url}/motorcycles/{bike["slug"]}/accessories/')
             # Maintenance pages
             for topic in ['chain-maintenance', 'washing-guide', 'tyre-pressure', 'engine-oil']:
                 urls.append(f'{self.base_url}/motorcycles/{bike["slug"]}/maintenance/{topic}/')
@@ -1427,6 +1772,12 @@ class SiteGenerator:
         for cat_name in self.categories:
             slug = cat_name.lower().replace(' ', '-')
             urls.append(f'{self.base_url}/categories/{slug}/')
+
+        # Buying Guides
+        guide_slugs = ['helmet', 'phone-mount', 'engine-oil',
+                        'chain-lube', 'chain-cleaner', 'tyre-inflator']
+        for slug in guide_slugs:
+            urls.append(f'{self.base_url}/guides/{slug}/')
 
         # Articles
         for article in self.data['articles']:
@@ -1749,9 +2100,6 @@ Sitemap: {self.base_url}/sitemap.xml
         self.generate_motorcycle_pages()
         print(f"    * {len(self.data['motorcycles'])} motorcycle pages")
 
-        self.generate_motorcycle_accessories()
-        print(f"    * {len(self.data['motorcycles'])} accessory pages")
-
         self.generate_maintenance_pages()
         print(f"    * {len(self.data['motorcycles']) * 4} maintenance pages")
 
@@ -1835,6 +2183,87 @@ Sitemap: {self.base_url}/sitemap.xml
                 print(f"    * {model:<30s} {len(matched)} products in {len(categories_found)} categories")
             else:
                 print(f"    ! {model:<30s} No products matched")
+        
+        # ===== Guide Page Validation Report =====
+        print("\n  Guide Page Validation:")
+        from product_engine import CATEGORY_GUIDE_SLUGS
+        guide_generated = []
+        guide_missing = []
+        for cat_name, slug in CATEGORY_GUIDE_SLUGS.items():
+            page_path = self.output_dir / f'guides/{slug}/index.html'
+            if page_path.exists():
+                guide_generated.append((cat_name, slug))
+                print(f"    ✓ {cat_name.title():20s} guides/{slug}/index.html")
+            else:
+                guide_missing.append((cat_name, slug))
+                print(f"    ✗ {cat_name.title():20s} guides/{slug}/index.html  MISSING")
+
+        if guide_missing:
+            print(f"\n    WARNING: {len(guide_missing)} guide pages linked but not generated!")
+            print("    These links will return 404 errors.")
+            for cat_name, slug in guide_missing:
+                print(f"      - {cat_name} -> guides/{slug}/index.html")
+            print()
+
+        # ===== Internal Link Validation =====
+        print("  Internal Link Validation:")
+        broken_links = []
+        generated_files = list(self.output_dir.rglob('*.html'))
+        existing_paths = {
+            str(f.relative_to(self.output_dir))
+            for f in generated_files
+        }
+        # Also include static files
+        for f in (self.output_dir / 'static').rglob('*') if (self.output_dir / 'static').exists() else []:
+            if f.is_file():
+                existing_paths.add(str(f.relative_to(self.output_dir)))
+
+        import re as _re
+        link_pattern = _re.compile(r'href="([^"]*?)"')
+        scanned = 0
+        for html_file in generated_files:
+            content = html_file.read_text(encoding='utf-8')
+            file_rel = str(html_file.relative_to(self.output_dir))
+            file_depth = file_rel.count('/')
+            base = '../' * file_depth if file_depth > 0 else './'
+            for match in link_pattern.finditer(content):
+                href = match.group(1)
+                # Skip external links, anchors, mailto, javascript
+                if href.startswith(('http://', 'https://', 'mailto:', 'javascript:', '#', '{')):
+                    continue
+                # Skip template expressions
+                if '{{' in href or '{%' in href:
+                    continue
+                # Resolve relative path
+                if href.startswith('./'):
+                    href = href[2:]
+                if href.startswith('/'):
+                    href = href[1:]
+                # Strip anchor
+                href = href.split('#')[0]
+                if not href:
+                    continue
+                # Check if the target file exists
+                target = self.output_dir / href
+                if not target.exists():
+                    broken_links.append((file_rel, href))
+                scanned += 1
+
+        if broken_links:
+            print(f"    Found {len(broken_links)} broken internal links in {len(generated_files)} files:")
+            for source, target in broken_links[:20]:
+                print(f"      {source} -> {target}")
+            if len(broken_links) > 20:
+                print(f"      ... and {len(broken_links) - 20} more")
+            print()
+        else:
+            print(f"    ✓ All {scanned} internal links validated across {len(generated_files)} files")
+            print()
+
+        if broken_links or guide_missing:
+            print(f"  ⚠ BUILD HAS ISSUES: {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
+        else:
+            print("  ✓ All links validated successfully")
         
         print(f"\n{'='*60}")
         print(f"  Generation complete!")

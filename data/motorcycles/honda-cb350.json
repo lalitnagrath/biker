@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Twin hydraulic (Rear)",
     "tyres": "100/90-19 (Front), 150/60-17 (Rear)",
-    "description": "The Honda CB350 carries forward the legacy of classic Honda motorcycles with a modern twist. Featuring a refined long-stroke engine and premium hardware, it delivers a relaxed and enjoyable riding experience for both city and highway use.",
+    "description": "Honda's answer to the Royal Enfield Classic 350. The CB350 brings Honda's refined engineering to the retro segment. It thumps, it looks classic, and it runs like a Honda. For riders who want the retro experience without the Royal Enfield quirks.",
     "highlights": [
         "Honda Selectable Torque Control",
         "Retro-modern design language",
@@ -26,18 +26,18 @@
         "Eco and Sport riding modes"
     ],
     "pros": [
-        "Refined and torquey engine",
-        "Comfortable ergonomics",
-        "Superior fit and finish",
-        "Strong low-end and mid-range",
-        "Excellent fuel efficiency"
+        "Refined engine with smooth power delivery",
+        "Build quality is excellent",
+        "Connected features add modern convenience",
+        "Comfortable for long rides",
+        "Honda reliability and service network"
     ],
     "cons": [
-        "Limited top-end performance",
-        "Could be lighter",
-        "Conservative design",
-        "Limited colour options",
-        "Slightly premium pricing"
+        "Does not have the Royal Enfield character",
+        "Price is higher than the Classic 350",
+        "Aftermarket support is limited",
+        "Design is retro but not as iconic",
+        "Weight is noticeable at low speeds"
     ],
     "categories": [
         "Helmet",
@@ -73,22 +73,22 @@
     "aftermarket_accessories": true,
     "common_problems": [
         {
-            "problem": "Rust on exhaust and fenders",
-            "cause": "Classic design with more exposed metal",
-            "solution": "Regular cleaning and anti-rust treatment",
+            "problem": "Slight engine noise at cold start",
+            "cause": "Normal for air-cooled engines, oil takes time to circulate",
+            "solution": "Let the engine warm up for 30 seconds before riding. Use recommended oil grade.",
+            "product_category": "Engine Oil"
+        },
+        {
+            "problem": "Chrome parts tarnishing",
+            "cause": "Indian climate is harsh on chrome finishes",
+            "solution": "Regular cleaning and chrome polish. Use bike cover when parked outdoors.",
             "product_category": "Bike Cover"
         },
         {
-            "problem": "Seat discomfort on long rides",
-            "cause": "Stock seat padding may be firm",
-            "solution": "Consider aftermarket gel seat or seat cover",
-            "product_category": "Seat Cover"
-        },
-        {
-            "problem": "Battery drain in cold weather",
-            "cause": "Older battery or parasitic drain",
-            "solution": "Check battery health, use trickle charger",
-            "product_category": "Tyre Inflator"
+            "problem": "Indicator switch feel becomes loose",
+            "cause": "Switch mechanism wear with frequent use",
+            "solution": "Tighten or replace switch assembly at service. Common on Honda bikes.",
+            "product_category": "Bike Cover"
         }
     ],
     "comparison_bikes": [
@@ -105,25 +105,25 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the CB350, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

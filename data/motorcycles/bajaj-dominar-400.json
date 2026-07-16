@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "110/70-17 (Front), 150/60-17 (Rear)",
-    "description": "The Bajaj Dominar 400 is a powerful sports tourer built for riders who demand performance and comfort on long rides. Equipped with a liquid-cooled 373cc engine, slipper clutch, and dual-channel ABS, it is one of the most capable touring motorcycles in its segment.",
+    "description": "The Dominar 400 is Bajaj's flagship tourer and one of the best value propositions in the 400cc segment. A liquid-cooled engine, slipper clutch, and dual-channel ABS come standard. It eats up highway miles with ease and does not destroy your wallet doing it.",
     "highlights": [
         "Liquid-cooled 373cc engine",
         "40 bhp power output",
@@ -26,18 +26,18 @@
         "Upside-down front forks"
     ],
     "pros": [
-        "Powerful engine with strong top-end",
-        "Excellent for long-distance touring",
-        "Stable and planted at high speeds",
-        "Good suspension and braking",
-        "Great value for a 400cc tourer"
+        "Strong engine pulls hard in the mid-range",
+        "Built for long-distance touring",
+        "Planted and stable at triple-digit speeds",
+        "Suspension handles Indian roads well",
+        "Incredible value for a 400cc tourer"
     ],
     "cons": [
-        "Heavy weight affects low-speed agility",
-        "Fuel efficiency is average",
-        "Heat management in traffic",
-        "Basic dash design",
-        "Could use more ground clearance"
+        "Weight makes low-speed manoeuvring tricky",
+        "Fuel economy is average at best",
+        "Engine heats up in stop-and-go traffic",
+        "Dashboard design looks dated",
+        "Ground clearance could be better"
     ],
     "categories": [
         "Helmet",
@@ -107,25 +107,25 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories for the Dominar 400 offer perfect fitment and match the build quality. Aftermarket options are cheaper but check reviews carefully — some parts do not fit as well on premium bikes.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

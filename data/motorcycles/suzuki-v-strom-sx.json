@@ -105,27 +105,27 @@
     ],
     "buying_advice": {
         "buy_first": [
-            "Helmet",
+            "Helmet (adventure/dual-sport)",
             "Crash Guard",
-            "Bike Cover"
+            "Tyre Inflator"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Street tyres for serious off-road use",
+            "Cheap crash bars (they bend, not protect)",
+            "Universal-fit windscreens (poor fitment)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories for the V-Strom SX offer perfect fitment and match the build quality. Aftermarket options are cheaper but check reviews carefully — some parts do not fit as well on premium bikes.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
-            "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Using road tyres for off-road — they cannot handle trails",
+            "Skipping crash protection — adventure bikes fall, it is part of the sport",
+            "Overloading for tours — weight affects handling significantly",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

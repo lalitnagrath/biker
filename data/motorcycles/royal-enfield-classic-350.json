@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Twin shock absorbers (Rear)",
     "tyres": "100/90-19 (Front), 120/80-18 (Rear)",
-    "description": "The Royal Enfield Classic 350 carries forward the iconic design language that defined an era of motorcycling in India. Built on the modern J-platform engine, it blends timeless retro aesthetics with refined performance for a nostalgic yet capable ride.",
+    "description": "The Classic 350 is Royal Enfield's nostalgia machine. The retro design, the thump, the presence — it is a statement. Built on the modern J-series engine, it fixes the old vibration issues while keeping the character that made it an icon. This is not a motorcycle, it is an emotion.",
     "highlights": [
         "Iconic retro design",
         "New J-series engine",
@@ -26,18 +26,18 @@
         "Tripper navigation display"
     ],
     "pros": [
-        "Timeless classic styling",
-        "Smooth and refined engine",
-        "Comfortable upright seating",
-        "Strong resale value",
-        "Excellent build quality"
+        "Iconic design that never gets old",
+        "New J-series engine is smooth and refined",
+        "Comfortable upright riding position",
+        "Strong resale value across India",
+        "Build quality that feels built to last"
     ],
     "cons": [
-        "Heavy for city traffic",
-        "Slight vibrations at high RPM",
+        "Heavy for filtering through traffic",
+        "Vibrations still creep in at highway speeds",
         "Basic instrument cluster on base variants",
-        "Limited ground clearance",
-        "Narrow tyres for the segment"
+        "Ground clearance is tight for speed bumps",
+        "Tyres feel narrow for the bike's weight"
     ],
     "categories": [
         "Helmet",
@@ -76,22 +76,22 @@
     "aftermarket_accessories": true,
     "common_problems": [
         {
-            "problem": "Rust on exhaust and fenders",
-            "cause": "Classic design with more exposed metal",
-            "solution": "Regular cleaning and anti-rust treatment",
+            "problem": "Rust on exhaust and chrome parts",
+            "cause": "Classic design has more exposed metal, Indian humidity accelerates rust",
+            "solution": "Apply anti-rust treatment regularly. Cover the bike when parked outdoors.",
             "product_category": "Bike Cover"
         },
         {
-            "problem": "Seat discomfort on long rides",
-            "cause": "Stock seat padding may be firm",
-            "solution": "Consider aftermarket gel seat or seat cover",
-            "product_category": "Seat Cover"
+            "problem": "Seat discomfort on rides over 100 km",
+            "cause": "Stock seat padding is firm by design for the retro look",
+            "solution": "Aftermarket gel seat or air-cushion cover makes a big difference.",
+            "product_category": "Bike Cover"
         },
         {
-            "problem": "Battery drain in cold weather",
-            "cause": "Older battery or parasitic drain",
-            "solution": "Check battery health, use trickle charger",
-            "product_category": "Tyre Inflator"
+            "problem": "Vibrations at highway speeds (80+ km/h)",
+            "cause": "Single-cylinder engine characteristics, even with J-series refinement",
+            "solution": "Normal for this engine type. Keep RPM below 4,000 for comfortable cruising.",
+            "product_category": "Chain Lube"
         }
     ],
     "comparison_bikes": [
@@ -108,25 +108,25 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Classic 350, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }

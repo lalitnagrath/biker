@@ -201,45 +201,25 @@
             <a href="{{ base_path }}categories/index.html" class="section-link">View All Accessories &rarr;</a>
         </div>
         <div class="shop-accessory-grid">
-            <a href="{{ base_path }}best/helmet/index.html" class="shop-accessory-card">
+            <a href="{{ base_path }}guides/helmet/index.html" class="shop-accessory-card">
                 <div class="shop-accessory-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 0 1 16 0"/><path d="M4 14c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M4 14v2a2 2 0 0 0 2 2h1"/><path d="M18 14c0 0 2 0 2 2v1"/><line x1="10" y1="18" x2="14" y2="18"/><path d="M6 10h12" stroke-dasharray="2 2"/></svg></div>
                 <h3>Helmets</h3>
             </a>
-            <a href="{{ base_path }}best/phone-mount/index.html" class="shop-accessory-card">
+            <a href="{{ base_path }}guides/phone-mount/index.html" class="shop-accessory-card">
                 <div class="shop-accessory-icon">&#128241;</div>
                 <h3>Phone Mount</h3>
             </a>
-            <a href="{{ base_path }}best/engine-oil/index.html" class="shop-accessory-card">
+            <a href="{{ base_path }}guides/engine-oil/index.html" class="shop-accessory-card">
                 <div class="shop-accessory-icon">&#128737;</div>
                 <h3>Engine Oil</h3>
             </a>
-            <a href="{{ base_path }}best/crash-guard/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#128737;</div>
-                <h3>Crash Guard</h3>
-            </a>
-            <a href="{{ base_path }}best/bike-cover/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#128711;</div>
-                <h3>Bike Cover</h3>
-            </a>
-            <a href="{{ base_path }}best/tyre-inflator/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#127744;</div>
-                <h3>Tyre Inflator</h3>
-            </a>
-            <a href="{{ base_path }}best/tank-bag/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#128092;</div>
-                <h3>Tank Bag</h3>
-            </a>
-            <a href="{{ base_path }}best/gloves/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#129508;</div>
-                <h3>Gloves</h3>
-            </a>
-            <a href="{{ base_path }}best/jacket/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#129509;</div>
-                <h3>Jackets</h3>
-            </a>
-            <a href="{{ base_path }}best/chain-lube/index.html" class="shop-accessory-card">
+            <a href="{{ base_path }}guides/chain-lube/index.html" class="shop-accessory-card">
                 <div class="shop-accessory-icon">&#9881;</div>
                 <h3>Chain Lube</h3>
+            </a>
+            <a href="{{ base_path }}guides/tyre-inflator/index.html" class="shop-accessory-card">
+                <div class="shop-accessory-icon">&#127744;</div>
+                <h3>Tyre Inflator</h3>
             </a>
         </div>
     </div>
@@ -253,11 +233,11 @@
                 <h2 class="section-title">Trending Buying Guides</h2>
                 <p class="section-subtitle">In-depth, research-backed guides to help you choose the right products</p>
             </div>
-            <a href="{{ base_path }}best/helmet/index.html" class="section-link">All Buying Guides &rarr;</a>
+            <a href="{{ base_path }}guides/helmet/index.html" class="section-link">All Buying Guides &rarr;</a>
         </div>
         <div class="trending-guides-grid">
             {% for guide in trending_guides %}
-            <a href="{{ base_path }}best/{{ guide.slug }}/index.html" class="trending-guide-card">
+            <a href="{{ base_path }}guides/{{ guide.slug }}/index.html" class="trending-guide-card">
                 <div class="trending-guide-icon">{{ guide.icon | safe }}</div>
                 <h3>{{ guide.title }}</h3>
                 <p>{{ guide.description }}</p>
@@ -421,7 +401,7 @@
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-accordion-content" role="region">
-                    <p>For Indian roads, a full-face helmet from brands like SMK, Steelbird, or Axor is recommended. Look for ISI and DOT certification, proper ventilation, and a comfortable fit. Budget between Rs 3,000 to Rs 8,000 for a good helmet. Our <a href="{{ base_path }}best/helmet/index.html">best helmets guide</a> covers options for every budget.</p>
+                    <p>For Indian roads, a full-face helmet from brands like SMK, Steelbird, or Axor is recommended. Look for ISI and DOT certification, proper ventilation, and a comfortable fit. Budget between Rs 3,000 to Rs 8,000 for a good helmet. Our <a href="{{ base_path }}guides/helmet/index.html">best helmets guide</a> covers options for every budget.</p>
                 </div>
             </div>
             <div class="faq-accordion-item">
@@ -430,7 +410,7 @@
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-accordion-content" role="region">
-                    <p>The best engine oil depends on your motorcycle type and usage. Motul 7100 10W-50 is excellent for performance bikes, while Motul 3100 10W-40 suits commuter motorcycles. Always check your owner's manual for the recommended grade. See our <a href="{{ base_path }}best/engine-oil/index.html">best engine oil guide</a> for detailed recommendations.</p>
+                    <p>The best engine oil depends on your motorcycle type and usage. Motul 7100 10W-50 is excellent for performance bikes, while Motul 3100 10W-40 suits commuter motorcycles. Always check your owner's manual for the recommended grade. See our <a href="{{ base_path }}guides/engine-oil/index.html">best engine oil guide</a> for detailed recommendations.</p>
                 </div>
             </div>
             <div class="faq-accordion-item">
@@ -439,7 +419,7 @@
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-accordion-content" role="region">
-                    <p>Lubricate your chain every 500 km for city riding, or every 300 km during highway tours. Use a quality chain lube and always clean the chain before applying fresh lubricant. Check our <a href="{{ base_path }}best/chain-lube/index.html">best chain lubes</a> for top picks.</p>
+                    <p>Lubricate your chain every 500 km for city riding, or every 300 km during highway tours. Use a quality chain lube and always clean the chain before applying fresh lubricant. Check our <a href="{{ base_path }}guides/chain-lube/index.html">best chain lubes</a> for top picks.</p>
                 </div>
             </div>
             <div class="faq-accordion-item">
@@ -448,16 +428,7 @@
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-accordion-content" role="region">
-                    <p>The best phone mounts are vibration-free models from Bobo, Givi, or SP Connect. They protect your phone's camera from vibration damage while providing a secure hold on handlebars. Our <a href="{{ base_path }}best/phone-mount/index.html">best phone mounts guide</a> reviews all top options.</p>
-                </div>
-            </div>
-            <div class="faq-accordion-item">
-                <button class="faq-accordion-header" aria-expanded="false">
-                    Do I need a bike cover for my motorcycle?
-                    <span class="faq-toggle">+</span>
-                </button>
-                <div class="faq-accordion-content" role="region">
-                    <p>Yes, a waterproof bike cover protects against sun, rain, dust, and bird droppings. Look for covers with UV-resistant coating and proper ventilation to prevent moisture buildup. See our <a href="{{ base_path }}best/bike-cover/index.html">best bike covers</a> for recommendations.</p>
+                    <p>The best phone mounts are vibration-free models from Bobo, Givi, or SP Connect. They protect your phone's camera from vibration damage while providing a secure hold on handlebars. Our <a href="{{ base_path }}guides/phone-mount/index.html">best phone mounts guide</a> reviews all top options.</p>
                 </div>
             </div>
             <div class="faq-accordion-item">
@@ -466,7 +437,7 @@
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-accordion-content" role="region">
-                    <p>A portable digital tyre inflator is essential for emergency repairs. Look for models with digital gauges, LED lights, and 12V power compatibility. Inflate your tyres to the recommended PSI (typically 28-32 for rear, 22-25 for front). Our <a href="{{ base_path }}best/tyre-inflator/index.html">best tyre inflators guide</a> has you covered.</p>
+                    <p>A portable digital tyre inflator is essential for emergency repairs. Look for models with digital gauges, LED lights, and 12V power compatibility. Inflate your tyres to the recommended PSI (typically 28-32 for rear, 22-25 for front). Our <a href="{{ base_path }}guides/tyre-inflator/index.html">best tyre inflators guide</a> has you covered.</p>
                 </div>
             </div>
         </div>

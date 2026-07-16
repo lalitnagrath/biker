@@ -19,15 +19,19 @@
             <div class="bestof-hero-trust">
                 <span class="trust-badge">&#10003; Expert Tested</span>
                 <span class="trust-badge">Updated July 2026</span>
+                {% if products %}
                 <span class="trust-badge">{{ products | length }} Products Reviewed</span>
+                {% endif %}
             </div>
             <h1>{{ page_title }}</h1>
             <p class="bestof-hero-desc">{{ page_description }}</p>
+            {% if products %}
             <div class="bestof-hero-score">
                 <span class="bestof-hero-count">{{ products | length }} Products Tested</span>
                 <span class="bestof-hero-divider">&middot;</span>
                 <span class="bestof-hero-date">Last Updated: July 2026</span>
             </div>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -36,6 +40,7 @@
     <div class="container">
         <div class="bestof-layout">
             <div class="bestof-main">
+                {% if products %}
                 <div class="bestof-intro-editorial">
                     <h2>Our Top Picks at a Glance</h2>
                     <p>We've tested and reviewed {{ products | length }} {{ category | lower }} to help you find the perfect one. Our recommendations are based on quality, value, user reviews, and expert testing.</p>
@@ -142,23 +147,38 @@
                         <div class="faq-accordion-item">
                             <button class="faq-accordion-header">What is the best {{ category | lower }} for motorcycles? <span class="faq-toggle">+</span></button>
                             <div class="faq-accordion-content">
+                                {% if products %}
                                 <p>Based on our testing, the <strong>{{ products[0].title }}</strong> is our top recommendation for its excellent balance of quality, features, and value.</p>
+                                {% else %}
+                                <p>We are currently testing {{ category | lower }} products. Check back soon for our expert recommendations.</p>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="faq-accordion-item">
                             <button class="faq-accordion-header">How much should I spend on a {{ category | lower }}? <span class="faq-toggle">+</span></button>
                             <div class="faq-accordion-content">
-                                <p>For a good quality {{ category | lower }}, expect to spend between ₹500 to ₹5,000 depending on the brand and features. Budget options start around ₹300 while premium options can go up to ₹10,000.</p>
+                                <p>For a good quality {{ category | lower }}, expect to spend between &#8377;500 to &#8377;5,000 depending on the brand and features. Budget options start around &#8377;300 while premium options can go up to &#8377;10,000.</p>
                             </div>
                         </div>
                         <div class="faq-accordion-item">
                             <button class="faq-accordion-header">Which brand makes the best {{ category | lower }}? <span class="faq-toggle">+</span></button>
                             <div class="faq-accordion-content">
+                                {% if products %}
                                 <p>Top brands in this category include {% for p in products[:3] %}{{ p.brand }}{% if not loop.last %}, {% endif %}{% endfor %}. Each offers different strengths depending on your budget and requirements.</p>
+                                {% else %}
+                                <p>We are evaluating brands in this category. Our expert reviews will be available soon.</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </section>
+                {% else %}
+                <div class="bestof-empty-state" style="text-align:center;padding:3rem 1rem;">
+                    <h2>Guide Coming Soon</h2>
+                    <p>We are currently researching and testing {{ category | lower }} products for Indian motorcycles. Our expert recommendations will be available soon.</p>
+                    <p>In the meantime, <a href="{{ base_path }}categories/index.html">browse all available products</a> or <a href="{{ base_path }}motorcycles/index.html">find accessories for your motorcycle</a>.</p>
+                </div>
+                {% endif %}
             </div>
 
             <aside class="bestof-sidebar">
@@ -174,12 +194,11 @@
                     <div class="sidebar-card">
                         <h3>Related Rankings</h3>
                         <ul class="sidebar-links">
-                            <li><a href="{{ base_path }}best/helmet/index.html">Best Helmets</a></li>
-                            <li><a href="{{ base_path }}best/phone-mount/index.html">Best Phone Mounts</a></li>
-                            <li><a href="{{ base_path }}best/gloves/index.html">Best Riding Gloves</a></li>
-                            <li><a href="{{ base_path }}best/jacket/index.html">Best Riding Jackets</a></li>
-                            <li><a href="{{ base_path }}best/engine-oil/index.html">Best Engine Oil</a></li>
-                            <li><a href="{{ base_path }}best/chain-lube/index.html">Best Chain Lubes</a></li>
+                            <li><a href="{{ base_path }}guides/helmet/index.html">Best Helmets</a></li>
+                            <li><a href="{{ base_path }}guides/phone-mount/index.html">Best Phone Mounts</a></li>
+                            <li><a href="{{ base_path }}guides/engine-oil/index.html">Best Engine Oil</a></li>
+                            <li><a href="{{ base_path }}guides/chain-lube/index.html">Best Chain Lubes</a></li>
+                            <li><a href="{{ base_path }}guides/tyre-inflator/index.html">Best Tyre Inflators</a></li>
                         </ul>
                     </div>
                     <div class="sidebar-card sidebar-trust">

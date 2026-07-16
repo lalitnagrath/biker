@@ -17,7 +17,7 @@
     "brakes": "Disc (Front), Disc (Rear)",
     "suspension": "Telescopic (Front), Monoshock (Rear)",
     "tyres": "110/70-17 (Front), 140/70-17 (Rear)",
-    "description": "The Bajaj Dominar 250 is a purpose-built tourer designed for long-distance riding comfort. With its torquey engine, upright ergonomics, and wind protection, it is an excellent choice for riders who love exploring highways and mountain roads.",
+    "description": "The Dominar 250 is a proper tourer at a commuter price. It borrows heavily from the Dominar 400 — same chassis, similar ergonomics — but with a smaller, more economical engine. For riders who want to tour on a budget, this is one of the smartest choices in India.",
     "highlights": [
         "Perimeter frame for stability",
         "Liquid-cooled 249cc engine",
@@ -26,18 +26,18 @@
         "Slipper clutch"
     ],
     "pros": [
-        "Excellent highway stability",
-        "Comfortable long-distance ergonomics",
-        "Smooth and refined engine",
-        "Good braking performance",
-        "Feature-rich for the price"
+        "Highway stability is class-leading",
+        "Comfortable enough for 300+ km days",
+        "Refined engine with good mid-range",
+        "Dual-channel ABS as standard",
+        "Feature-packed for the price"
     ],
     "cons": [
-        "Heavy for city traffic",
-        "Slightly underpowered for aggressive touring",
-        "Middling ground clearance",
-        "Basic instrument cluster",
-        "Limited aftermarket parts"
+        "Heavy for city filtering",
+        "Needs aftermarket screen for serious touring",
+        "Ground clearance is tight on bad roads",
+        "Instrument cluster feels dated",
+        "Limited aftermarket support"
     ],
     "categories": [
         "Helmet",
@@ -107,25 +107,25 @@
         "buy_first": [
             "Helmet",
             "Crash Guard",
-            "Bike Cover"
+            "Phone Mount"
         ],
         "avoid": [
-            "Cheap helmet replicas",
-            "Non-ISI certified gear",
-            "Generic chain lubes"
+            "Cheap helmet replicas (non-certified)",
+            "Non-ISI certified riding gear",
+            "Generic chain lubes (cause chain wear)"
         ],
-        "oem_vs_aftermarket": "OEM parts fit perfectly but cost more. Aftermarket offers better value for non-critical accessories like phone mounts and bike covers.",
+        "oem_vs_aftermarket": "OEM accessories fit perfectly but cost more. For the Dominar 250, aftermarket offers good value for non-critical items like phone mounts and bike covers. For crash protection, go OEM or from a trusted brand.",
         "money_saving_tips": [
-            "Buy during festive season sales for best discounts",
-            "Bundle accessories from same brand for combo deals",
-            "Invest in quality safety gear - it lasts longer",
-            "Compare prices across Amazon and local dealers"
+            "Buy during festive season sales (Diwali, Republic Day) for 15-30% discounts",
+            "Start with essentials, add accessories as you identify actual needs",
+            "Check Amazon, Flipkart, and local dealers — prices vary significantly",
+            "Invest in quality riding gear — it protects you across every ride"
         ],
         "common_mistakes": [
             "Buying a cheap helmet to save money",
-            "Skipping crash guard - one tip-over can cost thousands",
-            "Using WD-40 as chain lube",
-            "Not checking compatibility before buying accessories"
+            "Skipping crash guard — one tip-over can cost thousands in repairs",
+            "Using WD-40 as chain lube — it is a cleaner, not a lubricant",
+            "Not reading the owner's manual for service intervals"
         ]
     }
 }
