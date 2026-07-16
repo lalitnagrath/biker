@@ -202,7 +202,7 @@
         </div>
         <div class="shop-accessory-grid">
             <a href="{{ base_path }}best/helmet/index.html" class="shop-accessory-card">
-                <div class="shop-accessory-icon">&#9937;</div>
+                <div class="shop-accessory-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 0 1 16 0"/><path d="M4 14c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M4 14v2a2 2 0 0 0 2 2h1"/><path d="M18 14c0 0 2 0 2 2v1"/><line x1="10" y1="18" x2="14" y2="18"/><path d="M6 10h12" stroke-dasharray="2 2"/></svg></div>
                 <h3>Helmets</h3>
             </a>
             <a href="{{ base_path }}best/phone-mount/index.html" class="shop-accessory-card">
@@ -258,7 +258,7 @@
         <div class="trending-guides-grid">
             {% for guide in trending_guides %}
             <a href="{{ base_path }}best/{{ guide.slug }}/index.html" class="trending-guide-card">
-                <div class="trending-guide-icon">{{ guide.icon }}</div>
+                <div class="trending-guide-icon">{{ guide.icon | safe }}</div>
                 <h3>{{ guide.title }}</h3>
                 <p>{{ guide.description }}</p>
                 <span class="trending-guide-cta">View Guide &rarr;</span>

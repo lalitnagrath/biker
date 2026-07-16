@@ -661,6 +661,71 @@ def recommend_sidebar_products(
     return []
 
 
+def filter_compatible_products(products: list, bike: dict) -> list:
+    """Return all products compatible with a motorcycle, sorted by ranking.
+
+    Returns a list of products with an added 'normalized_category' field.
+    Products are sorted by compatibility priority first, then ranking score.
+    This is the single entry point for motorcycle-specific product filtering.
+    """
+    matched = []
+    for product in products:
+        cp = compatibility_priority(product, bike)
+        if cp > 0:
+            product_copy = dict(product)
+            product_copy['normalized_category'] = normalize_category(
+                product.get('category', '')
+            )
+            matched.append((cp, product_copy))
+
+    matched.sort(key=lambda x: (x[0], -ranking_score(x[1], bike)))
+    return [item[1] for item in matched]
+
+
+def group_products_by_category(products: list) -> Dict[str, list]:
+    """Group products by their normalized category name.
+
+    Returns a dict mapping canonical category name to list of products.
+    """
+    categories: Dict[str, list] = defaultdict(list)
+    for product in products:
+        cat = normalize_category(product.get('category', 'Other'))
+        categories[cat].append(product)
+    return dict(categories)
+
+
+def count_products_by_category(products: list, category: str) -> int:
+    """Count how many products match a given category (normalized)."""
+    return len(find_products_by_category(products, category))
+
+
+def best_per_category(
+    products: list,
+    categories: list,
+    bike: Optional[dict] = None,
+) -> list:
+    """Return the single best product for each requested category.
+
+    Iterates *categories* in order, finds matching products via
+    find_products_by_category, ranks them, and returns the top one per
+    category. Categories with no matching products are skipped.
+    """
+    results = []
+    seen_cats = set()
+    for cat in categories:
+        normalized = normalize_category(cat).lower()
+        if normalized in seen_cats:
+            continue
+        matched = find_products_by_category(products, cat)
+        if not matched:
+            continue
+        scored = [(ranking_score(p, bike), p) for p in matched]
+        scored.sort(key=lambda x: x[0], reverse=True)
+        results.append(scored[0][1])
+        seen_cats.add(normalized)
+    return results
+
+
 # ===== 9. Validation & Reporting =====
 
 def validate_category_products(
