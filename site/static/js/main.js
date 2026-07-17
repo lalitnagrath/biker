@@ -788,54 +788,333 @@ document.querySelectorAll('.moto-sb-collapsible').forEach(header => {
 
     // ===== Recommendation badge assignment =====
     // Only assigns badges to compatible products. Never recommends incompatible products.
-    function assignRecBadges(bikeSlug) {
-        if (!bikeSlug) {
-            recBadges.forEach(function(b) { b.style.display = 'none'; b.textContent = ''; });
-            return;
+    // When no bike is selected, restores server-rendered badges from badgeData.
+    var quickPickCards = document.querySelectorAll('.guide-quick-card');
+    var recReasons = document.querySelectorAll('.guide-rec-reason');
+
+    // Client-side recommendation score (lightweight version of product_engine.recommendation_score)
+    function clientRecScore(slug, compatStatus) {
+        var card = null;
+        productCards.forEach(function(c) {
+            if (c.getAttribute('data-product-slug') === slug) card = c;
+        });
+        if (!card) return -1;
+
+        var scoreEl = card.querySelector('.score-number');
+        var editorRating = scoreEl ? parseFloat(scoreEl.textContent) || 0 : 0;
+        var ratingEl = card.querySelector('.rating-value');
+        var userRating = ratingEl ? parseFloat(ratingEl.textContent) || 0 : 0;
+        var reviewEl = card.querySelector('.review-count');
+        var reviews = reviewEl ? parseInt(reviewEl.textContent.replace(/[^\d]/g, '')) || 0 : 0;
+        var priceEl = card.querySelector('.bestof-product-price');
+        var price = priceEl ? parseInt(priceEl.textContent.replace(/[^\d]/g, '')) || 0 : 0;
+
+        // Value for money: quality / price
+        var vfm = 0;
+        if (price > 0) {
+            var quality = (userRating + editorRating / 2) / 2;
+            vfm = Math.min(1.0, quality / Math.max(price / 1000, 0.1) / 10);
         }
+
+        // Compatibility boost
+        var compatBoost = 0;
+        if (compatStatus === 'compatible') compatBoost = 1.0;
+        else if (compatStatus === 'universal') compatBoost = 0.8;
+
+        var score = 0;
+        score += 25.0 * (editorRating / 10);      // editor
+        score += 20.0 * vfm;                        // value
+        score += 15.0 * (userRating / 5);           // rating
+        score += 15.0 * Math.min(1, Math.log10(reviews + 1) / 5); // reviews
+        score += 15.0 * compatBoost;                // compatibility
+        score += 5.0 * (reviews > 100 ? 1 : 0.5);  // brand proxy
+        score += 5.0;                               // availability (assume available)
+        return score;
+    }
+
+    function generateReason(slug, badgeType) {
+        var card = null;
+        productCards.forEach(function(c) {
+            if (c.getAttribute('data-product-slug') === slug) card = c;
+        });
+        if (!card) return '';
+        var title = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
+        var ratingEl = card.querySelector('.rating-value');
+        var rating = ratingEl ? parseFloat(ratingEl.textContent) || 0 : 0;
+        var priceEl = card.querySelector('.bestof-product-price');
+        var price = priceEl ? priceEl.textContent.trim() : '';
+        var scoreEl = card.querySelector('.score-number');
+        var editor = scoreEl ? parseFloat(scoreEl.textContent) || 0 : 0;
+        var reviewEl = card.querySelector('.review-count');
+        var reviews = reviewEl ? parseInt(reviewEl.textContent.replace(/[^\d]/g, '')) || 0 : 0;
+
+        if (badgeType === 'editors_choice') {
+            return 'Highest recommendation with ' + editor + '/10 editor rating at ' + price;
+        }
+        if (badgeType === 'best_value') {
+            return 'Best quality-to-price ratio' + (rating >= 4 ? ', ' + rating + '/5 user rating' : '') + ' at ' + price;
+        }
+        if (badgeType === 'premium_pick') {
+            return 'Premium choice at ' + price + (editor >= 8 ? ', ' + editor + '/10 editor score' : '');
+        }
+        if (badgeType === 'most_popular') {
+            return 'Most reviewed with ' + reviews.toLocaleString() + ' reviews' + (rating >= 4 ? ', ' + rating + '/5 rating' : '');
+        }
+        return '';
+    }
+
+    function assignRecBadges(bikeSlug) {
+        var badgeData = config.badgeData || {};
         var compatMap = config.compatibilityMap || {};
 
-        // Collect compatible products with their scores
+        // When no bike selected: restore server-rendered badges
+        if (!bikeSlug) {
+            // Restore product card badges from server badgeData
+            recBadges.forEach(function(b) {
+                var slug = b.getAttribute('data-product-slug');
+                var info = badgeData[slug];
+                if (info && info.badge) {
+                    b.style.display = '';
+                    b.className = 'guide-rec-badge guide-rec-' + info.badge_type;
+                    b.textContent = info.icon + ' ' + info.badge;
+                } else {
+                    b.style.display = 'none';
+                    b.textContent = '';
+                }
+            });
+            // Restore quick pick cards from server badgeData
+            restoreQuickPicks(badgeData);
+            // Restore reason text
+            restoreReasons(badgeData);
+            return;
+        }
+
+        // When bike selected: recompute badges among compatible products only
         var compatible = [];
         productCards.forEach(function(card) {
             var slug = card.getAttribute('data-product-slug');
             if (!slug || !compatMap[slug]) return;
-            var status = compatMap[slug][bikeSlug];
-            if (!status || status.status === 'incompatible') return;
-            var scoreEl = card.querySelector('.score-number');
-            var score = scoreEl ? parseFloat(scoreEl.textContent) || 0 : 0;
-            var priceEl = card.querySelector('.bestof-product-price');
-            var price = priceEl ? parseInt(priceEl.textContent.replace(/[^\d]/g, '')) || 0 : 0;
-            compatible.push({ slug: slug, score: score, price: price });
+            var info = compatMap[slug][bikeSlug] || {};
+            var status = info.status || 'incompatible';
+            if (status === 'incompatible') return;
+            var score = clientRecScore(slug, status);
+            if (score < 0) return;
+            compatible.push({ slug: slug, score: score, status: status });
         });
 
-        // Sort by score desc for editor's choice, by price asc for best value, by price desc for premium
+        if (compatible.length === 0) {
+            recBadges.forEach(function(b) { b.style.display = 'none'; b.textContent = ''; });
+            clearQuickPicks();
+            clearReasons();
+            return;
+        }
+
+        // Sort by composite score for editor's choice
         var byScore = compatible.slice().sort(function(a, b) { return b.score - a.score; });
-        var byPriceAsc = compatible.slice().sort(function(a, b) { return a.price - b.price; });
-        var byPriceDesc = compatible.slice().sort(function(a, b) { return b.price - a.price; });
+        // Sort by value (score/price) for best value
+        var byValue = compatible.slice().sort(function(a, b) {
+            var aCard = getProductCard(a.slug);
+            var bCard = getProductCard(b.slug);
+            var aPrice = getCardPrice(aCard);
+            var bPrice = getCardPrice(bCard);
+            var aRatio = aPrice > 0 ? a.score / aPrice : 0;
+            var bRatio = bPrice > 0 ? b.score / bPrice : 0;
+            return bRatio - aRatio;
+        });
+        // Sort by reviews for most popular
+        var byPopularity = compatible.slice().sort(function(a, b) {
+            return getCardReviews(a.slug) - getCardReviews(b.slug);
+        }).reverse();
+        // Sort by price for premium
+        var byPrice = compatible.slice().sort(function(a, b) {
+            return getCardPrice(getProductCard(a.slug)) - getCardPrice(getProductCard(b.slug));
+        }).reverse();
 
-        var badges = {};
-        if (byScore.length > 0) badges[byScore[0].slug] = { type: 'editors', label: "Editor's Choice" };
-        if (byPriceAsc.length > 0) {
-            var bv = byPriceAsc[0];
-            if (!badges[bv.slug]) badges[bv.slug] = { type: 'value', label: 'Best Value' };
-        }
-        if (byPriceDesc.length > 0) {
-            var pp = byPriceDesc[0];
-            if (!badges[pp.slug]) badges[pp.slug] = { type: 'premium', label: 'Premium Pick' };
+        var newBadges = {};
+        var used = {};
+
+        function assign(badgeType, list) {
+            for (var i = 0; i < list.length; i++) {
+                if (!used[list[i].slug]) {
+                    used[list[i].slug] = true;
+                    newBadges[list[i].slug] = {
+                        type: badgeType,
+                        label: getBadgeLabel(badgeType),
+                        icon: getBadgeIcon(badgeType),
+                        reason: generateReason(list[i].slug, badgeType)
+                    };
+                    return;
+                }
+            }
         }
 
+        assign('editors_choice', byScore);
+        assign('best_value', byValue);
+        assign('most_popular', byPopularity);
+        assign('premium_pick', byPrice);
+
+        // Apply badges to product cards
         recBadges.forEach(function(b) {
             var slug = b.getAttribute('data-product-slug');
-            if (badges[slug]) {
+            if (newBadges[slug]) {
                 b.style.display = '';
-                b.className = 'guide-rec-badge guide-rec-' + badges[slug].type;
-                b.textContent = badges[slug].label;
+                b.className = 'guide-rec-badge guide-rec-' + newBadges[slug].type;
+                b.textContent = newBadges[slug].icon + ' ' + newBadges[slug].label;
             } else {
                 b.style.display = 'none';
                 b.textContent = '';
             }
         });
+
+        // Update quick pick cards
+        updateQuickPicks(newBadges);
+        // Update reason text
+        updateReasons(newBadges);
+    }
+
+    function getProductCard(slug) {
+        var found = null;
+        productCards.forEach(function(c) {
+            if (c.getAttribute('data-product-slug') === slug) found = c;
+        });
+        return found;
+    }
+    function getCardPrice(card) {
+        if (!card) return 0;
+        var el = card.querySelector('.bestof-product-price');
+        return el ? parseInt(el.textContent.replace(/[^\d]/g, '')) || 0 : 0;
+    }
+    function getCardReviews(slug) {
+        var card = getProductCard(slug);
+        if (!card) return 0;
+        var el = card.querySelector('.review-count');
+        return el ? parseInt(el.textContent.replace(/[^\d]/g, '')) || 0 : 0;
+    }
+    function getBadgeLabel(type) {
+        var labels = {
+            'editors_choice': "Editor's Choice",
+            'best_value': 'Best Value',
+            'premium_pick': 'Premium Pick',
+            'most_popular': 'Most Popular'
+        };
+        return labels[type] || type;
+    }
+    function getBadgeIcon(type) {
+        var icons = {
+            'editors_choice': '\uD83C\uDFC6',
+            'best_value': '\uD83D\uDCB0',
+            'premium_pick': '\u2B50',
+            'most_popular': '\uD83D\uDD25'
+        };
+        return icons[type] || '';
+    }
+
+    // Quick pick card helpers
+    function restoreQuickPicks(badgeData) {
+        var slots = ['editors_choice', 'best_value', 'premium_pick', 'most_popular'];
+        quickPickCards.forEach(function(card, idx) {
+            if (idx >= slots.length) return;
+            var slotType = slots[idx];
+            // Find the product that has this badge
+            var slug = null;
+            for (var s in badgeData) {
+                if (badgeData[s].badge_type === slotType) { slug = s; break; }
+            }
+            if (slug) {
+                card.style.display = '';
+                var info = badgeData[slug];
+                var badgeEl = card.querySelector('.guide-quick-badge');
+                if (badgeEl) {
+                    badgeEl.className = 'guide-quick-badge guide-quick-badge-' + slotType.replace('_', '-');
+                    badgeEl.innerHTML = info.icon + ' ' + info.badge;
+                }
+            }
+        });
+    }
+    function updateQuickPicks(newBadges) {
+        var slots = ['editors_choice', 'best_value', 'premium_pick', 'most_popular'];
+        quickPickCards.forEach(function(card, idx) {
+            if (idx >= slots.length) return;
+            var slotType = slots[idx];
+            var slug = null;
+            for (var s in newBadges) {
+                if (newBadges[s].type === slotType) { slug = s; break; }
+            }
+            if (slug) {
+                card.style.display = '';
+                var badgeEl = card.querySelector('.guide-quick-badge');
+                if (badgeEl) {
+                    badgeEl.className = 'guide-quick-badge guide-quick-badge-' + slotType.replace('_', '-');
+                    badgeEl.innerHTML = newBadges[slug].icon + ' ' + newBadges[slug].label;
+                }
+                // Update title link
+                var h3 = card.querySelector('h3');
+                if (h3) {
+                    var link = h3.querySelector('a');
+                    if (link) {
+                        var prodCard = getProductCard(slug);
+                        if (prodCard) {
+                            var origLink = prodCard.querySelector('h3 a');
+                            if (origLink) {
+                                link.href = origLink.href;
+                                link.textContent = origLink.textContent;
+                            }
+                        }
+                    }
+                }
+                // Update reason
+                var reasonEl = card.querySelector('.guide-quick-reason');
+                if (reasonEl) reasonEl.textContent = newBadges[slug].reason;
+                // Update price
+                var priceEl = card.querySelector('.guide-quick-price');
+                if (priceEl) {
+                    var prodCard = getProductCard(slug);
+                    if (prodCard) {
+                        var origPrice = prodCard.querySelector('.bestof-product-price');
+                        if (origPrice) priceEl.textContent = origPrice.textContent;
+                    }
+                }
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    function clearQuickPicks() {
+        quickPickCards.forEach(function(card) { card.style.display = 'none'; });
+    }
+
+    // Reason text helpers
+    function restoreReasons(badgeData) {
+        recReasons.forEach(function(el) {
+            var card = el.closest('.guide-product-card');
+            if (!card) return;
+            var slug = card.getAttribute('data-product-slug');
+            var info = badgeData[slug];
+            if (info && info.reason) {
+                el.style.display = '';
+                var textEl = el.querySelector('.guide-rec-reason-text');
+                if (textEl) textEl.textContent = 'Why we recommend: ' + info.reason;
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+    function updateReasons(newBadges) {
+        recReasons.forEach(function(el) {
+            var card = el.closest('.guide-product-card');
+            if (!card) return;
+            var slug = card.getAttribute('data-product-slug');
+            if (newBadges[slug]) {
+                el.style.display = '';
+                var textEl = el.querySelector('.guide-rec-reason-text');
+                if (textEl) textEl.textContent = 'Why we recommend: ' + newBadges[slug].reason;
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+    function clearReasons() {
+        recReasons.forEach(function(el) { el.style.display = 'none'; });
     }
 
     // ===== Main filter function =====
