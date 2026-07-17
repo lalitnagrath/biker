@@ -67,6 +67,100 @@ if (megaBrandLinks.length && megaModels) {
     });
 }
 
+// ===== Bike Garage Widget =====
+(function() {
+    if (typeof BikeGarage === 'undefined') return;
+
+    BikeGarage.init();
+
+    var btn = document.getElementById('garageBtn');
+    var dropdown = document.getElementById('garageDropdown');
+    var label = document.getElementById('garageBtnLabel');
+    var searchInput = document.getElementById('garageSearch');
+    var list = document.getElementById('garageDropdownList');
+    var clearBtn = document.getElementById('garageClearBtn');
+    var items = list ? list.querySelectorAll('.garage-dropdown-item') : [];
+
+    if (!btn || !dropdown) return;
+
+    function updateLabel() {
+        var slug = BikeGarage.get();
+        if (slug) {
+            var bike = BikeGarage.find(slug);
+            label.textContent = bike ? (bike.brand + ' ' + bike.model) : 'My Garage';
+            if (clearBtn) clearBtn.style.display = '';
+        } else {
+            label.textContent = 'My Garage';
+            if (clearBtn) clearBtn.style.display = 'none';
+        }
+    }
+
+    function highlightActive() {
+        var slug = BikeGarage.get();
+        for (var i = 0; i < items.length; i++) {
+            items[i].classList.toggle('active', items[i].getAttribute('data-slug') === slug);
+        }
+    }
+
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var open = dropdown.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) {
+            highlightActive();
+            if (searchInput) { searchInput.value = ''; searchInput.focus(); filterItems(''); }
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+            dropdown.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    if (searchInput) {
+        var debounce;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(debounce);
+            debounce = setTimeout(function() { filterItems(searchInput.value.toLowerCase().trim()); }, 100);
+        });
+    }
+
+    function filterItems(q) {
+        for (var i = 0; i < items.length; i++) {
+            var brand = (items[i].getAttribute('data-brand') || '').toLowerCase();
+            var model = (items[i].getAttribute('data-model') || '').toLowerCase();
+            items[i].style.display = (!q || brand.indexOf(q) !== -1 || model.indexOf(q) !== -1) ? '' : 'none';
+        }
+    }
+
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function() {
+            var slug = this.getAttribute('data-slug');
+            BikeGarage.save(slug);
+            dropdown.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            updateLabel();
+            highlightActive();
+        });
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            BikeGarage.clear();
+            dropdown.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            updateLabel();
+            highlightActive();
+        });
+    }
+
+    updateLabel();
+    highlightActive();
+    BikeGarage.onChange(function() { updateLabel(); highlightActive(); });
+})();
+
 // ===== Search =====
 const searchToggle = document.getElementById('searchToggle');
 const searchOverlay = document.getElementById('searchOverlay');
@@ -583,6 +677,38 @@ if (motoTocLinks.length > 0) {
     motoSections.forEach(section => motoObserver.observe(section));
 }
 
+// ===== Motorcycle Page Garage Button =====
+(function() {
+    if (typeof BikeGarage === 'undefined') return;
+    var btn = document.getElementById('motoGarageBtn');
+    if (!btn) return;
+    var slug = btn.getAttribute('data-slug');
+    var text = btn.querySelector('.moto-garage-btn-text');
+
+    function update() {
+        var current = BikeGarage.get();
+        if (current === slug) {
+            btn.classList.add('in-garage');
+            if (text) text.textContent = 'In My Garage';
+        } else {
+            btn.classList.remove('in-garage');
+            if (text) text.textContent = 'Add to My Garage';
+        }
+    }
+
+    btn.addEventListener('click', function() {
+        if (BikeGarage.get() === slug) {
+            BikeGarage.clear();
+        } else {
+            BikeGarage.save(slug);
+        }
+        update();
+    });
+
+    BikeGarage.onChange(function() { update(); });
+    update();
+})();
+
 // ===== Smooth Scroll =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -608,3 +734,361 @@ document.querySelectorAll('.moto-sb-collapsible').forEach(header => {
         }
     });
 });
+
+// ===== Guide Motorcycle Selector =====
+// BikeGarage persistence, compatibility filter, dynamic labels, recommendation badges
+(function() {
+    var config = window.__guideConfig;
+    if (!config) return;
+    if (typeof BikeGarage === 'undefined') return;
+
+    var select = document.getElementById('bikeSelect');
+    var clearBtn = document.getElementById('bikeClear');
+    var selectedInfo = document.getElementById('bikeSelectedInfo');
+    var selectedName = document.getElementById('bikeSelectedName');
+    var compatHeader = document.querySelector('.guide-compat-header');
+    var compatCells = document.querySelectorAll('.guide-compat-cell');
+    var compatBadges = document.querySelectorAll('.guide-compat-badge');
+    var compatBanners = document.querySelectorAll('.guide-compat-banner');
+    var recBadges = document.querySelectorAll('.guide-rec-badge');
+    var productCards = document.querySelectorAll('.guide-product-card');
+    var productRows = document.querySelectorAll('.guide-product-row');
+    var resultsHeading = document.getElementById('guideResultsHeading');
+    var resultsDesc = document.getElementById('guideResultsDesc');
+    var filterBar = document.getElementById('guideFilterBar');
+    var compatFilter = document.getElementById('compatOnlyFilter');
+    var filterCount = document.getElementById('filterCount');
+    var emptyState = document.getElementById('emptyCompatibleState');
+    var continueSubtitle = document.getElementById('continueSubtitle');
+    var continueLinks = document.querySelectorAll('.guide-continue-card');
+
+    if (!select) return;
+
+    // ===== URL param helpers =====
+    function getBikeParam() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('bike') || '';
+    }
+    function setBikeParam(slug) {
+        var url = new URL(window.location);
+        if (slug) {
+            url.searchParams.set('bike', slug);
+        } else {
+            url.searchParams.delete('bike');
+        }
+        window.history.replaceState({}, '', url);
+    }
+
+    function findBike(slug) {
+        for (var i = 0; i < config.motorcycles.length; i++) {
+            if (config.motorcycles[i].slug === slug) return config.motorcycles[i];
+        }
+        return null;
+    }
+
+    // ===== Recommendation badge assignment =====
+    // Only assigns badges to compatible products. Never recommends incompatible products.
+    function assignRecBadges(bikeSlug) {
+        if (!bikeSlug) {
+            recBadges.forEach(function(b) { b.style.display = 'none'; b.textContent = ''; });
+            return;
+        }
+        var compatMap = config.compatibilityMap || {};
+
+        // Collect compatible products with their scores
+        var compatible = [];
+        productCards.forEach(function(card) {
+            var slug = card.getAttribute('data-product-slug');
+            if (!slug || !compatMap[slug]) return;
+            var status = compatMap[slug][bikeSlug];
+            if (!status || status.status === 'incompatible') return;
+            var scoreEl = card.querySelector('.score-number');
+            var score = scoreEl ? parseFloat(scoreEl.textContent) || 0 : 0;
+            var priceEl = card.querySelector('.bestof-product-price');
+            var price = priceEl ? parseInt(priceEl.textContent.replace(/[^\d]/g, '')) || 0 : 0;
+            compatible.push({ slug: slug, score: score, price: price });
+        });
+
+        // Sort by score desc for editor's choice, by price asc for best value, by price desc for premium
+        var byScore = compatible.slice().sort(function(a, b) { return b.score - a.score; });
+        var byPriceAsc = compatible.slice().sort(function(a, b) { return a.price - b.price; });
+        var byPriceDesc = compatible.slice().sort(function(a, b) { return b.price - a.price; });
+
+        var badges = {};
+        if (byScore.length > 0) badges[byScore[0].slug] = { type: 'editors', label: "Editor's Choice" };
+        if (byPriceAsc.length > 0) {
+            var bv = byPriceAsc[0];
+            if (!badges[bv.slug]) badges[bv.slug] = { type: 'value', label: 'Best Value' };
+        }
+        if (byPriceDesc.length > 0) {
+            var pp = byPriceDesc[0];
+            if (!badges[pp.slug]) badges[pp.slug] = { type: 'premium', label: 'Premium Pick' };
+        }
+
+        recBadges.forEach(function(b) {
+            var slug = b.getAttribute('data-product-slug');
+            if (badges[slug]) {
+                b.style.display = '';
+                b.className = 'guide-rec-badge guide-rec-' + badges[slug].type;
+                b.textContent = badges[slug].label;
+            } else {
+                b.style.display = 'none';
+                b.textContent = '';
+            }
+        });
+    }
+
+    // ===== Main filter function =====
+    function applyFilter(bikeSlug) {
+        var compatMap = config.compatibilityMap || {};
+        var compatCount = 0;
+        var totalCount = productCards.length;
+        var onlyCompat = compatFilter && compatFilter.checked;
+        var bike = bikeSlug ? findBike(bikeSlug) : null;
+        var bikeName = bike ? bike.model : '';
+
+        // Update compat badges in comparison table
+        compatBadges.forEach(function(badge) {
+            var slug = badge.getAttribute('data-product-slug');
+            if (!slug || !bikeSlug || !compatMap[slug]) {
+                badge.textContent = '';
+                badge.className = 'guide-compat-badge';
+                return;
+            }
+            var info = compatMap[slug][bikeSlug] || {};
+            var status = info.status || 'incompatible';
+            badge.className = 'guide-compat-badge ' + status;
+            if (status === 'compatible') {
+                badge.innerHTML = '&#10003; Fits your ' + bikeName;
+                compatCount++;
+            } else if (status === 'universal') {
+                badge.innerHTML = '&#10003; Universal Fit';
+                compatCount++;
+            } else {
+                badge.innerHTML = '&#10007; Doesn\u2019t fit ' + bikeName;
+            }
+        });
+
+        // Update compat banners on product cards
+        var hiddenByFilter = 0;
+        compatBanners.forEach(function(banner) {
+            var slug = banner.getAttribute('data-product-slug');
+            if (!slug || !bikeSlug || !compatMap[slug]) {
+                banner.style.display = 'none';
+                banner.textContent = '';
+                banner.className = 'guide-compat-banner';
+                return;
+            }
+            var info = compatMap[slug][bikeSlug] || {};
+            var status = info.status || 'incompatible';
+            banner.className = 'guide-compat-banner ' + status;
+            banner.style.display = 'block';
+
+            var html = '';
+            if (status === 'compatible') {
+                html = '&#10003; Fits your ' + bikeName;
+            } else if (status === 'universal') {
+                html = '&#10003; Universal: Fits your ' + bikeName + ' and all motorcycles';
+            } else {
+                html = '&#10007; Doesn\u2019t fit ' + bikeName;
+            }
+
+            // Append fitment notes if present
+            var notes = info.fitment_notes;
+            var req = info.requires;
+            if (notes || (req && req.length > 0)) {
+                html += '<div class="guide-compat-details">';
+                if (notes) html += '<span class="guide-fitment-note">\u2022 ' + notes + '</span>';
+                if (req && req.length > 0) {
+                    req.forEach(function(r) { html += '<span class="guide-fitment-requires">\u2022 Requires: ' + r + '</span>'; });
+                }
+                html += '</div>';
+            }
+            banner.innerHTML = html;
+        });
+
+        // Show/hide compat columns in table
+        if (compatHeader) {
+            compatHeader.style.display = bikeSlug ? '' : 'none';
+        }
+        compatCells.forEach(function(cell) {
+            cell.style.display = bikeSlug ? '' : 'none';
+        });
+
+        // Dim or hide incompatible product cards and table rows
+        productCards.forEach(function(card) {
+            var slug = card.getAttribute('data-product-slug');
+            if (!slug || !bikeSlug || !compatMap[slug]) {
+                card.classList.remove('incompatible-dim');
+                card.classList.remove('incompatible-hide');
+                return;
+            }
+            var info = compatMap[slug][bikeSlug] || {};
+            var status = info.status || 'incompatible';
+            var isIncompatible = status === 'incompatible';
+            card.classList.toggle('incompatible-dim', isIncompatible && !onlyCompat);
+            card.classList.toggle('incompatible-hide', isIncompatible && onlyCompat);
+            if (isIncompatible && onlyCompat) hiddenByFilter++;
+        });
+        productRows.forEach(function(row) {
+            var slug = row.getAttribute('data-product-slug');
+            if (!slug || !bikeSlug || !compatMap[slug]) {
+                row.classList.remove('incompatible-dim');
+                row.classList.remove('incompatible-hide');
+                return;
+            }
+            var info = compatMap[slug][bikeSlug] || {};
+            var status = info.status || 'incompatible';
+            var isIncompatible = status === 'incompatible';
+            row.classList.toggle('incompatible-dim', isIncompatible && !onlyCompat);
+            row.classList.toggle('incompatible-hide', isIncompatible && onlyCompat);
+        });
+
+        // Show filter bar only when a bike is selected
+        if (filterBar) filterBar.style.display = bikeSlug ? 'flex' : 'none';
+
+        // Update filter count
+        if (filterCount && bikeSlug) {
+            if (onlyCompat) {
+                filterCount.textContent = 'Showing ' + compatCount + ' of ' + totalCount + ' products';
+            } else {
+                filterCount.textContent = totalCount + ' products (' + compatCount + ' compatible)';
+            }
+        }
+
+        // Show/hide empty state
+        if (emptyState) {
+            emptyState.style.display = (bikeSlug && compatCount === 0) ? 'block' : 'none';
+        }
+
+        // Update results heading
+        if (resultsHeading && bikeSlug) {
+            if (compatCount > 0) {
+                resultsHeading.textContent = compatCount + ' of ' + totalCount + ' products fit your ' + bikeName;
+                if (resultsDesc) {
+                    resultsDesc.textContent = 'Showing compatibility results for the ' + bike.brand + ' ' + bikeName + '. Compatible products are highlighted, incompatible products are dimmed.';
+                }
+            } else {
+                resultsHeading.textContent = 'No verified products for your ' + bikeName;
+                if (resultsDesc) {
+                    resultsDesc.textContent = 'We don\'t have verified compatibility data for ' + config.category.toLowerCase() + ' products with the ' + bike.brand + ' ' + bikeName + ' yet.';
+                }
+            }
+        } else if (resultsHeading) {
+            resultsHeading.textContent = 'Our Top Picks at a Glance';
+            if (resultsDesc) {
+                resultsDesc.textContent = 'We\'ve tested and reviewed ' + totalCount + ' ' + config.category.toLowerCase() + ' to help you find the perfect one. Our recommendations are based on quality, value, user reviews, and expert testing.';
+            }
+        }
+
+        // Update "Continue Shopping" subtitle
+        if (continueSubtitle && bikeSlug) {
+            continueSubtitle.textContent = 'More accessories for your ' + bikeName;
+        } else if (continueSubtitle) {
+            continueSubtitle.textContent = 'Explore more accessory guides';
+        }
+
+        // Update "Continue Shopping" links to preserve bike selection
+        continueLinks.forEach(function(link) {
+            var guideSlug = link.getAttribute('data-guide-slug');
+            if (guideSlug && config.baseUrl) {
+                var url = config.baseUrl + 'guides/' + guideSlug + '/index.html';
+                if (bikeSlug) url += '?bike=' + bikeSlug;
+                link.href = url;
+            }
+        });
+
+        // Assign recommendation badges
+        assignRecBadges(bikeSlug);
+    }
+
+    function showSelectedInfo(bikeSlug) {
+        if (!bikeSlug) {
+            selectedInfo.style.display = 'none';
+            clearBtn.style.display = 'none';
+            return;
+        }
+        var bike = findBike(bikeSlug);
+        if (bike) {
+            selectedName.textContent = bike.brand + ' ' + bike.model;
+            selectedInfo.style.display = 'flex';
+            clearBtn.style.display = '';
+        }
+    }
+
+    // ===== Initialize =====
+    // Priority: ?bike= param > BikeGarage > no selection
+    var urlBike = getBikeParam();
+    var initialBike = urlBike || BikeGarage.get();
+
+    if (initialBike && findBike(initialBike)) {
+        // If bike came from URL, save to garage
+        if (urlBike) BikeGarage.save(urlBike);
+
+        select.value = initialBike;
+        applyFilter(initialBike);
+        showSelectedInfo(initialBike);
+    }
+
+    // Listen for select changes
+    select.addEventListener('change', function() {
+        var slug = this.value;
+        if (slug) {
+            BikeGarage.save(slug);
+        } else {
+            BikeGarage.clear();
+        }
+        setBikeParam(slug);
+        applyFilter(slug);
+        showSelectedInfo(slug);
+    });
+
+    // Clear button
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            select.value = '';
+            BikeGarage.clear();
+            setBikeParam('');
+            applyFilter('');
+            showSelectedInfo('');
+        });
+    }
+
+    // Compatibility filter toggle
+    if (compatFilter) {
+        compatFilter.addEventListener('change', function() {
+            var urlBike = getBikeParam() || BikeGarage.get();
+            if (urlBike) applyFilter(urlBike);
+        });
+    }
+
+    // Empty state buttons
+    var showUniversalBtn = document.getElementById('showUniversalBtn');
+    var showAllBtn = document.getElementById('showAllBtn');
+    if (showUniversalBtn) {
+        showUniversalBtn.addEventListener('click', function() {
+            if (compatFilter) { compatFilter.checked = false; }
+            var urlBike = getBikeParam() || BikeGarage.get();
+            if (urlBike) applyFilter(urlBike);
+        });
+    }
+    if (showAllBtn) {
+        showAllBtn.addEventListener('click', function() {
+            select.value = '';
+            BikeGarage.clear();
+            setBikeParam('');
+            applyFilter('');
+            showSelectedInfo('');
+        });
+    }
+
+    // Sync with external garage changes (e.g. from header widget)
+    BikeGarage.onChange(function(slug) {
+        if (slug && findBike(slug)) {
+            select.value = slug;
+            setBikeParam(slug);
+            applyFilter(slug);
+            showSelectedInfo(slug);
+        }
+    });
+})();

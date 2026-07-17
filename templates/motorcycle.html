@@ -121,6 +121,9 @@
 
                 <div class="moto-hero-actions">
                     <a href="#must-have" class="btn btn-accent btn-lg">Must Have Accessories &darr;</a>
+                    <button class="btn btn-outline btn-lg moto-garage-btn" id="motoGarageBtn" data-slug="{{ motorcycle.slug }}">
+                        <span class="moto-garage-btn-text">Add to My Garage</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -441,7 +444,7 @@
                                     <strong>Solution:</strong> {{ problem.solution }}
                                 </div>
                                 {% if problem.product_category %}
-                                <a href="{{ category_to_guide_url(problem.product_category, base_path) }}" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
+                                <a href="{{ category_to_guide_url(problem.product_category, base_path, motorcycle.slug) }}" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -566,9 +569,9 @@
                             <h3 class="moto-sb-title"><span class="moto-sb-icon">&#128279;</span> Quick Links</h3>
                             <div class="moto-sb-links">
                                 <a href="{{ base_path }}categories/index.html" class="moto-sb-link">All Accessories</a>
-                                <a href="{{ base_path }}guides/helmet/index.html" class="moto-sb-link">Best Helmets</a>
-                                <a href="{{ base_path }}guides/phone-mount/index.html" class="moto-sb-link">Best Phone Mounts</a>
-                                <a href="{{ base_path }}guides/chain-lube/index.html" class="moto-sb-link">Best Chain Lube</a>
+                                <a href="{{ base_path }}guides/helmet/index.html?bike={{ motorcycle.slug }}" class="moto-sb-link">Best Helmets</a>
+                                <a href="{{ base_path }}guides/phone-mount/index.html?bike={{ motorcycle.slug }}" class="moto-sb-link">Best Phone Mounts</a>
+                                <a href="{{ base_path }}guides/chain-lube/index.html?bike={{ motorcycle.slug }}" class="moto-sb-link">Best Chain Lube</a>
                                 <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html" class="moto-sb-link">Chain Maintenance</a>
                             </div>
                         </div>

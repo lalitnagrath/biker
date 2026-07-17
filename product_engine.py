@@ -155,6 +155,15 @@ TRUSTED_BRANDS = {
 }
 
 
+def _filter_approved(products: list) -> list:
+    """Return only products with status 'approved' (or no status for legacy compat).
+
+    This is the single gatekeeper that ensures draft, hidden, out_of_stock,
+    and discontinued products never enter the recommendation pipeline.
+    """
+    return [p for p in products if p.get('status', 'approved') == 'approved']
+
+
 def preferred_price_range(category: str) -> Optional[Tuple[int, int]]:
     """Return the (min, max) preferred price band for a category, or None."""
     return CATEGORY_PRICE_RANGES.get(normalize_category(category).lower())
@@ -175,16 +184,20 @@ CATEGORY_GUIDE_SLUGS: Dict[str, str] = {
 }
 
 
-def category_to_guide_url(category: str, base_path: str = '') -> str:
+def category_to_guide_url(category: str, base_path: str = '', bike_slug: str = '') -> str:
     """Map a product category to its buying guide URL path.
 
     Returns a relative URL like 'guides/helmet/index.html'.
+    If bike_slug is provided, appends ?bike={slug} for motorcycle-aware filtering.
     If the category has no guide, returns '#' as a safe fallback.
     """
     normalized = normalize_category(category).lower()
     slug = CATEGORY_GUIDE_SLUGS.get(normalized, '')
     if slug:
-        return f'{base_path}guides/{slug}/index.html'
+        url = f'{base_path}guides/{slug}/index.html'
+        if bike_slug:
+            url += f'?bike={bike_slug}'
+        return url
     return '#'
 
 
@@ -366,6 +379,70 @@ def compatibility_priority(product: dict, bike: dict) -> int:
             break  # perfect match, no need to continue
 
     return priority
+
+
+def is_compatible_with_bike(product: dict, bike: dict) -> bool:
+    """Check if a product is compatible with a specific motorcycle.
+
+    Returns True if the product's compatible_bikes list matches the bike's
+    slug, brand, type, or is universal ("*").  Empty compatible_bikes
+    returns True as a permissive fallback.
+    """
+    cp = compatibility_priority(product, bike)
+    return cp > 0 or not product.get('compatible_bikes')
+
+
+def get_compatibility_label(product: dict, bike: dict) -> str:
+    """Return a human-readable compatibility status for a product and bike.
+
+    Returns one of:
+        'compatible'     - direct match (slug, brand, or type)
+        'universal'      - compatible with all bikes
+        'incompatible'   - not compatible
+    """
+    compat = product.get('compatible_bikes', [])
+    if not compat:
+        return 'compatible'
+
+    bike_slug = bike.get('slug', '').lower()
+    bike_brand = bike.get('brand', '').lower()
+    bike_type = bike.get('type', '').lower()
+
+    for entry in compat:
+        entry_lower = entry.lower()
+        if entry_lower == '*':
+            return 'universal'
+        if entry_lower.startswith('brand:') and entry_lower[6:] == bike_brand:
+            return 'compatible'
+        if entry_lower.startswith('type:') and entry_lower[5:] == bike_type:
+            return 'compatible'
+        if entry_lower == bike_slug:
+            return 'compatible'
+
+    return 'incompatible'
+
+
+def get_fitment_details(product: dict, bike: dict) -> dict:
+    """Return fitment metadata for a product-bike pair.
+
+    Returns a dict:
+        {
+            'status': 'compatible' | 'universal' | 'incompatible',
+            'fitment_notes': str or None,
+            'requires': [str, ...],
+        }
+
+    All fields are optional in the product JSON.  Missing fields return
+    safe defaults.  Never raises.
+    """
+    status = get_compatibility_label(product, bike)
+    fitment_notes = product.get('fitment_notes') or None
+    requires = product.get('requires') or []
+
+    if status == 'incompatible':
+        return {'status': status, 'fitment_notes': None, 'requires': []}
+
+    return {'status': status, 'fitment_notes': fitment_notes, 'requires': list(requires)}
 
 
 # ===== 3. Product Ranking / Scoring =====
@@ -598,6 +675,10 @@ def find_products_by_category(
 ) -> list:
     """Find ALL products matching a category.
 
+    Only products with status 'approved' (or no status for legacy compat)
+    are included. Draft, hidden, out_of_stock, and discontinued products
+    are excluded.
+
     Search order:
         1. Exact match on normalized category
         2. Case-insensitive substring match on category
@@ -605,6 +686,7 @@ def find_products_by_category(
 
     Returns unsorted list of matching products.
     """
+    products = _filter_approved(products)
     normalized = normalize_category(category)
 
     # 1. Exact normalized category match
@@ -913,6 +995,7 @@ def recommend_sidebar_products(
     should be hidden completely in that case.
     """
     candidates = []
+    products = _filter_approved(products)
 
     if bike is not None:
         # Motorcycle page: filter to compatible products, best per category
@@ -988,12 +1071,15 @@ def recommend_sidebar_products(
 
 
 def filter_compatible_products(products: list, bike: dict) -> list:
-    """Return all products compatible with a motorcycle, sorted by ranking.
+    """Return all compatible products for a motorcycle, sorted by ranking.
+
+    Only approved products are included.
 
     Returns a list of products with an added 'normalized_category' field.
     Products are sorted by compatibility priority first, then ranking score.
     This is the single entry point for motorcycle-specific product filtering.
     """
+    products = _filter_approved(products)
     matched = []
     for product in products:
         cp = compatibility_priority(product, bike)
@@ -1032,10 +1118,13 @@ def best_per_category(
 ) -> list:
     """Return the single best product for each requested category.
 
+    Only approved products are considered.
+
     Iterates *categories* in order, finds matching products via
     find_products_by_category, ranks them, and returns the top one per
     category. Categories with no matching products are skipped.
     """
+    products = _filter_approved(products)
     results = []
     seen_cats = set()
     for cat in categories:

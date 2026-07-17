@@ -40,10 +40,48 @@
     <div class="container">
         <div class="bestof-layout">
             <div class="bestof-main">
+
+                {# ===== MOTORCYCLE SELECTOR ===== #}
+                {% if motorcycles %}
+                <div class="guide-motorcycle-selector" id="bikeSelector">
+                    <div class="guide-selector-header">
+                        <span class="guide-selector-icon">&#128666;</span>
+                        <div class="guide-selector-text">
+                            <strong>Recommended for your Motorcycle</strong>
+                            <span class="guide-selector-hint">Select your bike to see compatible products and personalized rankings</span>
+                        </div>
+                    </div>
+                    <div class="guide-selector-controls">
+                        <select id="bikeSelect" class="guide-bike-select" aria-label="Select your motorcycle">
+                            <option value="">All Motorcycles</option>
+                            {% for bike in motorcycles %}
+                            <option value="{{ bike.slug }}" data-brand="{{ bike.brand }}">{{ bike.brand }} {{ bike.model }}</option>
+                            {% endfor %}
+                        </select>
+                        <button id="bikeClear" class="guide-bike-clear" style="display:none;" aria-label="Clear motorcycle selection">&#10005; Clear</button>
+                    </div>
+                    <div id="bikeSelectedInfo" class="guide-bike-selected-info" style="display:none;">
+                        <span class="guide-bike-selected-badge">&#128666; <strong id="bikeSelectedName"></strong></span>
+                        <a href="{{ base_path }}motorcycles/" class="guide-bike-change">Change Motorcycle</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {# ===== COMPATIBILITY FILTER ===== #}
+                {% if products %}
+                <div class="guide-filter-bar" id="guideFilterBar" style="display:none;">
+                    <label class="guide-filter-toggle">
+                        <input type="checkbox" id="compatOnlyFilter" class="guide-filter-checkbox">
+                        <span class="guide-filter-label">Show Compatible Products Only</span>
+                    </label>
+                    <span class="guide-filter-count" id="filterCount"></span>
+                </div>
+                {% endif %}
+
                 {% if products %}
                 <div class="bestof-intro-editorial">
-                    <h2>Our Top Picks at a Glance</h2>
-                    <p>We've tested and reviewed {{ products | length }} {{ category | lower }} to help you find the perfect one. Our recommendations are based on quality, value, user reviews, and expert testing.</p>
+                    <h2 id="guideResultsHeading">Our Top Picks at a Glance</h2>
+                    <p id="guideResultsDesc">We've tested and reviewed {{ products | length }} {{ category | lower }} to help you find the perfect one. Our recommendations are based on quality, value, user reviews, and expert testing.</p>
                 </div>
 
                 <div class="comparison-table-editorial">
@@ -52,6 +90,7 @@
                             <tr>
                                 <th class="rank-col">#</th>
                                 <th class="product-col">Product</th>
+                                <th class="compat-col guide-compat-header" style="display:none;">Compatibility</th>
                                 <th class="rating-col">Rating</th>
                                 <th class="bestfor-col">Best For</th>
                                 <th class="price-col">Price</th>
@@ -60,19 +99,22 @@
                         </thead>
                         <tbody>
                             {% for product in products %}
-                            <tr{% if loop.index == 1 %} class="top-pick"{% endif %}>
-                                <td class="rank-col"><span class="rank-badge {% if loop.index == 1 %}rank-gold{% elif loop.index == 2 %}rank-silver{% elif loop.index == 3 %}rank-bronze{% endif %}">{{ loop.index }}</span></td>
+                            <tr class="guide-product-row" data-product-slug="{{ product.slug }}">
+                                <td class="rank-col"><span class="rank-badge">{{ loop.index }}</span></td>
                                 <td class="product-col">
                                     <a href="{{ base_path }}products/{{ product.slug }}/index.html">
                                         <strong>{{ product.title }}</strong>
                                     </a>
+                                </td>
+                                <td class="compat-col guide-compat-cell" style="display:none;">
+                                    <span class="guide-compat-badge" data-product-slug="{{ product.slug }}"></span>
                                 </td>
                                 <td class="rating-col">
                                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                     <span>{{ product.rating }}</span>
                                 </td>
                                 <td class="bestfor-col">{% if loop.index == 1 %}Best Overall{% elif loop.index == 2 %}Runner Up{% elif loop.index == 3 %}Best Value{% else %}Alternative{% endif %}</td>
-                                <td class="price-col">₹{{ product.price | int }}</td>
+                                <td class="price-col">&#8377;{{ product.price | int }}</td>
                                 <td class="score-col"><span class="score-badge">{{ product.editor_rating }}</span>/10</td>
                             </tr>
                             {% endfor %}
@@ -80,14 +122,21 @@
                     </table>
                 </div>
 
-                {% for product in products %}
-                <div class="bestof-product-editorial {% if loop.index == 1 %}top-pick-editorial{% endif %}">
-                    {% if loop.index <= 3 %}
-                    <div class="bestof-product-rank">
-                        <span class="rank-number {% if loop.index == 1 %}rank-gold{% elif loop.index == 2 %}rank-silver{% else %}rank-bronze{% endif %}">#{{ loop.index }}</span>
-                        {% if loop.index == 1 %}<span class="rank-label">Top Pick</span>{% elif loop.index == 2 %}<span class="rank-label">Runner Up</span>{% else %}<span class="rank-label">Best Value</span>{% endif %}
+                {# ===== NO COMPATIBLE PRODUCTS EMPTY STATE (hidden by default, shown by JS) ===== #}
+                <div class="guide-empty-compatible" id="emptyCompatibleState" style="display:none;">
+                    <div class="guide-empty-icon">&#128666;</div>
+                    <h3>No products are currently verified for your motorcycle</h3>
+                    <p>We don't have verified compatibility data for this product category with your selected motorcycle yet.</p>
+                    <div class="guide-empty-actions">
+                        <button class="btn btn-outline" id="showUniversalBtn">View Universal Products</button>
+                        <button class="btn btn-outline" id="showAllBtn">View All Products</button>
                     </div>
-                    {% endif %}
+                </div>
+
+                {% for product in products %}
+                <div class="bestof-product-editorial guide-product-card" data-product-slug="{{ product.slug }}">
+                    <div class="guide-compat-banner" data-product-slug="{{ product.slug }}" style="display:none;"></div>
+                    <div class="guide-rec-badge" data-product-slug="{{ product.slug }}" style="display:none;"></div>
                     <div class="bestof-product-grid">
                         <div class="bestof-product-image">
                             {% if product.image and 'products/' in product.image %}
@@ -128,7 +177,7 @@
                                     <span class="score-number">{{ product.editor_rating }}</span>
                                     <span class="score-label">/10</span>
                                 </div>
-                                <div class="bestof-product-price">₹{{ product.price | int }}</div>
+                                <div class="bestof-product-price">&#8377;{{ product.price | int }}</div>
                                 <div class="bestof-product-actions">
                                     <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Full Review</a>
                                     {% if product.affiliate_url %}
@@ -172,8 +221,25 @@
                         </div>
                     </div>
                 </section>
+
+                {# ===== CONTINUE SHOPPING FOOTER NAV ===== #}
+                {% if guide_nav %}
+                <section class="guide-continue-shopping" id="continueShopping">
+                    <h2>Continue Shopping</h2>
+                    <p class="guide-continue-subtitle" id="continueSubtitle">Explore more accessory guides</p>
+                    <div class="guide-continue-grid">
+                        {% for nav in guide_nav %}
+                        <a href="{{ base_path }}guides/{{ nav.slug }}/index.html" class="guide-continue-card" data-guide-slug="{{ nav.slug }}">
+                            <span class="guide-continue-name">{{ nav.category }}</span>
+                            <span class="guide-continue-arrow">&rarr;</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+
                 {% else %}
-                <div class="bestof-empty-state" style="text-align:center;padding:3rem 1rem;">
+                <div class="bestof-empty-state">
                     <h2>Guide Coming Soon</h2>
                     <p>We are currently researching and testing {{ category | lower }} products for Indian motorcycles. Our expert recommendations will be available soon.</p>
                     <p>In the meantime, <a href="{{ base_path }}categories/index.html">browse all available products</a> or <a href="{{ base_path }}motorcycles/index.html">find accessories for your motorcycle</a>.</p>
@@ -215,4 +281,21 @@
         </div>
     </div>
 </section>
+
+{# ===== Embedded data for motorcycle-aware filtering ===== #}
+<script>
+(function() {
+    window.__guideConfig = {
+        category: {{ category | tojson }},
+        categorySlug: {{ category_slug | tojson }},
+        baseUrl: {{ base_path | tojson }},
+        compatibilityMap: {{ compatibility_map | tojson }},
+        motorcycles: [
+            {% for bike in motorcycles %}
+            { slug: {{ bike.slug | tojson }}, brand: {{ bike.brand | tojson }}, model: {{ bike.model | tojson }} }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
+    };
+})();
+</script>
 {% endblock %}

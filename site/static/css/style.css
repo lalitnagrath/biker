@@ -153,6 +153,34 @@ ul { list-style: none; }
 .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; width: 24px; }
 .mobile-menu-toggle span { height: 2px; background: var(--color-text); border-radius: 2px; transition: all var(--transition); }
 
+/* ===== Garage Widget ===== */
+.garage-widget { position: relative; }
+.garage-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 7px 10px; border-radius: var(--radius); color: var(--color-text-secondary); font-size: 0.85rem; font-weight: 500; font-family: inherit; white-space: nowrap; transition: all var(--transition); }
+.garage-btn:hover { background: var(--color-bg); color: var(--color-text); }
+.garage-btn-label { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.garage-dropdown { position: absolute; top: calc(100% + 8px); right: 0; width: 280px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 150; display: none; overflow: hidden; }
+.garage-dropdown.open { display: block; }
+.garage-dropdown-header { padding: 12px 16px 8px; border-bottom: 1px solid var(--color-border); }
+.garage-dropdown-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); }
+.garage-search-wrapper { padding: 8px 12px; }
+.garage-search { width: 100%; padding: 8px 12px; border: 1px solid var(--color-border); border-radius: var(--radius); font-size: 0.85rem; font-family: inherit; outline: none; background: var(--color-bg); }
+.garage-search:focus { border-color: var(--color-accent); }
+.garage-dropdown-list { max-height: 320px; overflow-y: auto; padding: 4px 0; }
+.garage-dropdown-item { display: flex; flex-direction: column; width: 100%; padding: 8px 16px; border: none; background: none; cursor: pointer; text-align: left; font-family: inherit; transition: background var(--transition); }
+.garage-dropdown-item:hover { background: var(--color-bg); }
+.garage-dropdown-item.active { background: rgba(var(--color-accent-rgb, 204, 102, 0), 0.08); }
+.garage-dropdown-item.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--color-accent); border-radius: 0 2px 2px 0; }
+.garage-dropdown-item { position: relative; }
+.garage-item-brand { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-text-muted); }
+.garage-item-model { font-size: 0.88rem; font-weight: 500; color: var(--color-text); }
+.garage-dropdown-footer { padding: 8px 12px; border-top: 1px solid var(--color-border); }
+.garage-clear-btn { width: 100%; padding: 6px; background: none; border: 1px solid var(--color-border); border-radius: var(--radius); font-size: 0.82rem; font-family: inherit; cursor: pointer; color: var(--color-text-muted); transition: all var(--transition); }
+.garage-clear-btn:hover { border-color: #c82828; color: #c82828; }
+
+/* ===== Motorcycle Page Garage Button ===== */
+.moto-garage-btn.in-garage { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+.moto-garage-btn.in-garage:hover { opacity: 0.9; }
+
 /* ===== Search Overlay ===== */
 .search-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); display: none; align-items: flex-start; justify-content: center; padding-top: 120px; }
 .search-overlay.active { display: flex; }
@@ -665,6 +693,8 @@ ul { list-style: none; }
     .main-nav.active ul { flex-direction: column; }
     .main-nav.active a { padding: 12px 16px; display: block; }
     .mobile-menu-toggle { display: flex; }
+    .garage-btn-label { display: none; }
+    .garage-dropdown { width: 260px; right: -10px; }
     .mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
     .mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -1396,6 +1426,300 @@ ul { list-style: none; }
     .popular-searches-list { justify-content: center; }
 }
 
+/* ===== Guide Motorcycle Selector ===== */
+.guide-motorcycle-selector {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    margin-bottom: 32px;
+}
+.guide-selector-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.guide-selector-icon { font-size: 1.5rem; }
+.guide-selector-text strong { display: block; font-size: 1.05rem; margin-bottom: 2px; }
+.guide-selector-hint { font-size: 0.85rem; color: var(--color-text-muted); }
+.guide-selector-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.guide-bike-select {
+    flex: 1;
+    max-width: 400px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+}
+.guide-bike-select:focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.guide-bike-clear {
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.guide-bike-clear:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.guide-bike-selected-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(34, 153, 68, 0.08);
+    border: 1px solid rgba(34, 153, 68, 0.2);
+    border-radius: var(--radius-md);
+}
+.guide-bike-selected-badge {
+    font-size: 0.9rem;
+    color: #229944;
+}
+.guide-bike-change {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+/* ===== Compatibility Badges ===== */
+.guide-compat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.guide-compat-badge.compatible {
+    background: rgba(34, 153, 68, 0.1);
+    color: #229944;
+    border: 1px solid rgba(34, 153, 68, 0.25);
+}
+.guide-compat-badge.universal {
+    background: rgba(52, 120, 204, 0.1);
+    color: #3478cc;
+    border: 1px solid rgba(52, 120, 204, 0.25);
+}
+.guide-compat-badge.incompatible {
+    background: rgba(200, 40, 40, 0.08);
+    color: #a04040;
+    border: 1px solid rgba(200, 40, 40, 0.2);
+}
+
+/* ===== Compatibility Banner on Product Cards ===== */
+.guide-compat-banner {
+    padding: 6px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.guide-compat-banner.compatible {
+    background: rgba(34, 153, 68, 0.06);
+    color: #229944;
+    border-bottom: 1px solid rgba(34, 153, 68, 0.15);
+}
+.guide-compat-banner.universal {
+    background: rgba(52, 120, 204, 0.06);
+    color: #3478cc;
+    border-bottom: 1px solid rgba(52, 120, 204, 0.15);
+}
+.guide-compat-banner.incompatible {
+    background: rgba(200, 40, 40, 0.04);
+    color: #a04040;
+    border-bottom: 1px solid rgba(200, 40, 40, 0.12);
+}
+
+/* ===== Filtered Product States ===== */
+.guide-product-card.incompatible-dim {
+    opacity: 0.45;
+}
+.guide-product-card.incompatible-hide,
+.guide-product-row.incompatible-hide {
+    display: none;
+}
+.guide-product-card.incompatible-dim .bestof-product-actions .btn {
+    pointer-events: none;
+}
+.guide-product-row.incompatible-dim td { opacity: 0.4; }
+.guide-results-count {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+}
+
+/* ===== Compatibility Filter Bar ===== */
+.guide-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    margin-bottom: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+.guide-filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+.guide-filter-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+.guide-filter-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+.guide-filter-count {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ===== Recommendation Badges ===== */
+.guide-rec-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 0 24px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+.guide-rec-editors {
+    background: linear-gradient(135deg, #f5c518, #e6a800);
+    color: #1a1a1a;
+}
+.guide-rec-value {
+    background: rgba(34, 153, 68, 0.12);
+    color: #1a7a32;
+    border: 1px solid rgba(34, 153, 68, 0.25);
+}
+.guide-rec-premium {
+    background: rgba(120, 60, 180, 0.1);
+    color: #6a2ea0;
+    border: 1px solid rgba(120, 60, 180, 0.2);
+}
+
+/* ===== Compatibility Banner Fitment Details ===== */
+.guide-compat-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.guide-fitment-note,
+.guide-fitment-requires {
+    font-size: 0.78rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+.guide-fitment-requires {
+    font-style: italic;
+}
+
+/* ===== Empty State ===== */
+.guide-empty-compatible {
+    text-align: center;
+    padding: 48px 24px;
+    margin: 24px 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+}
+.guide-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.4;
+}
+.guide-empty-compatible h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.guide-empty-compatible p {
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.guide-empty-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== Continue Shopping Footer Nav ===== */
+.guide-continue-shopping {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+}
+.guide-continue-shopping h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.guide-continue-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+}
+.guide-continue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+.guide-continue-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all var(--transition);
+}
+.guide-continue-card:hover {
+    border-color: var(--color-accent);
+    background: rgba(var(--color-accent-rgb, 204, 102, 0), 0.04);
+    transform: translateY(-1px);
+}
+.guide-continue-arrow {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+}
+}
+
 /* Responsive Updates */
 @media (max-width: 1024px) {
     .moto-hero-flex { flex-direction: column; }
@@ -1412,6 +1736,15 @@ ul { list-style: none; }
     .moto-hero-meta-badges { width: 100%; }
     .moto-accessory-nav-grid { grid-template-columns: repeat(2, 1fr); }
     .moto-must-have-picks { grid-template-columns: 1fr; }
+    .guide-selector-controls { flex-direction: column; align-items: stretch; }
+    .guide-bike-select { max-width: 100%; }
+    .guide-bike-selected-info { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .compat-col { display: none !important; }
+    .guide-filter-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .guide-filter-count { margin-left: 0; }
+    .guide-continue-grid { grid-template-columns: repeat(2, 1fr); }
+    .guide-rec-badge { margin: 0 16px; }
+    .guide-compat-banner { padding: 6px 16px; }
     .moto-setups-grid { grid-template-columns: 1fr; }
     .moto-specs-grid { grid-template-columns: repeat(2, 1fr); }
     .moto-running-costs-grid { grid-template-columns: 1fr; }

@@ -26,10 +26,17 @@ from datetime import datetime
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
+from product_library import (
+    load_products as load_product_library,
+    approved_products,
+)
 from product_engine import (
     normalize_category,
     categories_match,
     compatibility_priority,
+    is_compatible_with_bike,
+    get_compatibility_label,
+    get_fitment_details,
     ranking_score,
     enforce_brand_diversity,
     find_products_by_category,
@@ -46,6 +53,7 @@ from product_engine import (
     validate_category_products as _validate_category_products,
     validate_motorcycle_products as _validate_motorcycle_products,
     CATEGORY_KEYWORDS,
+    CATEGORY_GUIDE_SLUGS,
     VALID_CATEGORIES,
     MIN_PRODUCTS,
     PREFERRED_PRODUCTS,
@@ -135,15 +143,9 @@ def load_all_data():
             bike = load_json_file(f)
             data['motorcycles'].append(bike)
 
-    # Load products
+    # Load products via the product library (handles nested JSON + flattening)
     products_dir = DATA_DIR / 'products'
-    if products_dir.exists():
-        for f in sorted(products_dir.glob('*.json')):
-            products = load_json_file(f)
-            if isinstance(products, list):
-                data['products'].extend(products)
-            else:
-                data['products'].append(products)
+    data['products'] = load_product_library(products_dir)
 
     # Load bike models catalog (all motorcycles sold in India)
     bike_models_file = DATA_DIR / 'all-motorcycles-india.json'
@@ -762,6 +764,15 @@ class SiteGenerator:
             if b['name'] not in motorcycle_brand_names
         ][:15]
 
+        garage_bikes = []
+        for bike in self.data['motorcycles']:
+            garage_bikes.append({
+                'slug': bike.get('slug', ''),
+                'brand': bike.get('brand', ''),
+                'model': bike.get('model', ''),
+            })
+        garage_bikes.sort(key=lambda b: (b['brand'], b['model']))
+
         return {
             'brands': self.data['brands'],
             'motorcycles': self.data['motorcycles'],
@@ -769,6 +780,7 @@ class SiteGenerator:
             'nav_accessory_categories': accessory_nav_items,
             'nav_guide_categories': guide_categories,
             'nav_accessory_brands': accessory_brands,
+            'garage_bikes': garage_bikes,
             'meta_title': meta_title,
             'meta_description': meta_description,
             'canonical_url': canonical_url or self.base_url + '/',
@@ -1409,13 +1421,14 @@ class SiteGenerator:
                 'variants': bike.get('variants', []),
             }
 
-            # Quick Accessory Navigation
+            # Quick Accessory Navigation (links include ?bike= for deep-linking into guides)
+            bike_slug = bike['slug']
             context['accessory_nav'] = [
-                {'name': 'Helmet', 'icon': HELMET_ICON_SM, 'slug': 'helmet', 'guide_url': category_to_guide_url('Helmet', context['base_path'])},
-                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': 'phone-mount', 'guide_url': category_to_guide_url('Phone Mount', context['base_path'])},
-                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': 'engine-oil', 'guide_url': category_to_guide_url('Engine Oil', context['base_path'])},
-                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': 'chain-lube', 'guide_url': category_to_guide_url('Chain Lube', context['base_path'])},
-                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': 'tyre-inflator', 'guide_url': category_to_guide_url('Tyre Inflator', context['base_path'])},
+                {'name': 'Helmet', 'icon': HELMET_ICON_SM, 'slug': 'helmet', 'guide_url': category_to_guide_url('Helmet', context['base_path'], bike_slug)},
+                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': 'phone-mount', 'guide_url': category_to_guide_url('Phone Mount', context['base_path'], bike_slug)},
+                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': 'engine-oil', 'guide_url': category_to_guide_url('Engine Oil', context['base_path'], bike_slug)},
+                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': 'chain-lube', 'guide_url': category_to_guide_url('Chain Lube', context['base_path'], bike_slug)},
+                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': 'tyre-inflator', 'guide_url': category_to_guide_url('Tyre Inflator', context['base_path'], bike_slug)},
             ]
 
             # Must Have Accessories with budget/best picks per category
@@ -1432,7 +1445,7 @@ class SiteGenerator:
                         'budget_pick': rec['budget_pick'],
                         'best_pick': rec['editors_choice'],
                         'count': rec['count'],
-                        'guide_url': category_to_guide_url(cat, context['base_path']),
+                        'guide_url': category_to_guide_url(cat, context['base_path'], bike_slug),
                     })
                     if rec['budget_pick']:
                         seen_slugs.add(rec['budget_pick']['slug'])
@@ -1644,7 +1657,15 @@ class SiteGenerator:
             self.write_page(f'categories/{slug}/index.html', content)
 
     def generate_bestof_pages(self):
-        """Generate 'Best of' category pages for SEO."""
+        """Generate 'Best of' category pages for SEO.
+
+        Each guide page is motorcycle-aware:
+        - Passes all motorcycles for the selector dropdown
+        - Embeds compatibility + fitment data so JS can filter/highlight
+        - Assigns recommendation badges (editor's choice, best value, etc.)
+        - Provides guide navigation links that preserve bike selection
+        - Supports ?bike= query param for direct deep-links from motorcycle pages
+        """
         bestof_pages = [
             {'slug': 'helmet', 'category': 'Helmet', 'title': 'Best Helmets', 'description': 'Find the best motorcycle helmets in India. Expert reviews, safety ratings, and buying recommendations for every budget.'},
             {'slug': 'phone-mount', 'category': 'Phone Mount', 'title': 'Best Phone Mounts', 'description': 'Top-rated motorcycle phone mounts and holders. vibration-free, secure, and easy to use options reviewed.'},
@@ -1654,12 +1675,17 @@ class SiteGenerator:
             {'slug': 'tyre-inflator', 'category': 'Tyre Inflator', 'title': 'Best Tyre Inflators', 'description': 'Best portable tyre inflators and air compressors for motorcycles. Digital and analog options reviewed.'},
         ]
 
+        # Build guide navigation list (used in footer "Continue Shopping" section)
+        guide_nav = [
+            {'slug': s, 'category': p['category'], 'title': p['title']}
+            for p in bestof_pages
+            for s in [p['slug']]
+        ]
+
         for page in bestof_pages:
             category = page['category']
-            # Use recommend_products from product_engine — single source of truth
-            # Handles: search, scoring, brand diversity, count management, fallbacks
             cat_products = recommend_products(self.data['products'], category)
-            
+
             context = self.build_base_context(
                 meta_title=f"{page['title']} - {page['description'][:50]} | BikeReview India",
                 meta_description=page['description'],
@@ -1675,6 +1701,30 @@ class SiteGenerator:
                 {'name': 'Guides', 'url': f'{self.base_url}/guides/'},
                 {'name': page['title']},
             ]
+
+            # Guide navigation for footer (all guides, excluding current)
+            context['guide_nav'] = [
+                g for g in guide_nav if g['slug'] != page['slug']
+            ]
+
+            # Pass motorcycles for the selector dropdown (sorted by popularity)
+            context['motorcycles'] = sorted(
+                self.data['motorcycles'],
+                key=lambda m: m.get('price_numeric', 0),
+                reverse=True,
+            )
+
+            # Build enhanced compatibility map with fitment details
+            # {product_slug: {bike_slug: {status, fitment_notes, requires}}}
+            compat_map = {}
+            for product in cat_products:
+                p_slug = product.get('slug', '')
+                bike_compat = {}
+                for bike in self.data['motorcycles']:
+                    details = get_fitment_details(product, bike)
+                    bike_compat[bike['slug']] = details
+                compat_map[p_slug] = bike_compat
+            context['compatibility_map'] = compat_map
 
             content = self.render_template('bestof.html', context)
             self.write_page(f'guides/{page["slug"]}/index.html', content)
@@ -2110,7 +2160,8 @@ Sitemap: {self.base_url}/sitemap.xml
         print(f"    * {len(self.categories) + 1} category pages")
 
         self.generate_bestof_pages()
-        print("    * 8 best-of pages")
+        from product_engine import CATEGORY_GUIDE_SLUGS
+        print(f"    * {len(CATEGORY_GUIDE_SLUGS)} best-of guide pages")
 
         self.generate_article_pages()
         print(f"    * {len(self.data['articles'])} article pages")
@@ -2193,10 +2244,10 @@ Sitemap: {self.base_url}/sitemap.xml
             page_path = self.output_dir / f'guides/{slug}/index.html'
             if page_path.exists():
                 guide_generated.append((cat_name, slug))
-                print(f"    ✓ {cat_name.title():20s} guides/{slug}/index.html")
+                print(f"    [OK] {cat_name.title():20s} guides/{slug}/index.html")
             else:
                 guide_missing.append((cat_name, slug))
-                print(f"    ✗ {cat_name.title():20s} guides/{slug}/index.html  MISSING")
+                print(f"    [!!] {cat_name.title():20s} guides/{slug}/index.html  MISSING")
 
         if guide_missing:
             print(f"\n    WARNING: {len(guide_missing)} guide pages linked but not generated!")
@@ -2239,8 +2290,8 @@ Sitemap: {self.base_url}/sitemap.xml
                     href = href[2:]
                 if href.startswith('/'):
                     href = href[1:]
-                # Strip anchor
-                href = href.split('#')[0]
+                # Strip anchor and query params
+                href = href.split('#')[0].split('?')[0]
                 if not href:
                     continue
                 # Check if the target file exists
@@ -2257,13 +2308,13 @@ Sitemap: {self.base_url}/sitemap.xml
                 print(f"      ... and {len(broken_links) - 20} more")
             print()
         else:
-            print(f"    ✓ All {scanned} internal links validated across {len(generated_files)} files")
+            print(f"    [OK] All {scanned} internal links validated across {len(generated_files)} files")
             print()
 
         if broken_links or guide_missing:
-            print(f"  ⚠ BUILD HAS ISSUES: {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
+            print(f"  [WARNING] {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
         else:
-            print("  ✓ All links validated successfully")
+            print("  [OK] All links validated successfully")
         
         print(f"\n{'='*60}")
         print(f"  Generation complete!")

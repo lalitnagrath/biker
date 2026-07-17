@@ -1,77 +1,141 @@
 [
     {
+        "asin": "B00C72MCUU",
         "slug": "motul-7100-10w40",
         "title": "Motul 7100 4T Fully Synthetic Engine Oil 10W-40",
         "brand": "Motul",
         "category": "Engine Oil",
         "type": "Fully Synthetic",
-        "asin": "B00C72MCUU",
-        "rating": 4.5,
-        "reviews": 9585,
-        "price": 764,
-        "affiliate_url": "https://www.amazon.in/dp/B00C72MCUU?tag=0x23uyx-21",
-        "image": "images/products/motul-7100-10w40.jpg",
+        "status": "approved",
+
+        "editorial": {
+            "score": 90,
+            "pros": ["100% synthetic with ester technology", "API SN + JASO MA2 certified", "Smooth gear shifting", "Excellent engine protection"],
+            "cons": ["Higher price than mineral oils", "May not suit older engines"],
+            "features": ["Ester technology", "API SN certified", "JASO MA2 certified", "10W-40 viscosity"],
+            "fitment_notes": "Universal - suitable for all 4-stroke motorcycles requiring 10W-40",
+            "recommended_for": ["performance", "touring", "track"],
+            "notes": "Gold standard for synthetic motorcycle oil in India"
+        },
+
+        "amazon": {
+            "price": 764,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.5,
+            "review_count": 9585,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B00C72MCUU?tag=0x23uyx-21",
+            "image": "images/products/motul-7100-10w40.jpg",
+            "last_updated": null
+        },
+
         "compatible_bikes": ["*"],
-        "pros": ["100% synthetic with ester technology", "API SN + JASO MA2 certified", "Smooth gear shifting", "Excellent engine protection"],
-        "cons": ["Higher price than mineral oils", "May not suit older engines"],
-        "editor_rating": 9.0,
         "best_for": "Performance-oriented riders wanting premium synthetic engine oil",
         "verdict": "Motul 7100 is the gold standard for fully synthetic motorcycle engine oil in India, offering ester-based technology for superior protection and performance."
     },
     {
+        "asin": "B01IDHDF1C",
         "slug": "motul-3100-10w30",
         "title": "Motul 3100 4T Gold Semi Synthetic Engine Oil 10W-30",
         "brand": "Motul",
         "category": "Engine Oil",
         "type": "Semi Synthetic",
-        "asin": "B01IDHDF1C",
-        "rating": 4.3,
-        "reviews": 5200,
-        "price": 520,
-        "affiliate_url": "https://www.amazon.in/dp/B01IDHDF1C?tag=0x23uyx-21",
-        "image": "images/products/motul-3100-10w30.jpg",
+        "status": "approved",
+
+        "editorial": {
+            "score": 80,
+            "pros": ["Good balance of price and performance", "API SL certified", "Smooth engine operation", "Made in India"],
+            "cons": ["Not fully synthetic", "Shorter drain interval than 7100"],
+            "features": ["Semi-synthetic", "API SL certified", "10W-30 viscosity", "Made in India"],
+            "fitment_notes": "Universal - suitable for all 4-stroke motorcycles requiring 10W-30",
+            "recommended_for": ["daily-commute", "budget"],
+            "notes": "Best value semi-synthetic for everyday riding"
+        },
+
+        "amazon": {
+            "price": 520,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.3,
+            "review_count": 5200,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B01IDHDF1C?tag=0x23uyx-21",
+            "image": "images/products/motul-3100-10w30.jpg",
+            "last_updated": null
+        },
+
         "compatible_bikes": ["*"],
-        "pros": ["Good balance of price and performance", "API SL certified", "Smooth engine operation", "Made in India"],
-        "cons": ["Not fully synthetic", "Shorter drain interval than 7100"],
-        "editor_rating": 8.0,
         "best_for": "Daily commuters wanting reliable semi-synthetic engine oil",
         "verdict": "Motul 3100 4T Gold offers excellent value as a semi-synthetic option with API SL certification for reliable everyday protection."
     },
     {
+        "asin": "B01ESPB2VI",
         "slug": "motul-c2-chain-lube",
         "title": "Motul C2 Chain Lube 150ml",
         "brand": "Motul",
         "category": "Chain Lube",
         "type": "Spray",
-        "asin": "B01ESPB2VI",
-        "rating": 4.4,
-        "reviews": 8900,
-        "price": 229,
-        "affiliate_url": "https://www.amazon.in/dp/B01ESPB2VI?tag=0x23uyx-21",
-        "image": "images/products/motul-c2-chain-lube.jpg",
+        "status": "approved",
+
+        "editorial": {
+            "score": 85,
+            "pros": ["Works on O-Ring/X-Ring/Z-Ring chains", "Weather and water resistant", "Reduces friction", "Easy spray application"],
+            "cons": ["150ml lasts about 3-4 applications", "Can attract dust in dusty conditions"],
+            "features": ["O/X/Z-Ring compatible", "Weather resistant", "Spray application", "150ml can"],
+            "fitment_notes": "Universal - works with all chain types",
+            "recommended_for": ["maintenance", "all-riders"],
+            "notes": "India's most popular chain lube"
+        },
+
+        "amazon": {
+            "price": 229,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.4,
+            "review_count": 8900,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B01ESPB2VI?tag=0x23uyx-21",
+            "image": "images/products/motul-c2-chain-lube.jpg",
+            "last_updated": null
+        },
+
         "compatible_bikes": ["*"],
-        "pros": ["Works on O-Ring/X-Ring/Z-Ring chains", "Weather and water resistant", "Reduces friction", "Easy spray application"],
-        "cons": ["150ml lasts about 3-4 applications", "Can attract dust in dusty conditions"],
-        "editor_rating": 8.5,
         "best_for": "All riders needing reliable chain lubrication",
         "verdict": "Motul C2 is India's most popular chain lube, compatible with all chain types and providing excellent weather resistance."
     },
     {
+        "asin": "B0077ASLCU",
         "slug": "motul-c1-chain-cleaner",
         "title": "Motul C1 Chain Cleaner 400ml",
         "brand": "Motul",
         "category": "Chain Cleaner",
         "type": "Spray",
-        "asin": "B0077ASLCU",
-        "rating": 4.4,
-        "reviews": 6890,
-        "price": 420,
-        "affiliate_url": "https://www.amazon.in/dp/B0077ASLCU?tag=0x23uyx-21",
-        "image": "images/products/motul-c1-chain-cleaner.jpg",
+        "status": "approved",
+
+        "editorial": {
+            "score": 85,
+            "pros": ["Powerful degreasing action", "Safe for O-Ring chains", "Fast-acting formula", "400ml bottle"],
+            "cons": ["Strong chemical smell", "Needs proper ventilation during use"],
+            "features": ["Powerful degreaser", "O-Ring safe", "Fast-acting", "400ml bottle"],
+            "fitment_notes": "Universal - safe for all motorcycle chains",
+            "recommended_for": ["maintenance", "deep-clean"],
+            "notes": "Go-to chain cleaner for deep cleaning"
+        },
+
+        "amazon": {
+            "price": 420,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.4,
+            "review_count": 6890,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B0077ASLCU?tag=0x23uyx-21",
+            "image": "images/products/motul-c1-chain-cleaner.jpg",
+            "last_updated": null
+        },
+
         "compatible_bikes": ["*"],
-        "pros": ["Powerful degreasing action", "Safe for O-Ring chains", "Fast-acting formula", "400ml bottle"],
-        "cons": ["Strong chemical smell", "Needs proper ventilation during use"],
-        "editor_rating": 8.5,
         "best_for": "Riders doing thorough chain maintenance",
         "verdict": "Motul C1 is the go-to chain cleaner for deep cleaning motorcycle chains, effectively removing old lube, dirt, and grime."
     }
