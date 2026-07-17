@@ -1517,6 +1517,325 @@ class SiteGenerator:
                 {'interval': '12,000 km', 'task': 'Brake Inspection', 'description': 'Brake pad replacement, fork oil change'},
             ]
 
+            # Build recommended products for ownership hub
+            # Use the exact same structure as motorcycle.html
+            recommended_products = {}
+            
+            # Get picks for each category
+            engine_oil_rec = recommend_for_category(matched, 'Engine Oil', bike)
+            bike_cover_rec = recommend_for_category(matched, 'Bike Cover', bike)
+            phone_mount_rec = recommend_for_category(matched, 'Phone Mount', bike)
+            helmet_rec = recommend_for_category(matched, 'Helmet', bike)
+            
+            # Maintenance Essentials
+            if engine_oil_rec.get('editors_choice') or engine_oil_rec.get('best_value') or engine_oil_rec.get('premium_pick'):
+                recommended_products['maintenance_essentials'] = {}
+                if engine_oil_rec.get('editors_choice'):
+                    recommended_products['maintenance_essentials']['editor_choice'] = {
+                        'image': engine_oil_rec['editors_choice'].get('image', ''),
+                        'name': engine_oil_rec['editors_choice'].get('title', ''),
+                        'rating': engine_oil_rec['editors_choice'].get('rating', 0),
+                        'price': engine_oil_rec['editors_choice'].get('price', 0),
+                        'summary': engine_oil_rec['editors_choice'].get('verdict', ''),
+                        'url': '',
+                    }
+                if engine_oil_rec.get('best_value'):
+                    recommended_products['maintenance_essentials']['best_value'] = {
+                        'image': engine_oil_rec['best_value'].get('image', ''),
+                        'name': engine_oil_rec['best_value'].get('title', ''),
+                        'rating': engine_oil_rec['best_value'].get('rating', 0),
+                        'price': engine_oil_rec['best_value'].get('price', 0),
+                        'summary': engine_oil_rec['best_value'].get('verdict', ''),
+                        'url': '',
+                    }
+                if engine_oil_rec.get('premium_pick'):
+                    recommended_products['maintenance_essentials']['premium_pick'] = {
+                        'image': engine_oil_rec['premium_pick'].get('image', ''),
+                        'name': engine_oil_rec['premium_pick'].get('title', ''),
+                        'rating': engine_oil_rec['premium_pick'].get('rating', 0),
+                        'price': engine_oil_rec['premium_pick'].get('price', 0),
+                        'summary': engine_oil_rec['premium_pick'].get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Protection
+            if bike_cover_rec.get('editors_choice') or bike_cover_rec.get('best_value'):
+                recommended_products['protection'] = {}
+                if bike_cover_rec.get('editors_choice'):
+                    recommended_products['protection']['editor_choice'] = {
+                        'image': bike_cover_rec['editors_choice'].get('image', ''),
+                        'name': bike_cover_rec['editors_choice'].get('title', ''),
+                        'rating': bike_cover_rec['editors_choice'].get('rating', 0),
+                        'price': bike_cover_rec['editors_choice'].get('price', 0),
+                        'summary': bike_cover_rec['editors_choice'].get('verdict', ''),
+                        'url': '',
+                    }
+                if bike_cover_rec.get('best_value'):
+                    recommended_products['protection']['best_value'] = {
+                        'image': bike_cover_rec['best_value'].get('image', ''),
+                        'name': bike_cover_rec['best_value'].get('title', ''),
+                        'rating': bike_cover_rec['best_value'].get('rating', 0),
+                        'price': bike_cover_rec['best_value'].get('price', 0),
+                        'summary': bike_cover_rec['best_value'].get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Daily Riding
+            if phone_mount_rec.get('editors_choice') or phone_mount_rec.get('best_value') or phone_mount_rec.get('premium_pick'):
+                recommended_products['daily_riding'] = {}
+                if phone_mount_rec.get('editors_choice'):
+                    recommended_products['daily_riding']['editor_choice'] = {
+                        'image': phone_mount_rec['editors_choice'].get('image', ''),
+                        'name': phone_mount_rec['editors_choice'].get('title', ''),
+                        'rating': phone_mount_rec['editors_choice'].get('rating', 0),
+                        'price': phone_mount_rec['editors_choice'].get('price', 0),
+                        'summary': phone_mount_rec['editors_choice'].get('verdict', ''),
+                        'url': '',
+                    }
+                if phone_mount_rec.get('best_value'):
+                    recommended_products['daily_riding']['best_value'] = {
+                        'image': phone_mount_rec['best_value'].get('image', ''),
+                        'name': phone_mount_rec['best_value'].get('title', ''),
+                        'rating': phone_mount_rec['best_value'].get('rating', 0),
+                        'price': phone_mount_rec['best_value'].get('price', 0),
+                        'summary': phone_mount_rec['best_value'].get('verdict', ''),
+                        'url': '',
+                    }
+                if phone_mount_rec.get('premium_pick'):
+                    recommended_products['daily_riding']['premium_pick'] = {
+                        'image': phone_mount_rec['premium_pick'].get('image', ''),
+                        'name': phone_mount_rec['premium_pick'].get('title', ''),
+                        'rating': phone_mount_rec['premium_pick'].get('rating', 0),
+                        'price': phone_mount_rec['premium_pick'].get('price', 0),
+                        'summary': phone_mount_rec['premium_pick'].get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Riding Gear
+            if helmet_rec.get('editors_choice') or helmet_rec.get('best_value') or helmet_rec.get('premium_pick'):
+                recommended_products['riding_gear'] = {}
+                if helmet_rec.get('editors_choice'):
+                    recommended_products['riding_gear']['editor_choice'] = {
+                        'image': helmet_rec['editors_choice'].get('image', ''),
+                        'name': helmet_rec['editors_choice'].get('title', ''),
+                        'rating': helmet_rec['editors_choice'].get('rating', 0),
+                        'price': helmet_rec['editors_choice'].get('price', 0),
+                        'summary': helmet_rec['editors_choice'].get('verdict', ''),
+                        'url': '',
+                    }
+                if helmet_rec.get('best_value'):
+                    recommended_products['riding_gear']['best_value'] = {
+                        'image': helmet_rec['best_value'].get('image', ''),
+                        'name': helmet_rec['best_value'].get('title', ''),
+                        'rating': helmet_rec['best_value'].get('rating', 0),
+                        'price': helmet_rec['best_value'].get('price', 0),
+                        'summary': helmet_rec['best_value'].get('verdict', ''),
+                        'url': '',
+                    }
+                if helmet_rec.get('premium_pick'):
+                    recommended_products['riding_gear']['premium_pick'] = {
+                        'image': helmet_rec['premium_pick'].get('image', ''),
+                        'name': helmet_rec['premium_pick'].get('title', ''),
+                        'rating': helmet_rec['premium_pick'].get('rating', 0),
+                        'price': helmet_rec['premium_pick'].get('price', 0),
+                        'summary': helmet_rec['premium_pick'].get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Apply correct recommended products structure to context
+            context['recommended_products'] = recommended_products
+            
+            # Riding Gear - Helmet category picks
+            helmet_rec = recommend_for_category(matched, 'Helmet', bike)
+            if helmet_rec.get('editors_choice'):
+                if 'riding_gear' not in recommended_products:
+                    recommended_products['riding_gear'] = {}
+                recommended_products['riding_gear']['editor_choice'] = {
+                    'image': helmet_rec['editors_choice'].get('image', ''),
+                    'name': helmet_rec['editors_choice'].get('title', ''),
+                    'rating': helmet_rec['editors_choice'].get('rating', 0),
+                    'price': helmet_rec['editors_choice'].get('price', 0),
+                    'summary': helmet_rec['editors_choice'].get('verdict', ''),
+                    'url': '',
+                }
+            if helmet_rec.get('best_value'):
+                if 'riding_gear' not in recommended_products:
+                    recommended_products['riding_gear'] = {}
+                recommended_products['riding_gear']['best_value'] = {
+                    'image': helmet_rec['best_value'].get('image', ''),
+                    'name': helmet_rec['best_value'].get('title', ''),
+                    'rating': helmet_rec['best_value'].get('rating', 0),
+                    'price': helmet_rec['best_value'].get('price', 0),
+                    'summary': helmet_rec['best_value'].get('verdict', ''),
+                    'url': '',
+                }
+            if helmet_rec.get('premium_pick'):
+                if 'riding_gear' not in recommended_products:
+                    recommended_products['riding_gear'] = {}
+                recommended_products['riding_gear']['premium_pick'] = {
+                    'image': helmet_rec['premium_pick'].get('image', ''),
+                    'name': helmet_rec['premium_pick'].get('title', ''),
+                    'rating': helmet_rec['premium_pick'].get('rating', 0),
+                    'price': helmet_rec['premium_pick'].get('price', 0),
+                    'summary': helmet_rec['premium_pick'].get('verdict', ''),
+                    'url': '',
+                }
+            
+            # Build recommended products for ownership hub
+            # Use the exact same structure as home.html
+            # Get picks for each category
+            engine_oil_rec = recommend_for_category(matched, 'Engine Oil', bike)
+            bike_cover_rec = recommend_for_category(matched, 'Bike Cover', bike)
+            phone_mount_rec = recommend_for_category(matched, 'Phone Mount', bike)
+            helmet_rec = recommend_for_category(matched, 'Helmet', bike)
+            
+            # Build the structure matching the template expectations
+            # Each section must contain editor_choice, best_value, and optionally premium_pick
+            
+            # Maintenance Essentials (Engine Oil)
+            if engine_oil_rec.get('editors_choice') or engine_oil_rec.get('best_value') or engine_oil_rec.get('premium_pick'):
+                recommended_products['maintenance_essentials'] = {}
+                if engine_oil_rec.get('editors_choice'):
+                    rec = engine_oil_rec['editors_choice']
+                    recommended_products['maintenance_essentials']['editor_choice'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if engine_oil_rec.get('best_value'):
+                    rec = engine_oil_rec['best_value']
+                    recommended_products['maintenance_essentials']['best_value'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if engine_oil_rec.get('premium_pick'):
+                    rec = engine_oil_rec['premium_pick']
+                    recommended_products['maintenance_essentials']['premium_pick'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Protection (Bike Cover)
+            if bike_cover_rec.get('editors_choice') or bike_cover_rec.get('best_value'):
+                recommended_products['protection'] = {}
+                if bike_cover_rec.get('editors_choice'):
+                    rec = bike_cover_rec['editors_choice']
+                    recommended_products['protection']['editor_choice'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if bike_cover_rec.get('best_value'):
+                    rec = bike_cover_rec['best_value']
+                    recommended_products['protection']['best_value'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Daily Riding (Phone Mount)
+            if phone_mount_rec.get('editors_choice') or phone_mount_rec.get('best_value') or phone_mount_rec.get('premium_pick'):
+                recommended_products['daily_riding'] = {}
+                if phone_mount_rec.get('editors_choice'):
+                    rec = phone_mount_rec['editors_choice']
+                    recommended_products['daily_riding']['editor_choice'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if phone_mount_rec.get('best_value'):
+                    rec = phone_mount_rec['best_value']
+                    recommended_products['daily_riding']['best_value'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if phone_mount_rec.get('premium_pick'):
+                    rec = phone_mount_rec['premium_pick']
+                    recommended_products['daily_riding']['premium_pick'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+            
+            # Riding Gear (Helmet)
+            if helmet_rec.get('editors_choice') or helmet_rec.get('best_value') or helmet_rec.get('premium_pick'):
+                recommended_products['riding_gear'] = {}
+                if helmet_rec.get('editors_choice'):
+                    rec = helmet_rec['editors_choice']
+                    recommended_products['riding_gear']['editor_choice'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if helmet_rec.get('best_value'):
+                    rec = helmet_rec['best_value']
+                    recommended_products['riding_gear']['best_value'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+                if helmet_rec.get('premium_pick'):
+                    rec = helmet_rec['premium_pick']
+                    recommended_products['riding_gear']['premium_pick'] = {
+                        'image': rec.get('image', ''),
+                        'name': rec.get('title', ''),
+                        'rating': rec.get('rating', 0),
+                        'price': rec.get('price', 0),
+                        'summary': rec.get('verdict', ''),
+                        'url': '',
+                    }
+            
+            context['recommended_products'] = recommended_products
+
+            # Remove None values from recommended products and empty categories
+            for category in ['maintenance_essentials', 'protection', 'daily_riding', 'riding_gear']:
+                if category in context['recommended_products']:
+                    for subcat in list(context['recommended_products'][category].keys()):
+                        if context['recommended_products'][category][subcat] is None:
+                            del context['recommended_products'][category][subcat]
+                    if not context['recommended_products'][category]:
+                        del context['recommended_products'][category]
+            for category in ['maintenance_essentials', 'protection', 'daily_riding', 'riding_gear']:
+                if category in context['recommended_products']:
+                    for subcat in list(context['recommended_products'][category].keys()):
+                        if context['recommended_products'][category][subcat] is None:
+                            del context['recommended_products'][category][subcat]
+                    if not context['recommended_products'][category]:
+                        del context['recommended_products'][category]
+
             content = self.render_template('motorcycle.html', context)
             content = replace_product_placeholders(
                 content, self.data['products'], context['base_path'],
@@ -2172,6 +2491,29 @@ Sitemap: {self.base_url}/sitemap.xml
 
     def download_product_images(self):
         """Download product images from Amazon and save locally."""
+        # Configure stdout for proper Unicode output
+        import sys
+        import locale
+        
+        # Set proper locale for Unicode support
+        try:
+            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+        except locale.Error:
+            try:
+                locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+            except locale.Error:
+                try:
+                    locale.setlocale(locale.LC_ALL, '')
+                except locale.Error:
+                    pass
+        
+        # Reconfigure stdout for UTF-8
+        try:
+            if hasattr(sys.stdout, 'reconfigure'):
+                sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+        except (AttributeError, OSError):
+            pass
+        
         print("\n  Downloading product images...")
         images_dir = self.output_dir / 'static' / 'images' / 'products'
         images_dir.mkdir(parents=True, exist_ok=True)
@@ -2198,8 +2540,9 @@ Sitemap: {self.base_url}/sitemap.xml
                 skipped += 1
                 continue
             
-            # Download image
-            print(f"    Downloading: {product['title']}...")
+            # Download image - ensure product title is properly escaped for terminal
+            safe_title = str(product.get('title', '')).replace('\x1b', 'ESC')
+            print(f"    Downloading: {safe_title}...")
             if download_image(amazon_url, save_path):
                 product['image'] = local_path
                 downloaded += 1
