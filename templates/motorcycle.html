@@ -176,7 +176,7 @@
                                 <div class="moto-must-have-picks">
                                     {% if item.budget_pick and item.budget_pick.slug != item.best_pick.slug %}
                                     <div class="moto-pick-mini">
-                                        <span class="moto-pick-mini-label moto-pick-mini-budget">Budget Pick</span>
+                                        <span class="moto-pick-mini-label moto-pick-mini-budget">Most Popular</span>
                                         <a href="{{ base_path }}products/{{ item.budget_pick.slug }}/index.html" class="moto-pick-mini-card">
                                             {% if item.budget_pick.image and 'products/' in item.budget_pick.image %}
                                             <img src="{{ base_path }}{{ item.budget_pick.image }}" alt="{{ item.budget_pick.title }}" loading="lazy">

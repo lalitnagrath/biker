@@ -1,0 +1,403 @@
+[
+  {
+    "asin": "B0CTZP3SGL",
+    "slug": "studds-raider-super",
+    "title": "Studds Raider Super ISI Certified Full Face Helmet with Spoiler",
+    "brand": "Studds",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 75,
+      "pros": [
+        "ISI certified",
+        "Aerodynamic spoiler",
+        "Quick-release buckle",
+        "Good ventilation"
+      ],
+      "cons": [
+        "Basic padding",
+        "Visor scratches over time"
+      ],
+      "features": [
+        "ISI certification",
+        "Aerodynamic spoiler",
+        "Quick-release buckle",
+        "Multi-ventilation"
+      ],
+      "fitment_notes": "Universal fit - available in sizes S to XL",
+      "recommended_for": [
+        "budget",
+        "daily-commute"
+      ],
+      "notes": "Reliable budget full-face helmet with spoiler"
+    },
+    "amazon": {
+      "price": 1345,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 1850,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0CTZP3SGL?tag=0x23uyx-21",
+      "image": "images/products/studds-raider-super.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting a reliable full-face helmet with spoiler",
+    "verdict": "The Studds Raider Super is a well-ventilated full-face helmet with an aerodynamic spoiler and ISI certification at an affordable price."
+  },
+  {
+    "asin": "B0CM9HXJBW",
+    "slug": "tvs-raider-helmet",
+    "title": "TVS Raider Full Face Helmet ISI DOT Certified",
+    "brand": "TVS",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 78,
+      "pros": [
+        "ISI and DOT certified",
+        "High-impact ABS shell",
+        "Scratch-resistant visor",
+        "Multiple vents"
+      ],
+      "cons": [
+        "Slightly heavy",
+        "Limited color options"
+      ],
+      "features": [
+        "Dual ISI+DOT certification",
+        "ABS shell",
+        "Scratch-resistant visor",
+        "Multi-vent"
+      ],
+      "fitment_notes": "Universal fit - available in sizes S to XL",
+      "recommended_for": [
+        "safety-focused",
+        "daily-commute"
+      ],
+      "notes": "Best dual-certified budget helmet"
+    },
+    "amazon": {
+      "price": 1550,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 4300,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0CM9HXJBW?tag=0x23uyx-21",
+      "image": "images/products/tvs-raider-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting dual-certified full-face helmet at budget price",
+    "verdict": "The TVS Raider helmet offers dual ISI+DOT certification with a durable ABS shell and good ventilation at an excellent price point."
+  },
+  {
+    "asin": "B0BRFHNNLV",
+    "slug": "studds-ray-super",
+    "title": "Studds RAY Super ISI Certified Open Face Helmet",
+    "brand": "Studds",
+    "category": "Helmet",
+    "type": "Open Face",
+    "status": "approved",
+    "editorial": {
+      "score": 72,
+      "pros": [
+        "Ultra lightweight (850g)",
+        "ISI certified",
+        "UV resistant paint",
+        "Hypoallergenic liner"
+      ],
+      "cons": [
+        "No chin protection",
+        "Basic visor"
+      ],
+      "features": [
+        "850g ultralight",
+        "ISI certification",
+        "UV resistant paint",
+        "Hypoallergenic liner"
+      ],
+      "fitment_notes": "Universal fit - available in sizes S to XL",
+      "recommended_for": [
+        "city-commute",
+        "budget"
+      ],
+      "notes": "Lightest ISI-certified open face helmet"
+    },
+    "amazon": {
+      "price": 750,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 3200,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0BRFHNNLV?tag=0x23uyx-21",
+      "image": "images/products/studds-ray-super.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "City commuters wanting lightweight open-face protection",
+    "verdict": "The Studds RAY Super is one of the lightest ISI-certified open face helmets, ideal for daily city commuting."
+  },
+  {
+    "asin": "B0D42Y42K4",
+    "slug": "axor-apex-full-face-helmet",
+    "title": "Axor Apex Full Face Helmet",
+    "brand": "Axor",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "draft",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "ECE 22.06 + DOT + ISI triple certified — highest safety in segment",
+        "Premium polycarbonate shell with aerodynamic design",
+        "Dual visor system with Pinlock-ready main visor",
+        "Excellent ventilation with 7 air vents"
+      ],
+      "cons": [
+        "Slightly heavy at 1500g for extended rides",
+        "visor mechanism could be smoother",
+        "Limited color options compared to competition"
+      ],
+      "features": [
+        "ECE 22.06, DOT, and ISI certifications",
+        "Polycarbonate shell",
+        "Pinlock-ready visor",
+        "Removable and washable inner liner",
+        "Micrometric buckle",
+        "7 ventilation ports"
+      ],
+      "fitment_notes": "Runs true to size. Inner liner is removable for cleaning. Check visor seal periodically for water ingress.",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4499,
+      "mrp": null,
+      "discount": null,
+      "rating": 0,
+      "review_count": 0,
+      "availability": "",
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting premium safety certifications under ₹5000",
+    "verdict": "The Axor Apex offers the best safety-to-price ratio with triple certifications rarely found under ₹5000. A serious choice for safety-conscious riders."
+  },
+  {
+    "asin": "B09XJ5Y4YF",
+    "slug": "smk-stellar-full-face-helmet",
+    "title": "SMK Stellar Full Face Helmet",
+    "brand": "SMK",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "draft",
+    "editorial": {
+      "score": 8.4,
+      "pros": [
+        "ECE 22.05 + DOT + ISI — comprehensive safety",
+        "Excellent build quality with multi-density EPS",
+        "Smooth aerodynamic profile reduces wind noise",
+        "Quick-release visor mechanism"
+      ],
+      "cons": [
+        "Inner padding runs slightly snug initially",
+        "No Pinlock insert included (sold separately)",
+        "Ventilation adequate but not best-in-class"
+      ],
+      "features": [
+        "ECE 22.05, DOT, and ISI certifications",
+        "Polycarbonate composite shell",
+        "Multi-density EPS liner",
+        "Emergency cheek pad release",
+        "Antibacterial moisture-wicking liner",
+        "Micrometric fastener"
+      ],
+      "fitment_notes": "Interior padding compresses slightly over time for a custom fit. Order your exact size — no need to size up.",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 0,
+      "review_count": 0,
+      "availability": "",
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Commuters and touring riders prioritizing safety and comfort",
+    "verdict": "SMK Stellar delivers premium safety features and build quality. The emergency release system adds real safety value for daily commuters."
+  },
+  {
+    "asin": "B0DPL49BFX",
+    "slug": "ls2-stream-full-face-helmet",
+    "title": "LS2 Stream Full Face Helmet",
+    "brand": "LS2",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "draft",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "ECE 22.06 — latest European safety standard",
+        "Lightweight at 1350g — reduces neck fatigue",
+        "Wide field of vision visor",
+        "Good ventilation system with chin vent"
+      ],
+      "cons": [
+        "Premium price for the segment",
+        "No DOT certification (ECE + ISI only)",
+        "Visor can fog in heavy rain without Pinlock"
+      ],
+      "features": [
+        "ECE 22.06 and ISI certifications",
+        "LPC (Lightweight Polycarbonate Composite) shell",
+        "2 shell sizes for better fit",
+        "Drop-down sun visor",
+        "Removable comfort liner",
+        "UV-resistant visor"
+      ],
+      "fitment_notes": "Two shell sizes available — choose based on head circumference. Inner liner is fully removable and washable.",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 0,
+      "review_count": 0,
+      "availability": "",
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Long-distance riders wanting a lightweight helmet with modern safety standards",
+    "verdict": "The LS2 Stream is the lightest in its class with the latest ECE 22.06 standard. Ideal for riders who value reduced fatigue on long rides."
+  },
+  {
+    "asin": "B0GFXN7KQ9",
+    "slug": "steelbird-sba-7-full-face-helmet",
+    "title": "Steelbird SBA-7 Full Face Helmet",
+    "brand": "Steelbird",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "draft",
+    "editorial": {
+      "score": 8.0,
+      "pros": [
+        "DOT + ISI certified — solid safety credentials",
+        "Excellent value for money under ₹2500",
+        "Good ventilation with multiple air channels",
+        "Visor mechanism is smooth and reliable"
+      ],
+      "cons": [
+        "No ECE certification (DOT + ISI only)",
+        "Padding quality average compared to premium options",
+        "Slightly noisy at highway speeds"
+      ],
+      "features": [
+        "DOT and ISI certifications",
+        "ABS shell construction",
+        "Multi-density EPS liner",
+        "Scratch-resistant visor",
+        "Breath guard",
+        "Replaceable inner padding"
+      ],
+      "fitment_notes": "Runs slightly large — consider sizing down if between sizes. Padding compresses with use for a custom fit.",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2299,
+      "mrp": null,
+      "discount": null,
+      "rating": 0,
+      "review_count": 0,
+      "availability": "",
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget-conscious riders who want DOT certification without breaking the bank",
+    "verdict": "The Steelbird SBA-7 punches above its weight with DOT certification at a budget price. Best entry point for riders upgrading from basic helmets."
+  },
+  {
+    "asin": "B0DQY4J7VM",
+    "slug": "mt-thunder-4-sv-modular-helmet",
+    "title": "MT Thunder 4 SV Modular Helmet",
+    "brand": "MT",
+    "category": "Helmet",
+    "type": "Modular",
+    "status": "draft",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "ECE 22.05 + ISI — strong safety certifications",
+        "Modular flip-up design for convenience",
+        "Excellent build quality with steel hinge mechanism",
+        "Internal sun visor included"
+      ],
+      "cons": [
+        "Heavier than full-face at 1600g",
+        "Higher price point than full-face competitors",
+        "Flip-up mechanism adds some wind noise"
+      ],
+      "features": [
+        "ECE 22.05 and ISI certifications",
+        "Flip-up modular design",
+        "Steel hinge mechanism",
+        "Internal drop-down sun visor",
+        "Pinlock-ready main visor",
+        "Removable and washable liner",
+        "Chin curtain included"
+      ],
+      "fitment_notes": "Modular helmets run slightly larger than full-face. Measure head circumference carefully. Chin curtain improves noise levels at speed.",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7000,
+      "mrp": null,
+      "discount": null,
+      "rating": 0,
+      "review_count": 0,
+      "availability": "",
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders and commuters wanting flip-up convenience with strong safety",
+    "verdict": "The MT Thunder 4 SV is the best modular option under ₹8000. The steel hinge mechanism and ECE certification make it a reliable choice for daily use."
+  }
+]

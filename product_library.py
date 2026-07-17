@@ -695,3 +695,244 @@ def count_by_category(products: list) -> Dict[str, int]:
     for p in products:
         counts[p.get('category', 'Unknown')] += 1
     return dict(counts)
+
+
+# ===== Import Helpers =====
+
+# Brand normalization map: lowercase canonical -> display name
+BRAND_DISPLAY_NAMES: Dict[str, str] = {
+    'bobo': 'BOBO',
+    'studds': 'Studds',
+    'steelbird': 'Steelbird',
+    'vega': 'Vega',
+    'axor': 'Axor',
+    'ls2': 'LS2',
+    'smk': 'SMK',
+    'mt': 'MT',
+    'motul': 'Motul',
+    'shell': 'Shell',
+    'castrol': 'Castrol',
+    'liqui moly': 'Liqui Moly',
+    'motorex': 'Motorex',
+    'michelin': 'Michelin',
+    'bosch': 'Bosch',
+    'amazon basics': 'Amazon Basics',
+    'amazonbasics': 'Amazon Basics',
+    'tvs': 'TVS',
+    'hero': 'Hero MotoCorp',
+    'honda': 'Honda',
+    'yamaha': 'Yamaha',
+    'bajaj': 'Bajaj',
+    'suzuki': 'Suzuki',
+    'royal enfield': 'Royal Enfield',
+    'ktm': 'KTM',
+    'harley-davidson': 'Harley-Davidson',
+    'triumph': 'Triumph',
+    'xiaomi': 'Xiaomi',
+    'strief': 'STRIFF',
+}
+
+# Category normalization aliases (subset of product_engine.CATEGORY_ALIASES
+# for use without importing the full engine)
+CATEGORY_IMPORT_ALIASES: Dict[str, str] = {
+    # Phone Mount
+    'phone holder': 'Phone Mount',
+    'mobile holder': 'Phone Mount',
+    'mobile mount': 'Phone Mount',
+    'handlebar mount': 'Phone Mount',
+    'motorcycle phone mount': 'Phone Mount',
+    'bike phone mount': 'Phone Mount',
+    'motorcycle': 'Phone Mount',
+    'motorcycle mobile holder': 'Phone Mount',
+    'phone mount': 'Phone Mount',
+    'mobile mount': 'Phone Mount',
+    'mobile holder for bike': 'Phone Mount',
+    'phone mount': 'Phone Mount',
+    'mobile mount': 'Phone Mount',
+    'motorcycle phone mount': 'Phone Mount',
+    'bike phone mount': 'Phone Mount',
+    'bike phone mount': 'Phone Mount',
+    'phone mount': 'Phone Mount',
+    'mobile holder for bike': 'Phone Mount',
+    'motorcycle phone mount': 'Phone Mount',
+    # Crash Guard
+    'engine guard': 'Crash Guard',
+    'leg guard': 'Crash Guard',
+    'crash protection': 'Crash Guard',
+    'frame slider': 'Crash Guard',
+    # Chain Lube
+    'chain spray': 'Chain Lube',
+    'chain lubricant': 'Chain Lube',
+    'chain wax': 'Chain Lube',
+    'chain lube': 'Chain Lube',
+    'bike chain lube': 'Chain Lube',
+    'motorcycle chain lube': 'Chain Lube',
+    # Chain Cleaner
+    'chain cleaner spray': 'Chain Cleaner',
+    'chain cleaner': 'Chain Cleaner',
+    'bike chain cleaner': 'Chain Cleaner',
+    'motorcycle chain cleaner': 'Chain Cleaner',
+    # Tyre Inflator
+    'air compressor': 'Tyre Inflator',
+    'tyre pump': 'Tyre Inflator',
+    'air pump': 'Tyre Inflator',
+    'portable compressor': 'Tyre Inflator',
+    'tire inflator': 'Tyre Inflator',
+    'tyre inflator': 'Tyre Inflator',
+    # Gloves
+    'riding gloves': 'Gloves',
+    'bike gloves': 'Gloves',
+    'motorcycle gloves': 'Gloves',
+    # Jackets
+    'riding jacket': 'Jackets',
+    'bike jacket': 'Jackets',
+    'motorcycle jacket': 'Jackets',
+    # Bike Cover
+    'motorcycle cover': 'Bike Cover',
+    'body cover': 'Bike Cover',
+    'bike body cover': 'Bike Cover',
+    'bike cover': 'Bike Cover',
+    # Helmet
+    'full face helmet': 'Helmet',
+    'open face helmet': 'Helmet',
+    'modular helmet': 'Helmet',
+    'half helmet': 'Helmet',
+    'motorcycle helmet': 'Helmet',
+    'riding helmet': 'Helmet',
+    'bike helmet': 'Helmet',
+    'helmet bluetooth': 'Helmet',
+    # Engine Oil
+    'engine oil 10w-40': 'Engine Oil',
+    'engine oil 10w-50': 'Engine Oil',
+    'motor oil': 'Engine Oil',
+    # Luggage
+    'tank bag motorcycle': 'Tank Bag',
+    'tank bag': 'Tank Bag',
+    'saddlebag': 'Saddle Bag',
+    'saddle bags': 'Saddle Bag',
+    'motorcycle saddle bag': 'Saddle Bag',
+    'bike saddle bag': 'Saddle Bag',
+    'tail bag': 'Tail Bag',
+    # Protection
+    'knee pad': 'Knee Guard',
+    'knee guard': 'Knee Guard',
+    # Ear Plugs
+    'ear plugs': 'Ear Plugs',
+    'ear plug': 'Ear Plugs',
+    # Cameras
+    'action camera': 'Action Camera',
+    'dash cam': 'Dash Cam',
+    # Seat Cover
+    'bike seat cover': 'Seat Cover',
+    'motorcycle seat cover': 'Seat Cover',
+    # Riding Pants
+    'riding pants': 'Riding Pants',
+    # Handlebar
+    'handlebar grip': 'Handlebar Grip',
+    # Mirrors
+    'bike mirror': 'Mirror',
+    'motorcycle mirror': 'Mirror',
+    # Windshield
+    'motorcycle windshield': 'Windshield',
+    'bike windshield': 'Windshield',
+    # GPS
+    'gps tracker for bike': 'GPS Tracker',
+    'bike gps': 'GPS Tracker',
+    # Lights
+    'motorcycle headlight': 'Headlight',
+    'motorcycle indicator': 'Indicator',
+    'bike indicator': 'Indicator',
+    # Horn
+    'motorcycle horn': 'Horn',
+    'bike horn': 'Horn',
+    # Charger
+    'motorcycle charger': 'Charger',
+    # Footrest
+    'motorcycle footrest': 'Footrest',
+    # Locks
+    'chain lock': 'Chain Lock',
+    'bike disc lock': 'Disc Lock',
+    # Alarm
+    'bike alarm': 'Alarm',
+    'motorcycle alarm': 'Alarm',
+    # Tools
+    'motorcycle tool kit': 'Tool Kit',
+    # Polish
+    'bike polish': 'Polish',
+}
+
+
+def keyword_to_category(keyword: str) -> Optional[str]:
+    """Map a bike-deals.json _search_keyword to a canonical category name.
+
+    Returns None if the keyword doesn't map to any known category.
+    """
+    if not keyword:
+        return None
+    key = keyword.strip().lower()
+    if key in CATEGORY_IMPORT_ALIASES:
+        return CATEGORY_IMPORT_ALIASES[key]
+    return None
+
+
+def generate_slug(title: str) -> str:
+    """Generate a URL-friendly slug from a product title.
+
+    Examples:
+        'BOBO BM4 PRO Plus' -> 'bobo-bm4-pro-plus'
+        'Motul 7100 4T 10W-40' -> 'motul-7100-4t-10w-40'
+    """
+    import re
+    slug = title.lower().strip()
+    # Remove non-alphanumeric except hyphens
+    slug = re.sub(r'[^a-z0-9\s-]', '', slug)
+    # Replace spaces with hyphens
+    slug = re.sub(r'[\s]+', '-', slug)
+    # Collapse multiple hyphens
+    slug = re.sub(r'-+', '-', slug)
+    # Strip leading/trailing hyphens
+    slug = slug.strip('-')
+    return slug
+
+
+def normalize_brand(brand: str) -> str:
+    """Normalize a brand name to its canonical display form.
+
+    Examples:
+        'bobo' -> 'BOBO'
+        'studds' -> 'Studds'
+        'TVS' -> 'TVS'
+    """
+    if not brand:
+        return brand
+    key = brand.strip().lower()
+    return BRAND_DISPLAY_NAMES.get(key, brand.strip().title())
+
+
+def normalize_category_name(category: str) -> str:
+    """Normalize a category name using the import alias map.
+
+    Returns the canonical category name.
+    """
+    if not category:
+        return category
+    key = category.strip().lower()
+    if key in CATEGORY_IMPORT_ALIASES:
+        return CATEGORY_IMPORT_ALIASES[key]
+    return category.strip().title()
+
+
+def is_empty_or_default(value: Any) -> bool:
+    """Check if a value is empty or a default/placeholder value.
+
+    Used to decide whether to generate content for a field.
+    """
+    if value is None:
+        return True
+    if isinstance(value, str) and value.strip() in ('', 'N/A', 'TBD', 'TODO'):
+        return True
+    if isinstance(value, (list, dict)) and len(value) == 0:
+        return True
+    if isinstance(value, (int, float)) and value == 0:
+        return True
+    return False

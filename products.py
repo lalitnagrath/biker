@@ -5,11 +5,10 @@ Product Library Management CLI
 Management utilities for the curated product library.
 
 Usage:
+    python products.py import            Import from bike-deals.json into Product Library
     python products.py validate          Validate entire product library
     python products.py sync              Run daily Amazon sync
-    python products.py sync --dry-run    Preview sync without changes
     python products.py stats             Print library statistics
-    python products.py import            Migrate legacy JSON to new format
     python products.py export            Export library to JSON
     python products.py find_duplicates   Find duplicate ASINs/titles
     python products.py list              List all products
@@ -212,27 +211,52 @@ def cmd_stats():
 
 
 def cmd_import():
-    """Migrate legacy JSON to new nested format."""
+    """Import products from bike-deals.json into the Product Library."""
     print("=" * 60)
-    print("IMPORT LEGACY PRODUCTS")
+    print("IMPORT FROM BIKE-DEALS.JSON")
     print("=" * 60)
 
-    result = import_legacy_products(PRODUCTS_DIR, dry_run=False)
+    from product_importer import import_from_deals
 
-    print(f"\n  Migrated: {result['migrated']} products")
-    print(f"  Files:    {len(result['files'])}")
+    feed_path = DEFAULT_FEED_PATH
+    if not feed_path.exists():
+        print(f"\n  Feed file not found: {feed_path}")
+        print("  Run bike.py first to generate Amazon deal data.")
+        return False
 
-    if result['files']:
-        print("\n  Processed files:")
-        for f in result['files']:
-            print(f"    - {f}")
+    print(f"\n  Feed: {feed_path}")
+    print(f"  Products: {PRODUCTS_DIR}")
+
+    result = import_from_deals(feed_path, PRODUCTS_DIR, dry_run=False, verbose=False)
+
+    # Print verification summary
+    print(f"\n  Products found:      {result['found']}")
+    print(f"  Products imported:   {result['imported']}  (new, status: draft)")
+    print(f"  Products updated:    {result['updated']}  (existing, Amazon fields)")
+    print(f"  Products skipped:    {result['skipped']}  (no category mapping)")
+    print(f"  Duplicate ASINs:     {result['duplicate_asins']}")
 
     if result['errors']:
-        print("\n  Errors:")
+        print(f"\n  Errors:")
         for e in result['errors']:
             print(f"    - {e}")
 
-    print("=" * 60)
+    print(f"\n  Products by category:")
+    for cat, count in sorted(result['by_category'].items(), key=lambda x: -x[1]):
+        print(f"    {cat:25s} {count}")
+
+    # Show what categories now exist in the library
+    products = load_products(PRODUCTS_DIR)
+    cats = {}
+    for p in products:
+        c = p.get('category', 'Unknown')
+        cats[c] = cats.get(c, 0) + 1
+    print(f"\n  Categories in library ({len(cats)}):")
+    for cat, count in sorted(cats.items(), key=lambda x: -x[1]):
+        print(f"    {cat:25s} {count}")
+
+    print("\n" + "=" * 60)
+    return True
 
 
 def cmd_export():
@@ -385,16 +409,17 @@ def print_usage():
 Product Library Management CLI
 
 Commands:
+    import                        Import from bike-deals.json into Product Library
     validate                      Validate entire product library
     sync [--dry-run]              Run daily Amazon sync
     stats                         Print library statistics
-    import                        Migrate legacy JSON to new format
     export                        Export library to JSON
     find_duplicates               Find duplicate ASINs/titles
     list [--status S] [--category C]  List products
     status <slug> [new_status]    Show/change product status
 
 Examples:
+    python products.py import
     python products.py validate
     python products.py sync --dry-run
     python products.py stats

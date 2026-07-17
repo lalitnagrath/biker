@@ -617,6 +617,250 @@ def weighted_score(product: dict, category: Optional[str] = None) -> float:
     return round(score, 3)
 
 
+# ===== 3c. Intelligent Recommendation Score =====
+
+# Factor weights for the composite recommendation score.  These control how
+# much each dimension influences the final ranking.  Weights are documented
+# but not enforced to sum to 100; they are tuning knobs.
+_REC_WEIGHTS = {
+    'editor':      25.0,   # editorial quality assessment
+    'value':       20.0,   # value for money (quality / price)
+    'rating':      15.0,   # customer rating (0-5)
+    'reviews':     15.0,   # social proof (log-scaled review count)
+    'compatibility': 15.0, # fit for the selected bike
+    'brand':        5.0,   # trusted brand bonus
+    'availability': 5.0,   # in-stock / easy to buy
+}
+
+
+def _availability_score(product: dict) -> float:
+    """Return a 0-1 score for product availability.
+
+    'In Stock' / 'Available' -> 1.0
+    'Currently unavailable' / empty -> 0.0
+    """
+    avail = (product.get('availability') or '').strip().lower()
+    if avail in ('in stock', 'available', 'in_stock'):
+        return 1.0
+    if avail in ('currently unavailable', 'out of stock', 'unavailable'):
+        return 0.0
+    # Unknown availability: assume available (benefit of the doubt)
+    return 0.5
+
+
+def recommendation_score(product: dict, category: Optional[str] = None,
+                         bike: Optional[dict] = None) -> float:
+    """Composite recommendation score.  Higher = better.
+
+    Weighted blend of 7 factors:
+        1. Editor rating      (0-10 scale, normalized to 0-1)
+        2. Value for money    (0-1 from value_for_money())
+        3. Customer rating    (0-5, normalized to 0-1)
+        4. Review count       (log-scaled, normalized to 0-1)
+        5. Compatibility      (priority-based, 0 when no bike)
+        6. Brand reputation   (0 or 1)
+        7. Availability       (0-1)
+
+    This is the score used for badge assignment (Editor's Choice, etc.).
+    It is distinct from weighted_score() which is used for list ranking.
+    """
+    w = _REC_WEIGHTS
+    score = 0.0
+
+    # 1. Editor rating
+    editor = _as_float(product.get('editor_rating', 0))
+    score += w['editor'] * (editor / 10.0)
+
+    # 2. Value for money
+    score += w['value'] * value_for_money(product)
+
+    # 3. Customer rating
+    rating = _as_float(product.get('rating', 0))
+    score += w['rating'] * (rating / 5.0)
+
+    # 4. Review count (log-scaled)
+    reviews = _as_int(product.get('review_count', product.get('reviews', 0)))
+    if reviews > 0:
+        score += w['reviews'] * min(1.0, math.log10(reviews + 1) / 5.0)
+
+    # 5. Compatibility (only when a bike is selected)
+    if bike is not None:
+        cp = compatibility_priority(product, bike)
+        if cp == 0:
+            return -1.0  # incompatible, hard exclusion
+        # priority 1 -> 1.0, priority 5 -> 0.2
+        score += w['compatibility'] * ((6 - cp) / 5.0)
+
+    # 6. Brand reputation
+    brand = (product.get('brand') or '').strip().lower()
+    if brand in TRUSTED_BRANDS:
+        score += w['brand']
+
+    # 7. Availability
+    score += w['availability'] * _availability_score(product)
+
+    return round(score, 3)
+
+
+# ===== 3d. Badge Assignment =====
+
+_BADGE_ICONS = {
+    'editors_choice': '&#127942;',   # trophy
+    'best_value':     '&#128176;',   # money bag
+    'premium_pick':   '&#11088;',    # star
+    'most_popular':   '&#128293;',   # fire
+}
+
+_BADGE_LABELS = {
+    'editors_choice': "Editor's Choice",
+    'best_value':     'Best Value',
+    'premium_pick':   'Premium Pick',
+    'most_popular':   'Most Popular',
+}
+
+
+def _generate_badge_reason(product: dict, badge_type: str,
+                           category: Optional[str] = None) -> str:
+    """Generate a short 1-liner explaining why a product got this badge."""
+    title = product.get('title', 'This product')
+    price = _as_int(product.get('price', 0))
+    rating = _as_float(product.get('rating', 0))
+    editor = _as_float(product.get('editor_rating', 0))
+    reviews = _as_int(product.get('review_count', product.get('reviews', 0)))
+    brand = product.get('brand', '')
+    vfm = value_for_money(product)
+
+    if badge_type == 'editors_choice':
+        parts = [f'Highest recommendation with {editor}/10 editor rating']
+        if rating >= 4.0:
+            parts.append(f'{rating}/5 user rating')
+        if vfm > 0.3:
+            parts.append('excellent value')
+        return ', '.join(parts) + f' at \u20b9{price}'
+
+    if badge_type == 'best_value':
+        parts = [f'Best quality-to-price ratio']
+        if rating >= 4.0:
+            parts.append(f'{rating}/5 user rating')
+        parts.append(f'at just \u20b9{price}')
+        return ', '.join(parts)
+
+    if badge_type == 'premium_pick':
+        parts = [f'Premium choice at \u20b9{price}']
+        if rating >= 4.0:
+            parts.append(f'{rating}/5 user rating')
+        if editor >= 8.0:
+            parts.append(f'{editor}/10 editor score')
+        return ', '.join(parts)
+
+    if badge_type == 'most_popular':
+        parts = [f'Most reviewed with {reviews:,} reviews']
+        if rating >= 4.0:
+            parts.append(f'{rating}/5 user rating')
+        return ', '.join(parts)
+
+    return ''
+
+
+def assign_badges(products: list, category: Optional[str] = None,
+                  bike: Optional[dict] = None) -> dict:
+    """Assign recommendation badges to products.
+
+    Returns a dict keyed by product slug:
+        {
+            'product-slug': {
+                'badge': 'Editor\'s Choice',
+                'badge_type': 'editors_choice',
+                'icon': '&#127942;',
+                'reason': 'Highest recommendation with 9/10 editor rating...'
+            },
+            ...
+        }
+
+    Rules:
+        - Only compatible products receive badges (when bike is provided).
+        - Each product gets at most one badge.
+        - Exactly 4 badges are assigned (if enough compatible products exist).
+        - Badge priority: Editor's Choice > Best Value > Most Popular > Premium Pick.
+    """
+    if not products:
+        return {}
+
+    # Filter to compatible products only
+    if bike is not None:
+        compatible = []
+        for p in products:
+            cp = compatibility_priority(p, bike)
+            if cp > 0:
+                compatible.append(p)
+    else:
+        compatible = list(products)
+
+    if not compatible:
+        return {}
+
+    # Score each compatible product
+    scored = []
+    for p in compatible:
+        slug = p.get('slug', '')
+        if not slug:
+            continue
+        score = recommendation_score(p, category, bike)
+        if score < 0:
+            continue
+        scored.append((score, p))
+
+    if not scored:
+        return {}
+
+    scored.sort(key=lambda x: x[0], reverse=True)
+
+    # Track assigned slugs to avoid duplicates
+    assigned = {}
+    used_slugs = set()
+
+    def _assign(badge_type: str, candidates: list) -> bool:
+        for _, p in candidates:
+            slug = p.get('slug', '')
+            if slug and slug not in used_slugs:
+                assigned[slug] = {
+                    'badge': _BADGE_LABELS[badge_type],
+                    'badge_type': badge_type,
+                    'icon': _BADGE_ICONS[badge_type],
+                    'reason': _generate_badge_reason(p, badge_type, category),
+                }
+                used_slugs.add(slug)
+                return True
+        return False
+
+    # 1. Editor's Choice: highest composite score
+    _assign('editors_choice', scored)
+
+    # 2. Best Value: best value_for_money among remaining
+    remaining = [(s, p) for s, p in scored if p.get('slug') not in used_slugs]
+    by_value = sorted(remaining, key=lambda x: value_for_money(x[1]), reverse=True)
+    _assign('best_value', by_value)
+
+    # 3. Most Popular: highest review count among remaining
+    remaining = [(s, p) for s, p in scored if p.get('slug') not in used_slugs]
+    by_popularity = sorted(
+        remaining,
+        key=lambda x: _as_int(x[1].get('review_count', x[1].get('reviews', 0))),
+        reverse=True,
+    )
+    _assign('most_popular', by_popularity)
+
+    # 4. Premium Pick: highest price with good rating (>= 4.0) among remaining
+    remaining = [(s, p) for s, p in scored if p.get('slug') not in used_slugs]
+    premium = [x for x in remaining if _as_float(x[1].get('rating', 0)) >= 4.0]
+    if not premium:
+        premium = remaining
+    by_price = sorted(premium, key=lambda x: _as_float(x[1].get('price', 0)), reverse=True)
+    _assign('premium_pick', by_price)
+
+    return assigned
+
+
 # ===== 4. Brand Diversity =====
 
 def enforce_brand_diversity(products: list, max_per_brand: int = 2) -> list:
@@ -804,21 +1048,30 @@ def recommend_for_category(
     category: str,
     bike: Optional[dict] = None,
 ) -> dict:
-    """Recommend products with editorial picks assigned.
+    """Recommend products with editorial picks and badge assignments.
 
     Returns a dict:
         {
             'category': 'Phone Mount',
             'products': [...],         # ranked, diversified list
             'count': 5,
-            'editors_choice': {...},   # highest score
-            'best_value': {...},       # best rating/price ratio
-            'budget_pick': {...},      # cheapest with decent rating
+            'editors_choice': {...},   # highest composite score
+            'best_value': {...},       # best value-for-money
             'premium_pick': {...},     # highest-priced with good rating
+            'most_popular': {...},     # highest review count
+            'badge_data': {            # slug -> badge info for template
+                'slug': {
+                    'badge': "Editor's Choice",
+                    'badge_type': 'editors_choice',
+                    'icon': '&#127942;',
+                    'reason': 'Highest recommendation with 9/10 editor rating...'
+                }
+            }
         }
 
     All picks are guaranteed to be unique products (no slug/title/ASIN
-    duplicates across picks).
+    duplicates across picks).  Badge data includes a short reason string
+    explaining why each product was recommended.
     """
     ranked = recommend_products(products, category, bike)
 
@@ -828,53 +1081,34 @@ def recommend_for_category(
         'count': len(ranked),
         'editors_choice': None,
         'best_value': None,
-        'budget_pick': None,
         'premium_pick': None,
+        'most_popular': None,
+        'badge_data': {},
     }
 
     if len(ranked) == 0:
         return result
 
-    # A single shared dedup guarantees every pick is a DISTINCT product:
-    # no duplicate ASIN / slug / title / URL across the four picks.
-    picks = PageDedup()
+    # Assign badges using the composite recommendation score.
+    # This handles dedup internally (each product gets at most one badge).
+    badge_data = assign_badges(ranked, category, bike)
+    result['badge_data'] = badge_data
 
-    def _first_unique(candidates: list) -> Optional[dict]:
-        for p in candidates:
-            if not picks.seen(p):
-                return p
-        return None
-
-    def _assign(key: str, candidates: list) -> None:
-        chosen = _first_unique(candidates)
-        if chosen is not None:
-            result[key] = chosen
-            picks.add(chosen)
-
-    # Editor's Choice: highest weighted score.
-    _assign('editors_choice', ranked)
-
-    # Best Value: best value-for-money among remaining.
-    best_value_order = sorted(
-        ranked, key=lambda p: value_for_money(p), reverse=True
-    )
-    _assign('best_value', best_value_order)
-
-    # Budget Pick: cheapest product with a decent rating (>= 3.5), price asc.
-    affordable = [p for p in ranked if _as_float(p.get('rating', 0)) >= 3.5]
-    budget_order = sorted(
-        affordable or ranked, key=lambda p: _as_float(p.get('price', 99999))
-    )
-    _assign('budget_pick', budget_order)
-
-    # Premium Pick: highest-priced product with a strong rating (>= 4.0).
-    premium = [p for p in ranked if _as_float(p.get('rating', 0)) >= 4.0]
-    premium_order = sorted(
-        premium or ranked,
-        key=lambda p: _as_float(p.get('price', 0)),
-        reverse=True,
-    )
-    _assign('premium_pick', premium_order)
+    # Also set named picks for backward compatibility.
+    # These are the actual product dicts for each badge type.
+    for slug, info in badge_data.items():
+        badge_type = info.get('badge_type', '')
+        for p in ranked:
+            if p.get('slug') == slug:
+                if badge_type == 'editors_choice':
+                    result['editors_choice'] = p
+                elif badge_type == 'best_value':
+                    result['best_value'] = p
+                elif badge_type == 'premium_pick':
+                    result['premium_pick'] = p
+                elif badge_type == 'most_popular':
+                    result['most_popular'] = p
+                break
 
     return result
 

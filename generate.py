@@ -906,7 +906,7 @@ class SiteGenerator:
             rec = recommend_for_category(self.data['products'], cat)
             pick = None
             for candidate in [rec['editors_choice'], rec['best_value'],
-                              rec['premium_pick'], rec['budget_pick']]:
+                              rec['premium_pick'], rec['most_popular']]:
                 if candidate and candidate.get('slug') not in featured_slugs:
                     pick = candidate
                     break
@@ -1442,13 +1442,13 @@ class SiteGenerator:
                     must_have_data.append({
                         'category': cat,
                         'slug': cat.lower().replace(' ', '-'),
-                        'budget_pick': rec['budget_pick'],
+                        'budget_pick': rec['most_popular'],
                         'best_pick': rec['editors_choice'],
                         'count': rec['count'],
                         'guide_url': category_to_guide_url(cat, context['base_path'], bike_slug),
                     })
-                    if rec['budget_pick']:
-                        seen_slugs.add(rec['budget_pick']['slug'])
+                    if rec['most_popular']:
+                        seen_slugs.add(rec['most_popular']['slug'])
                     if rec['editors_choice']:
                         seen_slugs.add(rec['editors_choice']['slug'])
             context['must_have_data'] = must_have_data
@@ -1675,6 +1675,217 @@ class SiteGenerator:
             {'slug': 'tyre-inflator', 'category': 'Tyre Inflator', 'title': 'Best Tyre Inflators', 'description': 'Best portable tyre inflators and air compressors for motorcycles. Digital and analog options reviewed.'},
         ]
 
+        # Category-specific guide content for editorial sections
+        # This is the single source of truth for buying guide editorial content.
+        guide_content = {
+            'Helmet': {
+                'buying_guide': {
+                    'title': 'How to Choose the Right Motorcycle Helmet',
+                    'intro': 'A helmet is the single most important piece of riding gear. Here are the key factors to consider before buying one.',
+                    'factors': [
+                        {'title': 'Safety Certification', 'icon': '&#128737;', 'text': 'Always choose ISI-certified helmets (IS 4151). DOT and ECE certifications offer additional international safety assurance. Avoid non-certified decorative helmets.'},
+                        {'title': 'Helmet Type', 'icon': '&#128065;', 'text': 'Full-face helmets offer maximum protection. Open-face helmets provide better visibility and airflow. Modular (flip-up) helmets combine both benefits but are heavier.'},
+                        {'title': 'Fit & Comfort', 'icon': '&#128077;', 'text': 'A helmet should fit snugly without pressure points. It should not rotate when you shake your head. Try on helmets at the end of the day when your head is slightly larger.'},
+                        {'title': 'Ventilation', 'icon': '&#128168;', 'text': 'Multiple vents with easy-to-use sliders keep you cool in Indian summers. Look for helmets with chin and forehead vents at minimum.'},
+                        {'title': 'Visor Quality', 'icon': '&#128065;', 'text': 'Scratch-resistant, optically correct visors reduce eye strain. Anti-fog coating is essential for monsoon riding. Pinlock-ready visors are a worthwhile upgrade.'},
+                        {'title': 'Weight', 'icon': '&#9878;', 'text': 'Lighter helmets (under 1400g) reduce neck fatigue on long rides. Carbon fiber and composite shells are lighter than pure ABS polycarbonate.'},
+                    ],
+                },
+                'common_mistakes': [
+                    {'title': 'Buying a helmet based on looks alone', 'text': 'Style matters, but safety certification and fit are more important. A flashy non-certified helmet is worse than a basic ISI-certified one.'},
+                    {'title': 'Choosing the wrong size', 'text': 'A loose helmet can come off in an accident. Measure your head circumference and refer to the brand size chart. Never buy a helmet hoping it will break in.'},
+                    {'title': 'Ignoring visor quality', 'text': 'A scratched or warped visor impairs vision. Replace visors every 12-18 months or immediately if scratched.'},
+                    {'title': 'Not replacing after an impact', 'text': 'Helmets absorb impact through shell and foam deformation. After any crash, even a minor one, replace the helmet. Internal damage is not visible.'},
+                    {'title': 'Skipping the chin strap check', 'text': 'The chin strap should allow only two fingers between the strap and your chin. Loose straps defeat the purpose of a well-fitted helmet.'},
+                ],
+                'maintenance_tips': [
+                    'Clean the outer shell with mild soap and water. Avoid harsh chemicals that can degrade the shell material.',
+                    'Hand-wash removable interior padding regularly with mild detergent. Let it air dry completely before reinstalling.',
+                    'Store in a cool, dry place away from direct sunlight. UV exposure degrades the shell over time.',
+                    'Replace the visor if scratched or after 18 months of regular use.',
+                    'Check chin strap and buckle for wear every 6 months.',
+                ],
+                'faqs': [
+                    {'question': 'Which is the safest helmet brand in India?', 'answer': 'Studds, Steelbird, Vega, Axor, and LS2 are all reputable brands offering ISI-certified helmets. The safest helmet is one that fits you correctly and has proper certification, regardless of brand.'},
+                    {'question': 'Is a Rs.3000 helmet safe enough for daily use?', 'answer': 'Yes, any ISI-certified helmet meets minimum safety standards. More expensive helmets offer better comfort, ventilation, and additional certifications, but a basic certified helmet is far safer than a non-certified one.'},
+                    {'question': 'How often should I replace my helmet?', 'answer': 'Replace every 3-5 years or immediately after any impact. The inner foam degrades over time even without crashes. Signs to replace: visible cracks, loose padding, or degraded chin strap.'},
+                    {'question': 'Are expensive helmets worth it?', 'answer': 'Mid-range helmets (Rs.3000-7000) offer the best balance of safety, comfort, and durability. Premium helmets add lighter materials, advanced ventilation, and dual certifications, which matter for long-distance touring.'},
+                    {'question': 'Can I use a half-face helmet for touring?', 'answer': 'Half-face helmets offer less protection and are not recommended for highway or touring use. Full-face helmets provide better wind protection, noise reduction, and impact safety at high speeds.'},
+                ],
+            },
+            'Phone Mount': {
+                'buying_guide': {
+                    'title': 'How to Choose a Motorcycle Phone Mount',
+                    'intro': 'A good phone mount keeps your navigation visible and your phone secure. Here is what matters most.',
+                    'factors': [
+                        {'title': 'Vibration Dampening', 'icon': '&#128256;', 'text': 'Motorcycle vibrations can damage phone camera stabilizers (OIS). Choose mounts with built-in vibration dampeners, especially if your bike has a single-cylinder engine.'},
+                        {'title': 'Mounting Mechanism', 'icon': '&#128274;', 'text': 'X-grip and jaw-grip designs are the most secure. Avoid magnetic-only mounts, which can release on rough roads. Screw-on clamp mounts are the most reliable.'},
+                        {'title': 'Handlebar Compatibility', 'icon': '&#128295;', 'text': 'Check your handlebar diameter (typically 22-32mm). Most universal mounts fit this range, but verify before buying. Some bikes need adapters.'},
+                        {'title': 'Weather Resistance', 'icon': '&#127783;', 'text': 'Monsoon-proofing is essential in India. Look for waterproof designs or those with a silicone cover. Avoid mounts with exposed metal parts that rust.'},
+                        {'title': 'Ease of Use', 'icon': '&#9889;', 'text': 'Quick-release mechanisms let you grab your phone at stops. One-hand operation is ideal. Test the mechanism in the shop before buying.'},
+                        {'title': 'Phone Size Support', 'icon': '&#128241;', 'text': 'Ensure the mount supports your phone with its case. Most mounts handle 4-7 inch phones, but large phones with rugged cases need wider grips.'},
+                    ],
+                },
+                'common_mistakes': [
+                    {'title': 'Ignoring vibration dampening', 'text': 'Single-cylinder and v-twin motorcycles produce strong vibrations that damage phone cameras. Always choose a mount with a vibration damper.'},
+                    {'title': 'Using magnetic mounts', 'text': 'Magnetic mounts look clean but can release on rough roads or during sudden braking. Use mechanical grips for security.'},
+                    {'title': 'Not checking handlebar diameter', 'text': 'Not all mounts fit all handlebars. Measure your handlebar diameter before buying to avoid return hassles.'},
+                    {'title': 'Cheap plastic clamps', 'text': 'Budget mounts often use brittle plastic that cracks in Indian heat. Invest in reinforced plastic or metal construction.'},
+                    {'title': 'Mounting too close to controls', 'text': 'Position the mount where it does not interfere with handlebar movement, cables, or controls. Test full lock-to-lock steering before tightening.'},
+                ],
+                'maintenance_tips': [
+                    'Tighten all screws and clamps before every long ride. Vibrations loosen mounts over time.',
+                    'Clean the grip mechanism periodically to remove dust and grit that can reduce holding strength.',
+                    'Apply silicone spray to moving parts (jaw-grip springs, quick-release mechanisms) every 3 months.',
+                    'Replace rubber or silicone pads when worn, as they reduce grip strength.',
+                    'If your mount has a vibration damper, check it for cracks or degradation every 6 months.',
+                ],
+                'faqs': [
+                    {'question': 'Will a phone mount damage my phone camera?', 'text': 'Vibrations from single-cylinder engines can damage OIS (Optical Image Stabilization) in phone cameras over time. Always use a mount with a vibration damper to protect your phone.'},
+                    {'question': 'What is the best type of phone mount for motorcycles?', 'answer': 'Jaw-grip or X-grip mounts with vibration dampeners offer the best balance of security and phone protection. Screw-on clamp mounts are the most reliable for rough roads.'},
+                    {'question': 'How do I install a phone mount on my motorcycle?', 'answer': 'Most universal mounts clamp onto the handlebar (22-32mm diameter). Loosen the clamp bolt, position the mount, and tighten firmly. Avoid areas near controls or cables.'},
+                    {'question': 'Can phone mounts work with waterproof phone cases?', 'answer': 'Yes, but ensure the mount grips wide enough. Most mounts support phones up to 85mm wide. Measure your phone with its case before buying.'},
+                ],
+            },
+            'Engine Oil': {
+                'buying_guide': {
+                    'title': 'How to Choose the Right Engine Oil',
+                    'intro': 'Engine oil is your motorcycle\'s lifeblood. The right oil protects your engine, improves performance, and extends engine life.',
+                    'factors': [
+                        {'title': 'Oil Grade (Viscosity)', 'icon': '&#128187;', 'text': 'Follow your owner\'s manual. Common grades for Indian bikes: 10W-30 for commuters, 10W-40 for performance bikes, 20W-50 for older engines. Never mix grades.'},
+                        {'title': 'Oil Type', 'icon': '&#9881;', 'text': 'Mineral oil is cheapest but needs frequent changes. Semi-synthetic offers better protection at moderate cost. Fully synthetic provides maximum engine protection and longer change intervals.'},
+                        {'title': 'Manufacturer Approval', 'icon': '&#10004;', 'text': 'Use oils that meet your motorcycle manufacturer\'s specifications (JASO MA2 for most Indian bikes). Using non-approved oils can void your warranty.'},
+                        {'title': 'Change Interval', 'icon': '&#128197;', 'text': 'Mineral oil: every 2000-3000 km. Semi-synthetic: every 3000-4000 km. Fully synthetic: every 5000-6000 km. Always change oil with the filter.'},
+                        {'title': 'Brand Reputation', 'icon': '&#127942;', 'text': 'Motul, Shell, Castrol, Liqui Moly, and Motorex are trusted brands in India. Stick to established brands to avoid counterfeit products.'},
+                        {'title': 'Engine Condition', 'icon': '&#128295;', 'text': 'Newer engines benefit from synthetic oils. Older engines with higher mileage may perform better with mineral or semi-synthetic oils that have higher zinc content.'},
+                    ],
+                },
+                'common_mistakes': [
+                    {'title': 'Using the wrong viscosity grade', 'text': 'Always check your owner\'s manual. Using 20W-50 in a bike designed for 10W-30 increases fuel consumption and reduces cold-start protection.'},
+                    {'title': 'Mixing oil brands and types', 'text': 'While technically possible, mixing different oils can reduce performance. Stick to one brand and type between changes.'},
+                    {'title': 'Ignoring oil change intervals', 'text': 'Old oil loses its protective properties. Even if the oil looks clean, additives deplete over time. Follow the manufacturer\'s recommended interval.'},
+                    {'title': 'Not changing the oil filter', 'text': 'A clogged oil filter restricts oil flow. Always replace the filter when changing oil, even if it looks clean.'},
+                    {'title': 'Topping up instead of changing', 'text': 'Topping up oil masks leaks and does not replace degraded oil. If you regularly need to top up, get the engine inspected.'},
+                ],
+                'maintenance_tips': [
+                    'Check oil level with the bike on the center stand, engine off, after 5 minutes of cooling.',
+                    'Warm the engine for 2-3 minutes before draining old oil for a more complete drain.',
+                    'Use a torque wrench when tightening the drain bolt to avoid stripping threads.',
+                    'Keep the oil filler cap clean to prevent dirt from entering the engine.',
+                    'Record your oil change date and mileage for accurate change interval tracking.',
+                ],
+                'faqs': [
+                    {'question': 'Which oil is best for Royal Enfield Classic 350?', 'answer': 'Royal Enfield recommends 15W-50 semi-synthetic for the Classic 350. Motul 5100 15W-50 and Shell Advance AX7 15W-50 are popular choices that meet the manufacturer specification.'},
+                    {'question': 'How often should I change my motorcycle oil?', 'answer': 'Mineral oil every 2000-3000 km, semi-synthetic every 3000-4000 km, fully synthetic every 5000-6000 km. Always follow your owner\'s manual recommendations.'},
+                    {'question': 'Can I use car engine oil in my motorcycle?', 'answer': 'No. Motorcycle engines share oil with the clutch and gearbox, requiring JASO MA/MA2-rated oils. Car oils contain friction modifiers that can damage motorcycle clutches.'},
+                    {'question': 'Is fully synthetic oil worth the extra cost?', 'answer': 'For performance bikes and frequent riders, yes. Synthetic oil lasts longer, protects better at extreme temperatures, and maintains viscosity longer. For casual commuters, semi-synthetic offers the best value.'},
+                    {'question': 'What happens if I use the wrong oil grade?', 'answer': 'Using a heavier grade reduces fuel efficiency and cold-start protection. Using a lighter grade reduces film strength and increases engine wear. Always use the grade specified in your owner\'s manual.'},
+                ],
+            },
+            'Chain Lube': {
+                'buying_guide': {
+                    'title': 'How to Choose Motorcycle Chain Lube',
+                    'intro': 'A well-lubricated chain transfers power efficiently and lasts longer. Choosing the right lube depends on your riding conditions and maintenance routine.',
+                    'factors': [
+                        {'title': 'Lube Type', 'icon': '&#128293;', 'text': 'Wax-based lubes are clean and long-lasting. Oil-based lubes penetrate better but attract dirt. O-ring safe lubes are essential for modern sealed chains.'},
+                        {'title': 'Application Method', 'icon': '&#128295;', 'text': 'Spray cans are convenient and even. Drip-on bottles offer precise application. Choose based on your comfort and how often you lube.'},
+                        {'title': 'Weather Suitability', 'icon': '&#127783;', 'text': 'Wet-weather lubes resist water wash-off. In monsoon-heavy India, water-resistant lubes are essential for daily riders.'},
+                        {'title': 'Chain Compatibility', 'icon': '&#9881;', 'text': 'Always use O-ring/X-ring safe lubes. petroleum-based solvents damage chain seals, leading to premature chain failure.'},
+                        {'title': 'Dust Attraction', 'icon': '&#128168;', 'text': 'Sticky lubes attract dust and grit, accelerating chain wear. Wax-based and dry lubes attract less debris, important for dusty Indian roads.'},
+                        {'title': 'Drying Time', 'icon': '&#9203;', 'text': 'Fast-drying lubes let you ride sooner after application. Some lubes need 30 minutes to set. Choose based on your maintenance schedule.'},
+                    ],
+                },
+                'common_mistakes': [
+                    {'title': 'Lubricating a dirty chain', 'text': 'Always clean the chain before applying lube. Applying lube over dirt traps abrasive particles that accelerate wear.'},
+                    {'title': 'Using too much lube', 'text': 'Excess lube flings off onto wheels and fairings, attracting dirt. Apply a thin, even coat while slowly rotating the rear wheel.'},
+                    {'title': 'Lubricating on the stand only', 'text': 'Spray the inner side of the chain where the rollers contact the sprockets. Most riders apply lube to the outer side, which is less effective.'},
+                    {'title': 'Not lubing after rain rides', 'text': 'Water washes away lube and causes rust. After riding in rain, clean and re-lube the chain as soon as possible.'},
+                    {'title': 'Using the wrong lube type', 'text': 'WD-40 is a solvent, not a chain lube. It strips existing lubrication and can damage chain seals. Use products specifically labeled as motorcycle chain lube.'},
+                ],
+                'maintenance_tips': [
+                    'Lube the chain every 500-800 km or after every rain ride, whichever comes first.',
+                    'Clean the chain with a dedicated chain cleaner and soft brush before each lube application.',
+                    'Apply lube to the inner side of the chain while rotating the rear wheel slowly.',
+                    'Wait 10-15 minutes after lubing before riding to let the lube set properly.',
+                    'Check chain tension every 1000 km and adjust as needed per your owner\'s manual.',
+                ],
+                'faqs': [
+                    {'question': 'How often should I lube my motorcycle chain?', 'answer': 'Every 500-800 km for daily riders, or after any rain ride. Touring riders can extend to 1000 km in dry conditions. More frequent lubing extends chain life.'},
+                    {'question': 'Can I use engine oil as chain lube?', 'answer': 'Engine oil attracts dust and flings off easily. It provides short-term lubrication but accelerates chain wear. Use proper chain lube for best results.'},
+                    {'question': 'What is the difference between wet and dry chain lube?', 'answer': 'Wet lubes are sticky and long-lasting but attract dirt. Dry lubes are clean and dust-resistant but need more frequent application. Choose wet for rain, dry for dusty conditions.'},
+                    {'question': 'How do I know when to replace my chain?', 'answer': 'Replace when you see visible rust, tight spots during rotation, or when the chain stretches beyond the adjuster limit. Most chains last 20,000-30,000 km with proper maintenance.'},
+                ],
+            },
+            'Chain Cleaner': {
+                'buying_guide': {
+                    'title': 'How to Choose Motorcycle Chain Cleaner',
+                    'intro': 'A good chain cleaner removes old lube, dirt, and grime without damaging chain seals. Regular cleaning extends chain and sprocket life.',
+                    'factors': [
+                        {'title': 'Cleaning Power', 'icon': '&#10024;', 'text': 'Effective cleaners dissolve grease, road grime, and chain wax in one application. Heavy-duty formulas tackle stubborn baked-on deposits.'},
+                        {'title': 'Chain Seal Safety', 'icon': '&#128274;', 'text': 'Use cleaners labeled safe for O-ring and X-ring chains. Harsh solvents dissolve the rubber seals inside sealed chains, causing premature failure.'},
+                        {'title': 'Application Method', 'icon': '&#128295;', 'text': 'Spray cans provide even coverage and are most convenient. Gel formulas cling better for heavy cleaning. Choose based on how dirty your chain gets.'},
+                        {'title': 'Evaporation Rate', 'icon': '&#128168;', 'text': 'Fast-evaporating cleaners let you lube and ride sooner. Slow-evaporating formulas penetrate deeper for heavy-duty cleaning.'},
+                        {'title': 'Environmental Safety', 'icon': '&#127793;', 'text': 'Biodegradable formulas are safer for the environment. In India, avoid cleaners that drip onto the ground and damage surfaces.'},
+                        {'title': 'Value', 'icon': '&#128176;', 'text': 'Consider cost per cleaning. Concentrated formulas that require dilution can be more economical for regular maintenance.'},
+                    ],
+                },
+                'common_mistakes': [
+                    {'title': 'Not cleaning before lubing', 'text': 'Applying lube over a dirty chain traps abrasive particles. Always clean first, then lube.'},
+                    {'title': 'Using diesel or petrol as cleaner', 'text': 'Petrol and diesel dissolve O-ring seals and strip all lubrication. Use dedicated chain cleaners designed for motorcycle chains.'},
+                    {'title': 'Pressure washing the chain', 'text': 'High-pressure water forces past chain seals and removes internal grease. Use a brush and spray cleaner instead.'},
+                    {'title': 'Skipping the rinse step', 'text': 'After scrubbing, wipe off all cleaner residue before applying new lube. Remaining cleaner can dilute the fresh lube.'},
+                    {'title': 'Cleaning on a hot chain', 'text': 'Clean the chain after it cools down. Hot chain surfaces evaporate cleaner too quickly, reducing cleaning effectiveness.'},
+                ],
+                'maintenance_tips': [
+                    'Clean the chain every 1000-1500 km or when visibly dirty.',
+                    'Use a dedicated chain cleaning brush with stiff nylon bristles for best results.',
+                    'Apply cleaner, scrub with the brush, then wipe clean with a lint-free cloth.',
+                    'Always clean and lube in the same session for optimal results.',
+                    'Place cardboard or newspaper under the chain to catch drips and protect your floor.',
+                ],
+                'faqs': [
+                    {'question': 'Can I use petrol or diesel to clean my chain?', 'answer': 'No. Petrol and diesel dissolve the rubber seals inside O-ring and X-ring chains, causing premature chain failure. Always use dedicated chain cleaners.'},
+                    {'question': 'How often should I clean my motorcycle chain?', 'answer': 'Every 1000-1500 km for daily riders, or whenever the chain looks dirty. Riders in dusty or wet conditions may need to clean more frequently.'},
+                    {'question': 'Do I need to remove the chain to clean it?', 'answer': 'No. Clean the chain on the bike using the rear stand. Rotate the wheel while applying cleaner and scrubbing with a brush.'},
+                    {'question': 'What is the best chain cleaning method?', 'answer': 'Spray chain cleaner on the inner side, scrub with a chain brush, wipe clean with a cloth, let dry, then apply fresh chain lube.'},
+                ],
+            },
+            'Tyre Inflator': {
+                'buying_guide': {
+                    'title': 'How to Choose a Portable Tyre Inflator',
+                    'intro': 'A portable tyre inflator is essential for roadside emergencies and regular pressure maintenance. The right one saves time and keeps you safe.',
+                    'factors': [
+                        {'title': 'Inflation Speed', 'icon': '&#9889;', 'text': 'Look for inflators that can fill a motorcycle tyre in under 5 minutes. 12V compressors typically produce 150-200 PSI, which is sufficient for bikes.'},
+                        {'title': 'Power Source', 'icon': '&#128267;', 'text': '12V cigarette lighter plug is most common. Battery-powered cordless inflators offer more freedom. Choose based on whether you ride mostly in city or tour.'},
+                        {'title': 'Pressure Accuracy', 'icon': '&#128200;', 'text': 'Digital gauges with +/- 1 PSI accuracy are essential. Analog gauges are less precise. Auto-shutoff at target pressure prevents over-inflation.'},
+                        {'title': 'Portability', 'icon': '&#128092;', 'text': 'Compact inflators that fit in a saddlebag or tank bag are ideal. Weight matters for touring riders. Consider storage space on your motorcycle.'},
+                        {'title': 'Build Quality', 'icon': '&#128295;', 'text': 'Metal cylinders last longer than all-plastic designs. Heat dissipation matters since compressors get hot during extended use.'},
+                        {'title': 'Extra Features', 'icon': '&#127381;', 'text': 'LED lights help in roadside emergencies. Multiple nozzle adapters handle bicycles and balls. USB charging ports add convenience.'},
+                    ],
+                },
+                'common_mistakes': [
+                    {'title': 'Inflating to the pressure printed on the tyre sidewall', 'text': 'The sidewall number is the maximum pressure, not the recommended pressure. Always use the pressure specified in your motorcycle owner\'s manual or on the sticker inside the swingarm.'},
+                    {'title': 'Not checking pressure when tyres are cold', 'text': 'Tyre pressure increases with heat from riding. Always check and adjust pressure when tyres are cold (before riding or after sitting for 3+ hours).'},
+                    {'title': 'Buying based on PSI rating alone', 'text': 'Higher PSI does not mean better inflation speed. CFM (cubic feet per minute) is a better measure of actual inflation performance.'},
+                    {'title': 'Ignoring build quality for price', 'text': 'Cheap inflators may overheat, fail mid-use, or provide inaccurate readings. A reliable inflator is a safety investment.'},
+                    {'title': 'Not carrying one at all', 'text': 'Most riders do not carry a tyre inflator. A flat tyre without one means calling roadside assistance or walking to the nearest pump.'},
+                ],
+                'maintenance_tips': [
+                    'Check your tyre pressure at least once a week, even if the tyres look fine.',
+                    'Always inflate tyres when cold, before riding or after 3+ hours of standing.',
+                    'Store the inflator in a dry place to prevent internal corrosion.',
+                    'Periodically check the inflator\'s own battery (if cordless) and charge it.',
+                    'Keep the air hose clean and free of debris to prevent gauge contamination.',
+                ],
+                'faqs': [
+                    {'question': 'What pressure should I inflate my motorcycle tyres to?', 'answer': 'Check your owner\'s manual or the sticker on the swingarm for recommended pressures. Typical values: 25 PSI front, 28-30 PSI rear for most Indian motorcycles. Always inflate when tyres are cold.'},
+                    {'question': 'Can I use a car tyre inflator for my motorcycle?', 'answer': 'Yes, most 12V car tyre inflators work for motorcycles. Ensure the nozzle fits your tyre valve (Schrader valves are standard on most bikes).' },
+                    {'question': 'How long does a portable inflator take to fill a motorcycle tyre?', 'answer': 'A good 12V inflator takes 3-5 minutes to fill a flat motorcycle tyre from 0 to 30 PSI. Battery-powered models may take slightly longer.'},
+                    {'question': 'Are digital or analog tyre inflators better?', 'answer': 'Digital inflators are more accurate and easier to read. They also offer auto-shutoff at the target pressure. Analog inflators are cheaper but less precise.'},
+                ],
+            },
+        }
+
         # Build guide navigation list (used in footer "Continue Shopping" section)
         guide_nav = [
             {'slug': s, 'category': p['category'], 'title': p['title']}
@@ -1684,7 +1895,8 @@ class SiteGenerator:
 
         for page in bestof_pages:
             category = page['category']
-            cat_products = recommend_products(self.data['products'], category)
+            rec = recommend_for_category(self.data['products'], category)
+            cat_products = rec['products']
 
             context = self.build_base_context(
                 meta_title=f"{page['title']} - {page['description'][:50]} | BikeReview India",
@@ -1697,6 +1909,7 @@ class SiteGenerator:
             context['products'] = cat_products
             context['category'] = category
             context['category_slug'] = page['slug']
+            context['badge_data'] = rec.get('badge_data', {})
             context['breadcrumbs'] = [
                 {'name': 'Guides', 'url': f'{self.base_url}/guides/'},
                 {'name': page['title']},
@@ -1713,6 +1926,17 @@ class SiteGenerator:
                 key=lambda m: m.get('price_numeric', 0),
                 reverse=True,
             )
+
+            # Pass category-specific guide content (buying guide, mistakes, maintenance, FAQs)
+            context['guide_content'] = guide_content.get(category, {})
+
+            # Pass popular motorcycles for "Related Motorcycles" section
+            # Top 6 by price (premium bikes have riders who invest in accessories)
+            context['related_bikes'] = sorted(
+                self.data['motorcycles'],
+                key=lambda m: m.get('price_numeric', 0),
+                reverse=True,
+            )[:6]
 
             # Build enhanced compatibility map with fitment details
             # {product_slug: {bike_slug: {status, fitment_notes, requires}}}

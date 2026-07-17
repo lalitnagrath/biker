@@ -18,37 +18,109 @@ import argparse
 from typing import List, Dict, Any
 
 import requests
+from asin_helper import refresh_product_pricing
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from creatorsapi_python_sdk.api_client import ApiClient
 from creatorsapi_python_sdk.api.default_api import DefaultApi
 from creatorsapi_python_sdk.models.search_items_request_content import SearchItemsRequestContent
 from creatorsapi_python_sdk.exceptions import ApiException
+from creatorsapi_python_sdk.models.sort_by import SortBy
 
 # Optional credentials can be added here directly.
 # If you prefer this method, replace None with your own values.
 DEFAULT_CREDENTIAL_ID = "amzn1.application-oa2-client.b9b4e4acd8b145de93d67e30964552f6"
 DEFAULT_CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.c54ce65e63d4bc8d44bf9ec5dbb7a368aa943b0cc84bb89a32eb77afbb0ca028"
-DEFAULT_PARTNER_TAG = "0x23uyx-21"
+DEFAULT_PARTNER_TAG = "helpfulsurfer-21"
 SEARCH_KEYWORDS = [
+    # Helmets & Protection
     'motorcycle helmet',
+    'bike helmet',
+    'riding helmet',
+    'helmet for bike',
+    'half helmet',
+    'full face helmet',
+    'modular helmet',
+    
+    # Riding Gear
     'riding jacket',
+    'motorcycle jacket',
+    'bike jacket',
     'riding gloves',
-    'ear plugs',
-    'bike phone mount',
+    'motorcycle gloves',
+    'bike gloves',
+    'riding pants',
+    'motorcycle pants',
+    'bike riding suit',
+    
+    # Safety & Security
+    'bike disc lock',
+    'motorcycle disc lock',
+    'chain lock',
+    'bike alarm',
+    'motorcycle alarm',
     'bike cover',
+    'motorcycle cover',
+    'bike body cover',
+    
+    # Maintenance & Care
     'chain lube',
     'chain cleaner',
-    'bike disc lock',
-    'gps tracker for bike',
-    'motorcycle saddle bag',
+    'bike chain lube',
+    'motorcycle chain lube',
     'tyre inflator',
-    'Crash Guard',
-    'sump guard',
-    'engine oil'
+    'bike tyre inflator',
+    'air compressor',
+    'bike polish',
+    'motorcycle polish',
+    'bike wax',
+    'ceramic spray for bike',
+    'bike ceramic coating spray',
+    'motorcycle ceramic spray',
+    'ceramic coating for bike',
+    
+    # Accessories
+    'bike phone mount',
+    'motorcycle phone mount',
+    'mobile holder for bike',
+    'gps tracker for bike',
+    'bike gps',
+    'motorcycle gps',
+    'motorcycle saddle bag',
+    'bike saddle bag',
+    'tank bag',
+    'tail bag',
+    
+    # Parts & Components
+    'bike mirror',
+    'motorcycle mirror',
+    'bike horn',
+    'motorcycle horn',
+    'bike indicator',
+    'motorcycle indicator',
+    'bike headlight',
+    'motorcycle headlight',
+    
+    # Comfort & Convenience
+    'bike seat cover',
+    'motorcycle seat cover',
+    'handlebar grip',
+    'bike footrest',
+    'motorcycle footrest',
+    'bike windshield',
+    'motorcycle windshield',
+    
+    # Electronics
+    'bike charger',
+    'motorcycle charger',
+    'bike usb charger',
+    'action camera',
+    'dash cam',
+    'helmet bluetooth',
 ]
-SEARCH_INDICES = ['All']
-
+SEARCH_INDICES = [
+    'Automotive'
+]
 IMAGES_DIR = os.path.join(os.path.dirname(__file__), 'bike-images')
 OUTPUT_HTML = os.path.join(os.path.dirname(__file__), 'bike.html')
 OUTPUT_JSON = os.path.join(os.path.dirname(__file__), 'bike-deals.json')
@@ -69,7 +141,7 @@ def get_credentials(credential_id: str | None = None, credential_secret: str | N
     return cid, csecret
 
 def get_partner_tag(partner_tag: str | None = None) -> str:
-    tag = partner_tag or DEFAULT_PARTNER_TAG or os.environ.get('AMAZON_PARTNER_TAG')
+    tag = partner_tag or DEFAULT_PARTNER_TAG or os.environ.get('helpfulsurfer-21')
     if not tag or not tag.strip():
         raise RuntimeError(
             'Please set AMAZON_PARTNER_TAG environment variable, provide --partner-tag, '
@@ -186,7 +258,7 @@ def extract_savings_amount(item_dict: Dict[str, Any]) -> float:
     return best_amount
 
 
-def fetch_candidates(api: DefaultApi, marketplace: str, categories: List[str], partner_tag: str, seen_asins: set[str], search_keywords: List[str], per_cat: int = 50) -> List[Dict[str, Any]]:
+def fetch_candidates(api: DefaultApi, marketplace: str, categories: List[str], partner_tag: str, search_keywords: List[str], per_cat: int = 50, sort_by: SortBy | None = None, max_pages: int = 1) -> List[Dict[str, Any]]:
     resources = [
         'images.primary.large',
         'images.primary.medium',
@@ -201,33 +273,44 @@ def fetch_candidates(api: DefaultApi, marketplace: str, categories: List[str], p
     seen = {}
     for keyword in search_keywords:
         for cat in categories:
-            req = SearchItemsRequestContent(
-                partner_tag=partner_tag,
-                keywords=keyword,
-                search_index=cat,
-                item_count=per_cat,
-                resources=resources
-            )
-            try:
-                resp = api.search_items(x_marketplace=marketplace, search_items_request_content=req)
-                rd = resp.to_dict() if hasattr(resp, 'to_dict') else {}
-                items = (rd.get('searchResult') or {}).get('items') or []
-                for it in items:
-                    asin = it.get('asin')
-                    if not asin:
-                        continue
-                    if asin in seen or asin in seen_asins:
-                        continue
-                    if keyword and not title_contains_filter(it, keyword):
-                        continue
-                    it['_search_keyword'] = keyword
-                    it['_found_in_category'] = cat
-                    seen[asin] = it
-            except ApiException as e:
-                print('API error for category', cat, 'keyword', keyword, e)
-            except Exception as e:
-                print('Unexpected error for category', cat, 'keyword', keyword, e)
-            time.sleep(0.8)
+            for page in range(1, max_pages + 1):
+                req = SearchItemsRequestContent(
+                    partner_tag=partner_tag,
+                    keywords=keyword,
+                    search_index=cat,
+                    item_count=per_cat,
+                    resources=resources,
+                    page=page
+                )
+                try:
+                    resp = api.search_items(x_marketplace=marketplace, search_items_request_content=req)
+                    rd = resp.to_dict() if hasattr(resp, 'to_dict') else {}
+                    items = (rd.get('searchResult') or {}).get('items') or []
+                    if not items:
+                        break  # No more results for this keyword/category
+                    
+                    for it in items:
+                        asin = it.get('asin')
+                        if not asin:
+                            continue
+                        # Skip title filter for generic keywords that might not appear in product titles
+                        # Only apply strict filter for specific product types
+                        if keyword and keyword not in ("deal", "discount", "sale", "offer", "bargain") and not title_contains_filter(it, keyword):
+                            continue
+                        it['_search_keyword'] = keyword
+                        it['_found_in_category'] = cat
+                        seen[asin] = it
+                    
+                    print(f'  Keyword "{keyword}" in {cat}: Page {page} fetched {len(items)} items')
+                    
+                except ApiException as e:
+                    print('API error for category', cat, 'keyword', keyword, 'page', page, e)
+                    break  # Stop pagination on error
+                except Exception as e:
+                    print('Unexpected error for category', cat, 'keyword', keyword, 'page', page, e)
+                    break  # Stop pagination on error
+                
+                time.sleep(0.8)  # Rate limiting between pages
 
     return list(seen.values())
 
@@ -470,15 +553,20 @@ def write_html(items: List[Dict[str, Any]], output_path: str, marketplace: str, 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--marketplace', default=os.environ.get('AMAZON_MARKETPLACE', 'www.amazon.in'))
-    parser.add_argument('--per-cat', type=int, default=50)
-    parser.add_argument('--top', type=int, default=100)
+    parser.add_argument('--per-cat', type=int, default=50,
+                        help='Number of items to fetch per search (default: 50)')
+    parser.add_argument('--top', type=int, default=100,
+                        help='Number of top deals to show (default: 100)')
     parser.add_argument('--min-pct', type=float, default=1.0,
                         help='Minimum savings percentage to include a deal')
+    parser.add_argument('--max-pages', type=int, default=1,
+                        help='Maximum number of pages to fetch per keyword (default: 1)')
     parser.add_argument('--credential-id', default=None)
     parser.add_argument('--credential-secret', default=None)
     parser.add_argument('--partner-tag', default=None)
     parser.add_argument('--clear-cache', action='store_true', help='Clear saved ASIN cache before fetching new deals')
     parser.add_argument('--from-json', action='store_true', help='Generate HTML from existing JSON instead of fetching from API')
+    parser.add_argument('--bestseller', action='store_true', help='Sort by featured/bestseller algorithm')
     args = parser.parse_args()
 
     if args.from_json:
@@ -512,10 +600,12 @@ def main():
     categories = SEARCH_INDICES
 
     seen_asins = load_seen_asins()
-    print('Skipping', len(seen_asins), 'previously seen products')
+    print('Tracking', len(seen_asins), 'known products (refreshing pricing)')
     print('Fetching candidates from categories:', categories)
     print('Using search keywords:', SEARCH_KEYWORDS)
-    candidates = fetch_candidates(api, args.marketplace, categories, partner_tag, seen_asins, SEARCH_KEYWORDS, per_cat=args.per_cat)
+    print(f'Fetching up to {args.max_pages} page(s) per keyword')
+    sort_by_param = SortBy.FEATURED if args.bestseller else None
+    candidates = fetch_candidates(api, args.marketplace, categories, partner_tag, SEARCH_KEYWORDS, per_cat=args.per_cat, sort_by=sort_by_param, max_pages=args.max_pages)
     print('Fetched', len(candidates), 'new unique sale items for selected keywords')
 
     deals = filter_and_sort(candidates)
@@ -526,19 +616,22 @@ def main():
     for it in deals:
         asin = it.get('asin')
         if asin:
-            existing_by_asin[asin] = it
+            if asin in existing_by_asin:
+                existing_by_asin[asin] = refresh_product_pricing(existing_by_asin[asin], it)
+            else:
+                existing_by_asin[asin] = it
     merged = list(existing_by_asin.values())
     merged.sort(key=lambda x: (x.get('_savings_pct', 0.0), x.get('_savings_amount', 0.0)), reverse=True)
     top = merged[:args.top]
     print(f'Merged deals: {len(merged)} total ({len(top)} shown in HTML)')
     if not top:
         print('No deals found; skipping HTML generation.')
-        new_asins = {it.get('asin') for it in candidates if it.get('asin')}
-        save_seen_asins(seen_asins | new_asins)
+        all_fetched_asins = {it.get('asin') for it in candidates if it.get('asin')}
+        save_seen_asins(load_seen_asins() | all_fetched_asins)
         return
 
-    new_asins = {it.get('asin') for it in candidates if it.get('asin')}
-    save_seen_asins(seen_asins | new_asins)
+    all_fetched_asins = {it.get('asin') for it in candidates if it.get('asin')}
+    save_seen_asins(load_seen_asins() | all_fetched_asins)
     save_deals_json(merged, OUTPUT_JSON)
     
 

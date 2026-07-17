@@ -1,0 +1,142 @@
+[
+    {
+        "asin": "B0D9QTZYJW",
+        "slug": "bobo-bm4-pro-plus",
+        "title": "BOBO BM4 PRO Plus Jaw-Grip Phone Mount with Vibration Damper",
+        "brand": "BOBO",
+        "category": "Phone Mount",
+        "type": "Handlebar Mount",
+        "status": "approved",
+
+        "editorial": {
+            "score": 85,
+            "pros": ["PRO+ vibration damper protects phone camera", "Jaw-grip holds phone securely", "Waterproof design", "1 year warranty"],
+            "cons": ["Vibration damper adds bulk", "Slightly expensive"],
+            "features": ["Vibration damper", "Jaw-grip mechanism", "Waterproof", "1 year warranty"],
+            "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
+            "recommended_for": ["touring", "daily-commute", "vloggers"],
+            "notes": "Best phone mount for riders who need camera vibration protection"
+        },
+
+        "amazon": {
+            "price": 1899,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.3,
+            "review_count": 2100,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=0x23uyx-21",
+            "image": "images/products/bobo-bm4-pro-plus.jpg",
+            "last_updated": null
+        },
+
+        "compatible_bikes": ["*"],
+        "best_for": "Riders wanting secure phone mounting with camera vibration protection",
+        "verdict": "The BOBO BM4 PRO Plus is the best phone mount for riders who want secure jaw-grip holding with vibration dampening to protect phone cameras."
+    },
+    {
+        "asin": "B0D9QR37RC",
+        "slug": "bobo-bm14-pro-plus",
+        "title": "BOBO BM14 PRO Plus Quick Release Phone Mount with Vibration Damper",
+        "brand": "BOBO",
+        "category": "Phone Mount",
+        "type": "Handlebar Mount",
+        "status": "approved",
+
+        "editorial": {
+            "score": 83,
+            "pros": ["Quick-release mechanism", "PRO+ vibration damper", "Waterproof", "Fits 4-7 inch phones"],
+            "cons": ["Quick release can feel loose on rough roads", "Premium pricing"],
+            "features": ["Quick-release mechanism", "Vibration damper", "Waterproof", "4-7 inch phone support"],
+            "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
+            "recommended_for": ["touring", "daily-commute"],
+            "notes": "Quick-release variant of the BM4 PRO Plus"
+        },
+
+        "amazon": {
+            "price": 1999,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.4,
+            "review_count": 1800,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B0D9QR37RC?tag=0x23uyx-21",
+            "image": "images/products/bobo-bm14-pro-plus.jpg",
+            "last_updated": null
+        },
+
+        "compatible_bikes": ["*"],
+        "best_for": "Riders wanting quick phone attach/detach with vibration protection",
+        "verdict": "The BOBO BM14 PRO Plus offers the convenience of quick-release with the same excellent vibration dampening as the BM4 PRO Plus."
+    },
+    {
+        "asin": "B09V334S4L",
+        "slug": "xiaomi-air-compressor-1s",
+        "title": "Xiaomi Portable Electric Air Compressor 1S",
+        "brand": "Xiaomi",
+        "category": "Tyre Inflator",
+        "type": "Portable",
+        "status": "approved",
+
+        "editorial": {
+            "score": 80,
+            "pros": ["Compact and lightweight (200g)", "Type-C charging", "5 preset modes", "LED light with SOS", "Auto shut-off"],
+            "cons": ["2000mAh battery limits car tyre inflation", "No 12V car adapter included"],
+            "features": ["200g weight", "Type-C charging", "5 preset modes", "LED SOS light", "Auto shut-off"],
+            "fitment_notes": "Universal - works with all motorcycle tyre valve types",
+            "recommended_for": ["touring", "daily-commute", "emergency-kit"],
+            "notes": "Most compact tyre inflator for motorcycle riders"
+        },
+
+        "amazon": {
+            "price": 1999,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.1,
+            "review_count": 15000,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B09V334S4L?tag=0x23uyx-21",
+            "image": "images/products/xiaomi-air-compressor-1s.jpg",
+            "last_updated": null
+        },
+
+        "compatible_bikes": ["*"],
+        "best_for": "Riders wanting a compact, portable tyre inflator for motorcycle use",
+        "verdict": "The Xiaomi Portable Air Compressor 1S is the most compact and lightweight tyre inflator, perfect for motorcycle riders to carry on every ride."
+    },
+    {
+        "asin": "B0DYZQ458Q",
+        "slug": "strief-ez-air-inflator",
+        "title": "STRIFF EZ Air Portable Tyre Inflator 150PSI",
+        "brand": "STRIFF",
+        "category": "Tyre Inflator",
+        "type": "Portable",
+        "status": "approved",
+
+        "editorial": {
+            "score": 75,
+            "pros": ["4000mAh battery", "150 PSI max pressure", "Type-C charging", "5 preset modes", "Digital display"],
+            "cons": ["Heavier than Xiaomi", "Basic build quality"],
+            "features": ["4000mAh battery", "150 PSI max", "Type-C charging", "Digital display", "5 preset modes"],
+            "fitment_notes": "Universal - works with all motorcycle tyre valve types",
+            "recommended_for": ["budget", "touring"],
+            "notes": "Budget-friendly alternative with larger battery"
+        },
+
+        "amazon": {
+            "price": 1679,
+            "mrp": null,
+            "discount": null,
+            "rating": 4.2,
+            "review_count": 3500,
+            "availability": "In Stock",
+            "affiliate_url": "https://www.amazon.in/dp/B0DYZQ458Q?tag=0x23uyx-21",
+            "image": "images/products/strief-ez-air-inflator.jpg",
+            "last_updated": null
+        },
+
+        "compatible_bikes": ["*"],
+        "best_for": "Budget riders wanting a capable portable tyre inflator",
+        "verdict": "The STRIFF EZ Air offers good value with a larger 4000mAh battery and 150PSI capacity at a budget-friendly price."
+    }
+]
