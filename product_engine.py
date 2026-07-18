@@ -647,54 +647,32 @@ def recommendation_score(product: dict, category: Optional[str] = None,
                          bike: Optional[dict] = None) -> float:
     """Composite recommendation score.  Higher = better.
 
-    Weighted blend of 7 factors:
-        1. Editor rating      (0-10 scale, normalized to 0-1)
-        2. Value for money    (0-1 from value_for_money())
-        3. Customer rating    (0-5, normalized to 0-1)
-        4. Review count       (log-scaled, normalized to 0-1)
-        5. Compatibility      (priority-based, 0 when no bike)
-        6. Brand reputation   (0 or 1)
+    Delegates to the central, configurable scoring engine (scoring.py) so
+    weights stay in one place and can be tuned per category. Returns the
+    normalised 0-1 blended score used for badge assignment and ranking.
+
+    NOTE: this numeric score is internal only and must never be rendered to
+    end users; only the derived badge / best_for / pros / price / rating may
+    be displayed.
         7. Availability       (0-1)
 
     This is the score used for badge assignment (Editor's Choice, etc.).
     It is distinct from weighted_score() which is used for list ranking.
     """
-    w = _REC_WEIGHTS
-    score = 0.0
+    from scoring import compute_recommendation_score, is_editorial_override
 
-    # 1. Editorial signal (real review content only)
-    editor = editorial_signal(product)
-    score += w['editor'] * editor
-
-    # 2. Value for money
-    score += w['value'] * value_for_money(product)
-
-    # 3. Customer rating
-    rating = _as_float(product.get('rating', 0))
-    score += w['rating'] * (rating / 5.0)
-
-    # 4. Review count (log-scaled)
-    reviews = _as_int(product.get('review_count', product.get('reviews', 0)))
-    if reviews > 0:
-        score += w['reviews'] * min(1.0, math.log10(reviews + 1) / 5.0)
-
-    # 5. Compatibility (only when a bike is selected)
+    # Hard-exclude incompatible products when a bike is selected.
     if bike is not None:
         cp = compatibility_priority(product, bike)
         if cp == 0:
-            return -1.0  # incompatible, hard exclusion
-        # priority 1 -> 1.0, priority 5 -> 0.2
-        score += w['compatibility'] * ((6 - cp) / 5.0)
+            return -1.0
 
-    # 6. Brand reputation
-    brand = (product.get('brand') or '').strip().lower()
-    if brand in TRUSTED_BRANDS:
-        score += w['brand']
-
-    # 7. Availability
-    score += w['availability'] * _availability_score(product)
-
-    return round(score, 3)
+    result = compute_recommendation_score(product, category, bike)
+    # Editorial overrides may not be denied a badge just because their
+    # automatic score is low; return a high floor so they still rank.
+    if result["overridden"]:
+        return 1.0
+    return result["score"]
 
 
 # ===== 3d. Badge Assignment =====
@@ -819,18 +797,34 @@ def assign_badges(products: list, category: Optional[str] = None,
         for _, p in candidates:
             slug = p.get('slug', '')
             if slug and slug not in used_slugs:
+                from scoring import compute_recommendation_score
+                reasons = compute_recommendation_score(p, category, bike).get('reasons', [])
                 assigned[slug] = {
                     'badge': _BADGE_LABELS[badge_type],
                     'badge_type': badge_type,
                     'icon': _BADGE_ICONS[badge_type],
                     'reason': _generate_badge_reason(p, badge_type, category),
+                    'reasons': reasons,
                 }
                 used_slugs.add(slug)
                 return True
         return False
 
-    # 1. Editor's Choice: highest composite score
-    _assign('editors_choice', scored)
+    # 1. Editor's Choice: manual editorial picks win unconditionally,
+    #    otherwise the highest composite score. Guarantees req #4.
+    override_products = [
+        (s, p) for s, p in scored
+        if p.get('editors_choice') or _as_int(p.get('override_rank', 0)) > 0
+    ]
+    override_products.sort(
+        key=lambda x: (
+            not bool(x[1].get('editors_choice')),
+            _as_int(x[1].get('override_rank', 0)) or 0,
+            x[0],
+        )
+    )
+    if not _assign('editors_choice', override_products):
+        _assign('editors_choice', scored)
 
     # 2. Best Value: best value_for_money among remaining
     remaining = [(s, p) for s, p in scored if p.get('slug') not in used_slugs]
@@ -1068,6 +1062,8 @@ def recommend_products(
     # Weighted intrinsic quality (rating, reviews, badges, price fit, value,
     # discount, brand trust, editorial) is the primary signal. Compatibility is
     # layered on top as a hard filter + priority boost when a bike is provided.
+    from scoring import compute_recommendation_score, sort_key_for_ranking
+
     scored: list = []
     for p in candidates:
         base = weighted_score(p, category)
@@ -1076,11 +1072,12 @@ def recommend_products(
             if cp == 0:
                 continue  # incompatible: exclude entirely
             base += (6 - cp) * 8.0  # priority 1 -> +40, priority 5 -> +8
-        scored.append((base, p))
+        precomp = compute_recommendation_score(p, category, bike)
+        scored.append((sort_key_for_ranking(p, precomp, category, bike), base, p))
 
-    # --- Stage 3: Sort ---
-    scored.sort(key=lambda x: x[0], reverse=True)
-    ranked = [p for _, p in scored]
+    # --- Stage 3: Sort (editorial overrides first, then by score) ---
+    scored.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    ranked = [p for _, _, p in scored]
 
     # --- Stage 4: Brand diversity ---
     diversified = enforce_brand_diversity(ranked, max_per_brand=2)
@@ -1863,3 +1860,137 @@ def _assign_category_badges(products: list) -> None:
         budget = min(remaining, key=lambda p: p.get('price', float('inf')))
         budget['badge'] = 'budget_pick'
         budget['badge_label'] = 'Budget Pick'
+
+
+# ===== 10. Editorial Recommendation System (no Amazon ratings) =====
+#
+# We do NOT display Amazon customer ratings because most products lack that
+# data. Instead, every recommendation carries an EDITORIAL verdict derived
+# deterministically from the recommendation engine's own signals:
+#
+#     recommendation_score (editorial signal, value, compatibility, brand,
+#     availability) and quality signals (editorial_signal, value_for_money).
+#
+# Tiers (percentile-based across the candidate pool, or absolute fallback):
+#     Top 10%  -> 5 stars  "Highly Recommended"
+#     Top 30%  -> 4 stars  "Recommended"
+#     Top 60%  -> 3 stars  "Good Choice"
+#     Remaining-> None     (no editorial stars shown)
+#
+# We NEVER emit 1 or 2 star tiers (low value) and NEVER hardcode a rating.
+
+EDITORIAL_TIERS = {
+    5: {'stars': 5, 'label': 'Highly Recommended'},
+    4: {'stars': 4, 'label': 'Recommended'},
+    3: {'stars': 3, 'label': 'Good Choice'},
+}
+
+
+def editorial_quality_score(product: dict, category: Optional[str] = None,
+                            bike: Optional[dict] = None) -> float:
+    """Return a 0-1 editorial quality score derived from real engine signals.
+
+    Combines the composite recommendation score (which already blends
+    editorial signal, value for money, compatibility, brand trust, and
+    availability) with the intrinsic quality signals. Deterministic; no
+    randomness, no fabricated Amazon rating.
+    """
+    rec = recommendation_score(product, category, bike)        # ~0-1 weighted
+    editor = editorial_signal(product)                          # 0-1 real only
+    value = value_for_money(product)                            # 0-1
+    # Weighted blend emphasizing the engine's own composite score.
+    score = 0.6 * max(0.0, rec) + 0.25 * editor + 0.15 * value
+    return round(min(1.0, max(0.0, score)), 4)
+
+
+def _tier_from_percentile(percentile: float) -> Optional[dict]:
+    """Map a 0-1 percentile rank (higher = better) to an editorial tier.
+
+    Top 10% -> Highly Recommended (5)
+    Top 30% -> Recommended (4)
+    Top 60% -> Good Choice (3)
+    else    -> None (no editorial stars)
+    """
+    if percentile >= 0.90:
+        return dict(EDITORIAL_TIERS[5])
+    if percentile >= 0.70:
+        return dict(EDITORIAL_TIERS[4])
+    if percentile >= 0.40:
+        return dict(EDITORIAL_TIERS[3])
+    return None
+
+
+def get_editorial_recommendation(product: dict, category: Optional[str] = None,
+                                 bike: Optional[dict] = None,
+                                 percentile: Optional[float] = None) -> dict:
+    """Return the editorial recommendation tier for a single product.
+
+    Args:
+        product: the product dict.
+        category: canonical category (optional, improves scoring).
+        bike: selected motorcycle (optional, improves scoring).
+        percentile: optional 0-1 rank of this product within its candidate
+            pool. When provided, tiers follow the percentile mapping
+            (Top 10% / 30% / 60%). When omitted, an absolute quality
+            threshold is used so a product can still earn a tier on its own.
+
+    Returns:
+        {'stars': int, 'label': str} or {} when the product does not qualify
+        for any editorial tier (callers then render NO stars at all).
+    """
+    if percentile is not None:
+        tier = _tier_from_percentile(float(percentile))
+        return tier if tier else {}
+
+    # Absolute fallback: base the tier on intrinsic quality signals.
+    quality = editorial_quality_score(product, category, bike)
+    # Thresholds chosen so a genuinely strong product earns a tier, and a
+    # weak product earns none (never 1-2 stars).
+    if quality >= 0.75:
+        return dict(EDITORIAL_TIERS[5])
+    if quality >= 0.55:
+        return dict(EDITORIAL_TIERS[4])
+    if quality >= 0.38:
+        return dict(EDITORIAL_TIERS[3])
+    return {}
+
+
+def assign_editorial_tiers(products: list, category: Optional[str] = None,
+                           bike: Optional[dict] = None) -> Dict[str, dict]:
+    """Assign editorial tiers to a ranked pool of products.
+
+    Computes each product's percentile rank by editorial_quality_score within
+    the pool and maps it to a tier (Top 10% / 30% / 60%, else none).
+
+    Returns a dict keyed by product slug -> {'stars': int, 'label': str}.
+    Products that do not qualify are simply absent from the dict (callers
+    render no editorial stars for them).
+    """
+    if not products:
+        return {}
+
+    scored = []
+    for p in products:
+        slug = p.get('slug') or p.get('asin') or ''
+        if not slug:
+            continue
+        scored.append((slug, editorial_quality_score(p, category, bike)))
+
+    if not scored:
+        return {}
+
+    scores = [s for _, s in scored]
+    lo, hi = min(scores), max(scores)
+    span = (hi - lo) or 1.0
+
+    tiers: Dict[str, dict] = {}
+    for slug, score in scored:
+        # Percentile rank: fraction of the pool at or below this score.
+        below = sum(1 for s in scores if s <= score)
+        percentile = (below - 1) / max(len(scores) - 1, 1)
+        # Normalize so the single best product is ~1.0 (top of pool).
+        norm = (score - lo) / span
+        tier = _tier_from_percentile(max(percentile, norm))
+        if tier:
+            tiers[slug] = tier
+    return tiers

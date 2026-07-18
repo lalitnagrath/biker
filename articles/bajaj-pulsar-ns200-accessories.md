@@ -652,17 +652,17 @@ The NS200's under-seat storage is limited. Prioritize compact, multi-purpose too
 ## Related Motorcycle Accessories Guides
 
 <div class="internal-links-grid">
-<a href="../maintenance/chain-maintenance/index.html" class="internal-link-card">
+<a href="../../motorcycles/bajaj-pulsar-ns200/maintenance/chain-maintenance/index.html" class="internal-link-card">
 <div class="link-icon">🔗</div>
 <h4>Chain Maintenance Guide</h4>
 <p>Complete step-by-step chain cleaning and lubrication guide</p>
 </a>
-<a href="../maintenance/tyre-pressure/index.html" class="internal-link-card">
+<a href="../../motorcycles/bajaj-pulsar-ns200/maintenance/tyre-pressure/index.html" class="internal-link-card">
 <div class="link-icon">🛞</div>
 <h4>Tyre Pressure Guide</h4>
 <p>Optimal tyre pressure settings for every riding condition</p>
 </a>
-<a href="../maintenance/engine-oil/index.html" class="internal-link-card">
+<a href="../../motorcycles/bajaj-pulsar-ns200/maintenance/engine-oil/index.html" class="internal-link-card">
 <div class="link-icon">🛢️</div>
 <h4>Engine Oil Guide</h4>
 <p>Choosing the right oil and when to change it</p>

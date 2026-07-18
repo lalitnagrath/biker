@@ -118,9 +118,15 @@
                     <div class="product-showcase-content">
                         <div class="product-showcase-header">
                             <span class="product-showcase-category">{{ product.category_display }}</span>
-                            <div class="product-showcase-rating">
+                            <div class="product-showcase-rating our-verdict">
+                                {% if product.rating and product.reviews %}
                                 <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                 <span class="rating-value">{{ product.rating }}</span>
+                                {% elif product.editorial %}
+                                <span class="verdict-label">Our Verdict</span>
+                                <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
+                                <span class="editorial-label">{{ product.editorial.label }}</span>
+                                {% endif %}
                             </div>
                         </div>
                         <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
@@ -128,8 +134,8 @@
                         <div class="product-showcase-footer">
                             {% if product.editorial_verdict %}
                             <div class="product-showcase-score"><span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span></div>
-                            {% else %}
-                            <div class="product-showcase-score"><span class="score-number">{{ product.rating }}</span><span class="score-label">★</span></div>
+                            {% elif product.editorial %}
+                            <div class="product-showcase-score our-verdict"><span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span> <span class="editorial-label">{{ product.editorial.label }}</span></div>
                             {% endif %}
                             <div class="product-showcase-price">₹{{ product.price | int }}</div>
                             <div class="product-showcase-actions">

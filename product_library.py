@@ -1499,6 +1499,139 @@ def _price_tier(price: int, category: str) -> str:
     return 'high-end'
 
 
+# ===== Pricing (structured, volatile data) =====
+# Price is the single most important product attribute. It is stored as a
+# structured ``pricing`` object so the current selling price, MRP, discount,
+# currency, source and last-updated timestamp are never conflated or lost.
+#
+#   pricing = {
+#       'current':          int,    # selling price right now (INR)
+#       'mrp':              int|None,
+#       'discount_percent': int|None,
+#       'currency':         str,     # ISO 4217, e.g. 'INR'
+#       'last_updated':     str|None,# ISO timestamp of last refresh
+#       'source':           str,     # where the price came from
+#   }
+#
+# ``current`` is the ONLY price templates should display. MRP/discount are
+# derived/volatile and refreshed on every sync. ``source`` lets us audit
+# provenance and reject stale cached values when newer API data exists.
+
+DEFAULT_CURRENCY = 'INR'
+PRICING_SOURCE_IMPORT = 'import'
+PRICING_SOURCE_SYNC = 'amazon_sync'
+PRICING_SOURCE_MANUAL = 'manual'
+
+# Fields treated as volatile: refreshed on every product sync.
+VOLATILE_PRICING_FIELDS = {'current', 'mrp', 'discount_percent', 'availability'}
+
+# How old a price may be before it is considered stale (hours).
+PRICE_STALE_HOURS = 48.0
+
+
+def build_pricing(
+    current: Optional[int] = None,
+    mrp: Optional[int] = None,
+    discount_percent: Optional[int] = None,
+    currency: str = DEFAULT_CURRENCY,
+    last_updated: Optional[str] = None,
+    source: str = PRICING_SOURCE_MANUAL,
+) -> dict:
+    """Construct a normalised pricing object.
+
+    Discount is ALWAYS expressed as a percentage (0-100), never a rupee
+    amount, so templates and the sync engine agree on semantics.
+    """
+    pricing = {
+        'current': _as_int(current) if current is not None else None,
+        'mrp': _as_int(mrp) if mrp is not None else None,
+        'discount_percent': _as_int(discount_percent) if discount_percent is not None else None,
+        'currency': currency or DEFAULT_CURRENCY,
+        'last_updated': last_updated,
+        'source': source,
+    }
+    # Derive discount_percent from current/mrp when only those are present.
+    if (pricing['discount_percent'] is None
+            and pricing['current'] and pricing['mrp']
+            and pricing['mrp'] > pricing['current']):
+        pricing['discount_percent'] = int(
+            round((pricing['mrp'] - pricing['current']) / pricing['mrp'] * 100)
+        )
+    return pricing
+
+
+def _as_int(value, default: int = 0) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def pricing_from_amazon(amazon: dict, source: str = PRICING_SOURCE_SYNC) -> dict:
+    """Build a pricing object from a nested ``amazon`` dict (new or legacy)."""
+    current = amazon.get('price', amazon.get('current'))
+    mrp = amazon.get('mrp')
+    discount = amazon.get('discount_percent', amazon.get('discount'))
+    # Legacy feed stored discount as a percent already; accept either name.
+    last = amazon.get('last_updated')
+    return build_pricing(
+        current=current,
+        mrp=mrp,
+        discount_percent=discount,
+        currency=amazon.get('currency', DEFAULT_CURRENCY),
+        last_updated=last,
+        source=source,
+    )
+
+
+def validate_pricing(pricing: dict, status: str = 'approved') -> list:
+    """Return a list of pricing errors for a product.
+
+    Rejects obviously incorrect prices:
+        * missing current price (approved products)
+        * zero price
+        * negative price
+        * negative MRP / discount
+    Stale cached prices are flagged separately by ``is_price_stale``.
+    """
+    errors = []
+    current = pricing.get('current')
+    if status == 'approved':
+        if current is None:
+            errors.append('missing price (current is None)')
+        elif current <= 0:
+            errors.append(f'invalid price ({current})')
+    mrp = pricing.get('mrp')
+    if mrp is not None and mrp < 0:
+        errors.append(f'negative mrp ({mrp})')
+    disc = pricing.get('discount_percent')
+    if disc is not None and (disc < 0 or disc > 100):
+        errors.append(f'invalid discount_percent ({disc})')
+    return errors
+
+
+def is_price_stale(pricing: dict, now: Optional[float] = None) -> bool:
+    """Return True if the stored price is older than PRICE_STALE_HOURS.
+
+    A product with no ``last_updated`` timestamp is treated as stale so a
+    newer API refresh is always preferred over an unknown cached value.
+    """
+    import time
+    ts = pricing.get('last_updated')
+    if not ts:
+        return True
+    try:
+        if '.' in ts:
+            dt = datetime.strptime(ts, '%Y-%m-%dT%H:%M:%S.%f')
+        else:
+            dt = datetime.strptime(ts, '%Y-%m-%dT%H:%M:%S')
+    except (ValueError, TypeError):
+        return True
+    now = now if now is not None else time.time()
+    age_hours = (now - dt.timestamp()) / 3600.0
+    return age_hours > PRICE_STALE_HOURS
+
+
 def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
     """Convert a nested product dict into a flat dict for template compat.
 
@@ -1532,6 +1665,9 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
         product['fitment_notes'] = editorial.get('fitment_notes', '')
         product['recommended_for'] = editorial.get('recommended_for', [])
         product['editorial_notes'] = editorial.get('notes', '')
+        # Editorial override signals (manual ranking always wins).
+        product['editors_choice'] = bool(editorial.get('editors_choice', False))
+        product['override_rank'] = editorial.get('override_rank', 0)
         # Store raw editorial for validation/sync reference
         product['_editorial'] = editorial
     else:
@@ -1544,9 +1680,11 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
     # --- Amazon data ---
     amazon = raw.get('amazon', {})
     if amazon:
-        product['price'] = amazon.get('price', raw.get('price', 0))
+        # Build the structured pricing object (single source of truth for price).
+        product['pricing'] = pricing_from_amazon(amazon, PRICING_SOURCE_SYNC)
+        product['price'] = product['pricing']['current'] or 0  # template alias = current
         product['mrp'] = amazon.get('mrp', None)
-        product['discount'] = amazon.get('discount', None)
+        product['discount'] = amazon.get('discount_percent', amazon.get('discount'))
         product['rating'] = amazon.get('rating', raw.get('rating', 0))
         product['reviews'] = amazon.get('review_count', raw.get('reviews', 0))
         product['review_count'] = product['reviews']  # both keys work
@@ -1560,7 +1698,16 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
         product['_amazon'] = amazon
     else:
         # Legacy flat format fallback
-        product['price'] = raw.get('price', 0)
+        legacy = build_pricing(
+            current=raw.get('price'),
+            mrp=raw.get('mrp'),
+            discount_percent=raw.get('discount_percent', raw.get('discount')),
+            currency=raw.get('currency', DEFAULT_CURRENCY),
+            last_updated=raw.get('last_updated'),
+            source=PRICING_SOURCE_IMPORT,
+        )
+        product['pricing'] = legacy
+        product['price'] = legacy['current'] or 0
         product['mrp'] = raw.get('mrp', None)
         product['discount'] = raw.get('discount', None)
         product['rating'] = raw.get('rating', 0)
@@ -1570,8 +1717,8 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
         product['affiliate_url'] = raw.get('affiliate_url', '')
         product['image'] = raw.get('image', '')
         product['amazon_image_url'] = raw.get('image', raw.get('amazon_image_url', ''))
-        product['last_updated'] = None
-        product['amazon_synced'] = False
+        product['last_updated'] = raw.get('last_updated')
+        product['amazon_synced'] = bool(raw.get('last_updated'))
 
     # --- Compatibility ---
     product['compatible_bikes'] = raw.get('compatible_bikes', ['*'])
@@ -1621,11 +1768,23 @@ def unflatten_product(product: dict) -> dict:
             'fitment_notes': product.get('fitment_notes', ''),
             'recommended_for': product.get('recommended_for', []),
             'notes': product.get('editorial_notes', ''),
+            'editors_choice': product.get('editors_choice', False),
+            'override_rank': product.get('override_rank', 0),
         },
         'amazon': {
-            'price': product.get('price', 0),
+            # Structured pricing object is the source of truth on disk.
+            'pricing': product.get('pricing') or build_pricing(
+                current=product.get('price'),
+                mrp=product.get('mrp'),
+                discount_percent=product.get('discount_percent', product.get('discount')),
+                currency=product.get('currency', DEFAULT_CURRENCY),
+                last_updated=product.get('last_updated'),
+                source=product.get('pricing_source', PRICING_SOURCE_SYNC),
+            ),
+            # Flat aliases retained for backward compat with sync/importer.
+            'price': product.get('pricing', {}).get('current') if product.get('pricing') else product.get('price', 0),
             'mrp': product.get('mrp'),
-            'discount': product.get('discount'),
+            'discount': product.get('discount_percent', product.get('discount')),
             'rating': product.get('rating', 0),
             'review_count': product.get('review_count', product.get('reviews', 0)),
             'availability': product.get('availability', ''),
@@ -1752,12 +1911,21 @@ def validate_products(products: list) -> dict:
             if not p.get('image'):
                 warnings.append(f"[{source}] {slug}: approved product missing image")
 
-            # Price
-            price = p.get('price', 0)
-            if price < 0:
-                errors.append(f"[{source}] {slug}: negative price ({price})")
-            if price == 0:
-                warnings.append(f"[{source}] {slug}: price is 0 (may be unavailable)")
+            # Price (structured pricing object is the source of truth)
+            pricing = p.get('pricing') or build_pricing(current=p.get('price'))
+            price_errors = validate_pricing(pricing, status)
+            for err in price_errors:
+                if 'missing' in err or 'invalid' in err or 'negative' in err:
+                    errors.append(f"[{source}] {slug}: {err}")
+                else:
+                    warnings.append(f"[{source}] {slug}: {err}")
+
+            # Stale cached price when newer API data should exist
+            if is_price_stale(pricing):
+                warnings.append(
+                    f"[{source}] {slug}: price may be stale "
+                    f"(last_updated={pricing.get('last_updated')})"
+                )
 
             # Editorial
             if not p.get('pros'):

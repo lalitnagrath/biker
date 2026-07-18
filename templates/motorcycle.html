@@ -217,17 +217,19 @@
                                         <div class="moto-product-info">
                                             <span class="moto-product-title">{{ product.title }}</span>
 
-                                            <div class="moto-product-rating">
-                                                {% if product.get('rating') %}
+                                            <div class="moto-product-rating our-verdict">
+                                                {% if product.get('rating') and product.get('review_count') %}
                                                 <span class="moto-stars">
                                                     {% set full_stars = (product.rating * 2) | int // 2 %}
                                                     {% set half_star = (product.rating * 2) | int % 2 %}
                                                     {% for _ in range(full_stars) %}&#9733;{% endfor %}{% if half_star %}&#9734;{% endif %}
                                                 </span>
                                                 <span class="moto-rating-num">{{ product.rating }}</span>
-                                                {% endif %}
-                                                {% if product.get('review_count') %}
                                                 <span class="moto-reviews">({{ "{:,}".format(product.review_count) }})</span>
+                                                {% elif product.get('editorial') %}
+                                                <span class="verdict-label">Our Verdict</span>
+                                                <span class="editorial-stars">{% for _ in range(product.editorial.stars) %}&#9733;{% endfor %}{% for _ in range(5 - product.editorial.stars) %}&#9734;{% endfor %}</span>
+                                                <span class="editorial-label">{{ product.editorial.label }}</span>
                                                 {% endif %}
                                             </div>
 
@@ -490,7 +492,7 @@
                                     <strong>Solution:</strong> {{ problem.solution }}
                                 </div>
                                 {% if problem.get('product_category') %}
-                                <a href="{{ base_path }}categories/{{ problem.product_category|lower|replace(' ', '-') }}/" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
+                                <a href="{{ URL.category(problem.product_category, base_path) }}" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
                                 {% endif %}
                             </div>
                         </div>

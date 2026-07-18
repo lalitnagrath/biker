@@ -83,7 +83,7 @@
                     </div>
                     <div id="bikeSelectedInfo" class="guide-bike-selected-info" style="display:none;">
                         <span class="guide-bike-selected-badge">&#128666; <strong id="bikeSelectedName"></strong></span>
-                        <a href="{{ base_path }}motorcycles/" class="guide-bike-change">Change Motorcycle</a>
+                        <a href="{{ URL.motorcycle_index(base_path) }}" class="guide-bike-change">Change Motorcycle</a>
                     </div>
                 </div>
                 {% endif %}
@@ -124,10 +124,20 @@
                         {% if editors_product %}
                         <div class="guide-quick-card guide-quick-editors">
                             <span class="guide-quick-badge guide-quick-badge-editors">&#127942; Editor's Choice</span>
+                            <a href="{{ base_path }}products/{{ editors_product.slug }}/index.html" class="guide-quick-image">
+                                {% if editors_product.image and 'products/' in editors_product.image %}
+                                <img src="{{ base_path }}{{ editors_product.image }}" alt="{{ editors_product.title }}" loading="lazy">
+                                {% else %}
+                                <div class="placeholder-image product-placeholder">{{ editors_product.brand }}</div>
+                                {% endif %}
+                            </a>
                             <h3 class="product-card-title"><a href="{{ base_path }}products/{{ editors_product.slug }}/index.html">{{ editors_product.title }}</a></h3>
-                            <div class="guide-quick-meta">
-                                <span class="stars">{{ '★' * (editors_product.rating | int) }}{{ '☆' * (5 - editors_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ editors_product.rating }}/5</span>
+                            <div class="guide-quick-meta our-verdict">
+                                <span class="verdict-label">Our Verdict</span>
+                                {% if editors_product.editorial %}
+                                <span class="editorial-stars">{{ '★' * editors_product.editorial.stars }}{{ '☆' * (5 - editors_product.editorial.stars) }}</span>
+                                <span class="editorial-label">{{ editors_product.editorial.label }}</span>
+                                {% endif %}
                             </div>
                             <p class="guide-quick-bestfor">{{ editors_product.best_for }}</p>
                             {% set ep_reason = badge_data.get(editors_product.slug, {}).get('reason', '') %}
@@ -143,10 +153,20 @@
                         {% if value_product %}
                         <div class="guide-quick-card guide-quick-value">
                             <span class="guide-quick-badge guide-quick-badge-value">&#128176; Best Value</span>
+                            <a href="{{ base_path }}products/{{ value_product.slug }}/index.html" class="guide-quick-image">
+                                {% if value_product.image and 'products/' in value_product.image %}
+                                <img src="{{ base_path }}{{ value_product.image }}" alt="{{ value_product.title }}" loading="lazy">
+                                {% else %}
+                                <div class="placeholder-image product-placeholder">{{ value_product.brand }}</div>
+                                {% endif %}
+                            </a>
                             <h3 class="product-card-title"><a href="{{ base_path }}products/{{ value_product.slug }}/index.html">{{ value_product.title }}</a></h3>
-                            <div class="guide-quick-meta">
-                                <span class="stars">{{ '★' * (value_product.rating | int) }}{{ '☆' * (5 - value_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ value_product.rating }}/5</span>
+                            <div class="guide-quick-meta our-verdict">
+                                <span class="verdict-label">Our Verdict</span>
+                                {% if value_product.editorial %}
+                                <span class="editorial-stars">{{ '★' * value_product.editorial.stars }}{{ '☆' * (5 - value_product.editorial.stars) }}</span>
+                                <span class="editorial-label">{{ value_product.editorial.label }}</span>
+                                {% endif %}
                             </div>
                             <p class="guide-quick-bestfor">{{ value_product.best_for }}</p>
                             {% set vp_reason = badge_data.get(value_product.slug, {}).get('reason', '') %}
@@ -162,10 +182,20 @@
                         {% if premium_product %}
                         <div class="guide-quick-card guide-quick-premium">
                             <span class="guide-quick-badge guide-quick-badge-premium">&#11088; Premium Pick</span>
+                            <a href="{{ base_path }}products/{{ premium_product.slug }}/index.html" class="guide-quick-image">
+                                {% if premium_product.image and 'products/' in premium_product.image %}
+                                <img src="{{ base_path }}{{ premium_product.image }}" alt="{{ premium_product.title }}" loading="lazy">
+                                {% else %}
+                                <div class="placeholder-image product-placeholder">{{ premium_product.brand }}</div>
+                                {% endif %}
+                            </a>
                             <h3 class="product-card-title"><a href="{{ base_path }}products/{{ premium_product.slug }}/index.html">{{ premium_product.title }}</a></h3>
-                            <div class="guide-quick-meta">
-                                <span class="stars">{{ '★' * (premium_product.rating | int) }}{{ '☆' * (5 - premium_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ premium_product.rating }}/5</span>
+                            <div class="guide-quick-meta our-verdict">
+                                <span class="verdict-label">Our Verdict</span>
+                                {% if premium_product.editorial %}
+                                <span class="editorial-stars">{{ '★' * premium_product.editorial.stars }}{{ '☆' * (5 - premium_product.editorial.stars) }}</span>
+                                <span class="editorial-label">{{ premium_product.editorial.label }}</span>
+                                {% endif %}
                             </div>
                             <p class="guide-quick-bestfor">{{ premium_product.best_for }}</p>
                             {% set pp_reason = badge_data.get(premium_product.slug, {}).get('reason', '') %}
@@ -181,10 +211,20 @@
                         {% if popular_product %}
                         <div class="guide-quick-card guide-quick-popular">
                             <span class="guide-quick-badge guide-quick-badge-popular">&#128293; Most Popular</span>
+                            <a href="{{ base_path }}products/{{ popular_product.slug }}/index.html" class="guide-quick-image">
+                                {% if popular_product.image and 'products/' in popular_product.image %}
+                                <img src="{{ base_path }}{{ popular_product.image }}" alt="{{ popular_product.title }}" loading="lazy">
+                                {% else %}
+                                <div class="placeholder-image product-placeholder">{{ popular_product.brand }}</div>
+                                {% endif %}
+                            </a>
                             <h3 class="product-card-title"><a href="{{ base_path }}products/{{ popular_product.slug }}/index.html">{{ popular_product.title }}</a></h3>
-                            <div class="guide-quick-meta">
-                                <span class="stars">{{ '★' * (popular_product.rating | int) }}{{ '☆' * (5 - popular_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ popular_product.rating }}/5</span>
+                            <div class="guide-quick-meta our-verdict">
+                                <span class="verdict-label">Our Verdict</span>
+                                {% if popular_product.editorial %}
+                                <span class="editorial-stars">{{ '★' * popular_product.editorial.stars }}{{ '☆' * (5 - popular_product.editorial.stars) }}</span>
+                                <span class="editorial-label">{{ popular_product.editorial.label }}</span>
+                                {% endif %}
                             </div>
                             <p class="guide-quick-bestfor">{{ popular_product.best_for }}</p>
                             {% set mp_reason = badge_data.get(popular_product.slug, {}).get('reason', '') %}
@@ -240,117 +280,83 @@
                                 <td class="compat-col guide-compat-cell" style="display:none;">
                                     <span class="guide-compat-badge" data-product-slug="{{ product.slug }}"></span>
                                 </td>
-                                <td class="rating-col">
-                                    <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                                    <span>{{ product.rating }}</span>
+                                <td class="rating-col our-verdict">
+                                    {% if product.editorial %}
+                                    <span class="verdict-label">Our Verdict</span>
+                                    <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
+                                    <span class="editorial-label">{{ product.editorial.label }}</span>
+                                    {% endif %}
                                 </td>
                                 <td class="bestfor-col">{% if p_badge.badge %}{{ p_badge.badge }}{% elif loop.index == 1 %}Best Overall{% elif loop.index == 2 %}Runner Up{% elif loop.index == 3 %}Best Value{% else %}Alternative{% endif %}</td>
                                 <td class="price-col">&#8377;{{ product.price | int }}</td>
-                                <td class="score-col">{% if product.editorial_verdict %}<span class="score-badge verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>{% else %}<span class="score-badge">{{ product.rating }}/5</span>{% endif %}</td>
+                                <td class="score-col">{% if product.editorial_verdict %}<span class="score-badge verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>{% elif product.editorial %}<span class="score-badge">{{ product.editorial.label }}</span>{% else %}<span class="score-badge">&mdash;</span>{% endif %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
 
-                {# ===== 4. DETAILED PRODUCT CARDS ===== #}
+                {# ===== 4. COMPARISON PRODUCT CARDS ===== #}
+                <div class="guide-product-grid">
                 {% for product in products %}
                 {% set p_badge = badge_data.get(product.slug, {}) %}
-                <div class="bestof-product-editorial guide-product-card" data-product-slug="{{ product.slug }}">
+                <div class="guide-product-card" data-product-slug="{{ product.slug }}">
                     <div class="guide-compat-banner" data-product-slug="{{ product.slug }}" style="display:none;"></div>
+
+                    {# 1. Single badge (Editor's Choice / Best Value / Premium Pick / Budget Pick) #}
                     {% if p_badge.badge %}
-                    <div class="guide-rec-badge guide-rec-{{ p_badge.badge_type }}" data-product-slug="{{ product.slug }}">{{ p_badge.icon }} {{ p_badge.badge }}</div>
+                    <div class="guide-card-badge guide-rec-{{ p_badge.badge_type }}">{{ p_badge.icon }} {{ p_badge.badge }}</div>
                     {% else %}
-                    <div class="guide-rec-badge" data-product-slug="{{ product.slug }}" style="display:none;"></div>
+                    <div class="guide-card-badge guide-card-badge-empty"></div>
                     {% endif %}
-                    <div class="bestof-product-grid">
-                        <div class="bestof-product-image">
-                            {% if product.image and 'products/' in product.image %}
-                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
-                            {% else %}
-                            <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="bestof-product-content">
-                            <div class="bestof-product-header">
-                                <span class="product-category-label">{{ product.category_display }}</span>
-                                <div class="product-hero-rating">
-                                    <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                                    <span class="rating-value">{{ product.rating }}</span>
-                                    <span class="review-count">({{ product.reviews | int }} reviews)</span>
-                                </div>
-                            </div>
-                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
-                            <div class="bestfor-inline">
-                                <span class="bestfor-label">Best For:</span>
-                                <span class="bestfor-value">{{ product.best_for }}</span>
-                            </div>
 
-                            {# Recommendation reason #}
-                            {% if p_badge.reason %}
-                            <div class="guide-rec-reason">
-                                <span class="guide-rec-reason-icon">{{ p_badge.icon }}</span>
-                                <span class="guide-rec-reason-text">Why we recommend: {{ p_badge.reason }}</span>
-                            </div>
-                            {% endif %}
+                    {# 2. Product image #}
+                    <div class="guide-card-image">
+                        {% if product.image and 'products/' in product.image %}
+                        <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                        {% else %}
+                        <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                        {% endif %}
+                    </div>
 
-                            {# Key features callout #}
-                            {% if product.features %}
-                            <div class="guide-product-features">
-                                {% for feature in product.features[:4] %}
-                                <span class="guide-feature-tag">{{ feature }}</span>
-                                {% endfor %}
-                            </div>
-                            {% endif %}
+                    {# 3. Title (clamped to 2 lines) #}
+                    <h3 class="guide-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
 
-                            {# Why we recommend / Verdict #}
-                            <div class="bestof-product-verdict">{{ product.verdict }}</div>
+                    {# 4. Amazon rating + review count #}
+                    <div class="guide-card-rating">
+                        {% if product.rating %}
+                        <span class="guide-card-stars" aria-label="Rated {{ product.rating }} out of 5">&#9733; {{ product.rating }}</span>
+                        {% if product.review_count %}
+                        <span class="guide-card-reviews">({{ product.review_count | int }} reviews)</span>
+                        {% endif %}
+                        {% else %}
+                        <span class="guide-card-reviews">&mdash;</span>
+                        {% endif %}
+                    </div>
 
-                            {# Pros & Cons #}
-                            <div class="pros-cons-inline">
-                                <div class="pros-inline">
-                                    {% for pro in product.pros[:3] %}
-                                    <span class="pro-item">&#10003; {{ pro }}</span>
-                                    {% endfor %}
-                                </div>
-                                <div class="cons-inline">
-                                    {% for con in product.cons[:2] %}
-                                    <span class="con-item">&#10007; {{ con }}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
+                    {# 5. Price (largest text) #}
+                    <div class="guide-card-price">&#8377;{{ product.price | int }}</div>
 
-                            {# Compatibility note #}
-                            {% if product.fitment_notes %}
-                            <div class="guide-fitment-callout">
-                                <span class="guide-fitment-icon">&#128295;</span>
-                                <span>{{ product.fitment_notes }}</span>
-                            </div>
-                            {% endif %}
+                    {# 6. Feature chips (2-3) #}
+                    {% if product.features %}
+                    <div class="guide-card-chips">
+                        {% for feature in product.features[:3] %}
+                        <span class="guide-card-chip">{{ feature }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
 
-                            <div class="bestof-product-footer">
-                                {% if product.editorial_verdict %}
-                                <div class="bestof-product-score">
-                                    <span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>
-                                </div>
-                                {% else %}
-                                <div class="bestof-product-score">
-                                    <span class="score-number">{{ product.rating }}</span>
-                                    <span class="score-label">★</span>
-                                </div>
-                                {% endif %}
-                                <div class="bestof-product-price">&#8377;{{ product.price | int }}</div>
-                                <div class="bestof-product-actions">
-                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Full Review</a>
-                                    {% if product.affiliate_url %}
-                                    <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Buy on Amazon</a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
+                    {# 7. Check Price on Amazon button (full width, bottom aligned) #}
+                    <div class="guide-card-actions">
+                        {% if product.affiliate_url %}
+                        <a href="{{ product.affiliate_url }}" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon</a>
+                        {% else %}
+                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-block">View Product</a>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
+                </div>
 
                 {# ===== NO COMPATIBLE PRODUCTS EMPTY STATE ===== #}
                 <div class="guide-empty-compatible" id="emptyCompatibleState" style="display:none;">

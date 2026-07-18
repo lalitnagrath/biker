@@ -271,10 +271,12 @@
                 <div class="product-card-editorial-content">
                     <div class="product-card-editorial-header">
                         <span class="product-category-label">{{ product.category_display }}</span>
-                        <div class="product-hero-rating">
-                            <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                            <span class="rating-value">{{ product.rating }}</span>
-                            <span class="review-count">({{ product.reviews | int }} ratings)</span>
+                        <div class="product-hero-rating our-verdict">
+                            <span class="verdict-label">Our Verdict</span>
+                            {% if product.editorial %}
+                            <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
+                            <span class="editorial-label">{{ product.editorial.label }}</span>
+                            {% endif %}
                         </div>
                     </div>
                     <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>

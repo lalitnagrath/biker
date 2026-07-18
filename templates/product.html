@@ -8,8 +8,8 @@
     "name": "{{ product.title }}",
     "description": "{{ product.verdict }}",
     "brand": { "@type": "Brand", "name": "{{ product.brand }}" },
-    "offers": { "@type": "Offer", "price": "{{ product.price }}", "priceCurrency": "INR", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ product.rating }}", "reviewCount": "{{ product.reviews }}" }
+    "offers": { "@type": "Offer", "price": "{{ product.price }}", "priceCurrency": "INR", "availability": "https://schema.org/InStock" }{% if product.rating and product.reviews %},
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ product.rating }}", "reviewCount": "{{ product.reviews }}" }{% endif %}
 }
 </script>
 {% if product.affiliate_url %}
@@ -19,7 +19,7 @@
     "@type": "FAQPage",
     "mainEntity": [
         { "@type": "Question", "name": "What is the {{ product.title }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ product.title }} is a {{ product.category_display | lower }} by {{ product.brand }}. {{ product.verdict }}" } },
-        { "@type": "Question", "name": "Is the {{ product.title }} worth buying?", "acceptedAnswer": { "@type": "Answer", "text": "{{ product.verdict }} Rated {{ product.rating }} out of 5 by {{ product.reviews }} Amazon customers." } }
+        { "@type": "Question", "name": "Is the {{ product.title }} worth buying?", "acceptedAnswer": { "@type": "Answer", "text": "{% if product.rating and product.reviews %}{{ product.verdict }} Rated {{ product.rating }} out of 5 by {{ product.reviews | int }} Amazon customers.{% else %}{{ product.verdict }}{% if product.editorial %} Our editorial verdict: {{ product.editorial.label }}.{% endif %}{% endif %}" } }
     ]
 }
 </script>
@@ -44,10 +44,16 @@
                 </div>
                 <span class="product-category-label">{{ product.category_display }}</span>
                 <h1>{{ product.title }}</h1>
-                <div class="product-hero-rating">
+                <div class="product-hero-rating our-verdict">
+                    {% if product.rating and product.reviews %}
                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                     <span class="rating-value">{{ product.rating }}</span>
                     <span class="review-count">({{ product.reviews | int }} ratings)</span>
+                    {% elif product.editorial %}
+                    <span class="verdict-label">Our Verdict</span>
+                    <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
+                    <span class="editorial-label">{{ product.editorial.label }}</span>
+                    {% endif %}
                 </div>
                 {% if product.editorial_verdict %}
                 <div class="product-hero-verdict">
@@ -107,7 +113,11 @@
                         {% endif %}
                         <div class="verdict-text">
                             <p>{{ product.verdict }}</p>
+                            {% if product.rating and product.reviews %}
                             <p class="verdict-amazon-note">Amazon rating: {{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }} {{ product.rating }} ({{ product.reviews | int }} ratings)</p>
+                            {% elif product.editorial %}
+                            <p class="verdict-amazon-note our-verdict"><span class="verdict-label">Our Verdict</span> <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span> <span class="editorial-label">{{ product.editorial.label }}</span></p>
+                            {% endif %}
                         </div>
                     </div>
                 </section>
@@ -120,8 +130,12 @@
                             <tr><td>Category</td><td>{{ product.category_display }}</td></tr>
                             <tr><td>Type</td><td>{{ product.type }}</td></tr>
                             <tr><td>Price</td><td>₹{{ product.price | int }}</td></tr>
+                            {% if product.rating and product.reviews %}
                             <tr><td>User Rating</td><td>{{ product.rating }} / 5</td></tr>
                             <tr><td>Reviews</td><td>{{ product.reviews | int }}</td></tr>
+                            {% elif product.editorial %}
+                            <tr><td>Our Verdict</td><td>{{ product.editorial.label }}</td></tr>
+                            {% endif %}
                             {% if product.editorial_verdict %}
                             <tr><td>Editorial Verdict</td><td>{{ product.editorial_verdict | replace('_', ' ') | title }}</td></tr>
                             {% endif %}
@@ -151,7 +165,7 @@
                         <div class="faq-accordion-item">
                             <button class="faq-accordion-header">Is the {{ product.title }} worth buying? <span class="faq-toggle">+</span></button>
                             <div class="faq-accordion-content">
-                                <p>{{ product.verdict }} Rated {{ product.rating }} out of 5 by {{ product.reviews | int }} Amazon customers.</p>
+                                <p>{% if product.rating and product.reviews %}{{ product.verdict }} Rated {{ product.rating }} out of 5 by {{ product.reviews | int }} Amazon customers.{% else %}{{ product.verdict }}{% if product.editorial %} Our editorial verdict: {{ product.editorial.label }}.{% endif %}{% endif %}</p>
                             </div>
                         </div>
                     </div>
@@ -162,9 +176,15 @@
                 <div class="sidebar-sticky">
                     <div class="sidebar-card sidebar-buy-box">
                         <div class="buy-box-price">₹{{ product.price | int }}</div>
-                        <div class="buy-box-rating">
+                        <div class="buy-box-rating our-verdict">
+                            {% if product.rating and product.reviews %}
                             <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                             <span>{{ product.rating }} ({{ product.reviews | int }} reviews)</span>
+                            {% elif product.editorial %}
+                            <span class="verdict-label">Our Verdict</span>
+                            <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
+                            <span class="editorial-label">{{ product.editorial.label }}</span>
+                            {% endif %}
                         </div>
                         {% if product.affiliate_url %}
                         <a href="{{ product.affiliate_url }}" class="btn btn-accent btn-block" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon</a>
@@ -177,7 +197,7 @@
                             <li><span>Brand</span><strong>{{ product.brand }}</strong></li>
                             <li><span>Category</span><strong>{{ product.category_display }}</strong></li>
                             <li><span>Price</span><strong>₹{{ product.price | int }}</strong></li>
-                            <li><span>Rating</span><strong>{{ product.rating }} / 5</strong></li>
+                            {% if product.rating and product.reviews %}<li><span>Rating</span><strong>{{ product.rating }} / 5</strong></li>{% elif product.editorial %}<li><span>Our Verdict</span><strong>{{ product.editorial.label }}</strong></li>{% endif %}
                             <li><span>Best For</span><strong>{{ product.best_for }}</strong></li>
                         </ul>
                     </div>
@@ -190,7 +210,7 @@
                             <li>
                                 <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
                                     <span class="related-name product-card-title">{{ rp.title }}</span>
-                                    <span class="related-rating">{{ rp.rating }} ★</span>
+                                    {% if rp.editorial %}<span class="related-rating">{{ rp.editorial.label }}</span>{% endif %}
                                 </a>
                             </li>
                             {% endfor %}

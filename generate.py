@@ -26,6 +26,7 @@ from datetime import datetime
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
+import url_builders
 from product_library import (
     load_products as load_product_library,
     approved_products,
@@ -55,6 +56,8 @@ from product_engine import (
     best_per_category,
     category_to_guide_url,
     deduplicate_products,
+    assign_editorial_tiers,
+    get_editorial_recommendation,
     validate_category_products as _validate_category_products,
     validate_motorcycle_products as _validate_motorcycle_products,
     CATEGORY_KEYWORDS,
@@ -151,6 +154,19 @@ def load_all_data():
     # Load products via the product library (handles nested JSON + flattening)
     products_dir = DATA_DIR / 'products'
     data['products'] = load_product_library(products_dir)
+
+    # Attach a baseline editorial recommendation tier to every product so no
+    # template ever falls back to a misleading "0/5" or "(0 reviews)".  Tiers
+    # are derived deterministically from real recommendation-engine signals
+    # (editorial signal, value for money, brand, availability) - never from a
+    # fabricated Amazon rating.  Pages may later refine tiers per candidate
+    # pool via _attach_editorial().
+    for _p in data['products']:
+        _tier = get_editorial_recommendation(_p)
+        if _tier:
+            _p['editorial'] = _tier
+        else:
+            _p.pop('editorial', None)
 
     # Print quality dashboard
     dashboard = get_quality_dashboard()
@@ -363,18 +379,41 @@ def merge_bike_deals(products, deals_by_asin):
         if image_url and not product.get('amazon_image_url') and not product.get('image'):
             product['amazon_image_url'] = image_url
 
-        # Price only from a confident (ASIN-level) match, and only if missing.
+        # Price: ALWAYS refreshed from a confident (ASIN-level) match.
+        # A newer Buy Box price must replace any stale cached value; we never
+        # keep an old price just because one was already present.
         if match_type in ('asin', 'url_asin'):
-            if not product.get('price'):
-                offers = deal.get('offersV2', {})
-                listings = offers.get('listings', [])
-                for listing in listings:
-                    if listing.get('isBuyBoxWinner'):
-                        price_money = listing.get('price', {}).get('money', {})
-                        price = price_money.get('amount')
-                        if price:
-                            product['price'] = int(price)
-                        break
+            offers = deal.get('offersV2', {})
+            listings = offers.get('listings', [])
+            new_price = None
+            new_mrp = None
+            for listing in listings:
+                if listing.get('isBuyBoxWinner'):
+                    price_money = listing.get('price', {}).get('money', {})
+                    amount = price_money.get('amount')
+                    if amount:
+                        new_price = int(float(amount))
+                    saving = listing.get('savingBasis', {})
+                    mrp_amount = saving.get('money', {}).get('amount')
+                    if mrp_amount:
+                        new_mrp = int(float(mrp_amount))
+                    break
+            if new_price:
+                now_iso = datetime.now().isoformat()
+                # Preserve an existing structured pricing object if present.
+                existing = product.get('pricing') or {}
+                product['pricing'] = {
+                    'current': new_price,
+                    'mrp': new_mrp,
+                    'discount_percent': int(round((new_mrp - new_price) / new_mrp * 100))
+                    if (new_mrp and new_mrp > new_price) else existing.get('discount_percent'),
+                    'currency': existing.get('currency', 'INR'),
+                    'last_updated': now_iso,
+                    'source': 'amazon_sync',
+                }
+                product['price'] = new_price
+                if new_mrp:
+                    product['mrp'] = new_mrp
 
         merged_count += 1
 
@@ -531,7 +570,7 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
         if count == 0:
             return ''
         
-        slug = category.lower().replace(' ', '-')
+        slug = category_slug(category)
         view_all_url = f'{base_path}categories/{slug}/index.html'
         
         return (
@@ -718,6 +757,7 @@ class SiteGenerator:
         self.env.globals['base_path'] = './'
         self.env.globals['site_url'] = self.base_url + '/'
         self.env.globals['category_to_guide_url'] = category_to_guide_url
+        self.env.globals['URL'] = url_builders.URL
         self.page_count = 0
         self.images_downloaded = 0
 
@@ -762,7 +802,7 @@ class SiteGenerator:
         seen_cats = set()
         for product in self.data['products']:
             cat = normalize_category(product.get('category', ''))
-            slug = cat.lower().replace(' ', '-')
+            slug = category_slug(cat)
             if cat not in seen_cats:
                 accessory_nav_items.append({'name': cat, 'slug': slug})
                 seen_cats.add(cat)
@@ -802,6 +842,26 @@ class SiteGenerator:
             'canonical_url': canonical_url or self.base_url + '/',
             'base_path': base_path,
         }
+
+    def _attach_editorial(self, products, category=None, bike=None):
+        """Attach an editorial recommendation tier to each product in place.
+
+        The tier is derived deterministically from the recommendation engine
+        (editorial signal, value for money, compatibility, brand, availability)
+        via assign_editorial_tiers.  No Amazon rating is used and no value is
+        ever hardcoded.  Products that do not rank in the top tiers receive no
+        'editorial' key, so templates render NO stars for them.
+
+        Returns the slug -> tier dict for convenience.
+        """
+        tiers = assign_editorial_tiers(products, category, bike)
+        for p in products:
+            slug = p.get('slug') or p.get('asin') or ''
+            if slug in tiers:
+                p['editorial'] = tiers[slug]
+            else:
+                p.pop('editorial', None)
+        return tiers
 
     def generate_home(self):
         """Generate the homepage."""
@@ -1367,7 +1427,7 @@ class SiteGenerator:
             'icon': '&#9881;',
             'title': 'First Service',
             'description': f'Schedule your first service at {bike.get("service_interval", "500-1000 km")}. Do not skip it — the first service breaks in the engine properly.',
-            'link': f'{bike.get("slug", "")}/maintenance/engine-oil/index.html',
+            'link': f'motorcycles/{bike.get("slug", "")}/maintenance/engine-oil/index.html',
             'link_text': 'Engine Oil Guide',
         })
 
@@ -1386,7 +1446,7 @@ class SiteGenerator:
             'icon': '&#128295;',
             'title': 'Basic Maintenance',
             'description': 'Check tyre pressure weekly. A properly inflated tyre improves mileage, handling, and safety. Keep the chain clean and lubed every 500 km.',
-            'link': f'{bike.get("slug", "")}/maintenance/tyre-pressure/index.html',
+            'link': f'motorcycles/{bike.get("slug", "")}/maintenance/tyre-pressure/index.html',
             'link_text': 'Tyre Pressure Guide',
         })
 
@@ -1946,7 +2006,7 @@ class SiteGenerator:
             context['product'] = product
             context['breadcrumbs'] = [
                 {'name': 'Products', 'url': f'{self.base_url}/categories/'},
-                {'name': product['category'], 'url': f'{self.base_url}/categories/{product["category"].lower().replace(" ", "-")}/'},
+                {'name': product['category'], 'url': url_builders.category_url(product['category'], self.base_url + '/')},
                 {'name': product['title']},
             ]
 
@@ -1987,9 +2047,23 @@ class SiteGenerator:
         content = self.render_template('category.html', context)
         self.write_page('categories/index.html', content)
 
-        # Individual category pages
-        for cat_name, cat_products in self.categories.items():
-            slug = cat_name.lower().replace(' ', '-')
+        # Individual category pages.
+        # Generate a page for EVERY category that actually has products, including
+        # the non-motorcycle categories (bicycle_helmet, fashion_jacket) that are
+        # excluded from the motorcycle-accessory taxonomy nav. Every category link
+        # emitted by URL.category() must resolve to a real page, so we must not
+        # leave any category without a generated page.
+        all_categories = {}
+        for p in getattr(self, 'all_products', self.data['products']):
+            cat = normalize_category(p.get('category', ''))
+            all_categories.setdefault(cat, []).append(p)
+        # Only surface products that survived the image-filter (their detail
+        # pages exist). The category page itself is generated for every category
+        # so its link always resolves, but it must not link to phantom products.
+        surviving_slugs = {p.get('slug') for p in self.data['products']}
+        for cat_name, cat_products in all_categories.items():
+            slug = category_slug(cat_name)
+            listed = [p for p in cat_products if p.get('slug') in surviving_slugs]
             context = self.build_base_context(
                 meta_title=f'Best {cat_name} - Motorcycle {cat_name} | BikeReview India',
                 meta_description=f'Best {cat_name.lower()} for Indian motorcycles. Expert reviews, buying guides, and top recommendations.',
@@ -1997,8 +2071,8 @@ class SiteGenerator:
                 output_path=f'categories/{slug}/index.html',
             )
             context['category_name'] = cat_name
-            context['products'] = cat_products
-            context['brands_list'] = sorted(set(p.get('brand', '') for p in cat_products))
+            context['products'] = listed
+            context['brands_list'] = sorted(set(p.get('brand', '') for p in listed))
             content = self.render_template('category.html', context)
             self.write_page(f'categories/{slug}/index.html', content)
 
@@ -2252,6 +2326,7 @@ class SiteGenerator:
             )
             context['page_title'] = f"Best {category} for Motorcycles in India (2026)"
             context['page_description'] = page['description']
+            self._attach_editorial(cat_products, category)
             context['products'] = cat_products
             context['category'] = category
             context['category_slug'] = page['slug']
@@ -2298,6 +2373,34 @@ class SiteGenerator:
 
             content = self.render_template('bestof.html', context)
             self.write_page(f'guides/{page["slug"]}/index.html', content)
+
+        # Guides index page (linked by the "Best Of" nav dropdown parent)
+        guides_ctx = self.build_base_context(
+            meta_title='Buying Guides - Motorcycle Gear & Accessories | BikeReview India',
+            meta_description='Expert buying guides for motorcycle helmets, phone mounts, engine oil, chain lube, and more.',
+            canonical_url=f"{self.base_url}/guides/",
+            output_path='guides/index.html',
+        )
+        guides_ctx['guides'] = bestof_pages
+        guides_ctx['motorcycles'] = self.data['motorcycles']
+        guides_content = self._render_guides_index(guides_ctx)
+        self.write_page('guides/index.html', guides_content)
+
+    def _render_guides_index(self, context):
+        """Render a simple guides index page listing all best-of guides."""
+        guides = context.get('guides', [])
+        items = "".join(
+            f'<li><a href="/{url_builders.bestof_url(g["slug"])}">{g["title"]}</a></li>'
+            for g in guides
+        )
+        page = f"""{{% extends "base.html" %}}
+{{% block content %}}
+<section class="section"><div class="container">
+<h1>Motorcycle Buying Guides</h1>
+<ul class="guide-index-list">{items}</ul>
+</div></section>
+{{% endblock %}}"""
+        return self.env.from_string(page).render(**context)
 
     def generate_article_pages(self):
         """Generate article pages."""
@@ -2363,6 +2466,70 @@ class SiteGenerator:
         content = self.render_template('articles.html', context)
         self.write_page('articles/index.html', content)
 
+    def generate_article_category_pages(self):
+        """Generate article category index pages (maintenance, buying-guides, ...).
+
+        Every footer/article link to articles/<category>/ must resolve to a real
+        page, so we group the loaded articles by category and emit an index page
+        for each known category slug.
+        """
+        article_categories = [
+            ('maintenance', 'Maintenance'),
+            ('buying-guides', 'Buying Guides'),
+            ('ownership', 'Ownership Tips'),
+            ('touring', 'Touring'),
+            ('safety', 'Safety'),
+        ]
+        sorted_articles = sorted(
+            self.data['articles'], key=lambda a: a.get('date', ''), reverse=True
+        )
+        for slug, title in article_categories:
+            cat_articles = [
+                a for a in sorted_articles
+                if slug in (a.get('tags') or []) or (a.get('category') or '').lower() == slug
+            ]
+            context = self.build_base_context(
+                meta_title=f"{title} - Motorcycle Guides | BikeReview India",
+                meta_description=f"{title} articles, buying guides, and tips for Indian motorcyclists.",
+                canonical_url=f"{self.base_url}/articles/{slug}/",
+                output_path=f'articles/{slug}/index.html',
+            )
+            context['category_title'] = title
+            context['category_slug'] = slug
+            context['articles'] = cat_articles
+            context['all_articles'] = sorted_articles
+            content = self.render_template('articles.html', context)
+            self.write_page(f'articles/{slug}/index.html', content)
+
+    def generate_static_pages(self):
+        """Generate simple static pages linked from the footer/nav.
+
+        about, contact, privacy, affiliate-disclosure. Each link in the site must
+        resolve to a real page, so these are emitted even though they are thin.
+        """
+        pages = [
+            ('about', 'About Us', 'We are BikeReview India.',
+             '<p>BikeReview India is India\'s trusted source for motorcycle reviews, buying guides, and maintenance tips. Our team tests every product we recommend so riders can buy with confidence.</p>'),
+            ('contact', 'Contact Us', 'Get in touch with the BikeReview India team.',
+             '<p>Have a question or a product you\'d like us to review? Email us at <a href="mailto:hello@bikereviewindia.in">hello@bikereviewindia.in</a> and we\'ll get back to you.</p>'),
+            ('privacy', 'Privacy Policy', 'How BikeReview India handles your data.',
+             '<p>This website uses cookies and affiliate links. We do not sell your personal data. By using this site you consent to our use of cookies for analytics and personalization.</p>'),
+            ('affiliate-disclosure', 'Affiliate Disclosure', 'Our affiliate relationship with Amazon.',
+             '<p>BikeReview India is a participant in the Amazon Associates Programme. As an Amazon Associate we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change.</p>'),
+        ]
+        for slug, title, intro, body in pages:
+            context = self.build_base_context(
+                meta_title=f"{title} | BikeReview India",
+                meta_description=intro,
+                canonical_url=f"{self.base_url}/{slug}/",
+                output_path=f'{slug}/index.html',
+            )
+            context['page_title'] = title
+            context['page_intro'] = intro
+            context['page_content'] = body
+            content = self.render_template('static_page.html', context)
+            self.write_page(f'{slug}/index.html', content)
+
     def generate_sitemap(self):
         """Generate sitemap.xml."""
         urls = []
@@ -2390,7 +2557,7 @@ class SiteGenerator:
         # Categories
         urls.append(f'{self.base_url}/categories/')
         for cat_name in self.categories:
-            slug = cat_name.lower().replace(' ', '-')
+            slug = category_slug(cat_name)
             urls.append(f'{self.base_url}/categories/{slug}/')
 
         # Buying Guides
@@ -2717,6 +2884,12 @@ Sitemap: {self.base_url}/sitemap.xml
         # Download product images from Amazon (before generating pages)
         self.download_product_images()
         
+        # Preserve the full product list (pre image-filter) so category pages can
+        # be generated for every category that has any product, even if some of
+        # those products are later dropped for missing images. This guarantees
+        # that every category link resolves to a real page.
+        self.all_products = self.data['products']
+
         # Validate product images — remove products without real images
         self.validate_product_images()
         
@@ -2759,6 +2932,12 @@ Sitemap: {self.base_url}/sitemap.xml
 
         self.generate_article_pages()
         print(f"    * {len(self.data['articles'])} article pages")
+
+        self.generate_article_category_pages()
+        print("    * Article category pages")
+
+        self.generate_static_pages()
+        print("    * Static pages (about, contact, privacy, affiliate-disclosure)")
 
         self.generate_search_page()
         print("    * Search page")
@@ -2851,17 +3030,21 @@ Sitemap: {self.base_url}/sitemap.xml
             print()
 
         # ===== Internal Link Validation =====
+        # Every generated internal link must resolve to a real file under the
+        # output directory. Relative links are resolved against the directory of
+        # the file that contains them (not the site root), which is the correct
+        # behaviour for static hosting. The build FAILS if any broken link exists.
         print("  Internal Link Validation:")
         broken_links = []
         generated_files = list(self.output_dir.rglob('*.html'))
-        existing_paths = {
-            str(f.relative_to(self.output_dir))
-            for f in generated_files
+        existing_files = {
+            str(f.resolve()) for f in generated_files
         }
-        # Also include static files
-        for f in (self.output_dir / 'static').rglob('*') if (self.output_dir / 'static').exists() else []:
-            if f.is_file():
-                existing_paths.add(str(f.relative_to(self.output_dir)))
+        # Also include static assets so links to css/js/images are valid
+        if (self.output_dir / 'static').exists():
+            for f in (self.output_dir / 'static').rglob('*'):
+                if f.is_file():
+                    existing_files.add(str(f.resolve()))
 
         import re as _re
         link_pattern = _re.compile(r'href="([^"]*?)"')
@@ -2869,47 +3052,55 @@ Sitemap: {self.base_url}/sitemap.xml
         for html_file in generated_files:
             content = html_file.read_text(encoding='utf-8')
             file_rel = str(html_file.relative_to(self.output_dir))
-            file_depth = file_rel.count('/')
-            base = '../' * file_depth if file_depth > 0 else './'
+            file_dir = html_file.parent
             for match in link_pattern.finditer(content):
                 href = match.group(1)
-                # Skip external links, anchors, mailto, javascript
+                # Skip external links, anchors, mailto, javascript, template leftovers
                 if href.startswith(('http://', 'https://', 'mailto:', 'javascript:', '#', '{')):
                     continue
-                # Skip template expressions
                 if '{{' in href or '{%' in href:
                     continue
-                # Resolve relative path
+                # Normalize relative reference against the file's own directory
                 if href.startswith('./'):
                     href = href[2:]
                 if href.startswith('/'):
-                    href = href[1:]
-                # Strip anchor and query params
-                href = href.split('#')[0].split('?')[0]
-                if not href:
-                    continue
-                # Check if the target file exists
-                target = self.output_dir / href
-                if not target.exists():
+                    # Site-root-absolute: resolve from output root
+                    candidate = (self.output_dir / href[1:]).resolve()
+                else:
+                    candidate = (file_dir / href).resolve()
+                # Strip anchor / query for existence check
+                candidate_path = str(candidate).split('#')[0].split('?')[0]
+                import os as _os
+                candidate_path = _os.path.normpath(candidate_path)
+                # A trailing-slash target (e.g. /about/ or categories/chain-lube/)
+                # resolves to index.html inside that directory on static hosting.
+                if _os.path.isdir(candidate_path):
+                    candidate_path = _os.path.join(candidate_path, 'index.html')
+                if not (_os.path.exists(candidate_path) and _os.path.isfile(candidate_path)):
+                    # Record the link as written (relative to file) for reporting
                     broken_links.append((file_rel, href))
                 scanned += 1
 
         if broken_links:
             print(f"    Found {len(broken_links)} broken internal links in {len(generated_files)} files:")
-            for source, target in broken_links[:20]:
+            for source, target in broken_links[:30]:
                 print(f"      {source} -> {target}")
-            if len(broken_links) > 20:
-                print(f"      ... and {len(broken_links) - 20} more")
+            if len(broken_links) > 30:
+                print(f"      ... and {len(broken_links) - 30} more")
             print()
         else:
             print(f"    [OK] All {scanned} internal links validated across {len(generated_files)} files")
             print()
 
         if broken_links or guide_missing:
-            print(f"  [WARNING] {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
-        else:
-            print("  [OK] All links validated successfully")
-        
+            print(f"  [ERROR] {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
+            print(f"{'='*60}\n")
+            # Fail the build so CI / local runs cannot ship broken links.
+            import sys as _sys
+            _sys.exit(1)
+
+        print("  [OK] All links validated successfully")
+
         print(f"\n{'='*60}")
         print(f"  Generation complete!")
         print(f"  Total pages: {self.page_count}")

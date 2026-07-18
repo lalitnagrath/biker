@@ -41,14 +41,14 @@
                 <nav class="main-nav" id="mainNav">
                     <ul>
                         <li class="has-dropdown has-mega">
-                            <a href="{{ base_path }}motorcycles/index.html">Motorcycles</a>
+                            <a href="{{ URL.motorcycle_index(base_path) }}">Motorcycles</a>
                             <div class="mega-menu">
                                 <div class="mega-menu-brands">
                                     {% for brand, bikes in nav_motorcycles_by_brand.items() %}
                                     <a href="#" class="mega-brand-link" data-brand="{{ brand | lower | replace(' ', '-') }}">{{ brand }}<span class="mega-arrow">&#8250;</span></a>
                                     {% endfor %}
                                     <div class="mega-divider"></div>
-                                    <a href="{{ base_path }}motorcycles/index.html" class="mega-view-all">View All Motorcycles &rarr;</a>
+                                    <a href="{{ URL.motorcycle_index(base_path) }}" class="mega-view-all">View All Motorcycles &rarr;</a>
                                 </div>
                                 <div class="mega-menu-models" id="megaModels">
                                     <div class="mega-models-placeholder">Hover over a brand to see models</div>
@@ -56,44 +56,44 @@
                             </div>
                         </li>
                         <li class="has-dropdown">
-                            <a href="{{ base_path }}categories/index.html">Accessories</a>
+                            <a href="{{ URL.category_index(base_path) }}">Accessories</a>
                             <ul class="dropdown">
                                 {% for cat in nav_accessory_categories %}
-                                <li><a href="{{ base_path }}categories/{{ cat.slug }}/">{{ cat.name }}</a></li>
+                                <li><a href="{{ URL.category(cat.slug, base_path) }}">{{ cat.name }}</a></li>
                                 {% endfor %}
                                 <li class="dropdown-divider"></li>
-                                <li><a href="{{ base_path }}categories/index.html" class="dropdown-all">View All Accessories &rarr;</a></li>
+                                <li><a href="{{ URL.category_index(base_path) }}" class="dropdown-all">View All Accessories &rarr;</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="{{ base_path }}guides/helmet/index.html">Best Of</a>
+                            <a href="{{ URL.guide_index(base_path) }}">Best Of</a>
                             <ul class="dropdown">
-                                <li><a href="{{ base_path }}guides/helmet/index.html">Best Helmets</a></li>
-                                <li><a href="{{ base_path }}guides/phone-mount/index.html">Best Phone Mounts</a></li>
-                                <li><a href="{{ base_path }}guides/engine-oil/index.html">Best Engine Oil</a></li>
-                                <li><a href="{{ base_path }}guides/chain-lube/index.html">Best Chain Lubes</a></li>
-                                <li><a href="{{ base_path }}guides/chain-cleaner/index.html">Best Chain Cleaners</a></li>
-                                <li><a href="{{ base_path }}guides/tyre-inflator/index.html">Best Tyre Inflators</a></li>
+                                <li><a href="{{ URL.bestof('helmet', base_path) }}">Best Helmets</a></li>
+                                <li><a href="{{ URL.bestof('phone-mount', base_path) }}">Best Phone Mounts</a></li>
+                                <li><a href="{{ URL.bestof('engine-oil', base_path) }}">Best Engine Oil</a></li>
+                                <li><a href="{{ URL.bestof('chain-lube', base_path) }}">Best Chain Lubes</a></li>
+                                <li><a href="{{ URL.bestof('chain-cleaner', base_path) }}">Best Chain Cleaners</a></li>
+                                <li><a href="{{ URL.bestof('tyre-inflator', base_path) }}">Best Tyre Inflators</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="{{ base_path }}articles/index.html">Guides</a>
+                            <a href="{{ URL.article_index(base_path) }}">Guides</a>
                             <ul class="dropdown">
                                 {% for cat in nav_guide_categories %}
-                                <li><a href="{{ base_path }}articles/{{ cat.slug }}/">{{ cat.name }}</a></li>
+                                <li><a href="{{ URL.article_category(cat.slug, base_path) }}">{{ cat.name }}</a></li>
                                 {% endfor %}
                                 <li class="dropdown-divider"></li>
-                                <li><a href="{{ base_path }}articles/index.html" class="dropdown-all">Latest Articles &rarr;</a></li>
+                                <li><a href="{{ URL.article_index(base_path) }}" class="dropdown-all">Latest Articles &rarr;</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="{{ base_path }}brands/index.html">Brands</a>
+                            <a href="{{ URL.brand_index(base_path) }}">Brands</a>
                             <ul class="dropdown">
                                 {% for brand in nav_accessory_brands %}
-                                <li><a href="{{ base_path }}brands/{{ brand.slug }}/index.html">{{ brand.name }}</a></li>
+                                <li><a href="{{ URL.brand(brand.slug, base_path) }}">{{ brand.name }}</a></li>
                                 {% endfor %}
                                 <li class="dropdown-divider"></li>
-                                <li><a href="{{ base_path }}brands/index.html" class="dropdown-all">View All Brands &rarr;</a></li>
+                                <li><a href="{{ URL.brand_index(base_path) }}" class="dropdown-all">View All Brands &rarr;</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -188,10 +188,10 @@
                     <div class="footer-col">
                         <h4>Popular Bikes</h4>
                         <ul>
-                            <li><a href="{{ base_path }}motorcycles/index.html">All Motorcycles</a></li>
+                            <li><a href="{{ URL.motorcycle_index(base_path) }}">All Motorcycles</a></li>
                             {% for brand, bikes in nav_motorcycles_by_brand.items() %}
                             {% if bikes %}
-                            <li><a href="{{ base_path }}motorcycles/{{ bikes[0].slug }}/index.html">{{ brand }}</a></li>
+                            <li><a href="{{ URL.motorcycle(bikes[0].slug, base_path) }}">{{ brand }}</a></li>
                             {% endif %}
                             {% endfor %}
                         </ul>
@@ -199,42 +199,40 @@
                     <div class="footer-col">
                         <h4>Popular Accessories</h4>
                         <ul>
-                            <li><a href="{{ base_path }}guides/helmet/index.html">Best Helmets</a></li>
-                            <li><a href="{{ base_path }}guides/phone-mount/index.html">Best Phone Mounts</a></li>
-                            <li><a href="{{ base_path }}guides/engine-oil/index.html">Best Engine Oil</a></li>
-                            <li><a href="{{ base_path }}guides/chain-lube/index.html">Best Chain Lube</a></li>
-                            <li><a href="{{ base_path }}guides/tyre-inflator/index.html">Best Tyre Inflators</a></li>
+                            <li><a href="{{ URL.bestof('helmet', base_path) }}">Best Helmets</a></li>
+                            <li><a href="{{ URL.bestof('phone-mount', base_path) }}">Best Phone Mounts</a></li>
+                            <li><a href="{{ URL.bestof('engine-oil', base_path) }}">Best Engine Oil</a></li>
+                            <li><a href="{{ URL.bestof('chain-lube', base_path) }}">Best Chain Lube</a></li>
+                            <li><a href="{{ URL.bestof('tyre-inflator', base_path) }}">Best Tyre Inflators</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h4>Buying Guides</h4>
                         <ul>
-                            <li><a href="{{ base_path }}articles/index.html">All Guides</a></li>
-                            <li><a href="{{ base_path }}articles/maintenance/">Maintenance</a></li>
-                            <li><a href="{{ base_path }}articles/buying-guides/">Buying Guides</a></li>
-                            <li><a href="{{ base_path }}articles/ownership/">Ownership Tips</a></li>
-                            <li><a href="{{ base_path }}articles/touring/">Touring</a></li>
-                            <li><a href="{{ base_path }}articles/safety/">Safety</a></li>
+                            <li><a href="{{ URL.article_index(base_path) }}">All Guides</a></li>
+                            <li><a href="{{ URL.article_category('maintenance', base_path) }}">Maintenance</a></li>
+                            <li><a href="{{ URL.article_category('buying-guides', base_path) }}">Buying Guides</a></li>
+                            <li><a href="{{ URL.article_category('ownership', base_path) }}">Ownership Tips</a></li>
+                            <li><a href="{{ URL.article_category('touring', base_path) }}">Touring</a></li>
+                            <li><a href="{{ URL.article_category('safety', base_path) }}">Safety</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h4>Brands</h4>
                         <ul>
-                            <li><a href="{{ base_path }}brands/index.html">All Brands</a></li>
-                            {% for brand, bikes in nav_motorcycles_by_brand.items() %}
-                            {% if bikes %}
-                            <li><a href="{{ base_path }}brands/{{ brand | lower | replace(' ', '-') }}/index.html">{{ brand }}</a></li>
-                            {% endif %}
+                            <li><a href="{{ URL.brand_index(base_path) }}">All Brands</a></li>
+                            {% for brand in brands %}
+                            <li><a href="{{ URL.brand(brand.slug, base_path) }}">{{ brand.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h4>Company</h4>
                         <ul>
-                            <li><a href="{{ base_path }}about/index.html">About Us</a></li>
-                            <li><a href="{{ base_path }}contact/index.html">Contact</a></li>
-                            <li><a href="{{ base_path }}privacy/index.html">Privacy Policy</a></li>
-                            <li><a href="{{ base_path }}affiliate-disclosure/index.html">Affiliate Disclosure</a></li>
+                            <li><a href="{{ URL.about(base_path) }}">About Us</a></li>
+                            <li><a href="{{ URL.contact(base_path) }}">Contact</a></li>
+                            <li><a href="{{ URL.privacy(base_path) }}">Privacy Policy</a></li>
+                            <li><a href="{{ URL.affiliate_disclosure(base_path) }}">Affiliate Disclosure</a></li>
                             <li><a href="{{ base_path }}sitemap.xml">Sitemap</a></li>
                         </ul>
                     </div>
@@ -245,7 +243,7 @@
             <div class="container">
                 <div class="footer-bottom-content">
                     <p>&copy; 2026 BikeReview India. All rights reserved.</p>
-                    <p class="affiliate-disclosure">As an Amazon Associate, we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change. <a href="{{ base_path }}affiliate-disclosure/index.html">Full Affiliate Disclosure</a></p>
+                    <p class="affiliate-disclosure">As an Amazon Associate, we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change. <a href="{{ URL.affiliate_disclosure(base_path) }}">Full Affiliate Disclosure</a></p>
                 </div>
             </div>
         </div>
@@ -263,7 +261,7 @@
         {% for brand, bikes in nav_motorcycles_by_brand.items() %}
         "{{ brand | lower | replace(' ', '-') }}": [
             {% for b in bikes %}
-            {"name": "{{ b.model }}", "url": "{{ base_path }}motorcycles/{{ b.slug }}/index.html"}{% if not loop.last %},{% endif %}
+            {"name": "{{ b.model }}", "url": "{{ URL.motorcycle(b.slug, base_path) }}"}{% if not loop.last %},{% endif %}
             {% endfor %}
         ]{% if not loop.last %},{% endif %}
         {% endfor %}

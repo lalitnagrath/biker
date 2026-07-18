@@ -598,31 +598,119 @@ ul { list-style: none; }
 .bestof-product-verdict .verdict-label-badge,
 .product-showcase-score .verdict-label-badge { padding: 4px 10px; font-size: 0.75rem; }
 
-/* ===== BestOf Product Editorial ===== */
-.bestof-product-editorial { margin-bottom: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; background: var(--color-surface); }
-.top-pick-editorial { border-color: var(--color-accent); border-width: 2px; }
-.bestof-product-rank { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: var(--color-surface-alt); border-bottom: 1px solid var(--color-border); }
-.rank-number { font-size: 1.25rem; font-weight: 900; }
-.rank-label { font-size: 0.85rem; font-weight: 600; color: var(--color-text-secondary); }
+/* ===== Buying Guide Comparison Product Grid ===== */
+/* Comparison-first: equal-height cards in a responsive grid so four
+   products can be compared side-by-side without scrolling. */
+.guide-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch; }
+
+.guide-product-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow var(--transition), border-color var(--transition);
+}
+.guide-product-card:hover { box-shadow: var(--shadow-md); border-color: var(--color-accent); }
+
+/* 1. Badge (one per product; empty slot keeps card height stable) */
+.guide-card-badge {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: #fff;
+    background: var(--color-accent);
+    min-height: 33px;
+}
+.guide-card-badge-empty { background: transparent; min-height: 33px; padding: 8px 12px; }
+.guide-rec-editors_choice { background: #7c3aed; }
+.guide-rec-best_value { background: #d97706; }
+.guide-rec-premium_pick { background: #0891b2; }
+.guide-rec-most_popular { background: #059669; }
+
+/* 2. Image (reduced height, centered, consistent aspect ratio) */
+.guide-card-image {
+    height: 176px;              /* ~20% shorter than legacy 220px */
+    background: var(--color-surface-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+.guide-card-image img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+
+/* 3. Title (clamped to 2 lines so card height never shifts) */
+.guide-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    padding: 12px 14px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.6em;            /* reserve 2 lines */
+}
+.guide-card-title a { color: var(--color-text); text-decoration: none; }
+.guide-card-title a:hover { color: var(--color-accent); }
+
+/* 4. Rating + review count */
+.guide-card-rating {
+    padding: 8px 14px 0;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    min-height: 1.4em;
+}
+.guide-card-stars { color: #f59e0b; font-weight: 700; }
+.guide-card-reviews { color: var(--color-text-muted); }
+
+/* 5. Price (largest text) */
+.guide-card-price {
+    padding: 6px 14px 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+/* 6. Feature chips */
+.guide-card-chips {
+    padding: 10px 14px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 1em;
+}
+.guide-card-chip {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--color-surface-alt);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+}
+
+/* 7. Button (full width, same height, bottom aligned) */
+.guide-card-actions {
+    padding: 14px;
+    margin-top: auto;          /* pin to bottom regardless of content above */
+}
+.guide-card-actions .btn { width: 100%; justify-content: center; }
+
+/* ===== Legacy BestOf card classes retained for any remaining markup ===== */
 .bestof-product-grid { display: grid; grid-template-columns: 280px 1fr; }
-.bestof-product-image { height: 220px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; }
+.bestof-product-image { height: 176px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; }
 .bestof-product-image img { width: 100%; height: 100%; object-fit: cover; }
-.bestof-product-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-.bestof-product-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.bestof-product-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
-.bestfor-inline { font-size: 0.9rem; margin-bottom: 14px; }
-.bestof-product-verdict { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 16px; }
-.pros-cons-inline { display: flex; gap: 24px; margin-bottom: 20px; }
-.pros-inline, .cons-inline { display: flex; flex-direction: column; gap: 6px; }
-.pro-item, .con-item { font-size: 0.85rem; color: var(--color-text-secondary); }
-.pro-item { color: var(--color-success); }
-.con-item { color: #dc2626; }
-.bestof-product-footer { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: auto; }
-.bestof-product-score { display: flex; align-items: baseline; gap: 2px; }
-.bestof-product-score .score-number { font-size: 1.5rem; font-weight: 800; color: var(--color-accent); }
-.bestof-product-score .score-label { font-size: 0.85rem; color: var(--color-text-muted); }
-.bestof-product-price { font-size: 1.25rem; font-weight: 700; }
-.bestof-product-actions { display: flex; gap: 8px; margin-left: auto; }
+.bestof-product-content { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+.bestof-product-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
 
 /* ===== Category Hero ===== */
 .category-hero-section { background: linear-gradient(135deg, var(--color-primary) 0%, #1a2744 100%); color: white; padding: 48px 0; }
@@ -739,6 +827,10 @@ ul { list-style: none; }
 .affiliate-disclosure a { text-decoration: underline; }
 
 /* ===== Responsive ===== */
+/* Buying-guide comparison grid: 4 (>=1400) / 3 (laptop) / 2 (tablet) / 1 (mobile) */
+@media (min-width: 1025px) and (max-width: 1399px) {
+    .guide-product-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 1024px) {
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .hero-featured { display: none; }
@@ -752,6 +844,7 @@ ul { list-style: none; }
     .sidebar-sticky { position: static; }
     .bestof-product-grid { grid-template-columns: 1fr; }
     .bestof-product-image { height: 200px; }
+    .guide-product-grid { grid-template-columns: repeat(2, 1fr); }   /* tablets: 2 per row */
     .product-hero-grid { grid-template-columns: 1fr; }
     .product-hero-image { max-height: 300px; }
 }
@@ -779,6 +872,7 @@ ul { list-style: none; }
     .maintenance-showcase { grid-template-columns: repeat(2, 1fr); }
     .trust-showcase { grid-template-columns: 1fr; }
     .accessory-showcase { grid-template-columns: 1fr; }
+    .guide-product-grid { grid-template-columns: 1fr; }   /* mobile: 1 per row */
     .gear-grid { grid-template-columns: repeat(2, 1fr); }
     .guides-grid-editorial { grid-template-columns: repeat(2, 1fr); }
     .who-should-buy-grid, .pros-cons-editorial { grid-template-columns: 1fr; }
@@ -2262,4 +2356,85 @@ ul { list-style: none; }
     .moto-pick-mini-card img { width: 80px; height: 80px; }
     .moto-must-have-picks { grid-template-columns: 1fr; }
     .moto-product-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ===== Editorial Recommendation Stars (no Amazon ratings) ===== */
+/* Visually distinct from customer-review stars: amber pill + "Our Verdict" label. */
+.our-verdict {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.verdict-label {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    padding: 3px 8px;
+    border-radius: 999px;
+}
+.editorial-stars {
+    color: var(--color-gold);
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+}
+.editorial-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+}
+.guide-quick-meta.our-verdict {
+    margin: 6px 0 8px;
+}
+.bestof-product-score.our-verdict {
+    flex-wrap: wrap;
+}
+
+/* ===== Title & Description clamping (Top Pick cards) ===== */
+.product-card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+}
+.guide-quick-bestfor,
+.guide-quick-reason {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.guide-quick-reason {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+/* ===== Top Pick quick card image (image first) ===== */
+.guide-quick-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-surface-alt);
+    margin-bottom: 10px;
+}
+.guide-quick-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.guide-quick-image .product-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--color-text-muted);
 }
