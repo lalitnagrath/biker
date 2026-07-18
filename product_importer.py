@@ -44,8 +44,9 @@ from product_library import (
     find_duplicates,
     unflatten_product,
     generate_slug,
+    resolve_slug_duplicates,
     normalize_brand,
-    normalize_category_name,
+    normalize_category,
     is_empty_or_default,
     CATEGORY_IMPORT_ALIASES,
     BRAND_DISPLAY_NAMES,
@@ -189,7 +190,7 @@ def _normalize_to_flat(raw: dict) -> Optional[dict]:
         product['recommended_for'] = editorial.get('recommended_for', [])
         product['editorial_notes'] = editorial.get('notes', '')
     else:
-        for field in ('editor_rating', 'pros', 'cons', 'features',
+        for field in ('editor_rating', 'editorial_verdict', 'pros', 'cons', 'features',
                       'fitment_notes', 'recommended_for', 'editorial_notes'):
             if field in raw:
                 product[field] = raw[field]
@@ -221,6 +222,7 @@ def _normalize_to_flat(raw: dict) -> Optional[dict]:
     product.setdefault('price', 0)
     product.setdefault('rating', 0)
     product.setdefault('editor_rating', 0)
+    product.setdefault('editorial_verdict', '')
     product.setdefault('pros', [])
     product.setdefault('cons', [])
     product.setdefault('features', [])
@@ -250,10 +252,11 @@ def normalize_product(product: dict) -> dict:
 
     # Category
     if product.get('category'):
-        product['category'] = normalize_category_name(product['category'])
+        product['category'] = normalize_category(product['category'])
 
-    # Slug
-    if not product.get('slug'):
+    # Slug - regenerate if it looks like a full title (long or many words)
+    old_slug = product.get('slug', '')
+    if not old_slug or len(old_slug) > 60 or len(old_slug.split('-')) > 8:
         product['slug'] = generate_slug(product['title'])
 
     # ASIN
@@ -684,12 +687,14 @@ def generate_editorial(product: dict) -> dict:
             product['fitment_notes'] = fitment
             generated['fitment_notes'] = fitment
 
-    # --- Editor Rating (if not set) ---
-    if is_empty_or_default(product.get('editor_rating')) and editor_rating == 0:
-        score = _estimate_editor_rating(product)
-        if score > 0:
-            product['editor_rating'] = score
-            generated['editor_rating'] = score
+    # --- Editorial Verdict (never a fabricated numeric score) ---
+    # Derive a verdict label from REAL data only. We never invent an
+    # arbitrary number; the Amazon rating stays the trust anchor.
+    if is_empty_or_default(product.get('editorial_verdict')):
+        verdict = derive_editorial_verdict(product)
+        if verdict:
+            product['editorial_verdict'] = verdict
+            generated['editorial_verdict'] = verdict
 
     # --- Features (if not set) ---
     if is_empty_or_default(product.get('features')):
@@ -860,41 +865,86 @@ def _generate_fitment_notes(product: dict) -> str:
         return f'Compatible with: {bike_list}'
 
 
-def _estimate_editor_rating(product: dict) -> float:
-    """Estimate an editor rating based on available data."""
-    rating = float(product.get('rating', 0))
-    review_count = int(product.get('review_count', product.get('reviews', 0)))
-    price = int(product.get('price', 0))
-    category = product.get('category', '')
-    brand = (product.get('brand') or '').lower()
+# Verdict labels, ordered from strongest to weakest. These are qualitative
+# editorial judgments, NOT numeric scores. The base tier is always anchored to
+# the real Amazon rating so we never show an editorial verdict that contradicts
+# or undercuts what customers actually rated the product.
+EDITORIAL_VERDICTS = {
+    'excellent': 'Excellent',
+    'very_good': 'Very Good',
+    'good': 'Good',
+    'budget_pick': 'Budget Pick',
+    'premium_pick': 'Premium Pick',
+    'best_value': 'Best Value',
+}
 
-    score = 5.0  # Start at 5
+# Only products rated this high or better by customers may receive an
+# unqualified positive editorial verdict. This enforces requirement 5: an
+# editorial verdict must never undercut the user rating.
+_POSITIVE_VERDICT_MIN_RATING = 4.0
 
-    # Rating contribution (0-3 points)
-    score += (rating / 5.0) * 3.0
 
-    # Review count contribution (0-1 point)
-    if review_count >= 5000:
-        score += 1.0
-    elif review_count >= 1000:
-        score += 0.7
-    elif review_count >= 100:
-        score += 0.3
+def derive_editorial_verdict(product: dict) -> str:
+    """Derive an editorial verdict label from REAL data only.
 
-    # Brand trust (0-0.5 points)
-    if brand in TRUSTED_BRANDS:
-        score += 0.5
+    Rules (designed to preserve trust and never invent scores):
+      * The verdict is anchored to the Amazon user rating. A product rated
+        below 4.0 by customers never receives a positive editorial verdict.
+      * Editorial-only labels (Budget Pick, Premium Pick, Best Value) are
+        assigned only when a genuine editorial review exists (pros/cons or a
+        manual verdict), so we never fabricate an opinion.
+      * If no editorial review content exists, we surface only the base
+        rating-derived verdict (or nothing for low-rated products).
 
-    # Price value (0-0.5 points)
-    band = preferred_price_range(category)
-    if band:
-        low, high = band
-        if price <= high:
-            score += 0.5
-        elif price <= high * 1.5:
-            score += 0.2
+    Returns one of EDITORIAL_VERDICTS values, or '' when nothing honest can be
+    shown (caller then displays the Amazon rating alone).
+    """
+    rating = float(product.get('rating', 0) or 0)
+    if rating <= 0:
+        return ''
 
-    return round(min(10.0, max(1.0, score)), 1)
+    has_editorial_review = bool(
+        product.get('pros') or product.get('cons')
+        or product.get('verdict') or product.get('editorial_notes')
+    )
+
+    # Base verdict tier strictly follows the customer rating.
+    if rating >= 4.5:
+        base = 'excellent'
+    elif rating >= _POSITIVE_VERDICT_MIN_RATING:
+        base = 'very_good'
+    elif rating >= 3.5:
+        base = 'good'
+    else:
+        # Low-rated product: do not attach a positive editorial verdict.
+        # Caller shows Amazon rating only (requirement 6 / 7).
+        return ''
+
+    # Without a real editorial review we keep the honest, rating-based verdict.
+    if not has_editorial_review:
+        return base
+
+    # With a genuine review, refine using price positioning. This is a
+    # qualitative categorization, not an invented numeric score.
+    tier = _price_tier(int(product.get('price', 0) or 0), product.get('category', ''))
+    if tier in ('budget', 'value') and rating >= _POSITIVE_VERDICT_MIN_RATING:
+        return 'budget_pick'
+    if tier in ('premium', 'high-end') and rating >= 4.3:
+        return 'premium_pick'
+    if rating >= 4.3 and _looks_like_best_value(product):
+        return 'best_value'
+    return base
+
+
+def _looks_like_best_value(product: dict) -> bool:
+    """Heuristic: high rating at a price at/under the category band."""
+    band = preferred_price_range(product.get('category', ''))
+    price = int(product.get('price', 0) or 0)
+    rating = float(product.get('rating', 0) or 0)
+    if not band or price <= 0:
+        return False
+    low, high = band
+    return low <= price <= high and rating >= 4.3
 
 
 def _infer_features(product: dict) -> list:
@@ -1003,6 +1053,9 @@ def import_products(
     for p in new_products:
         normalize_product(p)
         report['normalized'] += 1
+
+    # Step 2b: Resolve duplicate slugs
+    resolve_slug_duplicates(new_products)
 
     # Step 3: Validate
     print("  [3/6] Validating...")

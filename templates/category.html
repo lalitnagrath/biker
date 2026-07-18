@@ -101,24 +101,30 @@
                         </a>
                         <div class="product-card-editorial-content">
                             <div class="product-card-editorial-header">
-                                <span class="product-category-label">{{ product.category }}</span>
+                                <span class="product-category-label">{{ product.category_display }}</span>
                                 <div class="product-hero-rating">
                                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                     <span class="rating-value">{{ product.rating }}</span>
                                     <span class="review-count">({{ product.reviews | int }} reviews)</span>
                                 </div>
                             </div>
-                            <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
                             <div class="bestfor-inline">
                                 <span class="bestfor-label">Best For:</span>
                                 <span class="bestfor-value">{{ product.best_for }}</span>
                             </div>
                             <p class="product-card-editorial-excerpt">{{ product.verdict[:150] }}...</p>
                             <div class="product-card-editorial-footer">
-                                <div class="bestof-product-score">
-                                    <span class="score-number">{{ product.editor_rating }}</span>
-                                    <span class="score-label">/10</span>
+                                {% if product.editorial_verdict %}
+                                <div class="bestof-product-score bestof-product-verdict">
+                                    <span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>
                                 </div>
+                                {% else %}
+                                <div class="bestof-product-score">
+                                    <span class="score-number">{{ product.rating }}</span>
+                                    <span class="score-label">★</span>
+                                </div>
+                                {% endif %}
                                 <div class="bestof-product-price">₹{{ product.price | int }}</div>
                                 <div class="product-card-editorial-actions">
                                     <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Read Review</a>

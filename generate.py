@@ -29,6 +29,10 @@ from typing import Dict, List, Optional, Tuple
 from product_library import (
     load_products as load_product_library,
     approved_products,
+    get_quality_dashboard,
+    print_quality_dashboard,
+    category_display,
+    category_slug,
 )
 from product_engine import (
     normalize_category,
@@ -43,6 +47,7 @@ from product_engine import (
     select_product_count,
     recommend_products,
     recommend_for_category,
+    recommend_for_motorcycle,
     recommend_sidebar_products,
     filter_compatible_products,
     group_products_by_category,
@@ -88,7 +93,7 @@ TEMPLATES_DIR = BASE_DIR / 'templates'
 STATIC_DIR = BASE_DIR / 'static'
 ARTICLES_DIR = BASE_DIR / 'articles'
 OUTPUT_DIR = BASE_DIR / 'site'
-AFFILIATE_ID = '0x23uyx-21'
+AFFILIATE_ID = 'xuy0834-21'
 SITE_NAME = 'BikeReview India'
 DEFAULT_BASE_URL = ''
 
@@ -146,6 +151,11 @@ def load_all_data():
     # Load products via the product library (handles nested JSON + flattening)
     products_dir = DATA_DIR / 'products'
     data['products'] = load_product_library(products_dir)
+
+    # Print quality dashboard
+    dashboard = get_quality_dashboard()
+    if dashboard:
+        print_quality_dashboard(dashboard)
 
     # Load bike models catalog (all motorcycles sold in India)
     bike_models_file = DATA_DIR / 'all-motorcycles-india.json'
@@ -491,7 +501,7 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
             if not matched:
                 return ''
 
-        # Use product_engine ranking (editor_rating + rating + reviews + price)
+        # Use product_engine ranking (editorial signal + rating + reviews + price)
         matched.sort(key=lambda p: ranking_score(p), reverse=True)
 
         # Enforce brand diversity: max 2 from same brand
@@ -545,8 +555,14 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
 
 
 def build_product_categories(products):
-    """Group products by normalized category (delegates to product_engine)."""
-    return group_products_by_category(products)
+    """Group products by normalized category (delegates to product_engine).
+
+    Excludes non-motorcycle categories (e.g., bicycle_helmet, fashion_jacket)
+    that are intentionally routed out of the motorcycle taxonomy.
+    """
+    grouped = group_products_by_category(products)
+    excluded = {'bicycle_helmet', 'fashion_jacket'}
+    return {cat: prods for cat, prods in grouped.items() if cat not in excluded}
 
 
 def match_products_to_motorcycle(bike, products):
@@ -877,30 +893,43 @@ class SiteGenerator:
         context['comparisons'] = comparisons
 
         # Featured products for recommendations (top rated, one per category)
-        # Uses product_engine.best_per_category — single source of truth
+        # Uses product_engine.best_per_category — single source of truth.
+        # Covers one quality product from every major supported category.
         categories_wanted = [
-            'Helmet', 'Phone Mount', 'Crash Guard', 'Engine Oil',
-            'Chain Lube', 'Gloves', 'Jackets', 'Tyre Inflator',
-            'Bike Cover',
+            'Helmet', 'Gloves', 'Jackets', 'Phone Mount',
+            'Engine Oil', 'Chain Lube', 'Chain Cleaner', 'Bike Cover',
+            'Disc Lock', 'Tank Bag', 'Saddle Bag', 'USB Charger',
+            'Crash Guard', 'Leg Guard', 'Tyre Inflator', 'Action Camera',
         ]
         featured_products = best_per_category(
             self.data['products'], categories_wanted
-        )[:9]
+        )
         context['featured_products'] = featured_products
 
         # Track slugs already used in featured_products to avoid duplicates
         featured_slugs = {p.get('slug') for p in featured_products}
 
         # Editor's picks (curated top products per category)
-        # Must not duplicate products already shown in featured_products
+        # Must not duplicate products already shown in featured_products.
+        # One pick per major category that has quality products.
         editors_picks = []
         pick_categories = {
             'Helmet': 'Best Helmet',
-            'Engine Oil': 'Best Engine Oil',
-            'Gloves': 'Best Gloves',
-            'Phone Mount': 'Best Phone Mount',
+            'Gloves': 'Best Riding Gloves',
             'Jackets': 'Best Riding Jacket',
+            'Phone Mount': 'Best Phone Mount',
+            'Engine Oil': 'Best Engine Oil',
+            'Chain Lube': 'Best Chain Lube',
+            'Chain Cleaner': 'Best Chain Cleaner',
+            'Bike Cover': 'Best Bike Cover',
+            'Disc Lock': 'Best Disc Lock',
+            'Tank Bag': 'Best Tank Bag',
+            'Saddle Bag': 'Best Saddle Bag',
+            'USB Charger': 'Best USB Charger',
             'Crash Guard': 'Best Crash Guard',
+            'Leg Guard': 'Best Leg Guard',
+            'Tyre Inflator': 'Best Tyre Inflator',
+            'Action Camera': 'Best Action Camera',
         }
         for cat, label in pick_categories.items():
             rec = recommend_for_category(self.data['products'], cat)
@@ -1203,15 +1232,23 @@ class SiteGenerator:
             editorial['pro_tip'] = 'Buy your helmet and crash guard first \u2014 they protect you and the bike. Then add a phone mount for navigation and a bike cover for parking.'
 
         # ===== Must-Have Descriptions =====
+        # Keys must be canonical snake_case categories.
         must_have_desc = {
-            'Helmet': 'Non-negotiable. A good helmet is the single most important piece of gear you will ever buy. Do not cheap out here.',
-            'Phone Mount': 'Mount your phone for navigation without holding it. Get a vibration-free mount \u2014 it protects your phone camera from the bike\'s vibrations.',
-            'Crash Guard': 'One tip-over in a parking lot can cost thousands in repairs. A crash guard pays for itself the first time the bike goes down.',
-            'Engine Oil': 'The lifeblood of your engine. Use the manufacturer-recommended grade \u2014 wrong oil grades cause long-term damage that warranty will not cover.',
-            'Chain Lube': 'A dry chain wears out fast and affects performance. Lube it every 500 km and it will last significantly longer.',
-            'Bike Cover': 'Sun, rain, and dust are your paint\'s enemies. A breathable cover keeps the {model} looking fresh, especially if you park outdoors.',
-            'Riding Gloves': 'Your hands are the first thing to hit the ground in a fall. Good gloves also reduce fatigue on longer rides.',
-            'Tyre Inflator': 'A flat tyre on the side of the road is every rider\'s nightmare. A portable inflator takes up no space and saves you every time.',
+            'helmet': 'Non-negotiable. A good helmet is the single most important piece of gear you will ever buy. Do not cheap out here.',
+            'phone_mount': 'Mount your phone for navigation without holding it. Get a vibration-free mount \u2014 it protects your phone camera from the bike\'s vibrations.',
+            'crash_guard': 'One tip-over in a parking lot can cost thousands in repairs. A crash guard pays for itself the first time the bike goes down.',
+            'engine_oil': 'The lifeblood of your engine. Use the manufacturer-recommended grade \u2014 wrong oil grades cause long-term damage that warranty will not cover.',
+            'chain_lube': 'A dry chain wears out fast and affects performance. Lube it every 500 km and it will last significantly longer.',
+            'bike_cover': 'Sun, rain, and dust are your paint\'s enemies. A breathable cover keeps the {model} looking fresh, especially if you park outdoors.',
+            'gloves': 'Your hands are the first thing to hit the ground in a fall. Good gloves also reduce fatigue on longer rides.',
+            'jackets': 'A proper riding jacket with armour protects your shoulders, elbows, and back. Mesh for summer, waterproof for monsoon.',
+            'tyre_inflator': 'A flat tyre on the side of the road is every rider\'s nightmare. A portable inflator takes up no space and saves you every time.',
+            'chain_cleaner': 'Degreaser removes grime before you lube. A clean chain lasts longer and delivers power more smoothly.',
+            'tank_bag': 'Keep essentials within reach \u2014 phone, wallet, keys, water. Magnetic tank bags are quick on and off.',
+            'saddle_bag': 'Soft or hard saddlebags carry more than a backpack ever will. Essential for touring and daily commuting.',
+            'usb_charger': 'Keep your phone and GPS charged on long rides. Wire it straight from the battery \u2014 no draining the bike\'s electronics.',
+            'disc_lock': 'A visible disc lock is the cheapest insurance against parking-lot theft. Get one with an alarm.',
+            'chain_lock': 'Chain your bike to something fixed. A heavy-duty chain lock stops casual theft and deters opportunists.',
         }
         editorial['must_have_descriptions'] = must_have_desc
 
@@ -1242,10 +1279,10 @@ class SiteGenerator:
 
         # Best accessories FAQ
         guide_links = []
-        for guide_cat in ['Helmet', 'Phone Mount', 'Engine Oil', 'Chain Lube']:
+        for guide_cat in ['helmet', 'phone_mount', 'engine_oil', 'chain_lube']:
             url = category_to_guide_url(guide_cat, base_path)
             if url != '#':
-                guide_links.append(f'<a href="{url}">{guide_cat.lower()} guide</a>')
+                guide_links.append(f'<a href="{url}">{category_display(guide_cat).lower()} guide</a>')
         guide_text = ', '.join(guide_links) if guide_links else 'our buying guides'
         faq_items.append({
             'question': f'What are the best accessories for {model}?',
@@ -1424,33 +1461,23 @@ class SiteGenerator:
             # Quick Accessory Navigation (links include ?bike= for deep-linking into guides)
             bike_slug = bike['slug']
             context['accessory_nav'] = [
-                {'name': 'Helmet', 'icon': HELMET_ICON_SM, 'slug': 'helmet', 'guide_url': category_to_guide_url('Helmet', context['base_path'], bike_slug)},
-                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': 'phone-mount', 'guide_url': category_to_guide_url('Phone Mount', context['base_path'], bike_slug)},
-                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': 'engine-oil', 'guide_url': category_to_guide_url('Engine Oil', context['base_path'], bike_slug)},
-                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': 'chain-lube', 'guide_url': category_to_guide_url('Chain Lube', context['base_path'], bike_slug)},
-                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': 'tyre-inflator', 'guide_url': category_to_guide_url('Tyre Inflator', context['base_path'], bike_slug)},
+                {'name': 'Helmet', 'icon': HELMET_ICON_SM, 'slug': category_slug('helmet'), 'guide_url': category_to_guide_url('helmet', context['base_path'], bike_slug)},
+                {'name': 'Phone Mount', 'icon': '&#128241;', 'slug': category_slug('phone_mount'), 'guide_url': category_to_guide_url('phone_mount', context['base_path'], bike_slug)},
+                {'name': 'Engine Oil', 'icon': '&#128737;', 'slug': category_slug('engine_oil'), 'guide_url': category_to_guide_url('engine_oil', context['base_path'], bike_slug)},
+                {'name': 'Chain Lube', 'icon': '&#9881;', 'slug': category_slug('chain_lube'), 'guide_url': category_to_guide_url('chain_lube', context['base_path'], bike_slug)},
+                {'name': 'Tyre Inflator', 'icon': '&#128295;', 'slug': category_slug('tyre_inflator'), 'guide_url': category_to_guide_url('tyre_inflator', context['base_path'], bike_slug)},
             ]
 
-            # Must Have Accessories with budget/best picks per category
-            # Uses recommend_for_category from product_engine — single source of truth
-            must_have_categories = ['Helmet', 'Phone Mount', 'Crash Guard', 'Engine Oil', 'Chain Lube', 'Bike Cover']
-            must_have_data = []
+            # Must Have Accessories — 15 categories across 5 groups
+            # Uses recommend_for_motorcycle from product_engine for scoring and deduplication
+            must_have_data = recommend_for_motorcycle(
+                self.data['products'], bike, editorial=editorial,
+            )
             seen_slugs = set()
-            for cat in must_have_categories:
-                rec = recommend_for_category(matched, cat, bike)
-                if rec['count'] > 0:
-                    must_have_data.append({
-                        'category': cat,
-                        'slug': cat.lower().replace(' ', '-'),
-                        'budget_pick': rec['most_popular'],
-                        'best_pick': rec['editors_choice'],
-                        'count': rec['count'],
-                        'guide_url': category_to_guide_url(cat, context['base_path'], bike_slug),
-                    })
-                    if rec['most_popular']:
-                        seen_slugs.add(rec['most_popular']['slug'])
-                    if rec['editors_choice']:
-                        seen_slugs.add(rec['editors_choice']['slug'])
+            for item in must_have_data:
+                for p in item['products']:
+                    seen_slugs.add(p['slug'])
+                item['guide_url'] = category_to_guide_url(item['category'], context['base_path'], bike_slug)
             context['must_have_data'] = must_have_data
 
             # ===== Sidebar products (excludes products shown in Must Have) =====

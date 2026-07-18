@@ -26,6 +26,7 @@ Templates continue to access product.price, product.rating, etc. directly.
 """
 
 import json
+import re
 import shutil
 from collections import defaultdict
 from datetime import datetime
@@ -35,13 +36,1321 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 # ===== Valid Product Statuses =====
 
-VALID_STATUSES = {'draft', 'approved', 'hidden', 'out_of_stock', 'discontinued'}
+VALID_STATUSES = {'draft', 'approved', 'review', 'hidden', 'out_of_stock', 'discontinued'}
 
 # Statuses that should appear on the website.
-WEBSITE_STATUSES = {'approved', 'out_of_stock'}
+WEBSITE_STATUSES = {'approved', 'out_of_stock', 'review'}
 
 # Statuses that the recommendation engine should process.
-RECOMMENDABLE_STATUSES = {'approved'}
+RECOMMENDABLE_STATUSES = {'approved', 'review'}
+
+
+# ===== Category Normalization Pipeline =====
+# Every product gets exactly one canonical category (snake_case) during import.
+# All code lookups use canonical categories. Display uses category_display.
+
+CANONICAL_CATEGORIES = {
+    # Safety Gear
+    'helmet', 'helmet_accessories',
+    # Riding Gear (specific)
+    'gloves', 'jackets', 'riding_pants', 'knee_guard', 'ear_plugs',
+    # Mounts & Navigation
+    'phone_mount',
+    # Protection
+    'crash_guard', 'bike_cover', 'leg_guard', 'sump_guard',
+    'radiator_guard', 'fork_sliders', 'frame_sliders', 'pillion_grab_rail',
+    'luggage_rack', 'side_stand_extender', 'handlebar_risers', 'bar_end_weights',
+    # Maintenance
+    'chain_lube', 'chain_cleaner', 'engine_oil',
+    # Inflation
+    'tyre_inflator',
+    # Luggage
+    'tank_bag', 'saddle_bag', 'tail_bag',
+    # Stickers & pads
+    'tank_sticker', 'wheel_rim_tape',
+    # Security & Power
+    'usb_charger', 'disc_lock', 'chain_lock',
+    # Other specific
+    'action_camera', 'dash_cam', 'seat_cover', 'handlebar_grip',
+    'mirror', 'windshield', 'gps_tracker', 'headlight', 'indicator',
+    'horn', 'charger', 'footrest', 'alarm', 'tool_kit', 'polish',
+    # Non-motorcycle (excluded from motorcycle guides/recommendations)
+    'bicycle_helmet',
+}
+
+# ===== Two-Level Taxonomy =====
+# Every product maps to (category, subcategory).
+# Category is the high-level group. Subcategory is the specific type within it.
+# The recommendation engine filters by BOTH.
+
+TAXONOMY: Dict[str, Dict[str, List[str]]] = {
+    'helmet': {
+        'full_face': ['full face', 'full-face'],
+        'modular': ['modular', 'flip up', 'flip-up'],
+        'open_face': ['open face', 'open-face', 'half face', 'half helmet'],
+    },
+    'helmet_accessories': {
+        'bluetooth_intercom': ['bluetooth', 'intercom', 'headset', 'communication system', 'wireless', 'earphone', 'microphone'],
+        'visor': ['visor', 'face shield', 'anti-fog'],
+        'camera': ['chin mount', 'helmet camera', 'helmet cam'],
+        'cleaning_kit': ['helmet cleaner', 'visor cleaner', 'helmet wash'],
+    },
+    'riding_gear': {
+        'gloves': ['gloves', 'glove'],
+        'jacket': ['jacket', 'riding jacket', 'bomber jacket'],
+        'pants': ['riding pants', 'riding trousers', 'motorcycle pants'],
+        'boots': ['riding boots', 'motorcycle boots', 'bike boots'],
+        'knee_guard': ['knee guard', 'knee pad', 'knee protector', 'knee armour'],
+        'ear_plugs': ['ear plug', 'earplug', 'ear plugs'],
+    },
+    'maintenance': {
+        'chain_lube': ['chain lube', 'chain spray', 'chain lubricant', 'chain wax'],
+        'chain_cleaner': ['chain cleaner', 'chain clean'],
+        'engine_oil': ['engine oil', 'motor oil', '10w-40', '10w-50', '20w-50'],
+    },
+    'security': {
+        'disc_lock': ['disc lock', 'disk lock', 'brake lock'],
+        'chain_lock': ['chain lock', 'security chain', 'anti-theft chain'],
+    },
+    'electronics': {
+        'phone_mount': ['phone mount', 'phone holder', 'mobile holder', 'mobile mount', 'handlebar mount'],
+        'usb_charger': ['usb charger', 'dual usb', 'quick charge', 'motorcycle charger'],
+        'tpms': ['tyre inflator', 'tire inflator', 'air compressor', 'tyre pump', 'air pump', 'portable compressor'],
+        'gps_tracker': ['gps tracker', 'vehicle tracker'],
+    },
+    'protection': {
+        'crash_guard': ['crash guard', 'engine guard', 'frame slider', 'crash bar'],
+        'leg_guard': ['leg guard', 'engine guard', 'crash guard'],
+        'bike_cover': ['bike cover', 'motorcycle cover', 'body cover', 'dust cover', 'scooter cover'],
+    },
+    'bike_parts': {
+        'sump_guard': ['sump guard', 'engine sump guard', 'lower engine guard', 'engine guard'],
+        'radiator_guard': ['radiator guard', 'radiator cover', 'radiator grille'],
+        'fork_sliders': ['fork slider', 'fork sliders', 'fork protector', 'fork cap'],
+        'frame_sliders': ['frame slider', 'frame sliders', 'crash slider', 'crash sliders'],
+        'pillion_grab_rail': ['pillion grab rail', 'grab rail', 'grab handle', 'pillion rail'],
+        'luggage_rack': ['luggage rack', 'rear rack', 'top rack', 'carrier rack'],
+        'side_stand_extender': ['side stand extender', 'side stand', 'kick stand plate', 'stand extender'],
+        'handlebar_risers': ['handlebar riser', 'handlebar risers', 'riser', 'handle bar riser'],
+        'bar_end_weights': ['bar end weight', 'bar end weights', 'handlebar weight', 'bar-end weight'],
+        'tank_sticker': ['tank sticker', 'tank pad', 'tank stickers', 'tank decal', 'fuel tank pad'],
+        'wheel_rim_tape': ['wheel rim tape', 'rim tape', 'rim sticker', 'wheel tape', 'rim strip'],
+    },
+    'luggage': {
+        'tank_bag': ['tank bag', 'tankbag'],
+        'saddle_bag': ['saddle bag', 'saddlebag', 'side bag', 'pannier'],
+        'tail_bag': ['tail bag', 'rear bag', 'seat bag', 'backrest bag'],
+    },
+    'accessories_misc': {
+        'seat_cover': ['seat cover'],
+        'handlebar_grip': ['handlebar grip', 'handlebar grips'],
+        'mirror': ['mirror', 'mirrors'],
+        'windshield': ['windshield', 'windscreen'],
+        'headlight': ['headlight', 'headlamp'],
+        'indicator': ['indicator', 'turn signal'],
+        'horn': ['horn'],
+        'footrest': ['footrest', 'foot peg'],
+        'alarm': ['alarm', 'anti-theft alarm'],
+        'tool_kit': ['tool kit', 'toolkit'],
+        'polish': ['polish', 'bike polish', 'wax'],
+        'charger': ['charger'],
+    },
+    'cameras': {
+        'action_camera': ['action camera', 'gopro', 'gopro mount', 'chest mount', 'helmet mount', 'selfie stick'],
+        'dash_cam': ['dash cam', 'dashcam', 'car camera', 'car dvr'],
+    },
+}
+
+# Category alias map that now includes helmet_accessories and helmet reclassification.
+# The old flat CATEGORY_ALIASES still works for backward compatibility.
+# New products should use the taxonomy directly.
+
+# Maps old flat category values to new two-level taxonomy keys.
+_CATEGORY_TO_TAXONOMY: Dict[str, str] = {
+    'helmet': 'helmet',
+    'gloves': 'riding_gear',
+    'jackets': 'riding_gear',
+    'riding_pants': 'riding_gear',
+    'knee_guard': 'riding_gear',
+    'ear_plugs': 'riding_gear',
+    'phone_mount': 'electronics',
+    'crash_guard': 'protection',
+    'leg_guard': 'protection',
+    'bike_cover': 'protection',
+    'sump_guard': 'bike_parts',
+    'radiator_guard': 'bike_parts',
+    'fork_sliders': 'bike_parts',
+    'frame_sliders': 'bike_parts',
+    'pillion_grab_rail': 'bike_parts',
+    'luggage_rack': 'bike_parts',
+    'side_stand_extender': 'bike_parts',
+    'handlebar_risers': 'bike_parts',
+    'bar_end_weights': 'bike_parts',
+    'tank_sticker': 'bike_parts',
+    'wheel_rim_tape': 'bike_parts',
+    'bicycle_helmet': 'bicycle_helmet',
+    'chain_lube': 'maintenance',
+    'chain_cleaner': 'maintenance',
+    'engine_oil': 'maintenance',
+    'tyre_inflator': 'electronics',
+    'tank_bag': 'luggage',
+    'saddle_bag': 'luggage',
+    'tail_bag': 'luggage',
+    'usb_charger': 'electronics',
+    'disc_lock': 'security',
+    'chain_lock': 'security',
+    'action_camera': 'cameras',
+    'dash_cam': 'cameras',
+    'seat_cover': 'accessories_misc',
+    'handlebar_grip': 'accessories_misc',
+    'mirror': 'accessories_misc',
+    'windshield': 'accessories_misc',
+    'gps_tracker': 'electronics',
+    'headlight': 'accessories_misc',
+    'indicator': 'accessories_misc',
+    'horn': 'accessories_misc',
+    'charger': 'accessories_misc',
+    'footrest': 'accessories_misc',
+    'alarm': 'accessories_misc',
+    'tool_kit': 'accessories_misc',
+    'polish': 'accessories_misc',
+}
+
+# Master alias map: every known variant -> canonical snake_case category.
+# Keys must be lowercase. Normalization handles case/whitespace.
+CATEGORY_ALIASES: Dict[str, str] = {
+    # Helmet
+    'helmet': 'helmet',
+    'helmets': 'helmet',
+    'full face helmet': 'helmet',
+    'modular helmet': 'helmet',
+    'open face helmet': 'helmet',
+    'half helmet': 'helmet',
+    'dual visor helmet': 'helmet',
+    'motorcycle helmet': 'helmet',
+    'riding helmet': 'helmet',
+    'bike helmet': 'helmet',
+    'helmet bluetooth': 'helmet',
+    'flip up helmet': 'helmet',
+    'headgear': 'helmet',
+    # Gloves
+    'gloves': 'gloves',
+    'riding gloves': 'gloves',
+    'bike gloves': 'gloves',
+    'racing gloves': 'gloves',
+    'motorcycle gloves': 'gloves',
+    'riding glove': 'gloves',
+    # Jackets
+    'jackets': 'jackets',
+    'riding jacket': 'jackets',
+    'bike jacket': 'jackets',
+    'motorcycle jacket': 'jackets',
+    'riding jackets': 'jackets',
+    # Riding Pants
+    'riding pants': 'riding_pants',
+    'riding trousers': 'riding_pants',
+    'motorcycle pants': 'riding_pants',
+    # Knee Guard
+    'knee guard': 'knee_guard',
+    'knee guards': 'knee_guard',
+    'knee pad': 'knee_guard',
+    'knee pads': 'knee_guard',
+    'knee protector': 'knee_guard',
+    # Ear Plugs
+    'ear plugs': 'ear_plugs',
+    'ear plug': 'ear_plugs',
+    'earplugs': 'ear_plugs',
+    # Phone Mount
+    'phone mount': 'phone_mount',
+    'phone holder': 'phone_mount',
+    'mobile holder': 'phone_mount',
+    'mobile mount': 'phone_mount',
+    'handlebar mount': 'phone_mount',
+    'motorcycle phone mount': 'phone_mount',
+    'bike phone mount': 'phone_mount',
+    'mobile holder for bike': 'phone_mount',
+    'motorcycle mobile holder': 'phone_mount',
+    'motorcycle': 'phone_mount',
+    # Crash Guard
+    'crash guard': 'crash_guard',
+    'engine guard': 'crash_guard',
+    'leg guard': 'crash_guard',
+    'crash protection': 'crash_guard',
+    'frame slider': 'crash_guard',
+    'crash bar': 'crash_guard',
+    'engine protector': 'crash_guard',
+    # Leg Guard (separate from crash guard per taxonomy)
+    'leg guard': 'leg_guard',
+    'leg guards': 'leg_guard',
+    # Sump Guard
+    'sump guard': 'sump_guard',
+    'sump guards': 'sump_guard',
+    'engine sump guard': 'sump_guard',
+    # Radiator Guard
+    'radiator guard': 'radiator_guard',
+    'radiator guards': 'radiator_guard',
+    'radiator cover': 'radiator_guard',
+    # Fork Sliders
+    'fork slider': 'fork_sliders',
+    'fork sliders': 'fork_sliders',
+    'fork protector': 'fork_sliders',
+    # Frame Sliders
+    'frame slider': 'frame_sliders',
+    'frame sliders': 'frame_sliders',
+    'crash slider': 'frame_sliders',
+    # Pillion Grab Rail
+    'pillion grab rail': 'pillion_grab_rail',
+    'grab rail': 'pillion_grab_rail',
+    'grab handle': 'pillion_grab_rail',
+    # Luggage Rack
+    'luggage rack': 'luggage_rack',
+    'rear rack': 'luggage_rack',
+    # Side Stand Extender
+    'side stand extender': 'side_stand_extender',
+    'side stand': 'side_stand_extender',
+    'kick stand plate': 'side_stand_extender',
+    # Handlebar Risers
+    'handlebar riser': 'handlebar_risers',
+    'handlebar risers': 'handlebar_risers',
+    # Bar End Weights
+    'bar end weight': 'bar_end_weights',
+    'bar end weights': 'bar_end_weights',
+    'handlebar weight': 'bar_end_weights',
+    # Tank Sticker / Tank Pad
+    'tank sticker': 'tank_sticker',
+    'tank stickers': 'tank_sticker',
+    'tank pad': 'tank_sticker',
+    'tank decal': 'tank_sticker',
+    'fuel tank pad': 'tank_sticker',
+    # Wheel Rim Tape
+    'wheel rim tape': 'wheel_rim_tape',
+    'rim tape': 'wheel_rim_tape',
+    'rim sticker': 'wheel_rim_tape',
+    'wheel tape': 'wheel_rim_tape',
+    # Bicycle / cycle helmet (excluded from motorcycle recommendations)
+    'bicycle helmet': 'bicycle_helmet',
+    'bike helmet cycle': 'bicycle_helmet',
+    'cycle helmet': 'bicycle_helmet',
+    'cycling helmet': 'bicycle_helmet',
+    'kids helmet': 'bicycle_helmet',
+    'kids cycle helmet': 'bicycle_helmet',
+    # Bike Cover
+    'bike cover': 'bike_cover',
+    'motorcycle cover': 'bike_cover',
+    'body cover': 'bike_cover',
+    'bike body cover': 'bike_cover',
+    'motorcycle body cover': 'bike_cover',
+    'waterproof cover': 'bike_cover',
+    'dust cover': 'bike_cover',
+    'bike dust cover': 'bike_cover',
+    'scooter cover': 'bike_cover',
+    # Chain Lube
+    'chain lube': 'chain_lube',
+    'chain lubes': 'chain_lube',
+    'chain spray': 'chain_lube',
+    'chain lubricant': 'chain_lube',
+    'chain wax': 'chain_lube',
+    'chain lube spray': 'chain_lube',
+    'bike chain lube': 'chain_lube',
+    'motorcycle chain lube': 'chain_lube',
+    # Chain Cleaner
+    'chain cleaner': 'chain_cleaner',
+    'chain cleaners': 'chain_cleaner',
+    'chain cleaner spray': 'chain_cleaner',
+    'chain clean': 'chain_cleaner',
+    'bike chain cleaner': 'chain_cleaner',
+    'motorcycle chain cleaner': 'chain_cleaner',
+    # Engine Oil
+    'engine oil': 'engine_oil',
+    'engine oil 10w-40': 'engine_oil',
+    'engine oil 10w-50': 'engine_oil',
+    'engine oil 20w-50': 'engine_oil',
+    'motor oil': 'engine_oil',
+    'engine lubricant': 'engine_oil',
+    # Tyre Inflator
+    'tyre inflator': 'tyre_inflator',
+    'tire inflator': 'tyre_inflator',
+    'air compressor': 'tyre_inflator',
+    'tyre pump': 'tyre_inflator',
+    'air pump': 'tyre_inflator',
+    'portable compressor': 'tyre_inflator',
+    'tyre inflator pump': 'tyre_inflator',
+    'air compressor for car': 'tyre_inflator',
+    # Tank Bag
+    'tank bag': 'tank_bag',
+    'tankbag': 'tank_bag',
+    'tank bag motorcycle': 'tank_bag',
+    'motorcycle tank bag': 'tank_bag',
+    # Saddle Bag
+    'saddle bag': 'saddle_bag',
+    'saddle bags': 'saddle_bag',
+    'saddlebag': 'saddle_bag',
+    'saddlebags': 'saddle_bag',
+    'side bag': 'saddle_bag',
+    'pannier': 'saddle_bag',
+    'panniers': 'saddle_bag',
+    'motorcycle saddle bag': 'saddle_bag',
+    'bike saddle bag': 'saddle_bag',
+    # Tail Bag
+    'tail bag': 'tail_bag',
+    'rear bag': 'tail_bag',
+    'seat bag': 'tail_bag',
+    'backrest bag': 'tail_bag',
+    # USB Charger
+    'usb charger': 'usb_charger',
+    'dual usb': 'usb_charger',
+    'bike charger': 'usb_charger',
+    'motorcycle charger': 'usb_charger',
+    'usb charging': 'usb_charger',
+    'quick charge': 'usb_charger',
+    # Disc Lock
+    'disc lock': 'disc_lock',
+    'disk lock': 'disc_lock',
+    'brake lock': 'disc_lock',
+    'disc brake lock': 'disc_lock',
+    'bike disc lock': 'disc_lock',
+    # Chain Lock
+    'chain lock': 'chain_lock',
+    'bike chain lock': 'chain_lock',
+    'security chain': 'chain_lock',
+    # Action Camera
+    'action camera': 'action_camera',
+    'action cameras': 'action_camera',
+    # Dash Cam
+    'dash cam': 'dash_cam',
+    'dashcam': 'dash_cam',
+    # Seat Cover
+    'seat cover': 'seat_cover',
+    'bike seat cover': 'seat_cover',
+    'motorcycle seat cover': 'seat_cover',
+    # Handlebar Grip
+    'handlebar grip': 'handlebar_grip',
+    'handlebar grips': 'handlebar_grip',
+    # Mirror
+    'mirror': 'mirror',
+    'mirrors': 'mirror',
+    'bike mirror': 'mirror',
+    'motorcycle mirror': 'mirror',
+    # Windshield
+    'windshield': 'windshield',
+    'windscreen': 'windshield',
+    'motorcycle windshield': 'windshield',
+    'bike windshield': 'windshield',
+    # GPS Tracker
+    'gps tracker': 'gps_tracker',
+    'gps tracker for bike': 'gps_tracker',
+    'bike gps': 'gps_tracker',
+    # Headlight
+    'headlight': 'headlight',
+    'headlights': 'headlight',
+    'motorcycle headlight': 'headlight',
+    # Indicator
+    'indicator': 'indicator',
+    'indicators': 'indicator',
+    'motorcycle indicator': 'indicator',
+    'bike indicator': 'indicator',
+    # Horn
+    'horn': 'horn',
+    'horns': 'horn',
+    'motorcycle horn': 'horn',
+    'bike horn': 'horn',
+    # Charger (non-USB)
+    'charger': 'charger',
+    # Footrest
+    'footrest': 'footrest',
+    'footrests': 'footrest',
+    'motorcycle footrest': 'footrest',
+    # Alarm
+    'alarm': 'alarm',
+    'alarms': 'alarm',
+    'bike alarm': 'alarm',
+    'motorcycle alarm': 'alarm',
+    # Tool Kit
+    'tool kit': 'tool_kit',
+    'toolkit': 'tool_kit',
+    'motorcycle tool kit': 'tool_kit',
+    # Polish
+    'polish': 'polish',
+    'bike polish': 'polish',
+}
+
+# Human-readable display names for each canonical category.
+CATEGORY_DISPLAY: Dict[str, str] = {
+    'helmet': 'Helmet',
+    'helmet_accessories': 'Helmet Accessories',
+    'gloves': 'Gloves',
+    'jackets': 'Jackets',
+    'riding_pants': 'Riding Pants',
+    'knee_guard': 'Knee Guard',
+    'ear_plugs': 'Ear Plugs',
+    'phone_mount': 'Phone Mount',
+    'crash_guard': 'Crash Guard',
+    'leg_guard': 'Leg Guard',
+    'sump_guard': 'Sump Guard',
+    'radiator_guard': 'Radiator Guard',
+    'fork_sliders': 'Fork Sliders',
+    'frame_sliders': 'Frame Sliders',
+    'pillion_grab_rail': 'Pillion Grab Rail',
+    'luggage_rack': 'Luggage Rack',
+    'side_stand_extender': 'Side Stand Extender',
+    'handlebar_risers': 'Handlebar Risers',
+    'bar_end_weights': 'Bar End Weights',
+    'tank_sticker': 'Tank Sticker',
+    'wheel_rim_tape': 'Wheel Rim Tape',
+    'bicycle_helmet': 'Bicycle Helmet',
+    'bike_cover': 'Bike Cover',
+    'chain_lube': 'Chain Lube',
+    'chain_cleaner': 'Chain Cleaner',
+    'engine_oil': 'Engine Oil',
+    'tyre_inflator': 'Tyre Inflator',
+    'tank_bag': 'Tank Bag',
+    'saddle_bag': 'Saddle Bag',
+    'tail_bag': 'Tail Bag',
+    'usb_charger': 'USB Charger',
+    'disc_lock': 'Disc Lock',
+    'chain_lock': 'Chain Lock',
+    'action_camera': 'Action Camera',
+    'dash_cam': 'Dash Cam',
+    'seat_cover': 'Seat Cover',
+    'handlebar_grip': 'Handlebar Grip',
+    'mirror': 'Mirror',
+    'windshield': 'Windshield',
+    'gps_tracker': 'GPS Tracker',
+    'headlight': 'Headlight',
+    'indicator': 'Indicator',
+    'horn': 'Horn',
+    'charger': 'Charger',
+    'footrest': 'Footrest',
+    'alarm': 'Alarm',
+    'tool_kit': 'Tool Kit',
+    'polish': 'Polish',
+}
+
+# Slug for each canonical category (used in URLs).
+CATEGORY_SLUGS: Dict[str, str] = {cat: cat.replace('_', '-') for cat in CANONICAL_CATEGORIES}
+
+# Categories where we expect strong Amazon data (motorcycle accessories).
+# Used by quality scoring. All snake_case.
+HIGH_CONFIDENCE_CATEGORIES = {
+    'helmet', 'helmet_accessories', 'phone_mount', 'chain_lube', 'chain_cleaner',
+    'engine_oil', 'tyre_inflator', 'bike_cover', 'gloves',
+    'jackets', 'tank_bag', 'saddle_bag', 'tail_bag',
+    'usb_charger', 'disc_lock', 'chain_lock', 'knee_guard',
+    'crash_guard', 'ear_plugs', 'riding_pants',
+    'leg_guard', 'sump_guard', 'radiator_guard', 'fork_sliders',
+    'frame_sliders', 'pillion_grab_rail', 'luggage_rack',
+    'side_stand_extender', 'handlebar_risers', 'bar_end_weights',
+    'tank_sticker', 'wheel_rim_tape',
+}
+
+# Categories that are universal (fit any motorcycle).
+# Products in these categories get recommended for every bike.
+UNIVERSAL_CATEGORIES = {
+    'helmet', 'gloves', 'jackets', 'riding_pants', 'knee_guard', 'ear_plugs',
+    'phone_mount', 'chain_lube', 'chain_cleaner', 'engine_oil',
+    'tyre_inflator', 'bike_cover', 'tank_bag', 'saddle_bag', 'tail_bag',
+    'usb_charger', 'seat_cover', 'handlebar_grip', 'mirror', 'windshield',
+    'gps_tracker', 'headlight', 'indicator', 'horn', 'charger', 'footrest',
+    'alarm', 'tool_kit', 'polish', 'action_camera', 'dash_cam',
+    'tank_sticker', 'wheel_rim_tape',
+}
+
+# Categories that are bike-specific (need compatibility matching).
+BIKE_SPECIFIC_CATEGORIES = {
+    'crash_guard', 'disc_lock', 'chain_lock', 'leg_guard', 'sump_guard',
+    'radiator_guard', 'fork_sliders', 'frame_sliders', 'pillion_grab_rail',
+    'luggage_rack', 'side_stand_extender', 'handlebar_risers', 'bar_end_weights',
+}
+
+# Title keywords mapped to canonical categories for inference.
+# Order matters: first match wins. More specific patterns first.
+_CATEGORY_TITLE_KEYWORDS: List[Tuple[str, str]] = [
+    # Helmet (most specific first)
+    ('full face helmet', 'helmet'),
+    ('modular helmet', 'helmet'),
+    ('open face helmet', 'helmet'),
+    ('half helmet', 'helmet'),
+    ('dual visor helmet', 'helmet'),
+    ('flip up helmet', 'helmet'),
+    ('helmet', 'helmet'),
+    ('headgear', 'helmet'),
+    # Phone Mount
+    ('phone mount', 'phone_mount'),
+    ('phone holder', 'phone_mount'),
+    ('mobile holder', 'phone_mount'),
+    ('mobile mount', 'phone_mount'),
+    ('handlebar mount', 'phone_mount'),
+    # Chain Lube
+    ('chain lube', 'chain_lube'),
+    ('chain spray', 'chain_lube'),
+    ('chain lubricant', 'chain_lube'),
+    ('chain wax', 'chain_lube'),
+    # Chain Cleaner
+    ('chain cleaner', 'chain_cleaner'),
+    ('chain clean', 'chain_cleaner'),
+    # Engine Oil
+    ('engine oil', 'engine_oil'),
+    ('10w-40', 'engine_oil'),
+    ('10w-50', 'engine_oil'),
+    ('20w-50', 'engine_oil'),
+    ('motor oil', 'engine_oil'),
+    # Tyre Inflator
+    ('tyre inflator', 'tyre_inflator'),
+    ('tire inflator', 'tyre_inflator'),
+    ('air compressor', 'tyre_inflator'),
+    ('tyre pump', 'tyre_inflator'),
+    ('air pump', 'tyre_inflator'),
+    # Gloves
+    ('riding gloves', 'gloves'),
+    ('bike gloves', 'gloves'),
+    ('motorcycle gloves', 'gloves'),
+    ('gloves', 'gloves'),
+    # Jackets
+    ('riding jacket', 'jackets'),
+    ('bike jacket', 'jackets'),
+    ('motorcycle jacket', 'jackets'),
+    ('jacket', 'jackets'),
+    # Bike Cover
+    ('bike cover', 'bike_cover'),
+    ('motorcycle cover', 'bike_cover'),
+    ('body cover', 'bike_cover'),
+    ('scooter cover', 'bike_cover'),
+    # Crash Guard
+    ('crash guard', 'crash_guard'),
+    ('engine guard', 'crash_guard'),
+    ('frame slider', 'crash_guard'),
+    ('crash bar', 'crash_guard'),
+    # Leg Guard (separate category)
+    ('leg guard', 'leg_guard'),
+    # Sump Guard
+    ('sump guard', 'sump_guard'),
+    ('engine sump guard', 'sump_guard'),
+    # Radiator Guard
+    ('radiator guard', 'radiator_guard'),
+    ('radiator cover', 'radiator_guard'),
+    # Fork Sliders
+    ('fork slider', 'fork_sliders'),
+    ('fork protector', 'fork_sliders'),
+    # Frame Sliders
+    ('frame sliders', 'frame_sliders'),
+    ('crash slider', 'frame_sliders'),
+    # Pillion Grab Rail
+    ('pillion grab rail', 'pillion_grab_rail'),
+    ('grab rail', 'pillion_grab_rail'),
+    # Luggage Rack
+    ('luggage rack', 'luggage_rack'),
+    ('rear rack', 'luggage_rack'),
+    # Side Stand Extender
+    ('side stand extender', 'side_stand_extender'),
+    ('side stand', 'side_stand_extender'),
+    # Handlebar Risers
+    ('handlebar riser', 'handlebar_risers'),
+    # Bar End Weights
+    ('bar end weight', 'bar_end_weights'),
+    ('handlebar weight', 'bar_end_weights'),
+    # Tank Sticker / Pad
+    ('tank sticker', 'tank_sticker'),
+    ('tank pad', 'tank_sticker'),
+    ('tank decal', 'tank_sticker'),
+    # Wheel Rim Tape
+    ('wheel rim tape', 'wheel_rim_tape'),
+    ('rim tape', 'wheel_rim_tape'),
+    ('rim sticker', 'wheel_rim_tape'),
+    # Luggage
+    ('tank bag', 'tank_bag'),
+    ('tankbag', 'tank_bag'),
+    ('saddle bag', 'saddle_bag'),
+    ('saddlebag', 'saddle_bag'),
+    ('pannier', 'saddle_bag'),
+    ('tail bag', 'tail_bag'),
+    ('rear bag', 'tail_bag'),
+    # Protection
+    ('knee guard', 'knee_guard'),
+    ('knee pad', 'knee_guard'),
+    ('knee protector', 'knee_guard'),
+    # Security
+    ('disc lock', 'disc_lock'),
+    ('disk lock', 'disc_lock'),
+    ('brake lock', 'disc_lock'),
+    ('chain lock', 'chain_lock'),
+    # Charger
+    ('usb charger', 'usb_charger'),
+    ('dual usb', 'usb_charger'),
+    # Ear Plugs
+    ('ear plug', 'ear_plugs'),
+    ('earplug', 'ear_plugs'),
+    # Riding Pants
+    ('riding pants', 'riding_pants'),
+    ('riding trousers', 'riding_pants'),
+    # Other
+    ('action camera', 'action_camera'),
+    ('dash cam', 'dash_cam'),
+    ('seat cover', 'seat_cover'),
+    ('handlebar grip', 'handlebar_grip'),
+    ('mirror', 'mirror'),
+    ('windshield', 'windshield'),
+    ('windscreen', 'windshield'),
+    ('gps tracker', 'gps_tracker'),
+    ('headlight', 'headlight'),
+    ('indicator', 'indicator'),
+    ('horn', 'horn'),
+    ('footrest', 'footrest'),
+    ('alarm', 'alarm'),
+    ('tool kit', 'tool_kit'),
+    ('polish', 'polish'),
+]
+
+
+def normalize_category(raw: str) -> str:
+    """Normalize a raw category string to its canonical snake_case form.
+
+    Lookup order:
+        1. Exact match in CATEGORY_ALIASES (after lower/strip)
+        2. Return original (lowered, stripped) if no alias found
+
+    Returns canonical snake_case category, or the lowered raw string.
+    """
+    if not raw:
+        return ''
+    key = raw.strip().lower()
+    if key in CATEGORY_ALIASES:
+        return CATEGORY_ALIASES[key]
+    return key
+
+
+def category_display(canonical: str) -> str:
+    """Return the human-readable display name for a canonical category.
+
+    Examples:
+        'chain_lube' -> 'Chain Lube'
+        'phone_mount' -> 'Phone Mount'
+        'unknown_cat' -> 'Unknown Cat'
+    """
+    if canonical in CATEGORY_DISPLAY:
+        return CATEGORY_DISPLAY[canonical]
+    return canonical.replace('_', ' ').title()
+
+
+def category_slug(canonical: str) -> str:
+    """Return the URL slug for a canonical category.
+
+    Examples:
+        'chain_lube' -> 'chain-lube'
+        'phone_mount' -> 'phone-mount'
+    """
+    return CATEGORY_SLUGS.get(canonical, canonical.replace('_', '-'))
+
+
+def infer_category_from_title(title: str) -> str:
+    """Infer a canonical category from a product title.
+
+    Uses keyword matching against _CATEGORY_TITLE_KEYWORDS.
+    Returns canonical category or empty string if no match.
+    """
+    if not title:
+        return ''
+    title_lower = title.lower()
+    for pattern, canonical in _CATEGORY_TITLE_KEYWORDS:
+        if pattern in title_lower:
+            return canonical
+    return ''
+
+
+def classify_product_type(product: dict) -> str:
+    """Classify a product as 'universal' or 'bike_specific'.
+
+    Universal products fit any motorcycle (helmets, gloves, chain lube, etc.).
+    Bike-specific products need compatibility matching (crash guards, etc.).
+    """
+    cat = product.get('category', '')
+    if cat in BIKE_SPECIFIC_CATEGORIES:
+        return 'bike_specific'
+    return 'universal'
+
+
+def classify_product_subcategory(product: dict) -> str:
+    """Classify a product into its subcategory within the two-level taxonomy.
+
+    Uses multiple signals in priority order:
+        1. Product 'type' field (from Amazon browse / manual data)
+        2. Product title keyword matching against taxonomy
+        3. Product 'best_for' field keyword matching
+        4. Brand heuristic (e.g., Motul → engine_oil, Bobo → phone_mount)
+        5. Default subcategory for the parent category
+
+    Returns the canonical subcategory string (snake_case).
+    """
+    parent_cat = product.get('category', '')
+    title = (product.get('title', '') or '').lower()
+    prod_type = (product.get('type', '') or '').lower()
+    best_for = (product.get('best_for', '') or '').lower()
+    brand = (product.get('brand', '') or '').lower()
+    features = ' '.join(product.get('features', [])).lower() if product.get('features') else ''
+
+    # Find the taxonomy entry for this parent category
+    tax_key = _CATEGORY_TO_TAXONOMY.get(parent_cat, parent_cat)
+    tax_entry = TAXONOMY.get(tax_key, {})
+
+    if not tax_entry:
+        # Category is not in any taxonomy parent.
+        # Check if the category itself is a subcategory within a taxonomy.
+        for t_parent, t_subs in TAXONOMY.items():
+            if parent_cat in t_subs:
+                return parent_cat
+        return ''
+
+    # Build a combined text for keyword matching
+    combined = f'{prod_type} {title} {best_for} {features}'
+
+    # Score each subcategory by keyword matches
+    best_sub = ''
+    best_score = 0
+
+    for sub_name, keywords in tax_entry.items():
+        score = 0
+        for kw in keywords:
+            # Exact phrase match (strongest)
+            if kw in combined:
+                if kw in prod_type:
+                    score += 10
+                if kw in title:
+                    score += 5
+                if kw in features:
+                    score += 3
+                if kw in best_for:
+                    score += 2
+            else:
+                # Partial word match for multi-word keywords
+                # e.g., "cleaning kit" matches "cleaning" and "kit" individually
+                kw_words = kw.split()
+                matched_words = sum(1 for w in kw_words if w in combined)
+                if matched_words == len(kw_words):
+                    # All words of the keyword appear in text (just not adjacent)
+                    if any(w in prod_type for w in kw_words):
+                        score += 8
+                    if any(w in title for w in kw_words):
+                        score += 4
+                    if any(w in features for w in kw_words):
+                        score += 2
+                    if any(w in best_for for w in kw_words):
+                        score += 1
+
+        if score > best_score:
+            best_score = score
+            best_sub = sub_name
+
+    if best_sub:
+        return best_sub
+
+    # Fallback: use type field directly if it matches a subcategory name
+    if prod_type:
+        type_normalized = prod_type.replace(' ', '_').replace('-', '_')
+        for sub_name in tax_entry:
+            if type_normalized == sub_name or type_normalized in sub_name:
+                return sub_name
+
+    # Final fallback: if category IS a subcategory name, return it directly
+    if parent_cat in tax_entry:
+        return parent_cat
+
+    return ''
+
+
+def normalize_product_category(product: dict) -> dict:
+    """Normalize a product's category and subcategory to canonical form.
+
+    Modifies the product dict in-place:
+        - Sets product['category'] to canonical snake_case
+        - Sets product['category_display'] to human-readable
+        - Sets product['subcategory'] to canonical subcategory
+        - Sets product['subcategory_display'] to human-readable subcategory
+        - Sets product['product_type'] to 'universal' or 'bike_specific'
+
+    Lookup order for category:
+        1. Existing category field -> CATEGORY_ALIASES lookup
+        2. If missing/empty -> infer from title keywords
+        3. If still empty -> leave as empty string
+
+    After initial category normalization, products may be reclassified
+    if their title/type signals indicate they belong to a different
+    taxonomy group (e.g., a 'helmet' that is actually a bluetooth intercom
+    gets reclassified to 'helmet_accessories').
+
+    Subcategory is determined by the two-level taxonomy classifier.
+
+    Returns the modified product dict.
+    """
+    raw_cat = product.get('category', '')
+
+    # Step 1: Normalize existing category
+    canonical = normalize_category(raw_cat)
+
+    # Step 2: Infer from title if missing
+    if not canonical:
+        canonical = infer_category_from_title(product.get('title', ''))
+
+    # Step 3: Set category fields
+    product['category'] = canonical
+    product['category_display'] = category_display(canonical)
+    product['product_type'] = classify_product_type(product)
+
+    # Step 4: Reclassify products that got wrong parent category
+    # e.g., bluetooth intercoms labeled as 'helmet' should be 'helmet_accessories'
+    _reclassify_product(product)
+
+    # Step 5: Classify subcategory using the two-level taxonomy
+    subcategory = classify_product_subcategory(product)
+    product['subcategory'] = subcategory
+    product['subcategory_display'] = subcategory.replace('_', ' ').title() if subcategory else ''
+
+    return product
+
+
+# Keywords that signal a product is a helmet accessory, not a helmet itself.
+_HELMET_ACCESSORY_KEYWORDS = [
+    'bluetooth', 'intercom', 'headset', 'communication system',
+    'visor', 'face shield', 'anti-fog',
+    'chin mount', 'helmet camera', 'helmet cam',
+    'helmet cleaner', 'visor cleaner', 'helmet wash', 'cleaning kit',
+    'ear pad', 'helmet bag', 'helmet cover',
+    'peak', 'sun visor',
+]
+
+# Products whose category was 'helmet' but should be reclassified.
+_HELMET_ACCESSORY_TYPES = {
+    'bluetooth_intercom', 'visor', 'camera', 'cleaning_kit',
+}
+
+# Standalone categories that should be reclassified into a taxonomy parent.
+# Only for edge cases where the category is NOT in CANONICAL_CATEGORIES.
+# Maps old flat category name -> (taxonomy_parent, subcategory).
+_STANDALONE_TO_TAXONOMY = {
+    'visor': ('helmet_accessories', 'visor'),
+}
+
+# ===== Strengthened classification rules =====
+# Each rule uses REQUIRED, POSITIVE and NEGATIVE keyword sets so a product is
+# never classified on a single ambiguous keyword. A category is only assigned
+# when REQUIRED (or a strong POSITIVE) keywords are present AND no NEGATIVE
+# keyword contradicts it.
+#
+# NEGATIVE keywords route a product AWAY from a motorcycle category:
+#   - bicycle/cycle/kids helmets -> 'bicycle_helmet' (excluded from guides)
+#   - fashion/winter/rain/casual jackets -> stays generic (not 'jackets')
+_CATEGORY_RULES: Dict[str, Dict[str, List[str]]] = {
+    'helmet': {
+        'required': ['helmet'],
+        'positive': ['full face', 'modular', 'open face', 'flip up', 'isi', 'dot', 'ece',
+                     'motorcycle', 'rider', 'riding', 'bike'],
+        'negative': ['bicycle', 'cycle helmet', 'cycling', 'kids', 'kid', 'toy', 'scooter toy',
+                     'baby', 'toddler', 'child'],
+    },
+    'jackets': {
+        'required': ['jacket'],
+        'positive': ['riding', 'rider', 'motorcycle', 'motorbike', 'biker', 'ce armour',
+                     'ce rated', 'armoured', 'armored', 'protective', 'abrasion'],
+        'negative': ['winter', 'rain', 'fashion', 'casual', 'hoodie', 'hooded', 'denim',
+                     'cotton', 'tracksuit', 'track suit', 'sweat', 'varsity', 'letterman',
+                     'leather jacket fashion', 'designer'],
+    },
+}
+
+# Products that match these negative-only signals are pulled OUT of the
+# motorcycle taxonomy into a non-recommended category.
+_NEGATIVE_RECLASSIFY = {
+    'helmet': 'bicycle_helmet',
+}
+
+
+def _negatives_present(combined: str, negatives: List[str]) -> bool:
+    """Match negatives as whole words/phrases (word boundaries) so that
+    'cycle helmet' does NOT falsely match inside 'motorcycle helmet'."""
+    import re
+    for n in negatives:
+        if re.search(r'(?:\b|\s)' + re.escape(n) + r'(?:\b|\s|$)', combined):
+            return True
+    return False
+
+
+def is_motorcycle_helmet(product: dict) -> bool:
+    """Return True only if the product is a motorcycle (rider) helmet.
+
+    False for bicycle / cycle / kids / scooter-toy helmets.
+    """
+    title = (product.get('title', '') or '').lower()
+    prod_type = (product.get('type', '') or '').lower()
+    best_for = (product.get('best_for', '') or '').lower()
+    combined = f'{title} {prod_type} {best_for}'
+    rule = _CATEGORY_RULES.get('helmet', {})
+    if 'helmet' not in combined:
+        return False
+    if _negatives_present(combined, rule.get('negative', [])):
+        return False
+    return True
+
+
+def is_motorcycle_riding_jacket(product: dict) -> bool:
+    """Return True only if the product is a motorcycle riding jacket.
+
+    False for fashion / winter / rain / casual jackets and hoodies.
+    """
+    title = (product.get('title', '') or '').lower()
+    prod_type = (product.get('type', '') or '').lower()
+    best_for = (product.get('best_for', '') or '').lower()
+    features = ' '.join(product.get('features', [])).lower() if product.get('features') else ''
+    combined = f'{title} {prod_type} {best_for} {features}'
+    rule = _CATEGORY_RULES.get('jackets', {})
+    if 'jacket' not in combined:
+        return False
+    if _negatives_present(combined, rule.get('negative', [])):
+        return False
+    # Require at least one positive riding signal (or a clear 'riding jacket').
+    if 'riding jacket' in combined or 'motorcycle jacket' in combined:
+        return True
+    return any(p in combined for p in rule.get('positive', []))
+
+
+def _reclassify_product(product: dict) -> None:
+    """Reclassify products that got the wrong parent category.
+
+    Some products (especially bluetooth headsets, visors, helmet cameras)
+    end up with category='helmet' from keyword matching, but they should
+    actually be under 'helmet_accessories'.
+
+    Also remaps standalone categories (e.g., 'visor', 'gloves') to their
+    correct taxonomy parent (e.g., 'helmet_accessories', 'riding_gear').
+
+    Modifies product dict in-place.
+    """
+    cat = product.get('category', '')
+    title = (product.get('title', '') or '').lower()
+    prod_type = (product.get('type', '') or '').lower()
+    best_for = (product.get('best_for', '') or '').lower()
+
+    combined = f'{title} {prod_type} {best_for}'
+
+    # Step 1: Remap standalone categories to taxonomy parent
+    if cat in _STANDALONE_TO_TAXONOMY:
+        parent, sub = _STANDALONE_TO_TAXONOMY[cat]
+        product['category'] = parent
+        product['category_display'] = category_display(parent)
+        # Pre-set subcategory hint (classify_product_subcategory will confirm)
+        return
+
+    # Step 1b: Pull non-motorcycle products out of the motorcycle taxonomy.
+    # Bicycle / cycle / kids / scooter-toy helmets must never be 'helmet'.
+    if cat == 'helmet' and not is_motorcycle_helmet(product):
+        product['category'] = 'bicycle_helmet'
+        product['category_display'] = category_display('bicycle_helmet')
+        return
+    # Fashion / winter / rain / casual jackets must never be 'jackets'.
+    if cat == 'jackets' and not is_motorcycle_riding_jacket(product):
+        # Demote to a generic, non-motorcycle label so they are excluded from
+        # riding-jacket recommendations and guides.
+        product['category'] = 'fashion_jacket'
+        product['category_display'] = 'Jacket'
+        return
+
+    # Step 2: Reclassify 'helmet' products that are actually accessories
+    if cat != 'helmet':
+        return
+
+    for kw in _HELMET_ACCESSORY_KEYWORDS:
+        if kw in combined:
+            if any(k in combined for k in ['bluetooth', 'intercom', 'headset', 'communication system', 'wireless', 'earphone']):
+                product['category'] = 'helmet_accessories'
+                product['category_display'] = 'Helmet Accessories'
+                return
+            if any(k in combined for k in ['visor', 'face shield', 'anti-fog', 'sun visor', 'peak']):
+                product['category'] = 'helmet_accessories'
+                product['category_display'] = 'Helmet Accessories'
+                return
+            if any(k in combined for k in ['chin mount', 'helmet camera', 'helmet cam']):
+                product['category'] = 'helmet_accessories'
+                product['category_display'] = 'Helmet Accessories'
+                return
+            if any(k in combined for k in ['helmet cleaner', 'visor cleaner', 'helmet wash', 'cleaning kit']):
+                product['category'] = 'helmet_accessories'
+                product['category_display'] = 'Helmet Accessories'
+                return
+
+
+# ===== Product Quality Pipeline =====
+
+# Known brands with high trust (Indian motorcycle ecosystem)
+TRUSTED_BRANDS = {
+    'motul', 'shell', 'castrol', 'liqui moly', 'motorex',
+    'studds', 'steelbird', 'vega', 'axor', 'ls2', 'smk', 'mt',
+    'bobo', 'xtrim', 'gadgetbro', 'tribe', 'rideronomy',
+    'michelin', 'bosch', 'mi', 'xiaomi',
+    'tvs', 'hero', 'honda', 'yamaha', 'bajaj', 'suzuki',
+    'royal enfield', 'ktm', 'harley-davidson', 'triumph',
+    'scorpion', 'rst', 'alchemy', 'race dynamics', 'iron guard',
+}
+
+# Spam title patterns
+SPAM_PATTERNS = [
+    r'^test\b',
+    r'^sample\b',
+    r'^lorem ipsum',
+    r'^placeholder',
+    r'xxx+',
+    r'!!!{3,}',
+]
+
+# Module-level dashboard storage
+_last_quality_dashboard: Optional[dict] = None
+
+
+def score_product_quality(product: dict) -> dict:
+    """Score a product on multiple quality dimensions.
+
+    Returns a dict with:
+        total: 0-100 overall quality score
+        breakdown: individual component scores
+        flags: list of quality flags (warnings/reasons)
+    """
+    breakdown = {}
+    flags = []
+    total = 0
+
+    # --- Amazon Rating (0-25 points) ---
+    rating = product.get('rating', 0) or 0
+    if rating >= 4.5:
+        breakdown['rating'] = 25
+    elif rating >= 4.0:
+        breakdown['rating'] = 20
+    elif rating >= 3.5:
+        breakdown['rating'] = 15
+        flags.append('low_rating')
+    elif rating >= 3.0:
+        breakdown['rating'] = 10
+        flags.append('low_rating')
+    elif rating > 0:
+        breakdown['rating'] = 5
+        flags.append('very_low_rating')
+    else:
+        breakdown['rating'] = 0
+        flags.append('no_rating')
+
+    # --- Review Count (0-15 points) ---
+    reviews = product.get('review_count', 0) or product.get('reviews', 0) or 0
+    if reviews >= 1000:
+        breakdown['reviews'] = 15
+    elif reviews >= 500:
+        breakdown['reviews'] = 12
+    elif reviews >= 100:
+        breakdown['reviews'] = 8
+    elif reviews >= 10:
+        breakdown['reviews'] = 4
+        flags.append('few_reviews')
+    elif reviews > 0:
+        breakdown['reviews'] = 2
+        flags.append('very_few_reviews')
+    else:
+        breakdown['reviews'] = 0
+        flags.append('no_reviews')
+
+    # --- Product Completeness (0-20 points) ---
+    completeness = 0
+    if product.get('title'):
+        completeness += 4
+    if product.get('brand'):
+        completeness += 3
+    if product.get('category'):
+        completeness += 3
+    if product.get('compatible_bikes'):
+        completeness += 3
+    if product.get('best_for'):
+        completeness += 3
+    if product.get('verdict'):
+        completeness += 2
+    editor_rating = product.get('editor_rating', 0) or 0
+    if editor_rating > 0:
+        completeness += 2
+    breakdown['completeness'] = completeness
+
+    # --- Image (0-10 points) ---
+    if product.get('image'):
+        breakdown['image'] = 10
+    else:
+        breakdown['image'] = 0
+        flags.append('no_image')
+
+    # --- Affiliate Link (0-10 points) ---
+    if product.get('affiliate_url'):
+        breakdown['affiliate'] = 10
+    else:
+        breakdown['affiliate'] = 0
+        flags.append('no_affiliate')
+
+    # --- Brand Reputation (0-10 points) ---
+    brand = (product.get('brand') or '').strip().lower()
+    if brand in TRUSTED_BRANDS:
+        breakdown['brand'] = 10
+    elif brand:
+        breakdown['brand'] = 5
+    else:
+        breakdown['brand'] = 0
+        flags.append('unknown_brand')
+
+    # --- Category Confidence (0-10 points) ---
+    category = (product.get('category') or '').strip().lower()
+    if category in HIGH_CONFIDENCE_CATEGORIES:
+        breakdown['category'] = 10
+    elif category:
+        breakdown['category'] = 5
+        flags.append('uncertain_category')
+    else:
+        breakdown['category'] = 0
+        flags.append('no_category')
+
+    total = sum(breakdown.values())
+
+    return {
+        'total': total,
+        'breakdown': breakdown,
+        'flags': flags,
+    }
+
+
+def auto_assign_status(product: dict) -> str:
+    """Determine the appropriate status for a product based on quality.
+
+    Rules:
+        approved: quality >= 60, has image, has affiliate, rating >= 4.0
+        review:   quality >= 30, has image OR affiliate, not spam
+        rejected: quality < 30, or duplicate, or missing image+affiliate,
+                  or spam title, or wrong category
+
+    Returns the assigned status string.
+    """
+    title = (product.get('title') or '').strip()
+    image = product.get('image', '')
+    affiliate = product.get('affiliate_url', '')
+    rating = product.get('rating', 0) or 0
+    category = (product.get('category') or '').strip()
+
+    # --- Rejection rules ---
+    # Spam title
+    title_lower = title.lower()
+    for pattern in SPAM_PATTERNS:
+        if re.search(pattern, title_lower):
+            return 'rejected'
+
+    # Missing both image and affiliate
+    if not image and not affiliate:
+        return 'rejected'
+
+    # Missing category entirely
+    if not category:
+        return 'rejected'
+
+    # --- Quality scoring ---
+    quality = score_product_quality(product)
+    score = quality['total']
+
+    # --- Approved: high quality, complete data ---
+    if (score >= 60
+            and image
+            and affiliate
+            and rating >= 4.0):
+        return 'approved'
+
+    # --- Review: moderate quality, some data present ---
+    if score >= 30 and (image or affiliate):
+        return 'review'
+
+    # --- Rejected: everything else ---
+    return 'rejected'
+
+
+def run_quality_pipeline(products: list) -> tuple:
+    """Run the quality pipeline on all products.
+
+    Assigns status to each product based on quality scoring.
+    Returns (updated_products, dashboard_data).
+
+    The dashboard_data is a dict with:
+        overall: {approved: N, review: N, rejected: N}
+        by_category: {category: {approved: N, review: N, rejected: N}}
+        flagged: list of (slug, flags) for review/rejected products
+    """
+    overall = {'approved': 0, 'review': 0, 'rejected': 0, 'kept': 0}
+    by_category: Dict[str, Dict[str, int]] = defaultdict(
+        lambda: {'approved': 0, 'review': 0, 'rejected': 0}
+    )
+    flagged = []
+
+    for product in products:
+        current = product.get('status', '')
+
+        # Only auto-assign to products that haven't been manually set
+        # Keep hidden, out_of_stock, discontinued as-is
+        if current in ('hidden', 'out_of_stock', 'discontinued'):
+            overall['kept'] += 1
+            cat = product.get('category', 'Unknown')
+            by_category[cat][current] = by_category[cat].get(current, 0) + 1
+            continue
+
+        new_status = auto_assign_status(product)
+        product['status'] = new_status
+
+        overall[new_status] = overall.get(new_status, 0) + 1
+        cat = product.get('category', 'Unknown')
+        by_category[cat][new_status] = by_category[cat].get(new_status, 0) + 1
+
+        if new_status in ('review', 'rejected'):
+            quality = score_product_quality(product)
+            flagged.append({
+                'slug': product.get('slug', 'unknown'),
+                'title': product.get('title', '')[:50],
+                'status': new_status,
+                'score': quality['total'],
+                'flags': quality['flags'],
+            })
+
+    return products, {
+        'overall': overall,
+        'by_category': dict(by_category),
+        'flagged': flagged,
+    }
+
+
+def print_quality_dashboard(dashboard: dict) -> None:
+    """Print the quality pipeline dashboard after sync."""
+    print('\n' + '=' * 60)
+    print('  PRODUCT QUALITY DASHBOARD')
+    print('=' * 60)
+
+    overall = dashboard['overall']
+    total = sum(overall.values())
+    print(f'\n  Total: {total} products')
+    print(f'    Approved: {overall.get("approved", 0)}')
+    print(f'    Review:   {overall.get("review", 0)}')
+    print(f'    Rejected: {overall.get("rejected", 0)}')
+    if overall.get('kept', 0):
+        print(f'    Kept:     {overall.get("kept", 0)} (manual overrides preserved)')
+
+    print(f'\n  {"Category":<25s} {"Approved":>8s} {"Review":>8s} {"Rejected":>8s}')
+    print(f'  {"-"*25} {"-"*8} {"-"*8} {"-"*8}')
+
+    for cat in sorted(dashboard['by_category'].keys()):
+        counts = dashboard['by_category'][cat]
+        a = counts.get('approved', 0)
+        r = counts.get('review', 0)
+        j = counts.get('rejected', 0)
+        print(f'  {cat:<25s} {a:>8d} {r:>8d} {j:>8d}')
+
+    if dashboard['flagged']:
+        print(f'\n  Flagged products ({len(dashboard["flagged"])}):')
+        for item in dashboard['flagged'][:15]:
+            flags_str = ', '.join(item['flags'][:3])
+            print(f'    [{item["status"]:>8s}] {item["score"]:>3d} {item["slug"][:35]:<35s} ({flags_str})')
+        if len(dashboard['flagged']) > 15:
+            print(f'    ... and {len(dashboard["flagged"]) - 15} more')
+
+    print('\n' + '=' * 60)
 
 
 # ===== JSON Schema (for validation reference) =====
@@ -102,7 +1411,92 @@ def load_products(products_dir: Path) -> list:
             if flat:
                 products.append(flat)
 
+    # Run quality pipeline — auto-assign status for draft products
+    products, dashboard = run_quality_pipeline(products)
+    global _last_quality_dashboard
+    _last_quality_dashboard = dashboard
+
+    # Generate compact SEO slugs (replaces long Amazon-title slugs; appends
+    # ASIN on collisions). Keeps internal links consistent since every
+    # template resolves product URLs via product['slug'].
+    regenerate_all_slugs(products)
+
     return products
+
+
+def get_quality_dashboard() -> Optional[dict]:
+    """Return the last quality pipeline dashboard, or None if not run."""
+    return _last_quality_dashboard
+
+
+def derive_editorial_verdict(product: dict) -> str:
+    """Derive an editorial verdict label from REAL data only.
+
+    This is the trust-preserving replacement for a fabricated numeric
+    "editor score". Rules:
+      * The verdict is anchored to the Amazon user rating. A product rated
+        below 4.0 by customers never receives a positive editorial verdict.
+      * Editorial-only labels (Budget Pick, Premium Pick, Best Value) are
+        assigned only when a genuine editorial review exists (pros/cons or a
+        manual verdict), so we never fabricate an opinion.
+      * If no editorial review content exists, we surface only the base
+        rating-derived verdict (or nothing for low-rated products).
+
+    Returns one of the verdict label keys, or '' when nothing honest can be
+    shown (caller then displays the Amazon rating alone).
+    """
+    rating = float(product.get('rating', 0) or 0)
+    if rating <= 0:
+        return ''
+
+    has_editorial_review = bool(
+        product.get('pros') or product.get('cons')
+        or product.get('verdict') or product.get('editorial_notes')
+        or product.get('editorial_verdict')
+    )
+
+    if rating >= 4.5:
+        base = 'excellent'
+    elif rating >= 4.0:
+        base = 'very_good'
+    elif rating >= 3.5:
+        base = 'good'
+    else:
+        return ''
+
+    if not has_editorial_review:
+        return base
+
+    tier = _price_tier(int(product.get('price', 0) or 0), product.get('category', ''))
+    if tier in ('budget', 'value') and rating >= 4.0:
+        return 'budget_pick'
+    if tier in ('premium', 'high-end') and rating >= 4.3:
+        return 'premium_pick'
+    from product_engine import preferred_price_range
+    band = preferred_price_range(product.get('category', ''))
+    if rating >= 4.3 and band:
+        low, high = band
+        if low <= int(product.get('price', 0) or 0) <= high:
+            return 'best_value'
+    return base
+
+
+def _price_tier(price: int, category: str) -> str:
+    """Determine price tier for a product in a category."""
+    from product_engine import preferred_price_range
+    band = preferred_price_range(category)
+    if not band:
+        return 'mid-range'
+    low, high = band
+    if price <= low * 0.6:
+        return 'budget'
+    if price <= low:
+        return 'value'
+    if price <= high:
+        return 'mid-range'
+    if price <= high * 1.5:
+        return 'premium'
+    return 'high-end'
 
 
 def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
@@ -127,8 +1521,9 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
     # --- Editorial data ---
     editorial = raw.get('editorial', {})
     if editorial:
-        # Score
+        # A real manual editorial score may exist; we never fabricate one.
         product['editor_rating'] = editorial.get('score', raw.get('editor_rating', 0))
+        product['editorial_verdict'] = editorial.get('verdict_label', raw.get('editorial_verdict', ''))
         # Pros & cons (keep at top level for templates)
         product['pros'] = editorial.get('pros', raw.get('pros', []))
         product['cons'] = editorial.get('cons', raw.get('cons', []))
@@ -142,6 +1537,7 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
     else:
         # Legacy flat format fallback
         product['editor_rating'] = raw.get('editor_rating', 0)
+        product['editorial_verdict'] = raw.get('editorial_verdict', '')
         product['pros'] = raw.get('pros', [])
         product['cons'] = raw.get('cons', [])
 
@@ -184,8 +1580,17 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
     product['best_for'] = raw.get('best_for', '')
     product['verdict'] = raw.get('verdict', '')
 
+    # --- Editorial verdict (derived from real data; never fabricated) ---
+    # Respect a manually set verdict label if present in the source, otherwise
+    # derive one from the Amazon rating + any genuine editorial review content.
+    if not product.get('editorial_verdict'):
+        product['editorial_verdict'] = derive_editorial_verdict(product)
+
     # --- Status (default to 'approved' for legacy compat) ---
     product['status'] = raw.get('status', 'approved')
+
+    # --- Category normalization (canonical snake_case) ---
+    normalize_product_category(product)
 
     # --- Source tracking ---
     product['_source_file'] = source_file
@@ -209,6 +1614,7 @@ def unflatten_product(product: dict) -> dict:
         'status': product.get('status', 'approved'),
         'editorial': {
             'score': product.get('editor_rating', 0),
+            'verdict_label': product.get('editorial_verdict', ''),
             'pros': product.get('pros', []),
             'cons': product.get('cons', []),
             'features': product.get('features', []),
@@ -732,167 +2138,146 @@ BRAND_DISPLAY_NAMES: Dict[str, str] = {
     'strief': 'STRIFF',
 }
 
-# Category normalization aliases (subset of product_engine.CATEGORY_ALIASES
-# for use without importing the full engine)
-CATEGORY_IMPORT_ALIASES: Dict[str, str] = {
-    # Phone Mount
-    'phone holder': 'Phone Mount',
-    'mobile holder': 'Phone Mount',
-    'mobile mount': 'Phone Mount',
-    'handlebar mount': 'Phone Mount',
-    'motorcycle phone mount': 'Phone Mount',
-    'bike phone mount': 'Phone Mount',
-    'motorcycle': 'Phone Mount',
-    'motorcycle mobile holder': 'Phone Mount',
-    'phone mount': 'Phone Mount',
-    'mobile mount': 'Phone Mount',
-    'mobile holder for bike': 'Phone Mount',
-    'phone mount': 'Phone Mount',
-    'mobile mount': 'Phone Mount',
-    'motorcycle phone mount': 'Phone Mount',
-    'bike phone mount': 'Phone Mount',
-    'bike phone mount': 'Phone Mount',
-    'phone mount': 'Phone Mount',
-    'mobile holder for bike': 'Phone Mount',
-    'motorcycle phone mount': 'Phone Mount',
-    # Crash Guard
-    'engine guard': 'Crash Guard',
-    'leg guard': 'Crash Guard',
-    'crash protection': 'Crash Guard',
-    'frame slider': 'Crash Guard',
-    # Chain Lube
-    'chain spray': 'Chain Lube',
-    'chain lubricant': 'Chain Lube',
-    'chain wax': 'Chain Lube',
-    'chain lube': 'Chain Lube',
-    'bike chain lube': 'Chain Lube',
-    'motorcycle chain lube': 'Chain Lube',
-    # Chain Cleaner
-    'chain cleaner spray': 'Chain Cleaner',
-    'chain cleaner': 'Chain Cleaner',
-    'bike chain cleaner': 'Chain Cleaner',
-    'motorcycle chain cleaner': 'Chain Cleaner',
-    # Tyre Inflator
-    'air compressor': 'Tyre Inflator',
-    'tyre pump': 'Tyre Inflator',
-    'air pump': 'Tyre Inflator',
-    'portable compressor': 'Tyre Inflator',
-    'tire inflator': 'Tyre Inflator',
-    'tyre inflator': 'Tyre Inflator',
-    # Gloves
-    'riding gloves': 'Gloves',
-    'bike gloves': 'Gloves',
-    'motorcycle gloves': 'Gloves',
-    # Jackets
-    'riding jacket': 'Jackets',
-    'bike jacket': 'Jackets',
-    'motorcycle jacket': 'Jackets',
-    # Bike Cover
-    'motorcycle cover': 'Bike Cover',
-    'body cover': 'Bike Cover',
-    'bike body cover': 'Bike Cover',
-    'bike cover': 'Bike Cover',
-    # Helmet
-    'full face helmet': 'Helmet',
-    'open face helmet': 'Helmet',
-    'modular helmet': 'Helmet',
-    'half helmet': 'Helmet',
-    'motorcycle helmet': 'Helmet',
-    'riding helmet': 'Helmet',
-    'bike helmet': 'Helmet',
-    'helmet bluetooth': 'Helmet',
-    # Engine Oil
-    'engine oil 10w-40': 'Engine Oil',
-    'engine oil 10w-50': 'Engine Oil',
-    'motor oil': 'Engine Oil',
-    # Luggage
-    'tank bag motorcycle': 'Tank Bag',
-    'tank bag': 'Tank Bag',
-    'saddlebag': 'Saddle Bag',
-    'saddle bags': 'Saddle Bag',
-    'motorcycle saddle bag': 'Saddle Bag',
-    'bike saddle bag': 'Saddle Bag',
-    'tail bag': 'Tail Bag',
-    # Protection
-    'knee pad': 'Knee Guard',
-    'knee guard': 'Knee Guard',
-    # Ear Plugs
-    'ear plugs': 'Ear Plugs',
-    'ear plug': 'Ear Plugs',
-    # Cameras
-    'action camera': 'Action Camera',
-    'dash cam': 'Dash Cam',
-    # Seat Cover
-    'bike seat cover': 'Seat Cover',
-    'motorcycle seat cover': 'Seat Cover',
-    # Riding Pants
-    'riding pants': 'Riding Pants',
-    # Handlebar
-    'handlebar grip': 'Handlebar Grip',
-    # Mirrors
-    'bike mirror': 'Mirror',
-    'motorcycle mirror': 'Mirror',
-    # Windshield
-    'motorcycle windshield': 'Windshield',
-    'bike windshield': 'Windshield',
-    # GPS
-    'gps tracker for bike': 'GPS Tracker',
-    'bike gps': 'GPS Tracker',
-    # Lights
-    'motorcycle headlight': 'Headlight',
-    'motorcycle indicator': 'Indicator',
-    'bike indicator': 'Indicator',
-    # Horn
-    'motorcycle horn': 'Horn',
-    'bike horn': 'Horn',
-    # Charger
-    'motorcycle charger': 'Charger',
-    # Footrest
-    'motorcycle footrest': 'Footrest',
-    # Locks
-    'chain lock': 'Chain Lock',
-    'bike disc lock': 'Disc Lock',
-    # Alarm
-    'bike alarm': 'Alarm',
-    'motorcycle alarm': 'Alarm',
-    # Tools
-    'motorcycle tool kit': 'Tool Kit',
-    # Polish
-    'bike polish': 'Polish',
-}
-
-
-def keyword_to_category(keyword: str) -> Optional[str]:
-    """Map a bike-deals.json _search_keyword to a canonical category name.
-
-    Returns None if the keyword doesn't map to any known category.
-    """
-    if not keyword:
-        return None
-    key = keyword.strip().lower()
-    if key in CATEGORY_IMPORT_ALIASES:
-        return CATEGORY_IMPORT_ALIASES[key]
-    return None
-
-
 def generate_slug(title: str) -> str:
-    """Generate a URL-friendly slug from a product title.
+    """Generate a short, SEO-friendly slug from a product title.
+
+    Creates slugs of 3-6 meaningful words by:
+        1. Stripping generic/stop words (motorcycle, bike, helmet, premium, etc.)
+        2. Keeping brand names, model numbers, and product-specific terms
+        3. Limiting to 3-6 meaningful words
+        4. Appending ASIN on duplicates (handled externally by resolve_slug_duplicates)
 
     Examples:
-        'BOBO BM4 PRO Plus' -> 'bobo-bm4-pro-plus'
-        'Motul 7100 4T 10W-40' -> 'motul-7100-4t-10w-40'
+        'Vega Ranger DX Crew Full Face Motorcycle Helmet' -> 'vega-ranger-dx'
+        'SMK Stellar Sports Full Face Helmet' -> 'smk-stellar-sports'
+        'Motul C2 Chain Lube 150ml' -> 'motul-c2-chain-lube'
+        'BOBO BM4 PRO Plus Jaw-Grip Phone Mount' -> 'bobo-bm4-pro-plus'
     """
     import re
+
+    # Generic words to strip (case-insensitive)
+    STOP_WORDS = {
+        # Product category generic
+        'motorcycle', 'bike', 'biking', 'helmet', 'riding', 'gloves',
+        'jacket', 'pants', 'boots', 'visor', 'cover', 'mount', 'holder',
+        # Descriptors
+        'premium', 'comfortable', 'lightweight', 'heavy', 'duty', 'strong',
+        'sturdy', 'durable', 'tough', 'best', 'top', 'new', 'original',
+        'professional', 'advanced', 'super', 'ultra', 'max', 'mini',
+        'classic', 'standard', 'basic', 'essential', 'universal',
+        'portable', 'electric', 'digital', 'automatic', 'manual',
+        # Helmet/face specific
+        'full', 'face', 'half', 'open', 'flip', 'up', 'modular',
+        'visor', 'shield', 'visor',
+        # Product variant suffixes
+        'plus', 'pro', 'lite', 'light', 'edition', 'version',
+        # Material/feature
+        'interior', 'shock', 'absorbing', 'absorber', 'waterproof',
+        'breathable', 'anti', 'skid', 'scratch', 'resistant', 'proof',
+        'mesh', 'fabric', 'leather', 'nylon', 'polyester', 'steel',
+        'carbon', 'fiber', 'glass',
+        # Engine/maintenance generic
+        'engine', 'oil', 'lube', 'chain', 'cleaner', 'brake',
+        # Compatibility
+        'compatible', 'compatibility', 'fits', 'fitting', 'suitable',
+        'with', 'for', 'the', 'and', 'or', 'of', 'in', 'on', 'to',
+        'a', 'an', 'is', 'it', 'by', 'from', 'at', 'as', 'be',
+        # Sizes/variants
+        'size', 'small', 'medium', 'large', 'xl', 'xxl', 'xxxl',
+        'one', 'two', 'three', 'set', 'pack',
+        # Wall/mount generic
+        'wall', 'mounted', 'standing', 'fixed',
+        # Misc filler
+        'all', 'every', 'each', 'any', 'no', 'not', 'very', 'more',
+        'most', 'less', 'least', 'also', 'too', 'just', 'only',
+        'easy', 'simple', 'quick', 'fast', 'high', 'low', 'extra',
+        'certified', 'grade', 'type', 'style', 'design',
+    }
+
     slug = title.lower().strip()
-    # Remove non-alphanumeric except hyphens
-    slug = re.sub(r'[^a-z0-9\s-]', '', slug)
-    # Replace spaces with hyphens
-    slug = re.sub(r'[\s]+', '-', slug)
+
+    # Remove non-alphanumeric except hyphens and spaces
+    slug = re.sub(r'[^a-z0-9\s-]', ' ', slug)
+
+    # Split into words (split on spaces AND hyphens)
+    words = re.split(r'[\s-]+', slug)
+
+    # Filter out stop words and very short tokens
+    meaningful = []
+    for w in words:
+        w_clean = w.strip('-')
+        if len(w_clean) < 2:
+            continue
+        if w_clean in STOP_WORDS:
+            continue
+        # Skip pure color words unless they look like a model variant
+        if w_clean in {'black', 'white', 'red', 'blue', 'grey', 'gray', 'green', 'orange', 'yellow', 'pink', 'silver', 'golden'}:
+            continue
+        meaningful.append(w_clean)
+
+    # Take first 3-6 meaningful words
+    result_words = meaningful[:6]
+
+    # Ensure at least 3 words if possible
+    if len(result_words) < 3 and len(meaningful) >= 3:
+        result_words = meaningful[:3]
+
+    # Build slug
+    slug = '-'.join(result_words) if result_words else re.sub(r'[^a-z0-9]', '', title.lower().strip())[:20]
+
     # Collapse multiple hyphens
     slug = re.sub(r'-+', '-', slug)
-    # Strip leading/trailing hyphens
     slug = slug.strip('-')
+
     return slug
+
+
+def resolve_slug_duplicates(products: list) -> None:
+    """Resolve duplicate slugs by appending ASIN.
+
+    Scans all products and appends ASIN suffix to any slug that
+    would cause a duplicate. Modifies product dicts in-place.
+    """
+    slug_counts: Dict[str, int] = {}
+    slug_products: Dict[str, list] = defaultdict(list)
+
+    # First pass: count occurrences of each slug
+    for p in products:
+        slug = (p.get('slug') or '').strip().lower()
+        if slug:
+            slug_counts[slug] = slug_counts.get(slug, 0) + 1
+            slug_products[slug].append(p)
+
+    # Second pass: append ASIN to duplicates
+    for slug, prods in slug_products.items():
+        if len(prods) <= 1:
+            continue
+        for p in prods:
+            asin = (p.get('asin') or '').strip()
+            if asin:
+                p['slug'] = f'{slug}-{asin}'
+
+
+def regenerate_all_slugs(products: list) -> int:
+    """Regenerate compact SEO slugs for every product.
+
+    Every product gets a short slug (brand + model + key terms, capped at a
+    few words) so URLs stay clean and consistent. On slug collisions the ASIN
+    is appended (handled by resolve_slug_duplicates).
+
+    Returns the number of slugs regenerated.
+    """
+    regenerated = 0
+    for p in products:
+        new_slug = generate_slug(p.get('title', ''))
+        if new_slug and new_slug != p.get('slug'):
+            p['slug'] = new_slug
+            regenerated += 1
+
+    # Resolve any duplicates by appending ASIN
+    resolve_slug_duplicates(products)
+
+    return regenerated
 
 
 def normalize_brand(brand: str) -> str:
@@ -907,19 +2292,6 @@ def normalize_brand(brand: str) -> str:
         return brand
     key = brand.strip().lower()
     return BRAND_DISPLAY_NAMES.get(key, brand.strip().title())
-
-
-def normalize_category_name(category: str) -> str:
-    """Normalize a category name using the import alias map.
-
-    Returns the canonical category name.
-    """
-    if not category:
-        return category
-    key = category.strip().lower()
-    if key in CATEGORY_IMPORT_ALIASES:
-        return CATEGORY_IMPORT_ALIASES[key]
-    return category.strip().title()
 
 
 def is_empty_or_default(value: Any) -> bool:

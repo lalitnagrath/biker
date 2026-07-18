@@ -40,7 +40,7 @@
       "rating": 4.3,
       "review_count": 2100,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=xuy0834-21",
       "image": "images/products/bobo-bm4-pro-plus.jpg",
       "last_updated": null
     },
@@ -90,7 +90,7 @@
       "rating": 4.4,
       "review_count": 1800,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0D9QR37RC?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B0D9QR37RC?tag=xuy0834-21",
       "image": "images/products/bobo-bm14-pro-plus.jpg",
       "last_updated": null
     },
@@ -143,7 +143,7 @@
       "rating": 4.1,
       "review_count": 15000,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B09V334S4L?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B09V334S4L?tag=xuy0834-21",
       "image": "images/products/xiaomi-air-compressor-1s.jpg",
       "last_updated": null
     },
@@ -195,7 +195,7 @@
       "rating": 4.2,
       "review_count": 3500,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0DYZQ458Q?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B0DYZQ458Q?tag=xuy0834-21",
       "image": "images/products/strief-ez-air-inflator.jpg",
       "last_updated": null
     },
@@ -207,7 +207,7 @@
   },
   {
     "asin": "B0FKH5VJVP",
-    "slug": "prolet-wall-mounted-mobile-holder-storage-case-for-remote-wall-mounted-mobile-standmulti-purpose-stand-with-hole-for-phone-charging-white-p4-pack-of-4",
+    "slug": "prolet-mobile-storage-case-remote-mobile",
     "title": "Prolet Wall Mounted Mobile Holder Storage Case for Remote, Wall Mounted Mobile Stand/Multi Purpose Stand with Hole for Phone Charging (White-P4, Pack of 4)",
     "brand": "Prolet",
     "category": "Phone Mount",
@@ -251,7 +251,7 @@
   },
   {
     "asin": "B07N8RQ6W7",
-    "slug": "portronics-modesk-universal-mobile-holder-stand-with-metal-body-anti-skid-design-light-weight-for-all-smartphones-tablets-kindle-ipadblack",
+    "slug": "portronics-modesk-mobile-stand-metal-body",
     "title": "Portronics MODESK Universal Mobile Holder Stand with Metal Body, Anti Skid Design, Light Weight for All Smartphones, Tablets, Kindle, iPad(Black)",
     "brand": "Portronics",
     "category": "Phone Mount",
@@ -293,7 +293,7 @@
   },
   {
     "asin": "B0F6MLBYNF",
-    "slug": "un1que-tyre-inflator-for-car-150psi-car-air-pump-12v-dc-portable-air-compressor-for-tyre-fast-inflation-speed-inflator-pump-with-led-light",
+    "slug": "un1que-tyre-inflator-car-150psi-car",
     "title": "UN1QUE Tyre Inflator for Car, 150PSI Car Air Pump, 12V DC Portable Air Compressor for Tyre, Fast Inflation Speed Inflator Pump with LED Light",
     "brand": "Un1Que",
     "category": "Tyre Inflator",
@@ -338,7 +338,7 @@
   },
   {
     "asin": "B0GS74NXQD",
-    "slug": "pack-of-4-wall-mount-self-adhesive-wall-storage-mobile-holder-mobile-phone-charging-bracket-multipurpose-organizer-wall-mount-holder-for-remotesphone-multicolour",
+    "slug": "self-adhesive-storage-mobile-mobile-phone",
     "title": "Pack of 4 Wall Mount Self-Adhesive Wall Storage Mobile Holder | Mobile Phone Charging Bracket | Multipurpose Organizer Wall Mount Holder for Remotes,Phone (Multicolour)",
     "brand": "Pack",
     "category": "Phone Mount",
@@ -380,7 +380,7 @@
   },
   {
     "asin": "B0BR3TF46R",
-    "slug": "sounce-waterproof-new-bike-phone-mount-anti-shake-and-stable-360-rotation-bike-bicycles-accessories-for-any-smartphone-gps-other-devices-between-35-and-65-inches",
+    "slug": "sounce-phone-shake-stable-360-rotation",
     "title": "Sounce Waterproof New Bike Phone Mount Anti Shake and Stable 360‚° Rotation Bike Bicycles Accessories for Any Smartphone GPS Other Devices Between 3.5 and 6.5 inches",
     "brand": "Sounce",
     "category": "Phone Mount",
@@ -425,7 +425,7 @@
   },
   {
     "asin": "B0DT4HXKMB",
-    "slug": "striff-moride1-bike-phone-mount-with-360-rotational-strong-hold-for-scootyscooterbikemotorcycle-compatible-with-47-to-68-inch-devicesblack",
+    "slug": "striff-moride1-phone-360-rotational-hold",
     "title": "STRIFF MoRide1 Bike Phone Mount with 360° Rotational, Strong Hold for Scooty/Scooter/Bike/Motorcycle Compatible with 4.7 to 6.8 inch Devices(Black)",
     "brand": "Striff",
     "category": "Phone Mount",
@@ -467,7 +467,7 @@
   },
   {
     "asin": "B0H2S3GLMB",
-    "slug": "waterproof-bike-phone-mount-with-360-adjustable-dual-ball-joint-arm-weatherproof-case-dust-and-sun-proof-for-motorcycle-handlebar-navigation",
+    "slug": "phone-360-adjustable-dual-ball-joint",
     "title": "Waterproof Bike Phone Mount with 360° Adjustable Dual-Ball Joint Arm, Weatherproof Case, Dust and Sun Proof, for Motorcycle Handlebar Navigation",
     "brand": "Waterproof",
     "category": "Phone Mount",
@@ -512,7 +512,7 @@
   },
   {
     "asin": "B0CW3FJ2RD",
-    "slug": "onelap-quikflate-plus-wired-wireless-real-7800-mah-battery-superfast-digital-tyre-inflator-with-inbuilt-pressure-gauge-for-cars-suv-bikes-cycle-balls-balloons",
+    "slug": "onelap-quikflate-wired-wireless-real-7800",
     "title": "Onelap Quikflate Plus™ - Wired + Wireless (Real 7800 mAh Battery) SuperFast Digital Tyre Inflator with inbuilt Pressure Gauge for Cars, SUV, Bikes, Cycle, Balls, Balloons",
     "brand": "Onelap",
     "category": "Tyre Inflator",
@@ -556,7 +556,7 @@
   },
   {
     "asin": "B0C8T487CB",
-    "slug": "wecool-b3-360-rotational-mobile-holder-for-bike-with-one-click-lockingsecure-grip-designmobile-stand-for-bike-handle-with-cushioning-padsphone-holder-for-mounting-map-and-gps-navigation-devices",
+    "slug": "wecool-b3-360-rotational-mobile-click",
     "title": "WeCool B3 360° Rotational Mobile Holder for Bike with One-Click Locking,Secure Grip Design,Mobile Stand for Bike Handle with Cushioning Pads,Phone Holder for mounting map and GPS Navigation Devices",
     "brand": "Wecool",
     "category": "Phone Mount",
@@ -598,7 +598,7 @@
   },
   {
     "asin": "B0G6CTZQKR",
-    "slug": "zebronics-portable-tyre-inflator-wired-and-wireless-150-psi-turbo-inflation-digital-display-6000-mah-rechargeable-battery-type-c-12v-support-power-bank-sos-light-multi-nozzles-19ti6a",
+    "slug": "zebronics-tyre-inflator-wired-wireless-150",
     "title": "Zebronics, Portable Tyre Inflator, Wired and Wireless, 150 PSI Turbo Inflation, Digital Display, 6000 mAh Rechargeable Battery, Type-C & 12V Support, Power Bank, SOS Light, Multi Nozzles (19TI6A)",
     "brand": "Zebronics,",
     "category": "Tyre Inflator",
@@ -643,7 +643,7 @@
   },
   {
     "asin": "B0F4XRCRQT",
-    "slug": "portronics-vayu-70-tyre-inflator-full-size-digital-display-4000-mah-battery-150-psi-pressure-preset-modes-flashlight-with-sos-pressure-detection-for-cars-bikes-bicycles-ballsblack",
+    "slug": "portronics-vayu-tyre-inflator-display-4000",
     "title": "Portronics Vayu 7.0 Tyre Inflator, Full-Size Digital Display, 4000 mAh Battery, 150 PSI Pressure, Preset Modes, Flashlight with SOS, Pressure Detection, for Cars, Bikes, Bicycles & Balls(Black)",
     "brand": "Portronics",
     "category": "Tyre Inflator",
@@ -687,7 +687,7 @@
   },
   {
     "asin": "B0H5WVS2HR",
-    "slug": "electric-car-air-compressor-with-pressure-gauge-12v-dc-portable-tyre-inflator-air-pump-for-car-trucks-bus-bike-auto-vanhigh-pressure-portable-air-compressor-for-bike-black",
+    "slug": "car-air-compressor-pressure-gauge-12v",
     "title": "Electric Car Air Compressor with Pressure Gauge, 12V DC Portable Tyre Inflator Air Pump for Car, Trucks, Bus, Bike, Auto & Van,High Pressure Portable Air Compressor for Bike (BLACK)",
     "brand": "Electric",
     "category": "Tyre Inflator",
@@ -731,7 +731,7 @@
   },
   {
     "asin": "B0D83M6FNG",
-    "slug": "portronics-vayu-30-tyre-inflator-with-150-psi-pressure-4000-mah-battery-digital-display-pressure-detection-air-pump-compressor-for-cars-bikes-bicycles-ballsblack",
+    "slug": "portronics-vayu-tyre-inflator-150-psi",
     "title": "Portronics Vayu 3.0 tyre Inflator with 150 PSI Pressure, 4000 mAh Battery, Digital Display, Pressure Detection, Air Pump Compressor for Cars, Bikes, Bicycles & Balls(Black)",
     "brand": "Portronics",
     "category": "Tyre Inflator",
@@ -775,7 +775,7 @@
   },
   {
     "asin": "B0FPQSN47V",
-    "slug": "agaro-atom-cordless-tyre-inflator-150-psi-4500mah-battery-auto-shut-off-digital-display-led-light-usb-c-charging-12v-dc-output-for-cars-bikes-balls-inflatables",
+    "slug": "agaro-atom-cordless-tyre-inflator-150",
     "title": "AGARO Atom Cordless Tyre Inflator, 150 PSI, 4500mAh Battery, Auto Shut-Off, Digital Display, LED Light, USB-C Charging, 12V DC Output, for Cars, Bikes, Balls & Inflatables",
     "brand": "Agaro",
     "category": "Tyre Inflator",
@@ -820,7 +820,7 @@
   },
   {
     "asin": "B09LC17PJL",
-    "slug": "agaro-primo-high-power-digital-tyre-inflator-for-car-air-inflator-car-accessories-120-watt-air-pump-with-12v-plug-upto-150-psi-emergency-led-light-compact-portable-air-compressor",
+    "slug": "agaro-primo-power-tyre-inflator-car",
     "title": "AGARO Primo High Power Digital Tyre Inflator for Car, Air Inflator Car Accessories, 120 Watt Air Pump with 12V Plug, Upto 150 Psi, Emergency LED Light, Compact & Portable Air Compressor",
     "brand": "Agaro",
     "category": "Tyre Inflator",
@@ -867,7 +867,7 @@
   },
   {
     "asin": "B0CNYNX7LF",
-    "slug": "portronics-mobike-4-bike-phone-mount-with-360-rotational-strong-hold-for-bicycle-motorcycle-compatible-with-47-to-68-inch-devicesblack",
+    "slug": "portronics-mobike-phone-360-rotational-hold",
     "title": "Portronics Mobike 4 Bike Phone Mount with 360° Rotational, Strong Hold for Bicycle, Motorcycle Compatible with 4.7 to 6.8 inch Devices(Black)",
     "brand": "Portronics",
     "category": "Phone Mount",
@@ -909,7 +909,7 @@
   },
   {
     "asin": "B0BTDDVB67",
-    "slug": "amazon-basics-portable-dc-digital-tyre-inflator-for-cars-bikes-12v-dc-150-psi-air-pump-with-digital-pressure-gauge-auto-shut-off-and-emergency-led-light-3m-cable-length-3-nozzles-extra-fuse",
+    "slug": "amazon-basics-dc-tyre-inflator-cars",
     "title": "Amazon Basics Portable DC Digital Tyre Inflator for Cars & Bikes| 12V DC | 150 PSI Air Pump with Digital Pressure Gauge, Auto Shut Off and Emergency LED Light | 3M Cable Length, 3 Nozzles, Extra Fuse",
     "brand": "Amazon Basics",
     "category": "Tyre Inflator",
@@ -955,7 +955,7 @@
   },
   {
     "asin": "B0CTK2YRWP",
-    "slug": "agaro-regency-cordless-tyre-inflator-rechargeable-6000-mah-3-2000-batteries-up-to-150-psi-air-pump-for-car-bike-foot-balls-inflatables-portable-air-compressor-power-bank-multipurpose-use",
+    "slug": "agaro-regency-cordless-tyre-inflator-rechargeable",
     "title": "AGARO Regency Cordless Tyre Inflator, Rechargeable, 6000 mAh (3 * 2000) Batteries, Up to 150 PSI Air Pump for Car, Bike, Foot Balls, Inflatables, Portable Air Compressor, Power Bank, Multipurpose Use",
     "brand": "Agaro",
     "category": "Tyre Inflator",
@@ -999,7 +999,7 @@
   },
   {
     "asin": "B0GQSG57TF",
-    "slug": "uspot-2-in-1-bike-phone-mount-helmet-camera-kit-anti-vibration-handlebar-holder-curved-3m-chin-mount-for-pov-video-compatible-with-iphone-gopro-hero-1413-insta360-dji-action-black",
+    "slug": "uspot-phone-camera-kit-vibration-handlebar",
     "title": "USPOT 2-in-1 Bike Phone Mount & Helmet Camera Kit – Anti-Vibration Handlebar Holder & Curved 3M Chin Mount for POV Video – Compatible with iPhone, GoPro Hero 14/13, Insta360 & DJI Action (Black)",
     "brand": "Uspot",
     "category": "Phone Mount",
@@ -1043,7 +1043,7 @@
   },
   {
     "asin": "B08HNBP18P",
-    "slug": "lyrovo-160-psi-double-cylinder-portable-foot-pump-air-tyre-inflator-for-car-bike-and-cycle-black",
+    "slug": "lyrovo-160-psi-double-cylinder-foot-B08HNBP18P",
     "title": "Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Black",
     "brand": "Lyrovo",
     "category": "Tyre Inflator",
@@ -1087,7 +1087,7 @@
   },
   {
     "asin": "B08LQ29TLV",
-    "slug": "lyrovo-160-psi-double-cylinder-portable-foot-pump-air-tyre-inflator-for-car-bike-and-cycle-red",
+    "slug": "lyrovo-160-psi-double-cylinder-foot-B08LQ29TLV",
     "title": "Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Red",
     "brand": "Lyrovo",
     "category": "Tyre Inflator",
@@ -1131,7 +1131,7 @@
   },
   {
     "asin": "B0B6HKCQBC",
-    "slug": "lyrovo-160-psi-double-cylinder-portable-foot-pump-air-tyre-inflator-for-car-bike-and-cycle-yellow",
+    "slug": "lyrovo-160-psi-double-cylinder-foot-B0B6HKCQBC",
     "title": "Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Yellow",
     "brand": "Lyrovo",
     "category": "Tyre Inflator",
@@ -1175,7 +1175,7 @@
   },
   {
     "asin": "B0CTKPCW4Y",
-    "slug": "portronics-vayu-lite-portable-tyre-inflator-for-car-bike-cycle-with-150-psi-pressure-digital-display-auto-shut-off-led-light-27m-cord-air-pump-compressor-for-cigarette-lighter-socket-black",
+    "slug": "portronics-vayu-tyre-inflator-car-cycle",
     "title": "Portronics Vayu Lite Portable Tyre Inflator for Car, Bike, Cycle with 150 PSI Pressure, Digital Display, Auto Shut-Off, LED Light, 2.7m Cord, Air Pump Compressor for Cigarette Lighter Socket (Black)",
     "brand": "Portronics",
     "category": "Tyre Inflator",
@@ -1221,7 +1221,7 @@
   },
   {
     "asin": "B0GH6J74HF",
-    "slug": "panca-cordless-air-pump-portable-tyre-inflator-with-pressure-gauge-5000mah-battery-multiple-nozzle-attachments-150-psi-wireless-mini-air-compressor",
+    "slug": "panca-cordless-air-pump-tyre-inflator",
     "title": "PANCA Cordless Air Pump Portable Tyre Inflator with Pressure Gauge, 5000mAh Battery & Multiple Nozzle Attachments | 150 PSI Wireless Mini Air Compressor",
     "brand": "Panca",
     "category": "Tyre Inflator",
@@ -1265,7 +1265,7 @@
   },
   {
     "asin": "B0H62ZXP3N",
-    "slug": "prakalp-waterproof-bike-mobile-phone-holder-360-rotating-bicycle-motorcycle-phone-mount-universal-handlebar-smartphone-stand-with-touchscreen-access-shockproof",
+    "slug": "prakalp-mobile-phone-360-rotating-bicycle",
     "title": "Prakalp Waterproof Bike Mobile Phone Holder – 360° Rotating Bicycle & Motorcycle Phone Mount, Universal Handlebar Smartphone Stand with Touchscreen Access, Shockproof",
     "brand": "Prakalp",
     "category": "Phone Mount",
@@ -1310,7 +1310,7 @@
   },
   {
     "asin": "B0FF26HXDL",
-    "slug": "agaro-marvel-tyre-inflator-for-cars-12v-upto-150-psi-120-w-powerful-motor-up-to-3m-long-cable-digital-display-multiple-nozzles",
+    "slug": "agaro-marvel-tyre-inflator-cars-12v",
     "title": "AGARO Marvel Tyre inflator, for Cars, 12V, Upto 150 PSI, 120 W Powerful Motor, Up to 3M Long Cable, Digital Display, Multiple Nozzles",
     "brand": "Agaro",
     "category": "Tyre Inflator",
@@ -1354,7 +1354,7 @@
   },
   {
     "asin": "B0972WB6VJ",
-    "slug": "gomechanic-gusto-digital-tyre-inflator-for-cars-bikes-150-psi-12v-dc-portable-air-pump-for-tyres-with-auto-shut-off-tyre-pressure-gauge-multi-nozzle-compatible-emergency-led",
+    "slug": "gomechanic-gusto-tyre-inflator-cars-bikes",
     "title": "GoMechanic Gusto Digital Tyre Inflator for Cars & Bikes | 150 PSI | 12V DC Portable Air Pump for Tyres with Auto Shut Off | Tyre Pressure Gauge | Multi-Nozzle Compatible | Emergency LED",
     "brand": "Gomechanic",
     "category": "Tyre Inflator",
@@ -1399,7 +1399,7 @@
   },
   {
     "asin": "B09BL8SDV1",
-    "slug": "hyco-corded-electric-lubricated-air-compressor-with-100-copper-winding-ck-3hp-50l",
+    "slug": "hyco-corded-lubricated-air-compressor-100",
     "title": "Hyco Corded Electric Lubricated Air Compressor with 100% Copper Winding (CK 3HP 50L)",
     "brand": "Hyco",
     "category": "Tyre Inflator",
@@ -1441,7 +1441,7 @@
   },
   {
     "asin": "B0H4VVHM8K",
-    "slug": "olv-portable-rechargeable-tyre-inflator-multifunctional-jump-starter-8000-mah-battery-led-display-type-c-fast-charging-150-psi-for-car-bike-sports-balls",
+    "slug": "olv-rechargeable-tyre-inflator-multifunctional-jump",
     "title": "OLV Portable & Rechargeable Tyre Inflator & Multifunctional Jump Starter 8000 mAh Battery, LED Display, Type-C Fast Charging, 150 PSI, For Car, Bike & Sports Balls",
     "brand": "Olv",
     "category": "Tyre Inflator",
@@ -1485,7 +1485,7 @@
   },
   {
     "asin": "B0DYY3QWJ2",
-    "slug": "yellowfin-rear-view-mirror-extension-rod-for-bike-scooter-abs-mirror-mount-extender-bracket-for-mobile-holder-gps-offset-mirror-base-adapter-for-motorcycle-phone-mount",
+    "slug": "yellowfin-rear-view-mirror-extension-rod",
     "title": "YELLOWFIN Rear View Mirror Extension Rod for Bike & Scooter, ABS Mirror Mount Extender Bracket for Mobile Holder & GPS, Offset Mirror Base Adapter for Motorcycle Phone Mount",
     "brand": "Yellowfin",
     "category": "Phone Mount",
@@ -1527,7 +1527,7 @@
   },
   {
     "asin": "B0GLPJ6ZFV",
-    "slug": "motorcycle-waterproof-mobile-holder-with-touchscreen-access-360-rotation-universal-bike-phone-mount-for-gps-navigation-compatible-with-all-smartphones",
+    "slug": "mobile-touchscreen-access-360-rotation-phone",
     "title": "Motorcycle Waterproof Mobile Holder with Touchscreen Access & 360° Rotation – Universal Bike Phone Mount for GPS Navigation, Compatible with All Smartphones",
     "brand": "Motorcycle",
     "category": "Phone Mount",
@@ -1572,7 +1572,7 @@
   },
   {
     "asin": "B0H11QD287",
-    "slug": "fashion-air-pumpcar-pump-heavy-duty-metal-electric-car-compressor-with-pressure-gauge-12v-dc-portable-tyre-inflator-for-car-trucks-bus-bike-auto-van-single-35-liters-per-minutea6",
+    "slug": "fashion-air-pump-car-pump-metal",
     "title": "Fashion Air Pump,Car Pump Heavy Duty Metal Electric Car Compressor With Pressure Gauge, 12V DC Portable Tyre Inflator For Car, Trucks, Bus, Bike, Auto & Van, Single, 35 Liters Per Minute(A6)",
     "brand": "Fashion",
     "category": "Tyre Inflator",
@@ -1616,7 +1616,7 @@
   },
   {
     "asin": "B0FW4WKL5X",
-    "slug": "portronics-vayu-90-portable-rechargeable-tyre-inflator-with-2-in-1-cordless-corded-modes-32000-mah-battery-led-display-auto-shut-off-type-c-fast-charging150-psi-for-car-bike-sports-balls",
+    "slug": "portronics-vayu-rechargeable-tyre-inflator-cordless",
     "title": "Portronics Vayu 9.0 Portable & Rechargeable Tyre Inflator with 2-in-1 Cordless & Corded Modes, 3×2000 mAh Battery, LED Display, Auto Shut-Off, Type-C Fast Charging,150 PSI for Car, Bike & Sports Balls",
     "brand": "Portronics",
     "category": "Tyre Inflator",
@@ -1660,7 +1660,7 @@
   },
   {
     "asin": "B0H5XBV8BH",
-    "slug": "kisan-oil-free-silent-air-compressor-1-hp-8-bar-115-psi-550-watt-motor-10-l-tank-size-noiseless-1440-rpm-ideal-for-pneumatic-tools-spray-painting-diy-applications",
+    "slug": "kisan-free-silent-air-compressor-hp",
     "title": "Kisan Oil Free Silent Air Compressor 1 HP | 8 Bar (115 psi) | 550 Watt Motor 10 L Tank size | noiseless | 1440 RPM | Ideal for Pneumatic Tools, Spray Painting & DIY Applications",
     "brand": "Kisan",
     "category": "Tyre Inflator",
@@ -1702,7 +1702,7 @@
   },
   {
     "asin": "B0D6V8F2L3",
-    "slug": "ingco-24l-air-compressor-acs175241-06kw-08hp-silent-oil-free-air-compresser",
+    "slug": "ingco-24l-air-compressor-acs175241-6kw",
     "title": "Ingco 24L Air Compressor ACS175241, 0.6KW (0.8HP) Silent & Oil Free Air Compresser",
     "brand": "Ingco",
     "category": "Tyre Inflator",
@@ -1744,7 +1744,7 @@
   },
   {
     "asin": "B0H3G1Y243",
-    "slug": "portable-car-tyre-inflator-air-compressor-pump-12v-dc-heavy-duty-air-pump-with-pressure-gauge-fast-tyre-inflation-for-car-bike-motorcycle-bicycle-sports-equipment-black",
+    "slug": "car-tyre-inflator-air-compressor-pump",
     "title": "Portable Car Tyre Inflator Air Compressor Pump, 12V DC Heavy Duty Air Pump with Pressure Gauge, Fast Tyre Inflation for Car, Bike, Motorcycle, Bicycle & Sports Equipment, Black",
     "brand": "Portable",
     "category": "Tyre Inflator",
@@ -1788,7 +1788,7 @@
   },
   {
     "asin": "B0B31H7G6F",
-    "slug": "ingco-auto-air-compressor-12v-10a-140psi-portable-tyre-inflator-pump-with-cord-cigarette-lighter-battery-clips-adapters-led-light-for-car-bicycle-balloons-and-other-inflatables",
+    "slug": "ingco-auto-air-compressor-12v-10a",
     "title": "INGCO Auto Air Compressor, 12V | 10A | 140PSI Portable Tyre Inflator Pump, with Cord, Cigarette Lighter, Battery Clips, Adapters, LED Light for Car, Bicycle, Balloons and Other Inflatables",
     "brand": "Ingco",
     "category": "Tyre Inflator",
@@ -1833,7 +1833,7 @@
   },
   {
     "asin": "B0CGTVHPC3",
-    "slug": "tusa-storm-x-cordless-tyre-inflator-wired-wireless-6000-mah-battery-12v-car-port-2x-faster-inflation-150psi-air-compressor-for-cars-bikes-motorcycles-balls-and-inflatables-red",
+    "slug": "tusa-storm-cordless-tyre-inflator-wired",
     "title": "TUSA Storm X Cordless Tyre Inflator - Wired + Wireless (6000 mAh Battery & 12V Car Port), 2X Faster Inflation, 150PSI Air Compressor for Cars, Bikes, Motorcycles, Balls, and Inflatables (Red)",
     "brand": "Tusa",
     "category": "Tyre Inflator",
@@ -1875,7 +1875,7 @@
   },
   {
     "asin": "B0CLLWHCZD",
-    "slug": "grand-pitstop-mobile-holder-for-bikes-black-jaw-grip-360-rotation-phone-mount-for-motorcycle-bicycle-scooter-gps-navigation-support-anti-slip-clamp-sturdy-build",
+    "slug": "grand-pitstop-mobile-bikes-jaw-grip",
     "title": "GRAND PITSTOP Mobile Holder for Bikes | (Black - Jaw Grip 360° Rotation) | Phone Mount for Motorcycle, Bicycle, Scooter | GPS Navigation Support | Anti-Slip Clamp | Sturdy Build",
     "brand": "Grand",
     "category": "Phone Mount",
@@ -1917,7 +1917,7 @@
   },
   {
     "asin": "B0DYK42BZB",
-    "slug": "sounce-bike-phone-mount-waterproof-cell-phone-holder-360-rotation-motorcycle-smartphone-case-universal-bicycle-handlebar-sensitive-touch-screen-fit-below-4-72-inches-smartphone-black",
+    "slug": "sounce-phone-cell-phone-360-rotation",
     "title": "Sounce Bike Phone Mount Waterproof Cell Phone Holder 360 Rotation Motorcycle Smartphone Case Universal Bicycle Handlebar Sensitive Touch Screen Fit Below 4-7.2 Inches Smartphone (Black)",
     "brand": "Sounce",
     "category": "Phone Mount",
@@ -1962,7 +1962,7 @@
   },
   {
     "asin": "B0BH3GMYLD",
-    "slug": "hyco-direct-driven-air-compressor-2hp-30l-100-copper-winding-lubricated-with-pu-pipe-pipe-8-x-12",
+    "slug": "hyco-direct-driven-air-compressor-2hp",
     "title": "Hyco Direct Driven Air Compressor 2HP 30L 100% Copper Winding Lubricated with Pu pipe (PIPE 8 X 12)",
     "brand": "Hyco",
     "category": "Tyre Inflator",
@@ -2004,7 +2004,7 @@
   },
   {
     "asin": "B0FVFY89SH",
-    "slug": "pilot-4hp-direct-drive-air-compressor-80l-tank-256lmin-air-flow-8-bar115-psi-max-pressure-oil-lubricated-high-performance-air-compressor-for-pneumatic-tools-automotive-workshop-industrial-use",
+    "slug": "pilot-4hp-direct-drive-air-compressor",
     "title": "Pilot 4HP Direct Drive Air Compressor 80L Tank, 256L/min Air Flow, 8 Bar/115 PSI Max Pressure, Oil Lubricated High Performance Air Compressor for Pneumatic Tools, Automotive, Workshop & Industrial Use",
     "brand": "Pilot",
     "category": "Tyre Inflator",
@@ -2046,7 +2046,7 @@
   },
   {
     "asin": "B0DHWZW8ZX",
-    "slug": "un1que-pt400-tyre-inflator-for-car-150psi-12v-dc-car-air-pump-with-preset-auto-off-120-watt-portable-air-compressor-with-digital-tyre-pressure-gauge-led-light",
+    "slug": "un1que-pt400-tyre-inflator-car-150psi",
     "title": "UN1QUE PT400 Tyre Inflator for Car, 150PSI 12V DC Car Air Pump with Preset & Auto Off, 120 Watt Portable Air Compressor with Digital Tyre Pressure Gauge & LED Light",
     "brand": "Un1Que",
     "category": "Tyre Inflator",
@@ -2134,7 +2134,7 @@
   },
   {
     "asin": "B0877GBDQD",
-    "slug": "bergmann-typhoon-digital-heavy-duty-metal-tyre-inflator-with-auto-cut-off-led-light-bct-150d-35-litersperminute-wine-red",
+    "slug": "bergmann-typhoon-metal-tyre-inflator-auto",
     "title": "Bergmann Typhoon Digital Heavy-Duty Metal Tyre Inflator with Auto Cut-Off & LED Light (BCT-150D), 35 Liters_Per_Minute, Wine Red",
     "brand": "Bergmann",
     "category": "Tyre Inflator",
@@ -2179,7 +2179,7 @@
   },
   {
     "asin": "B07D79KG96",
-    "slug": "elephant-as186-3-l-air-compressor-with-air-brush-ab-19-3mtr-pu-pipe",
+    "slug": "elephant-as186-air-compressor-air-brush",
     "title": "Elephant AS186 3 L Air Compressor with Air Brush (AB-19) 3mtr. PU Pipe",
     "brand": "Elephant",
     "category": "Tyre Inflator",
@@ -2221,7 +2221,7 @@
   },
   {
     "asin": "B07YSLK3BX",
-    "slug": "elephant-single-piston-3-liter-single-cylinder-air-compressor-with-pressure-regulator-gauge-filter-for-makeup-cake-decorating-tattoo-face-body-painting-airbrushing-as-186",
+    "slug": "elephant-single-piston-liter-single-cylinder",
     "title": "Elephant Single-Piston 3 Liter Single Cylinder Air Compressor with Pressure Regulator, Gauge & Filter for Makeup Cake Decorating, Tattoo, Face Body Painting Airbrushing (AS-186)",
     "brand": "Elephant",
     "category": "Tyre Inflator",
@@ -2263,7 +2263,7 @@
   },
   {
     "asin": "B0GVK4MPQN",
-    "slug": "goodyear-12v-car-tyre-inflator-air-compressor-pump-with-digital-display-auto-cut-off-150-psi-portable-air-pump-for-car-bike-suv-fast-inflation-led-light-3m-cable",
+    "slug": "goodyear-12v-car-tyre-inflator-air",
     "title": "Goodyear 12V Car Tyre Inflator Air Compressor Pump with Digital Display & Auto Cut-Off, 150 PSI Portable Air Pump for Car, Bike & SUV, Fast Inflation, LED Light, 3m Cable",
     "brand": "Goodyear",
     "category": "Tyre Inflator",
@@ -2309,7 +2309,7 @@
   },
   {
     "asin": "B0H1CYS6SD",
-    "slug": "livowalny-150-psi-portable-tyre-inflator-for-car-and-bike-4000mah-battery-wireless-air-compressor-with-auto-shut-off-digital-led-display-emergency-light-4-modes-rechargeable-car-air-pump-black",
+    "slug": "livowalny-150-psi-tyre-inflator-car",
     "title": "LIVOWALNY 150 PSI Portable Tyre Inflator for Car and Bike, 4000mAh Battery Wireless Air Compressor with Auto Shut-Off, Digital LED Display, Emergency Light & 4 Modes, Rechargeable Car Air Pump (Black)",
     "brand": "Livowalny",
     "category": "Tyre Inflator",
@@ -2354,7 +2354,7 @@
   },
   {
     "asin": "B0CVKVHN41",
-    "slug": "gigaglitz-50cc-2-stroke-super-cross-kids-dirt-bike-best-mini-off-road-motorcycle-for-childrens-affordable-and-budget-friendly-bike",
+    "slug": "gigaglitz-50cc-stroke-cross-kids-dirt",
     "title": "Gigaglitz 50cc 2 Stroke Super-Cross Kids Dirt Bike - Best Mini Off-Road Motorcycle for Childrens, Affordable and Budget Friendly Bike",
     "brand": "Gigaglitz",
     "category": "Phone Mount",
@@ -2398,7 +2398,7 @@
   },
   {
     "asin": "B0CK8DJYR4",
-    "slug": "gigaglitz-50cc-2-stroke-kids-super-dirt-bike-best-off-road-mini-motorcycle-budget-friendly-and-bikemulticolor",
+    "slug": "gigaglitz-50cc-stroke-kids-dirt-off",
     "title": "Gigaglitz 50Cc 2 Stroke Kids Super Dirt Bike -Best Off-Road Mini Motorcycle, Budget Friendly and Bike,Multicolor",
     "brand": "Gigaglitz",
     "category": "Phone Mount",
@@ -2442,7 +2442,7 @@
   },
   {
     "asin": "B0G83Q4MP5",
-    "slug": "gigaglitz-pit-bike-125cc-four-stroke-petrol-engine-dirt-bike-automatic-transmission-self-start-all-disc-brakes-racing-style-motorcycle",
+    "slug": "gigaglitz-pit-125cc-four-stroke-petrol",
     "title": "Gigaglitz Pit Bike 125CC Four Stroke Petrol Engine Dirt Bike, Automatic Transmission, Self Start, All Disc Brakes, Racing Style Motorcycle",
     "brand": "Gigaglitz",
     "category": "Phone Mount",
@@ -2484,7 +2484,7 @@
   },
   {
     "asin": "B0FDGY2KM1",
-    "slug": "harley-davidson-x440-s-motorcycle-440cc-matte-black-booking-for-ex-showroom-5-years-warranty",
+    "slug": "harley-davidson-x440-440cc-matte-booking",
     "title": "HARLEY-DAVIDSON X440 S Motorcycle 440cc Matte Black booking for Ex-Showroom| 5 Years Warranty",
     "brand": "Harley-Davidson",
     "category": "Phone Mount",
@@ -2526,7 +2526,7 @@
   },
   {
     "asin": "B0GQZG7MPP",
-    "slug": "bajaj-pulsar-n-160-td-tc-abs-ug-single-seat-motorcycle-brooklyn-charcoal-black-booking-for-ex-showroom-price",
+    "slug": "bajaj-pulsar-160-td-tc-abs",
     "title": "Bajaj Pulsar N 160 TD TC ABS UG Single Seat Motorcycle, Brooklyn Charcoal Black, Booking for Ex-Showroom Price",
     "brand": "Bajaj",
     "category": "Phone Mount",
@@ -2568,7 +2568,7 @@
   },
   {
     "asin": "B0GQZ8X356",
-    "slug": "bajaj-pulsar-125-disc-carbon-graphics-motorcycle-single-seat-ebony-black-grey-booking-for-ex-showroom-price",
+    "slug": "bajaj-pulsar-125-disc-graphics-single",
     "title": "Bajaj Pulsar 125 Disc Carbon Graphics Motorcycle, Single Seat, Ebony Black Grey, Booking for Ex-Showroom Price",
     "brand": "Bajaj",
     "category": "Phone Mount",
@@ -2610,7 +2610,7 @@
   },
   {
     "asin": "B0FRWY9F63",
-    "slug": "royal-enfield-hunter-350-with-disc-alloy-wheels-motorcycle-tokyo-black-booking-for-ex-showroom-price",
+    "slug": "royal-enfield-hunter-350-disc-alloy",
     "title": "Royal Enfield Hunter 350 with Disc & Alloy Wheels Motorcycle (Tokyo Black) Booking for Ex-Showroom Price",
     "brand": "Royal Enfield",
     "category": "Phone Mount",
@@ -2652,7 +2652,7 @@
   },
   {
     "asin": "B0G6Z2BRG8",
-    "slug": "harley-davidson-x440-t-motorcycle-440-cc-pearl-red-booking-for-ex-showroom-5-years-warranty",
+    "slug": "harley-davidson-x440-440-cc-pearl",
     "title": "Harley-Davidson X440 T Motorcycle 440 CC Pearl Red booking for Ex-Showroom | 5 Years Warranty",
     "brand": "Harley-Davidson",
     "category": "Phone Mount",
@@ -2694,7 +2694,7 @@
   },
   {
     "asin": "B0FGY7MNTK",
-    "slug": "hero-motocorp-xtreme-125r-abs-dss-obd2b-motorcyclesbike-black-booking-for-ex-showroom-price",
+    "slug": "hero-motocorp-xtreme-125r-abs-dss",
     "title": "Hero MotoCorp XTREME 125R ABS DSS (OBD2B) Motorcycles/Bike Black Booking for Ex-Showroom Price",
     "brand": "Hero MotoCorp",
     "category": "Phone Mount",
@@ -2736,7 +2736,7 @@
   },
   {
     "asin": "B0G6Z6QV5C",
-    "slug": "harley-davidson-x440-t-motorcycle-440-cc-vivid-black-booking-for-ex-showroom-5-years-warranty",
+    "slug": "harley-davidson-x440-440-cc-vivid",
     "title": "Harley-Davidson X440 T Motorcycle 440 CC Vivid Black booking for Ex-Showroom | 5 Years Warranty",
     "brand": "Harley-Davidson",
     "category": "Phone Mount",

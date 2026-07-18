@@ -39,7 +39,7 @@
       "rating": 4.2,
       "review_count": 1850,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0CTZP3SGL?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B0CTZP3SGL?tag=xuy0834-21",
       "image": "images/products/studds-raider-super.jpg",
       "last_updated": null
     },
@@ -89,7 +89,7 @@
       "rating": 4.3,
       "review_count": 4300,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0CM9HXJBW?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B0CM9HXJBW?tag=xuy0834-21",
       "image": "images/products/tvs-raider-helmet.jpg",
       "last_updated": null
     },
@@ -139,7 +139,7 @@
       "rating": 4.3,
       "review_count": 3200,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0BRFHNNLV?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B0BRFHNNLV?tag=xuy0834-21",
       "image": "images/products/studds-ray-super.jpg",
       "last_updated": null
     },
@@ -402,7 +402,7 @@
   },
   {
     "asin": "B0F2SX1LL6",
-    "slug": "edyell-motorcycle-helmet-bluetooth-on-ear-headset-connects-to-2-phones-at-the-same-time-using-music-gps-ipx5-waterproof-supports-android-ios-compatible-with-all-helmets-embh-c1",
+    "slug": "edyell-bluetooth-ear-headset-connects-phones-B0F2SX1LL6",
     "title": "EDYELL Motorcycle Helmet Bluetooth on Ear Headset, Connects to 2 Phones at The Same Time Using Music & GPS, IPX5 Waterproof, Supports Android & iOS, Compatible with All Helmets (EMBH-C1)",
     "brand": "Edyell",
     "category": "Helmet",
@@ -447,7 +447,7 @@
   },
   {
     "asin": "B0CXJBVSBZ",
-    "slug": "edyell-motorcycle-helmet-bluetooth-on-ear-headsetconnects-to-2-phones-at-the-same-time-using-music-gpswaterproof-dustproofsupports-android-ioscompatible-with-all-helmets-edyell-c5001",
+    "slug": "edyell-bluetooth-ear-headset-connects-phones-B0CXJBVSBZ",
     "title": "EDYELL Motorcycle Helmet Bluetooth on Ear Headset,Connects to 2 Phones at The Same Time Using Music & GPS,Waterproof & Dustproof,Supports Android & iOS,Compatible with All Helmets (EDYELL-C5001)",
     "brand": "Edyell",
     "category": "Helmet",
@@ -492,7 +492,7 @@
   },
   {
     "asin": "B0H6M5NW8H",
-    "slug": "deletion-full-face-bike-helmet-black-isi-certified-motorcycle-helmet-for-men-impact-resistant-abs-shell-scratch-resistant-visor-lightweight-riding-for-bike-scooter",
+    "slug": "deletion-isi-men-impact-abs-shell",
     "title": "DELETION Full Face Bike Helmet Black | ISI Certified Motorcycle Helmet for Men Impact Resistant ABS Shell | Scratch Resistant Visor | Lightweight Riding for Bike & Scooter",
     "brand": "Deletion",
     "category": "Helmet",
@@ -538,7 +538,7 @@
   },
   {
     "asin": "B0CM43DTGB",
-    "slug": "0to6-wireless-helmet-bluetooth-headset-with-microphone-hands-free-calling-music-control-long-battery-life-universal-fit-for-all-helmets-1015m-range-black-with-c-type-charging",
+    "slug": "0to6-wireless-bluetooth-headset-microphone-hands",
     "title": "0TO6 Wireless Helmet Bluetooth Headset with Microphone, Hands-Free Calling, Music Control, Long Battery Life, Universal Fit for All Helmets (10–15m Range, Black) with C-Type Charging",
     "brand": "0To6",
     "category": "Helmet",
@@ -580,7 +580,7 @@
   },
   {
     "asin": "B08F7PPGBQ",
-    "slug": "skypearll-helmet-bluetooth-headset-universal-wireless-motorcycle-bluetooth-intercom-for-helmet-with-5-hours-playing-time-speakers-hands-free-music-call-control-mic-earphones",
+    "slug": "skypearll-bluetooth-headset-wireless-bluetooth-intercom",
     "title": "Skypearll Helmet Bluetooth Headset, Universal Wireless Motorcycle Bluetooth Intercom for Helmet with 5 Hours Playing time | Speakers Hands-Free, Music Call Control, Mic Earphones |",
     "brand": "Skypearll",
     "category": "Helmet",
@@ -622,7 +622,7 @@
   },
   {
     "asin": "B0BVN1V8MJ",
-    "slug": "m-way-half-helmet-for-cycling-scooty-lightweight-glossy-black-helmet-for-men-women-adjustable-strap",
+    "slug": "way-cycling-scooty-glossy-men-women",
     "title": "M-WAY Half Helmet for Cycling & Scooty | Lightweight Glossy Black Helmet for Men & Women | Adjustable Strap",
     "brand": "M-Way",
     "category": "Helmet",
@@ -664,7 +664,7 @@
   },
   {
     "asin": "B0FV2WT7N3",
-    "slug": "4u-supreme-volt-full-face-isi-marked-100-abs-with-unbreakable-dual-visor-motorbike-helmet-black",
+    "slug": "4u-supreme-volt-isi-marked-100",
     "title": "4U Supreme Volt Full Face ISI Marked 100% ABS with Unbreakable Dual Visor Motorbike Helmet Black",
     "brand": "4U",
     "category": "Helmet",
@@ -708,7 +708,7 @@
   },
   {
     "asin": "B0DMVHZDQC",
-    "slug": "vega-ranger-dx-crew-full-face-motorcycle-helmet-with-lightweight-shell-shock-absorbing-interior-comfortable-liner-ventilated-fit-aerodynamic-build-and-trendy-black-neon-yellow-finish-black-neon-yellow-m",
+    "slug": "vega-ranger-dx-crew-shell-liner-B0DMVHZDQC",
     "title": "Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M",
     "brand": "Vega",
     "category": "Helmet",
@@ -753,7 +753,7 @@
   },
   {
     "asin": "B0BQ3JZXD9",
-    "slug": "otoroys-1-year-warranty-motorcycle-helmet-wireless-dual-earphone-on-ear-helmet-bluetooth-calling-and-music-with-mic-support-ios-andriod-otob12",
+    "slug": "otoroys-year-warranty-wireless-dual-earphone",
     "title": "OTOROYS 1 Year Warranty Motorcycle Helmet Wireless Dual Earphone On-Ear Helmet Bluetooth Calling and Music with Mic, (Support iOS & Andriod) (OTOB12)",
     "brand": "Otoroys",
     "category": "Helmet",
@@ -795,7 +795,7 @@
   },
   {
     "asin": "B0DX231GD7",
-    "slug": "vega-sonic-saw-full-face-motorcycle-helmet-with-shock-absorbing-liner-comfortable-interior-lightweight-shell-aerodynamic-design-ventilated-fit-and-trendy-black-blue-finish-black-blue-m",
+    "slug": "vega-sonic-saw-liner-shell-aerodynamic",
     "title": "Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M",
     "brand": "Vega",
     "category": "Helmet",
@@ -840,7 +840,7 @@
   },
   {
     "asin": "B0DMVGYV47",
-    "slug": "vega-ranger-dx-revenge-full-face-motorcycle-helmet-with-lightweight-shell-shock-absorbing-interior-comfortable-liner-ventilated-fit-aerodynamic-build-and-trendy-black-blue-finish-black-blue-m",
+    "slug": "vega-ranger-dx-revenge-shell-liner",
     "title": "Vega Ranger DX Revenge Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Blue Finish Black Blue-M",
     "brand": "Vega",
     "category": "Helmet",
@@ -885,7 +885,7 @@
   },
   {
     "asin": "B0DSPM46C4",
-    "slug": "vega-zap-dv-full-face-riding-helmet-with-dual-visor-shock-absorbing-liner-comfortable-interior-lightweight-shell-aerodynamic-design-and-modern-black-styling-black-l",
+    "slug": "vega-zap-dual-liner-shell-aerodynamic-B0DSPM46C4",
     "title": "Vega Zap D/V Full Face Riding Helmet with Dual Visor, Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, and Modern Black Styling Black-L",
     "brand": "Vega",
     "category": "Helmet",
@@ -929,7 +929,7 @@
   },
   {
     "asin": "B0H2LN21H5",
-    "slug": "tvs-racing-superpose-smoked-dual-visor-flip-up-modular-helmet-for-men-and-women-isi-dot-certified-abs-shell-quick-release-visor-lightweight-ventilated-open-face-to-full-face-black-orangel",
+    "slug": "tvs-racing-superpose-smoked-dual-men-B0H2LN21H5",
     "title": "TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Black-Orange/L)",
     "brand": "TVS",
     "category": "Helmet",
@@ -976,7 +976,7 @@
   },
   {
     "asin": "B07JG1G2K3",
-    "slug": "sage-square-multipurpose-half-helmet-for-mens-and-womens-large-black-matte",
+    "slug": "sage-square-multipurpose-men-women-matte",
     "title": "Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte)",
     "brand": "Sage",
     "category": "Helmet",
@@ -1018,7 +1018,7 @@
   },
   {
     "asin": "B0DMVFDY97",
-    "slug": "vega-ranger-dx-crew-full-face-riding-helmet-with-lightweight-shell-comfortable-liner-shock-absorbing-interior-ventilated-fit-aerodynamic-build-and-modern-black-blue-styling-black-blue-l",
+    "slug": "vega-ranger-dx-crew-shell-liner-B0DMVFDY97",
     "title": "Vega Ranger DX Crew Full Face Riding Helmet with Lightweight Shell, Comfortable Liner, Shock Absorbing Interior, Ventilated Fit, Aerodynamic Build, and Modern Black Blue Styling Black Blue-L",
     "brand": "Vega",
     "category": "Helmet",
@@ -1063,7 +1063,7 @@
   },
   {
     "asin": "B0CSG1LYSD",
-    "slug": "studds-raider-street-isi-certified-full-face-helmet-for-men-and-women-with-clear-visor-black-xl",
+    "slug": "studds-raider-street-isi-men-women",
     "title": "STUDDS Raider Street ISI Certified Full Face Helmet for Men and Women with Clear Visor (Black - XL)",
     "brand": "Studds",
     "category": "Helmet",
@@ -1108,7 +1108,7 @@
   },
   {
     "asin": "B0CB8DWH6T",
-    "slug": "studds-trooper-isi-and-dot-certified-gloss-finish-flip-up-full-face-helmet-for-men-and-women-with-inner-sun-visor-black-m",
+    "slug": "studds-trooper-isi-dot-gloss-finish",
     "title": "STUDDS Trooper ISI and DOT Certified Gloss Finish Flip-up Full Face Helmet for Men and Women with Inner Sun Visor (Black M)",
     "brand": "Studds",
     "category": "Helmet",
@@ -1154,7 +1154,7 @@
   },
   {
     "asin": "B0D2N9M65W",
-    "slug": "vega-crux-dual-visor-flip-up-riding-helmet-with-flip-up-design-dual-visor-protection-comfortable-liner-ventilated-interior-shock-absorbing-padding-and-modern-black-styling-black-m",
+    "slug": "vega-crux-dual-dual-protection-liner",
     "title": "Vega Crux Dual Visor Flip Up Riding Helmet with Flip-Up Design, Dual Visor Protection, Comfortable Liner, Ventilated Interior, Shock Absorbing Padding, and Modern Black Styling Black -M",
     "brand": "Vega",
     "category": "Helmet",
@@ -1200,7 +1200,7 @@
   },
   {
     "asin": "B0D91RJVL3",
-    "slug": "vega-ranger-isi-certified-texture-finish-lightweight-full-face-helmet-for-men-and-women-with-scratch-and-uv-resistant-clear-visor-black-m",
+    "slug": "vega-ranger-isi-texture-finish-men",
     "title": "Vega Ranger ISI Certified Texture Finish Lightweight Full Face Helmet for Men and Women with Scratch and UV Resistant Clear Visor-Black-M",
     "brand": "Vega",
     "category": "Helmet",
@@ -1289,7 +1289,7 @@
   },
   {
     "asin": "B0D2NBCP81",
-    "slug": "vega-crux-dual-visor-flip-up-motorcycle-helmet-with-lightweight-shell-flip-up-chin-guard-dual-visor-system-shock-absorbing-interior-ventilated-fit-and-trendy-black-finish-black-l",
+    "slug": "vega-crux-dual-shell-chin-guard",
     "title": "Vega Crux Dual Visor Flip Up Motorcycle Helmet with Lightweight Shell, Flip-Up Chin Guard, Dual Visor System, Shock Absorbing Interior, Ventilated Fit, and Trendy Black Finish Black -L",
     "brand": "Vega",
     "category": "Helmet",
@@ -1334,7 +1334,7 @@
   },
   {
     "asin": "B083G62C3N",
-    "slug": "vega-aster-dx-isi-certified-full-face-motorcycle-helmet-with-durable-abs-outer-shell-high-density-eps-liner-scratch-resistant-visor-quick-release-buckle-comfortable-inner-padding-black-helmet-l",
+    "slug": "vega-aster-dx-isi-abs-outer",
     "title": "Vega Aster Dx ISI Certified Full Face Motorcycle Helmet with Durable ABS Outer Shell High Density EPS Liner Scratch Resistant Visor Quick Release Buckle Comfortable Inner Padding Black Helmet-L",
     "brand": "Vega",
     "category": "Helmet",
@@ -1380,7 +1380,7 @@
   },
   {
     "asin": "B0H2LM4VM3",
-    "slug": "tvs-racing-superpose-smoked-dual-visor-flip-up-modular-helmet-for-men-and-women-isi-dot-certified-abs-shell-quick-release-visor-lightweight-ventilated-open-face-to-full-face-teal-goldm",
+    "slug": "tvs-racing-superpose-smoked-dual-men-B0H2LM4VM3",
     "title": "TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Teal-Gold/M)",
     "brand": "TVS",
     "category": "Helmet",
@@ -1427,7 +1427,7 @@
   },
   {
     "asin": "B0H2LJMX6G",
-    "slug": "tvs-racing-superpose-smoked-dual-visor-flip-up-modular-helmet-for-men-and-women-isi-dot-certified-abs-shell-quick-release-visor-lightweight-ventilated-open-face-to-full-face-blackxl",
+    "slug": "tvs-racing-superpose-smoked-dual-men-B0H2LJMX6G",
     "title": "TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Black/XL)",
     "brand": "TVS",
     "category": "Helmet",
@@ -1474,7 +1474,7 @@
   },
   {
     "asin": "B09HY2HTMR",
-    "slug": "xinor-nexo-half-helmet-for-men-and-women-medium-mt-black-cycling",
+    "slug": "xinor-nexo-men-women-mt-cycling",
     "title": "Xinor Nexo Half Helmet For Men and Women -Medium (MT Black), Cycling",
     "brand": "Xinor",
     "category": "Helmet",
@@ -1516,7 +1516,7 @@
   },
   {
     "asin": "B0DMVGLRYR",
-    "slug": "vega-ranger-revenge-full-face-riding-helmet-with-matte-shell-comfortable-liner-shock-absorbing-interior-ventilated-fit-lightweight-build-and-modern-dull-black-grey-styling-dull-black-grey-l",
+    "slug": "vega-ranger-revenge-matte-shell-liner",
     "title": "Vega Ranger Revenge Full Face Riding Helmet with Matte Shell, Comfortable Liner, Shock Absorbing Interior, Ventilated Fit, Lightweight Build, and Modern Dull Black Grey Styling Dull Black Grey-L",
     "brand": "Vega",
     "category": "Helmet",
@@ -1561,7 +1561,7 @@
   },
   {
     "asin": "B0DSPMCVZF",
-    "slug": "vega-zap-dv-full-face-motorcycle-helmet-with-dual-visor-shock-absorbing-liner-comfortable-interior-lightweight-shell-aerodynamic-design-and-trendy-black-finish-black-m",
+    "slug": "vega-zap-dual-liner-shell-aerodynamic-B0DSPMCVZF",
     "title": "Vega Zap D/V Full Face Motorcycle Helmet with Dual Visor, Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, and Trendy Black Finish Black-M",
     "brand": "Vega",
     "category": "Helmet",
@@ -1605,7 +1605,7 @@
   },
   {
     "asin": "B08P63F17N",
-    "slug": "tvs-lightweight-full-face-helmet-for-man-and-woman-with-clear-and-scratch-resistant-visor-isi-certified-quick-release-bucklebike-helmet-colour-black-size-xl",
+    "slug": "tvs-man-woman-clear-isi-release",
     "title": "TVS Lightweight Full Face Helmet for Man and Woman with Clear and Scratch Resistant Visor, ISI Certified |Quick-Release Buckle|Bike Helmet (Colour: Black, Size: XL)",
     "brand": "TVS",
     "category": "Helmet",
@@ -1651,7 +1651,7 @@
   },
   {
     "asin": "B0CBCGH1Y1",
-    "slug": "steelbird-sbh-34-rox-road-isi-certified-full-face-helmet-with-inner-smoke-sun-shield-and-outer-clear-visor-large-600-mm-dashing-black",
+    "slug": "steelbird-sbh-34-rox-road-isi",
     "title": "Steelbird SBH-34 Rox Road ISI Certified Full Face Helmet with Inner Smoke Sun Shield and Outer Clear Visor (Large 600 MM, Dashing Black)",
     "brand": "Steelbird",
     "category": "Helmet",
@@ -1696,7 +1696,7 @@
   },
   {
     "asin": "B0F8BXYJBR",
-    "slug": "royal-enfield-stealth-mod-brushed-modular-helmet-certification-isi-dot-shell-construction-high-impact-grade-abs-fiberglass-composite-weight-1200-50-red-xl",
+    "slug": "royal-enfield-stealth-mod-brushed-certification",
     "title": "Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL",
     "brand": "Royal Enfield",
     "category": "Helmet",
@@ -1740,7 +1740,7 @@
   },
   {
     "asin": "B08HS4JYMK",
-    "slug": "steelbird-rox-cyborg-isi-certified-full-face-helmet-for-men-and-women-with-inner-smoke-sun-shield-and-outer-clear-visorlarge-600-mm-dashing-black",
+    "slug": "steelbird-rox-cyborg-isi-men-women",
     "title": "Steelbird Rox Cyborg ISI Certified Full Face Helmet for Men and Women with Inner Smoke Sun Shield and Outer Clear Visor(Large 600 mm, Dashing Black)",
     "brand": "Steelbird",
     "category": "Helmet",

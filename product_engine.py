@@ -6,142 +6,93 @@ motorcycle accessory products from the product catalog.
 
 Every function is motorcycle-agnostic and category-agnostic.
 Feed it products + context, get curated results back.
+
+All categories use canonical snake_case forms defined in product_library.py.
 """
 
 from typing import Dict, List, Optional, Set, Tuple
 from collections import defaultdict
 import math
 
-# ===== Category Aliases =====
-# Maps every known alias to its canonical category name.
-# Case-insensitive lookup is handled by normalize_category().
+# Import canonical category system from product_library.
+# This is the single source of truth for all category definitions.
+from product_library import (
+    CANONICAL_CATEGORIES,
+    CATEGORY_ALIASES as _CATEGORY_ALIASES,
+    CATEGORY_DISPLAY,
+    CATEGORY_SLUGS,
+    HIGH_CONFIDENCE_CATEGORIES,
+    UNIVERSAL_CATEGORIES,
+    BIKE_SPECIFIC_CATEGORIES,
+    normalize_category as _lib_normalize_category,
+    category_display as _lib_category_display,
+    category_slug as _lib_category_slug,
+    classify_product_type,
+)
 
-CATEGORY_ALIASES: Dict[str, str] = {
-    # Bike Cover
-    'motorcycle cover': 'Bike Cover',
-    'motorcycle body cover': 'Bike Cover',
-    'bike body cover': 'Bike Cover',
-    'body cover': 'Bike Cover',
-    'waterproof cover': 'Bike Cover',
-    'dust cover': 'Bike Cover',
-    'bike dust cover': 'Bike Cover',
-    # Phone Mount
-    'phone holder': 'Phone Mount',
-    'mobile holder': 'Phone Mount',
-    'mobile holder bike': 'Phone Mount',
-    'mobile mount': 'Phone Mount',
-    'handlebar mount': 'Phone Mount',
-    'phone mount bike': 'Phone Mount',
-    # Crash Guard
-    'engine guard': 'Crash Guard',
-    'leg guard': 'Crash Guard',
-    'crash protection': 'Crash Guard',
-    'frame slider': 'Crash Guard',
-    'crash bar': 'Crash Guard',
-    'engine protector': 'Crash Guard',
-    # Chain Lube
-    'chain spray': 'Chain Lube',
-    'chain lubricant': 'Chain Lube',
-    'chain wax': 'Chain Lube',
-    'chain lube spray': 'Chain Lube',
-    # Chain Cleaner
-    'chain cleaner spray': 'Chain Cleaner',
-    'chain clean': 'Chain Cleaner',
-    # Tyre Inflator
-    'air compressor': 'Tyre Inflator',
-    'tyre pump': 'Tyre Inflator',
-    'air pump': 'Tyre Inflator',
-    'portable compressor': 'Tyre Inflator',
-    'tire inflator': 'Tyre Inflator',
-    'tyre inflator pump': 'Tyre Inflator',
-    # Gloves
-    'riding gloves': 'Gloves',
-    'bike gloves': 'Gloves',
-    'racing gloves': 'Gloves',
-    'motorcycle gloves': 'Gloves',
-    # Jackets
-    'riding jacket': 'Jackets',
-    'bike jacket': 'Jackets',
-    'motorcycle jacket': 'Jackets',
-    # Helmet
-    'full face helmet': 'Helmet',
-    'modular helmet': 'Helmet',
-    'open face helmet': 'Helmet',
-    'half helmet': 'Helmet',
-    'dual visor helmet': 'Helmet',
-    # Engine Oil
-    'engine oil 10w-50': 'Engine Oil',
-    'engine oil 10w-40': 'Engine Oil',
-    'motor oil': 'Engine Oil',
-    'engine lubricant': 'Engine Oil',
-    # Tank Bag
-    'tank bag motorcycle': 'Tank Bag',
-    'motorcycle tank bag': 'Tank Bag',
-    # Saddle Bag
-    'saddlebag': 'Saddle Bag',
-    'saddle bags': 'Saddle Bag',
-    'side bag': 'Saddle Bag',
-    'pannier': 'Saddle Bag',
-    'panniers': 'Saddle Bag',
-    # Tail Bag
-    'rear bag': 'Tail Bag',
-    'seat bag': 'Tail Bag',
-    'backrest bag': 'Tail Bag',
-    # Knee Guard
-    'knee pad': 'Knee Guard',
-    'knee guard': 'Knee Guard',
-    'knee protector': 'Knee Guard',
-}
+# Re-export for backward compatibility within this module
+CATEGORY_ALIASES = _CATEGORY_ALIASES
+normalize_category = _lib_normalize_category
+
+
+def category_display(canonical: str) -> str:
+    """Return human-readable display name for a canonical category."""
+    return _lib_category_display(canonical)
+
+
+def category_slug(canonical: str) -> str:
+    """Return URL slug for a canonical category."""
+    return _lib_category_slug(canonical)
+
 
 # ===== Category Keyword Fallbacks =====
-# Used when exact category matching fails.
-# Keywords are checked against product category, title, and brand.
+# Used when exact category matching fails in find_products_by_category.
+# Keywords are checked against product category, title, and best_for.
+# All keys are canonical snake_case categories.
 
 CATEGORY_KEYWORDS: Dict[str, List[str]] = {
     'helmet': ['helmet', 'headgear', 'full face', 'flip up', 'dual visor'],
-    'phone mount': ['phone mount', 'phone holder', 'mobile holder', 'handlebar mount', 'bike phone'],
-    'crash guard': ['crash guard', 'engine guard', 'leg guard', 'frame slider', 'crash bar'],
-    'bike cover': ['bike cover', 'body cover', 'motorcycle cover', 'waterproof cover', 'dust cover'],
-    'chain lube': ['chain lub', 'chain lubricant', 'chain spray', 'chain wax'],
-    'chain cleaner': ['chain clean', 'chain cleaner'],
-    'engine oil': ['engine oil', '10w-40', '10w-50', '20w-50', 'motor oil', 'engine lubricant'],
-    'tyre inflator': ['tyre inflat', 'tire inflat', 'air pump', 'air compressor', 'tyre pump'],
+    'phone_mount': ['phone mount', 'phone holder', 'mobile holder', 'handlebar mount', 'bike phone'],
+    'crash_guard': ['crash guard', 'engine guard', 'leg guard', 'frame slider', 'crash bar'],
+    'bike_cover': ['bike cover', 'body cover', 'motorcycle cover', 'waterproof cover', 'dust cover'],
+    'chain_lube': ['chain lub', 'chain lubricant', 'chain spray', 'chain wax'],
+    'chain_cleaner': ['chain clean', 'chain cleaner'],
+    'engine_oil': ['engine oil', '10w-40', '10w-50', '20w-50', 'motor oil', 'engine lubricant'],
+    'tyre_inflator': ['tyre inflat', 'tire inflat', 'air pump', 'air compressor', 'tyre pump'],
     'gloves': ['riding gloves', 'bike gloves', 'gloves', 'riding glove'],
     'jackets': ['riding jacket', 'bike jacket', 'jacket', 'riding jacket'],
-    'tank bag': ['tank bag', 'tankpack'],
-    'saddle bag': ['saddlebag', 'saddle bag', 'side bag', 'pannier'],
-    'tail bag': ['tail bag', 'rear bag', 'seat bag', 'backrest bag'],
-    'knee guard': ['knee guard', 'knee pad', 'knee protector'],
+    'tank_bag': ['tank bag', 'tankpack'],
+    'saddle_bag': ['saddlebag', 'saddle bag', 'side bag', 'pannier'],
+    'tail_bag': ['tail bag', 'rear bag', 'seat bag', 'backrest bag'],
+    'knee_guard': ['knee guard', 'knee pad', 'knee protector'],
+    'usb_charger': ['dual usb', 'quick charge', 'usb charging', 'motorcycle charger', 'bike charger'],
+    'disc_lock': ['disc', 'disk', 'brake lock', 'anti-theft', 'alarm lock'],
+    'chain_lock': ['chain', 'lock', 'security', 'anti-theft', 'chain lock'],
 }
 
-# ===== Valid Categories =====
-VALID_CATEGORIES = {
-    'helmet', 'phone mount', 'crash guard', 'bike cover',
-    'chain lube', 'chain cleaner', 'engine oil', 'tyre inflator',
-    'gloves', 'jackets', 'tank bag', 'saddle bag', 'tail bag',
-    'knee guard',
-}
+# Valid categories for the recommendation engine (all canonical snake_case).
+VALID_CATEGORIES = CANONICAL_CATEGORIES
 
 # ===== Category Preferred Price Ranges (INR) =====
-# Every category has a preferred price band. The recommendation engine uses
-# these to reward fairly-priced products and to avoid recommending unusually
-# expensive products unless they clearly outperform the alternatives.
-# Keyed by normalized (lowercase) category name.
+# Keyed by canonical snake_case category name.
 CATEGORY_PRICE_RANGES: Dict[str, Tuple[int, int]] = {
-    'phone mount': (300, 900),
+    'phone_mount': (300, 900),
     'helmet': (1500, 5000),
-    'chain lube': (250, 600),
-    'chain cleaner': (250, 600),
-    'bike cover': (500, 1500),
-    'tyre inflator': (1500, 3500),
-    'engine oil': (400, 1200),
-    'crash guard': (1000, 4000),
+    'chain_lube': (250, 600),
+    'chain_cleaner': (250, 600),
+    'bike_cover': (500, 1500),
+    'tyre_inflator': (1500, 3500),
+    'engine_oil': (400, 1200),
+    'crash_guard': (1000, 4000),
     'gloves': (500, 2500),
     'jackets': (2000, 8000),
-    'tank bag': (1000, 4000),
-    'saddle bag': (1500, 6000),
-    'tail bag': (1000, 4000),
-    'knee guard': (500, 2500),
+    'tank_bag': (1000, 4000),
+    'saddle_bag': (1500, 6000),
+    'tail_bag': (1000, 4000),
+    'knee_guard': (500, 2500),
+    'usb_charger': (300, 1500),
+    'disc_lock': (400, 2000),
+    'chain_lock': (300, 1500),
 }
 
 # Brands with an established reputation for the Indian two-wheeler market.
@@ -154,14 +105,29 @@ TRUSTED_BRANDS = {
     'michelin', 'bosch', 'amazon basics', 'amazonbasics',
 }
 
+# ===== Category → Buying Guide URL Mapping =====
+# Single source of truth for mapping canonical categories to guide slugs.
+# Used by templates and generate.py to build correct links.
+# ONLY categories with generated guide pages belong here.
+CATEGORY_GUIDE_SLUGS: Dict[str, str] = {
+    'helmet': 'helmet',
+    'phone_mount': 'phone-mount',
+    'engine_oil': 'engine-oil',
+    'chain_lube': 'chain-lube',
+    'tyre_inflator': 'tyre-inflator',
+    'chain_cleaner': 'chain-cleaner',
+}
+
 
 def _filter_approved(products: list) -> list:
-    """Return only products with status 'approved' (or no status for legacy compat).
+    """Return products with status 'approved' or 'review' (or no status for legacy compat).
 
-    This is the single gatekeeper that ensures draft, hidden, out_of_stock,
-    and discontinued products never enter the recommendation pipeline.
+    This is the gatekeeper for the recommendation pipeline.
+    'review' products are auto-qualified by the quality pipeline and
+    serve as fallback when approved products are scarce.
+    Draft, hidden, out_of_stock, and discontinued products are excluded.
     """
-    return [p for p in products if p.get('status', 'approved') == 'approved']
+    return [p for p in products if p.get('status', 'approved') in ('approved', 'review')]
 
 
 def preferred_price_range(category: str) -> Optional[Tuple[int, int]]:
@@ -323,23 +289,12 @@ def deduplicate_products(products: list) -> list:
 
 # ===== 1. Category Normalization =====
 
-def normalize_category(category: str) -> str:
-    """Normalize a product category name using the alias map.
-
-    Returns the canonical category name.  If no alias is found, returns
-    the original category with title case.
-    """
-    if not category:
-        return category
-    key = category.strip().lower()
-    if key in CATEGORY_ALIASES:
-        return CATEGORY_ALIASES[key]
-    return category.strip().title()
-
-
 def categories_match(cat_a: str, cat_b: str) -> bool:
-    """Check whether two category strings refer to the same canonical category."""
-    return normalize_category(cat_a).lower() == normalize_category(cat_b).lower()
+    """Check whether two category strings refer to the same canonical category.
+
+    Both inputs are normalized to canonical snake_case before comparison.
+    """
+    return normalize_category(cat_a) == normalize_category(cat_b)
 
 
 # ===== 2. Compatibility Scoring =====
@@ -453,7 +408,7 @@ def ranking_score(product: dict, bike: Optional[dict] = None) -> float:
     Higher = better.  Factors (in descending weight):
 
         1. Compatibility     (if bike is provided)
-        2. Editor rating     (0-10 scale)
+        2. Editorial signal  (0-1, real review content only; 0 if none)
         3. User rating       (0-5 scale, normalized to 0-10)
         4. Number of reviews (log-scaled)
         5. Price value       (lower price = better, with diminishing returns)
@@ -472,9 +427,10 @@ def ranking_score(product: dict, bike: Optional[dict] = None) -> float:
         # Invert: priority 1 -> 5 points, priority 5 -> 1 point
         score += (6 - cp) * 3.0
 
-    # --- Editor rating (weight: 25%) ---
-    editor = product.get('editor_rating', 0)
-    score += editor * 2.5
+    # --- Editorial signal (weight: 25%) ---
+    # Derived from real editorial review content; 0 when no review exists.
+    editor = editorial_signal(product)
+    score += editor * 25.0
 
     # --- User rating (weight: 15%) ---
     rating = product.get('rating', 0)
@@ -525,11 +481,50 @@ def value_for_money(product: dict) -> float:
     if price <= 0:
         return 0.0
     rating = _as_float(product.get('rating', 0))                # 0-5
-    editor = _as_float(product.get('editor_rating', 0)) / 2.0   # 0-10 -> 0-5
+    editor = editorial_signal(product) * 5.0                    # 0-1 -> 0-5
     quality = (rating + editor) / 2.0                           # 0-5
     # Price in thousands; higher price divides down the ratio.
     ratio = quality / max(price / 1000.0, 0.1)
     return min(1.0, ratio / 10.0)
+
+
+def editorial_signal(product: dict) -> float:
+    """Return a 0-1 editorial quality signal derived from REAL data.
+
+    We never fabricate a numeric editorial score. Instead:
+      * If a genuine editorial review exists (pros/cons/verdict or a stored
+        editorial verdict label), the signal reflects that judgment.
+      * If no editorial review exists, this returns 0.0 so the product is
+        ranked purely on customer rating / reviews / value — it is NOT
+        penalized for lacking an editorial opinion, and NOT rewarded with an
+        invented number.
+
+    The signal can never exceed the level implied by the Amazon rating, so it
+    can never contradict the customer score (trust preservation).
+    """
+    rating = _as_float(product.get('rating', 0))  # 0-5
+    rating_signal = min(1.0, rating / 5.0)
+
+    has_review = bool(
+        product.get('pros') or product.get('cons')
+        or product.get('verdict') or product.get('editorial_notes')
+        or product.get('editorial_verdict')
+    )
+    if not has_review:
+        return 0.0
+
+    label = (product.get('editorial_verdict') or '').lower()
+    label_signal = {
+        'excellent': 1.0,
+        'best_value': 1.0,
+        'premium_pick': 0.95,
+        'very_good': 0.85,
+        'budget_pick': 0.8,
+        'good': 0.65,
+    }.get(label, 0.85)
+
+    # Trust guard: editorial signal may not exceed what the rating implies.
+    return min(label_signal, rating_signal)
 
 
 def price_fit_score(product: dict, category: Optional[str] = None) -> float:
@@ -611,8 +606,8 @@ def weighted_score(product: dict, category: Optional[str] = None) -> float:
     if brand in TRUSTED_BRANDS:
         score += w['brand_trust']
 
-    editor = _as_float(product.get('editor_rating', 0))   # 0-10
-    score += w['editor'] * (editor / 10.0)
+    editor = editorial_signal(product)                     # 0-1 (real only)
+    score += w['editor'] * editor
 
     return round(score, 3)
 
@@ -667,9 +662,9 @@ def recommendation_score(product: dict, category: Optional[str] = None,
     w = _REC_WEIGHTS
     score = 0.0
 
-    # 1. Editor rating
-    editor = _as_float(product.get('editor_rating', 0))
-    score += w['editor'] * (editor / 10.0)
+    # 1. Editorial signal (real review content only)
+    editor = editorial_signal(product)
+    score += w['editor'] * editor
 
     # 2. Value for money
     score += w['value'] * value_for_money(product)
@@ -731,7 +726,7 @@ def _generate_badge_reason(product: dict, badge_type: str,
     vfm = value_for_money(product)
 
     if badge_type == 'editors_choice':
-        parts = [f'Highest recommendation with {editor}/10 editor rating']
+        parts = ['Our top recommendation']
         if rating >= 4.0:
             parts.append(f'{rating}/5 user rating')
         if vfm > 0.3:
@@ -739,7 +734,7 @@ def _generate_badge_reason(product: dict, badge_type: str,
         return ', '.join(parts) + f' at \u20b9{price}'
 
     if badge_type == 'best_value':
-        parts = [f'Best quality-to-price ratio']
+        parts = ['Best quality-to-price ratio']
         if rating >= 4.0:
             parts.append(f'{rating}/5 user rating')
         parts.append(f'at just \u20b9{price}')
@@ -749,8 +744,9 @@ def _generate_badge_reason(product: dict, badge_type: str,
         parts = [f'Premium choice at \u20b9{price}']
         if rating >= 4.0:
             parts.append(f'{rating}/5 user rating')
-        if editor >= 8.0:
-            parts.append(f'{editor}/10 editor score')
+        verdict = (product.get('editorial_verdict') or '').lower()
+        if verdict in ('excellent', 'premium_pick', 'best_value'):
+            parts.append('editor-approved')
         return ', '.join(parts)
 
     if badge_type == 'most_popular':
@@ -916,8 +912,9 @@ def select_product_count(matched: int) -> int:
 def find_products_by_category(
     products: list,
     category: str,
+    subcategory: Optional[str] = None,
 ) -> list:
-    """Find ALL products matching a category.
+    """Find ALL products matching a category, optionally filtered by subcategory.
 
     Only products with status 'approved' (or no status for legacy compat)
     are included. Draft, hidden, out_of_stock, and discontinued products
@@ -927,6 +924,9 @@ def find_products_by_category(
         1. Exact match on normalized category
         2. Case-insensitive substring match on category
         3. Keyword fallback (category + title + best_for)
+
+    If subcategory is provided, results are further filtered to only
+    products whose subcategory matches.
 
     Returns unsorted list of matching products.
     """
@@ -938,34 +938,92 @@ def find_products_by_category(
         p for p in products
         if normalize_category(p.get('category', '')).lower() == normalized.lower()
     ]
-    if matched:
-        return deduplicate_products(matched)
 
-    # 2. Case-insensitive substring on category field
-    normalized_lower = normalized.lower()
-    matched = [
-        p for p in products
-        if normalized_lower in p.get('category', '').lower()
-    ]
-    if matched:
-        return deduplicate_products(matched)
-
-    # 3. Keyword fallback: check category, title, and best_for
-    keywords = CATEGORY_KEYWORDS.get(normalized_lower, [])
-    for kw in keywords:
+    # 2. Case-insensitive substring on category field (fallback if no exact match)
+    if not matched:
+        normalized_lower = normalized.lower()
         matched = [
             p for p in products
-            if kw in p.get('category', '').lower()
-            or kw in p.get('title', '').lower()
-            or kw in p.get('best_for', '').lower()
+            if normalized_lower in p.get('category', '').lower()
         ]
-        if matched:
-            return deduplicate_products(matched)
 
-    return []
+    # 3. Keyword fallback: check category, title, and best_for
+    if not matched:
+        keywords = CATEGORY_KEYWORDS.get(normalized.lower(), [])
+        for kw in keywords:
+            matched = [
+                p for p in products
+                if kw in p.get('category', '').lower()
+                or kw in p.get('title', '').lower()
+                or kw in p.get('best_for', '').lower()
+            ]
+            if matched:
+                break
+
+    # 4. Subcategory filter
+    if subcategory and matched:
+        sub_lower = subcategory.lower()
+        sub_filtered = [
+            p for p in matched
+            if p.get('subcategory', '').lower() == sub_lower
+        ]
+        # Only use subcategory filter if it produced results
+        if sub_filtered:
+            matched = sub_filtered
+
+    return deduplicate_products(matched) if matched else []
 
 
 # ===== 7. Main Recommendation Pipeline =====
+
+# Negative signals indicating the product is a 12V car-only tyre inflator that
+# requires a car power socket and is therefore unsuitable for motorcycles.
+_TYRE_INFLATOR_CAR_SIGNALS = (
+    '12v',
+    'cigarette lighter',
+    'car tyre inflator',
+    'car socket',
+    'dc 12v car',
+    'car only',
+    'for car',
+)
+
+# Positive signals indicating the product is portable / battery-powered /
+# motorcycle-compatible.
+_TYRE_INFLATOR_MOTO_SIGNALS = (
+    'rechargeable',
+    'battery',
+    'battery powered',
+    'lithium',
+    'portable inflator',
+    'cordless',
+    'motorcycle',
+    'bike inflator',
+    'wireless',
+)
+
+
+def is_motorcycle_tyre_inflator(product: dict) -> bool:
+    """Return True if a tyre inflator is motorcycle-compatible.
+
+    Motorcycle pages should only recommend portable/rechargeable/battery-powered
+    inflators or inflators explicitly compatible with motorcycles. 12V
+    cigarette-lighter / car-only inflators that require a car power socket are
+    excluded. If a product shows neither strong positive nor negative signals it
+    is defaulted to included to avoid over-filtering.
+    """
+    text = ' '.join(
+        str(product.get(field, ''))
+        for field in ('title', 'type', 'features', 'best_for')
+    ).lower()
+
+    has_car_signal = any(sig in text for sig in _TYRE_INFLATOR_CAR_SIGNALS)
+    has_moto_signal = any(sig in text for sig in _TYRE_INFLATOR_MOTO_SIGNALS)
+
+    if has_car_signal and not has_moto_signal:
+        return False
+    return True
+
 
 def recommend_products(
     products: list,
@@ -996,6 +1054,15 @@ def recommend_products(
 
     if not candidates:
         return []
+
+    # --- Stage 1b: Hard exclusion of 12V car-only tyre inflators ---
+    if normalize_category(category).lower() == 'tyre_inflator':
+        candidates = [
+            p for p in candidates
+            if is_motorcycle_tyre_inflator(p)
+        ]
+        if not candidates:
+            return []
 
     # --- Stage 2: Score ---
     # Weighted intrinsic quality (rating, reviews, badges, price fit, value,
@@ -1368,6 +1435,10 @@ def best_per_category(
         matched = find_products_by_category(products, cat)
         if not matched:
             continue
+        if normalize_category(cat).lower() == 'tyre_inflator':
+            matched = [p for p in matched if is_motorcycle_tyre_inflator(p)]
+            if not matched:
+                continue
         scored = [(ranking_score(p, bike), p) for p in matched]
         scored.sort(key=lambda x: x[0], reverse=True)
         results.append(scored[0][1])
@@ -1459,3 +1530,336 @@ def validate_motorcycle_products(
         'categories_missing': categories_missing,
         'category_counts': dict(cat_counts),
     }
+
+
+# ===== 10. Motorcycle Page Recommendation =====
+
+# Category groups for motorcycle ownership pages.
+# Each group contains categories with their display names, product limits,
+# and optional subcategory filters.
+# When 'subcategories' is specified, only products matching those subcategories
+# are included in recommendations for that category.
+MOTORCYCLE_CATEGORY_GROUPS: List[Dict] = [
+    {
+        'name': 'Safety',
+        'categories': [
+            {
+                'name': 'helmet', 'display': 'Helmets', 'display_plural': 'Helmets',
+                'limit': 6,
+                'subcategories': ['full_face', 'modular', 'open_face'],
+            },
+            {
+                'name': 'riding_gear', 'display': 'Riding Gloves', 'display_plural': 'Riding Gloves',
+                'limit': 4,
+                'subcategories': ['gloves'],
+            },
+            {
+                'name': 'riding_gear', 'display': 'Riding Jackets', 'display_plural': 'Riding Jackets',
+                'limit': 4,
+                'subcategories': ['jacket'],
+            },
+        ],
+    },
+    {
+        'name': 'Maintenance',
+        'categories': [
+            {
+                'name': 'chain_lube', 'display': 'Chain Lube', 'display_plural': 'Chain Lubes',
+                'limit': 4,
+            },
+            {
+                'name': 'chain_cleaner', 'display': 'Chain Cleaner', 'display_plural': 'Chain Cleaners',
+                'limit': 4,
+            },
+            {
+                'name': 'engine_oil', 'display': 'Engine Oil', 'display_plural': 'Engine Oils',
+                'limit': 4,
+            },
+        ],
+    },
+    {
+        'name': 'Daily Riding',
+        'categories': [
+            {
+                'name': 'phone_mount', 'display': 'Phone Mounts', 'display_plural': 'Phone Mounts',
+                'limit': 4,
+            },
+            {
+                'name': 'usb_charger', 'display': 'USB Chargers', 'display_plural': 'USB Chargers',
+                'limit': 4,
+            },
+            {
+                'name': 'tyre_inflator', 'display': 'Tyre Inflators', 'display_plural': 'Tyre Inflators',
+                'limit': 4,
+            },
+        ],
+    },
+    {
+        'name': 'Touring',
+        'categories': [
+            {
+                'name': 'tank_bag', 'display': 'Tank Bags', 'display_plural': 'Tank Bags',
+                'limit': 4,
+            },
+            {
+                'name': 'saddle_bag', 'display': 'Saddle Bags', 'display_plural': 'Saddle Bags',
+                'limit': 4,
+            },
+            {
+                'name': 'bike_cover', 'display': 'Bike Covers', 'display_plural': 'Bike Covers',
+                'limit': 4,
+            },
+        ],
+    },
+    {
+        'name': 'Security',
+        'categories': [
+            {
+                'name': 'disc_lock', 'display': 'Disc Locks', 'display_plural': 'Disc Locks',
+                'limit': 4,
+            },
+            {
+                'name': 'chain_lock', 'display': 'Chain Locks', 'display_plural': 'Chain Locks',
+                'limit': 4,
+            },
+        ],
+    },
+]
+
+
+def _motorcycle_score(product: dict, bike: dict) -> int:
+    """Score a product for motorcycle page recommendation.
+
+    Scoring weights (per specification):
+        +100  Explicit motorcycle compatibility (specific slug or brand/type match)
+        +50   Universal motorcycle product (compatible_bikes contains '*')
+        +30   Editor's Choice (editorial score >= 75/100 or >= 7.5/10)
+        +20   Best Seller (review count >= 500)
+        +10   Rating above 4.3
+        +5    Large review count (>= 1000)
+
+    Returns an integer score. Higher = more relevant.
+    """
+    score = 0
+
+    # --- Compatibility ---
+    cp = compatibility_priority(product, bike)
+    if cp == 1:
+        score += 100
+    elif cp == 2:
+        score += 80
+    elif cp == 3:
+        score += 60
+    elif cp == 4:
+        score += 50
+    elif cp == 5:
+        score += 40
+    else:
+        return 0
+
+    # --- Editor's Choice ---
+    # Driven by a genuine editorial verdict + strong customer rating, never a
+    # fabricated numeric score.
+    verdict = (product.get('editorial_verdict') or '').lower()
+    rating = _as_float(product.get('rating', 0))
+    is_editor = verdict in ('excellent', 'best_value', 'premium_pick') and rating >= 4.3
+    if is_editor:
+        score += 30
+
+    # --- Best Seller ---
+    reviews = product.get('review_count', 0) or product.get('reviews', 0) or 0
+    if reviews >= 500:
+        score += 20
+
+    # --- Rating above 4.3 ---
+    rating = product.get('rating', 0) or 0
+    if rating > 4.3:
+        score += 10
+
+    # --- Large review count ---
+    if reviews >= 1000:
+        score += 5
+
+    return score
+
+
+def recommend_for_motorcycle(
+    products: list,
+    bike: dict,
+    editorial: Optional[dict] = None,
+) -> List[Dict]:
+    """Recommend products for all categories on a motorcycle ownership page.
+
+    Returns a flat list of category items grouped by purpose:
+        Safety Essentials (Helmet, Gloves, Jackets)
+        Maintenance Essentials (Chain Lube, Chain Cleaner, Engine Oil)
+        Daily Riding (Phone Mount, USB Charger, Tyre Inflator)
+        Touring (Tank Bag, Saddle Bag, Bike Cover)
+        Security (Disc Lock, Chain Lock)
+
+    Each item contains:
+        category, display, slug, group, products (0-6), count, description
+        category_total: total products in this category (for "See all X (N)" links)
+
+    Products within each category are assigned badges:
+        editors_choice, best_value, premium_pick, budget_pick, most_reviewed
+
+    The same product will never appear in two categories.
+    If no compatible products exist for a category, universal products are used.
+    If no products exist at all, the category is included with an empty list.
+
+    Returns a list of ~15 items (one per category).
+    """
+    must_have_descriptions = {}
+    if editorial:
+        must_have_descriptions = editorial.get('must_have_descriptions', {})
+
+    seen_keys: Set[str] = set()
+    result: List[Dict] = []
+
+    for group in MOTORCYCLE_CATEGORY_GROUPS:
+        for cat_config in group['categories']:
+            cat_name = cat_config['name']
+            limit = cat_config['limit']
+            subcategories = cat_config.get('subcategories', [])
+
+            # Find all approved products in this category, optionally filtered by subcategory
+            if subcategories:
+                candidates = []
+                for sub in subcategories:
+                    found = find_products_by_category(products, cat_name, subcategory=sub)
+                    if not found:
+                        found = find_products_by_category(products, sub)
+                    candidates.extend(found)
+                candidates = deduplicate_products(candidates)
+            else:
+                candidates = find_products_by_category(products, cat_name)
+
+            # Total count for "See all X (N)" link
+            category_total = len(candidates)
+
+            # Score each product, excluding already-seen products
+            scored = []
+            for p in candidates:
+                key = _product_key(p)
+                if key in seen_keys:
+                    continue
+                s = _motorcycle_score(p, bike)
+                if s > 0:
+                    scored.append((s, p))
+
+            # Sort by score descending
+            scored.sort(key=lambda x: x[0], reverse=True)
+
+            # Select top N
+            selected = []
+            for s, p in scored[:limit]:
+                selected.append(p)
+                seen_keys.add(_product_key(p))
+
+            # Fallback: if no scored products, try any compatible/universal product
+            if not selected:
+                for p in candidates:
+                    key = _product_key(p)
+                    if key in seen_keys:
+                        continue
+                    cp = compatibility_priority(p, bike)
+                    if cp > 0:
+                        selected.append(p)
+                        seen_keys.add(key)
+                        if len(selected) >= limit:
+                            break
+
+            # Second fallback: any product in category not yet used
+            if not selected:
+                for p in candidates:
+                    key = _product_key(p)
+                    if key in seen_keys:
+                        continue
+                    selected.append(p)
+                    seen_keys.add(key)
+                    if len(selected) >= limit:
+                        break
+
+            # Assign badges to selected products
+            _assign_category_badges(selected)
+
+            # Build description
+            desc = must_have_descriptions.get(
+                cat_name,
+                f'Essential {category_display(cat_name).lower()} for your {bike.get("model", "motorcycle")}.',
+            )
+
+            result.append({
+                'category': cat_name,
+                'display': cat_config['display'],
+                'display_plural': cat_config.get('display_plural', cat_config['display'] + 's'),
+                'slug': category_slug(cat_name),
+                'group': group['name'],
+                'products': selected,
+                'count': len(selected),
+                'category_total': category_total,
+                'description': desc,
+            })
+
+    return result
+
+
+def _assign_category_badges(products: list) -> None:
+    """Assign shopping badges to products within a category.
+
+    Modifies each product dict in-place, adding a 'badge' field.
+    Badge types:
+        editors_choice  - highest recommendation score (top product)
+        best_value      - best price-to-rating ratio
+        premium_pick    - highest priced with good rating
+        budget_pick     - lowest price with acceptable rating
+        most_reviewed   - highest review count
+    """
+    if not products:
+        return
+
+    # Reset badges
+    for p in products:
+        p['badge'] = None
+        p['badge_label'] = None
+
+    if len(products) == 1:
+        products[0]['badge'] = 'editors_choice'
+        products[0]['badge_label'] = "Editor's Choice"
+        return
+
+    # Editors Choice: first product (already ranked by score)
+    products[0]['badge'] = 'editors_choice'
+    products[0]['badge_label'] = "Editor's Choice"
+
+    # Most Reviewed: highest review_count
+    reviewed = [p for p in products if p.get('review_count', 0) > 0]
+    if reviewed:
+        most_rev = max(reviewed, key=lambda p: p.get('review_count', 0))
+        if most_rev is not products[0]:
+            most_rev['badge'] = 'most_reviewed'
+            most_rev['badge_label'] = 'Most Reviewed'
+
+    # Best Value: best rating/price ratio (exclude editors choice)
+    priced = [p for p in products[1:] if p.get('price', 0) > 0 and p.get('rating', 0) > 0]
+    if priced:
+        best_val = max(priced, key=lambda p: p.get('rating', 0) / max(p.get('price', 1), 1) * 1000)
+        if not best_val.get('badge'):
+            best_val['badge'] = 'best_value'
+            best_val['badge_label'] = 'Best Value'
+
+    # Premium Pick: highest price with rating >= 4
+    premium = [p for p in products[1:] if p.get('price', 0) > 0 and p.get('rating', 0) >= 4.0]
+    if premium:
+        prem = max(premium, key=lambda p: p.get('price', 0))
+        if not prem.get('badge'):
+            prem['badge'] = 'premium_pick'
+            prem['badge_label'] = 'Premium Pick'
+
+    # Budget Pick: lowest price among remaining
+    remaining = [p for p in products[1:] if not p.get('badge') and p.get('price', 0) > 0]
+    if remaining:
+        budget = min(remaining, key=lambda p: p.get('price', float('inf')))
+        budget['badge'] = 'budget_pick'
+        budget['badge_label'] = 'Budget Pick'

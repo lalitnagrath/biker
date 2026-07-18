@@ -124,10 +124,10 @@
                         {% if editors_product %}
                         <div class="guide-quick-card guide-quick-editors">
                             <span class="guide-quick-badge guide-quick-badge-editors">&#127942; Editor's Choice</span>
-                            <h3><a href="{{ base_path }}products/{{ editors_product.slug }}/index.html">{{ editors_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ editors_product.slug }}/index.html">{{ editors_product.title }}</a></h3>
                             <div class="guide-quick-meta">
                                 <span class="stars">{{ '★' * (editors_product.rating | int) }}{{ '☆' * (5 - editors_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ editors_product.editor_rating }}/10</span>
+                                <span class="guide-quick-score">{{ editors_product.rating }}/5</span>
                             </div>
                             <p class="guide-quick-bestfor">{{ editors_product.best_for }}</p>
                             {% set ep_reason = badge_data.get(editors_product.slug, {}).get('reason', '') %}
@@ -143,10 +143,10 @@
                         {% if value_product %}
                         <div class="guide-quick-card guide-quick-value">
                             <span class="guide-quick-badge guide-quick-badge-value">&#128176; Best Value</span>
-                            <h3><a href="{{ base_path }}products/{{ value_product.slug }}/index.html">{{ value_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ value_product.slug }}/index.html">{{ value_product.title }}</a></h3>
                             <div class="guide-quick-meta">
                                 <span class="stars">{{ '★' * (value_product.rating | int) }}{{ '☆' * (5 - value_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ value_product.editor_rating }}/10</span>
+                                <span class="guide-quick-score">{{ value_product.rating }}/5</span>
                             </div>
                             <p class="guide-quick-bestfor">{{ value_product.best_for }}</p>
                             {% set vp_reason = badge_data.get(value_product.slug, {}).get('reason', '') %}
@@ -162,10 +162,10 @@
                         {% if premium_product %}
                         <div class="guide-quick-card guide-quick-premium">
                             <span class="guide-quick-badge guide-quick-badge-premium">&#11088; Premium Pick</span>
-                            <h3><a href="{{ base_path }}products/{{ premium_product.slug }}/index.html">{{ premium_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ premium_product.slug }}/index.html">{{ premium_product.title }}</a></h3>
                             <div class="guide-quick-meta">
                                 <span class="stars">{{ '★' * (premium_product.rating | int) }}{{ '☆' * (5 - premium_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ premium_product.editor_rating }}/10</span>
+                                <span class="guide-quick-score">{{ premium_product.rating }}/5</span>
                             </div>
                             <p class="guide-quick-bestfor">{{ premium_product.best_for }}</p>
                             {% set pp_reason = badge_data.get(premium_product.slug, {}).get('reason', '') %}
@@ -181,10 +181,10 @@
                         {% if popular_product %}
                         <div class="guide-quick-card guide-quick-popular">
                             <span class="guide-quick-badge guide-quick-badge-popular">&#128293; Most Popular</span>
-                            <h3><a href="{{ base_path }}products/{{ popular_product.slug }}/index.html">{{ popular_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ popular_product.slug }}/index.html">{{ popular_product.title }}</a></h3>
                             <div class="guide-quick-meta">
                                 <span class="stars">{{ '★' * (popular_product.rating | int) }}{{ '☆' * (5 - popular_product.rating | int) }}</span>
-                                <span class="guide-quick-score">{{ popular_product.editor_rating }}/10</span>
+                                <span class="guide-quick-score">{{ popular_product.rating }}/5</span>
                             </div>
                             <p class="guide-quick-bestfor">{{ popular_product.best_for }}</p>
                             {% set mp_reason = badge_data.get(popular_product.slug, {}).get('reason', '') %}
@@ -217,7 +217,7 @@
                                 <th class="rating-col">Rating</th>
                                 <th class="bestfor-col">Best For</th>
                                 <th class="price-col">Price</th>
-                                <th class="score-col">Score</th>
+                                <th class="score-col">Editorial</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -246,7 +246,7 @@
                                 </td>
                                 <td class="bestfor-col">{% if p_badge.badge %}{{ p_badge.badge }}{% elif loop.index == 1 %}Best Overall{% elif loop.index == 2 %}Runner Up{% elif loop.index == 3 %}Best Value{% else %}Alternative{% endif %}</td>
                                 <td class="price-col">&#8377;{{ product.price | int }}</td>
-                                <td class="score-col"><span class="score-badge">{{ product.editor_rating }}</span>/10</td>
+                                <td class="score-col">{% if product.editorial_verdict %}<span class="score-badge verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>{% else %}<span class="score-badge">{{ product.rating }}/5</span>{% endif %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -273,14 +273,14 @@
                         </div>
                         <div class="bestof-product-content">
                             <div class="bestof-product-header">
-                                <span class="product-category-label">{{ product.category }}</span>
+                                <span class="product-category-label">{{ product.category_display }}</span>
                                 <div class="product-hero-rating">
                                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                     <span class="rating-value">{{ product.rating }}</span>
                                     <span class="review-count">({{ product.reviews | int }} reviews)</span>
                                 </div>
                             </div>
-                            <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
                             <div class="bestfor-inline">
                                 <span class="bestfor-label">Best For:</span>
                                 <span class="bestfor-value">{{ product.best_for }}</span>
@@ -329,10 +329,16 @@
                             {% endif %}
 
                             <div class="bestof-product-footer">
+                                {% if product.editorial_verdict %}
                                 <div class="bestof-product-score">
-                                    <span class="score-number">{{ product.editor_rating }}</span>
-                                    <span class="score-label">/10</span>
+                                    <span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>
                                 </div>
+                                {% else %}
+                                <div class="bestof-product-score">
+                                    <span class="score-number">{{ product.rating }}</span>
+                                    <span class="score-label">★</span>
+                                </div>
+                                {% endif %}
                                 <div class="bestof-product-price">&#8377;{{ product.price | int }}</div>
                                 <div class="bestof-product-actions">
                                     <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Full Review</a>
@@ -510,37 +516,24 @@
                     <p>In the meantime, <a href="{{ base_path }}categories/index.html">browse all available products</a> or <a href="{{ base_path }}motorcycles/index.html">find accessories for your motorcycle</a>.</p>
                 </div>
                 {% endif %}
-            </div>
+                {% if related_bikes or guide_nav %}
+                <hr class="guide-section-divider">
+                {% endif %}
 
-            <aside class="bestof-sidebar">
-                <div class="sidebar-sticky">
-                    <div class="sidebar-card sidebar-cta">
-                        <h3>Quick Links</h3>
-                        <ul class="sidebar-links">
-                            <li><a href="{{ base_path }}categories/{{ category_slug }}/index.html">All {{ category }} Products</a></li>
-                            <li><a href="{{ base_path }}categories/index.html">All Categories</a></li>
-                            <li><a href="{{ base_path }}motorcycles/index.html">Browse by Bike</a></li>
-                        </ul>
+                {# ===== INTEGRATED SIDEBAR CONTENT (full width) ===== #}
+                <section class="guide-trust-section">
+                    <div class="guide-trust-header">
+                        <span class="guide-section-icon">&#128273;</span>
+                        <h2>Why Trust Our Rankings</h2>
                     </div>
-                    <div class="sidebar-card">
-                        <h3>Related Rankings</h3>
-                        <ul class="sidebar-links">
-                            {% for nav in guide_nav %}
-                            <li><a href="{{ base_path }}guides/{{ nav.slug }}/index.html">Best {{ nav.category }}s</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="sidebar-card sidebar-trust">
-                        <h3>Why Trust Us?</h3>
-                        <ul class="trust-list">
-                            <li>&#10003; 500+ products tested</li>
-                            <li>&#10003; Expert buying guides</li>
-                            <li>&#10003; Updated weekly</li>
-                            <li>&#10003; Amazon affiliate disclosures</li>
-                        </ul>
-                    </div>
-                </div>
-            </aside>
+                    <ul class="guide-trust-list">
+                        <li>&#10003; 500+ products tested on Indian roads</li>
+                        <li>&#10003; Expert, motorcycle-aware buying guides</li>
+                        <li>&#10003; Recommendations updated weekly</li>
+                        <li>&#10003; Transparent Amazon affiliate disclosures</li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </div>
 </section>

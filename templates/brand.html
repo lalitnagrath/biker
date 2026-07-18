@@ -117,16 +117,20 @@
                     </a>
                     <div class="product-showcase-content">
                         <div class="product-showcase-header">
-                            <span class="product-showcase-category">{{ product.category }}</span>
+                            <span class="product-showcase-category">{{ product.category_display }}</span>
                             <div class="product-showcase-rating">
                                 <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                                 <span class="rating-value">{{ product.rating }}</span>
                             </div>
                         </div>
-                        <h3><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                        <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
                         <div class="product-showcase-bestfor">Best For: <strong>{{ product.best_for }}</strong></div>
                         <div class="product-showcase-footer">
-                            <div class="product-showcase-score"><span class="score-number">{{ product.editor_rating }}</span><span class="score-label">/10</span></div>
+                            {% if product.editorial_verdict %}
+                            <div class="product-showcase-score"><span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span></div>
+                            {% else %}
+                            <div class="product-showcase-score"><span class="score-number">{{ product.rating }}</span><span class="score-label">★</span></div>
+                            {% endif %}
                             <div class="product-showcase-price">₹{{ product.price | int }}</div>
                             <div class="product-showcase-actions">
                                 <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Review</a>

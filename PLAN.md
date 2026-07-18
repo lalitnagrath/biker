@@ -99,7 +99,7 @@ Each product JSON file becomes an array of products with clear separation:
         "rating": 4.3,
         "review_count": 2100,
         "availability": "In Stock",
-        "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=0x23uyx-21",
+        "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=xuy0834-21",
         "image": "images/products/bobo-bm4-pro-plus.jpg",
         "last_updated": null
     },

@@ -33,7 +33,7 @@ from creatorsapi_python_sdk.models.sort_by import SortBy
 
 DEFAULT_CREDENTIAL_ID = "amzn1.application-oa2-client.b9b4e4acd8b145de93d67e30964552f6"
 DEFAULT_CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.c54ce65e63d4bc8d44bf9ec5dbb7a368aa943b0cc84bb89a32eb77afbb0ca028"
-DEFAULT_PARTNER_TAG = "0x23uyx-21"
+DEFAULT_PARTNER_TAG = "xuy0834-21"
 
 SEARCH_KEYWORDS = [
     'Honda Hness',

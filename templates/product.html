@@ -18,8 +18,8 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-        { "@type": "Question", "name": "What is the {{ product.title }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ product.title }} is a {{ product.category | lower }} by {{ product.brand }}. {{ product.verdict }}" } },
-        { "@type": "Question", "name": "Is the {{ product.title }} worth buying?", "acceptedAnswer": { "@type": "Answer", "text": "{{ product.verdict }} It scores {{ product.editor_rating }}/10 in our review." } }
+        { "@type": "Question", "name": "What is the {{ product.title }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ product.title }} is a {{ product.category_display | lower }} by {{ product.brand }}. {{ product.verdict }}" } },
+        { "@type": "Question", "name": "Is the {{ product.title }} worth buying?", "acceptedAnswer": { "@type": "Answer", "text": "{{ product.verdict }} Rated {{ product.rating }} out of 5 by {{ product.reviews }} Amazon customers." } }
     ]
 }
 </script>
@@ -42,26 +42,22 @@
                     <span class="trust-badge">&#10003; Expert Tested</span>
                     <span class="trust-badge">Updated July 2026</span>
                 </div>
-                <span class="product-category-label">{{ product.category }}</span>
+                <span class="product-category-label">{{ product.category_display }}</span>
                 <h1>{{ product.title }}</h1>
                 <div class="product-hero-rating">
                     <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
                     <span class="rating-value">{{ product.rating }}</span>
-                    <span class="review-count">({{ product.reviews | int }} reviews)</span>
+                    <span class="review-count">({{ product.reviews | int }} ratings)</span>
                 </div>
+                {% if product.editorial_verdict %}
+                <div class="product-hero-verdict">
+                    <span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>
+                    <span class="verdict-subtitle">Editorial verdict</span>
+                </div>
+                {% endif %}
                 <div class="product-hero-bestfor">
                     <span class="bestfor-label">Best For:</span>
                     <span class="bestfor-value">{{ product.best_for }}</span>
-                </div>
-                <div class="product-hero-score">
-                    <div class="score-circle">
-                        <span class="score-number">{{ product.editor_rating }}</span>
-                        <span class="score-label">/10</span>
-                    </div>
-                    <div class="score-text">
-                        <span class="score-title">Editor's Score</span>
-                        <span class="score-subtitle">Based on hands-on testing</span>
-                    </div>
                 </div>
                 <div class="product-hero-price">₹{{ product.price | int }}</div>
                 <div class="product-hero-actions">
@@ -104,12 +100,14 @@
                 <section class="editorial-section" id="verdict">
                     <h2>Our Verdict</h2>
                     <div class="verdict-editorial">
+                        {% if product.editorial_verdict %}
                         <div class="verdict-score-large">
-                            <span class="verdict-number">{{ product.editor_rating }}</span>
-                            <span class="verdict-label">/10</span>
+                            <span class="verdict-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>
                         </div>
+                        {% endif %}
                         <div class="verdict-text">
                             <p>{{ product.verdict }}</p>
+                            <p class="verdict-amazon-note">Amazon rating: {{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }} {{ product.rating }} ({{ product.reviews | int }} ratings)</p>
                         </div>
                     </div>
                 </section>
@@ -119,12 +117,14 @@
                     <div class="specs-table-editorial">
                         <table>
                             <tr><td>Brand</td><td>{{ product.brand }}</td></tr>
-                            <tr><td>Category</td><td>{{ product.category }}</td></tr>
+                            <tr><td>Category</td><td>{{ product.category_display }}</td></tr>
                             <tr><td>Type</td><td>{{ product.type }}</td></tr>
                             <tr><td>Price</td><td>₹{{ product.price | int }}</td></tr>
                             <tr><td>User Rating</td><td>{{ product.rating }} / 5</td></tr>
                             <tr><td>Reviews</td><td>{{ product.reviews | int }}</td></tr>
-                            <tr><td>Editor Rating</td><td>{{ product.editor_rating }} / 10</td></tr>
+                            {% if product.editorial_verdict %}
+                            <tr><td>Editorial Verdict</td><td>{{ product.editorial_verdict | replace('_', ' ') | title }}</td></tr>
+                            {% endif %}
                         </table>
                     </div>
                 </section>
@@ -145,13 +145,13 @@
                         <div class="faq-accordion-item">
                             <button class="faq-accordion-header">What is the {{ product.title }}? <span class="faq-toggle">+</span></button>
                             <div class="faq-accordion-content">
-                                <p>The {{ product.title }} is a {{ product.category | lower }} by {{ product.brand }}. {{ product.verdict }}</p>
+                                <p>The {{ product.title }} is a {{ product.category_display | lower }} by {{ product.brand }}. {{ product.verdict }}</p>
                             </div>
                         </div>
                         <div class="faq-accordion-item">
                             <button class="faq-accordion-header">Is the {{ product.title }} worth buying? <span class="faq-toggle">+</span></button>
                             <div class="faq-accordion-content">
-                                <p>{{ product.verdict }} It scores {{ product.editor_rating }}/10 in our review.</p>
+                                <p>{{ product.verdict }} Rated {{ product.rating }} out of 5 by {{ product.reviews | int }} Amazon customers.</p>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                         <h3>Product Details</h3>
                         <ul class="sidebar-specs">
                             <li><span>Brand</span><strong>{{ product.brand }}</strong></li>
-                            <li><span>Category</span><strong>{{ product.category }}</strong></li>
+                            <li><span>Category</span><strong>{{ product.category_display }}</strong></li>
                             <li><span>Price</span><strong>₹{{ product.price | int }}</strong></li>
                             <li><span>Rating</span><strong>{{ product.rating }} / 5</strong></li>
                             <li><span>Best For</span><strong>{{ product.best_for }}</strong></li>
@@ -189,7 +189,7 @@
                             {% set rp = item.product %}
                             <li>
                                 <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
-                                    <span class="related-name">{{ rp.title }}</span>
+                                    <span class="related-name product-card-title">{{ rp.title }}</span>
                                     <span class="related-rating">{{ rp.rating }} ★</span>
                                 </a>
                             </li>

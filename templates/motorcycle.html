@@ -6,9 +6,36 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "{{ motorcycle.brand }} {{ motorcycle.model }}",
-    "description": "Bajaj Pulsar N250 ownership guide focusing on essential accessories, maintenance products, and riding gear recommendations for Indian riders.",
+    "description": "{{ motorcycle.description }}",
     "brand": { "@type": "Brand", "name": "{{ motorcycle.brand }}" },
     "offers": { "@type": "Offer", "price": "{{ motorcycle.price }}", "priceCurrency": "INR", "availability": "https://schema.org/InStock" }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site_url }}"},
+        {"@type": "ListItem", "position": 2, "name": "Motorcycles", "item": "{{ site_url }}motorcycles/"},
+        {"@type": "ListItem", "position": 3, "name": "{{ motorcycle.brand }} {{ motorcycle.model }}", "item": "{{ canonical_url }}"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        { "@type": "Question", "name": "What is the price of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.brand }} {{ motorcycle.model }} is priced at {{ motorcycle.price }} (ex-showroom). On-road prices may vary depending on your city and variant." } },
+        { "@type": "Question", "name": "What is the mileage of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.brand }} {{ motorcycle.model }} offers a mileage of approximately {{ motorcycle.mileage }}." } },
+        { "@type": "Question", "name": "Is {{ motorcycle.brand }} {{ motorcycle.model }} good for long rides?", "acceptedAnswer": { "@type": "Answer", "text": "{% if motorcycle.type == 'Adventure' %}Yes, the {{ motorcycle.model }} is designed for adventure touring and long-distance rides.{% elif motorcycle.type == 'Cruiser' %}Yes, the {{ motorcycle.model }} is a comfortable cruiser suitable for long highway rides.{% else %}The {{ motorcycle.model }} is primarily designed for city commuting and short weekend rides, but can handle moderate long-distance touring with proper accessories.{% endif %}" } },
+        { "@type": "Question", "name": "What are the best accessories for {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "Essential accessories for the {{ motorcycle.model }} include a quality helmet, phone mount, crash guard, and bike cover. For touring, consider adding saddlebags and a tank bag." } },
+        { "@type": "Question", "name": "How often should I service my {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "Regular service intervals for the {{ motorcycle.model }} are {{ motorcycle.service_interval }}. Always follow the manufacturer's recommended service schedule." } },
+        { "@type": "Question", "name": "Does {{ motorcycle.brand }} {{ motorcycle.model }} have ABS?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the {{ motorcycle.model }} comes with {{ motorcycle.abs }} ABS as standard equipment." } },
+        { "@type": "Question", "name": "What is the seat height of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.model }} has a seat height of {{ motorcycle.seat_height }}." } },
+        { "@type": "Question", "name": "What is the fuel tank capacity of {{ motorcycle.brand }} {{ motorcycle.model }}?", "acceptedAnswer": { "@type": "Answer", "text": "The {{ motorcycle.model }} has a fuel tank capacity of {{ motorcycle.fuel_tank }}." } }
+    ]
 }
 </script>
 {% endblock %}
@@ -17,356 +44,602 @@
 {# ===== HERO SECTION ===== #}
 <section class="moto-hero">
     <div class="container">
-        <h1>{{ motorcycle.brand }} {{ motorcycle.model }}</h1>
-        <p>249cc DOHC | 24.17bhp | ₹173,753 ex-showroom</p>
+        <div class="moto-hero-grid">
+            <div class="moto-hero-image">
+                {% if motorcycle.image %}
+                <img src="{{ base_path }}{{ motorcycle.image }}" alt="{{ motorcycle.brand }} {{ motorcycle.model }}" loading="eager">
+                {% else %}
+                <div class="bike-placeholder-large" style="background: {% if motorcycle.brand == 'Royal Enfield' %}#8b4513{% elif motorcycle.brand == 'Honda' %}#cc0000{% elif motorcycle.brand == 'TVS' %}#003366{% elif motorcycle.brand == 'KTM' %}#ff6600{% else %}#003366{% endif %}">
+                    <span class="bike-placeholder-icon">&#128666;</span>
+                    <span class="bike-placeholder-text">{{ motorcycle.brand }} {{ motorcycle.model }}</span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="moto-hero-content">
+                <span class="moto-hero-brand">{{ motorcycle.brand }}</span>
+                <h1>{{ motorcycle.brand }} {{ motorcycle.model }} Buying Guide</h1>
+                <p class="moto-hero-subtitle">{{ motorcycle.type }} &middot; {{ motorcycle.engine }} &middot; {{ motorcycle.power }} &middot; &#8377;{{ motorcycle.price }} ex-showroom</p>
 
-        <div class="moto-hero-buttons">
-            <a href="#recommended-products" class="btn btn-primary btn-lg">Shop Accessories</a>
-            <a href="#ownership-tips" class="btn btn-outline btn-lg">Maintenance Tips</a>
-            <a href="#buy-guides" class="btn btn-outline btn-lg">Buying Guides</a>
+                <div class="moto-hero-meta-row">
+                    <div class="moto-hero-meta-badges">
+                        <span class="trust-badge">&#128337; Updated July 2026</span>
+                    </div>
+                </div>
+
+                {% if motorcycle.get('ideal_for') %}
+                <div class="moto-hero-bestfor-chips">
+                    {% for use in motorcycle.ideal_for[:4] %}
+                    <span class="moto-bestfor-chip">{{ use }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="moto-hero-flex">
+                    <div class="moto-verdict-box">
+                        <div class="moto-verdict-text">
+                            <strong>Quick Verdict:</strong> {{ motorcycle.description.split('.')[0] | lower }}. {% for pro in motorcycle.pros[:2] %}{{ pro }}{% if not loop.last %}, {% endif %}{% endfor %}.
+                        </div>
+                    </div>
+                    {% if quick_specs %}
+                    <div class="moto-quick-specs">
+                        <h3>Key Specs</h3>
+                        <div class="moto-specs-grid">
+                            {% if quick_specs.price %}
+                            <div class="moto-spec-item">
+                                <span class="moto-spec-label">Price</span>
+                                <span class="moto-spec-value">{{ quick_specs.price }}</span>
+                            </div>
+                            {% endif %}
+                            {% if quick_specs.mileage %}
+                            <div class="moto-spec-item">
+                                <span class="moto-spec-label">Mileage</span>
+                                <span class="moto-spec-value">{{ quick_specs.mileage }}</span>
+                            </div>
+                            {% endif %}
+                            {% if quick_specs.power %}
+                            <div class="moto-spec-item">
+                                <span class="moto-spec-label">Power</span>
+                                <span class="moto-spec-value">{{ quick_specs.power }}</span>
+                            </div>
+                            {% endif %}
+                            {% if quick_specs.weight %}
+                            <div class="moto-spec-item">
+                                <span class="moto-spec-label">Weight</span>
+                                <span class="moto-spec-value">{{ quick_specs.weight }}</span>
+                            </div>
+                            {% endif %}
+                            {% if quick_specs.seat_height and quick_specs.seat_height != 'N/A' %}
+                            <div class="moto-spec-item">
+                                <span class="moto-spec-label">Seat</span>
+                                <span class="moto-spec-value">{{ quick_specs.seat_height }}</span>
+                            </div>
+                            {% endif %}
+                            {% if quick_specs.abs and quick_specs.abs != 'N/A' %}
+                            <div class="moto-spec-item">
+                                <span class="moto-spec-label">ABS</span>
+                                <span class="moto-spec-value">{{ quick_specs.abs }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% if quick_specs.variants %}
+                        <div class="moto-spec-variants">
+                            {% for v in quick_specs.variants %}
+                            <span class="moto-variant-chip-sm">{{ v }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="moto-hero-actions">
+                    <a href="#must-have" class="btn btn-accent btn-lg">Must Have Accessories &darr;</a>
+                    <button class="btn btn-outline btn-lg moto-garage-btn" id="motoGarageBtn" data-slug="{{ motorcycle.slug }}">
+                        <span class="moto-garage-btn-text">Add to My Garage</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-{# ===== QUICK SPECS SECTION ===== #}
-<section class="moto-quick-specs">
+{# ===== STICKY TABLE OF CONTENTS ===== #}
+<div class="moto-toc-bar" id="motoTocBar">
     <div class="container">
-        <h2>Engine</h2>
-        <p>249cc DOHC, Air-cooled</p>
+        <nav class="moto-toc-nav">
+            <a href="#must-have" class="moto-toc-link active">Must Have</a>
+            <a href="#new-owner" class="moto-toc-link">New Owner</a>
+            <a href="#ownership" class="moto-toc-link">Ownership</a>
+            <a href="#maintenance" class="moto-toc-link">Maintenance</a>
+            <a href="#problems" class="moto-toc-link">Problems</a>
+            <a href="#accessories" class="moto-toc-link">Accessories</a>
+            <a href="#guides" class="moto-toc-link">Guides</a>
+            <a href="#faq" class="moto-toc-link">FAQ</a>
+        </nav>
+    </div>
+</div>
 
-        <h2>Fuel Tank</h2>
-        <p>12 liters</p>
+{# ===== MAIN CONTENT ===== #}
+<section class="moto-content-section">
+    <div class="container">
+        <div class="moto-layout">
+            <div class="moto-main">
 
-        <h2>Service Interval</h2>
-        <p>Every 3,000 km</p>
+                {# ===== SECTION 1: MUST HAVE ACCESSORIES ===== #}
+                <section class="moto-section" id="must-have">
+                    <div class="moto-section-header">
+                        <h2>Must Have Accessories</h2>
+                        <p>Handpicked products for your {{ motorcycle.model }}. Click any product to check the latest price on Amazon.</p>
+                    </div>
 
-        <h2>Tyre Sizes</h2>
-        <p>Front: 110/70-17, Rear: 130/70-17</p>
+                    {% if editorial.get('pro_tip') %}
+                    <div class="moto-callout moto-callout-tip">
+                        <div class="moto-callout-title">&#128161; Pro Tip</div>
+                        <p>{{ editorial.pro_tip }}</p>
+                    </div>
+                    {% endif %}
 
-        <h2>Oil Capacity</h2>
-        <p>1.3 liters</p>
+                    {% if must_have_data %}
+                    <div class="moto-products-section">
+                        {% set current_group = namespace(value='') %}
+                        {% for item in must_have_data %}
+                        {% if item.group != current_group.value %}
+                        {% set current_group.value = item.group %}
+                        <div class="moto-category-group-header">
+                            <h3>{{ item.group }}</h3>
+                        </div>
+                        {% endif %}
 
-        <h2>Battery</h2>
-        <p>12V/4Ah</p>
+                        <div class="moto-category-block">
+                            <div class="moto-category-header">
+                                <h4>{{ item.display }}</h4>
+                                {% if item.category_total > item.count %}
+                                <a href="{{ item.guide_url }}" class="moto-see-all-link">See all {{ item.display_plural }} ({{ item.category_total }}) &rarr;</a>
+                                {% endif %}
+                            </div>
+
+                            <div class="moto-product-grid">
+                                {% for product in item.products %}
+                                <div class="moto-product-card">
+                                    {% if product.get('badge') %}
+                                    <div class="moto-product-badge moto-badge-{{ product.badge }}">{{ product.badge_label }}</div>
+                                    {% endif %}
+
+                                    <a href="{{ product.get('affiliate_url') or (base_path + 'products/' + product.slug + '/index.html') }}" class="moto-product-link" target="_blank" rel="nofollow sponsored">
+                                        <div class="moto-product-image">
+                                            {% if product.get('image') %}
+                                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                                            {% else %}
+                                            <div class="moto-product-no-image">&#128737;</div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="moto-product-info">
+                                            <span class="moto-product-title">{{ product.title }}</span>
+
+                                            <div class="moto-product-rating">
+                                                {% if product.get('rating') %}
+                                                <span class="moto-stars">
+                                                    {% set full_stars = (product.rating * 2) | int // 2 %}
+                                                    {% set half_star = (product.rating * 2) | int % 2 %}
+                                                    {% for _ in range(full_stars) %}&#9733;{% endfor %}{% if half_star %}&#9734;{% endif %}
+                                                </span>
+                                                <span class="moto-rating-num">{{ product.rating }}</span>
+                                                {% endif %}
+                                                {% if product.get('review_count') %}
+                                                <span class="moto-reviews">({{ "{:,}".format(product.review_count) }})</span>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="moto-product-pricing">
+                                                {% if product.get('price') %}
+                                                <span class="moto-price">&#8377;{{ "{:,}".format(product.price|int) }}</span>
+                                                {% endif %}
+                                                {% if product.get('original_price') and product.original_price > product.get('price', 0) %}
+                                                <span class="moto-original-price">&#8377;{{ "{:,}".format(product.original_price|int) }}</span>
+                                                {% set savings = product.original_price - product.price %}
+                                                {% set pct = ((savings / product.original_price) * 100) | int %}
+                                                <span class="moto-savings-badge">-{{ pct }}%</span>
+                                                {% endif %}
+                                            </div>
+
+                                            {% if product.get('brand') %}
+                                            <span class="moto-product-brand">{{ product.brand }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+
+                                    <div class="moto-product-cta">
+                                        {% if product.get('affiliate_url') %}
+                                        <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" target="_blank" rel="nofollow sponsored">Check Price on Amazon</a>
+                                        {% else %}
+                                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm btn-outline">View Details</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </section>
+
+                <hr class="moto-section-divider">
+
+                {# ===== SECTION 2: NEW OWNER TIPS ===== #}
+                {% if editorial.get('new_owner_tips') %}
+                <section class="moto-section" id="new-owner">
+                    <div class="moto-section-header">
+                        <h2>New Owner Tips</h2>
+                        <p>Quick tips for new {{ motorcycle.model }} owners.</p>
+                    </div>
+
+                    <div class="moto-new-owner-grid">
+                        {% for tip in editorial.new_owner_tips %}
+                        <div class="moto-new-owner-card">
+                            <div class="moto-new-owner-icon">{{ tip.icon | safe }}</div>
+                            <div class="moto-new-owner-content">
+                                <h3>{{ tip.title }}</h3>
+                                <p>{{ tip.description }}</p>
+                                {% if tip.get('link') %}
+                                <a href="{{ base_path }}{{ tip.link }}" class="moto-new-owner-link">{{ tip.link_text }} &rarr;</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {# ===== SECTION 3: OWNERSHIP GUIDE ===== #}
+                <section class="moto-section" id="ownership">
+                    <div class="moto-section-header">
+                        <h2>Ownership Guide</h2>
+                        <p>Everything you need to know about owning and accessorizing your {{ motorcycle.model }}.</p>
+                    </div>
+
+                    <div class="moto-callout moto-callout-info">
+                        <div class="moto-callout-title">&#128176; Estimated Running Costs</div>
+                        <div class="moto-running-costs-grid">
+                            <div class="moto-cost-item">
+                                <span class="moto-cost-label">Fuel (per km)</span>
+                                <span class="moto-cost-value">{{ motorcycle.mileage }}</span>
+                            </div>
+                            <div class="moto-cost-item">
+                                <span class="moto-cost-label">Service Interval</span>
+                                <span class="moto-cost-value">{{ motorcycle.service_interval }}</span>
+                            </div>
+                            <div class="moto-cost-item">
+                                <span class="moto-cost-label">Insurance</span>
+                                <span class="moto-cost-value">Check with your insurer</span>
+                            </div>
+                            <div class="moto-cost-item">
+                                <span class="moto-cost-label">Tyre Replacement</span>
+                                <span class="moto-cost-value">Every 20,000-30,000 km</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if editorial.get('buyer_setups') %}
+                    <h3 class="moto-ownership-subhead">Accessory Setups by Budget</h3>
+                    <div class="moto-setups-grid">
+                        {% for setup in editorial.buyer_setups %}
+                        <div class="moto-setup-card{% if loop.last %} moto-setup-featured{% endif %}">
+                            <div class="moto-setup-icon">{{ setup.icon | safe }}</div>
+                            <h3>{{ setup.name }}</h3>
+                            <span class="moto-setup-budget">{{ setup.budget }}</span>
+                            <p>{{ setup.description }}</p>
+                            <ul class="moto-setup-list">
+                                {% for piece in setup.included %}
+                                <li>&#10003; {{ piece }}</li>
+                                {% endfor %}
+                            </ul>
+                            <div class="moto-setup-estimated">Estimated Cost: {{ setup.estimated_cost }}</div>
+                            <div class="moto-setup-who">Best for: {{ setup.who }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if buying_advice %}
+                    <h3 class="moto-ownership-subhead">Buying Tips</h3>
+                    <div class="moto-buying-advice-grid">
+                        {% if buying_advice.get('buy_first') %}
+                        <div class="moto-advice-card">
+                            <h3>&#128640; Buy First</h3>
+                            <p>These accessories should be your top priority:</p>
+                            <ul>
+                                {% for item in buying_advice.buy_first %}
+                                <li>&#10003; {{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        {% if buying_advice.get('avoid') %}
+                        <div class="moto-advice-card">
+                            <h3>&#10007; Avoid</h3>
+                            <p>Don't waste money on these:</p>
+                            <ul>
+                                {% for item in buying_advice.avoid %}
+                                <li>&#10007; {{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        {% if buying_advice.get('money_saving_tips') %}
+                        <div class="moto-advice-card">
+                            <h3>&#128176; Money-Saving Tips</h3>
+                            <ul>
+                                {% for tip in buying_advice.money_saving_tips %}
+                                <li>&#10003; {{ tip }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        {% if buying_advice.get('common_mistakes') %}
+                        <div class="moto-advice-card">
+                            <h3>&#9888; Common Mistakes</h3>
+                            <ul>
+                                {% for mistake in buying_advice.common_mistakes %}
+                                <li>&#10007; {{ mistake }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% if buying_advice.get('oem_vs_aftermarket') %}
+                    <div class="moto-callout moto-callout-info">
+                        <div class="moto-callout-title">&#128230; OEM vs Aftermarket</div>
+                        <p>{{ buying_advice.oem_vs_aftermarket }}</p>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                </section>
+
+                <hr class="moto-section-divider">
+
+                {# ===== SECTION 4: MAINTENANCE ===== #}
+                <section class="moto-section" id="maintenance">
+                    <div class="moto-section-header">
+                        <h2>Maintenance Schedule</h2>
+                        <p>Keep your {{ motorcycle.model }} running at its best with this maintenance timeline.</p>
+                    </div>
+
+                    <div class="moto-callout moto-callout-tip">
+                        <div class="moto-callout-title">&#128161; Why Regular Maintenance Matters</div>
+                        <p>Skipping services costs more in the long run. Regular chain cleaning, oil changes, and tyre checks keep your bike safe and preserve resale value. Follow the schedule below and use quality products.</p>
+                    </div>
+
+                    {% if maintenance_schedule %}
+                    <div class="moto-maintenance-timeline">
+                        {% for item in maintenance_schedule %}
+                        <div class="moto-maint-item">
+                            <div class="moto-maint-marker">
+                                <span class="moto-maint-interval">{{ item.interval }}</span>
+                            </div>
+                            <div class="moto-maint-content">
+                                <h4>{{ item.task }}</h4>
+                                <p>{{ item.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="moto-guides-grid">
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/index.html" class="moto-guide-card">
+                            <div class="moto-guide-icon">&#9881;</div>
+                            <h3>Chain Maintenance</h3>
+                            <p>Clean, lubricate, and adjust your chain like a pro</p>
+                            <span class="moto-guide-cta">Read Guide &rarr;</span>
+                        </a>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/index.html" class="moto-guide-card">
+                            <div class="moto-guide-icon">&#128167;</div>
+                            <h3>Washing Guide</h3>
+                            <p>Proper washing technique to protect paint and components</p>
+                            <span class="moto-guide-cta">Read Guide &rarr;</span>
+                        </a>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/index.html" class="moto-guide-card">
+                            <div class="moto-guide-icon">&#127744;</div>
+                            <h3>Tyre Pressure Guide</h3>
+                            <p>Optimal pressures for solo, pillion, and loaded riding</p>
+                            <span class="moto-guide-cta">Read Guide &rarr;</span>
+                        </a>
+                        <a href="{{ base_path }}motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/index.html" class="moto-guide-card">
+                            <div class="moto-guide-icon">&#128737;</div>
+                            <h3>Engine Oil Guide</h3>
+                            <p>Best oils and change intervals for your engine</p>
+                            <span class="moto-guide-cta">Read Guide &rarr;</span>
+                        </a>
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+
+                {# ===== SECTION 5: COMMON PROBLEMS ===== #}
+                {% if common_problems %}
+                <section class="moto-section" id="problems">
+                    <div class="moto-section-header">
+                        <h2>Common Problems & Solutions</h2>
+                        <p>Known issues with the {{ motorcycle.model }} and how to fix them.</p>
+                    </div>
+
+                    <div class="moto-callout moto-callout-warning">
+                        <div class="moto-callout-title">&#128270; Prevention is Better Than Cure</div>
+                        <p>Most of these problems can be prevented with regular maintenance. <a href="#maintenance">Follow the maintenance schedule</a> and invest in quality accessories to avoid costly repairs.</p>
+                    </div>
+
+                    <div class="moto-common-problems">
+                        {% for problem in common_problems %}
+                        <div class="moto-problem-card">
+                            <div class="moto-problem-header">
+                                <h4>&#9888; {{ problem.problem }}</h4>
+                            </div>
+                            <div class="moto-problem-body">
+                                <div class="moto-problem-cause">
+                                    <strong>Cause:</strong> {{ problem.cause }}
+                                </div>
+                                <div class="moto-problem-solution">
+                                    <strong>Solution:</strong> {{ problem.solution }}
+                                </div>
+                                {% if problem.get('product_category') %}
+                                <a href="{{ base_path }}categories/{{ problem.product_category|lower|replace(' ', '-') }}/" class="btn btn-sm btn-outline">View {{ problem.product_category }}s &rarr;</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {# ===== SECTION 6: COMPATIBLE ACCESSORIES ===== #}
+                {% if accessory_nav %}
+                <section class="moto-section" id="accessories">
+                    <div class="moto-section-header">
+                        <h2>Compatible Accessories</h2>
+                        <p>Browse compatible accessory categories for your {{ motorcycle.model }}. Each category has buying guides and expert picks.</p>
+                    </div>
+
+                    <div class="moto-accessory-nav-grid">
+                        {% for nav in accessory_nav %}
+                        <a href="{{ nav.guide_url }}" class="moto-accessory-nav-card">
+                            <span class="moto-accessory-nav-icon">{{ nav.icon | safe }}</span>
+                            <span class="moto-accessory-nav-name">{{ nav.name }}</span>
+                            <span class="moto-accessory-nav-arrow">&rarr;</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {# ===== SECTION 7: RELATED GUIDES ===== #}
+                {% if related_guides %}
+                <section class="moto-section" id="guides">
+                    <div class="moto-section-header">
+                        <h2>Related Buying Guides</h2>
+                        <p>Helpful articles and buying guides for {{ motorcycle.model }} owners.</p>
+                    </div>
+
+                    <div class="moto-articles-grid">
+                        {% for article in related_guides %}
+                        <a href="{{ base_path }}articles/{{ article.slug }}/index.html" class="moto-article-card">
+                            <div class="moto-article-image">
+                                <div class="placeholder-image guide-placeholder">{{ article.tags[0] if article.tags else 'Guide' }}</div>
+                                {% if article.get('reading_time') %}
+                                <span class="moto-article-time">{{ article.reading_time }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="moto-article-content">
+                                <h3>{{ article.title }}</h3>
+                                <p>{{ article.description }}</p>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {# ===== SECTION 8: FAQ ===== #}
+                {% if editorial.get('faq_items') %}
+                <section class="moto-section" id="faq">
+                    <div class="moto-section-header">
+                        <h2>Frequently Asked Questions</h2>
+                    </div>
+
+                    <div class="moto-faq-accordion">
+                        {% for faq in editorial.faq_items %}
+                        <div class="moto-faq-item">
+                            <button class="moto-faq-header">{{ faq.question }} <span class="moto-faq-toggle">+</span></button>
+                            <div class="moto-faq-content">
+                                <p>{{ faq.answer | safe }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {# ===== INTEGRATED SIDEBAR CONTENT (full width) ===== #}
+
+                {% if sidebar_similar_bikes %}
+                <section class="moto-section" id="similarBikes">
+                    <div class="moto-section-header">
+                        <h2>Similar Motorcycles</h2>
+                        <p>Other motorcycles you might be considering alongside the {{ motorcycle.model }}.</p>
+                    </div>
+                    <div class="moto-similar-grid">
+                        {% for other in sidebar_similar_bikes %}
+                        <a href="{{ base_path }}motorcycles/{{ other.slug }}/index.html" class="moto-similar-card">
+                            <span class="moto-similar-name">{{ other.brand }} {{ other.model }}</span>
+                            <span class="moto-similar-price">{% if other.get('price') %}&#8377;{{ "{:,}".format(other.price|int) }}{% endif %}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {% if sidebar_maintenance %}
+                <section class="moto-section" id="maintenanceSchedule">
+                    <div class="moto-section-header">
+                        <h2>Maintenance Schedule</h2>
+                        <p>Recommended service intervals to keep your {{ motorcycle.model }} running smoothly.</p>
+                    </div>
+                    <div class="moto-maint-table">
+                        {% for item in sidebar_maintenance %}
+                        <div class="moto-maint-row">
+                            <span class="moto-maint-interval">{{ item.interval }}</span>
+                            <span class="moto-maint-tasks">{{ item.tasks }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {% if sidebar_products %}
+                <section class="moto-section" id="topPicks">
+                    <div class="moto-section-header">
+                        <h2>Top Picks</h2>
+                        <p>Our editors' favourite accessories for the {{ motorcycle.model }}.</p>
+                    </div>
+                    <div class="moto-toppicks-grid">
+                        {% for sp in sidebar_products %}
+                        <a href="{{ base_path }}products/{{ sp.product.slug }}/index.html" class="moto-toppick-card">
+                            {% if sp.product.get('image') %}
+                            <div class="moto-toppick-image">
+                                <img src="{{ base_path }}{{ sp.product.image }}" alt="{{ sp.product.title }}" loading="lazy">
+                            </div>
+                            {% endif %}
+                            <div class="moto-toppick-info">
+                                <span class="moto-toppick-title">{{ sp.product.title }}</span>
+                                <span class="moto-toppick-meta">{{ sp.product.brand }} &middot; {% if sp.product.get('price') %}&#8377;{{ "{:,}".format(sp.product.price|int) }}{% endif %}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+
+            </div>
+        </div>
     </div>
 </section>
-
-{# ===== RECOMMENDED PRODUCTS ===== #}
-<section class="moto-recommended-products" id="recommended-products">
-    <div class="container">
-        <h2>Essential Accessories</h2>
-        <p>The products every Pulsar N250 owner should consider buying.</p>
-
-            <!-- Maintenance Essentials -->
-            <h3>Maintenance Essentials</h3>
-            <div class="moto-product-grid">
-                <!-- Editor's Choice - Chain Lube -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['maintenance_essentials']['editor_choice']['image'] }}" alt="{{ recommended_products['maintenance_essentials']['editor_choice']['name'] }}">
-                    <div class="moto-product-badge">Editor's Choice</div>
-                    <h4>{{ recommended_products['maintenance_essentials']['editor_choice']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['maintenance_essentials']['editor_choice']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['maintenance_essentials']['editor_choice']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['maintenance_essentials']['editor_choice']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-
-                <!-- Best Value - Engine Oil -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['maintenance_essentials']['best_value']['image'] }}" alt="{{ recommended_products['maintenance_essentials']['best_value']['name'] }}">
-                    <div class="moto-product-badge best-value">Best Value</div>
-                    <h4>{{ recommended_products['maintenance_essentials']['best_value']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['maintenance_essentials']['best_value']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['maintenance_essentials']['best_value']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['maintenance_essentials']['best_value']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-
-                <!-- Premium Pick - Chain Cleaner -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['maintenance_essentials']['premium_pick']['image'] }}" alt="{{ recommended_products['maintenance_essentials']['premium_pick']['name'] }}">
-                    <div class="moto-product-badge premium">Premium Pick</div>
-                    <h4>{{ recommended_products['maintenance_essentials']['premium_pick']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['maintenance_essentials']['premium_pick']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['maintenance_essentials']['premium_pick']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['maintenance_essentials']['premium_pick']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-            </div>
-
-            <div class="moto-view-all">
-                <a href="/categories/engine-oil/" class="btn btn-outline">View All Engine Oils &rarr;</a>
-            </div>
-
-            <!-- Protection -->
-            <h3>Protection</h3>
-            <div class="moto-product-grid">
-                <!-- Editor's Choice - Bike Cover -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['protection']['editor_choice']['image'] }}" alt="{{ recommended_products['protection']['editor_choice']['name'] }}">
-                    <div class="moto-product-badge">Editor's Choice</div>
-                    <h4>{{ recommended_products['protection']['editor_choice']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['protection']['editor_choice']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['protection']['editor_choice']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['protection']['editor_choice']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-
-                <!-- Best Value - Crash Guard -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['protection']['best_value']['image'] }}" alt="{{ recommended_products['protection']['best_value']['name'] }}">
-                    <div class="moto-product-badge best-value">Best Value</div>
-                    <h4>{{ recommended_products['protection']['best_value']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['protection']['best_value']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['protection']['best_value']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['protection']['best_value']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-            </div>
-
-            <div class="moto-view-all">
-                <a href="/categories/bike-cover/" class="btn btn-outline">View All Protection →</a>
-            </div>
-
-            <!-- Daily Riding -->
-            <h3>Daily Riding</h3>
-            <div class="moto-product-grid">
-                <!-- Editor's Choice - Phone Mount -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['daily_riding']['editor_choice']['image'] }}" alt="{{ recommended_products['daily_riding']['editor_choice']['name'] }}">
-                    <div class="moto-product-badge">Editor's Choice</div>
-                    <h4>{{ recommended_products['daily_riding']['editor_choice']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['daily_riding']['editor_choice']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['daily_riding']['editor_choice']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['daily_riding']['editor_choice']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-            </div>
-
-            <div class="moto-view-all">
-                <a href="/categories/phone-mount/" class="btn btn-outline">View All Daily Riding →</a>
-            </div>
-
-            <!-- Riding Gear -->
-            <h3>Riding Gear</h3>
-            <div class="moto-product-grid">
-                <!-- Editor's Choice - Helmet -->
-                <div class="moto-product-card">
-                    <img src="{{ recommended_products['riding_gear']['editor_choice']['image'] }}" alt="{{ recommended_products['riding_gear']['editor_choice']['name'] }}">
-                    <div class="moto-product-badge">Editor's Choice</div>
-                    <h4>{{ recommended_products['riding_gear']['editor_choice']['name'] }}</h4>
-                    <div class="moto-product-meta">
-                        <span>⭐ {{ recommended_products['riding_gear']['editor_choice']['rating'] }}/5</span>
-                        <span>₹{{ recommended_products['riding_gear']['editor_choice']['price'] }}</span>
-                    </div>
-                    <p>{{ recommended_products['riding_gear']['editor_choice']['summary'] }}</p>
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                </div>
-            </div>
-
-            <div class="moto-view-all">
-                <a href="/categories/helmet/" class="btn btn-outline">View All Riding Gear →</a>
-            </div>
-        </div>
-    </section>
-
-    {# ===== OWNERSHIP TIPS ===== #}
-    <section class="moto-ownership-tips" id="ownership-tips">
-        <div class="container">
-            <h2>Ownership Tips</h2>
-            <div class="moto-tips-grid">
-                <div class="moto-tip-card">
-                    <h3>Clean + Lubricate Chain Every 500-700 km</h3>
-                    <p>Use chain cleaner first, then high-quality lube. Extends chain life by 3x.</p>
-                    <a href="/motorcycles/{{ motorcycle.slug }}/maintenance/chain-maintenance/" class="moto-tip-link">Learn Chain Maintenance →</a>
-                </div>
-
-                <div class="moto-tip-card">
-                    <h3>Check Tyre Pressure Weekly</h3>
-                    <p>Cool tyres only. Front: 22-28 PSI, rear: 28-32 PSI for optimal handling.</p>
-                    <a href="/motorcycles/{{ motorcycle.slug }}/maintenance/tyre-pressure/" class="moto-tip-link">Tyre Pressure Guide →</a>
-                </div>
-
-                <div class="moto-tip-card">
-                    <h3>Avoid Pressure Washing Wheel Bearings</h3>
-                    <p>Water causes corrosion. Manual cleaning only for bearings.</p>
-                    <a href="/motorcycles/{{ motorcycle.slug }}/maintenance/washing-guide/" class="moto-tip-link">Washing Guide →</a>
-                </div>
-
-                <div class="moto-tip-card">
-                    <h3>Inspect Brake Pads Every Service</h3>
-                    <p>Wear patterns tell you about riding habits. Replace pads before damage.</p>
-                    <a href="/motorcycles/{{ motorcycle.slug }}/maintenance/brake-maintenance/" class="moto-tip-link">Brake Maintenance →</a>
-                </div>
-
-                <div class="moto-tip-card">
-                    <h3>Clean Radiator Fins Regularly</h3>
-                    <p>Dust reduces cooling efficiency by up to 40% in hot weather.</p>
-                    <a href="/motorcycles/{{ motorcycle.slug }}/maintenance/engine-oil/" class="moto-tip-link">Engine Guide →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {# ===== COMMON PROBLEMS ===== #}
-    <section class="moto-common-problems">
-        <div class="container">
-            <h2>Common Problems</h2>
-
-            <div class="moto-problems-grid">
-                <div class="moto-problem-card">
-                    <h3>⚠️ Chain Noise</h3>
-                    <p><strong>Cause:</strong> Dust and grime buildup on worn links</p>
-                    <p><strong>Solution:</strong> Clean with chain cleaner and re-lubricate</p>
-                    <a href="/categories/chain-cleaner/" class="btn btn-sm">Cleaners →</a>
-                </div>
-
-                <div class="moto-problem-card">
-                    <h3>⚠️ Battery Discharge</h3>
-                    <p><strong>Cause:</strong> Voltage drops in high temperatures</p>
-                    <p><strong>Solution:</strong> USB charger and battery tender for long trips</p>
-                    <a href="/categories/tyre-inflator/" class="btn btn-sm">Chargers →</a>
-                </div>
-
-                <div class="moto-problem-card">
-                    <h3>⚠️ Mirror Vibration</h3>
-                    <p><strong>Cause:</strong> Loose mounting hardware</p>
-                    <p><strong>Solution:</strong> Tighten bolts and upgrade to vibration-damper mounts</p>
-                    <a href="/categories/phone-mount/" class="btn btn-sm">Mounts →</a>
-                </div>
-
-                <div class="moto-problem-card">
-                    <h3>🛑 Brake Squeal</h3>
-                    <p><strong>Cause:</strong> Worn pads or rotor corrosion</p>
-                    <p><strong>Solution:</strong> Replace pads and clean rotors</p>
-                    <a href="/categories/engine-oil/" class="btn btn-sm">Brakes →</a>
-                </div>
-
-                <div class="moto-problem-card">
-                    <h3>🔥 Engine Overheating</h3>
-                    <p><strong>Cause:</strong> Clogged radiator or low oil</p>
-                    <p><strong>Solution:</strong> Clean fins and check oil levels</p>
-                    <a href="/categories/engine-oil/" class="btn btn-sm">Oil Guide →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {# ===== BUYING GUIDES ===== #}
-    <section class="moto-buy-guides" id="buy-guides">
-        <div class="container">
-            <h2>Buying Guides</h2>
-            <p>Browse comprehensive category reviews to compare products and make informed purchasing decisions.</p>
-
-            <div class="moto-guides-grid">
-                <a href="/categories/helmet/" class="moto-guide-card">
-                    <h3>Best Helmets</h3>
-                    <p>Full face, flip-up & modular helmets reviewed with safety ratings and pricing</p>
-                    <span class="moto-guide-cta">Browse Helmets →</span>
-                </a>
-
-                <a href="/categories/phone-mount/" class="moto-guide-card">
-                    <h3>Best Phone Mounts</h3>
-                    <p>Vibration-free, secure, and easy-to-use mounting solutions for navigation</p>
-                    <span class="moto-guide-cta">Browse Mounts →</span>
-                </a>
-
-                <a href="/categories/engine-oil/" class="moto-guide-card">
-                    <h3>Best Engine Oil</h3>
-                    <p>Mineral, semi-synthetic & fully synthetic options compared for Pulsar N250</p>
-                    <span class="moto-guide-cta">Browse Oils →</span>
-                </a>
-
-                <a href="/categories/chain-lube/" class="moto-guide-card">
-                    <h3>Best Chain Lubes</h3>
-                    <p>Spray and drip-on options for maintaining your chain in Indian conditions</p>
-                    <span class="moto-guide-cta">Browse Chain Lubes →</span>
-                </a>
-
-                <a href="/categories/bike-cover/" class="moto-guide-card">
-                    <h3>Best Bike Covers</h3>
-                    <p>UV, water, and dust protection options for storing and traveling with your bike</p>
-                    <span class="moto-guide-cta">Browse Covers →</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    {# ===== FAQ ===== #}
-    <section class="moto-faq" id="faq">
-        <div class="container">
-            <h2>FAQ</h2>
-
-            <div class="moto-faq-accordion">
-                <div class="moto-faq-item">
-                    <button class="moto-faq-header">Which engine oil should I use for my Pulsar N250?<span class="moto-faq-toggle">+</span></button>
-                    <div class="moto-faq-content">
-                        <p>Use 10W-40 synthetic oil recommended by Bajaj. Change every 3,000 km in Indian conditions. Choose oil with proper JASO MA2 certification for optimal engine protection.</p>
-                    </div>
-                </div>
-
-                <div class="moto-faq-item">
-                    <button class="moto-faq-header">How often should I lubricate the chain?<span class="moto-faq-toggle">+</span></button>
-                    <div class="moto-faq-content">
-                        <p>Every 500-700 km or after every rain ride. Clean the chain before re-lubricating for best results. Use chain lubricant designed for O-ring/X-ring chains to prevent fling-off.</p>
-                    </div>
-                </div>
-
-                <div class="moto-faq-item">
-                    <button class="moto-faq-header">What tyre pressure should I maintain?<span class="moto-faq-toggle">+</span></button>
-                    <div class="moto-faq-content">
-                        <p>Cool tyres only. Front: 22-28 PSI, rear: 28-32 PSI. Check weekly for optimal handling and fuel efficiency. Increase pressure when riding with a passenger or loaded luggage.</p>
-                    </div>
-                </div>
-
-                <div class="moto-faq-item">
-                    <button class="moto-faq-header">Can I install a USB charger on my Pulsar N250?<span class="moto-faq-toggle">+</span></button>
-                    <div class="moto-faq-content">
-                        <p>Yes. Microtractor USB Charger is designed for handlebar mounting with waterproof protection and 2A fast charging capability.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {# ===== QUICK NAVIGATION ===== #}
-    <section class="moto-quick-nav">
-        <div class="container">
-            <h2>Quick Navigation</h2>
-            <div class="moto-nav-grid">
-                <a href="/motorcycles/" class="moto-nav-card">
-                    <span class="moto-nav-icon">🏍️</span>
-                    <span>Motorcycles Home</span>
-                </a>
-                <a href="/categories/" class="moto-nav-card">
-                    <span class="moto-nav-icon">🛒</span>
-                    <span>All Accessories</span>
-                </a>
-                <a href="/motorcycles/{{ motorcycle.slug }}/maintenance/" class="moto-nav-card">
-                    <span class="moto-nav-icon">🔧</span>
-                    <span>Maintenance Guides</span>
-                </a>
-                <a href="/guides/" class="moto-nav-card">
-                    <span class="moto-nav-icon">📖</span>
-                    <span>Buying Guides</span>
-                </a>
-                <a href="/about/" class="moto-nav-card">
-                    <span class="moto-nav-icon">ℹ️</span>
-                    <span>About BikeReview India</span>
-                </a>
-            </div>
-        </div>
-    </section>
 {% endblock %}

@@ -40,7 +40,7 @@
       "rating": 4.5,
       "review_count": 9585,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B00C72MCUU?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B00C72MCUU?tag=xuy0834-21",
       "image": "images/products/motul-7100-10w40.jpg",
       "last_updated": null
     },
@@ -90,7 +90,7 @@
       "rating": 4.3,
       "review_count": 5200,
       "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B01IDHDF1C?tag=0x23uyx-21",
+      "affiliate_url": "https://www.amazon.in/dp/B01IDHDF1C?tag=xuy0834-21",
       "image": "images/products/motul-3100-10w30.jpg",
       "last_updated": null
     },
@@ -202,7 +202,7 @@
   },
   {
     "asin": "B0H3Q1N71V",
-    "slug": "bike-chain-cleaning-brush-with-chain-cleaner-chain-lube-150ml-each-microfiber-duster-complete-motorcycle-chain-cleaning-kit-bicycle-scooter-cycle-maintenance-accessories",
+    "slug": "cleaning-brush-150ml-microfiber-duster-complete",
     "title": "Bike Chain Cleaning Brush with Chain Cleaner & Chain Lube 150ml Each + Microfiber Duster | Complete Motorcycle Chain Cleaning Kit | Bicycle, Scooter & Cycle Maintenance Accessories",
     "brand": "Bike",
     "category": "Chain Lube",
@@ -246,7 +246,7 @@
   },
   {
     "asin": "B0CRZ5RL94",
-    "slug": "mikanix-bike-chain-lubricant-and-chain-cleaner-spray-with-cleaning-brush-for-motorcycle-and-bicycle-300-ml",
+    "slug": "mikanix-lubricant-spray-cleaning-brush-bicycle",
     "title": "MIKANIX Bike Chain Lubricant and Chain Cleaner Spray with Cleaning Brush for Motorcycle and Bicycle (300 ml)",
     "brand": "Mikanix",
     "category": "Chain Cleaner",
@@ -288,7 +288,7 @@
   },
   {
     "asin": "B0D31SYW4T",
-    "slug": "mikanix-combo-of-chain-cleaner-chain-lube-all-in-one-liquid-polish-cleaner-cleaning-brush-cleans-shines-bike-car-protects-bike-chain-550-ml-pack-of-4",
+    "slug": "mikanix-combo-liquid-polish-cleaning-brush",
     "title": "MIKANIX Combo of Chain Cleaner + Chain Lube + All In One Liquid Polish Cleaner | Cleaning Brush | Cleans | Shines Bike | Car & Protects Bike Chain (550 ml, Pack of 4)",
     "brand": "Mikanix",
     "category": "Chain Lube",
@@ -376,7 +376,7 @@
   },
   {
     "asin": "B004YF1Z4M",
-    "slug": "michelin-bike-chain-cleaner-spray-400ml-powerful-degreaser-for-motorbike-bicycle-chains-easily-removes-grease-dirt-grime-safe-on-standard-o-ring-x-ring-z-ring-chains",
+    "slug": "michelin-spray-400ml-powerful-degreaser-motorbike",
     "title": "MICHELIN Bike Chain Cleaner Spray 400ml | Powerful Degreaser for Motorbike & Bicycle Chains | Easily Removes Grease, Dirt & Grime | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains",
     "brand": "Michelin",
     "category": "Chain Cleaner",
@@ -420,7 +420,7 @@
   },
   {
     "asin": "B0D8T9CCDN",
-    "slug": "oto2eye-motorcycle-chain-cleaning-maintenance-kit-chain-cleaner-150ml-chain-lube-150ml-bike-polish-spray-200ml-chain-cleaning-brush-microfiber-cloth-all-in-one-bike-care-accessories",
+    "slug": "oto2eye-cleaning-maintenance-kit-150ml-150ml",
     "title": "OTO2EYE Motorcycle Chain Cleaning & Maintenance Kit Chain Cleaner (150ml), Chain Lube (150ml), Bike Polish Spray (200ml), Chain Cleaning Brush & Microfiber Cloth | All-in-One Bike Care Accessories",
     "brand": "Oto2Eye",
     "category": "Chain Cleaner",
@@ -464,7 +464,7 @@
   },
   {
     "asin": "B0GFTYJYB3",
-    "slug": "chain-cleaning-brush-with-microfiber-cloths-2-in-1-bike-motorcycle-chain-cleaner-heavy-duty-nylon-bristles-ideal-for-bicycle-bike-cycle-maintenance",
+    "slug": "cleaning-brush-microfiber-cloths-bristles-ideal",
     "title": "Chain Cleaning Brush with Microfiber Cloths | 2-in-1 Bike & Motorcycle Chain Cleaner | Heavy Duty Nylon Bristles | Ideal for Bicycle, Bike & Cycle Maintenance",
     "brand": "Chain",
     "category": "Chain Cleaner",
@@ -506,7 +506,7 @@
   },
   {
     "asin": "B07CLZZQFG",
-    "slug": "kangaroo-chain-lube-chain-cleaner-combo-500ml-each-for-motorcycle-bike-chain-maintenance-advanced-lubrication-powerful-degreaser-complete-chain-care-solution",
+    "slug": "kangaroo-combo-500ml-maintenance-lubrication-powerful",
     "title": "Kangaroo Chain Lube & Chain Cleaner Combo | 500ml Each for Motorcycle & Bike Chain Maintenance | Advanced Lubrication & Powerful Degreaser | Complete Chain Care Solution",
     "brand": "Kangaroo",
     "category": "Chain Lube",
@@ -550,7 +550,7 @@
   },
   {
     "asin": "B01ESPB3PI",
-    "slug": "motul-combo-of-c2-chain-lube-400-ml-and-c1-chain-clean-for-all-bikes-400-ml-lbch014",
+    "slug": "motul-combo-c2-400-ml-c1",
     "title": "Motul Combo of C2 Chain Lube (400 ml) and C1 Chain Clean for All Bikes (400 ml) (LBCH014)",
     "brand": "Motul",
     "category": "Chain Lube",
@@ -592,7 +592,7 @@
   },
   {
     "asin": "B08R5XJNLP",
-    "slug": "motomax-chain-lube-aerosol-spray-200-ml-provides-lubrication-and-corrosion-protection-of-chain-sprockets-for-bikes-motorbikes-cars-avoid-sling-off-prevent-chain-breakage-extended-chain-life",
+    "slug": "motomax-aerosol-spray-200-ml-provides",
     "title": "Motomax Chain Lube Aerosol Spray 200 ml |Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life",
     "brand": "Motomax",
     "category": "Chain Lube",
@@ -637,7 +637,7 @@
   },
   {
     "asin": "B09475LGXK",
-    "slug": "kangaroo-chain-lubricant-spray-pack-of2-of-500-ml-each-chain-lube-grease-multipurpose-spray-rust-remover-lubricant-stain-remover-degreaser-and-cleaning-agentchain-lubrication",
+    "slug": "kangaroo-lubricant-spray-of2-500-ml",
     "title": "Kangaroo Chain Lubricant Spray (Pack of2) of 500 Ml Each | Chain Lube Grease| Multipurpose Spray, Rust Remover, Lubricant, Stain Remover, Degreaser, And Cleaning Agent,Chain Lubrication",
     "brand": "Kangaroo",
     "category": "Chain Lube",
@@ -679,7 +679,7 @@
   },
   {
     "asin": "B091PQV2VZ",
-    "slug": "kangaroo-motorcycle-bike-chain-cleaner-spray-degreaser-for-cycle-motorcycle-chain-driven-machines-500ml-pack-of-1",
+    "slug": "kangaroo-spray-degreaser-cycle-driven-machines",
     "title": "Kangaroo Motorcycle Bike Chain Cleaner Spray Degreaser For Cycle Motorcycle & Chain Driven Machines 500Ml (Pack Of 1).",
     "brand": "Kangaroo",
     "category": "Chain Cleaner",
@@ -723,7 +723,7 @@
   },
   {
     "asin": "B07JDF3ZSK",
-    "slug": "wuerth-chain-cleaner-500-ml-german-engineered-spray-cleaner-for-motorcycle-bicycle-chains-o-ring-safe-fast-drying-residue-free-degreaser",
+    "slug": "wuerth-500-ml-german-engineered-spray",
     "title": "Wuerth Chain Cleaner - 500 ml | German Engineered Spray Cleaner for Motorcycle & Bicycle Chains | O-Ring Safe | Fast Drying, Residue Free Degreaser",
     "brand": "Wuerth",
     "category": "Chain Cleaner",
@@ -767,7 +767,7 @@
   },
   {
     "asin": "B01NAVOSE5",
-    "slug": "kangaroo-chain-lube-spray-for-bikes-500-ml-long-lasting-lubrication-anti-rust-corrosion-protection-high-performance-in-all-weather-for-all-motorcycle-chain-types",
+    "slug": "kangaroo-spray-bikes-500-ml-long",
     "title": "Kangaroo Chain Lube Spray For Bikes (500 Ml) Long-lasting Lubrication | Anti-rust & Corrosion Protection | High Performance In All Weather | For All Motorcycle Chain Types",
     "brand": "Kangaroo",
     "category": "Chain Lube",
@@ -811,7 +811,7 @@
   },
   {
     "asin": "B0F22L7S2L",
-    "slug": "chain-cleaner-c1-150-ml-chain-lube-road-c2-150-ml-chain-cleaner-brush-chain-oil-300-ml-pack-of-3",
+    "slug": "c1-150-ml-road-c2-150",
     "title": "Chain Cleaner C1 (150 ml) & Chain Lube Road C2 (150 ml) Chain Cleaner Brush | Chain Oil (300 ml, Pack of 3)",
     "brand": "Chain",
     "category": "Chain Cleaner",
@@ -853,7 +853,7 @@
   },
   {
     "asin": "B01J7GE5PS",
-    "slug": "vista-auto-care-chain-lube-spray-500-ml-high-performance-all-weather-chain-lubricant-for-bike-motorcycles-reduces-friction-wear-rust-protection",
+    "slug": "vista-auto-care-spray-500-ml",
     "title": "Vista Auto Care Chain Lube Spray 500 ml | High-Performance All Weather Chain Lubricant for Bike & Motorcycles | Reduces Friction & Wear, Rust Protection",
     "brand": "Vista",
     "category": "Chain Lube",
@@ -897,7 +897,7 @@
   },
   {
     "asin": "B0CX2MC38X",
-    "slug": "gulf-pro-chain-lube-high-penetration-water-wash-resistance-chain-lube-compatible-with-o-x-z-ring-chain-oil-150-ml",
+    "slug": "gulf-penetration-water-wash-resistance-ring",
     "title": "Gulf PRO CHAIN LUBE High Penetration, Water Wash Resistance Chain Lube| Compatible with O, X, Z-Ring Chain Oil [150 ml]",
     "brand": "Gulf",
     "category": "Chain Lube",
@@ -941,7 +941,7 @@
   },
   {
     "asin": "B0G5PL8VNL",
-    "slug": "vista-auto-care-chain-care-combo-chain-kleen-chain-lube-brush-premium-bike-chain-cleaner-lubricant-kit-removes-tough-grease-prevents-rust-enhances-chain-life-chain-care-combo-micro",
+    "slug": "vista-auto-care-care-combo-kleen",
     "title": "Vista Auto Care Chain Care Combo | Chain Kleen + Chain Lube + Brush | Premium Bike Chain Cleaner & Lubricant Kit | Removes Tough Grease | Prevents Rust | Enhances Chain Life (Chain Care Combo Micro)",
     "brand": "Vista",
     "category": "Chain Cleaner",
@@ -986,7 +986,7 @@
   },
   {
     "asin": "B005PW0OUE",
-    "slug": "michelin-bike-chain-lube-spray-400ml-long-lasting-weather-proof-chain-lube-reduces-friction-wear-with-anti-rust-corrosion-protection-safe-on-standard-o-ring-x-ring-z-ring-chains",
+    "slug": "michelin-spray-400ml-long-lasting-weather",
     "title": "Michelin Bike Chain Lube Spray 400ml | Long-Lasting Weather Proof Chain Lube Reduces Friction & Wear With Anti-Rust & Corrosion Protection | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains",
     "brand": "Michelin",
     "category": "Chain Lube",
@@ -1031,7 +1031,7 @@
   },
   {
     "asin": "B0CR7K8Y4R",
-    "slug": "kelvinn-bike-chain-lube-150ml-motorcycle-chain-lubricant-oil-for-smooth-ride-anti-rust-corrosion-protection-no-sling-formula-noise-reduction-wear-protection-for-all-bikes-o-ring-x-ring-chains",
+    "slug": "kelvinn-150ml-lubricant-smooth-ride-rust",
     "title": "KELVINN Bike Chain Lube 150ml, Motorcycle Chain Lubricant Oil for Smooth Ride, Anti Rust Corrosion Protection, No Sling Formula, Noise Reduction Wear Protection for All Bikes O Ring X Ring Chains",
     "brand": "Kelvinn",
     "category": "Chain Lube",
@@ -1077,7 +1077,7 @@
   },
   {
     "asin": "B0G93SFDQF",
-    "slug": "castrol-chain-lube-for-bikes-150ml-protects-chain-from-wear-and-corrosion-excellent-lubrication-chain-cleaner-for-bikes-150ml-instantly-loosens-oil-grease-and-dirt",
+    "slug": "castrol-bikes-150ml-protects-wear-corrosion",
     "title": "Castrol Chain Lube for Bikes (150ml) | Protects Chain from Wear and Corrosion | Excellent Lubrication + Chain Cleaner for Bikes (150ml) | Instantly Loosens Oil, Grease and Dirt",
     "brand": "Castrol",
     "category": "Chain Cleaner",
@@ -1122,7 +1122,7 @@
   },
   {
     "asin": "B01ESPB2V8",
-    "slug": "motul-c1-chain-cleaner-spray-150ml-for-bikes-removes-grease-oil-dirt-high-performance-chain-cleaning-safe-for-o-ring-x-ring-z-ring-motorcycle-chains",
+    "slug": "motul-c1-spray-150ml-bikes-removes",
     "title": "Motul C1 Chain Cleaner Spray 150ml for Bikes | Removes Grease, Oil & Dirt | High-Performance Chain Cleaning | Safe for O-Ring, X-Ring & Z-Ring Motorcycle Chains",
     "brand": "Motul",
     "category": "Chain Cleaner",
@@ -1167,7 +1167,7 @@
   },
   {
     "asin": "B01M28DAFN",
-    "slug": "sheeba-bike-chain-lube-spray-i-heavy-duty-high-friction-fluid-i-lubricates-reduces-friction-and-noise-i-anti-corrosion-i-good-adhesion-excellent-resistance-i-water-repellent-i-long-life-160ml-pack",
+    "slug": "sheeba-spray-friction-fluid-lubricates-reduces",
     "title": "SHEEBA Bike Chain Lube Spray I Heavy Duty - High Friction Fluid I Lubricates-Reduces Friction and Noise I Anti Corrosion I Good Adhesion - Excellent Resistance I Water Repellent I Long Life-160mL Pack",
     "brand": "Sheeba",
     "category": "Chain Lube",
@@ -1209,7 +1209,7 @@
   },
   {
     "asin": "B07D6V3MB9",
-    "slug": "wuerth-chain-lubricant-500ml-high-pressure-resistant-motorcycle-bike-chain-lube-spray-o-ring-x-ring-safe-anti-rust-water-resistant-quick-dry-wax-film-reduces-wear-chain-noise",
+    "slug": "wuerth-lubricant-500ml-pressure-spray-ring",
     "title": "Wuerth Chain Lubricant - 500ml | High Pressure Resistant Motorcycle Bike Chain Lube Spray, O-Ring & X-Ring Safe, Anti-Rust, Water Resistant, Quick Dry Wax Film, Reduces Wear & Chain Noise",
     "brand": "Wuerth",
     "category": "Chain Lube",
@@ -1254,7 +1254,7 @@
   },
   {
     "asin": "B0F7Y74YNW",
-    "slug": "oswe-lube-bike-chain-lubricant-115ml-long-lasting-wet-chain-oil-for-all-weather-terrain-smooth-silent-friction-less-bicycle-bike-chain-lube-drip-squeeze-bottle",
+    "slug": "oswe-lubricant-115ml-long-lasting-wet",
     "title": "Oswe Lube Bike Chain Lubricant 115ml | Long-Lasting Wet Chain Oil for All Weather & Terrain | Smooth, Silent Friction-less Bicycle Bike Chain Lube | Drip Squeeze Bottle",
     "brand": "Oswe",
     "category": "Chain Lube",
@@ -1296,7 +1296,7 @@
   },
   {
     "asin": "B0FHWQHW4L",
-    "slug": "nikavi-chain-cleaner-spray-500ml-high-performance-motorcycle-chain-degreaser-removes-dirt-grease-oil-rust-protection-safe-for-o-ring-x-ring-z-ring-chains",
+    "slug": "nikavi-spray-500ml-performance-degreaser-removes",
     "title": "NIKAVI Chain Cleaner Spray – 500ml | High-Performance Motorcycle Chain Degreaser | Removes Dirt, Grease & Oil | Rust Protection | Safe for O-Ring, X-Ring & Z-Ring Chains",
     "brand": "Nikavi",
     "category": "Chain Cleaner",
@@ -1342,7 +1342,7 @@
   },
   {
     "asin": "B0C49BG6WN",
-    "slug": "castrol-chain-lube-for-bikes-150ml-ultimate-protection-against-wear-corrosion-smooth-long-lasting-lubrication-weather-proof-performance-compatible-with-all-chain-types",
+    "slug": "castrol-bikes-150ml-ultimate-protection-against",
     "title": "Castrol Chain Lube for Bikes (150ML) | Ultimate Protection Against Wear & Corrosion | Smooth & Long-Lasting Lubrication | Weather-Proof Performance | Compatible with All Chain Types",
     "brand": "Castrol",
     "category": "Chain Lube",
@@ -1387,7 +1387,7 @@
   },
   {
     "asin": "B076DC73XF",
-    "slug": "allextreme-cyl-06-t-multi-purpose-bike-chain-cleaner-brush-with-soft-long-bristles-ideal-for-quick-cleaning-of-cycles-motorcycles-blue",
+    "slug": "allextreme-cyl-06-multi-purpose-brush",
     "title": "AllExtreme ‎CYL-06-T Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles (Blue)",
     "brand": "Allextreme",
     "category": "Chain Cleaner",
@@ -1429,7 +1429,7 @@
   },
   {
     "asin": "B01ESPB2WM",
-    "slug": "motul-chain-lube-chain-cleaner-combo-for-bikes-c2-lubrication-c1-deep-cleaning-spray-for-superior-chain-care-suitable-for-all-motorcycles-150-ml-each",
+    "slug": "motul-combo-bikes-c2-lubrication-c1",
     "title": "Motul Chain Lube & Chain Cleaner Combo for Bikes – C2 Lubrication + C1 Deep Cleaning Spray for Superior Chain Care, Suitable for All Motorcycles, 150 ml Each",
     "brand": "Motul",
     "category": "Chain Lube",
@@ -1471,7 +1471,7 @@
   },
   {
     "asin": "B0GBVY53PM",
-    "slug": "castrol-chain-cleaner-for-bikes-150ml-instantly-breaks-down-oil-grease-dirt-deep-cleaning-for-maximum-performance-prepares-chains-for-lubrication-safe-for-all-chain-types",
+    "slug": "castrol-bikes-150ml-instantly-breaks-down",
     "title": "Castrol Chain Cleaner for Bikes (150ML) | Instantly Breaks Down Oil, Grease & Dirt | Deep Cleaning for Maximum Performance | Prepares Chains for Lubrication | Safe for All Chain Types",
     "brand": "Castrol",
     "category": "Chain Cleaner",
@@ -1515,7 +1515,7 @@
   },
   {
     "asin": "B09T6V8LGV",
-    "slug": "yamaha-yamalube-chain-lube-for-all-bikes-120ml-black-90793ad82200-pack-of-1-aerosol",
+    "slug": "yamaha-yamalube-bikes-120ml-90793ad82200-aerosol",
     "title": "YAMAHA Yamalube Chain Lube For All Bikes 120Ml, Black (90793Ad82200, Pack Of 1), Aerosol",
     "brand": "Yamaha",
     "category": "Chain Lube",
@@ -1557,7 +1557,7 @@
   },
   {
     "asin": "B08R5MVCJY",
-    "slug": "motomax-chain-lube-aerosol-spray-100-ml-provides-lubrication-and-corrosion-protection-of-chain-sprockets-for-bikes-motorbikes-cars-avoid-sling-off-prevent-chain-breakage-extended-chain-life",
+    "slug": "motomax-aerosol-spray-100-ml-provides",
     "title": "Motomax Chain Lube Aerosol Spray 100 ml |Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life",
     "brand": "Motomax",
     "category": "Chain Lube",

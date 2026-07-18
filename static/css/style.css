@@ -28,7 +28,7 @@
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
     --transition: 0.2s ease;
-    --max-width: 1200px;
+    --max-width: 1500px;
     --header-height: 64px;
 }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-padding-top: 80px; }
@@ -277,14 +277,14 @@ ul { list-style: none; }
 
 /* ===== Product Showcase ===== */
 .product-showcase { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.product-showcase-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition); position: relative; }
+.product-showcase-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition); position: relative; display: flex; flex-direction: column; height: 100%; }
 .product-showcase-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.product-showcase-image { height: 200px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.product-showcase-image { height: 200px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; flex-shrink: 0; }
 .product-showcase-image img { width: 100%; height: 100%; object-fit: cover; }
 .product-rank { position: absolute; top: 12px; left: 12px; background: var(--color-primary); color: white; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; z-index: 1; }
 .rank-alt { background: var(--color-text-secondary); }
 .product-badge-editors { position: absolute; top: 12px; right: 12px; background: var(--color-success); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; z-index: 1; }
-.product-showcase-content { padding: 20px; }
+.product-showcase-content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .product-showcase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .product-showcase-category { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent); }
 .product-showcase-rating { display: flex; align-items: center; gap: 6px; }
@@ -296,12 +296,48 @@ ul { list-style: none; }
 .bestfor-label { font-weight: 600; color: var(--color-text-muted); }
 .bestfor-value { color: var(--color-text); font-weight: 600; }
 .product-showcase-verdict { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 16px; line-height: 1.5; }
-.product-showcase-footer { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.product-showcase-footer { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: auto; }
 .product-showcase-score { display: flex; align-items: baseline; gap: 2px; }
 .product-showcase-score .score-number { font-size: 1.5rem; font-weight: 800; color: var(--color-accent); }
 .product-showcase-score .score-label { font-size: 0.85rem; color: var(--color-text-muted); }
 .product-showcase-price { font-size: 1.1rem; font-weight: 700; }
 .product-showcase-actions { display: flex; gap: 8px; margin-left: auto; }
+
+/* ===== Product Card Title Clamp (Issue 2) ===== */
+/* Reusable utility: visually clamp Amazon product titles to 2 lines.
+   Data is never truncated — only clamped via CSS (-webkit-line-clamp). */
+.product-card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+/* ===== Product Card Consistency (Issue 9) ===== */
+/* Reusable flex-column card: equal heights in a row, fixed image size,
+   CTA pinned to the bottom via margin-top:auto. Apply to card containers. */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.product-card .product-card-image,
+.product-card .product-showcase-image,
+.product-card .product-card-editorial-image,
+.product-card .bestof-product-image,
+.product-card .moto-product-image,
+.product-card .product-reco-image,
+.product-card .editors-pick-image {
+    flex-shrink: 0;
+}
+.product-card .product-card-cta,
+.product-card .product-showcase-actions,
+.product-card .product-card-editorial-actions,
+.product-card .bestof-product-actions,
+.product-card .moto-product-cta {
+    margin-top: auto;
+}
 
 /* ===== Guides Showcase ===== */
 .guides-showcase { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -440,12 +476,11 @@ ul { list-style: none; }
 .bike-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; }
 .bike-main { min-width: 0; }
 
-/* ===== Sidebar ===== */
+/* ===== Sidebar (product page) ===== */
 .sidebar-sticky { position: sticky; top: 88px; }
 .sidebar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px; }
 .sidebar-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--color-border); }
-.sidebar-cta { background: var(--color-accent-light); border-color: var(--color-accent); }
-.sidebar-cta p { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 14px; }
+.sidebar-buy-box { background: var(--color-accent-light); border-color: var(--color-accent); }
 .sidebar-specs { display: flex; flex-direction: column; gap: 10px; }
 .sidebar-specs li { display: flex; justify-content: space-between; font-size: 0.85rem; }
 .sidebar-specs li span { color: var(--color-text-muted); }
@@ -453,8 +488,6 @@ ul { list-style: none; }
 .sidebar-links { display: flex; flex-direction: column; gap: 8px; }
 .sidebar-links a { font-size: 0.85rem; color: var(--color-text-secondary); transition: color var(--transition); }
 .sidebar-links a:hover { color: var(--color-accent); }
-.sidebar-trust .trust-list { display: flex; flex-direction: column; gap: 8px; }
-.trust-list li { font-size: 0.85rem; color: var(--color-text-secondary); }
 .sidebar-related { display: flex; flex-direction: column; gap: 8px; }
 .sidebar-related a { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--color-text-secondary); }
 .sidebar-related a:hover { color: var(--color-accent); }
@@ -519,7 +552,7 @@ ul { list-style: none; }
 
 /* ===== BestOf Content ===== */
 .bestof-content-section { padding: 48px 0; }
-.bestof-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; }
+.bestof-layout { display: block; }
 .bestof-main { min-width: 0; }
 .bestof-intro-editorial { margin-bottom: 32px; }
 .bestof-intro-editorial h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
@@ -539,6 +572,32 @@ ul { list-style: none; }
 .rank-bronze { background: var(--color-bronze); }
 .score-badge { display: inline-flex; align-items: center; justify-content: center; background: var(--color-accent); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; }
 
+/* ===== Editorial Verdict Badge ===== */
+/* Qualitative label (never a numeric score) shown next to the Amazon rating. */
+.verdict-label-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 0.85rem; font-weight: 800; letter-spacing: 0.01em;
+    text-transform: uppercase; border: 1px solid transparent;
+}
+.verdict-subtitle { font-size: 0.78rem; opacity: 0.65; margin-left: 4px; }
+.product-hero-verdict { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.verdict-badge {
+    display: inline-block; padding: 8px 18px; border-radius: var(--radius-lg);
+    font-size: 1.4rem; font-weight: 900; color: white; line-height: 1;
+}
+.verdict-amazon-note { font-size: 0.85rem; color: var(--color-text-muted); margin-top: 12px; }
+
+/* Verdict tiers — anchored to real Amazon rating, so colours stay trustworthy */
+.verdict-excellent { background: #16a34a; color: #fff; }
+.verdict-very-good { background: #15803d; color: #fff; }
+.verdict-good { background: #0d9488; color: #fff; }
+.verdict-budget-pick { background: #2563eb; color: #fff; }
+.verdict-premium-pick { background: #7c3aed; color: #fff; }
+.verdict-best-value { background: #d97706; color: #fff; }
+.bestof-product-verdict .verdict-label-badge,
+.product-showcase-score .verdict-label-badge { padding: 4px 10px; font-size: 0.75rem; }
+
 /* ===== BestOf Product Editorial ===== */
 .bestof-product-editorial { margin-bottom: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; background: var(--color-surface); }
 .top-pick-editorial { border-color: var(--color-accent); border-width: 2px; }
@@ -548,7 +607,7 @@ ul { list-style: none; }
 .bestof-product-grid { display: grid; grid-template-columns: 280px 1fr; }
 .bestof-product-image { height: 220px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; }
 .bestof-product-image img { width: 100%; height: 100%; object-fit: cover; }
-.bestof-product-content { padding: 24px; }
+.bestof-product-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 .bestof-product-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .bestof-product-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
 .bestfor-inline { font-size: 0.9rem; margin-bottom: 14px; }
@@ -558,7 +617,7 @@ ul { list-style: none; }
 .pro-item, .con-item { font-size: 0.85rem; color: var(--color-text-secondary); }
 .pro-item { color: var(--color-success); }
 .con-item { color: #dc2626; }
-.bestof-product-footer { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.bestof-product-footer { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: auto; }
 .bestof-product-score { display: flex; align-items: baseline; gap: 2px; }
 .bestof-product-score .score-number { font-size: 1.5rem; font-weight: 800; color: var(--color-accent); }
 .bestof-product-score .score-label { font-size: 0.85rem; color: var(--color-text-muted); }
@@ -588,11 +647,11 @@ ul { list-style: none; }
 .product-card-rank { display: flex; align-items: center; justify-content: center; background: var(--color-surface-alt); }
 .product-card-editorial-image { height: 160px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .product-card-editorial-image img { width: 100%; height: 100%; object-fit: cover; }
-.product-card-editorial-content { padding: 20px; }
+.product-card-editorial-content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .product-card-editorial-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .product-card-editorial-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
 .product-card-editorial-excerpt { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 14px; line-height: 1.6; }
-.product-card-editorial-footer { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.product-card-editorial-footer { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: auto; }
 .product-card-editorial-actions { display: flex; gap: 8px; margin-left: auto; }
 
 /* ===== Brand Hero ===== */
@@ -617,8 +676,8 @@ ul { list-style: none; }
 .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
 .author-name { display: block; font-weight: 600; font-size: 0.9rem; }
 .author-role { font-size: 0.8rem; color: var(--color-text-muted); }
-.article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; }
-.article-content-editorial { font-size: 1rem; line-height: 1.8; }
+.article-layout { display: block; }
+.article-content-editorial { font-size: 1rem; line-height: 1.8; max-width: 820px; margin: 0 auto; }
 .article-content-editorial h2 { font-size: 1.5rem; font-weight: 800; margin: 40px 0 16px; }
 .article-content-editorial h3 { font-size: 1.2rem; font-weight: 700; margin: 32px 0 12px; }
 .article-content-editorial p { margin-bottom: 16px; color: var(--color-text-secondary); }
@@ -630,10 +689,17 @@ ul { list-style: none; }
 .article-content-editorial a { color: var(--color-accent); text-decoration: underline; }
 .article-content-editorial a:hover { text-decoration: none; }
 .article-content-editorial blockquote { border-left: 4px solid var(--color-accent); padding: 16px 20px; background: var(--color-surface-alt); border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 16px; font-style: italic; color: var(--color-text-secondary); }
-.sidebar-product-card { padding: 12px 0; border-bottom: 1px solid var(--color-border); }
-.sidebar-product-card:last-child { border-bottom: none; }
 .sidebar-product-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
 .sidebar-product-rating { font-size: 0.8rem; color: var(--color-gold); }
+
+/* Integrated article recommendations (formerly sidebar) */
+.article-reco-section { margin: 40px 0 8px; }
+.article-reco-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 18px; }
+.article-reco-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.article-reco-card { display: flex; flex-direction: column; gap: 4px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; text-decoration: none; color: inherit; transition: all var(--transition); }
+.article-reco-card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.article-links-section { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin: 36px 0 8px; }
+.article-links-col h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 14px; }
 .sidebar-product-price { font-size: 0.85rem; font-weight: 700; }
 .article-nav-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--color-border); }
 .article-nav-prev, .article-nav-next { padding: 20px; background: var(--color-surface-alt); border-radius: var(--radius-lg); transition: all var(--transition); }
@@ -678,8 +744,11 @@ ul { list-style: none; }
     .hero-featured { display: none; }
     .product-showcase { grid-template-columns: repeat(2, 1fr); }
     .bestof-showcase { grid-template-columns: repeat(2, 1fr); }
-    .bike-layout, .product-layout, .bestof-layout, .article-layout { grid-template-columns: 1fr; }
-    .bike-sidebar, .product-sidebar, .bestof-sidebar { order: -1; }
+    .bike-layout, .product-layout, .article-layout { grid-template-columns: 1fr; }
+    .bike-sidebar, .product-sidebar { order: -1; }
+    .moto-product-grid { grid-template-columns: repeat(3, 1fr); }
+    .moto-similar-grid, .moto-toppicks-grid { grid-template-columns: repeat(3, 1fr); }
+    .article-reco-grid { grid-template-columns: repeat(3, 1fr); }
     .sidebar-sticky { position: static; }
     .bestof-product-grid { grid-template-columns: 1fr; }
     .bestof-product-image { height: 200px; }
@@ -688,6 +757,9 @@ ul { list-style: none; }
 }
 @media (max-width: 768px) {
     .header-top { display: none; }
+    .article-reco-grid { grid-template-columns: repeat(2, 1fr); }
+    .article-links-section { grid-template-columns: 1fr; gap: 24px; }
+    .article-content-editorial { max-width: 100%; }
     .main-nav { display: none; }
     .main-nav.active { display: block; position: absolute; top: var(--header-height); left: 0; right: 0; background: var(--color-surface); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-lg); padding: 16px; z-index: 50; }
     .main-nav.active ul { flex-direction: column; }
@@ -985,11 +1057,17 @@ ul { list-style: none; }
     .moto-toc-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .moto-new-owner-grid { grid-template-columns: 1fr; }
     .moto-must-have-grid { grid-template-columns: 1fr; }
+    .moto-must-have-picks { grid-template-columns: 1fr; }
     .moto-setups-grid { grid-template-columns: 1fr; }
     .moto-guides-grid { grid-template-columns: 1fr; }
     .moto-articles-grid { grid-template-columns: 1fr; }
-    .moto-sidebar-sticky { position: static; max-height: none; overflow-y: visible; }
-    .moto-layout { grid-template-columns: 1fr; }
+    .moto-product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .moto-similar-grid { grid-template-columns: repeat(2, 1fr); }
+    .moto-toppicks-grid { grid-template-columns: repeat(2, 1fr); }
+    .moto-maint-row { grid-template-columns: 1fr; gap: 4px; }
+    .guide-trust-list { grid-template-columns: 1fr; }
+    .moto-must-have-card { flex-direction: column; gap: 12px; }
+    .moto-must-have-number { width: 32px; height: 32px; font-size: 0.9rem; }
 }
 @media (max-width: 480px) {
     .moto-hero-actions { flex-direction: column; }
@@ -1043,8 +1121,8 @@ ul { list-style: none; }
 .moto-toc-link.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 
 /* ===== Moto Sections ===== */
-.moto-content-section { padding: 56px 0; }
-.moto-layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; }
+.moto-content-section { padding: 48px 0; }
+.moto-layout { display: block; }
 .moto-main { min-width: 0; }
 .moto-section { margin-bottom: 48px; }
 .moto-section-header { margin-bottom: 24px; }
@@ -1069,10 +1147,10 @@ ul { list-style: none; }
 
 /* ===== Must Have Grid ===== */
 .moto-must-have-grid { display: flex; flex-direction: column; gap: 14px; }
-.moto-must-have-card { display: flex; gap: 18px; align-items: flex-start; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 22px; transition: all var(--transition); }
+.moto-must-have-card { display: flex; gap: 18px; align-items: flex-start; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 24px; transition: all var(--transition); min-width: 0; overflow: hidden; }
 .moto-must-have-card:hover { box-shadow: var(--shadow-md); border-color: var(--color-accent); }
 .moto-must-have-number { width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; flex-shrink: 0; }
-.moto-must-have-content { flex: 1; }
+.moto-must-have-content { flex: 1; min-width: 0; overflow: hidden; }
 .moto-must-have-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
 .moto-must-have-content > p { font-size: 0.88rem; color: var(--color-text-secondary); margin-bottom: 12px; line-height: 1.6; }
 .moto-must-have-products .product-inline-grid { margin: 0; }
@@ -1126,57 +1204,6 @@ ul { list-style: none; }
 .moto-article-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
 .moto-article-content p { font-size: 0.85rem; color: var(--color-text-secondary); }
 
-/* ===== Sidebar ===== */
-.moto-sidebar-sticky { position: sticky; top: calc(var(--header-height) + 52px); max-height: calc(100vh - var(--header-height) - 60px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--color-border) transparent; }
-.moto-sidebar-sticky::-webkit-scrollbar { width: 4px; }
-.moto-sidebar-sticky::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
-.moto-sidebar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 12px; }
-.moto-sb-title { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--color-border); cursor: default; }
-.moto-sb-icon { font-size: 0.9rem; opacity: 0.6; flex-shrink: 0; }
-.moto-sb-toggle { margin-left: auto; font-size: 0.7rem; opacity: 0.4; transition: transform var(--transition); }
-.moto-sb-collapsible { cursor: pointer; user-select: none; }
-.moto-sb-collapsible:hover { color: var(--color-accent); }
-.moto-sb-collapse { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-.moto-sb-collapse.expanded { max-height: 600px; }
-
-/* Top Picks */
-.moto-sb-picks { display: flex; flex-direction: column; gap: 8px; }
-.moto-sb-pick-item { display: flex; gap: 10px; align-items: center; padding: 6px; border-radius: var(--radius-md); transition: background var(--transition); text-decoration: none; color: inherit; }
-.moto-sb-pick-item:hover { background: var(--color-bg-secondary, #f5f5f5); }
-.moto-sb-pick-item img { width: 44px; height: 44px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
-.moto-sb-pick-info { display: flex; flex-direction: column; min-width: 0; }
-.moto-sb-pick-title { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.moto-sb-pick-meta { font-size: 0.7rem; color: var(--color-text-muted); }
-
-
-/* Maintenance Schedule */
-.moto-sb-maint-item { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid var(--color-border); }
-.moto-sb-maint-item:last-child { border-bottom: none; }
-.moto-sb-maint-interval { font-size: 0.78rem; font-weight: 700; color: var(--color-accent); }
-.moto-sb-maint-tasks { font-size: 0.73rem; color: var(--color-text-secondary); line-height: 1.5; }
-
-/* Related Guides */
-.moto-sb-guides { display: flex; flex-direction: column; gap: 6px; }
-.moto-sb-guide-item { display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: var(--radius-sm); text-decoration: none; color: inherit; transition: background var(--transition); }
-.moto-sb-guide-item:hover { background: var(--color-bg-secondary, #f5f5f5); }
-.moto-sb-guide-title { font-size: 0.78rem; font-weight: 600; line-height: 1.3; }
-.moto-sb-guide-meta { font-size: 0.68rem; color: var(--color-text-muted); }
-
-/* Similar Motorcycles */
-.moto-sb-similar { display: flex; flex-direction: column; gap: 0; }
-.moto-sb-similar-item { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--color-border); font-size: 0.8rem; text-decoration: none; color: var(--color-text-secondary); transition: color var(--transition); }
-.moto-sb-similar-item:last-child { border-bottom: none; }
-.moto-sb-similar-item:hover { color: var(--color-accent); }
-.moto-sb-similar-name { font-weight: 600; }
-.moto-sb-similar-price { font-size: 0.75rem; color: var(--color-text-muted); }
-
-
-/* Sidebar Quick Links */
-.moto-sb-links { display: flex; flex-direction: column; gap: 0; }
-.moto-sb-link { display: block; padding: 8px 0; border-bottom: 1px solid var(--color-border); font-size: 0.82rem; font-weight: 600; color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition); }
-.moto-sb-link:last-child { border-bottom: none; }
-.moto-sb-link:hover { color: var(--color-accent); }
-
 /* ===== NEW HUB PAGE COMPONENTS ===== */
 
 /* Hero Flex Layout */
@@ -1212,18 +1239,54 @@ ul { list-style: none; }
 .moto-sw-card li:last-child { border-bottom: none; }
 
 /* Must Have Accessories - Mini Picks */
-.moto-must-have-picks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
-.moto-pick-mini { display: flex; flex-direction: column; gap: 6px; }
+.moto-must-have-picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin: 16px 0; }
+.moto-pick-mini { display: flex; flex-direction: column; gap: 6px; height: 100%; }
 .moto-pick-mini-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 .moto-pick-mini-budget { color: #3b82f6; }
 .moto-pick-mini-best { color: var(--color-success); }
-.moto-pick-mini-card { display: flex; gap: 10px; align-items: center; padding: 10px; background: var(--color-surface-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all var(--transition); }
+.moto-pick-mini-card { display: flex; gap: 12px; align-items: center; padding: 12px; background: var(--color-surface-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all var(--transition); height: 100%; }
 .moto-pick-mini-card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-sm); }
-.moto-pick-mini-card img { width: 48px; height: 48px; object-fit: cover; border-radius: var(--radius-sm); }
-.moto-pick-mini-info { display: flex; flex-direction: column; min-width: 0; }
-.moto-pick-mini-title { font-size: 0.78rem; font-weight: 600; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.moto-pick-mini-price { font-size: 0.78rem; font-weight: 700; color: var(--color-accent); }
+.moto-pick-mini-card img { width: 110px; height: 110px; object-fit: contain; border-radius: var(--radius-sm); flex-shrink: 0; background: white; }
+.moto-pick-mini-info { display: flex; flex-direction: column; min-width: 0; gap: 4px; flex: 1; }
+.moto-pick-mini-title { font-size: 0.78rem; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.moto-pick-mini-price { font-size: 0.82rem; font-weight: 700; color: var(--color-accent); }
 .moto-must-have-footer { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.moto-must-have-footer .btn { width: 100%; justify-content: center; }
+
+/* Product Grid (new motorcycle page) */
+.moto-products-section { display: flex; flex-direction: column; gap: 28px; }
+.moto-category-group-header { font-size: 1.15rem; font-weight: 800; color: var(--color-text); padding-bottom: 8px; border-bottom: 2px solid var(--color-accent); margin-top: 8px; }
+.moto-category-block { margin-bottom: 8px; }
+.moto-category-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.moto-category-header h4 { font-size: 1rem; font-weight: 700; margin: 0; }
+.moto-see-all-link { font-size: 0.8rem; font-weight: 600; color: var(--color-accent); text-decoration: none; white-space: nowrap; }
+.moto-see-all-link:hover { text-decoration: underline; }
+.moto-product-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.moto-product-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: all var(--transition); position: relative; }
+.moto-product-card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.moto-product-badge { position: absolute; top: 10px; left: 10px; z-index: 2; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; line-height: 1.4; }
+.moto-badge-editors_choice { background: var(--color-accent); color: white; }
+.moto-badge-best_value { background: #10b981; color: white; }
+.moto-badge-premium_pick { background: #8b5cf6; color: white; }
+.moto-badge-budget_pick { background: #3b82f6; color: white; }
+.moto-badge-most_reviewed { background: #f59e0b; color: white; }
+.moto-product-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+.moto-product-image { width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: #f8f9fa; padding: 12px; }
+.moto-product-image img { width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius-sm); }
+.moto-product-no-image { font-size: 2.5rem; color: var(--color-text-muted); }
+.moto-product-info { padding: 12px 14px 8px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.moto-product-title { font-size: 0.82rem; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--color-text); }
+.moto-product-rating { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.moto-stars { color: #f59e0b; font-size: 0.82rem; letter-spacing: -1px; }
+.moto-rating-num { font-size: 0.78rem; font-weight: 700; color: var(--color-text); }
+.moto-reviews { font-size: 0.72rem; color: var(--color-text-muted); }
+.moto-product-pricing { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+.moto-price { font-size: 0.95rem; font-weight: 800; color: var(--color-text); }
+.moto-original-price { font-size: 0.78rem; color: var(--color-text-muted); text-decoration: line-through; }
+.moto-savings-badge { font-size: 0.68rem; font-weight: 700; color: #10b981; background: #d1fae5; padding: 1px 6px; border-radius: 3px; }
+.moto-product-brand { font-size: 0.7rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+.moto-product-cta { padding: 0 14px 14px; }
+.moto-product-cta .btn { width: 100%; justify-content: center; font-size: 0.78rem; padding: 8px 12px; }
 
 /* Buyer Setups */
 .moto-ownership-subhead { font-size: 1.1rem; font-weight: 700; margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--color-border); }
@@ -1273,6 +1336,33 @@ ul { list-style: none; }
 .moto-advice-card p { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 10px; }
 .moto-advice-card ul { list-style: none; padding: 0; margin: 0; }
 .moto-advice-card li { padding: 4px 0; font-size: 0.82rem; color: var(--color-text-secondary); }
+
+/* ===== Integrated (formerly sidebar) sections ===== */
+.moto-similar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.moto-similar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; transition: all var(--transition); }
+.moto-similar-card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.moto-similar-name { font-weight: 700; font-size: 0.95rem; }
+.moto-similar-price { font-size: 0.85rem; color: var(--color-text-muted); }
+
+.moto-maint-table { display: grid; gap: 10px; }
+.moto-maint-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: center; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 14px 18px; }
+.moto-maint-interval { font-weight: 700; color: var(--color-accent); font-size: 0.9rem; }
+.moto-maint-tasks { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.5; }
+
+.moto-toppicks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.moto-toppick-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; transition: all var(--transition); display: flex; flex-direction: column; }
+.moto-toppick-card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.moto-toppick-image { width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: #f8f9fa; padding: 16px; }
+.moto-toppick-image img { width: 100%; height: 100%; object-fit: contain; }
+.moto-toppick-info { padding: 12px 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.moto-toppick-title { font-size: 0.85rem; font-weight: 600; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.moto-toppick-meta { font-size: 0.78rem; color: var(--color-text-muted); }
+
+.guide-trust-section { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 28px 32px; }
+.guide-trust-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.guide-trust-header h2 { font-size: 1.25rem; font-weight: 800; }
+.guide-trust-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; list-style: none; margin: 0; padding: 0; }
+.guide-trust-list li { font-size: 0.95rem; color: var(--color-text-secondary); }
 
 /* ==============================================
    REDESIGNED HOMEPAGE COMPONENTS
@@ -1402,6 +1492,7 @@ ul { list-style: none; }
     .trust-features-grid { grid-template-columns: repeat(2, 1fr); }
     .brand-logo-grid { grid-template-columns: repeat(4, 1fr); }
     .comparisons-grid { grid-template-columns: repeat(2, 1fr); }
+    .moto-product-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 768px) {
     .hero-featured { display: none; }
@@ -1822,6 +1913,14 @@ ul { list-style: none; }
     padding: 20px;
     transition: all var(--transition);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.guide-quick-card .btn {
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
 }
 .guide-quick-card:hover {
     transform: translateY(-2px);
@@ -2130,24 +2229,11 @@ ul { list-style: none; }
 }
 
 /* Responsive Updates */
-@media (max-width: 1024px) {
-    .moto-hero-flex { flex-direction: column; }
-    .moto-hero-flex .moto-quick-specs { flex: none; }
-    .moto-accessory-nav-grid { grid-template-columns: repeat(3, 1fr); }
-    .moto-strengths-weaknesses { grid-template-columns: 1fr; }
-    .moto-buying-advice-grid { grid-template-columns: 1fr; }
-    .moto-running-costs-grid { grid-template-columns: 1fr; }
-    .guide-factors-grid { grid-template-columns: repeat(2, 1fr); }
-    .guide-bikes-grid { grid-template-columns: repeat(2, 1fr); }
-    .guide-quick-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 768px) {
     .moto-hero-flex { flex-direction: column; }
     .moto-hero-meta-row { gap: 10px; }
     .moto-hero-meta-badges { width: 100%; }
     .moto-accessory-nav-grid { grid-template-columns: repeat(2, 1fr); }
-    .moto-must-have-picks { grid-template-columns: 1fr; }
     .guide-selector-controls { flex-direction: column; align-items: stretch; }
     .guide-bike-select { max-width: 100%; }
     .guide-bike-selected-info { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -2164,6 +2250,8 @@ ul { list-style: none; }
     .badge-col { display: none !important; }
     .guide-factors-grid { grid-template-columns: 1fr; }
     .guide-bikes-grid { grid-template-columns: 1fr; }
+    .moto-product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .moto-category-header { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 
 @media (max-width: 480px) {
@@ -2171,4 +2259,7 @@ ul { list-style: none; }
     .moto-hero-score-badge { flex-direction: row; gap: 8px; min-width: auto; }
     .moto-accessory-nav-grid { grid-template-columns: 1fr; }
     .guide-quick-card { padding: 16px; }
+    .moto-pick-mini-card img { width: 80px; height: 80px; }
+    .moto-must-have-picks { grid-template-columns: 1fr; }
+    .moto-product-grid { grid-template-columns: 1fr; gap: 12px; }
 }

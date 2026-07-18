@@ -70,67 +70,57 @@
             </div>
         </header>
 
-        <div class="article-layout">
-            <div class="article-content-editorial">
-                {{ article_html | safe }}
-            </div>
+        <article class="article-content-editorial">
+            {{ article_html | safe }}
 
-            <aside class="article-sidebar">
-                <div class="sidebar-sticky">
-                    {% if sidebar_products %}
-                    <div class="sidebar-card">
-                        <h3>Recommended Products</h3>
-                        {% for item in sidebar_products %}
-                        {% set rp = item.product %}
-                        <div class="sidebar-product-card">
-                            <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
-                                <div class="sidebar-product-name">{{ rp.title }}</div>
-                                <div class="sidebar-product-rating">{{ rp.rating }} ★</div>
-                                <div class="sidebar-product-price">₹{{ rp.price | int }}</div>
-                            </a>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-
-                    {% if article.related_motorcycles %}
-                    <div class="sidebar-card">
-                        <h3>Related Motorcycles</h3>
-                        <ul class="sidebar-links">
-                            {% for slug in article.related_motorcycles %}
-                            {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
-                            {% if rm %}
-                            <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
-
-                    {% if related_articles %}
-                    <div class="sidebar-card">
-                        <h3>More Guides</h3>
-                        <ul class="sidebar-links">
-                            {% for ra in related_articles %}
-                            {% if ra.slug != article.slug %}
-                            <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
-
-                    <div class="sidebar-card">
-                        <h3>Popular Motorcycles</h3>
-                        <ul class="sidebar-links">
-                            {% for bike in all_motorcycles[:5] %}
-                            <li><a href="{{ base_path }}motorcycles/{{ bike.slug }}/index.html">{{ bike.brand }} {{ bike.model }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+            {# ===== Integrated (formerly sidebar) content ===== #}
+            {% if sidebar_products %}
+            <div class="article-reco-section">
+                <h2>Recommended Products</h2>
+                <div class="article-reco-grid">
+                    {% for item in sidebar_products %}
+                    {% set rp = item.product %}
+                    <a href="{{ base_path }}products/{{ rp.slug }}/index.html" class="article-reco-card">
+                        <span class="sidebar-product-name product-card-title">{{ rp.title }}</span>
+                        <span class="sidebar-product-rating">{{ rp.rating }} ★</span>
+                        <span class="sidebar-product-price">₹{{ rp.price | int }}</span>
+                    </a>
+                    {% endfor %}
                 </div>
-            </aside>
-        </div>
+            </div>
+            {% endif %}
+
+            {% if article.related_motorcycles or related_articles %}
+            <div class="article-links-section">
+                {% if article.related_motorcycles %}
+                <div class="article-links-col">
+                    <h2>Related Motorcycles</h2>
+                    <ul class="sidebar-links">
+                        {% for slug in article.related_motorcycles %}
+                        {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
+                        {% if rm %}
+                        <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if related_articles %}
+                <div class="article-links-col">
+                    <h2>More Guides</h2>
+                    <ul class="sidebar-links">
+                        {% for ra in related_articles %}
+                        {% if ra.slug != article.slug %}
+                        <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </article>
 
         {% if prev_article or next_article %}
         <nav class="article-nav-editorial">
