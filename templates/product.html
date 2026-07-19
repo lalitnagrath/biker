@@ -208,7 +208,7 @@
                             {% for item in sidebar_products %}
                             {% set rp = item.product %}
                             <li>
-                                <a href="{{ base_path }}products/{{ rp.slug }}/index.html">
+                                <a href="{{ URL.product(rp.slug, base_path) }}">
                                     <span class="related-name product-card-title">{{ rp.title }}</span>
                                     {% if rp.editorial %}<span class="related-rating">{{ rp.editorial.label }}</span>{% endif %}
                                 </a>

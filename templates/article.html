@@ -80,7 +80,7 @@
                 <div class="article-reco-grid">
                     {% for item in sidebar_products %}
                     {% set rp = item.product %}
-                    <a href="{{ base_path }}products/{{ rp.slug }}/index.html" class="article-reco-card">
+                    <a href="{{ URL.product(rp.slug, base_path) }}" class="article-reco-card">
                         <span class="sidebar-product-name product-card-title">{{ rp.title }}</span>
                         {% if rp.rating and rp.reviews %}<span class="sidebar-product-rating">{{ rp.rating }} ★</span>{% elif rp.editorial %}<span class="sidebar-product-rating our-verdict"><span class="editorial-label">{{ rp.editorial.label }}</span></span>{% endif %}
                         <span class="sidebar-product-price">₹{{ rp.price | int }}</span>

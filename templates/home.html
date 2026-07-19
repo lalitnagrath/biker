@@ -261,7 +261,7 @@
         <div class="trending-guides-grid">
             {% for product in featured_products %}
             <div class="product-card-editorial">
-                <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-card-editorial-image">
+                <a href="{{ URL.product(product.slug, base_path) }}" class="product-card-editorial-image">
                     {% if product.image and 'products/' in product.image %}
                     <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
                     {% else %}
@@ -279,7 +279,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                    <h3 class="product-card-title"><a href="{{ URL.product(product.slug, base_path) }}">{{ product.title }}</a></h3>
                     <div class="product-card-editorial-footer">
                         {% if product.editorial_verdict %}
                         <div class="bestof-product-score bestof-product-verdict">
@@ -288,7 +288,7 @@
                         {% endif %}
                         <div class="bestof-product-price">&#8377;{{ product.price | int }}</div>
                         <div class="product-card-editorial-actions">
-                            <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Read Review</a>
+                            <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-sm">Read Review</a>
                             {% if product.affiliate_url %}
                             <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Buy on Amazon</a>
                             {% endif %}

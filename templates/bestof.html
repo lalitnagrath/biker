@@ -124,14 +124,14 @@
                         {% if editors_product %}
                         <div class="guide-quick-card guide-quick-editors">
                             <span class="guide-quick-badge guide-quick-badge-editors">&#127942; Editor's Choice</span>
-                            <a href="{{ base_path }}products/{{ editors_product.slug }}/index.html" class="guide-quick-image">
+                            <a href="{{ URL.product(editors_product.slug, base_path) }}" class="guide-quick-image">
                                 {% if editors_product.image and 'products/' in editors_product.image %}
                                 <img src="{{ base_path }}{{ editors_product.image }}" alt="{{ editors_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ editors_product.brand }}</div>
                                 {% endif %}
                             </a>
-                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ editors_product.slug }}/index.html">{{ editors_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ URL.product(editors_product.slug, base_path) }}">{{ editors_product.title }}</a></h3>
                             <div class="guide-quick-meta our-verdict">
                                 <span class="verdict-label">Our Verdict</span>
                                 {% if editors_product.editorial %}
@@ -153,14 +153,14 @@
                         {% if value_product %}
                         <div class="guide-quick-card guide-quick-value">
                             <span class="guide-quick-badge guide-quick-badge-value">&#128176; Best Value</span>
-                            <a href="{{ base_path }}products/{{ value_product.slug }}/index.html" class="guide-quick-image">
+                            <a href="{{ URL.product(value_product.slug, base_path) }}" class="guide-quick-image">
                                 {% if value_product.image and 'products/' in value_product.image %}
                                 <img src="{{ base_path }}{{ value_product.image }}" alt="{{ value_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ value_product.brand }}</div>
                                 {% endif %}
                             </a>
-                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ value_product.slug }}/index.html">{{ value_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ URL.product(value_product.slug, base_path) }}">{{ value_product.title }}</a></h3>
                             <div class="guide-quick-meta our-verdict">
                                 <span class="verdict-label">Our Verdict</span>
                                 {% if value_product.editorial %}
@@ -182,14 +182,14 @@
                         {% if premium_product %}
                         <div class="guide-quick-card guide-quick-premium">
                             <span class="guide-quick-badge guide-quick-badge-premium">&#11088; Premium Pick</span>
-                            <a href="{{ base_path }}products/{{ premium_product.slug }}/index.html" class="guide-quick-image">
+                            <a href="{{ URL.product(premium_product.slug, base_path) }}" class="guide-quick-image">
                                 {% if premium_product.image and 'products/' in premium_product.image %}
                                 <img src="{{ base_path }}{{ premium_product.image }}" alt="{{ premium_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ premium_product.brand }}</div>
                                 {% endif %}
                             </a>
-                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ premium_product.slug }}/index.html">{{ premium_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ URL.product(premium_product.slug, base_path) }}">{{ premium_product.title }}</a></h3>
                             <div class="guide-quick-meta our-verdict">
                                 <span class="verdict-label">Our Verdict</span>
                                 {% if premium_product.editorial %}
@@ -211,14 +211,14 @@
                         {% if popular_product %}
                         <div class="guide-quick-card guide-quick-popular">
                             <span class="guide-quick-badge guide-quick-badge-popular">&#128293; Most Popular</span>
-                            <a href="{{ base_path }}products/{{ popular_product.slug }}/index.html" class="guide-quick-image">
+                            <a href="{{ URL.product(popular_product.slug, base_path) }}" class="guide-quick-image">
                                 {% if popular_product.image and 'products/' in popular_product.image %}
                                 <img src="{{ base_path }}{{ popular_product.image }}" alt="{{ popular_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ popular_product.brand }}</div>
                                 {% endif %}
                             </a>
-                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ popular_product.slug }}/index.html">{{ popular_product.title }}</a></h3>
+                            <h3 class="product-card-title"><a href="{{ URL.product(popular_product.slug, base_path) }}">{{ popular_product.title }}</a></h3>
                             <div class="guide-quick-meta our-verdict">
                                 <span class="verdict-label">Our Verdict</span>
                                 {% if popular_product.editorial %}
@@ -268,7 +268,7 @@
                                     <span class="rank-badge {% if loop.index == 1 %}rank-gold{% elif loop.index == 2 %}rank-silver{% elif loop.index == 3 %}rank-bronze{% endif %}">{{ loop.index }}</span>
                                 </td>
                                 <td class="product-col">
-                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html">
+                                    <a href="{{ URL.product(product.slug, base_path) }}">
                                         <strong>{{ product.title }}</strong>
                                     </a>
                                 </td>
@@ -320,7 +320,7 @@
                     </div>
 
                     {# 3. Title (clamped to 2 lines) #}
-                    <h3 class="guide-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
+                    <h3 class="guide-card-title"><a href="{{ URL.product(product.slug, base_path) }}">{{ product.title }}</a></h3>
 
                     {# 4. Amazon rating + review count #}
                     <div class="guide-card-rating">
@@ -351,7 +351,7 @@
                         {% if product.affiliate_url %}
                         <a href="{{ product.affiliate_url }}" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon</a>
                         {% else %}
-                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-block">View Product</a>
+                        <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-block">View Product</a>
                         {% endif %}
                     </div>
                 </div>

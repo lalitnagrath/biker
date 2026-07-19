@@ -205,7 +205,7 @@
                                     <div class="moto-product-badge moto-badge-{{ product.badge }}">{{ product.badge_label }}</div>
                                     {% endif %}
 
-                                    <a href="{{ product.get('affiliate_url') or (base_path + 'products/' + product.slug + '/index.html') }}" class="moto-product-link" target="_blank" rel="nofollow sponsored">
+                                    <a href="{{ product.get('affiliate_url') or URL.product(product.slug, base_path) }}" class="moto-product-link" target="_blank" rel="nofollow sponsored">
                                         <div class="moto-product-image">
                                             {% if product.get('image') %}
                                             <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
@@ -255,7 +255,7 @@
                                         {% if product.get('affiliate_url') %}
                                         <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" target="_blank" rel="nofollow sponsored">Check Price on Amazon</a>
                                         {% else %}
-                                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm btn-outline">View Details</a>
+                                        <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-sm btn-outline">View Details</a>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -624,7 +624,7 @@
                     </div>
                     <div class="moto-toppicks-grid">
                         {% for sp in sidebar_products %}
-                        <a href="{{ base_path }}products/{{ sp.product.slug }}/index.html" class="moto-toppick-card">
+                        <a href="{{ URL.product(sp.product.slug, base_path) }}" class="moto-toppick-card">
                             {% if sp.product.get('image') %}
                             <div class="moto-toppick-image">
                                 <img src="{{ base_path }}{{ sp.product.image }}" alt="{{ sp.product.title }}" loading="lazy">

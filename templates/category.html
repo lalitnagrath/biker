@@ -5,146 +5,650 @@
 {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "{{ category_name }} - All Products",
-    "description": "Browse our complete collection of {{ category_name | lower }} for Indian motorcycles.",
+    "name": "{{ category_name }} - Best {{ category_name }} for Motorcycles",
+    "description": "{% if meta_description %}{{ meta_description }}{% else %}Compare and find the best {{ category_name | lower }} for Indian motorcycles.{% endif %}",
     "url": "{{ canonical_url }}"
 }
 </script>
 {% endblock %}
 
 {% block content %}
-<section class="category-hero-section">
+
+<!-- ===== 1. HERO SECTION ===== -->
+<section class="bg-hero">
     <div class="container">
-        <div class="category-hero-content">
-            <div class="category-hero-trust">
-                <span class="trust-badge">&#10003; Expert Tested</span>
-                <span class="trust-badge">{{ products | length }} Products</span>
+        <div class="bg-hero-content">
+            <div class="bg-hero-badges">
+                <span class="bg-badge bg-badge-expert">Expert Tested</span>
+                <span class="bg-badge bg-badge-count" id="heroTotalCount">{{ total_products }} Products</span>
+                <span class="bg-badge bg-badge-updated">Updated {{ last_updated }}</span>
             </div>
-            <h1>{{ category_name }}</h1>
-            <p>Our expert-tested {{ category_name | lower }} for Indian motorcycles. Browse, compare, and find the perfect product for your needs.</p>
+            <h1 class="bg-hero-title">Best {{ category_name }} in India (2026)</h1>
+            <p class="bg-hero-desc">Compare {% if total_products > 0 %}{{ total_products }}{% endif %} {{ category_name | lower }} from top brands. Expert-tested recommendations for every budget and riding style.</p>
+            <div class="bg-hero-stats">
+                {% if editors_choice %}
+                <div class="bg-stat">
+                    <span class="bg-stat-icon">&#9733;</span>
+                    <span class="bg-stat-label">Editor's Choice</span>
+                    <span class="bg-stat-value">{{ editors_choice.brand }}</span>
+                </div>
+                {% endif %}
+                {% if best_value %}
+                <div class="bg-stat">
+                    <span class="bg-stat-icon">&#10003;</span>
+                    <span class="bg-stat-label">Best Value</span>
+                    <span class="bg-stat-value">{{ best_value.brand }}</span>
+                </div>
+                {% endif %}
+                {% if premium_pick %}
+                <div class="bg-stat">
+                    <span class="bg-stat-icon">&#9733;</span>
+                    <span class="bg-stat-label">Premium Pick</span>
+                    <span class="bg-stat-value">{{ premium_pick.brand }}</span>
+                </div>
+                {% endif %}
+                {% if brands_list %}
+                <div class="bg-stat">
+                    <span class="bg-stat-icon">&#9776;</span>
+                    <span class="bg-stat-label">Brands</span>
+                    <span class="bg-stat-value">{{ brands_list | length }}</span>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </section>
 
-<section class="category-content-section">
+<!-- ===== 2. SHOP BY BUDGET ===== -->
+<section class="bg-budget-section">
     <div class="container">
-        <div class="category-layout">
-            <aside class="category-sidebar">
-                <div class="sidebar-sticky">
-                    <div class="sidebar-card">
-                        <h3>Filters</h3>
-                        <form class="filter-form" id="filterForm">
-                            <div class="filter-group">
-                                <label>Sort By</label>
-                                <select name="sort" id="sortFilter">
-                                    <option value="rating">Rating</option>
-                                    <option value="price-low">Price: Low to High</option>
-                                    <option value="price-high">Price: High to Low</option>
-                                    <option value="reviews">Popularity</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Brand</label>
-                                <select name="brand" id="brandFilter">
-                                    <option value="">All Brands</option>
-                                    {% for brand in brands_list %}
-                                    <option value="{{ brand }}">{{ brand }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Price Range</label>
-                                <select name="price" id="priceFilter">
-                                    <option value="">All Prices</option>
-                                    <option value="0-1000">Under ₹1,000</option>
-                                    <option value="1000-2000">₹1,000 - ₹2,000</option>
-                                    <option value="2000-5000">₹2,000 - ₹5,000</option>
-                                    <option value="5000-10000">Above ₹5,000</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Minimum Rating</label>
-                                <select name="rating" id="ratingFilter">
-                                    <option value="">Any Rating</option>
-                                    <option value="4.5">4.5+ Stars</option>
-                                    <option value="4.0">4.0+ Stars</option>
-                                    <option value="3.5">3.5+ Stars</option>
-                                </select>
-                            </div>
-                        </form>
+        <h2 class="bg-section-title">Shop by Budget</h2>
+        <div class="bg-budget-grid" id="budgetGrid">
+            {% for br in budget_ranges %}
+            <a href="#"
+               class="bg-budget-card{% if active_budget == br.slug %} active{% endif %}"
+               data-budget="{{ br.slug }}"
+               data-min="{{ br.min }}"
+               data-max="{{ br.max }}">
+                <span class="bg-budget-label">{{ br.label }}</span>
+                {% set count = namespace(value=0) %}
+                {% for p in products %}
+                {% if br.slug == 'under-500' and p.get('_price', 0) <= br.max %}
+                {% set count.value = count.value + 1 %}
+                {% elif br.slug == '5000-plus' and p.get('_price', 0) >= br.min %}
+                {% set count.value = count.value + 1 %}
+                {% elif br.min <= p.get('_price', 0) < br.max %}
+                {% set count.value = count.value + 1 %}
+                {% endif %}
+                {% endfor %}
+                <span class="bg-budget-count">{{ count.value }} products</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== 3. TOP PICKS ===== -->
+{% set has_picks = editors_choice or best_value or premium_pick or most_popular %}
+{% if has_picks %}
+<section class="bg-picks-section">
+    <div class="container">
+        <h2 class="bg-section-title">Top Picks</h2>
+        <div class="bg-picks-grid">
+            {% if editors_choice %}
+            <div class="bg-pick-card pick-editors">
+                <div class="bg-pick-badge">Editor's Choice</div>
+                {% if editors_choice.image %}
+                <div class="bg-pick-img">
+                    <img src="{{ base_path }}{{ editors_choice.image }}" alt="{{ editors_choice.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="bg-pick-body">
+                    <h3 class="bg-pick-title">{{ editors_choice.title }}</h3>
+                    <div class="bg-pick-rating">
+                        <span class="bg-stars">{{ '★' * (editors_choice._rating | int) }}{{ '☆' * (5 - editors_choice._rating | int) }}</span>
+                        <span class="bg-rating-val">{{ editors_choice._rating }}</span>
+                        {% if editors_choice._reviews %}
+                        <span class="bg-review-count">({{ editors_choice._reviews }})</span>
+                        {% endif %}
+                    </div>
+                    <div class="bg-pick-price">₹{{ editors_choice._price | int }}</div>
+                    <div class="bg-pick-reason">Highest overall score — best all-round {{ category_name | lower }}</div>
+                    <div class="bg-pick-actions">
+                        <a href="{{ URL.product(editors_choice.slug, base_path) }}" class="btn btn-sm btn-outline">View</a>
+                        {% if editors_choice.affiliate_url %}
+                        <a href="{{ editors_choice.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        {% endif %}
                     </div>
                 </div>
-            </aside>
-
-            <div class="category-main">
-                <div class="category-results">
-                    <span class="results-count">{{ products | length }} products</span>
+            </div>
+            {% endif %}
+            {% if best_value %}
+            <div class="bg-pick-card pick-value">
+                <div class="bg-pick-badge">Best Value</div>
+                {% if best_value.image %}
+                <div class="bg-pick-img">
+                    <img src="{{ base_path }}{{ best_value.image }}" alt="{{ best_value.title }}" loading="lazy">
                 </div>
-                <div class="product-list-editorial" id="productList">
-                    {% for product in products %}
-                    <div class="product-card-editorial"
-                         data-rating="{{ product.rating }}"
-                         data-price="{{ product.price }}"
-                         data-reviews="{{ product.reviews }}"
-                         data-brand="{{ product.brand }}">
-                        <div class="product-card-rank">
-                            {% if loop.index <= 3 %}
-                            <span class="rank-badge {% if loop.index == 1 %}rank-gold{% elif loop.index == 2 %}rank-silver{% else %}rank-bronze{% endif %}">#{{ loop.index }}</span>
-                            {% endif %}
-                        </div>
-                        <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="product-card-editorial-image">
-                            {% if product.image and 'products/' in product.image %}
-                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
-                            {% else %}
-                            <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
-                            {% endif %}
-                        </a>
-                        <div class="product-card-editorial-content">
-                            <div class="product-card-editorial-header">
-                                <span class="product-category-label">{{ product.category_display }}</span>
-                                <div class="product-hero-rating our-verdict">
-                                    {% if product.rating and product.reviews %}
-                                    <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
-                                    <span class="rating-value">{{ product.rating }}</span>
-                                    <span class="review-count">({{ product.reviews | int }} reviews)</span>
-                                    {% elif product.editorial %}
-                                    <span class="verdict-label">Our Verdict</span>
-                                    <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
-                                    <span class="editorial-label">{{ product.editorial.label }}</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <h3 class="product-card-title"><a href="{{ base_path }}products/{{ product.slug }}/index.html">{{ product.title }}</a></h3>
-                            <div class="bestfor-inline">
-                                <span class="bestfor-label">Best For:</span>
-                                <span class="bestfor-value">{{ product.best_for }}</span>
-                            </div>
-                            <p class="product-card-editorial-excerpt">{{ product.verdict[:150] }}...</p>
-                            <div class="product-card-editorial-footer">
-                                {% if product.editorial_verdict %}
-                                <div class="bestof-product-score bestof-product-verdict">
-                                    <span class="verdict-label-badge verdict-{{ product.editorial_verdict | replace('_', '-') }}">{{ product.editorial_verdict | replace('_', ' ') | title }}</span>
-                                </div>
-                                {% elif product.editorial %}
-                                <div class="bestof-product-score our-verdict">
-                                    <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
-                                    <span class="editorial-label">{{ product.editorial.label }}</span>
-                                </div>
-                                {% endif %}
-                                <div class="bestof-product-price">₹{{ product.price | int }}</div>
-                                <div class="product-card-editorial-actions">
-                                    <a href="{{ base_path }}products/{{ product.slug }}/index.html" class="btn btn-sm">Read Review</a>
-                                    {% if product.affiliate_url %}
-                                    <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Buy on Amazon</a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
+                {% endif %}
+                <div class="bg-pick-body">
+                    <h3 class="bg-pick-title">{{ best_value.title }}</h3>
+                    <div class="bg-pick-rating">
+                        <span class="bg-stars">{{ '★' * (best_value._rating | int) }}{{ '☆' * (5 - best_value._rating | int) }}</span>
+                        <span class="bg-rating-val">{{ best_value._rating }}</span>
+                        {% if best_value._reviews %}
+                        <span class="bg-review-count">({{ best_value._reviews }})</span>
+                        {% endif %}
+                    </div>
+                    <div class="bg-pick-price">₹{{ best_value._price | int }}</div>
+                    <div class="bg-pick-reason">Best value for money — features at a fair price</div>
+                    <div class="bg-pick-actions">
+                        <a href="{{ URL.product(best_value.slug, base_path) }}" class="btn btn-sm btn-outline">View</a>
+                        {% if best_value.affiliate_url %}
+                        <a href="{{ best_value.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if premium_pick %}
+            <div class="bg-pick-card pick-premium">
+                <div class="bg-pick-badge">Premium Pick</div>
+                {% if premium_pick.image %}
+                <div class="bg-pick-img">
+                    <img src="{{ base_path }}{{ premium_pick.image }}" alt="{{ premium_pick.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="bg-pick-body">
+                    <h3 class="bg-pick-title">{{ premium_pick.title }}</h3>
+                    <div class="bg-pick-rating">
+                        <span class="bg-stars">{{ '★' * (premium_pick._rating | int) }}{{ '☆' * (5 - premium_pick._rating | int) }}</span>
+                        <span class="bg-rating-val">{{ premium_pick._rating }}</span>
+                        {% if premium_pick._reviews %}
+                        <span class="bg-review-count">({{ premium_pick._reviews }})</span>
+                        {% endif %}
+                    </div>
+                    <div class="bg-pick-price">₹{{ premium_pick._price | int }}</div>
+                    <div class="bg-pick-reason">Top-tier features and build quality</div>
+                    <div class="bg-pick-actions">
+                        <a href="{{ URL.product(premium_pick.slug, base_path) }}" class="btn btn-sm btn-outline">View</a>
+                        {% if premium_pick.affiliate_url %}
+                        <a href="{{ premium_pick.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if most_popular %}
+            <div class="bg-pick-card pick-popular">
+                <div class="bg-pick-badge">Most Popular</div>
+                {% if most_popular.image %}
+                <div class="bg-pick-img">
+                    <img src="{{ base_path }}{{ most_popular.image }}" alt="{{ most_popular.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="bg-pick-body">
+                    <h3 class="bg-pick-title">{{ most_popular.title }}</h3>
+                    <div class="bg-pick-rating">
+                        <span class="bg-stars">{{ '★' * (most_popular._rating | int) }}{{ '☆' * (5 - most_popular._rating | int) }}</span>
+                        <span class="bg-rating-val">{{ most_popular._rating }}</span>
+                        {% if most_popular._reviews %}
+                        <span class="bg-review-count">({{ most_popular._reviews }})</span>
+                        {% endif %}
+                    </div>
+                    <div class="bg-pick-price">₹{{ most_popular._price | int }}</div>
+                    <div class="bg-pick-reason">Most bought and reviewed {{ category_name | lower }}</div>
+                    <div class="bg-pick-actions">
+                        <a href="{{ URL.product(most_popular.slug, base_path) }}" class="btn btn-sm btn-outline">View</a>
+                        {% if most_popular.affiliate_url %}
+                        <a href="{{ most_popular.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== 4. FILTERS + COMPARISON TABLE + PRODUCTS ===== -->
+<section class="bg-main-section">
+    <div class="container">
+        <div class="bg-toolbar" id="bgToolbar">
+            <div class="bg-filter-bar">
+                <button class="bg-filter-toggle" id="bgFilterToggle" type="button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+                    Filters
+                </button>
+                <div class="bg-sort-group">
+                    <label for="bgSort">Sort:</label>
+                    <select id="bgSort">
+                        <option value="recommended">Recommended</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Amazon Rating</option>
+                        <option value="reviews">Popularity</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+                <span class="bg-results-count" id="bgResultsCount">{{ products | length }} products</span>
+            </div>
+            <div class="bg-filters-panel" id="bgFiltersPanel">
+                <div class="bg-filters-row" id="bgFiltersRow">
+                    {% for filter_def in filter_config.filters %}
+                    <div class="bg-filter-item" data-filter-key="{{ filter_def.key }}">
+                        <label>{{ filter_def.label }}</label>
+                        {% if filter_def.type == 'checkbox' %}
+                        <label class="bg-chip-checkbox">
+                            <input type="checkbox" data-filter="{{ filter_def.key }}" value="1">
+                            <span>{{ filter_def.label }}</span>
+                        </label>
+                        {% elif filter_def.dynamic %}
+                        <select data-filter="{{ filter_def.key }}">
+                            <option value="">All</option>
+                            {% for brand in brands_list %}
+                            <option value="{{ brand }}">{{ brand }}</option>
+                            {% endfor %}
+                        </select>
+                        {% elif filter_def.options %}
+                        <select data-filter="{{ filter_def.key }}">
+                            <option value="">All</option>
+                            {% for opt in filter_def.options %}
+                            <option value="{{ opt }}">{{ opt }}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
+                <div class="bg-filter-actions">
+                    <button class="btn btn-sm" id="bgClearFilters">Clear All</button>
+                </div>
             </div>
+        </div>
+
+        <!-- ===== 5. COMPARISON TABLE ===== -->
+        <div class="bg-comparison-wrap" id="bgComparisonWrap">
+            <div class="bg-comparison-header">
+                <h3 class="bg-section-title-sm">Compare Products</h3>
+                <span class="bg-compare-hint">Compare ratings, prices, features at a glance</span>
+            </div>
+            <div class="bg-comparison-table-scroll">
+                <table class="bg-comparison-table" id="bgComparisonTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Rating</th>
+                            <th>Price</th>
+                            <th>Best For</th>
+                            <th>Brand</th>
+                            <th>Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in products[:10] %}
+                        <tr class="bg-compare-row" data-slug="{{ p.slug }}">
+                            <td class="bg-compare-product">
+                                <a href="{{ URL.product(p.slug, base_path) }}">{{ p.title[:40] }}{% if p.title|length > 40 %}...{% endif %}</a>
+                            </td>
+                            <td>
+                                <span class="bg-compare-stars">{{ '★' * (p._rating | int) }}{{ '☆' * (5 - p._rating | int) }}</span>
+                                <span class="bg-compare-rating">{{ p._rating }}</span>
+                            </td>
+                            <td class="bg-compare-price">₹{{ p._price | int }}</td>
+                            <td class="bg-compare-bestfor">{{ p.best_for[:30] if p.best_for else '-' }}</td>
+                            <td>{{ p.brand }}</td>
+                            <td>
+                                <div class="bg-compare-chips">
+                                {% for chip in p._chips[:3] %}
+                                <span class="bg-chip-sm">{{ chip }}</span>
+                                {% endfor %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== 6. PRODUCT GRID ===== -->
+        <div class="bg-products-header">
+            <h2 class="bg-section-title-sm">All {{ category_name }}</h2>
+        </div>
+        <div class="bg-product-grid" id="bgProductGrid">
+            {% for p in products %}
+            <div class="bg-product-card"
+                 data-slug="{{ p.slug }}"
+                 data-price="{{ p._price }}"
+                 data-rating="{{ p._rating }}"
+                 data-reviews="{{ p._reviews }}"
+                 data-brand="{{ p.brand }}"
+                 data-type="{{ p.type | default('') }}">
+                {% set badge_data = badge_data.get(p.slug) %}
+                {% if badge_data %}
+                <div class="bg-card-badge bg-badge-{{ badge_data.badge_type }}">{{ badge_data.badge }}</div>
+                {% elif p._has_editorial %}
+                <div class="bg-card-badge bg-badge-reviewed">Reviewed</div>
+                {% else %}
+                <div class="bg-card-badge-empty"></div>
+                {% endif %}
+                <a href="{{ URL.product(p.slug, base_path) }}" class="bg-card-img-link">
+                    {% if p.image and p.image != '' %}
+                    <img src="{{ base_path }}{{ p.image }}" alt="{{ p.title }}" loading="lazy">
+                    {% else %}
+                    <div class="bg-card-placeholder">{{ p.brand }}</div>
+                    {% endif %}
+                </a>
+                <div class="bg-card-body">
+                    <h3 class="bg-card-title">
+                        <a href="{{ URL.product(p.slug, base_path) }}">{{ p.title }}</a>
+                    </h3>
+                    <div class="bg-card-rating">
+                        <span class="bg-card-stars">{{ '★' * (p._rating | int) }}{{ '☆' * (5 - p._rating | int) }}</span>
+                        <span class="bg-card-rating-val">{{ p._rating }}</span>
+                        {% if p._reviews %}
+                        <span class="bg-card-reviews">({{ p._reviews }})</span>
+                        {% endif %}
+                    </div>
+                    <div class="bg-card-price">₹{{ p._price | int }}</div>
+                    <div class="bg-card-chips">
+                        {% for chip in p._chips %}
+                        <span class="bg-chip">{{ chip }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="bg-card-actions">
+                        <a href="{{ URL.product(p.slug, base_path) }}" class="btn btn-sm btn-outline">Details</a>
+                        {% if p.affiliate_url %}
+                        <a href="{{ p.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="bg-empty-state" id="bgEmptyState" style="display:none;">
+            <p>No products match your filters. Try adjusting your criteria.</p>
         </div>
     </div>
 </section>
+
+<!-- ===== 7. BUYING GUIDE ===== -->
+{% if guide_content and guide_content.buying_guide %}
+<section class="bg-guide-section">
+    <div class="container">
+        <h2 class="bg-section-title">{{ guide_content.buying_guide.title }}</h2>
+        <p class="bg-section-subtitle">{{ guide_content.buying_guide.intro }}</p>
+        <div class="bg-guide-grid">
+            {% for factor in guide_content.buying_guide.factors %}
+            <div class="bg-guide-card">
+                <h4>{{ factor.title }}</h4>
+                <p>{{ factor.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== 8. FAQS ===== -->
+{% if guide_content and guide_content.faqs %}
+<section class="bg-faq-section">
+    <div class="container">
+        <h2 class="bg-section-title">Frequently Asked Questions</h2>
+        <div class="bg-faq-list">
+            {% for faq in guide_content.faqs %}
+            <details class="bg-faq-item">
+                <summary>{{ faq.question }}</summary>
+                <p>{{ faq.answer }}</p>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<script>
+(function() {
+    // ===== STATE =====
+    var activeBudget = {% if active_budget %}'{{ active_budget }}'{% else %}''{% endif %};
+    var sortBy = 'recommended';
+    var filters = {};
+    var basePath = '{{ base_path }}';
+
+    // ===== DOM REFS =====
+    var grid = document.getElementById('bgProductGrid');
+    var emptyState = document.getElementById('bgEmptyState');
+    var resultsCount = document.getElementById('bgResultsCount');
+    var heroTotalCount = document.getElementById('heroTotalCount');
+    var sortSelect = document.getElementById('bgSort');
+    var filterToggle = document.getElementById('bgFilterToggle');
+    var filtersPanel = document.getElementById('bgFiltersPanel');
+    var clearBtn = document.getElementById('bgClearFilters');
+
+    // ===== BUDGET CARDS =====
+    document.querySelectorAll('[data-budget]').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            var slug = card.dataset.budget;
+            if (activeBudget === slug) {
+                activeBudget = '';
+            } else {
+                activeBudget = slug;
+            }
+            document.querySelectorAll('[data-budget]').forEach(function(c) {
+                c.classList.toggle('active', c.dataset.budget === activeBudget);
+            });
+            updateUrl();
+            applyFilters();
+        });
+    });
+
+    // ===== SORT =====
+    sortSelect.addEventListener('change', function() {
+        sortBy = sortSelect.value;
+        applyFilters();
+    });
+
+    // ===== FILTER TOGGLE =====
+    if (filterToggle) {
+        filterToggle.addEventListener('click', function() {
+            filtersPanel.classList.toggle('open');
+        });
+    }
+
+    // ===== FILTER CHANGES =====
+    document.querySelectorAll('[data-filter]').forEach(function(el) {
+        el.addEventListener('change', function() {
+            var key = el.dataset.filter;
+            var val = el.value || '';
+            if (el.type === 'checkbox') {
+                val = el.checked ? '1' : '';
+            }
+            if (val) {
+                filters[key] = val;
+            } else {
+                delete filters[key];
+            }
+            applyFilters();
+        });
+    });
+
+    // ===== CLEAR FILTERS =====
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            filters = {};
+            activeBudget = '';
+            sortBy = 'recommended';
+            sortSelect.value = 'recommended';
+            document.querySelectorAll('[data-budget]').forEach(function(c) { c.classList.remove('active'); });
+            document.querySelectorAll('[data-filter]').forEach(function(el) {
+                if (el.type === 'checkbox') { el.checked = false; }
+                else { el.value = ''; }
+            });
+            updateUrl();
+            applyFilters();
+        });
+    }
+
+    // ===== URL MANAGEMENT =====
+    function updateUrl() {
+        var path = window.location.pathname.replace(/\/$/, '');
+        var parts = path.split('/');
+        // Remove any existing budget segment (last segment if it matches a budget slug)
+        var budgetSlugs = ['under-500', '500-1000', '1000-2000', '2000-5000', '5000-plus'];
+        var last = parts[parts.length - 1];
+        if (budgetSlugs.indexOf(last) !== -1) {
+            parts.pop();
+        }
+        if (activeBudget) {
+            parts.push(activeBudget);
+        }
+        var newPath = parts.join('/') + '/';
+        if (newPath !== window.location.pathname) {
+            window.history.replaceState({budget: activeBudget}, '', newPath);
+        }
+    }
+
+    // Restore budget from URL on load
+    (function() {
+        var pathParts = window.location.pathname.replace(/\/$/, '').split('/');
+        var last = pathParts[pathParts.length - 1];
+        var budgetSlugs = ['under-500', '500-1000', '1000-2000', '2000-5000', '5000-plus'];
+        if (budgetSlugs.indexOf(last) !== -1) {
+            activeBudget = last;
+            document.querySelectorAll('[data-budget]').forEach(function(c) {
+                c.classList.toggle('active', c.dataset.budget === activeBudget);
+            });
+        }
+    })();
+
+    // ===== APPLY FILTERS =====
+    function applyFilters() {
+        var cards = grid.querySelectorAll('.bg-product-card');
+        var visible = 0;
+
+        cards.forEach(function(card) {
+            var price = parseFloat(card.dataset.price) || 0;
+            var rating = parseFloat(card.dataset.rating) || 0;
+            var reviews = parseInt(card.dataset.reviews) || 0;
+            var brand = (card.dataset.brand || '').toLowerCase();
+            var type = (card.dataset.type || '').toLowerCase();
+            var show = true;
+
+            // Budget filter
+            if (activeBudget) {
+                switch (activeBudget) {
+                    case 'under-500': show = price <= 500; break;
+                    case '500-1000': show = price >= 500 && price < 1000; break;
+                    case '1000-2000': show = price >= 1000 && price < 2000; break;
+                    case '2000-5000': show = price >= 2000 && price < 5000; break;
+                    case '5000-plus': show = price >= 5000; break;
+                }
+            }
+
+            // Brand filter
+            if (show && filters.brand) {
+                show = brand.indexOf(filters.brand.toLowerCase()) !== -1;
+            }
+
+            // Type filter
+            if (show && filters.type) {
+                show = type.indexOf(filters.type.toLowerCase()) !== -1;
+            }
+
+            // Budget filter in filter panel
+            if (show && filters.budget) {
+                var budgetFilter = filters.budget;
+                if (budgetFilter === 'Under ₹500') show = price <= 500;
+                else if (budgetFilter === '₹500-1000') show = price >= 500 && price < 1000;
+                else if (budgetFilter === '₹1000-2000') show = price >= 1000 && price < 2000;
+                else if (budgetFilter === '₹2000-5000') show = price >= 2000 && price < 5000;
+                else if (budgetFilter === '₹5000+') show = price >= 5000;
+                else if (budgetFilter === 'Under ₹1500') show = price <= 1500;
+                else if (budgetFilter === '₹1500-3000') show = price >= 1500 && price < 3000;
+                else if (budgetFilter === '₹3000-5000') show = price >= 3000 && price < 5000;
+                else if (budgetFilter === 'Under ₹300') show = price <= 300;
+                else if (budgetFilter === '₹300-600') show = price >= 300 && price < 600;
+                else if (budgetFilter === '₹600-1000') show = price >= 600 && price < 1000;
+                else if (budgetFilter === 'Under ₹2000') show = price <= 2000;
+                else if (budgetFilter === '₹5000-10000') show = price >= 5000 && price < 10000;
+            }
+
+            if (show) {
+                card.style.display = '';
+                visible++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Update counts
+        var total = cards.length;
+        if (resultsCount) resultsCount.textContent = visible + ' of ' + total + ' products';
+        if (heroTotalCount) heroTotalCount.textContent = visible + ' Products';
+
+        if (emptyState) {
+            emptyState.style.display = visible === 0 ? '' : 'none';
+        }
+
+        // Sort visible cards
+        sortCards(visible);
+    }
+
+    // ===== SORT =====
+    function sortCards(visible) {
+        var cards = Array.from(grid.querySelectorAll('.bg-product-card'));
+
+        cards.sort(function(a, b) {
+            var aPrice = parseFloat(a.dataset.price) || 0;
+            var bPrice = parseFloat(b.dataset.price) || 0;
+            var aRating = parseFloat(a.dataset.rating) || 0;
+            var bRating = parseFloat(b.dataset.rating) || 0;
+            var aReviews = parseInt(a.dataset.reviews) || 0;
+            var bReviews = parseInt(b.dataset.reviews) || 0;
+
+            switch (sortBy) {
+                case 'price-low': return aPrice - bPrice;
+                case 'price-high': return bPrice - aPrice;
+                case 'rating': return bRating - aRating;
+                case 'reviews': return bReviews - aReviews;
+                case 'recommended':
+                default:
+                    var aScore = aRating * Math.log10(aReviews + 1) || 0;
+                    var bScore = bRating * Math.log10(bReviews + 1) || 0;
+                    return bScore - aScore;
+            }
+        });
+
+        cards.forEach(function(card) {
+            grid.appendChild(card);
+        });
+    }
+
+    // ===== COMPARISON TABLE ROW HOVER =====
+    document.querySelectorAll('.bg-compare-row').forEach(function(row) {
+        row.addEventListener('mouseenter', function() {
+            var slug = row.dataset.slug;
+            document.querySelectorAll('.bg-compare-row, .bg-product-card').forEach(function(el) {
+                if (el.dataset.slug === slug) {
+                    el.classList.add('bg-highlighted');
+                } else {
+                    el.classList.remove('bg-highlighted');
+                }
+            });
+        });
+        row.addEventListener('mouseleave', function() {
+            document.querySelectorAll('.bg-highlighted').forEach(function(el) {
+                el.classList.remove('bg-highlighted');
+            });
+        });
+    });
+
+    // Initial apply
+    applyFilters();
+})();
+</script>
 {% endblock %}

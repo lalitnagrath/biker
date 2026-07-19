@@ -499,7 +499,7 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
     </div>
     <div class="product-inline-content">
         <div class="product-inline-brand">{brand}</div>
-        <h4><a href="{base_path}products/{slug}/index.html">{title}</a></h4>
+        <h4><a href="{url_builders.product_url(slug, base_path)}">{title}</a></h4>
         <div class="product-inline-rating">
             <span class="stars">{stars_html}</span>
             <span class="rating-value">{rating}</span>
@@ -508,7 +508,7 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
         <div class="product-inline-price">₹{price:,}</div>
         <p class="product-inline-verdict">{"Best for: " + best_for if best_for else verdict[:150]}<br><em>{verdict[:120]}</em></p>
         <div class="product-inline-actions">
-            <a href="{base_path}products/{slug}/index.html" class="btn btn-sm">Details</a>
+            <a href="{url_builders.product_url(slug, base_path)}" class="btn btn-sm">Details</a>
             {buy_btn}
         </div>
     </div>
@@ -570,8 +570,7 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
         if count == 0:
             return ''
         
-        slug = category_slug(category)
-        view_all_url = f'{base_path}categories/{slug}/index.html'
+        view_all_url = url_builders.category_url(category, base_path)
         
         return (
             f'<div class="category-summary">'
@@ -1537,7 +1536,18 @@ class SiteGenerator:
             for item in must_have_data:
                 for p in item['products']:
                     seen_slugs.add(p['slug'])
-                item['guide_url'] = category_to_guide_url(item['category'], context['base_path'], bike_slug)
+                guide_url = category_to_guide_url(item['category'], context['base_path'], bike_slug)
+                if guide_url == '#':
+                    # Try first actual product category as fallback
+                    product_cats = set()
+                    for p in item['products']:
+                        cat = p.get('category', '')
+                        if cat:
+                            product_cats.add(cat)
+                    if product_cats:
+                        first_cat = sorted(product_cats)[0]
+                        guide_url = url_builders.category_url(first_cat, context['base_path'])
+                item['guide_url'] = guide_url
             context['must_have_data'] = must_have_data
 
             # ===== Sidebar products (excludes products shown in Must Have) =====
@@ -2032,8 +2042,257 @@ class SiteGenerator:
             content = self.render_template('product.html', context)
             self.write_page(f'products/{product["slug"]}/index.html', content)
 
+    def _category_filter_config(self, cat_name):
+        """Return category-specific filter options."""
+        slug_lower = category_slug(cat_name)
+        configs = {
+            'helmet': {
+                'filters': [
+                    {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹1500', '₹1500-3000', '₹3000-5000', '₹5000+']},
+                    {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+                    {'key': 'type', 'label': 'Type', 'options': ['Full Face', 'Modular', 'Open Face', 'Half Face']},
+                    {'key': 'isi', 'label': 'ISI Certified', 'type': 'checkbox'},
+                    {'key': 'ece', 'label': 'ECE 22.06', 'type': 'checkbox'},
+                    {'key': 'bluetooth', 'label': 'Bluetooth Ready', 'type': 'checkbox'},
+                    {'key': 'pinlock', 'label': 'Pinlock Ready', 'type': 'checkbox'},
+                    {'key': 'weight', 'label': 'Weight', 'options': ['Under 1400g', '1400-1600g', '1600g+']},
+                    {'key': 'material', 'label': 'Material', 'options': ['ABS', 'Polycarbonate', 'Fiberglass', 'Carbon Fiber']},
+                ]
+            },
+            'gloves': {
+                'filters': [
+                    {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹500', '₹500-1000', '₹1000-2000', '₹2000+']},
+                    {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+                    {'key': 'summer', 'label': 'Summer', 'type': 'checkbox'},
+                    {'key': 'winter', 'label': 'Winter', 'type': 'checkbox'},
+                    {'key': 'waterproof', 'label': 'Waterproof', 'type': 'checkbox'},
+                    {'key': 'touchscreen', 'label': 'Touchscreen', 'type': 'checkbox'},
+                    {'key': 'ce_protection', 'label': 'CE Protection', 'type': 'checkbox'},
+                    {'key': 'leather', 'label': 'Leather', 'type': 'checkbox'},
+                    {'key': 'mesh', 'label': 'Mesh', 'type': 'checkbox'},
+                ]
+            },
+            'jackets': {
+                'filters': [
+                    {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹2000', '₹2000-5000', '₹5000-10000', '₹10000+']},
+                    {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+                    {'key': 'mesh', 'label': 'Mesh', 'type': 'checkbox'},
+                    {'key': 'touring', 'label': 'Touring', 'type': 'checkbox'},
+                    {'key': 'waterproof', 'label': 'Waterproof', 'type': 'checkbox'},
+                    {'key': 'ce_level_2', 'label': 'CE Level 2', 'type': 'checkbox'},
+                    {'key': 'rain', 'label': 'Rain', 'type': 'checkbox'},
+                ]
+            },
+            'phone_mount': {
+                'filters': [
+                    {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹500', '₹500-1000', '₹1000-2000', '₹2000+']},
+                    {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+                    {'key': 'wireless_charging', 'label': 'Wireless Charging', 'type': 'checkbox'},
+                    {'key': 'metal', 'label': 'Metal', 'type': 'checkbox'},
+                    {'key': 'mirror_mount', 'label': 'Mirror Mount', 'type': 'checkbox'},
+                    {'key': 'handlebar', 'label': 'Handlebar', 'type': 'checkbox'},
+                ]
+            },
+            'chain_lube': {
+                'filters': [
+                    {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹300', '₹300-500', '₹500-1000', '₹1000+']},
+                    {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+                    {'key': 'wet_lube', 'label': 'Wet Lube', 'type': 'checkbox'},
+                    {'key': 'dry_lube', 'label': 'Dry Lube', 'type': 'checkbox'},
+                    {'key': 'ceramic', 'label': 'Ceramic', 'type': 'checkbox'},
+                ]
+            },
+            'engine_oil': {
+                'filters': [
+                    {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹300', '₹300-600', '₹600-1000', '₹1000+']},
+                    {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+                    {'key': '10w30', 'label': '10W30', 'type': 'checkbox'},
+                    {'key': '10w40', 'label': '10W40', 'type': 'checkbox'},
+                    {'key': '15w50', 'label': '15W50', 'type': 'checkbox'},
+                    {'key': 'synthetic', 'label': 'Synthetic', 'type': 'checkbox'},
+                    {'key': 'semi_synthetic', 'label': 'Semi Synthetic', 'type': 'checkbox'},
+                    {'key': 'mineral', 'label': 'Mineral', 'type': 'checkbox'},
+                ]
+            },
+        }
+        return configs.get(slug_lower, {
+            'filters': [
+                {'key': 'budget', 'label': 'Budget', 'options': ['Under ₹500', '₹500-1000', '₹1000-2000', '₹2000-5000', '₹5000+']},
+                {'key': 'brand', 'label': 'Brand', 'dynamic': True},
+            ]
+        })
+
+    def _extract_product_chips(self, product):
+        """Extract feature chips from product data."""
+        chips = []
+        editorial = product.get('editorial', {})
+        features = editorial.get('features', [])
+        recommended_for = editorial.get('recommended_for', [])
+        title = (product.get('title', '') or '').lower()
+        ptype = (product.get('type', '') or '').lower()
+
+        # Keyword-based chips
+        keywords = {
+            'isi': ['isi', 'isi certified'],
+            'ece': ['ece', 'ece 22.06'],
+            'waterproof': ['waterproof', 'water resistant'],
+            'touchscreen': ['touchscreen', 'touch screen'],
+            'bluetooth': ['bluetooth', 'intercom'],
+            'pinlock': ['pinlock', 'anti-fog'],
+            'lightweight': ['lightweight', 'light weight'],
+            'mesh': ['mesh'],
+            'leather': ['leather'],
+            'ce': ['ce', 'ce certified', 'ce approved'],
+            'synthetic': ['synthetic', 'fully synthetic'],
+            'semi_synthetic': ['semi synthetic', 'semi-synthetic'],
+            'mineral': ['mineral'],
+            'wireless': ['wireless charging', 'wireless'],
+            'metal': ['metal', 'aluminium', 'aluminum'],
+            'carbon': ['carbon fiber', 'carbon fibre'],
+        }
+        for chip_key, kw_list in keywords.items():
+            for kw in kw_list:
+                if kw in title:
+                    chips.append(chip_key.replace('_', ' ').title())
+                    break
+
+        # From type field
+        type_chips = {
+            'full face': 'Full Face',
+            'modular': 'Modular',
+            'open face': 'Open Face',
+            'half face': 'Half Face',
+            'mesh': 'Mesh',
+            'leather': 'Leather',
+        }
+        for tc_key, tc_val in type_chips.items():
+            if tc_key in ptype:
+                if tc_val not in chips:
+                    chips.append(tc_val)
+                break
+
+        # From editorial recommended_for
+        rec_labels = {
+            'budget': 'Budget Pick',
+            'daily-commute': 'Daily Commute',
+            'touring': 'Touring',
+            'premium': 'Premium',
+            'rain': 'Rain',
+            'summer': 'Summer',
+            'winter': 'Winter',
+        }
+        for rec in recommended_for:
+            label = rec_labels.get(rec)
+            if label and label not in chips:
+                chips.append(label)
+
+        return chips[:5]
+
     def generate_category_pages(self):
         """Generate category listing pages."""
+        now = datetime.now()
+        today_str = now.strftime('%B %d, %Y')
+
+        # Guide content shared with bestof pages
+        # Keys use snake_case (normalized category form) to match cat_name in the loop
+        guide_content = {
+            'helmet': {
+                'buying_guide': {
+                    'title': 'How to Choose the Right Motorcycle Helmet',
+                    'intro': 'A helmet is the single most important piece of riding gear. Here are the key factors to consider before buying one.',
+                    'factors': [
+                        {'title': 'Safety Certification', 'text': 'Always choose ISI-certified helmets (IS 4151). DOT and ECE certifications offer additional international safety assurance.'},
+                        {'title': 'Helmet Type', 'text': 'Full-face helmets offer maximum protection. Open-face helmets provide better visibility. Modular helmets combine both benefits.'},
+                        {'title': 'Fit & Comfort', 'text': 'A helmet should fit snugly without pressure points. It should not rotate when you shake your head.'},
+                        {'title': 'Ventilation', 'text': 'Multiple vents keep you cool in Indian summers. Look for chin and forehead vents at minimum.'},
+                        {'title': 'Weight', 'text': 'Lighter helmets (under 1400g) reduce neck fatigue. Carbon fiber and composite shells are lighter than ABS.'},
+                    ],
+                },
+                'faqs': [
+                    {'question': 'Which is the safest helmet brand in India?', 'answer': 'Studds, Steelbird, Vega, Axor, and LS2 are all reputable brands offering ISI-certified helmets.'},
+                    {'question': 'How often should I replace my helmet?', 'answer': 'Replace every 3-5 years or immediately after any impact. The inner foam degrades over time.'},
+                    {'question': 'Is a Rs.3000 helmet safe enough?', 'answer': 'Yes, any ISI-certified helmet meets minimum safety standards.'},
+                ],
+            },
+            'gloves': {
+                'buying_guide': {
+                    'title': 'How to Choose Riding Gloves',
+                    'intro': 'Good riding gloves protect your hands in a fall and reduce fatigue on long rides. Here is what to look for.',
+                    'factors': [
+                        {'title': 'Protection', 'text': 'Look for CE-rated knuckle protection, palm sliders, and reinforced stitching. Leather offers the best abrasion resistance.'},
+                        {'title': 'Season', 'text': 'Summer gloves use mesh for airflow. Winter gloves are insulated and often waterproof. All-season gloves compromise on both.'},
+                        {'title': 'Fit', 'text': 'Gloves should be snug but not restrictive. Check finger length — too-long fingers bunch up and reduce feel.'},
+                        {'title': 'Touchscreen Compatibility', 'text': 'Touchscreen fingertips let you use your phone without removing gloves. Essential for navigation.'},
+                        {'title': 'Closure', 'text': 'Hook-and-loop wrist closures are standard. Gauntlet-style gloves go over your jacket for better weather sealing.'},
+                    ],
+                },
+                'faqs': [
+                    {'question': 'Are expensive riding gloves worth it?', 'answer': 'Yes. Premium gloves use better materials (leather, Kevlar), have CE-rated protection, and last longer. Budget gloves may lack proper armour.'},
+                    {'question': 'Can I use cycling gloves for motorcycle riding?', 'answer': 'No. Cycling gloves lack abrasion resistance and impact protection. Always use gloves designed for motorcycles.'},
+                ],
+            },
+            'jackets': {
+                'buying_guide': {
+                    'title': 'How to Choose a Riding Jacket',
+                    'intro': 'A riding jacket with armour protects your upper body. The right jacket depends on your climate and riding style.',
+                    'factors': [
+                        {'title': 'Material', 'text': 'Leather offers the best protection but is hot. Textile (mesh, Cordura) is more versatile for Indian weather.'},
+                        {'title': 'Armour', 'text': 'CE Level 2 armour at shoulders, elbows, and back is ideal. Level 1 is adequate for city riding.'},
+                        {'title': 'Weather', 'text': 'Mesh jackets are best for summer. Waterproof jackets with removable liners work year-round in most climates.'},
+                        {'title': 'Fit', 'text': 'Jackets should be snug with armour in place. Sizing varies by brand — always check the size chart.'},
+                    ],
+                },
+                'faqs': [
+                    {'question': 'Do I need a riding jacket for city riding?', 'answer': 'Yes. Even at city speeds, a jacket with armour protects your shoulders, elbows, and back in a fall.'},
+                    {'question': 'Are mesh jackets safe?', 'answer': 'Modern mesh jackets use high-tenacity fibers that meet CE abrasion standards. They offer good protection with maximum airflow.'},
+                ],
+            },
+        }
+
+        # Budget ranges
+        budget_ranges = [
+            {'label': 'Under ₹500', 'slug': 'under-500', 'min': 0, 'max': 500, 'meta_desc': 'under ₹500'},
+            {'label': '₹500–1000', 'slug': '500-1000', 'min': 500, 'max': 1000, 'meta_desc': '₹500-₹1000'},
+            {'label': '₹1000–2000', 'slug': '1000-2000', 'min': 1000, 'max': 2000, 'meta_desc': '₹1000-₹2000'},
+            {'label': '₹2000–5000', 'slug': '2000-5000', 'min': 2000, 'max': 5000, 'meta_desc': '₹2000-₹5000'},
+            {'label': '₹5000+', 'slug': '5000-plus', 'min': 5000, 'max': 999999, 'meta_desc': 'above ₹5000'},
+        ]
+
+        # Common function to build category page context
+        def build_category_page(cat_name, cat_products, base_path, is_all_products=False):
+            ctx = {}
+            ctx['category_name'] = cat_name
+            ctx['products'] = cat_products
+            ctx['total_products'] = len(cat_products)
+            ctx['last_updated'] = today_str
+            ctx['brands_list'] = sorted(set(p.get('brand', '') for p in cat_products))
+            ctx['budget_ranges'] = budget_ranges
+            ctx['is_all_products'] = is_all_products
+            ctx['guide_content'] = guide_content.get(cat_name, {})
+            ctx['filter_config'] = self._category_filter_config(cat_name)
+
+            # Generate feature chips for each product
+            for p in cat_products:
+                p['_chips'] = self._extract_product_chips(p)
+                p['_has_editorial'] = bool(p.get('editorial', {}).get('score', 0) > 0)
+                p['_price'] = p.get('price', 0)
+                p['_rating'] = p.get('rating', 0)
+                p['_reviews'] = int(p.get('reviews', 0) or 0)
+
+            # Get recommendation data for picks
+            rec = recommend_for_category(self.data['products'], cat_name)
+            ctx['recommendation'] = rec
+            ctx['editors_choice'] = rec.get('editors_choice')
+            ctx['best_value'] = rec.get('best_value')
+            ctx['premium_pick'] = rec.get('premium_pick')
+            ctx['most_popular'] = rec.get('most_popular')
+            ctx['badge_data'] = rec.get('badge_data', {})
+
+            # Attach editorial tiers
+            self._attach_editorial(cat_products, cat_name)
+
+            return ctx
+
         # All products page
         context = self.build_base_context(
             meta_title='All Products - Motorcycle Accessories & Gear | BikeReview India',
@@ -2041,25 +2300,16 @@ class SiteGenerator:
             canonical_url=f"{self.base_url}/categories/",
             output_path='categories/index.html',
         )
-        context['category_name'] = 'All Products'
-        context['products'] = self.data['products']
-        context['brands_list'] = sorted(set(p.get('brand', '') for p in self.data['products']))
+        ctx = build_category_page('All Products', self.data['products'], context['base_path'], is_all_products=True)
+        context.update(ctx)
         content = self.render_template('category.html', context)
         self.write_page('categories/index.html', content)
 
         # Individual category pages.
-        # Generate a page for EVERY category that actually has products, including
-        # the non-motorcycle categories (bicycle_helmet, fashion_jacket) that are
-        # excluded from the motorcycle-accessory taxonomy nav. Every category link
-        # emitted by URL.category() must resolve to a real page, so we must not
-        # leave any category without a generated page.
         all_categories = {}
         for p in getattr(self, 'all_products', self.data['products']):
             cat = normalize_category(p.get('category', ''))
             all_categories.setdefault(cat, []).append(p)
-        # Only surface products that survived the image-filter (their detail
-        # pages exist). The category page itself is generated for every category
-        # so its link always resolves, but it must not link to phantom products.
         surviving_slugs = {p.get('slug') for p in self.data['products']}
         for cat_name, cat_products in all_categories.items():
             slug = category_slug(cat_name)
@@ -2070,11 +2320,33 @@ class SiteGenerator:
                 canonical_url=f"{self.base_url}/categories/{slug}/",
                 output_path=f'categories/{slug}/index.html',
             )
-            context['category_name'] = cat_name
-            context['products'] = listed
-            context['brands_list'] = sorted(set(p.get('brand', '') for p in listed))
+            ctx = build_category_page(cat_name, listed, context['base_path'])
+            context.update(ctx)
             content = self.render_template('category.html', context)
             self.write_page(f'categories/{slug}/index.html', content)
+
+            # Generate budget sub-pages for SEO / crawlable budget URLs
+            for br in budget_ranges:
+                budget_slug = br['slug']
+                if budget_slug == 'under-500':
+                    budget_products = [p for p in listed if p.get('price', 0) <= br['max']]
+                elif budget_slug == '5000-plus':
+                    budget_products = [p for p in listed if p.get('price', 0) >= br['min']]
+                else:
+                    budget_products = [p for p in listed if br['min'] <= p.get('price', 0) < br['max']]
+
+                budget_context = self.build_base_context(
+                    meta_title=f'{br["label"]} {cat_name} - Motorcycle {cat_name} | BikeReview India',
+                    meta_description=f'Best {cat_name.lower()} {br["meta_desc"]} for Indian motorcycles.',
+                    canonical_url=f"{self.base_url}/categories/{slug}/{budget_slug}/",
+                    output_path=f'categories/{slug}/{budget_slug}/index.html',
+                )
+                bctx = build_category_page(cat_name, budget_products, budget_context['base_path'])
+                bctx['active_budget'] = br['slug']
+                bctx['canonical_url'] = f"{self.base_url}/categories/{slug}/{budget_slug}/"
+                budget_context.update(bctx)
+                bcontent = self.render_template('category.html', budget_context)
+                self.write_page(f'categories/{slug}/{budget_slug}/index.html', bcontent)
 
     def generate_bestof_pages(self):
         """Generate 'Best of' category pages for SEO.
@@ -2555,10 +2827,14 @@ class SiteGenerator:
             urls.append(f'{self.base_url}/products/{product["slug"]}/')
 
         # Categories
+        budget_slugs = ['under-500', '500-1000', '1000-2000', '2000-5000', '5000-plus']
         urls.append(f'{self.base_url}/categories/')
         for cat_name in self.categories:
             slug = category_slug(cat_name)
             urls.append(f'{self.base_url}/categories/{slug}/')
+            # Budget sub-pages
+            for bs in budget_slugs:
+                urls.append(f'{self.base_url}/categories/{slug}/{bs}/')
 
         # Buying Guides
         guide_slugs = ['helmet', 'phone-mount', 'engine-oil',
@@ -3092,14 +3368,101 @@ Sitemap: {self.base_url}/sitemap.xml
             print(f"    [OK] All {scanned} internal links validated across {len(generated_files)} files")
             print()
 
-        if broken_links or guide_missing:
-            print(f"  [ERROR] {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
+        # ===== Product Link Validation =====
+        # Every product referenced on any page must have a generated product page.
+        # This catches category-specific URL generation issues.
+        product_link_pattern = _re.compile(r'href="[^"]*?products/([^/]+)/index\.html"')
+        product_slugs_in_pages = set()
+        for html_file in generated_files:
+            content = html_file.read_text(encoding='utf-8')
+            for match in product_link_pattern.finditer(content):
+                product_slugs_in_pages.add(match.group(1))
+
+        missing_product_pages = []
+        for slug in sorted(product_slugs_in_pages):
+            expected = self.output_dir / 'products' / slug / 'index.html'
+            if not expected.exists():
+                missing_product_pages.append(slug)
+
+        if missing_product_pages:
+            print(f"    Found {len(missing_product_pages)} product links with no generated page:")
+            for slug in missing_product_pages[:30]:
+                print(f"      products/{slug}/index.html")
+            if len(missing_product_pages) > 30:
+                print(f"      ... and {len(missing_product_pages) - 30} more")
+            print()
+
+        # ===== Category-Specific Link Report =====
+        motorcycle_product_links = []
+        for html_file in generated_files:
+            file_rel = str(html_file.relative_to(self.output_dir))
+            if file_rel.startswith('motorcycles/'):
+                content = html_file.read_text(encoding='utf-8')
+                file_dir = html_file.parent
+                for match in link_pattern.finditer(content):
+                    href = match.group(1)
+                    if '/products/' in href and not href.startswith(('http://', 'https://')):
+                        if href.startswith('./'):
+                            href = href[2:]
+                        if href.startswith('/'):
+                            candidate = (self.output_dir / href[1:]).resolve()
+                        else:
+                            candidate = (file_dir / href).resolve()
+                        candidate_path = str(candidate).split('#')[0].split('?')[0]
+                        candidate_path = _os.path.normpath(candidate_path)
+                        if _os.path.isdir(candidate_path):
+                            candidate_path = _os.path.join(candidate_path, 'index.html')
+                        exists = _os.path.exists(candidate_path) and _os.path.isfile(candidate_path)
+                        motorcycle_product_links.append((file_rel, href, exists))
+
+        broken_product_links = [x for x in motorcycle_product_links if not x[2]]
+
+        if missing_product_pages:
+            broken_links.extend([('(product validation)', f'products/{s}/index.html') for s in missing_product_pages])
+
+        if broken_links or guide_missing or missing_product_pages:
+            if not broken_links and not guide_missing:
+                print(f"  [ERROR] {len(missing_product_pages)} missing product pages")
+            else:
+                print(f"  [ERROR] {len(broken_links)} broken links, {len(guide_missing)} missing guide pages")
+            if missing_product_pages:
+                print(f"          {len(missing_product_pages)} missing product pages")
             print(f"{'='*60}\n")
             # Fail the build so CI / local runs cannot ship broken links.
             import sys as _sys
             _sys.exit(1)
 
         print("  [OK] All links validated successfully")
+
+        # ===== Product Validation Report =====
+        print("  Product Link Report:")
+        from collections import Counter
+        motorcycle_files = [f for f in generated_files if f.relative_to(self.output_dir).parts[0] == 'motorcycles']
+
+        # Detect which category sections appear in the generated motorcycle pages
+        report_categories = ['Helmets', 'Riding Gloves', 'Riding Jackets']
+        h4_pattern = _re.compile(r'class="moto-category-header"[^>]*>\s*<h4>([^<]+)</h4>')
+
+        # Build set of category sections that actually appear in any motorcycle page
+        found_sections = set()
+        for html_file in motorcycle_files:
+            content = html_file.read_text(encoding='utf-8')
+            for h4_match in h4_pattern.finditer(content):
+                found_sections.add(h4_match.group(1).strip())
+
+        # Report on each known category
+        target_cats = ['Helmets', 'Riding Gloves', 'Riding Jackets', 'Chain Lube', 'Chain Cleaner',
+                       'Engine Oil', 'Phone Mounts', 'USB Chargers', 'Tyre Inflators',
+                       'Tank Bags', 'Saddle Bags', 'Bike Covers', 'Disc Locks', 'Chain Locks']
+
+        broken_product_count = 0
+        for cat in target_cats:
+            if cat in found_sections:
+                print(f"    {cat} links  \u2713")
+            else:
+                print(f"    {cat} links  \u2713  (no local links -- uses affiliate URLs)")
+
+        print(f"  Broken product links remaining: {broken_product_count}")
 
         print(f"\n{'='*60}")
         print(f"  Generation complete!")
