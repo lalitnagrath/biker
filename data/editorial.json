@@ -1,0 +1,230 @@
+{
+  "helmet": {
+    "editor_choice": null,
+    "best_value": null,
+    "premium_pick": null,
+    "budget_pick": "B0CTZP3SGL",
+    "manual_order": [
+      "B0CM9HXJBW",
+      "B0CTZP3SGL",
+      "B0BRFHNNLV",
+      "B0D42Y42K4",
+      "B09XJ5Y4YF",
+      "B0DQY4J7VM",
+      "B0DPL49BFX",
+      "B0GFXN7KQ9",
+      "B0DMVHZDQC",
+      "B0DX231GD7"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "gloves": {
+    "editor_choice": null,
+    "best_value": null,
+    "premium_pick": "B0C1NY6HJV",
+    "budget_pick": null,
+    "manual_order": [
+      "B0D6WGL4HL",
+      "B0C1NY6HJV",
+      "B0DFTR4C79",
+      "B0G65F258K",
+      "B0CL9FZGNZ",
+      "B0C1NZ46M8",
+      "B0G5NJSFPN",
+      "B09DYQ7962",
+      "B0CK2BK16G",
+      "B0CK2KX352"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "jackets": {
+    "editor_choice": "B0DQPZCC1G",
+    "best_value": "B09W2L2T55",
+    "premium_pick": "B0FCY8FBKD",
+    "budget_pick": "B0C3MJV637",
+    "manual_order": [
+      "B0DHLCYQMK",
+      "B0FXVRZ94S",
+      "B0FXVW2KY1",
+      "B0C3MJV637",
+      "B0CHMGZTBT",
+      "B09W2L2T55",
+      "B0CQTLZGZC",
+      "B0CQTMZDPW",
+      "B0CQTLSYCM",
+      "B0FYD21MP8"
+    ],
+    "excluded": [
+      "B0FXVRZ94S",
+      "B0FXVW2KY1",
+      "B0DHLCYQMK"
+    ],
+    "excluded_reasons": {
+      "B0FXVRZ94S": "Wrong Category",
+      "B0FXVW2KY1": "Wrong Category",
+      "B0DHLCYQMK": "Wrong Category"
+    }
+  },
+  "engine_oil": {
+    "editor_choice": null,
+    "best_value": "B01IDHDF1C",
+    "premium_pick": "B00C72MCUU",
+    "budget_pick": null,
+    "manual_order": [
+      "B00C72MCUU",
+      "B01IDHDF1C"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "chain_lube": {
+    "editor_choice": "B0D31SYW4T",
+    "best_value": "B0H3Q1N71V",
+    "premium_pick": "B01ESPB2VI",
+    "budget_pick": "B07CLZZQFG",
+    "manual_order": [
+      "B01ESPB2VI",
+      "B005PW0OUE",
+      "B0C49BG6WN",
+      "B01ESPB2WM",
+      "B01ESPB3PI",
+      "B0H3Q1N71V",
+      "B0D31SYW4T",
+      "B08TZTCP37",
+      "B07CLZZQFG",
+      "B08R5XJNLP"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "action_camera": {
+    "editor_choice": null,
+    "best_value": "B0FZHPP17P",
+    "premium_pick": "B0DK6KY6FF",
+    "budget_pick": null,
+    "manual_order": [
+      "B0GZP2T1HT",
+      "B0FJ7G5SZR",
+      "B0928DVLQN",
+      "B0GRG57MMT",
+      "B0FZHPP17P",
+      "B0CF1ZRJM7",
+      "B0GMQ5LLFW",
+      "B0D1N87D4P",
+      "B09RXS6SBB",
+      "B0DK6KY6FF"
+    ],
+    "excluded": [
+      "B0GZP2T1HT"
+    ],
+    "excluded_reasons": {
+      "B0GZP2T1HT": "Wrong Category"
+    }
+  },
+  "alarm": {
+    "editor_choice": null,
+    "best_value": null,
+    "premium_pick": null,
+    "budget_pick": null,
+    "manual_order": [
+      "B09LH6C1CZ",
+      "B0F38HMGGZ",
+      "B0C5R185P4"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "bike_cover": {
+    "editor_choice": null,
+    "best_value": "B0FY3FXTW5",
+    "premium_pick": "B0GS3R2713",
+    "budget_pick": "B09HHK5MYS",
+    "manual_order": [
+      "B0CW65VTDG",
+      "B0CVXQJ5PL",
+      "B0CW19ZJ7D",
+      "B0CW1GY67T",
+      "B0FLVKTTW6",
+      "B0DFTRQBP3",
+      "B0FVFSQ1D2",
+      "B0FY3FXTW5",
+      "B0GX9RHN83",
+      "B0FHWHFGYD"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "chain_cleaner": {
+    "editor_choice": "B0CRZ5RL94",
+    "best_value": "B0077ASLCU",
+    "premium_pick": "B0D8T9CCDN",
+    "budget_pick": "B004YF1Z4M",
+    "manual_order": [
+      "B0077ASLCU",
+      "B004YF1Z4M",
+      "B0G93SFDQF",
+      "B01ESPB2V8",
+      "B0GBVY53PM",
+      "B0CRZ5RL94",
+      "B0D8T9CCDN",
+      "B0GFTYJYB3",
+      "B091PQV2VZ",
+      "B07JDF3ZSK"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "chain_lock": {
+    "editor_choice": "B07PPNXT8R",
+    "best_value": null,
+    "premium_pick": "B07BS9K96T",
+    "budget_pick": null,
+    "manual_order": [
+      "B07PPNXT8R",
+      "B07BS9K96T"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "dash_cam": {
+    "editor_choice": null,
+    "best_value": null,
+    "premium_pick": null,
+    "budget_pick": null,
+    "manual_order": [
+      "B0FNMW2699",
+      "B0GBXBMPYY",
+      "B0H2M74DH1",
+      "B0F3349WXZ",
+      "B0DGGTRHJT",
+      "B0FL7X9BWV",
+      "B0GY8888VM",
+      "B0CVH2K929",
+      "B093DLNLTX"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "riding_pants": {
+    "editor_choice": "B0DWXRQ1BK",
+    "best_value": "B0CKLFCL7S",
+    "premium_pick": "B0DVYJWLK3",
+    "budget_pick": null,
+    "manual_order": [
+      "B0BS3ZKRDX",
+      "B0BTVR4Y3N",
+      "B0CKLDDQDV",
+      "B0CKLD9J6N",
+      "B0FQ2XRGB7",
+      "B0CKLFCL7S",
+      "B0DWXRQ1BK",
+      "B0FMFNP2ZV",
+      "B0DVYJWLK3",
+      "B0GS9JH82P"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  }
+}

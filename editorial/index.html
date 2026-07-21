@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial Dashboard — BikeReview India</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f4f5f7;--surface:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--accent:#2563eb;--accent2:#1d4ed8;--green:#16a34a;--red:#dc2626;--orange:#ea580c;--gold:#ca8a04;--purple:#7c3aed;--pink:#db2777;--shadow:0 1px 3px rgba(0,0,0,.08);--radius:10px;--radius-sm:6px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+button{cursor:pointer;font-family:inherit;font-size:13px;border:none;border-radius:var(--radius-sm);padding:7px 14px;font-weight:500;transition:background .15s,opacity .15s}
+button:active{opacity:.8}
+select,input{font-family:inherit;font-size:13px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 10px;background:var(--surface);color:var(--text)}
+select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+
+.app{display:flex;height:100vh;overflow:hidden}
+
+/* Sidebar */
+.sidebar{width:240px;min-width:240px;background:#1a1a2e;color:#fff;display:flex;flex-direction:column;overflow:hidden}
+.sidebar-header{padding:18px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sidebar-header h1{font-size:16px;font-weight:700;letter-spacing:-.3px}
+.sidebar-header .sub{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
+.sidebar-nav{flex:1;overflow-y:auto;padding:8px 0}
+.sidebar-nav .cat-group{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.3);padding:12px 16px 4px;font-weight:600}
+.sidebar-nav .cat-item{display:flex;align-items:center;gap:8px;padding:8px 16px;color:rgba(255,255,255,.7);font-size:13px;transition:all .12s;cursor:pointer;border-left:3px solid transparent}
+.sidebar-nav .cat-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.sidebar-nav .cat-item.active{background:rgba(37,99,235,.2);color:#fff;border-left-color:var(--accent)}
+.sidebar-nav .cat-item .count{font-size:11px;color:rgba(255,255,255,.35);margin-left:auto}
+.sidebar-nav .cat-item .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sidebar-footer{padding:12px 16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.3)}
+
+/* Main */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.main-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.main-header h2{font-size:18px;font-weight:700}
+.main-header .stats{font-size:12px;color:var(--text2);margin-left:auto}
+.toolbar{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.toolbar .search-wrap{flex:1;min-width:180px;position:relative}
+.toolbar .search-wrap input{width:100%;padding-left:32px}
+.toolbar .search-wrap .icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text2);font-size:14px}
+.toolbar .filter-group{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.toolbar .filter-btn{padding:5px 12px;font-size:12px;background:var(--bg);color:var(--text2);border:1px solid var(--border)}
+.toolbar .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.toolbar .filter-count{font-size:12px;color:var(--text2);background:var(--bg);padding:2px 10px;border-radius:99px}
+.btn-primary{background:var(--accent);color:#fff;padding:8px 20px;font-weight:600;font-size:13px}
+.btn-primary:hover{background:var(--accent2)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--bg)}
+.btn-sm{padding:4px 10px;font-size:11px}
+
+.content{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:20px}
+
+/* Top Picks */
+.picks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pick-slot{background:var(--surface);border-radius:var(--radius);border:2px dashed var(--border);padding:14px;text-align:center;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;position:relative}
+.pick-slot:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.pick-slot.filled{border-style:solid}
+.pick-slot .pick-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:6px}
+.pick-slot .pick-icon{font-size:24px;margin-bottom:4px}
+.pick-slot .pick-empty{font-size:12px;color:var(--text2);margin-top:4px}
+.pick-slot .pick-product{width:100%}
+.pick-slot .pick-product img{width:80px;height:80px;object-fit:contain;border-radius:6px;background:#f8f9fa;margin-bottom:6px}
+.pick-slot .pick-product .name{font-size:12px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pick-slot .pick-product .meta{font-size:11px;color:var(--text2);margin-top:2px}
+.pick-slot .pick-clear{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.5);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px;padding:0;opacity:0;transition:opacity .15s}
+.pick-slot:hover .pick-clear{opacity:1}
+.pick-slot.pick-ec{border-color:var(--gold)}.pick-slot.pick-bv{border-color:var(--green)}.pick-slot.pick-pp{border-color:var(--purple)}.pick-slot.pick-bp{border-color:var(--orange)}
+
+/* Product Grid */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.product-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:box-shadow .15s;position:relative}
+.product-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.product-card.excluded{opacity:.5;order:999}
+.product-card .card-img-wrap{height:160px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;padding:12px;position:relative}
+.product-card .card-img-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+.product-card .card-badge{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;color:#fff}
+.product-card .card-badge.ec{background:var(--gold)}
+.product-card .card-badge.bv{background:var(--green)}
+.product-card .card-badge.pp{background:var(--purple)}
+.product-card .card-badge.bp{background:var(--orange)}
+.product-card .card-body{padding:12px 14px 14px}
+.product-card .card-body .title{font-size:13px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px}
+.product-card .card-body .row{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
+.product-card .card-body .brand{font-size:12px;font-weight:500;color:var(--accent)}
+.product-card .card-body .price{font-size:14px;font-weight:700}
+.product-card .card-body .score{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--bg);font-weight:600;color:var(--text2)}
+.product-card .card-body .score.high{background:#dcfce7;color:var(--green)}
+.product-card .card-body .score.mid{background:#fef9c3;color:var(--gold)}
+.product-card .card-body .score.low{background:#fee2e2;color:var(--red)}
+.product-card .card-body .conf{font-size:11px;color:var(--text2)}
+.product-card .card-actions{display:flex;flex-wrap:wrap;gap:4px;padding:8px 14px 12px;border-top:1px solid var(--border)}
+.product-card .card-actions .badge-btn{font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600}
+.badge-btn.ec{background:#fef3c7;color:var(--gold)}.badge-btn.ec:hover{background:var(--gold);color:#fff}
+.badge-btn.bv{background:#dcfce7;color:var(--green)}.badge-btn.bv:hover{background:var(--green);color:#fff}
+.badge-btn.pp{background:#f3e8ff;color:var(--purple)}.badge-btn.pp:hover{background:var(--purple);color:#fff}
+.badge-btn.bp{background:#ffedd5;color:var(--orange)}.badge-btn.bp:hover{background:var(--orange);color:#fff}
+.badge-btn.clear{background:var(--bg);color:var(--text2)}.badge-btn.clear:hover{background:#e5e7eb}
+.product-card .exclude-bar{display:flex;align-items:center;gap:6px;padding:6px 14px;background:#fef2f2;border-top:1px solid #fecaca;font-size:12px}
+.product-card .exclude-bar select{font-size:11px;padding:3px 6px;border:1px solid #fecaca;background:#fff}
+.product-card .exclude-bar .excluded-label{color:var(--red);font-weight:600;font-size:11px}
+.product-card .restore-btn{font-size:10px;padding:2px 8px;background:var(--bg);color:var(--text2);border:1px solid var(--border);border-radius:4px}
+.product-card .restore-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* Ranking */
+.ranking-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px 20px}
+.ranking-section h3{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ranking-section .rank-note{font-size:11px;color:var(--text2);margin-left:auto;font-weight:400}
+.rank-list{display:flex;flex-direction:column;gap:4px}
+.rank-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border);cursor:grab;transition:all .12s;user-select:none}
+.rank-item:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.rank-item.dragging{opacity:.5;border-style:dashed}
+.rank-item.drag-over{border-color:var(--accent);background:#eff6ff}
+.rank-item .rank-num{font-size:12px;font-weight:700;color:var(--text2);width:24px;text-align:center;flex-shrink:0}
+.rank-item .rank-img{width:36px;height:36px;object-fit:contain;border-radius:4px;background:var(--surface);flex-shrink:0}
+.rank-item .rank-name{font-size:13px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-item .rank-brand{font-size:11px;color:var(--text2);flex-shrink:0}
+.rank-item .rank-handle{color:var(--text2);font-size:16px;cursor:grab;flex-shrink:0}
+.rank-item .rank-remove{color:var(--red);font-size:16px;cursor:pointer;flex-shrink:0;padding:0 4px;opacity:.5}
+.rank-item .rank-remove:hover{opacity:1}
+
+/* Preview */
+.preview-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
+.preview-section .preview-header{display:flex;align-items:center;gap:8px;padding:12px 20px;border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
+.preview-section .preview-body{padding:20px;min-height:200px}
+.preview-empty{text-align:center;padding:40px 20px;color:var(--text2);font-size:13px}
+.preview-top-picks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.preview-card{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.preview-card .pc-img{height:120px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;padding:8px}
+.preview-card .pc-img img{max-width:100%;max-height:100%;object-fit:contain}
+.preview-card .pc-body{padding:8px 10px}
+.preview-card .pc-badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;color:#fff;display:inline-block;margin-bottom:4px}
+.preview-card .pc-title{font-size:12px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.preview-card .pc-price{font-size:13px;font-weight:700;margin-top:4px}
+.preview-card .pc-meta{font-size:11px;color:var(--text2);margin-top:2px}
+.preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.preview-item{border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.preview-item .pi-img{height:100px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;padding:8px}
+.preview-item .pi-img img{max-width:80%;max-height:80%;object-fit:contain}
+.preview-item .pi-body{padding:6px 8px}
+.preview-item .pi-title{font-size:11px;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.preview-item .pi-price{font-size:12px;font-weight:700;margin-top:2px}
+.preview-item .pi-badge{font-size:9px;font-weight:600;color:var(--text2)}
+
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:var(--surface);border-radius:var(--radius);width:700px;max-width:100%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.modal-header h3{font-size:15px;font-weight:700;flex:1}
+.modal-close{background:var(--bg);border:none;width:32px;height:32px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text2);cursor:pointer}
+.modal-close:hover{background:#e5e7eb}
+.modal-search{padding:10px 20px;border-bottom:1px solid var(--border)}
+.modal-search input{width:100%}
+.modal-body{flex:1;overflow-y:auto;padding:10px 20px 20px}
+.modal-product{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:background .1s;border:1px solid transparent}
+.modal-product:hover{background:var(--bg);border-color:var(--border)}
+.modal-product.selected{border-color:var(--accent);background:#eff6ff}
+.modal-product img{width:48px;height:48px;object-fit:contain;border-radius:4px;background:#f8f9fa}
+.modal-product .mp-info{flex:1;min-width:0}
+.modal-product .mp-title{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.modal-product .mp-meta{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:#1a1a2e;color:#fff;padding:12px 20px;border-radius:var(--radius-sm);font-size:13px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.2);display:flex;align-items:center;gap:8px;animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.toast.success{background:var(--green)}
+.toast.error{background:var(--red)}
+.toast .close-toast{background:none;border:none;color:rgba(255,255,255,.7);font-size:16px;cursor:pointer;padding:0 4px}
+
+/* Excluded filter chip */
+.filter-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:500;background:var(--bg);border:1px solid var(--border);cursor:pointer;transition:all .12s}
+.filter-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.filter-chip .chip-count{font-size:10px;opacity:.7}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#9ca3af}
+
+.empty-state{text-align:center;padding:60px 20px;color:var(--text2)}
+.empty-state .big-icon{font-size:48px;margin-bottom:12px;opacity:.3}
+.empty-state p{font-size:14px}
+.editorial-banner{background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius);padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.editorial-banner .banner-icon{font-size:28px;flex-shrink:0}
+.editorial-banner .banner-text{flex:1}
+.editorial-banner .banner-text h4{font-size:14px;font-weight:600;color:var(--red)}
+.editorial-banner .banner-text p{font-size:12px;color:#b91c1c;margin-top:2px}
+.btn-import{background:var(--red);color:#fff;padding:8px 18px;font-weight:600;font-size:13px}
+.btn-import:hover{background:#b91c1c}
+.btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:8px 18px;font-weight:500;font-size:13px}
+.btn-secondary:hover{background:#e5e7eb}
+
+@media(max-width:900px){
+  .app{flex-direction:column;height:auto;min-height:100vh}
+  .sidebar{width:100%;min-width:unset;max-height:200px}
+  .sidebar-nav{display:flex;flex-wrap:wrap;gap:4px;padding:8px 12px}
+  .sidebar-nav .cat-group{display:none}
+  .sidebar-nav .cat-item{padding:6px 10px;border-left:none;border-radius:var(--radius-sm);font-size:12px}
+  .picks-grid{grid-template-columns:repeat(2,1fr)}
+  .preview-top-picks{grid-template-columns:repeat(2,1fr)}
+  .main-header{padding:12px 16px}
+  .toolbar{padding:10px 16px}
+  .content{padding:16px}
+}
+@media(max-width:600px){
+  .picks-grid,.preview-top-picks{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Editorial Dashboard</h1>
+      <div class="sub">BikeReview India</div>
+    </div>
+    <div class="sidebar-nav" id="categoryList"></div>
+    <div class="sidebar-footer" id="sidebarFooter"></div>
+  </div>
+  <div class="main">
+    <div class="main-header">
+      <h2 id="mainTitle">Select a category</h2>
+      <div class="stats" id="statsBar"></div>
+    </div>
+    <div class="toolbar" id="toolbar" style="display:none">
+      <div class="search-wrap">
+        <span class="icon">&#x1F50D;</span>
+        <input id="searchInput" placeholder="Search by title, brand, or ASIN...">
+      </div>
+      <div class="filter-group" id="filterGroup"></div>
+      <button class="btn-primary" id="saveBtn">&#x1F4BE; Save editorial.json</button>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="productPickerModal" style="display:none" onclick="if(event.target===this)closePicker()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="pickerTitle">Select Product</h3>
+      <button class="modal-close" onclick="closePicker()">&times;</button>
+    </div>
+    <div class="modal-search"><input id="pickerSearch" placeholder="Search products..." oninput="renderPickerList()"></div>
+    <div class="modal-body" id="pickerList"></div>
+  </div>
+</div>
+
+<script>
+// ===== CONFIG =====
+const PRODUCT_FILES = [
+  'accessories.json','alarms.json','bike-covers.json','cameras.json','care.json',
+  'chargers.json','ear-plugs.json','footrests.json','gloves.json','gps-trackers.json',
+  'handlebar-accessories.json','helmets.json','horns.json','jackets.json','lighting.json',
+  'locks.json','luggage.json','maintenance.json','mirrors.json','riding-pants.json',
+  'seat-covers.json','tools.json','windshields.json'
+];
+
+const CATEGORY_DISPLAY_MAP = {
+  'Helmet':'Helmet','Gloves':'Gloves','Jackets':'Jackets','Phone Mount':'Phone Mount',
+  'Crash Guard':'Crash Guard','Engine Oil':'Engine Oil','Chain Lube':'Chain Lube',
+  'Chain Cleaner':'Chain Cleaner','Bike Cover':'Bike Cover','Chain Lock':'Chain Lock',
+  'Disc Lock':'Disc Lock','Ear Plugs':'Ear Plugs','Action Camera':'Action Camera',
+  'Dash Cam':'Dash Cam','Alarm':'Alarm','Charger':'Charger','Footrest':'Footrest',
+  'GPS Tracker':'GPS Tracker','Handlebar Grip':'Handlebar Grip','Headlight':'Headlight',
+  'Horn':'Horn','Indicator':'Indicator','Mirror':'Mirror','Polish':'Polish',
+  'Riding Pants':'Riding Pants','Saddle Bag':'Saddle Bag','Seat Cover':'Seat Cover',
+  'Tail Bag':'Tail Bag','Tank Bag':'Tank Bag','Tool Kit':'Tool Kit',
+  'Tyre Inflator':'Tyre Inflator','Windshield':'Windshield'
+};
+
+function categoryToKey(cat){
+  const m = {
+    'Helmet':'helmet','Gloves':'gloves','Jackets':'jackets','Phone Mount':'phone_mount',
+    'Crash Guard':'crash_guard','Engine Oil':'engine_oil','Chain Lube':'chain_lube',
+    'Chain Cleaner':'chain_cleaner','Bike Cover':'bike_cover','Chain Lock':'chain_lock',
+    'Disc Lock':'disc_lock','Ear Plugs':'ear_plugs','Action Camera':'action_camera',
+    'Dash Cam':'dash_cam','Alarm':'alarm','Charger':'charger','Footrest':'footrest',
+    'GPS Tracker':'gps_tracker','Handlebar Grip':'handlebar_grip','Headlight':'headlight',
+    'Horn':'horn','Indicator':'indicator','Mirror':'mirror','Polish':'polish',
+    'Riding Pants':'riding_pants','Saddle Bag':'saddle_bag','Seat Cover':'seat_cover',
+    'Tail Bag':'tail_bag','Tank Bag':'tank_bag','Tool Kit':'tool_kit',
+    'Tyre Inflator':'tyre_inflator','Windshield':'windshield'
+  };
+  return m[cat] || cat.toLowerCase().replace(/\s+/g,'_');
+}
+
+// ===== STATE =====
+const LS_KEY = 'bikereview_editorial';
+let allProducts = [];
+let categories = [];
+let selectedCategory = null;
+let editorialData = {};
+let editorialLoaded = false;
+let savedSnapshot = '';
+let dirHandle = null;
+let pickerCallback = null;
+let dragSrcIndex = null;
+
+// ===== LOCAL STORAGE =====
+function saveDraft(){
+  try{
+    localStorage.setItem(LS_KEY, JSON.stringify(editorialData));
+    updateUnsavedIndicator();
+  }catch(e){}
+}
+
+function loadDraft(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw && raw !== '{}'){
+      editorialData = JSON.parse(raw);
+      editorialLoaded = true;
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+
+function clearDraft(){
+  localStorage.removeItem(LS_KEY);
+  editorialData = {};
+  editorialLoaded = false;
+  savedSnapshot = '';
+  if(selectedCategory){
+    render();
+  }else{
+    renderSidebar();
+  }
+  updateUnsavedIndicator();
+  showToast('Local draft cleared');
+}
+
+function updateUnsavedIndicator(){
+  const el = document.getElementById('unsavedIndicator');
+  if(!el) return;
+  const current = JSON.stringify(editorialData);
+  if(current !== savedSnapshot){
+    el.style.display = 'inline-flex';
+  }else{
+    el.style.display = 'none';
+  }
+}
+
+// ===== DATA LOADING =====
+async function loadProducts(){
+  const results = await Promise.allSettled(
+    PRODUCT_FILES.map(f => fetch('../data/products/'+f).then(r => r.ok ? r.json() : []))
+  );
+  const prods = [];
+  for(const r of results){
+    if(r.status === 'fulfilled' && Array.isArray(r.value)){
+      for(const p of r.value) prods.push(p);
+    }
+  }
+  allProducts = prods;
+  const catSet = new Set();
+  for(const p of prods) if(p.category) catSet.add(p.category);
+  categories = Array.from(catSet).sort((a,b) => {
+    const order = ['Helmet','Gloves','Jackets','Phone Mount','Crash Guard','Engine Oil','Chain Lube'];
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    if(ia!==-1 && ib!==-1) return ia-ib;
+    if(ia!==-1) return -1; if(ib!==-1) return 1;
+    return a.localeCompare(b);
+  });
+}
+
+async function loadEditorial(){
+  if(loadDraft()){
+    savedSnapshot = JSON.stringify(editorialData);
+    updateUnsavedIndicator();
+    return;
+  }
+  try{
+    const r = await fetch('../editorial.json?'+Date.now());
+    if(r.ok){
+      editorialData = await r.json();
+      editorialLoaded = true;
+      savedSnapshot = JSON.stringify(editorialData);
+      saveDraft();
+      updateUnsavedIndicator();
+      return;
+    }
+  }catch(e){}
+  editorialData = {};
+  editorialLoaded = false;
+  savedSnapshot = '';
+  updateUnsavedIndicator();
+}
+
+function applyEditorialData(data){
+  editorialData = data || {};
+  editorialLoaded = true;
+  saveDraft();
+  if(selectedCategory){
+    renderTopPicks();
+    renderProductGrid();
+    renderRanking();
+    renderPreview();
+    renderToolbar();
+  }
+  renderSidebar();
+}
+
+// ===== STATE HELPERS =====
+function getEditorialFor(catKey){
+  if(!editorialData[catKey]) editorialData[catKey] = {editor_choice:null,best_value:null,premium_pick:null,budget_pick:null,manual_order:[],excluded:[],excluded_reasons:{}};
+  return editorialData[catKey];
+}
+
+function getCatEditorial(){ return getEditorialFor(categoryToKey(selectedCategory)); }
+
+function getProductsByCategory(cat){
+  return allProducts.filter(p => p.category === cat && p.status !== 'hidden');
+}
+
+function getActiveProducts(cat){
+  const ed = getEditorialFor(categoryToKey(cat));
+  return getProductsByCategory(cat).filter(p => !ed.excluded.includes(p.asin));
+}
+
+function getProductByAsin(asin){
+  return allProducts.find(p => p.asin === asin);
+}
+
+function getBadgeInfo(product, editorial){
+  if(!product || !editorial) return null;
+  if(product.asin === editorial.editor_choice) return {type:'ec',label:"Editor's Choice",icon:'&#x1F3C6;'};
+  if(product.asin === editorial.best_value) return {type:'bv',label:'Best Value',icon:'&#x1F4B0;'};
+  if(product.asin === editorial.premium_pick) return {type:'pp',label:'Premium Pick',icon:'&#x2B50;'};
+  if(product.asin === editorial.budget_pick) return {type:'bp',label:'Budget Pick',icon:'&#x1F525;'};
+  return null;
+}
+
+function getImageUrl(product){
+  if(!product || !product.amazon) return '';
+  let path = product.amazon.image || '';
+  if(!path) return '';
+  if(path.startsWith('http')) return path;
+  if(path.startsWith('/')) return path;
+  return '../'+path;
+}
+
+function getAutoScore(product){
+  return product.editorial && product.editorial.score != null ? product.editorial.score : 0;
+}
+
+function getConfidence(product){
+  if(!product.amazon) return 0;
+  const r = product.amazon.rating || 0, rc = product.amazon.review_count || 0;
+  return Math.min(100, Math.round((r/5)*60 + Math.min(rc,5000)/5000*40));
+}
+
+function getCategoryCount(cat){
+  return getProductsByCategory(cat).length;
+}
+
+// ===== RENDER =====
+let currentFilter = 'all';
+let currentBrandFilter = '';
+let currentPriceMin = 0;
+let currentPriceMax = Infinity;
+
+function render(){
+  renderSidebar();
+  if(!selectedCategory){ document.getElementById('content').innerHTML='<div class="empty-state"><div class="big-icon">&#x1F4CB;</div><p>Select a category from the sidebar to start editing</p></div>'; document.getElementById('toolbar').style.display='none'; return; }
+  document.getElementById('toolbar').style.display='flex';
+  document.getElementById('mainTitle').textContent = selectedCategory;
+  const products = getActiveProducts(selectedCategory);
+  const edCount = getEditorialFor(categoryToKey(selectedCategory)).excluded.length;
+  document.getElementById('statsBar').innerHTML = products.length+' products'+(edCount ? ' | '+edCount+' excluded' : '');
+  renderToolbar();
+  const bannerHtml = editorialLoaded ? '' : '<div class="editorial-banner"><div class="banner-icon">&#x26A0;&#xFE0F;</div><div class="banner-text"><h4>No editorial configuration found</h4><p>editorial.json was not loaded. Select a product and use Import above to load an existing file, or start fresh and Save to create one.</p></div><button class="btn-import" onclick="document.getElementById(\'importInput\').click()">&#x1F4C2; Import Editorial JSON</button></div>';
+  document.getElementById('content').innerHTML = bannerHtml + '<div id="topPicksSection"></div><div id="productGridSection"></div><div id="rankingSection"></div><div id="previewSection"></div>';
+  renderTopPicks();
+  renderProductGrid();
+  renderRanking();
+  renderPreview();
+}
+
+function renderSidebar(){
+  const list = document.getElementById('categoryList');
+  let html = '<div class="cat-group">Categories</div>';
+  for(const cat of categories){
+    const active = cat === selectedCategory ? ' active' : '';
+    html += `<div class="cat-item${active}" onclick="selectCategory('${cat}')"><span class="dot"></span>${cat}<span class="count">${getCategoryCount(cat)}</span></div>`;
+  }
+  list.innerHTML = html;
+  const stats = allProducts.length+' products &bull; '+categories.length+' categories';
+  document.getElementById('sidebarFooter').textContent = stats;
+}
+
+function selectCategory(cat){
+  selectedCategory = cat;
+  currentFilter = 'all';
+  currentBrandFilter = '';
+  document.getElementById('searchInput').value = '';
+  render();
+}
+
+function renderToolbar(){
+  const ed = getCatEditorial();
+  const g = document.getElementById('filterGroup');
+  const total = getActiveProducts(selectedCategory).length;
+  const excludedCount = ed.excluded.length;
+  g.innerHTML = `
+    <button class="filter-btn${currentFilter==='all'?' active':''}" onclick="currentFilter='all';renderProductGrid()">All <span class="filter-count">${total}</span></button>
+    <button class="filter-btn${currentFilter==='badged'?' active':''}" onclick="currentFilter='badged';renderProductGrid()">Badged</button>
+    <button class="filter-btn${currentFilter==='excluded'?' active':''}" onclick="currentFilter='excluded';renderProductGrid()">Excluded <span class="filter-count">${excludedCount}</span></button>
+    <select onchange="currentBrandFilter=this.value;renderProductGrid()" style="font-size:12px;padding:4px 8px">
+      <option value="">All Brands</option>
+      ${getUniqueBrands(selectedCategory).map(b => `<option value="${b}"${currentBrandFilter===b?' selected':''}>${b}</option>`).join('')}
+    </select>
+    <input type="number" id="priceMin" placeholder="Min ₹" style="width:80px;font-size:12px;padding:4px 6px" onchange="currentPriceMin=parseInt(this.value)||0;renderProductGrid()">
+    <span style="color:var(--text2);font-size:12px">—</span>
+    <input type="number" id="priceMax" placeholder="Max ₹" style="width:80px;font-size:12px;padding:4px 6px" onchange="currentPriceMax=parseInt(this.value)||Infinity;renderProductGrid()">
+    <input type="file" id="importInput" accept=".json" style="display:none" onchange="handleImport(event)">
+    <button class="btn-secondary" onclick="document.getElementById('importInput').click()">&#x1F4C2; Import</button>
+    <button class="btn-secondary" onclick="clearDraft()" title="Clear locally saved draft">&#x1F5D1; Clear Draft</button>
+    <span id="unsavedIndicator" style="display:none;align-items:center;gap:4px;font-size:11px;color:var(--orange);font-weight:600;padding:3px 8px;background:#fff3e0;border-radius:4px">&#x26A0;&#xFE0F; Unsaved Changes</span>
+  `;
+  if(document.getElementById('priceMin')) document.getElementById('priceMin').value = currentPriceMin||'';
+  if(document.getElementById('priceMax')) document.getElementById('priceMax').value = currentPriceMax===Infinity?'':currentPriceMax;
+}
+
+function getUniqueBrands(cat){
+  return [...new Set(getProductsByCategory(cat).map(p => p.brand).filter(Boolean))].sort();
+}
+
+function getFilteredProducts(){
+  const ed = getCatEditorial();
+  const search = (document.getElementById('searchInput').value||'').toLowerCase().trim();
+  let products;
+  if(currentFilter === 'excluded'){
+    products = getProductsByCategory(selectedCategory).filter(p => ed.excluded.includes(p.asin));
+  } else {
+    products = getActiveProducts(selectedCategory);
+  }
+  if(currentFilter === 'badged'){
+    products = products.filter(p => p.asin === ed.editor_choice || p.asin === ed.best_value || p.asin === ed.premium_pick || p.asin === ed.budget_pick);
+  }
+  if(currentBrandFilter) products = products.filter(p => p.brand === currentBrandFilter);
+  if(currentPriceMin > 0) products = products.filter(p => (p.amazon&&p.amazon.price)||0 >= currentPriceMin);
+  if(currentPriceMax < Infinity) products = products.filter(p => (p.amazon&&p.amazon.price)||0 <= currentPriceMax);
+  if(search) products = products.filter(p =>
+    (p.title||'').toLowerCase().includes(search) ||
+    (p.brand||'').toLowerCase().includes(search) ||
+    (p.asin||'').toLowerCase().includes(search)
+  );
+  return products;
+}
+
+function renderTopPicks(){
+  const ed = getCatEditorial();
+  const slots = [
+    {key:'editor_choice',label:"Editor's Choice",icon:'&#x1F3C6;',cls:'pick-ec',badge:'ec'},
+    {key:'best_value',label:'Best Value',icon:'&#x1F4B0;',cls:'pick-bv',badge:'bv'},
+    {key:'premium_pick',label:'Premium Pick',icon:'&#x2B50;',cls:'pick-pp',badge:'pp'},
+    {key:'budget_pick',label:'Budget Pick',icon:'&#x1F525;',cls:'pick-bp',badge:'bp'},
+  ];
+  let html = '<div class="picks-grid">';
+  for(const slot of slots){
+    const asin = ed[slot.key];
+    const prod = asin ? getProductByAsin(asin) : null;
+    const filled = !!prod;
+    html += `<div class="pick-slot ${slot.cls}${filled?' filled':''}" onclick="openPicker('${slot.key}')">`;
+    if(prod){
+      html += `<button class="pick-clear" onclick="event.stopPropagation();clearPick('${slot.key}')">&times;</button>`;
+      html += `<div class="pick-product"><img src="${getImageUrl(prod)}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23eee%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 text-anchor=%22middle%22 font-size=%2212%22 fill=%22%23999%22>No Image</text></svg>'"><div class="name">${prod.title}</div><div class="meta">${prod.brand} &middot; &#x20B9;${prod.amazon?prod.amazon.price:'N/A'}</div></div>`;
+    } else {
+      html += `<div class="pick-icon">${slot.icon}</div><div class="pick-label">${slot.label}</div><div class="pick-empty">Click to assign</div>`;
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  document.getElementById('content').innerHTML = '<div id="topPicksSection"></div><div id="productGridSection"></div><div id="rankingSection"></div><div id="previewSection"></div>';
+  document.getElementById('topPicksSection').innerHTML = html;
+}
+
+function renderProductGrid(){
+  const products = getFilteredProducts();
+  const ed = getCatEditorial();
+  if(!products.length){
+    document.getElementById('productGridSection').innerHTML = '<div class="empty-state" style="padding:30px"><p>No products match your filters</p></div>';
+    return;
+  }
+  let html = '<div class="product-grid">';
+  for(const p of products){
+    const excluded = ed.excluded.includes(p.asin);
+    const badge = getBadgeInfo(p, ed);
+    const score = getAutoScore(p);
+    const conf = getConfidence(p);
+    const scoreCls = score >= 75 ? 'high' : score >= 50 ? 'mid' : 'low';
+    html += `<div class="product-card${excluded?' excluded':''}" data-asin="${p.asin}">`;
+    html += `<div class="card-img-wrap"><img src="${getImageUrl(p)}" alt="${p.title}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23f0f0f0%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22105%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>No Image</text></svg>'"></div>`;
+    if(badge) html += `<div class="card-badge ${badge.type}">${badge.label}</div>`;
+    html += `<div class="card-body">`;
+    html += `<div class="title">${p.title}</div>`;
+    html += `<div class="row"><span class="brand">${p.brand||''}</span><span class="price">&#x20B9;${p.amazon&&p.amazon.price!=null?p.amazon.price:'—'}</span><span class="score ${scoreCls}">${score}/100</span></div>`;
+    html += `<div class="row"><span class="conf">Category Confidence: ${conf}%</span></div>`;
+    html += `</div>`;
+    html += `<div class="card-actions">`;
+    const hasEC = ed.editor_choice === p.asin, hasBV = ed.best_value === p.asin, hasPP = ed.premium_pick === p.asin, hasBP = ed.budget_pick === p.asin;
+    html += `<button class="badge-btn ec${hasEC?' active':''}" onclick="assignBadge('${p.asin}','editor_choice')">${hasEC?'&#x2713; ':'&#x1F3C6;'}Editor</button>`;
+    html += `<button class="badge-btn bv${hasBV?' active':''}" onclick="assignBadge('${p.asin}','best_value')">${hasBV?'&#x2713; ':'&#x1F4B0;'}Value</button>`;
+    html += `<button class="badge-btn pp${hasPP?' active':''}" onclick="assignBadge('${p.asin}','premium_pick')">${hasPP?'&#x2713; ':'&#x2B50;'}Premium</button>`;
+    html += `<button class="badge-btn bp${hasBP?' active':''}" onclick="assignBadge('${p.asin}','budget_pick')">${hasBP?'&#x2713; ':'&#x1F525;'}Budget</button>`;
+    html += `<button class="badge-btn clear" onclick="clearBadge('${p.asin}')">Clear</button>`;
+    html += `</div>`;
+    if(excluded){
+      const reason = ed.excluded_reasons[p.asin] || 'Other';
+      html += `<div class="exclude-bar"><span class="excluded-label">&#x2716; Excluded</span><span>(${reason})</span><button class="restore-btn" onclick="restoreProduct('${p.asin}')">Restore</button></div>`;
+    } else {
+      html += `<div class="exclude-bar" style="background:transparent;border-top-color:var(--border)">`;
+      html += `<select id="excludeSelect_${p.asin}" style="flex:1"><option value="">— Exclude —</option><option value="Wrong Category">Wrong Category</option><option value="Duplicate">Duplicate</option><option value="Poor Quality">Poor Quality</option><option value="Out of Stock">Out of Stock</option><option value="Other">Other</option></select>`;
+      html += `<button class="btn-sm btn-danger" onclick="excludeProduct('${p.asin}')">Hide</button>`;
+      html += `</div>`;
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  document.getElementById('productGridSection').innerHTML = html;
+}
+
+function renderRanking(){
+  const ed = getCatEditorial();
+  let ordered = ed.manual_order && ed.manual_order.length ? ed.manual_order : [];
+  if(!ordered.length){
+    const prods = getActiveProducts(selectedCategory).sort((a,b) => (getAutoScore(b) - getAutoScore(a)));
+    ordered = prods.slice(0,10).map(p => p.asin);
+  }
+  let html = `<div class="ranking-section"><h3>&#x1F4CA; Top Product Ranking <span class="rank-note">Drag to reorder &middot; manual order overrides automatic</span></h3><div class="rank-list" id="rankList">`;
+  for(let i=0;i<ordered.length;i++){
+    const asin = ordered[i];
+    const p = getProductByAsin(asin);
+    if(!p) continue;
+    html += `<div class="rank-item" draggable="true" data-asin="${asin}" data-index="${i}" ondragstart="onDragStart(event)" ondragover="onDragOver(event)" ondragend="onDragEnd(event)" ondrop="onDrop(event)">`;
+    html += `<span class="rank-handle" aria-label="Drag to reorder">&#x2630;</span>`;
+    html += `<span class="rank-num">${i+1}</span>`;
+    html += `<img class="rank-img" src="${getImageUrl(p)}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect fill=%22%23eee%22 width=%2240%22 height=%2240%22/></svg>'">`;
+    html += `<span class="rank-name">${p.title}</span>`;
+    html += `<span class="rank-brand">${p.brand}</span>`;
+    html += `<span class="rank-remove" onclick="removeFromRank('${asin}')" title="Remove from ranking">&times;</span>`;
+    html += `</div>`;
+  }
+  html += `</div></div>`;
+  document.getElementById('rankingSection').innerHTML = html;
+  // update editorial manual_order
+  ed.manual_order = ordered;
+}
+
+function renderPreview(){
+  const ed = getCatEditorial();
+  const prods = getActiveProducts(selectedCategory);
+  const ordered = ed.manual_order && ed.manual_order.length ? ed.manual_order : prods.sort((a,b)=>getAutoScore(b)-getAutoScore(a)).slice(0,10).map(p=>p.asin);
+  let html = `<div class="preview-section"><div class="preview-header">&#x1F441; Preview: ${selectedCategory} Page</div><div class="preview-body">`;
+  // top picks preview
+  const picks = [
+    {key:'editor_choice',label:"Editor's Choice",color:'#ca8a04'},
+    {key:'best_value',label:'Best Value',color:'#16a34a'},
+    {key:'premium_pick',label:'Premium Pick',color:'#7c3aed'},
+    {key:'budget_pick',label:'Budget Pick',color:'#ea580c'},
+  ];
+  html += '<h4 style="font-size:13px;font-weight:600;margin-bottom:10px">Top Picks</h4><div class="preview-top-picks">';
+  for(const pick of picks){
+    const asin = ed[pick.key];
+    const p = asin ? getProductByAsin(asin) : null;
+    if(p){
+      html += `<div class="preview-card"><div class="pc-img"><img src="${getImageUrl(p)}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23f0f0f0%22 width=%22100%22 height=%22100%22/></svg>'"></div><div class="pc-body"><span class="pc-badge" style="background:${pick.color}">${pick.label}</span><div class="pc-title">${p.title}</div><div class="pc-price">&#x20B9;${p.amazon&&p.amazon.price!=null?p.amazon.price:'—'}</div><div class="pc-meta">${p.brand} &middot; &#x2605; ${p.amazon?p.amazon.rating:'N/A'}</div></div></div>`;
+    } else {
+      html += `<div class="preview-card"><div class="pc-img" style="color:var(--text2);font-size:12px">Not assigned</div><div class="pc-body"><div class="pc-title" style="color:var(--text2)">—</div></div></div>`;
+    }
+  }
+  html += '</div>';
+  // top products preview
+  html += '<h4 style="font-size:13px;font-weight:600;margin-bottom:10px;margin-top:20px">Top Products</h4><div class="preview-grid">';
+  const limit = Math.min(ordered.length, 12);
+  for(let i=0;i<limit;i++){
+    const p = getProductByAsin(ordered[i]);
+    if(!p) continue;
+    const badge = getBadgeInfo(p, ed);
+    html += `<div class="preview-item"><div class="pi-img"><img src="${getImageUrl(p)}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23f0f0f0%22 width=%22100%22 height=%22100%22/></svg>'"></div><div class="pi-body"><div class="pi-title">${p.title}</div><div class="pi-price">&#x20B9;${p.amazon&&p.amazon.price!=null?p.amazon.price:'—'}</div>${badge?`<div class="pi-badge">${badge.icon} ${badge.label}</div>`:''}</div></div>`;
+  }
+  html += '</div></div></div>';
+  document.getElementById('previewSection').innerHTML = html;
+}
+
+// ===== BADGE ACTIONS =====
+function assignBadge(asin, slot){
+  const ed = getCatEditorial();
+  for(const key of ['editor_choice','best_value','premium_pick','budget_pick']){
+    if(ed[key] === asin) ed[key] = null;
+  }
+  ed[slot] = asin;
+  saveDraft();
+  renderTopPicks();
+  renderProductGrid();
+  renderPreview();
+  showToast('Assigned badge','success');
+}
+
+function clearBadge(asin){
+  const ed = getCatEditorial();
+  for(const key of ['editor_choice','best_value','premium_pick','budget_pick']){
+    if(ed[key] === asin) ed[key] = null;
+  }
+  saveDraft();
+  renderTopPicks();
+  renderProductGrid();
+  renderPreview();
+  showToast('Badge cleared');
+}
+
+function clearPick(slot){
+  getCatEditorial()[slot] = null;
+  saveDraft();
+  renderTopPicks();
+  renderProductGrid();
+  renderPreview();
+  showToast('Pick cleared');
+}
+
+// ===== PICKER MODAL =====
+function openPicker(slot){
+  pickerCallback = slot;
+  document.getElementById('pickerTitle').textContent = 'Select ' + document.querySelector(`.pick-slot.${slot==='editor_choice'?'pick-ec':slot==='best_value'?'pick-bv':slot==='premium_pick'?'pick-pp':'pick-bp'}`).querySelector('.pick-label').textContent;
+  document.getElementById('pickerSearch').value = '';
+  document.getElementById('productPickerModal').style.display = 'flex';
+  renderPickerList();
+}
+
+function closePicker(){
+  document.getElementById('productPickerModal').style.display = 'none';
+  pickerCallback = null;
+}
+
+function renderPickerList(){
+  const search = document.getElementById('pickerSearch').value.toLowerCase().trim();
+  let products = getActiveProducts(selectedCategory);
+  if(search) products = products.filter(p => (p.title||'').toLowerCase().includes(search) || (p.brand||'').toLowerCase().includes(search));
+  const list = document.getElementById('pickerList');
+  if(!products.length){ list.innerHTML = '<div style="text-align:center;padding:30px;color:var(--text2)">No products found</div>'; return; }
+  let html = '';
+  for(const p of products){
+    html += `<div class="modal-product${p.asin===getCatEditorial()[pickerCallback]?' selected':''}" onclick="selectPickerProduct('${p.asin}')">`;
+    html += `<img src="${getImageUrl(p)}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect fill=%22%23eee%22 width=%2248%22 height=%2248%22/></svg>'">`;
+    html += `<div class="mp-info"><div class="mp-title">${p.title}</div><div class="mp-meta">${p.brand} &middot; &#x20B9;${p.amazon&&p.amazon.price!=null?p.amazon.price:'—'} &middot; Score: ${getAutoScore(p)}</div></div>`;
+    if(p.asin===getCatEditorial()[pickerCallback]) html += '<span style="color:var(--accent);font-size:18px">&#x2713;</span>';
+    html += '</div>';
+  }
+  list.innerHTML = html;
+}
+
+function selectPickerProduct(asin){
+  getCatEditorial()[pickerCallback] = asin;
+  closePicker();
+  saveDraft();
+  renderTopPicks();
+  renderProductGrid();
+  renderPreview();
+  showToast('Product assigned','success');
+}
+
+// ===== EXCLUDE =====
+function excludeProduct(asin){
+  const sel = document.getElementById('excludeSelect_'+asin);
+  const reason = sel ? sel.value : 'Other';
+  if(!reason){ showToast('Please select a reason'); return; }
+  const ed = getCatEditorial();
+  if(!ed.excluded.includes(asin)) ed.excluded.push(asin);
+  ed.excluded_reasons = ed.excluded_reasons || {};
+  ed.excluded_reasons[asin] = reason;
+  // Clear any badges
+  for(const key of ['editor_choice','best_value','premium_pick','budget_pick']){
+    if(ed[key] === asin) ed[key] = null;
+  }
+  saveDraft();
+  renderProductGrid();
+  renderRanking();
+  renderTopPicks();
+  renderPreview();
+  renderToolbar();
+  showToast('Product excluded: '+reason);
+}
+
+function restoreProduct(asin){
+  const ed = getCatEditorial();
+  ed.excluded = ed.excluded.filter(a => a !== asin);
+  if(ed.excluded_reasons) delete ed.excluded_reasons[asin];
+  saveDraft();
+  renderProductGrid();
+  renderRanking();
+  renderTopPicks();
+  renderPreview();
+  renderToolbar();
+  showToast('Product restored');
+}
+
+function removeFromRank(asin){
+  const ed = getCatEditorial();
+  ed.manual_order = (ed.manual_order||[]).filter(a => a !== asin);
+  saveDraft();
+  renderRanking();
+  renderPreview();
+  showToast('Removed from ranking');
+}
+
+// ===== DRAG & DROP =====
+function onDragStart(e){
+  dragSrcIndex = parseInt(e.currentTarget.dataset.index);
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', e.currentTarget.dataset.asin);
+}
+
+function onDragOver(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  const item = e.currentTarget;
+  if(item.dataset.index != dragSrcIndex) item.classList.add('drag-over');
+}
+
+function onDragEnd(e){
+  e.currentTarget.classList.remove('dragging');
+  document.querySelectorAll('.rank-item').forEach(el => el.classList.remove('drag-over'));
+}
+
+function onDrop(e){
+  e.preventDefault();
+  const target = e.currentTarget;
+  target.classList.remove('drag-over');
+  const fromIdx = dragSrcIndex;
+  const toIdx = parseInt(target.dataset.index);
+  if(fromIdx === toIdx) return;
+  const ed = getCatEditorial();
+  const order = ed.manual_order || [];
+  const [moved] = order.splice(fromIdx, 1);
+  order.splice(toIdx, 0, moved);
+  ed.manual_order = order;
+  saveDraft();
+  renderRanking();
+  renderPreview();
+  showToast('Ranking reordered');
+  dragSrcIndex = null;
+}
+
+// ===== IMPORT =====
+function handleImport(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const data = JSON.parse(e.target.result);
+      if(typeof data !== 'object' || data === null) throw new Error('Invalid format');
+      applyEditorialData(data);
+      showToast('editorial.json imported successfully!','success');
+    }catch(err){
+      showToast('Import failed: '+err.message,'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ===== SAVE =====
+async function saveEditorial(){
+  try {
+    const json = JSON.stringify(editorialData, null, 2);
+    if ('showDirectoryPicker' in window) {
+      if (!dirHandle) {
+        dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+      }
+      try {
+        const fileHandle = await dirHandle.getFileHandle('editorial.json', { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(json);
+        await writable.close();
+        savedSnapshot = JSON.stringify(editorialData);
+        updateUnsavedIndicator();
+        showToast('editorial.json saved successfully!','success');
+        return;
+      } catch(e) {
+        dirHandle = null;
+      }
+    }
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'editorial.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    savedSnapshot = JSON.stringify(editorialData);
+    updateUnsavedIndicator();
+    showToast('editorial.json downloaded! Place it in the biker project root.','success');
+  } catch(e) {
+    showToast('Save failed: '+e.message,'error');
+  }
+}
+
+// ===== TOAST =====
+function showToast(msg, type){
+  const existing = document.querySelector('.toast');
+  if(existing) existing.remove();
+  const el = document.createElement('div');
+  el.className = 'toast'+(type?' '+type:'');
+  el.innerHTML = `<span>${msg}</span><button class="close-toast" onclick="this.parentElement.remove()">&times;</button>`;
+  document.body.appendChild(el);
+  setTimeout(() => { if(el.parentElement) el.remove(); }, 4000);
+}
+
+// ===== SEARCH =====
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('searchInput').addEventListener('input', function(){
+    renderProductGrid();
+  });
+});
+
+// ===== INIT =====
+(async function init(){
+  await Promise.all([loadProducts(), loadEditorial()]);
+  render();
+  if(editorialLoaded && Object.keys(editorialData).length && categories.length){
+    const firstKey = Object.keys(editorialData)[0];
+    const revMap = {};
+    for(const c of categories) revMap[categoryToKey(c)] = c;
+    if(revMap[firstKey]) selectedCategory = revMap[firstKey];
+  }
+  if(!selectedCategory && categories.length) selectedCategory = categories[0];
+  render();
+})();
+
+document.getElementById('saveBtn').addEventListener('click', saveEditorial);
+</script>
+</body>
+</html>

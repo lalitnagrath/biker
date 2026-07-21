@@ -170,80 +170,73 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-col footer-about">
-                        <a href="{{ base_path }}index.html" class="footer-logo">
-                            <span class="logo-icon">&#x1F3CD;</span>
-                            <span class="logo-text">BikeReview<span class="logo-accent">India</span></span>
-                        </a>
-                        <p>India's most trusted source for motorcycle reviews, buying guides, and maintenance tips. We test every product we recommend.</p>
-                        <div class="footer-trust">
-                            <span>&#10003; Expert Tested</span>
-                            <span>&#10003; Updated Weekly</span>
-                            <span>&#10003; Affiliate Disclosed</span>
-                        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="{{ base_path }}index.html" class="footer-logo">
+                        <span class="logo-icon">&#x1F3CD;</span>
+                        <span class="logo-text">BikeReview<span class="logo-accent">India</span></span>
+                    </a>
+                    <p>India's trusted source for motorcycle reviews, buying guides, and maintenance tips.</p>
+                    <div class="footer-trust">
+                        <span>&#10003; Expert Tested</span>
+                        <span>&#10003; Updated Weekly</span>
                     </div>
-                    <div class="footer-col">
-                        <h4>Popular Bikes</h4>
-                        <ul>
-                            <li><a href="{{ URL.motorcycle_index(base_path) }}">All Motorcycles</a></li>
-                            {% for brand, bikes in nav_motorcycles_by_brand.items() %}
-                            {% if bikes %}
-                            <li><a href="{{ URL.motorcycle(bikes[0].slug, base_path) }}">{{ brand }}</a></li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Popular Accessories</h4>
-                        <ul>
-                            <li><a href="{{ URL.bestof('helmet', base_path) }}">Best Helmets</a></li>
-                            <li><a href="{{ URL.bestof('phone-mount', base_path) }}">Best Phone Mounts</a></li>
-                            <li><a href="{{ URL.bestof('engine-oil', base_path) }}">Best Engine Oil</a></li>
-                            <li><a href="{{ URL.bestof('chain-lube', base_path) }}">Best Chain Lube</a></li>
-                            <li><a href="{{ URL.bestof('tyre-inflator', base_path) }}">Best Tyre Inflators</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Buying Guides</h4>
-                        <ul>
-                            <li><a href="{{ URL.article_index(base_path) }}">All Guides</a></li>
-                            <li><a href="{{ URL.article_category('maintenance', base_path) }}">Maintenance</a></li>
-                            <li><a href="{{ URL.article_category('buying-guides', base_path) }}">Buying Guides</a></li>
-                            <li><a href="{{ URL.article_category('ownership', base_path) }}">Ownership Tips</a></li>
-                            <li><a href="{{ URL.article_category('touring', base_path) }}">Touring</a></li>
-                            <li><a href="{{ URL.article_category('safety', base_path) }}">Safety</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Brands</h4>
-                        <ul>
-                            <li><a href="{{ URL.brand_index(base_path) }}">All Brands</a></li>
-                            {% for brand in brands %}
-                            <li><a href="{{ URL.brand(brand.slug, base_path) }}">{{ brand.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="{{ URL.about(base_path) }}">About Us</a></li>
-                            <li><a href="{{ URL.contact(base_path) }}">Contact</a></li>
-                            <li><a href="{{ URL.privacy(base_path) }}">Privacy Policy</a></li>
-                            <li><a href="{{ URL.affiliate_disclosure(base_path) }}">Affiliate Disclosure</a></li>
-                            <li><a href="{{ base_path }}sitemap.xml">Sitemap</a></li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Popular Bikes</h4>
+                    <ul>
+                        <li><a href="{{ URL.brand('bajaj', base_path) }}">Bajaj</a></li>
+                        <li><a href="{{ URL.brand('royal-enfield', base_path) }}">Royal Enfield</a></li>
+                        <li><a href="{{ URL.brand('honda', base_path) }}">Honda</a></li>
+                        <li><a href="{{ URL.brand('ktm', base_path) }}">KTM</a></li>
+                        <li><a href="{{ URL.brand('yamaha', base_path) }}">Yamaha</a></li>
+                        <li class="footer-viewall"><a href="{{ URL.motorcycle_index(base_path) }}">View All Bikes &rarr;</a></li>
+                        <li class="footer-viewall"><a href="{{ URL.brand_index(base_path) }}">View All Brands &rarr;</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Accessories</h4>
+                    <ul>
+                        <li><a href="{{ URL.bestof('helmet', base_path) }}">Best Helmets</a></li>
+                        <li><a href="{{ URL.bestof('gloves', base_path) }}">Best Riding Gloves</a></li>
+                        <li><a href="{{ URL.bestof('jackets', base_path) }}">Best Riding Jackets</a></li>
+                        <li><a href="{{ URL.bestof('phone-mount', base_path) }}">Best Phone Mounts</a></li>
+                        <li><a href="{{ URL.bestof('engine-oil', base_path) }}">Best Engine Oil</a></li>
+                        <li class="footer-viewall"><a href="{{ URL.category_index(base_path) }}">View All Accessories &rarr;</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Guides</h4>
+                    <ul>
+                        <li><a href="{{ URL.article_category('buying-guides', base_path) }}">Buying Guides</a></li>
+                        <li><a href="{{ URL.article_category('maintenance', base_path) }}">Maintenance Tips</a></li>
+                        <li><a href="{{ URL.article_category('safety', base_path) }}">Safety &amp; Gear</a></li>
+                        <li><a href="{{ URL.article_category('touring', base_path) }}">Touring Advice</a></li>
+                        <li><a href="{{ URL.article_category('ownership', base_path) }}">Ownership Tips</a></li>
+                        <li class="footer-viewall"><a href="{{ URL.article_index(base_path) }}">View All Guides &rarr;</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="{{ URL.about(base_path) }}">About Us</a></li>
+                        <li><a href="{{ URL.contact(base_path) }}">Contact</a></li>
+                        <li><a href="{{ URL.privacy(base_path) }}">Privacy Policy</a></li>
+                        <li><a href="{{ URL.affiliate_disclosure(base_path) }}">Disclosures</a></li>
+                        <li><a href="{{ base_path }}sitemap.xml">Sitemap</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2026 BikeReview India. All rights reserved.</p>
-                    <p class="affiliate-disclosure">As an Amazon Associate, we earn from qualifying purchases. Product prices and availability are accurate as of the date indicated and are subject to change. <a href="{{ URL.affiliate_disclosure(base_path) }}">Full Affiliate Disclosure</a></p>
+                <div class="footer-bar">
+                    <span>&copy; 2026 BikeReview India</span>
+                    <a href="{{ URL.privacy(base_path) }}">Privacy Policy</a>
+                    <a href="{{ URL.affiliate_disclosure(base_path) }}">Affiliate Disclosure</a>
+                    <a href="{{ base_path }}sitemap.xml">Sitemap</a>
+                    <a href="#" class="back-to-top">Back to Top &uarr;</a>
                 </div>
             </div>
         </div>
