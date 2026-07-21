@@ -94,7 +94,6 @@
             <div class="container">
                 <span class="header-badge">India's most trusted motorcycle review site</span>
                 <div class="header-top-links">
-                    <a href="../../sitemap.xml">Sitemap</a>
                 </div>
             </div>
         </div>
@@ -179,7 +178,7 @@
                                 
                                 <li><a href="../../categories/jackets/index.html">jackets</a></li>
                                 
-                                <li><a href="../../categories/fashion-jacket/index.html">fashion_jacket</a></li>
+                                <li><a href="../../categories//index.html"></a></li>
                                 
                                 <li><a href="../../categories/indicator/index.html">indicator</a></li>
                                 
@@ -648,21 +647,187 @@
 
 <section class="bestof-hero-section">
     <div class="container">
-        <div class="bestof-hero-content">
-            <div class="bestof-hero-trust">
-                <span class="trust-badge">&#10003; Expert Tested</span>
-                <span class="trust-badge">Updated July 2026</span>
+        <div class="bestof-hero-grid">
+            <div class="bestof-hero-left">
+                <div class="bestof-hero-badges">
+                    <span class="trust-badge">&#10003; Expert Tested</span>
+                    <span class="trust-badge">Updated July 2026</span>
+                    
+                    <span class="trust-badge">5 Reviewed</span>
+                    
+                </div>
+                <h1>Best Helmet for Motorcycles in India (2026)</h1>
+                <p class="bestof-hero-desc">Find the best motorcycle helmets in India. Expert reviews, safety ratings, and buying recommendations for every budget.</p>
                 
-                <span class="trust-badge">5 Products Reviewed</span>
+                <div class="bestof-hero-stats">
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">5</span>
+                        <span class="hero-stat-label">Products Compared</span>
+                    </span>
+                    <span class="hero-stat-divider"></span>
+                    
+                    
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">&#8377;479 - &#8377;3599</span>
+                        <span class="hero-stat-label">Price Range</span>
+                    </span>
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">July 2026</span>
+                        <span class="hero-stat-label">Last Updated</span>
+                    </span>
+                    
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">&#10003;</span>
+                        <span class="hero-stat-label">Compatibility</span>
+                    </span>
+                    
+                </div>
                 
             </div>
-            <h1>Best Helmet for Motorcycles in India (2026)</h1>
-            <p class="bestof-hero-desc">Find the best motorcycle helmets in India. Expert reviews, safety ratings, and buying recommendations for every budget.</p>
             
-            <div class="bestof-hero-score">
-                <span class="bestof-hero-count">5 Products Tested</span>
-                <span class="bestof-hero-divider">&middot;</span>
-                <span class="bestof-hero-date">Last Updated: July 2026</span>
+            <div class="bestof-hero-right">
+                <div class="motorcycle-card" id="motorcycleCard">
+                    <div class="motorcycle-card-header">Your Motorcycle</div>
+                    <div class="motorcycle-card-body">
+                        <div class="motorcycle-card-current" id="motorcycleCurrent">
+                            <span class="motorcycle-card-icon">&#x1F3CD;</span>
+                            <span class="motorcycle-card-name" id="motorcycleName">Select your bike</span>
+                        </div>
+                        <div class="motorcycle-card-compat" id="motorcycleCompat"></div>
+                        <button class="btn btn-sm btn-outline motorcycle-card-btn" id="changeMotorcycleBtn" type="button">Change Motorcycle</button>
+                    </div>
+                </div>
+                <select id="bikeSelect" style="display:none;" aria-label="Select your motorcycle">
+                    <option value="">All Motorcycles</option>
+                    
+                    <option value="royal-enfield-super-meteor-650" data-brand="Royal Enfield">Royal Enfield Super Meteor 650</option>
+                    
+                    <option value="royal-enfield-shotgun-650" data-brand="Royal Enfield">Royal Enfield Shotgun 650</option>
+                    
+                    <option value="ktm-390-adventure" data-brand="KTM">KTM 390 Adventure</option>
+                    
+                    <option value="royal-enfield-continental-gt-650" data-brand="Royal Enfield">Royal Enfield Continental GT 650</option>
+                    
+                    <option value="royal-enfield-interceptor-650" data-brand="Royal Enfield">Royal Enfield Interceptor 650</option>
+                    
+                    <option value="ktm-390-duke" data-brand="KTM">KTM 390 Duke</option>
+                    
+                    <option value="royal-enfield-himalayan-450" data-brand="Royal Enfield">Royal Enfield Himalayan 450</option>
+                    
+                    <option value="tvs-apache-rr-310" data-brand="TVS">TVS Apache RR 310</option>
+                    
+                    <option value="triumph-scrambler-400-x" data-brand="Triumph">Triumph Scrambler 400 X</option>
+                    
+                    <option value="tvs-apache-rtr-310" data-brand="TVS">TVS Apache RTR 310</option>
+                    
+                    <option value="royal-enfield-guerrilla-450" data-brand="Royal Enfield">Royal Enfield Guerrilla 450</option>
+                    
+                    <option value="harley-davidson-x440" data-brand="Harley-Davidson">Harley-Davidson X440</option>
+                    
+                    <option value="triumph-speed-400" data-brand="Triumph">Triumph Speed 400</option>
+                    
+                    <option value="bajaj-dominar-400" data-brand="Bajaj">Bajaj Dominar 400</option>
+                    
+                    <option value="royal-enfield-scram-440" data-brand="Royal Enfield">Royal Enfield Scram 440</option>
+                    
+                    <option value="ktm-rc-200" data-brand="KTM">KTM RC 200</option>
+                    
+                    <option value="honda-cb350rs" data-brand="Honda">Honda CB350RS</option>
+                    
+                    <option value="suzuki-v-strom-sx" data-brand="Suzuki">Suzuki V-Strom SX</option>
+                    
+                    <option value="ktm-250-duke" data-brand="KTM">KTM 250 Duke</option>
+                    
+                    <option value="bajaj-pulsar-ns400z" data-brand="Bajaj">Bajaj Pulsar NS400Z</option>
+                    
+                    <option value="hero-mavrick-440" data-brand="Hero MotoCorp">Hero MotoCorp Mavrick 440</option>
+                    
+                    <option value="honda-cb350" data-brand="Honda">Honda CB350</option>
+                    
+                    <option value="royal-enfield-classic-350" data-brand="Royal Enfield">Royal Enfield Classic 350</option>
+                    
+                    <option value="royal-enfield-meteor-350" data-brand="Royal Enfield">Royal Enfield Meteor 350</option>
+                    
+                    <option value="triumph-speed-t4" data-brand="Triumph">Triumph Speed T4</option>
+                    
+                    <option value="honda-hness-cb350" data-brand="Honda">Honda H'ness CB350</option>
+                    
+                    <option value="suzuki-gixxer-sf-250" data-brand="Suzuki">Suzuki Gixxer SF 250</option>
+                    
+                    <option value="yamaha-r15m" data-brand="Yamaha">Yamaha R15M</option>
+                    
+                    <option value="ktm-200-duke" data-brand="KTM">KTM 200 Duke</option>
+                    
+                    <option value="bajaj-dominar-250" data-brand="Bajaj">Bajaj Dominar 250</option>
+                    
+                    <option value="hero-karizma-xmr" data-brand="Hero MotoCorp">Hero MotoCorp Karizma XMR</option>
+                    
+                    <option value="yamaha-r15-v4" data-brand="Yamaha">Yamaha R15 V4</option>
+                    
+                    <option value="royal-enfield-bullet-350" data-brand="Royal Enfield">Royal Enfield Bullet 350</option>
+                    
+                    <option value="suzuki-gixxer-250" data-brand="Suzuki">Suzuki Gixxer 250</option>
+                    
+                    <option value="tvs-ronin" data-brand="TVS">TVS Ronin</option>
+                    
+                    <option value="yamaha-mt-15-v2" data-brand="Yamaha">Yamaha MT-15 V2</option>
+                    
+                    <option value="bajaj-pulsar-rs200" data-brand="Bajaj">Bajaj Pulsar RS200</option>
+                    
+                    <option value="bajaj-pulsar-n250" data-brand="Bajaj">Bajaj Pulsar N250</option>
+                    
+                    <option value="royal-enfield-hunter-350" data-brand="Royal Enfield">Royal Enfield Hunter 350</option>
+                    
+                    <option value="tvs-apache-rtr-200-4v" data-brand="TVS">TVS Apache RTR 200 4V</option>
+                    
+                    <option value="bajaj-pulsar-ns200" data-brand="Bajaj">Bajaj Pulsar NS200</option>
+                    
+                    <option value="honda-hornet-20" data-brand="Honda">Honda Hornet 2.0</option>
+                    
+                    <option value="hero-xpulse-200-4v" data-brand="Hero MotoCorp">Hero MotoCorp Xpulse 200 4V</option>
+                    
+                    <option value="yamaha-fz-x" data-brand="Yamaha">Yamaha FZ-X</option>
+                    
+                    <option value="bajaj-pulsar-n160" data-brand="Bajaj">Bajaj Pulsar N160</option>
+                    
+                    <option value="yamaha-fz-s-fi" data-brand="Yamaha">Yamaha FZ-S Fi</option>
+                    
+                    <option value="bajaj-pulsar-ns160" data-brand="Bajaj">Bajaj Pulsar NS160</option>
+                    
+                    <option value="suzuki-gixxer" data-brand="Suzuki">Suzuki Gixxer</option>
+                    
+                    <option value="bajaj-avenger-street-160" data-brand="Bajaj">Bajaj Avenger Street 160</option>
+                    
+                    <option value="bajaj-pulsar-150" data-brand="Bajaj">Bajaj Pulsar 150</option>
+                    
+                    <option value="hero-xtreme-160r-4v" data-brand="Hero MotoCorp">Hero MotoCorp Xtreme 160R 4V</option>
+                    
+                    <option value="honda-unicorn" data-brand="Honda">Honda Unicorn</option>
+                    
+                    <option value="tvs-apache-rtr-160-4v" data-brand="TVS">TVS Apache RTR 160 4V</option>
+                    
+                    <option value="bajaj-pulsar-ns125" data-brand="Bajaj">Bajaj Pulsar NS125</option>
+                    
+                    <option value="tvs-raider-125" data-brand="TVS">TVS Raider 125</option>
+                    
+                    <option value="honda-sp-125" data-brand="Honda">Honda SP 125</option>
+                    
+                    <option value="honda-shine-125" data-brand="Honda">Honda Shine 125</option>
+                    
+                    <option value="hero-splendor-plus" data-brand="Hero MotoCorp">Hero MotoCorp Splendor+</option>
+                    
+                    <option value="honda-activa-6g" data-brand="Honda">Honda Activa 6G</option>
+                    
+                    <option value="honda-dio" data-brand="Honda">Honda Dio</option>
+                    
+                    <option value="bajaj-ct-110x" data-brand="Bajaj">Bajaj CT 110X</option>
+                    
+                </select>
+                <div style="display:none;" id="bikeStatus">
+                    <span id="bikeStatusText">Showing all products</span>
+                </div>
             </div>
             
         </div>
@@ -676,158 +841,12 @@
 
                 
                 
-                <div class="guide-motorcycle-selector" id="bikeSelector">
-                    <div class="guide-selector-header">
-                        <span class="guide-selector-icon">&#128666;</span>
-                        <div class="guide-selector-text">
-                            <strong>Recommended for your Motorcycle</strong>
-                            <span class="guide-selector-hint">Select your bike to see compatible products and personalized rankings</span>
-                        </div>
-                    </div>
-                    <div class="guide-selector-controls">
-                        <select id="bikeSelect" class="guide-bike-select" aria-label="Select your motorcycle">
-                            <option value="">All Motorcycles</option>
-                            
-                            <option value="royal-enfield-super-meteor-650" data-brand="Royal Enfield">Royal Enfield Super Meteor 650</option>
-                            
-                            <option value="royal-enfield-shotgun-650" data-brand="Royal Enfield">Royal Enfield Shotgun 650</option>
-                            
-                            <option value="ktm-390-adventure" data-brand="KTM">KTM 390 Adventure</option>
-                            
-                            <option value="royal-enfield-continental-gt-650" data-brand="Royal Enfield">Royal Enfield Continental GT 650</option>
-                            
-                            <option value="royal-enfield-interceptor-650" data-brand="Royal Enfield">Royal Enfield Interceptor 650</option>
-                            
-                            <option value="ktm-390-duke" data-brand="KTM">KTM 390 Duke</option>
-                            
-                            <option value="royal-enfield-himalayan-450" data-brand="Royal Enfield">Royal Enfield Himalayan 450</option>
-                            
-                            <option value="tvs-apache-rr-310" data-brand="TVS">TVS Apache RR 310</option>
-                            
-                            <option value="triumph-scrambler-400-x" data-brand="Triumph">Triumph Scrambler 400 X</option>
-                            
-                            <option value="tvs-apache-rtr-310" data-brand="TVS">TVS Apache RTR 310</option>
-                            
-                            <option value="royal-enfield-guerrilla-450" data-brand="Royal Enfield">Royal Enfield Guerrilla 450</option>
-                            
-                            <option value="harley-davidson-x440" data-brand="Harley-Davidson">Harley-Davidson X440</option>
-                            
-                            <option value="triumph-speed-400" data-brand="Triumph">Triumph Speed 400</option>
-                            
-                            <option value="bajaj-dominar-400" data-brand="Bajaj">Bajaj Dominar 400</option>
-                            
-                            <option value="royal-enfield-scram-440" data-brand="Royal Enfield">Royal Enfield Scram 440</option>
-                            
-                            <option value="ktm-rc-200" data-brand="KTM">KTM RC 200</option>
-                            
-                            <option value="honda-cb350rs" data-brand="Honda">Honda CB350RS</option>
-                            
-                            <option value="suzuki-v-strom-sx" data-brand="Suzuki">Suzuki V-Strom SX</option>
-                            
-                            <option value="ktm-250-duke" data-brand="KTM">KTM 250 Duke</option>
-                            
-                            <option value="bajaj-pulsar-ns400z" data-brand="Bajaj">Bajaj Pulsar NS400Z</option>
-                            
-                            <option value="hero-mavrick-440" data-brand="Hero MotoCorp">Hero MotoCorp Mavrick 440</option>
-                            
-                            <option value="honda-cb350" data-brand="Honda">Honda CB350</option>
-                            
-                            <option value="royal-enfield-classic-350" data-brand="Royal Enfield">Royal Enfield Classic 350</option>
-                            
-                            <option value="royal-enfield-meteor-350" data-brand="Royal Enfield">Royal Enfield Meteor 350</option>
-                            
-                            <option value="triumph-speed-t4" data-brand="Triumph">Triumph Speed T4</option>
-                            
-                            <option value="honda-hness-cb350" data-brand="Honda">Honda H'ness CB350</option>
-                            
-                            <option value="suzuki-gixxer-sf-250" data-brand="Suzuki">Suzuki Gixxer SF 250</option>
-                            
-                            <option value="yamaha-r15m" data-brand="Yamaha">Yamaha R15M</option>
-                            
-                            <option value="ktm-200-duke" data-brand="KTM">KTM 200 Duke</option>
-                            
-                            <option value="bajaj-dominar-250" data-brand="Bajaj">Bajaj Dominar 250</option>
-                            
-                            <option value="hero-karizma-xmr" data-brand="Hero MotoCorp">Hero MotoCorp Karizma XMR</option>
-                            
-                            <option value="yamaha-r15-v4" data-brand="Yamaha">Yamaha R15 V4</option>
-                            
-                            <option value="royal-enfield-bullet-350" data-brand="Royal Enfield">Royal Enfield Bullet 350</option>
-                            
-                            <option value="suzuki-gixxer-250" data-brand="Suzuki">Suzuki Gixxer 250</option>
-                            
-                            <option value="tvs-ronin" data-brand="TVS">TVS Ronin</option>
-                            
-                            <option value="yamaha-mt-15-v2" data-brand="Yamaha">Yamaha MT-15 V2</option>
-                            
-                            <option value="bajaj-pulsar-rs200" data-brand="Bajaj">Bajaj Pulsar RS200</option>
-                            
-                            <option value="bajaj-pulsar-n250" data-brand="Bajaj">Bajaj Pulsar N250</option>
-                            
-                            <option value="royal-enfield-hunter-350" data-brand="Royal Enfield">Royal Enfield Hunter 350</option>
-                            
-                            <option value="tvs-apache-rtr-200-4v" data-brand="TVS">TVS Apache RTR 200 4V</option>
-                            
-                            <option value="bajaj-pulsar-ns200" data-brand="Bajaj">Bajaj Pulsar NS200</option>
-                            
-                            <option value="honda-hornet-20" data-brand="Honda">Honda Hornet 2.0</option>
-                            
-                            <option value="hero-xpulse-200-4v" data-brand="Hero MotoCorp">Hero MotoCorp Xpulse 200 4V</option>
-                            
-                            <option value="yamaha-fz-x" data-brand="Yamaha">Yamaha FZ-X</option>
-                            
-                            <option value="bajaj-pulsar-n160" data-brand="Bajaj">Bajaj Pulsar N160</option>
-                            
-                            <option value="yamaha-fz-s-fi" data-brand="Yamaha">Yamaha FZ-S Fi</option>
-                            
-                            <option value="bajaj-pulsar-ns160" data-brand="Bajaj">Bajaj Pulsar NS160</option>
-                            
-                            <option value="suzuki-gixxer" data-brand="Suzuki">Suzuki Gixxer</option>
-                            
-                            <option value="bajaj-avenger-street-160" data-brand="Bajaj">Bajaj Avenger Street 160</option>
-                            
-                            <option value="bajaj-pulsar-150" data-brand="Bajaj">Bajaj Pulsar 150</option>
-                            
-                            <option value="hero-xtreme-160r-4v" data-brand="Hero MotoCorp">Hero MotoCorp Xtreme 160R 4V</option>
-                            
-                            <option value="honda-unicorn" data-brand="Honda">Honda Unicorn</option>
-                            
-                            <option value="tvs-apache-rtr-160-4v" data-brand="TVS">TVS Apache RTR 160 4V</option>
-                            
-                            <option value="bajaj-pulsar-ns125" data-brand="Bajaj">Bajaj Pulsar NS125</option>
-                            
-                            <option value="tvs-raider-125" data-brand="TVS">TVS Raider 125</option>
-                            
-                            <option value="honda-sp-125" data-brand="Honda">Honda SP 125</option>
-                            
-                            <option value="honda-shine-125" data-brand="Honda">Honda Shine 125</option>
-                            
-                            <option value="hero-splendor-plus" data-brand="Hero MotoCorp">Hero MotoCorp Splendor+</option>
-                            
-                            <option value="honda-activa-6g" data-brand="Honda">Honda Activa 6G</option>
-                            
-                            <option value="honda-dio" data-brand="Honda">Honda Dio</option>
-                            
-                            <option value="bajaj-ct-110x" data-brand="Bajaj">Bajaj CT 110X</option>
-                            
-                        </select>
-                        <button id="bikeClear" class="guide-bike-clear" style="display:none;" aria-label="Clear motorcycle selection">&#10005; Clear</button>
-                    </div>
-                    <div id="bikeSelectedInfo" class="guide-bike-selected-info" style="display:none;">
-                        <span class="guide-bike-selected-badge">&#128666; <strong id="bikeSelectedName"></strong></span>
-                        <a href="../../motorcycles/index.html" class="guide-bike-change">Change Motorcycle</a>
-                    </div>
-                </div>
-                
-
-                
-                
-                <div class="guide-filter-bar" id="guideFilterBar" style="display:none;">
-                    <label class="guide-filter-toggle">
-                        <input type="checkbox" id="compatOnlyFilter" class="guide-filter-checkbox">
-                        <span class="guide-filter-label">Show Compatible Products Only</span>
+                <div class="guide-toolbar" id="guideToolbar" style="display:none;">
+                    <label class="guide-toolbar-toggle">
+                        <input type="checkbox" id="compatOnlyFilter" class="guide-toolbar-checkbox">
+                        <span class="guide-toolbar-label">Compatible only</span>
                     </label>
-                    <span class="guide-filter-count" id="filterCount"></span>
+                    <span class="guide-toolbar-count" id="filterCount"></span>
                 </div>
                 
 
@@ -1053,7 +1072,6 @@
                                 </td>
                                 <td class="rating-col our-verdict">
                                     
-                                    <span class="verdict-label">Our Verdict</span>
                                     <span class="editorial-stars">★★★★★</span>
                                     <span class="editorial-label">Highly Recommended</span>
                                     
@@ -1083,7 +1101,6 @@
                                 </td>
                                 <td class="rating-col our-verdict">
                                     
-                                    <span class="verdict-label">Our Verdict</span>
                                     <span class="editorial-stars">★★★★★</span>
                                     <span class="editorial-label">Highly Recommended</span>
                                     
@@ -1113,7 +1130,6 @@
                                 </td>
                                 <td class="rating-col our-verdict">
                                     
-                                    <span class="verdict-label">Our Verdict</span>
                                     <span class="editorial-stars">★★★★★</span>
                                     <span class="editorial-label">Highly Recommended</span>
                                     
@@ -1184,47 +1200,44 @@
                 <div class="guide-product-card" data-product-slug="vega-ranger-dx-crew-shell-liner-B0DMVHZDQC">
                     <div class="guide-compat-banner" data-product-slug="vega-ranger-dx-crew-shell-liner-B0DMVHZDQC" style="display:none;"></div>
 
-                    
-                    
-                    <div class="guide-card-badge guide-rec-editors_choice">&#127942; Editor's Choice</div>
-                    
-
-                    
                     <div class="guide-card-image">
                         
-                        <img src="../../static/images/products/vega-ranger-dx-crew-shell-liner-B0DMVHZDQC.jpg" alt="Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M" loading="lazy">
+                        <div class="guide-card-badge guide-rec-editors_choice">&#127942; Editor's Choice</div>
                         
+                        <a href="../../products/vega-ranger-dx-crew-shell-liner-B0DMVHZDQC/index.html">
+                            
+                            <img src="../../static/images/products/vega-ranger-dx-crew-shell-liner-B0DMVHZDQC.jpg" alt="Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M" loading="lazy">
+                            
+                        </a>
                     </div>
 
-                    
-                    <h3 class="guide-card-title"><a href="../../products/vega-ranger-dx-crew-shell-liner-B0DMVHZDQC/index.html">Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M</a></h3>
+                    <div class="guide-card-body">
+                        <h3 class="guide-card-title"><a href="../../products/vega-ranger-dx-crew-shell-liner-B0DMVHZDQC/index.html">Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M</a></h3>
 
-                    
-                    <div class="guide-card-rating">
-                        
-                        <span class="guide-card-reviews">&mdash;</span>
-                        
-                    </div>
+                        <div class="guide-card-price">&#8377;1020</div>
 
-                    
-                    <div class="guide-card-price">&#8377;1020</div>
+                        <div class="guide-card-rating">
+                            
+                            <span class="guide-card-reviews">&mdash;</span>
+                            
+                        </div>
 
-                    
-                    
-                    <div class="guide-card-chips">
                         
-                        <span class="guide-card-chip">Full face</span>
+                        <div class="guide-card-chips">
+                            
+                            <span class="guide-card-chip">Full face</span>
+                            
+                            <span class="guide-card-chip">Multi-ventilation</span>
+                            
+                        </div>
                         
-                        <span class="guide-card-chip">Multi-ventilation</span>
-                        
-                    </div>
-                    
 
-                    
-                    <div class="guide-card-actions">
-                        
-                        <a href="https://www.amazon.in/dp/B0DMVHZDQC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B0DMVHZDQC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
-                        
+                        <div class="guide-card-actions">
+                            
+                            <a href="https://www.amazon.in/dp/B0DMVHZDQC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B0DMVHZDQC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
+                            
+                            <a href="../../products/vega-ranger-dx-crew-shell-liner-B0DMVHZDQC/index.html" class="btn btn-block btn-outline guide-card-review-btn">Read Review</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -1232,47 +1245,44 @@
                 <div class="guide-product-card" data-product-slug="vega-sonic-saw-liner-shell-aerodynamic">
                     <div class="guide-compat-banner" data-product-slug="vega-sonic-saw-liner-shell-aerodynamic" style="display:none;"></div>
 
-                    
-                    
-                    <div class="guide-card-badge guide-rec-best_value">&#128176; Best Value</div>
-                    
-
-                    
                     <div class="guide-card-image">
                         
-                        <img src="../../static/images/products/vega-sonic-saw-liner-shell-aerodynamic.jpg" alt="Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M" loading="lazy">
+                        <div class="guide-card-badge guide-rec-best_value">&#128176; Best Value</div>
                         
+                        <a href="../../products/vega-sonic-saw-liner-shell-aerodynamic/index.html">
+                            
+                            <img src="../../static/images/products/vega-sonic-saw-liner-shell-aerodynamic.jpg" alt="Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M" loading="lazy">
+                            
+                        </a>
                     </div>
 
-                    
-                    <h3 class="guide-card-title"><a href="../../products/vega-sonic-saw-liner-shell-aerodynamic/index.html">Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M</a></h3>
+                    <div class="guide-card-body">
+                        <h3 class="guide-card-title"><a href="../../products/vega-sonic-saw-liner-shell-aerodynamic/index.html">Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M</a></h3>
 
-                    
-                    <div class="guide-card-rating">
-                        
-                        <span class="guide-card-reviews">&mdash;</span>
-                        
-                    </div>
+                        <div class="guide-card-price">&#8377;1347</div>
 
-                    
-                    <div class="guide-card-price">&#8377;1347</div>
+                        <div class="guide-card-rating">
+                            
+                            <span class="guide-card-reviews">&mdash;</span>
+                            
+                        </div>
 
-                    
-                    
-                    <div class="guide-card-chips">
                         
-                        <span class="guide-card-chip">Full face</span>
+                        <div class="guide-card-chips">
+                            
+                            <span class="guide-card-chip">Full face</span>
+                            
+                            <span class="guide-card-chip">Multi-ventilation</span>
+                            
+                        </div>
                         
-                        <span class="guide-card-chip">Multi-ventilation</span>
-                        
-                    </div>
-                    
 
-                    
-                    <div class="guide-card-actions">
-                        
-                        <a href="https://www.amazon.in/dp/B0DX231GD7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B0DX231GD7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
-                        
+                        <div class="guide-card-actions">
+                            
+                            <a href="https://www.amazon.in/dp/B0DX231GD7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B0DX231GD7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
+                            
+                            <a href="../../products/vega-sonic-saw-liner-shell-aerodynamic/index.html" class="btn btn-block btn-outline guide-card-review-btn">Read Review</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -1280,45 +1290,42 @@
                 <div class="guide-product-card" data-product-slug="studds-chrome-eco">
                     <div class="guide-compat-banner" data-product-slug="studds-chrome-eco" style="display:none;"></div>
 
-                    
-                    
-                    <div class="guide-card-badge guide-rec-most_popular">&#128293; Most Popular</div>
-                    
-
-                    
                     <div class="guide-card-image">
                         
-                        <img src="../../static/images/products/studds-chrome-eco.jpg" alt="Studds Chrome Eco Full Face Helmet- Black (Xl)" loading="lazy">
+                        <div class="guide-card-badge guide-rec-most_popular">&#128293; Most Popular</div>
                         
+                        <a href="../../products/studds-chrome-eco/index.html">
+                            
+                            <img src="../../static/images/products/studds-chrome-eco.jpg" alt="Studds Chrome Eco Full Face Helmet- Black (Xl)" loading="lazy">
+                            
+                        </a>
                     </div>
 
-                    
-                    <h3 class="guide-card-title"><a href="../../products/studds-chrome-eco/index.html">Studds Chrome Eco Full Face Helmet- Black (Xl)</a></h3>
+                    <div class="guide-card-body">
+                        <h3 class="guide-card-title"><a href="../../products/studds-chrome-eco/index.html">Studds Chrome Eco Full Face Helmet- Black (Xl)</a></h3>
 
-                    
-                    <div class="guide-card-rating">
-                        
-                        <span class="guide-card-reviews">&mdash;</span>
-                        
-                    </div>
+                        <div class="guide-card-price">&#8377;918</div>
 
-                    
-                    <div class="guide-card-price">&#8377;918</div>
+                        <div class="guide-card-rating">
+                            
+                            <span class="guide-card-reviews">&mdash;</span>
+                            
+                        </div>
 
-                    
-                    
-                    <div class="guide-card-chips">
                         
-                        <span class="guide-card-chip">Full face</span>
+                        <div class="guide-card-chips">
+                            
+                            <span class="guide-card-chip">Full face</span>
+                            
+                        </div>
                         
-                    </div>
-                    
 
-                    
-                    <div class="guide-card-actions">
-                        
-                        <a href="https://www.amazon.in/dp/B01N27OVUE?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B01N27OVUE?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
-                        
+                        <div class="guide-card-actions">
+                            
+                            <a href="https://www.amazon.in/dp/B01N27OVUE?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B01N27OVUE?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
+                            
+                            <a href="../../products/studds-chrome-eco/index.html" class="btn btn-block btn-outline guide-card-review-btn">Read Review</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -1326,45 +1333,42 @@
                 <div class="guide-product-card" data-product-slug="royal-enfield-stealth-mod-brushed-certification">
                     <div class="guide-compat-banner" data-product-slug="royal-enfield-stealth-mod-brushed-certification" style="display:none;"></div>
 
-                    
-                    
-                    <div class="guide-card-badge guide-rec-premium_pick">&#11088; Premium Pick</div>
-                    
-
-                    
                     <div class="guide-card-image">
                         
-                        <img src="../../static/images/products/royal-enfield-stealth-mod-brushed-certification.jpg" alt="Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL" loading="lazy">
+                        <div class="guide-card-badge guide-rec-premium_pick">&#11088; Premium Pick</div>
                         
+                        <a href="../../products/royal-enfield-stealth-mod-brushed-certification/index.html">
+                            
+                            <img src="../../static/images/products/royal-enfield-stealth-mod-brushed-certification.jpg" alt="Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL" loading="lazy">
+                            
+                        </a>
                     </div>
 
-                    
-                    <h3 class="guide-card-title"><a href="../../products/royal-enfield-stealth-mod-brushed-certification/index.html">Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL</a></h3>
+                    <div class="guide-card-body">
+                        <h3 class="guide-card-title"><a href="../../products/royal-enfield-stealth-mod-brushed-certification/index.html">Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL</a></h3>
 
-                    
-                    <div class="guide-card-rating">
-                        
-                        <span class="guide-card-reviews">&mdash;</span>
-                        
-                    </div>
+                        <div class="guide-card-price">&#8377;3599</div>
 
-                    
-                    <div class="guide-card-price">&#8377;3599</div>
+                        <div class="guide-card-rating">
+                            
+                            <span class="guide-card-reviews">&mdash;</span>
+                            
+                        </div>
 
-                    
-                    
-                    <div class="guide-card-chips">
                         
-                        <span class="guide-card-chip">Modular/flip-up</span>
+                        <div class="guide-card-chips">
+                            
+                            <span class="guide-card-chip">Modular/flip-up</span>
+                            
+                        </div>
                         
-                    </div>
-                    
 
-                    
-                    <div class="guide-card-actions">
-                        
-                        <a href="https://www.amazon.in/dp/B0F8BXYJBR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B0F8BXYJBR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
-                        
+                        <div class="guide-card-actions">
+                            
+                            <a href="https://www.amazon.in/dp/B0F8BXYJBR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B0F8BXYJBR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
+                            
+                            <a href="../../products/royal-enfield-stealth-mod-brushed-certification/index.html" class="btn btn-block btn-outline guide-card-review-btn">Read Review</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -1372,39 +1376,34 @@
                 <div class="guide-product-card" data-product-slug="sage-square-multipurpose-men-women-matte">
                     <div class="guide-compat-banner" data-product-slug="sage-square-multipurpose-men-women-matte" style="display:none;"></div>
 
-                    
-                    
-                    <div class="guide-card-badge guide-card-badge-empty"></div>
-                    
-
-                    
                     <div class="guide-card-image">
                         
-                        <img src="../../static/images/products/sage-square-multipurpose-men-women-matte.jpg" alt="Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte)" loading="lazy">
-                        
+                        <a href="../../products/sage-square-multipurpose-men-women-matte/index.html">
+                            
+                            <img src="../../static/images/products/sage-square-multipurpose-men-women-matte.jpg" alt="Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte)" loading="lazy">
+                            
+                        </a>
                     </div>
 
-                    
-                    <h3 class="guide-card-title"><a href="../../products/sage-square-multipurpose-men-women-matte/index.html">Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte)</a></h3>
+                    <div class="guide-card-body">
+                        <h3 class="guide-card-title"><a href="../../products/sage-square-multipurpose-men-women-matte/index.html">Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte)</a></h3>
 
-                    
-                    <div class="guide-card-rating">
-                        
-                        <span class="guide-card-reviews">&mdash;</span>
-                        
-                    </div>
+                        <div class="guide-card-price">&#8377;479</div>
 
-                    
-                    <div class="guide-card-price">&#8377;479</div>
+                        <div class="guide-card-rating">
+                            
+                            <span class="guide-card-reviews">&mdash;</span>
+                            
+                        </div>
 
-                    
-                    
+                        
 
-                    
-                    <div class="guide-card-actions">
-                        
-                        <a href="https://www.amazon.in/dp/B07JG1G2K3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B07JG1G2K3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
-                        
+                        <div class="guide-card-actions">
+                            
+                            <a href="https://www.amazon.in/dp/B07JG1G2K3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="https://www.amazon.in/dp/B07JG1G2K3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1">Check Price on Amazon</a>
+                            
+                            <a href="../../products/sage-square-multipurpose-men-women-matte/index.html" class="btn btn-block btn-outline guide-card-review-btn">Read Review</a>
+                        </div>
                     </div>
                 </div>
                 

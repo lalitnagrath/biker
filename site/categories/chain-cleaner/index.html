@@ -38,7 +38,6 @@
             <div class="container">
                 <span class="header-badge">India's most trusted motorcycle review site</span>
                 <div class="header-top-links">
-                    <a href="../../sitemap.xml">Sitemap</a>
                 </div>
             </div>
         </div>
@@ -123,7 +122,7 @@
                                 
                                 <li><a href="../../categories/jackets/index.html">jackets</a></li>
                                 
-                                <li><a href="../../categories/fashion-jacket/index.html">fashion_jacket</a></li>
+                                <li><a href="../../categories//index.html"></a></li>
                                 
                                 <li><a href="../../categories/indicator/index.html">indicator</a></li>
                                 
@@ -571,46 +570,58 @@
 
         
 
-<!-- ===== 1. HERO SECTION ===== -->
+<!-- ===== 1. HERO SECTION (REDESIGNED) ===== -->
 <section class="bg-hero">
     <div class="container">
-        <div class="bg-hero-content">
-            <div class="bg-hero-badges">
-                <span class="bg-badge bg-badge-expert">Expert Tested</span>
-                <span class="bg-badge bg-badge-count" id="heroTotalCount">14 Products</span>
-                <span class="bg-badge bg-badge-updated">Updated July 21, 2026</span>
+        <div class="bg-hero-grid">
+            <div class="bg-hero-left">
+                <div class="bg-hero-badges">
+                    <span class="bg-badge bg-badge-expert">Expert Tested</span>
+                    <span class="bg-badge bg-badge-count" id="heroTotalCount">14 Products</span>
+                    <span class="bg-badge bg-badge-updated">Updated July 21, 2026</span>
+                </div>
+                <h1 class="bg-hero-title">Best chain_cleaner in India (2026)</h1>
+                <p class="bg-hero-desc">Compare 14 chain_cleaner from top brands. Expert-tested recommendations for every budget and riding style.</p>
+                <div class="bg-hero-stats-compact">
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">14</span>
+                        <span class="hero-stat-label">Products Compared</span>
+                    </span>
+                    
+                    <span class="hero-stat-divider"></span>
+                    
+                    
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">&#8377;149 - &#8377;599</span>
+                        <span class="hero-stat-label">Price Range</span>
+                    </span>
+                    
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">July 21, 2026</span>
+                        <span class="hero-stat-label">Last Updated</span>
+                    </span>
+                    
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">14</span>
+                        <span class="hero-stat-label">Reviewed</span>
+                    </span>
+                    
+                </div>
             </div>
-            <h1 class="bg-hero-title">Best chain_cleaner in India (2026)</h1>
-            <p class="bg-hero-desc">Compare 14 chain_cleaner from top brands. Expert-tested recommendations for every budget and riding style.</p>
-            <div class="bg-hero-stats">
-                
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#9733;</span>
-                    <span class="bg-stat-label">Editor's Choice</span>
-                    <span class="bg-stat-value">Motul</span>
+            <div class="bg-hero-right">
+                <div class="motorcycle-card" id="catMotorcycleCard">
+                    <div class="motorcycle-card-header">Your Motorcycle</div>
+                    <div class="motorcycle-card-body">
+                        <div class="motorcycle-card-current" id="catMotorcycleCurrent">
+                            <span class="motorcycle-card-icon">&#x1F3CD;</span>
+                            <span class="motorcycle-card-name" id="catMotorcycleName">Select your bike</span>
+                        </div>
+                        <div class="motorcycle-card-compat" id="catMotorcycleCompat"></div>
+                        <button class="btn btn-sm btn-outline motorcycle-card-btn" id="catChangeMotorcycleBtn" type="button">Change Motorcycle</button>
+                    </div>
                 </div>
-                
-                
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#10003;</span>
-                    <span class="bg-stat-label">Best Value</span>
-                    <span class="bg-stat-value">Castrol</span>
-                </div>
-                
-                
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#9733;</span>
-                    <span class="bg-stat-label">Premium Pick</span>
-                    <span class="bg-stat-value">Vista</span>
-                </div>
-                
-                
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#9776;</span>
-                    <span class="bg-stat-label">Brands</span>
-                    <span class="bg-stat-value">11</span>
-                </div>
-                
             </div>
         </div>
     </div>
@@ -1278,18 +1289,21 @@
                  data-brand="Motul"
                  data-type="Spray">
                 
-                
-                <div class="bg-card-badge bg-badge-editors_choice">Editor's Choice</div>
-                
-                <a href="../../products/motul-c1-400ml/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/motul-c1-400ml.jpg" alt="Motul C1 Chain Cleaner 400ml" loading="lazy">
+                    <div class="bg-card-badge bg-badge-editors_choice">Editor's Choice</div>
                     
-                </a>
+                    <a href="../../products/motul-c1-400ml/index.html">
+                        
+                        <img src="../../static/images/products/motul-c1-400ml.jpg" alt="Motul C1 Chain Cleaner 400ml" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/motul-c1-400ml/index.html">Motul C1 Chain Cleaner 400ml</a>
                     </h3>
+                    <div class="bg-card-price">₹479</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">★★★★☆</span>
                         <span class="bg-card-rating-val">4.4</span>
@@ -1297,15 +1311,14 @@
                         <span class="bg-card-reviews">(6890)</span>
                         
                     </div>
-                    <div class="bg-card-price">₹479</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/motul-c1-400ml/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0077ASLCU?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0077ASLCU?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/motul-c1-400ml/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1318,32 +1331,32 @@
                  data-brand="Mikanix"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/mikanix-lubricant-spray-cleaning-brush-bicycle/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/mikanix-lubricant-spray-cleaning-brush-bicycle.jpg" alt="MIKANIX Bike Chain Lubricant and Chain Cleaner Spray with Cleaning Brush for Motorcycle and Bicycle (300 ml)" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/mikanix-lubricant-spray-cleaning-brush-bicycle/index.html">
+                        
+                        <img src="../../static/images/products/mikanix-lubricant-spray-cleaning-brush-bicycle.jpg" alt="MIKANIX Bike Chain Lubricant and Chain Cleaner Spray with Cleaning Brush for Motorcycle and Bicycle (300 ml)" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/mikanix-lubricant-spray-cleaning-brush-bicycle/index.html">MIKANIX Bike Chain Lubricant and Chain Cleaner Spray with Cleaning Brush for Motorcycle and Bicycle (300 ml)</a>
                     </h3>
+                    <div class="bg-card-price">₹289</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹289</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/mikanix-lubricant-spray-cleaning-brush-bicycle/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0CRZ5RL94?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0CRZ5RL94?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/mikanix-lubricant-spray-cleaning-brush-bicycle/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1356,32 +1369,32 @@
                  data-brand="Michelin"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/michelin-spray-400ml-powerful-degreaser-motorbike/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/michelin-spray-400ml-powerful-degreaser-motorbike.jpg" alt="MICHELIN Bike Chain Cleaner Spray 400ml | Powerful Degreaser for Motorbike & Bicycle Chains | Easily Removes Grease, Dirt & Grime | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/michelin-spray-400ml-powerful-degreaser-motorbike/index.html">
+                        
+                        <img src="../../static/images/products/michelin-spray-400ml-powerful-degreaser-motorbike.jpg" alt="MICHELIN Bike Chain Cleaner Spray 400ml | Powerful Degreaser for Motorbike & Bicycle Chains | Easily Removes Grease, Dirt & Grime | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/michelin-spray-400ml-powerful-degreaser-motorbike/index.html">MICHELIN Bike Chain Cleaner Spray 400ml | Powerful Degreaser for Motorbike & Bicycle Chains | Easily Removes Grease, Dirt & Grime | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains</a>
                     </h3>
+                    <div class="bg-card-price">₹479</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹479</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/michelin-spray-400ml-powerful-degreaser-motorbike/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B004YF1Z4M?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B004YF1Z4M?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/michelin-spray-400ml-powerful-degreaser-motorbike/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1394,34 +1407,34 @@
                  data-brand="Oto2Eye"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/oto2eye-cleaning-maintenance-kit-150ml-150ml/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/oto2eye-cleaning-maintenance-kit-150ml-150ml.jpg" alt="OTO2EYE Motorcycle Chain Cleaning & Maintenance Kit Chain Cleaner (150ml), Chain Lube (150ml), Bike Polish Spray (200ml), Chain Cleaning Brush & Microfiber Cloth | All-in-One Bike Care Accessories" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/oto2eye-cleaning-maintenance-kit-150ml-150ml/index.html">
+                        
+                        <img src="../../static/images/products/oto2eye-cleaning-maintenance-kit-150ml-150ml.jpg" alt="OTO2EYE Motorcycle Chain Cleaning & Maintenance Kit Chain Cleaner (150ml), Chain Lube (150ml), Bike Polish Spray (200ml), Chain Cleaning Brush & Microfiber Cloth | All-in-One Bike Care Accessories" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/oto2eye-cleaning-maintenance-kit-150ml-150ml/index.html">OTO2EYE Motorcycle Chain Cleaning & Maintenance Kit Chain Cleaner (150ml), Chain Lube (150ml), Bike Polish Spray (200ml), Chain Cleaning Brush & Microfiber Cloth | All-in-One Bike Care Accessories</a>
                     </h3>
+                    <div class="bg-card-price">₹292</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹292</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/oto2eye-cleaning-maintenance-kit-150ml-150ml/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0D8T9CCDN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0D8T9CCDN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/oto2eye-cleaning-maintenance-kit-150ml-150ml/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1434,34 +1447,34 @@
                  data-brand="Chain"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/cleaning-brush-microfiber-cloths-bristles-ideal/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/cleaning-brush-microfiber-cloths-bristles-ideal.jpg" alt="Chain Cleaning Brush with Microfiber Cloths | 2-in-1 Bike & Motorcycle Chain Cleaner | Heavy Duty Nylon Bristles | Ideal for Bicycle, Bike & Cycle Maintenance" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/cleaning-brush-microfiber-cloths-bristles-ideal/index.html">
+                        
+                        <img src="../../static/images/products/cleaning-brush-microfiber-cloths-bristles-ideal.jpg" alt="Chain Cleaning Brush with Microfiber Cloths | 2-in-1 Bike & Motorcycle Chain Cleaner | Heavy Duty Nylon Bristles | Ideal for Bicycle, Bike & Cycle Maintenance" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/cleaning-brush-microfiber-cloths-bristles-ideal/index.html">Chain Cleaning Brush with Microfiber Cloths | 2-in-1 Bike & Motorcycle Chain Cleaner | Heavy Duty Nylon Bristles | Ideal for Bicycle, Bike & Cycle Maintenance</a>
                     </h3>
+                    <div class="bg-card-price">₹192</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹192</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/cleaning-brush-microfiber-cloths-bristles-ideal/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0GFTYJYB3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0GFTYJYB3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/cleaning-brush-microfiber-cloths-bristles-ideal/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1474,32 +1487,32 @@
                  data-brand="Kangaroo"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/kangaroo-spray-degreaser-cycle-driven-machines/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/kangaroo-spray-degreaser-cycle-driven-machines.jpg" alt="Kangaroo Motorcycle Bike Chain Cleaner Spray Degreaser For Cycle Motorcycle & Chain Driven Machines 500Ml (Pack Of 1)." loading="lazy">
-                    
-                </a>
+                    <a href="../../products/kangaroo-spray-degreaser-cycle-driven-machines/index.html">
+                        
+                        <img src="../../static/images/products/kangaroo-spray-degreaser-cycle-driven-machines.jpg" alt="Kangaroo Motorcycle Bike Chain Cleaner Spray Degreaser For Cycle Motorcycle & Chain Driven Machines 500Ml (Pack Of 1)." loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/kangaroo-spray-degreaser-cycle-driven-machines/index.html">Kangaroo Motorcycle Bike Chain Cleaner Spray Degreaser For Cycle Motorcycle & Chain Driven Machines 500Ml (Pack Of 1).</a>
                     </h3>
+                    <div class="bg-card-price">₹288</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹288</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/kangaroo-spray-degreaser-cycle-driven-machines/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B091PQV2VZ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B091PQV2VZ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/kangaroo-spray-degreaser-cycle-driven-machines/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1512,32 +1525,32 @@
                  data-brand="Wuerth"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/wuerth-500-ml-german-engineered-spray/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/wuerth-500-ml-german-engineered-spray.jpg" alt="Wuerth Chain Cleaner - 500 ml | German Engineered Spray Cleaner for Motorcycle & Bicycle Chains | O-Ring Safe | Fast Drying, Residue Free Degreaser" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/wuerth-500-ml-german-engineered-spray/index.html">
+                        
+                        <img src="../../static/images/products/wuerth-500-ml-german-engineered-spray.jpg" alt="Wuerth Chain Cleaner - 500 ml | German Engineered Spray Cleaner for Motorcycle & Bicycle Chains | O-Ring Safe | Fast Drying, Residue Free Degreaser" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/wuerth-500-ml-german-engineered-spray/index.html">Wuerth Chain Cleaner - 500 ml | German Engineered Spray Cleaner for Motorcycle & Bicycle Chains | O-Ring Safe | Fast Drying, Residue Free Degreaser</a>
                     </h3>
+                    <div class="bg-card-price">₹499</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹499</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/wuerth-500-ml-german-engineered-spray/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B07JDF3ZSK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B07JDF3ZSK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/wuerth-500-ml-german-engineered-spray/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1550,32 +1563,32 @@
                  data-brand="Chain"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/c1-150-ml-road-c2-150/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/c1-150-ml-road-c2-150.jpg" alt="Chain Cleaner C1 (150 ml) & Chain Lube Road C2 (150 ml) Chain Cleaner Brush | Chain Oil (300 ml, Pack of 3)" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/c1-150-ml-road-c2-150/index.html">
+                        
+                        <img src="../../static/images/products/c1-150-ml-road-c2-150.jpg" alt="Chain Cleaner C1 (150 ml) & Chain Lube Road C2 (150 ml) Chain Cleaner Brush | Chain Oil (300 ml, Pack of 3)" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/c1-150-ml-road-c2-150/index.html">Chain Cleaner C1 (150 ml) & Chain Lube Road C2 (150 ml) Chain Cleaner Brush | Chain Oil (300 ml, Pack of 3)</a>
                     </h3>
+                    <div class="bg-card-price">₹599</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹599</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/c1-150-ml-road-c2-150/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0F22L7S2L?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0F22L7S2L?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/c1-150-ml-road-c2-150/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1588,34 +1601,36 @@
                  data-brand="Vista"
                  data-type="">
                 
-                
-                <div class="bg-card-badge bg-badge-premium_pick">Premium Pick</div>
-                
-                <a href="../../products/vista-auto-care-care-combo-kleen/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/vista-auto-care-care-combo-kleen.jpg" alt="Vista Auto Care Chain Care Combo | Chain Kleen + Chain Lube + Brush | Premium Bike Chain Cleaner & Lubricant Kit | Removes Tough Grease | Prevents Rust | Enhances Chain Life (Chain Care Combo Micro)" loading="lazy">
+                    <div class="bg-card-badge bg-badge-premium_pick">Premium Pick</div>
                     
-                </a>
+                    <a href="../../products/vista-auto-care-care-combo-kleen/index.html">
+                        
+                        <img src="../../static/images/products/vista-auto-care-care-combo-kleen.jpg" alt="Vista Auto Care Chain Care Combo | Chain Kleen + Chain Lube + Brush | Premium Bike Chain Cleaner & Lubricant Kit | Removes Tough Grease | Prevents Rust | Enhances Chain Life (Chain Care Combo Micro)" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/vista-auto-care-care-combo-kleen/index.html">Vista Auto Care Chain Care Combo | Chain Kleen + Chain Lube + Brush | Premium Bike Chain Cleaner & Lubricant Kit | Removes Tough Grease | Prevents Rust | Enhances Chain Life (Chain Care Combo Micro)</a>
                     </h3>
+                    <div class="bg-card-price">₹599</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹599</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/vista-auto-care-care-combo-kleen/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0G5PL8VNL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0G5PL8VNL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/vista-auto-care-care-combo-kleen/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1628,34 +1643,36 @@
                  data-brand="Castrol"
                  data-type="">
                 
-                
-                <div class="bg-card-badge bg-badge-best_value">Best Value</div>
-                
-                <a href="../../products/castrol-bikes-150ml-protects-wear-corrosion/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/castrol-bikes-150ml-protects-wear-corrosion.jpg" alt="Castrol Chain Lube for Bikes (150ml) | Protects Chain from Wear and Corrosion | Excellent Lubrication + Chain Cleaner for Bikes (150ml) | Instantly Loosens Oil, Grease and Dirt" loading="lazy">
+                    <div class="bg-card-badge bg-badge-best_value">Best Value</div>
                     
-                </a>
+                    <a href="../../products/castrol-bikes-150ml-protects-wear-corrosion/index.html">
+                        
+                        <img src="../../static/images/products/castrol-bikes-150ml-protects-wear-corrosion.jpg" alt="Castrol Chain Lube for Bikes (150ml) | Protects Chain from Wear and Corrosion | Excellent Lubrication + Chain Cleaner for Bikes (150ml) | Instantly Loosens Oil, Grease and Dirt" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/castrol-bikes-150ml-protects-wear-corrosion/index.html">Castrol Chain Lube for Bikes (150ml) | Protects Chain from Wear and Corrosion | Excellent Lubrication + Chain Cleaner for Bikes (150ml) | Instantly Loosens Oil, Grease and Dirt</a>
                     </h3>
+                    <div class="bg-card-price">₹451</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹451</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/castrol-bikes-150ml-protects-wear-corrosion/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0G93SFDQF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0G93SFDQF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/castrol-bikes-150ml-protects-wear-corrosion/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1668,34 +1685,36 @@
                  data-brand="Motul"
                  data-type="">
                 
-                
-                <div class="bg-card-badge bg-badge-most_popular">Most Popular</div>
-                
-                <a href="../../products/motul-c1-spray-150ml-bikes-removes/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/motul-c1-spray-150ml-bikes-removes.jpg" alt="Motul C1 Chain Cleaner Spray 150ml for Bikes | Removes Grease, Oil & Dirt | High-Performance Chain Cleaning | Safe for O-Ring, X-Ring & Z-Ring Motorcycle Chains" loading="lazy">
+                    <div class="bg-card-badge bg-badge-most_popular">Most Popular</div>
                     
-                </a>
+                    <a href="../../products/motul-c1-spray-150ml-bikes-removes/index.html">
+                        
+                        <img src="../../static/images/products/motul-c1-spray-150ml-bikes-removes.jpg" alt="Motul C1 Chain Cleaner Spray 150ml for Bikes | Removes Grease, Oil & Dirt | High-Performance Chain Cleaning | Safe for O-Ring, X-Ring & Z-Ring Motorcycle Chains" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/motul-c1-spray-150ml-bikes-removes/index.html">Motul C1 Chain Cleaner Spray 150ml for Bikes | Removes Grease, Oil & Dirt | High-Performance Chain Cleaning | Safe for O-Ring, X-Ring & Z-Ring Motorcycle Chains</a>
                     </h3>
+                    <div class="bg-card-price">₹229</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹229</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/motul-c1-spray-150ml-bikes-removes/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B01ESPB2V8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B01ESPB2V8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/motul-c1-spray-150ml-bikes-removes/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1708,34 +1727,34 @@
                  data-brand="Nikavi"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/nikavi-spray-500ml-performance-degreaser-removes/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/nikavi-spray-500ml-performance-degreaser-removes.jpg" alt="NIKAVI Chain Cleaner Spray – 500ml | High-Performance Motorcycle Chain Degreaser | Removes Dirt, Grease & Oil | Rust Protection | Safe for O-Ring, X-Ring & Z-Ring Chains" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/nikavi-spray-500ml-performance-degreaser-removes/index.html">
+                        
+                        <img src="../../static/images/products/nikavi-spray-500ml-performance-degreaser-removes.jpg" alt="NIKAVI Chain Cleaner Spray – 500ml | High-Performance Motorcycle Chain Degreaser | Removes Dirt, Grease & Oil | Rust Protection | Safe for O-Ring, X-Ring & Z-Ring Chains" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/nikavi-spray-500ml-performance-degreaser-removes/index.html">NIKAVI Chain Cleaner Spray – 500ml | High-Performance Motorcycle Chain Degreaser | Removes Dirt, Grease & Oil | Rust Protection | Safe for O-Ring, X-Ring & Z-Ring Chains</a>
                     </h3>
+                    <div class="bg-card-price">₹335</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹335</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/nikavi-spray-500ml-performance-degreaser-removes/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0FHWQHW4L?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0FHWQHW4L?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/nikavi-spray-500ml-performance-degreaser-removes/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1748,32 +1767,32 @@
                  data-brand="Allextreme"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/allextreme-cyl-06-multi-purpose-brush/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/allextreme-cyl-06-multi-purpose-brush.jpg" alt="AllExtreme ‎CYL-06-T Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles (Blue)" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/allextreme-cyl-06-multi-purpose-brush/index.html">
+                        
+                        <img src="../../static/images/products/allextreme-cyl-06-multi-purpose-brush.jpg" alt="AllExtreme ‎CYL-06-T Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles (Blue)" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/allextreme-cyl-06-multi-purpose-brush/index.html">AllExtreme ‎CYL-06-T Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles (Blue)</a>
                     </h3>
+                    <div class="bg-card-price">₹149</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹149</div>
                     <div class="bg-card-chips">
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/allextreme-cyl-06-multi-purpose-brush/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B076DC73XF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B076DC73XF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/allextreme-cyl-06-multi-purpose-brush/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>
@@ -1786,34 +1805,34 @@
                  data-brand="Castrol"
                  data-type="">
                 
-                
-                <div class="bg-card-badge-empty"></div>
-                
-                <a href="../../products/castrol-bikes-150ml-instantly-breaks-down/index.html" class="bg-card-img-link">
+                <div class="bg-card-image">
                     
-                    <img src="../../static/images/products/castrol-bikes-150ml-instantly-breaks-down.jpg" alt="Castrol Chain Cleaner for Bikes (150ML) | Instantly Breaks Down Oil, Grease & Dirt | Deep Cleaning for Maximum Performance | Prepares Chains for Lubrication | Safe for All Chain Types" loading="lazy">
-                    
-                </a>
+                    <a href="../../products/castrol-bikes-150ml-instantly-breaks-down/index.html">
+                        
+                        <img src="../../static/images/products/castrol-bikes-150ml-instantly-breaks-down.jpg" alt="Castrol Chain Cleaner for Bikes (150ML) | Instantly Breaks Down Oil, Grease & Dirt | Deep Cleaning for Maximum Performance | Prepares Chains for Lubrication | Safe for All Chain Types" loading="lazy">
+                        
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="../../products/castrol-bikes-150ml-instantly-breaks-down/index.html">Castrol Chain Cleaner for Bikes (150ML) | Instantly Breaks Down Oil, Grease & Dirt | Deep Cleaning for Maximum Performance | Prepares Chains for Lubrication | Safe for All Chain Types</a>
                     </h3>
+                    <div class="bg-card-price">₹275</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">☆☆☆☆☆</span>
                         <span class="bg-card-rating-val">0</span>
                         
                     </div>
-                    <div class="bg-card-price">₹275</div>
                     <div class="bg-card-chips">
                         
                         <span class="bg-chip">Ce</span>
                         
                     </div>
                     <div class="bg-card-actions">
-                        <a href="../../products/castrol-bikes-150ml-instantly-breaks-down/index.html" class="btn btn-sm btn-outline">Details</a>
                         
-                        <a href="https://www.amazon.in/dp/B0GBVY53PM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="https://www.amazon.in/dp/B0GBVY53PM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         
+                        <a href="../../products/castrol-bikes-150ml-instantly-breaks-down/index.html" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>

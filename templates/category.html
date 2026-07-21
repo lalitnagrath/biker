@@ -14,46 +14,58 @@
 
 {% block content %}
 
-<!-- ===== 1. HERO SECTION ===== -->
+<!-- ===== 1. HERO SECTION (REDESIGNED) ===== -->
 <section class="bg-hero">
     <div class="container">
-        <div class="bg-hero-content">
-            <div class="bg-hero-badges">
-                <span class="bg-badge bg-badge-expert">Expert Tested</span>
-                <span class="bg-badge bg-badge-count" id="heroTotalCount">{{ total_products }} Products</span>
-                <span class="bg-badge bg-badge-updated">Updated {{ last_updated }}</span>
+        <div class="bg-hero-grid">
+            <div class="bg-hero-left">
+                <div class="bg-hero-badges">
+                    <span class="bg-badge bg-badge-expert">Expert Tested</span>
+                    <span class="bg-badge bg-badge-count" id="heroTotalCount">{{ total_products }} Products</span>
+                    <span class="bg-badge bg-badge-updated">Updated {{ last_updated }}</span>
+                </div>
+                <h1 class="bg-hero-title">Best {{ category_name }} in India (2026)</h1>
+                <p class="bg-hero-desc">Compare {% if total_products > 0 %}{{ total_products }}{% endif %} {{ category_name | lower }} from top brands. Expert-tested recommendations for every budget and riding style.</p>
+                <div class="bg-hero-stats-compact">
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">{{ total_products }}</span>
+                        <span class="hero-stat-label">Products Compared</span>
+                    </span>
+                    {% if products %}
+                    <span class="hero-stat-divider"></span>
+                    {% set min_p = (products | map(attribute='_price') | min) | int %}
+                    {% set max_p = (products | map(attribute='_price') | max) | int %}
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">&#8377;{{ min_p }} - &#8377;{{ max_p }}</span>
+                        <span class="hero-stat-label">Price Range</span>
+                    </span>
+                    {% endif %}
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">{{ last_updated }}</span>
+                        <span class="hero-stat-label">Last Updated</span>
+                    </span>
+                    {% if products %}
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">{{ products | length }}</span>
+                        <span class="hero-stat-label">Reviewed</span>
+                    </span>
+                    {% endif %}
+                </div>
             </div>
-            <h1 class="bg-hero-title">Best {{ category_name }} in India (2026)</h1>
-            <p class="bg-hero-desc">Compare {% if total_products > 0 %}{{ total_products }}{% endif %} {{ category_name | lower }} from top brands. Expert-tested recommendations for every budget and riding style.</p>
-            <div class="bg-hero-stats">
-                {% if editors_choice %}
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#9733;</span>
-                    <span class="bg-stat-label">Editor's Choice</span>
-                    <span class="bg-stat-value">{{ editors_choice.brand }}</span>
+            <div class="bg-hero-right">
+                <div class="motorcycle-card" id="catMotorcycleCard">
+                    <div class="motorcycle-card-header">Your Motorcycle</div>
+                    <div class="motorcycle-card-body">
+                        <div class="motorcycle-card-current" id="catMotorcycleCurrent">
+                            <span class="motorcycle-card-icon">&#x1F3CD;</span>
+                            <span class="motorcycle-card-name" id="catMotorcycleName">Select your bike</span>
+                        </div>
+                        <div class="motorcycle-card-compat" id="catMotorcycleCompat"></div>
+                        <button class="btn btn-sm btn-outline motorcycle-card-btn" id="catChangeMotorcycleBtn" type="button">Change Motorcycle</button>
+                    </div>
                 </div>
-                {% endif %}
-                {% if best_value %}
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#10003;</span>
-                    <span class="bg-stat-label">Best Value</span>
-                    <span class="bg-stat-value">{{ best_value.brand }}</span>
-                </div>
-                {% endif %}
-                {% if premium_pick %}
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#9733;</span>
-                    <span class="bg-stat-label">Premium Pick</span>
-                    <span class="bg-stat-value">{{ premium_pick.brand }}</span>
-                </div>
-                {% endif %}
-                {% if brands_list %}
-                <div class="bg-stat">
-                    <span class="bg-stat-icon">&#9776;</span>
-                    <span class="bg-stat-label">Brands</span>
-                    <span class="bg-stat-value">{{ brands_list | length }}</span>
-                </div>
-                {% endif %}
             </div>
         </div>
     </div>
@@ -327,24 +339,25 @@
                  data-brand="{{ p.brand }}"
                  data-type="{{ p.type | default('') }}">
                 {% set badge_data = badge_data.get(p.slug) %}
-                {% if badge_data %}
-                <div class="bg-card-badge bg-badge-{{ badge_data.badge_type }}">{{ badge_data.badge }}</div>
-                {% elif p._has_editorial %}
-                <div class="bg-card-badge bg-badge-reviewed">Reviewed</div>
-                {% else %}
-                <div class="bg-card-badge-empty"></div>
-                {% endif %}
-                <a href="{{ URL.product(p.slug, base_path) }}" class="bg-card-img-link">
-                    {% if p.image and p.image != '' %}
-                    <img src="{{ base_path }}{{ p.image }}" alt="{{ p.title }}" loading="lazy">
-                    {% else %}
-                    <div class="bg-card-placeholder">{{ p.brand }}</div>
+                <div class="bg-card-image">
+                    {% if badge_data %}
+                    <div class="bg-card-badge bg-badge-{{ badge_data.badge_type }}">{{ badge_data.badge }}</div>
+                    {% elif p._has_editorial %}
+                    <div class="bg-card-badge bg-badge-reviewed">Reviewed</div>
                     {% endif %}
-                </a>
+                    <a href="{{ URL.product(p.slug, base_path) }}">
+                        {% if p.image and p.image != '' %}
+                        <img src="{{ base_path }}{{ p.image }}" alt="{{ p.title }}" loading="lazy">
+                        {% else %}
+                        <div class="bg-card-placeholder">{{ p.brand }}</div>
+                        {% endif %}
+                    </a>
+                </div>
                 <div class="bg-card-body">
                     <h3 class="bg-card-title">
                         <a href="{{ URL.product(p.slug, base_path) }}">{{ p.title }}</a>
                     </h3>
+                    <div class="bg-card-price">₹{{ p._price | int }}</div>
                     <div class="bg-card-rating">
                         <span class="bg-card-stars">{{ '★' * (p._rating | int) }}{{ '☆' * (5 - p._rating | int) }}</span>
                         <span class="bg-card-rating-val">{{ p._rating }}</span>
@@ -352,17 +365,16 @@
                         <span class="bg-card-reviews">({{ p._reviews }})</span>
                         {% endif %}
                     </div>
-                    <div class="bg-card-price">₹{{ p._price | int }}</div>
                     <div class="bg-card-chips">
-                        {% for chip in p._chips %}
+                        {% for chip in p._chips[:3] %}
                         <span class="bg-chip">{{ chip }}</span>
                         {% endfor %}
                     </div>
                     <div class="bg-card-actions">
-                        <a href="{{ URL.product(p.slug, base_path) }}" class="btn btn-sm btn-outline">Details</a>
                         {% if p.affiliate_url %}
-                        <a href="{{ p.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                        <a href="{{ p.affiliate_url }}" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
                         {% endif %}
+                        <a href="{{ URL.product(p.slug, base_path) }}" class="btn btn-block btn-outline bg-card-review-btn">Read Review</a>
                     </div>
                 </div>
             </div>

@@ -1045,10 +1045,12 @@ def _reclassify_product(product: dict) -> None:
         return
     # Fashion / winter / rain / casual jackets must never be 'jackets'.
     if cat == 'jackets' and not is_motorcycle_riding_jacket(product):
-        # Demote to a generic, non-motorcycle label so they are excluded from
-        # riding-jacket recommendations and guides.
-        product['category'] = 'fashion_jacket'
-        product['category_display'] = 'Jacket'
+        # Not a genuine motorcycle riding jacket — clear the category so
+        # auto_assign_status rejects the product. Only canonical categories
+        # from CANONICAL_CATEGORIES are valid.
+        product['category'] = ''
+        product['category_display'] = ''
+        product['reason'] = 'not_motorcycle_jacket'
         return
 
     # Step 2: Reclassify 'helmet' products that are actually accessories
@@ -1244,6 +1246,12 @@ def auto_assign_status(product: dict) -> str:
 
     # Missing category entirely
     if not category:
+        return 'rejected'
+
+    # Non-canonical category — never invent new public categories outside
+    # CANONICAL_CATEGORIES. Products that don't fit a predefined category
+    # must be rejected, not shelved in an ad-hoc bucket.
+    if category not in CANONICAL_CATEGORIES:
         return 'rejected'
 
     # --- Quality scoring ---

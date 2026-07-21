@@ -33,24 +33,70 @@
 {% endblock %}
 
 {% block content %}
-{# ===== 1. HERO SECTION ===== #}
+{# ===== 1. HERO SECTION (REDESIGNED) ===== #}
 <section class="bestof-hero-section">
     <div class="container">
-        <div class="bestof-hero-content">
-            <div class="bestof-hero-trust">
-                <span class="trust-badge">&#10003; Expert Tested</span>
-                <span class="trust-badge">Updated July 2026</span>
+        <div class="bestof-hero-grid{% if not motorcycles %} bestof-hero-grid-full{% endif %}">
+            <div class="bestof-hero-left">
+                <div class="bestof-hero-badges">
+                    <span class="trust-badge">&#10003; Expert Tested</span>
+                    <span class="trust-badge">Updated July 2026</span>
+                    {% if products %}
+                    <span class="trust-badge">{{ products | length }} Reviewed</span>
+                    {% endif %}
+                </div>
+                <h1>{{ page_title }}</h1>
+                <p class="bestof-hero-desc">{{ page_description }}</p>
                 {% if products %}
-                <span class="trust-badge">{{ products | length }} Products Reviewed</span>
+                <div class="bestof-hero-stats">
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">{{ products | length }}</span>
+                        <span class="hero-stat-label">Products Compared</span>
+                    </span>
+                    <span class="hero-stat-divider"></span>
+                    {% set min_price = (products | map(attribute='price') | min) | int %}
+                    {% set max_price = (products | map(attribute='price') | max) | int %}
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">&#8377;{{ min_price }} - &#8377;{{ max_price }}</span>
+                        <span class="hero-stat-label">Price Range</span>
+                    </span>
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">July 2026</span>
+                        <span class="hero-stat-label">Last Updated</span>
+                    </span>
+                    {% if motorcycles %}
+                    <span class="hero-stat-divider"></span>
+                    <span class="hero-stat">
+                        <span class="hero-stat-value">&#10003;</span>
+                        <span class="hero-stat-label">Compatibility</span>
+                    </span>
+                    {% endif %}
+                </div>
                 {% endif %}
             </div>
-            <h1>{{ page_title }}</h1>
-            <p class="bestof-hero-desc">{{ page_description }}</p>
-            {% if products %}
-            <div class="bestof-hero-score">
-                <span class="bestof-hero-count">{{ products | length }} Products Tested</span>
-                <span class="bestof-hero-divider">&middot;</span>
-                <span class="bestof-hero-date">Last Updated: July 2026</span>
+            {% if motorcycles %}
+            <div class="bestof-hero-right">
+                <div class="motorcycle-card" id="motorcycleCard">
+                    <div class="motorcycle-card-header">Your Motorcycle</div>
+                    <div class="motorcycle-card-body">
+                        <div class="motorcycle-card-current" id="motorcycleCurrent">
+                            <span class="motorcycle-card-icon">&#x1F3CD;</span>
+                            <span class="motorcycle-card-name" id="motorcycleName">Select your bike</span>
+                        </div>
+                        <div class="motorcycle-card-compat" id="motorcycleCompat"></div>
+                        <button class="btn btn-sm btn-outline motorcycle-card-btn" id="changeMotorcycleBtn" type="button">Change Motorcycle</button>
+                    </div>
+                </div>
+                <select id="bikeSelect" style="display:none;" aria-label="Select your motorcycle">
+                    <option value="">All Motorcycles</option>
+                    {% for bike in motorcycles %}
+                    <option value="{{ bike.slug }}" data-brand="{{ bike.brand }}">{{ bike.brand }} {{ bike.model }}</option>
+                    {% endfor %}
+                </select>
+                <div style="display:none;" id="bikeStatus">
+                    <span id="bikeStatusText">Showing all products</span>
+                </div>
             </div>
             {% endif %}
         </div>
@@ -62,40 +108,14 @@
         <div class="bestof-layout">
             <div class="bestof-main">
 
-                {# ===== MOTORCYCLE SELECTOR ===== #}
-                {% if motorcycles %}
-                <div class="guide-motorcycle-selector" id="bikeSelector">
-                    <div class="guide-selector-header">
-                        <span class="guide-selector-icon">&#128666;</span>
-                        <div class="guide-selector-text">
-                            <strong>Recommended for your Motorcycle</strong>
-                            <span class="guide-selector-hint">Select your bike to see compatible products and personalized rankings</span>
-                        </div>
-                    </div>
-                    <div class="guide-selector-controls">
-                        <select id="bikeSelect" class="guide-bike-select" aria-label="Select your motorcycle">
-                            <option value="">All Motorcycles</option>
-                            {% for bike in motorcycles %}
-                            <option value="{{ bike.slug }}" data-brand="{{ bike.brand }}">{{ bike.brand }} {{ bike.model }}</option>
-                            {% endfor %}
-                        </select>
-                        <button id="bikeClear" class="guide-bike-clear" style="display:none;" aria-label="Clear motorcycle selection">&#10005; Clear</button>
-                    </div>
-                    <div id="bikeSelectedInfo" class="guide-bike-selected-info" style="display:none;">
-                        <span class="guide-bike-selected-badge">&#128666; <strong id="bikeSelectedName"></strong></span>
-                        <a href="{{ URL.motorcycle_index(base_path) }}" class="guide-bike-change">Change Motorcycle</a>
-                    </div>
-                </div>
-                {% endif %}
-
-                {# ===== COMPATIBILITY FILTER ===== #}
+                {# ===== TOOLBAR ===== #}
                 {% if products %}
-                <div class="guide-filter-bar" id="guideFilterBar" style="display:none;">
-                    <label class="guide-filter-toggle">
-                        <input type="checkbox" id="compatOnlyFilter" class="guide-filter-checkbox">
-                        <span class="guide-filter-label">Show Compatible Products Only</span>
+                <div class="guide-toolbar" id="guideToolbar" style="display:none;">
+                    <label class="guide-toolbar-toggle">
+                        <input type="checkbox" id="compatOnlyFilter" class="guide-toolbar-checkbox">
+                        <span class="guide-toolbar-label">Compatible only</span>
                     </label>
-                    <span class="guide-filter-count" id="filterCount"></span>
+                    <span class="guide-toolbar-count" id="filterCount"></span>
                 </div>
                 {% endif %}
 
@@ -282,7 +302,6 @@
                                 </td>
                                 <td class="rating-col our-verdict">
                                     {% if product.editorial %}
-                                    <span class="verdict-label">Our Verdict</span>
                                     <span class="editorial-stars">{{ '★' * product.editorial.stars }}{{ '☆' * (5 - product.editorial.stars) }}</span>
                                     <span class="editorial-label">{{ product.editorial.label }}</span>
                                     {% endif %}
@@ -303,56 +322,51 @@
                 <div class="guide-product-card" data-product-slug="{{ product.slug }}">
                     <div class="guide-compat-banner" data-product-slug="{{ product.slug }}" style="display:none;"></div>
 
-                    {# 1. Single badge (Editor's Choice / Best Value / Premium Pick / Budget Pick) #}
-                    {% if p_badge.badge %}
-                    <div class="guide-card-badge guide-rec-{{ p_badge.badge_type }}">{{ p_badge.icon }} {{ p_badge.badge }}</div>
-                    {% else %}
-                    <div class="guide-card-badge guide-card-badge-empty"></div>
-                    {% endif %}
-
-                    {# 2. Product image #}
                     <div class="guide-card-image">
-                        {% if product.image and 'products/' in product.image %}
-                        <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
-                        {% else %}
-                        <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                        {% if p_badge.badge %}
+                        <div class="guide-card-badge guide-rec-{{ p_badge.badge_type }}">{{ p_badge.icon }} {{ p_badge.badge }}</div>
                         {% endif %}
+                        <a href="{{ URL.product(product.slug, base_path) }}">
+                            {% if product.image and 'products/' in product.image %}
+                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                            {% else %}
+                            <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
+                            {% endif %}
+                        </a>
                     </div>
 
-                    {# 3. Title (clamped to 2 lines) #}
-                    <h3 class="guide-card-title"><a href="{{ URL.product(product.slug, base_path) }}">{{ product.title }}</a></h3>
+                    <div class="guide-card-body">
+                        <h3 class="guide-card-title"><a href="{{ URL.product(product.slug, base_path) }}">{{ product.title }}</a></h3>
 
-                    {# 4. Amazon rating + review count #}
-                    <div class="guide-card-rating">
-                        {% if product.rating %}
-                        <span class="guide-card-stars" aria-label="Rated {{ product.rating }} out of 5">&#9733; {{ product.rating }}</span>
-                        {% if product.review_count %}
-                        <span class="guide-card-reviews">({{ product.review_count | int }} reviews)</span>
+                        <div class="guide-card-price">&#8377;{{ product.price | int }}</div>
+
+                        <div class="guide-card-rating">
+                            {% if product.rating %}
+                            <span class="guide-card-stars" aria-label="Rated {{ product.rating }} out of 5">&#9733; {{ product.rating }}</span>
+                            {% if product.review_count %}
+                            <span class="guide-card-reviews">({{ product.review_count | int }} reviews)</span>
+                            {% endif %}
+                            {% else %}
+                            <span class="guide-card-reviews">&mdash;</span>
+                            {% endif %}
+                        </div>
+
+                        {% if product.features %}
+                        <div class="guide-card-chips">
+                            {% for feature in product.features[:3] %}
+                            <span class="guide-card-chip">{{ feature }}</span>
+                            {% endfor %}
+                        </div>
                         {% endif %}
-                        {% else %}
-                        <span class="guide-card-reviews">&mdash;</span>
-                        {% endif %}
-                    </div>
 
-                    {# 5. Price (largest text) #}
-                    <div class="guide-card-price">&#8377;{{ product.price | int }}</div>
-
-                    {# 6. Feature chips (2-3) #}
-                    {% if product.features %}
-                    <div class="guide-card-chips">
-                        {% for feature in product.features[:3] %}
-                        <span class="guide-card-chip">{{ feature }}</span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-
-                    {# 7. Check Price on Amazon button (full width, bottom aligned) #}
-                    <div class="guide-card-actions">
-                        {% if product.affiliate_url %}
-                        <a href="{{ product.affiliate_url }}" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon</a>
-                        {% else %}
-                        <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-block">View Product</a>
-                        {% endif %}
+                        <div class="guide-card-actions">
+                            {% if product.affiliate_url %}
+                            <a href="{{ product.affiliate_url }}" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank" data-amazon-url="{{ product.affiliate_url }}">Check Price on Amazon</a>
+                            {% else %}
+                            <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-block">View Product</a>
+                            {% endif %}
+                            <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-block btn-outline guide-card-review-btn">Read Review</a>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

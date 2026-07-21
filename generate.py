@@ -592,14 +592,288 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
     return placeholder_pattern.sub(replace_match, html)
 
 
+def process_article_components(html, base_path='./'):
+    """Process custom article component directives embedded as HTML comments.
+
+    Supports these directives (each on its own line inside HTML comments):
+
+    <!-- verdict: text -->
+    <!-- tip: text -->
+    <!-- warning: text -->
+
+    <!-- gallery
+    image1.jpg
+    image2.jpg
+    -->
+
+    <!-- pros
+    + Pro point
+    - Con point
+    -->
+
+    <!-- who-should-buy
+    - Rider type 1
+    - Rider type 2
+    -->
+
+    <!-- who-should-skip
+    - Rider type 1
+    - Rider type 2
+    -->
+
+    <!-- feature-cards
+    icon|Title|Description
+    icon|Title|Description
+    -->
+
+    <!-- timeline
+    date|Title|Description
+    -->
+
+    <!-- side-by-side
+    image:path/to/img.jpg
+    text:Description text here
+    -->
+
+    <!-- full-width
+    HTML or text content
+    -->
+    """
+
+    def make_verdict(text):
+        text = text.strip()
+        return (
+            '<div class="art-callout art-verdict">'
+            '<div class="art-callout-label">&#9733; Quick Verdict</div>'
+            f'<p class="art-callout-text">{text}</p>'
+            '</div>'
+        )
+
+    def make_tip(text):
+        text = text.strip()
+        return (
+            '<div class="art-callout art-tip">'
+            '<div class="art-callout-label">&#128161; Expert Tip</div>'
+            f'<p class="art-callout-text">{text}</p>'
+            '</div>'
+        )
+
+    def make_warning(text):
+        text = text.strip()
+        return (
+            '<div class="art-callout art-warning">'
+            '<div class="art-callout-label">&#9888; Warning</div>'
+            f'<p class="art-callout-text">{text}</p>'
+            '</div>'
+        )
+
+    def make_gallery(lines):
+        images = [l.strip() for l in lines if l.strip() and not l.strip().startswith('<!--')]
+        if not images:
+            return ''
+        items = []
+        for img in images:
+            url = img if img.startswith(('http://', 'https://')) else base_path + img
+            items.append(
+                f'<div class="art-gallery-item">'
+                f'<img src="{url}" alt="" loading="lazy">'
+                f'</div>'
+            )
+        return f'<div class="art-gallery-grid">{"".join(items)}</div>'
+
+    def make_pros_cons(lines):
+        pros = []
+        cons = []
+        for line in lines:
+            line = line.strip()
+            if line.startswith('+'):
+                pros.append(f'<li>{line[1:].strip()}</li>')
+            elif line.startswith('-'):
+                cons.append(f'<li>{line[1:].strip()}</li>')
+        if not pros and not cons:
+            return ''
+        html_out = '<div class="art-pros-cons">'
+        if pros:
+            html_out += (
+                '<div class="art-pros">'
+                '<div class="art-pros-cons-label art-pros-label">&#10003; Pros</div>'
+                f'<ul>{"".join(pros)}</ul>'
+                '</div>'
+            )
+        if cons:
+            html_out += (
+                '<div class="art-cons">'
+                '<div class="art-pros-cons-label art-cons-label">&#10007; Cons</div>'
+                f'<ul>{"".join(cons)}</ul>'
+                '</div>'
+            )
+        html_out += '</div>'
+        return html_out
+
+    def make_who(lines, box_type):
+        items = []
+        for line in lines:
+            line = line.strip().lstrip('- ')
+            if line:
+                items.append(f'<li>{line}</li>')
+        if not items:
+            return ''
+        if box_type == 'buy':
+            label = '&#10003; Who Should Buy'
+            cls = 'art-who-buy'
+        else:
+            label = '&#10007; Who Should Skip'
+            cls = 'art-who-skip'
+        return (
+            f'<div class="art-who-box {cls}">'
+            f'<div class="art-callout-label">{label}</div>'
+            f'<ul>{"".join(items)}</ul>'
+            '</div>'
+        )
+
+    def make_feature_cards(lines):
+        cards = []
+        for line in lines:
+            line = line.strip()
+            if not line or '|' not in line:
+                continue
+            parts = line.split('|')
+            icon = parts[0].strip() if len(parts) > 0 else ''
+            title = parts[1].strip() if len(parts) > 1 else ''
+            desc = parts[2].strip() if len(parts) > 2 else ''
+            if title:
+                cards.append(
+                    f'<div class="art-feature-card">'
+                    f'<div class="art-feature-icon">{icon}</div>'
+                    f'<h4 class="art-feature-title">{title}</h4>'
+                    f'<p class="art-feature-desc">{desc}</p>'
+                    f'</div>'
+                )
+        if not cards:
+            return ''
+        return f'<div class="art-feature-grid">{"".join(cards)}</div>'
+
+    def make_timeline(lines):
+        items = []
+        for line in lines:
+            line = line.strip()
+            if not line or '|' not in line:
+                continue
+            parts = line.split('|')
+            date = parts[0].strip() if len(parts) > 0 else ''
+            title = parts[1].strip() if len(parts) > 1 else ''
+            desc = parts[2].strip() if len(parts) > 2 else ''
+            if title:
+                items.append(
+                    f'<div class="art-timeline-item">'
+                    f'<div class="art-timeline-marker"></div>'
+                    f'<div class="art-timeline-content">'
+                    f'<span class="art-timeline-date">{date}</span>'
+                    f'<h4>{title}</h4>'
+                    f'<p>{desc}</p>'
+                    f'</div>'
+                    f'</div>'
+                )
+        if not items:
+            return ''
+        return f'<div class="art-timeline">{"".join(items)}</div>'
+
+    def make_side_by_side(lines):
+        image = ''
+        text = ''
+        align = 'right'
+        for line in lines:
+            line = line.strip()
+            if line.startswith('image:'):
+                img_path = line[6:].strip()
+                image = img_path if img_path.startswith(('http://', 'https://')) else base_path + img_path
+            elif line.startswith('text:'):
+                text = line[5:].strip()
+            elif line.startswith('align:'):
+                align = line[6:].strip()
+        if not image and not text:
+            return ''
+        img_html = f'<img src="{image}" alt="" loading="lazy">' if image else ''
+        text_html = f'<div class="art-sbs-text"><p>{text}</p></div>' if text else ''
+        order_class = 'art-sbs-reverse' if align == 'left' else ''
+        return (
+            f'<div class="art-side-by-side {order_class}">'
+            f'<div class="art-sbs-image">{img_html}</div>'
+            f'{text_html}'
+            f'</div>'
+        )
+
+    def make_full_width(content):
+        content = content.strip()
+        if not content:
+            return ''
+        return f'<div class="art-full-width">{content}</div>'
+
+    # Match all component comments
+    component_pattern = re.compile(
+        r'<!--\s*(verdict|tip|warning|gallery|pros|who-should-buy|who-should-skip'
+        r'|feature-cards|timeline|side-by-side|full-width)\s*'
+        r'(.*?)-->',
+        re.DOTALL
+    )
+
+    def replace_component(match):
+        cmd = match.group(1).strip()
+        content = match.group(2).strip()
+
+        if cmd in ('verdict', 'tip', 'warning'):
+            return {'verdict': make_verdict, 'tip': make_tip, 'warning': make_warning}[cmd](content)
+
+        # Multi-line components
+        lines = [l.strip() for l in content.split('\n') if l.strip()]
+
+        if cmd == 'gallery':
+            return make_gallery(lines)
+        elif cmd == 'pros':
+            return make_pros_cons(lines)
+        elif cmd == 'who-should-buy':
+            return make_who(lines, 'buy')
+        elif cmd == 'who-should-skip':
+            return make_who(lines, 'skip')
+        elif cmd == 'feature-cards':
+            return make_feature_cards(lines)
+        elif cmd == 'timeline':
+            return make_timeline(lines)
+        elif cmd == 'side-by-side':
+            return make_side_by_side(lines)
+        elif cmd == 'full-width':
+            return make_full_width(content)
+
+        return ''
+
+    html = component_pattern.sub(replace_component, html)
+
+    # Also detect plain markdown tables and convert them to comparison cards
+    html = re.sub(
+        r'<table>(.*?)</table>',
+        lambda m: '<div class="art-table-wrap">' + m.group(0) + '</div>',
+        html,
+        flags=re.DOTALL
+    )
+
+    # Add IDs to headings for TOC
+    html = re.sub(
+        r'<h2>(.*?)</h2>',
+        lambda m: '<h2 id="' + re.sub(r'[^a-z0-9]+', '-', m.group(1).lower()).strip('-') + '">' + m.group(1) + '</h2>',
+        html
+    )
+
+    return html
+
+
 def build_product_categories(products):
     """Group products by normalized category (delegates to product_engine).
 
-    Excludes non-motorcycle categories (e.g., bicycle_helmet, fashion_jacket)
+    Excludes non-motorcycle categories (e.g., bicycle_helmet)
     that are intentionally routed out of the motorcycle taxonomy.
     """
     grouped = group_products_by_category(products)
-    excluded = {'bicycle_helmet', 'fashion_jacket'}
+    excluded = {'bicycle_helmet'}
     return {cat: prods for cat, prods in grouped.items() if cat not in excluded}
 
 
@@ -2300,7 +2574,8 @@ class SiteGenerator:
             canonical_url=f"{self.base_url}/categories/",
             output_path='categories/index.html',
         )
-        ctx = build_category_page('All Products', self.data['products'], context['base_path'], is_all_products=True)
+        all_listed = [p for p in self.data['products'] if p.get('category')]
+        ctx = build_category_page('All Products', all_listed, context['base_path'], is_all_products=True)
         context.update(ctx)
         content = self.render_template('category.html', context)
         self.write_page('categories/index.html', content)
@@ -2312,6 +2587,8 @@ class SiteGenerator:
             all_categories.setdefault(cat, []).append(p)
         surviving_slugs = {p.get('slug') for p in self.data['products']}
         for cat_name, cat_products in all_categories.items():
+            if not cat_name:
+                continue
             slug = category_slug(cat_name)
             listed = [p for p in cat_products if p.get('slug') in surviving_slugs]
             context = self.build_base_context(
@@ -2649,28 +2926,161 @@ class SiteGenerator:
         # Guides index page (linked by the "Best Of" nav dropdown parent)
         guides_ctx = self.build_base_context(
             meta_title='Buying Guides - Motorcycle Gear & Accessories | BikeReview India',
-            meta_description='Expert buying guides for motorcycle helmets, phone mounts, engine oil, chain lube, and more.',
+            meta_description='Expert buying guides for motorcycle helmets, phone mounts, engine oil, chain lube, and more. Find the best gear for your bike.',
             canonical_url=f"{self.base_url}/guides/",
             output_path='guides/index.html',
         )
         guides_ctx['guides'] = bestof_pages
-        guides_ctx['motorcycles'] = self.data['motorcycles']
+
+        # Compute product counts per category
+        cat_counts = {}
+        for p in self.data['products']:
+            cat = normalize_category(p.get('category', ''))
+            cat_counts[cat] = cat_counts.get(cat, 0) + 1
+        guides_ctx['cat_counts'] = cat_counts
+
         guides_content = self._render_guides_index(guides_ctx)
         self.write_page('guides/index.html', guides_content)
 
     def _render_guides_index(self, context):
-        """Render a simple guides index page listing all best-of guides."""
+        """Render the guides landing page — a premium editorial hub."""
         guides = context.get('guides', [])
-        items = "".join(
-            f'<li><a href="/{url_builders.bestof_url(g["slug"])}">{g["title"]}</a></li>'
-            for g in guides
-        )
+        cat_counts = context.get('cat_counts', {})
+
+        def cat_count(slug):
+            mapping = {'helmet': 'helmet', 'phone-mount': 'phone_mount',
+                       'engine-oil': 'engine_oil', 'chain-lube': 'chain_lube',
+                       'chain-cleaner': 'chain_cleaner', 'tyre-inflator': 'tyre_inflator'}
+            key = mapping.get(slug, slug.replace('-', '_'))
+            return cat_counts.get(key, 0)
+
+        def card(g, featured=False):
+            url = url_builders.bestof_url(g["slug"], "../")
+            icon = {'helmet': '&#x1F6E1;', 'phone-mount': '&#x1F4F1;',
+                    'engine-oil': '&#x1F6E2;', 'chain-lube': '&#x2699;',
+                    'chain-cleaner': '&#x1F9FC;', 'tyre-inflator': '&#x1F4A8;'}.get(g["slug"], '&#x1F4D6;')
+            count = cat_count(g["slug"])
+            cls = ' featured' if featured else ''
+            return f'''<a href="{url}" class="guide-card{cls}">
+                <div class="guide-card-icon">{icon}</div>
+                <div class="guide-card-body">
+                    <h3 class="guide-card-title">{g["title"]}</h3>
+                    <p class="guide-card-desc">{g["description"]}</p>
+                    <span class="guide-card-meta">{count} products &middot; <span class="guide-card-cta">Explore &rarr;</span></span>
+                </div>
+            </a>'''
+
+        sections = [
+            {
+                'id': 'safety',
+                'title': 'Safety',
+                'subtitle': 'Protect yourself with the right safety gear',
+                'slugs': ['helmet'],
+            },
+            {
+                'id': 'maintenance',
+                'title': 'Maintenance',
+                'subtitle': 'Keep your bike running smoothly',
+                'slugs': ['chain-lube', 'chain-cleaner', 'engine-oil'],
+            },
+            {
+                'id': 'touring',
+                'title': 'Touring',
+                'subtitle': 'Gear for the open road',
+                'slugs': ['tyre-inflator'],
+            },
+            {
+                'id': 'electronics',
+                'title': 'Electronics',
+                'subtitle': 'Ride smarter with the right tech',
+                'slugs': ['phone-mount'],
+            },
+        ]
+
+        guides_by_slug = {g['slug']: g for g in guides}
+
+        def section_html(s):
+            items = ''.join(card(guides_by_slug[slug]) for slug in s['slugs'] if slug in guides_by_slug)
+            if not items:
+                return ''
+            return f'''<section class="guide-section" id="{s["id"]}">
+                <div class="container">
+                    <div class="guide-section-header">
+                        <h2>{s["title"]}</h2>
+                        <p>{s["subtitle"]}</p>
+                    </div>
+                    <div class="guide-card-grid">{items}</div>
+                </div>
+            </section>'''
+
+        sections_html = ''.join(section_html(s) for s in sections)
+
+        # Popular guides — most-viewed categories
+        popular = [g for g in guides if g['slug'] in ('helmet', 'chain-lube', 'phone-mount')]
+        popular_html = ''
+        if popular:
+            items = ''.join(card(g, featured=True) for g in popular)
+            popular_html = f'''<section class="guide-section guide-section-popular">
+                <div class="container">
+                    <div class="guide-section-header">
+                        <h2>Popular Guides</h2>
+                        <p>Our most-read buying guides</p>
+                    </div>
+                    <div class="guide-card-grid">{items}</div>
+                </div>
+            </section>'''
+
+        # Beginner guides
+        beginner = [g for g in guides if g['slug'] in ('helmet', 'chain-lube', 'tyre-inflator')]
+        beginner_html = ''
+        if beginner:
+            items = ''.join(card(g) for g in beginner)
+            beginner_html = f'''<section class="guide-section guide-section-beginner">
+                <div class="container">
+                    <div class="guide-section-header">
+                        <h2>Beginner Guides</h2>
+                        <p>Start here if you are new to motorcycle gear</p>
+                    </div>
+                    <div class="guide-card-grid">{items}</div>
+                </div>
+            </section>'''
+
         page = f"""{{% extends "base.html" %}}
 {{% block content %}}
-<section class="section"><div class="container">
-<h1>Motorcycle Buying Guides</h1>
-<ul class="guide-index-list">{items}</ul>
-</div></section>
+
+<section class="guide-index-hero">
+    <div class="container">
+        <div class="guide-index-hero-content">
+            <div class="guide-index-hero-badges">
+                <span class="trust-badge">&#10003; Expert Tested</span>
+                <span class="trust-badge">&#10003; Updated Weekly</span>
+                <span class="trust-badge">&#10003; Motorcycle Focused</span>
+            </div>
+            <h1>Buying Guides</h1>
+            <p class="guide-index-hero-desc">Expert-tested motorcycle gear and accessories guides. We research, test, and recommend the best products for Indian riders.</p>
+        </div>
+    </div>
+</section>
+
+<section class="guide-index-nav">
+    <div class="container">
+        <nav class="guide-index-nav-inner">
+            <a href="#popular">Popular</a>
+            <a href="#safety">Safety</a>
+            <a href="#maintenance">Maintenance</a>
+            <a href="#touring">Touring</a>
+            <a href="#electronics">Electronics</a>
+            <a href="#beginner">Beginners</a>
+        </nav>
+    </div>
+</section>
+
+{popular_html}
+
+{sections_html}
+
+{beginner_html}
+
 {{% endblock %}}"""
         return self.env.from_string(page).render(**context)
 
@@ -2694,6 +3104,9 @@ class SiteGenerator:
                 meta_description=article.get('description', article.get('title', '')),
                 canonical_url=f"{self.base_url}/articles/{slug}/",
                 output_path=f'articles/{slug}/index.html',
+            )
+            html_content = process_article_components(
+                html_content, base_path=context['base_path']
             )
             html_content = replace_product_placeholders(
                 html_content, self.data['products'], context['base_path']
