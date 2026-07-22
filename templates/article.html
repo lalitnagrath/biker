@@ -48,224 +48,376 @@
 {% endblock %}
 
 {% block content %}
-<article class="article-page">
-    <div class="container">
 
-        <header class="article-hero">
-            <div class="article-hero-badges">
-                <span class="trust-badge">&#10003; Expert Guide</span>
-                <span class="trust-badge">&#128338; {{ article.reading_time | default('5 min read') }}</span>
-                <span class="trust-badge">&#128197; Updated {{ article.date | default('') }}</span>
-            </div>
-            <h1>{{ article.title }}</h1>
-            <p class="article-hero-desc">{{ article.description }}</p>
-            <div class="article-hero-meta">
-                <span class="article-category-label">{{ article.tags[0] if article.tags else 'Guide' }}</span>
-                <span class="article-meta-sep">|</span>
-                <span>By {{ article.author | default('BikeReview Team') }}</span>
-            </div>
-        </header>
+<article class="guide-article">
 
-        {% if article.hero_image %}
-        <div class="article-hero-image">
+    {% if article.hero_image %}
+    <div class="ga-hero">
+        <div class="ga-hero-image">
             <img src="{{ base_path }}{{ article.hero_image }}" alt="{{ article.title }}" loading="eager">
         </div>
-        {% endif %}
-
-        {% if sidebar_products %}
-        <section class="article-top-picks">
-            <div class="article-top-picks-header">
-                <h2>Our Top Recommendations</h2>
-                <p>Hand-picked products for every budget and riding style</p>
+        <div class="ga-hero-overlay">
+            <div class="ga-hero-content">
+                <div class="ga-hero-badges">
+                    <span class="ga-badge ga-badge-guide">Buying Guide</span>
+                    <span class="ga-badge ga-badge-read">{{ article.reading_time | default('5 min read') }}</span>
+                    <span class="ga-badge ga-badge-date">Updated {{ article.date | default('') }}</span>
+                </div>
+                <h1 class="ga-hero-title">{{ article.title }}</h1>
+                <p class="ga-hero-desc">{{ article.description }}</p>
+                <div class="ga-hero-meta">
+                    <span class="ga-hero-author">By {{ article.author | default('BikeReview Team') }}</span>
+                    {% if article.tags %}
+                    <span class="ga-hero-tag">{{ article.tags[0] }}</span>
+                    {% endif %}
+                </div>
             </div>
-            <div class="article-top-picks-grid">
+        </div>
+    </div>
+    {% else %}
+    <div class="ga-hero ga-hero-textonly">
+        <div class="container">
+            <div class="ga-hero-badges">
+                <span class="ga-badge ga-badge-guide">Buying Guide</span>
+                <span class="ga-badge ga-badge-read">{{ article.reading_time | default('5 min read') }}</span>
+                <span class="ga-badge ga-badge-date">Updated {{ article.date | default('') }}</span>
+            </div>
+            <h1 class="ga-hero-title">{{ article.title }}</h1>
+            <p class="ga-hero-desc">{{ article.description }}</p>
+            <div class="ga-hero-meta">
+                <span class="ga-hero-author">By {{ article.author | default('BikeReview Team') }}</span>
+                {% if article.tags %}
+                <span class="ga-hero-tag">{{ article.tags[0] }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if sidebar_products %}
+    <div class="ga-quick-picks">
+        <div class="container">
+            <div class="ga-qp-header">
+                <h2 class="ga-qp-title">At a Glance</h2>
+                <p class="ga-qp-subtitle">Our top recommendations in this guide</p>
+            </div>
+            <div class="ga-qp-grid">
                 {% for item in sidebar_products %}
                 {% set rp = item.product %}
-                <div class="article-pick-card">
-                    <div class="article-pick-image">
+                <div class="ga-qp-card">
+                    <div class="ga-qp-card-image">
                         {% if rp.image and 'products/' in rp.image %}
                         <img src="{{ base_path }}{{ rp.image }}" alt="{{ rp.title }}" loading="lazy">
                         {% else %}
-                        <div class="placeholder-image product-placeholder">{{ rp.brand }}</div>
+                        <div class="ga-qp-placeholder">{{ rp.brand[0] }}</div>
                         {% endif %}
                     </div>
-                    <div class="article-pick-body">
-                        <h3 class="article-pick-title"><a href="{{ URL.product(rp.slug, base_path) }}">{{ rp.title }}</a></h3>
-                        <div class="article-pick-price">&#8377;{{ rp.price | int }}</div>
-                        <div class="article-pick-rating">
-                            {% if rp.rating %}<span class="article-pick-stars">&#9733; {{ rp.rating }}</span>{% endif %}
-                            {% if rp.reviews %}<span class="article-pick-reviews">({{ rp.reviews | int }} reviews)</span>{% endif %}
-                        </div>
-                        <div class="article-pick-reason">{{ item.reason }}</div>
-                        <div class="article-pick-actions">
-                            {% if rp.affiliate_url %}
-                            <a href="{{ rp.affiliate_url }}" class="btn btn-block btn-accent" rel="nofollow sponsored" target="_blank">Check Price on Amazon</a>
+                    <div class="ga-qp-card-body">
+                        <div class="ga-qp-card-brand">{{ rp.brand }}</div>
+                        <h3 class="ga-qp-card-title"><a href="{{ URL.product(rp.slug, base_path) }}">{{ rp.title }}</a></h3>
+                        <div class="ga-qp-card-price">&#8377;{{ rp.price | int }}</div>
+                        <div class="ga-qp-card-rating">
+                            {% if rp.rating %}
+                            <span class="ga-stars">{% for i in range(rp.rating | int) %}&#9733;{% endfor %}{% for i in range(5 - (rp.rating | int)) %}&#9734;{% endfor %}</span>
+                            <span class="ga-rating-num">{{ rp.rating }}</span>
                             {% endif %}
-                            <a href="{{ URL.product(rp.slug, base_path) }}" class="btn btn-block btn-outline">Read Review</a>
+                        </div>
+                        <div class="ga-qp-card-reason">{{ item.reason }}</div>
+                        <div class="ga-qp-card-actions">
+                            {% if rp.affiliate_url %}
+                            <a href="{{ rp.affiliate_url }}" class="ga-btn ga-btn-primary" rel="nofollow sponsored" target="_blank">Check Price</a>
+                            {% endif %}
+                            <a href="{{ URL.product(rp.slug, base_path) }}" class="ga-btn ga-btn-outline">Read Review</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-            </div>
-        </section>
-        {% endif %}
-
-        <div class="article-layout-with-toc">
-            <aside class="article-toc" id="articleToc">
-                <div class="article-toc-inner">
-                    <h4>In This Guide</h4>
-                    <ul id="tocList"></ul>
-                </div>
-            </aside>
-            <div class="article-content-main" id="articleContent">
-                {{ article_html | safe }}
-
-                {% if sidebar_products %}
-                <div class="article-reco-section">
-                    <h2>Recommended Products</h2>
-                    <div class="article-reco-grid">
-                        {% for item in sidebar_products %}
-                        {% set rp = item.product %}
-                        <a href="{{ URL.product(rp.slug, base_path) }}" class="article-reco-card">
-                            <span class="article-reco-name">{{ rp.title }}</span>
-                            {% if rp.rating or rp.editorial %}<span class="article-reco-rating">{% if rp.rating %}{{ rp.rating }} &#9733;{% elif rp.editorial %}{{ rp.editorial.label }}{% endif %}</span>{% endif %}
-                            <span class="article-reco-price">&#8377;{{ rp.price | int }}</span>
-                        </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
-                {% if article.related_motorcycles or related_articles %}
-                <div class="article-links-section">
-                    {% if article.related_motorcycles %}
-                    <div class="article-links-col">
-                        <h3>Related Motorcycles</h3>
-                        <ul class="article-links-list">
-                            {% for slug in article.related_motorcycles %}
-                            {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
-                            {% if rm %}
-                            <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
-                    {% if related_articles %}
-                    <div class="article-links-col">
-                        <h3>More Guides</h3>
-                        <ul class="article-links-list">
-                            {% for ra in related_articles %}
-                            {% if ra.slug != article.slug %}
-                            <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
-                </div>
-                {% endif %}
             </div>
         </div>
+    </div>
+    {% endif %}
 
-        {% if article.faq %}
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-accordion">
-                {% for item in article.faq %}
-                <div class="faq-accordion-item">
-                    <button class="faq-accordion-header" aria-expanded="false">
-                        <span>{{ item.question }}</span>
-                        <span class="faq-toggle">+</span>
-                    </button>
-                    <div class="faq-accordion-content">
-                        <p>{{ item.answer }}</p>
+    {% if article.toc %}
+    <div class="ga-toc-mobile ga-toc-collapsed" id="gaTocMobile">
+        <button class="ga-toc-mobile-toggle" id="gaTocMobileToggle" aria-expanded="false">
+            <span class="ga-toc-header-icon">&#9776;</span>
+            <span>In This Guide</span>
+            <span class="ga-toc-header-count" id="gaTocMobileCount"></span>
+            <span class="ga-toc-mobile-arrow">&#9660;</span>
+        </button>
+        <div class="ga-toc-mobile-body" id="gaTocMobileBody">
+            <ul class="ga-toc-mobile-list" id="gaTocMobileList"></ul>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="ga-layout">
+        <div class="ga-content" id="gaContent">
+            {{ article_html | safe }}
+
+            {% if article.faq %}
+            <div class="ga-faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="ga-faq-list">
+                    {% for item in article.faq %}
+                    <div class="ga-faq-item">
+                        <button class="ga-faq-question" aria-expanded="false">
+                            <span>{{ item.question }}</span>
+                            <span class="ga-faq-toggle">+</span>
+                        </button>
+                        <div class="ga-faq-answer">
+                            <p>{{ item.answer }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if article.related_motorcycles or related_articles %}
+            <div class="ga-related-section">
+                {% if article.related_motorcycles %}
+                <div class="ga-related-col">
+                    <h3>Related Motorcycles</h3>
+                    <ul class="ga-related-list">
+                        {% for slug in article.related_motorcycles %}
+                        {% set rm = all_motorcycles | selectattr('slug', 'equalto', slug) | first %}
+                        {% if rm %}
+                        <li><a href="{{ base_path }}motorcycles/{{ rm.slug }}/index.html">{{ rm.brand }} {{ rm.model }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if related_articles %}
+                <div class="ga-related-col">
+                    <h3>More Guides</h3>
+                    <ul class="ga-related-list">
+                        {% for ra in related_articles %}
+                        {% if ra.slug != article.slug %}
+                        <li><a href="{{ base_path }}articles/{{ ra.slug }}/index.html">{{ ra.title }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if prev_article or next_article %}
+            <nav class="ga-nav">
+                {% if prev_article %}
+                <a href="{{ base_path }}articles/{{ prev_article.slug }}/index.html" class="ga-nav-prev">
+                    <span class="ga-nav-direction">&#8592; Previous Guide</span>
+                    <span class="ga-nav-title">{{ prev_article.title }}</span>
+                </a>
+                {% endif %}
+                {% if next_article %}
+                <a href="{{ base_path }}articles/{{ next_article.slug }}/index.html" class="ga-nav-next">
+                    <span class="ga-nav-direction">Next Guide &#8594;</span>
+                    <span class="ga-nav-title">{{ next_article.title }}</span>
+                </a>
+                {% endif %}
+            </nav>
+            {% endif %}
+
+        </div>
+
+        {% if article.toc %}
+        <aside class="ga-sidebar-right ga-toc-collapsed" id="gaSidebarRight">
+            <nav class="ga-toc" id="gaToc">
+                <button class="ga-toc-header" id="gaTocToggle" aria-expanded="false">
+                    <span class="ga-toc-header-icon">&#9776;</span>
+                    <span class="ga-toc-header-label">In This Guide</span>
+                    <span class="ga-toc-header-count" id="gaTocCount"></span>
+                    <span class="ga-toc-header-arrow">&#9660;</span>
+                </button>
+                <div class="ga-toc-body" id="gaTocBody">
+                    <ul class="ga-toc-list" id="gaTocList"></ul>
+                    <div class="ga-toc-progress">
+                        <div class="ga-toc-progress-bar" id="gaTocProgressBar"></div>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </section>
+            </nav>
+        </aside>
         {% endif %}
-
-        {% if prev_article or next_article %}
-        <nav class="article-nav">
-            {% if prev_article %}
-            <a href="{{ base_path }}articles/{{ prev_article.slug }}/index.html" class="article-nav-prev">
-                <span class="nav-label">&#8592; Previous</span>
-                <span class="nav-title">{{ prev_article.title }}</span>
-            </a>
-            {% endif %}
-            {% if next_article %}
-            <a href="{{ base_path }}articles/{{ next_article.slug }}/index.html" class="article-nav-next">
-                <span class="nav-label">Next &#8594;</span>
-                <span class="nav-title">{{ next_article.title }}</span>
-            </a>
-            {% endif %}
-        </nav>
-        {% endif %}
-
     </div>
+
 </article>
 
 <script>
 (function() {
-    var content = document.getElementById('articleContent');
-    var tocList = document.getElementById('tocList');
+    var content = document.getElementById('gaContent');
+    var tocList = document.getElementById('gaTocList');
     if (!content || !tocList) return;
 
-    var headings = content.querySelectorAll('h2, h3');
-    headings.forEach(function(h, i) {
-        if (!h.id) h.id = 'section-' + i;
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = '#' + h.id;
-        a.textContent = h.textContent;
-        if (h.tagName === 'H3') li.className = 'toc-h3';
-        li.appendChild(a);
-        tocList.appendChild(li);
-    });
-
-    if (headings.length === 0) {
-        document.getElementById('articleToc').style.display = 'none';
+    {% if article.toc %}
+    var tocItems = {{ article.toc | tojson }};
+    {% else %}
+    var tocItems = [];
+    {% endif %}
+    if (!tocItems || tocItems.length < 2) {
+        var sidebar = document.getElementById('gaSidebarRight');
+        if (sidebar) sidebar.style.display = 'none';
+        var mobile = document.getElementById('gaTocMobile');
+        if (mobile) mobile.style.display = 'none';
+        return;
     }
 
-    var links = tocList.querySelectorAll('a');
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                links.forEach(function(l) { l.classList.remove('active'); });
-                var el = tocList.querySelector('a[href="#' + entry.target.id + '"]');
-                if (el) el.classList.add('active');
+    var headings = content.querySelectorAll('h2, h3');
+    var matched = [];
+
+    tocItems.forEach(function(label) {
+        var keyword = label.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+        for (var i = 0; i < headings.length; i++) {
+            var h = headings[i];
+            var text = h.textContent.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+            if (text.indexOf(keyword) !== -1 || keyword.indexOf(text) !== -1) {
+                if (!h.id) h.id = 'section-' + i;
+                matched.push({ id: h.id, label: label });
+                break;
             }
+        }
+    });
+
+    var tocMobileList = document.getElementById('gaTocMobileList');
+
+    matched.forEach(function(item) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + item.id;
+        a.textContent = item.label;
+        li.appendChild(a);
+        tocList.appendChild(li);
+
+        if (tocMobileList) {
+            var li2 = document.createElement('li');
+            var a2 = document.createElement('a');
+            a2.href = '#' + item.id;
+            a2.textContent = item.label;
+            li2.appendChild(a2);
+            tocMobileList.appendChild(li2);
+        }
+    });
+
+    if (matched.length < 2) {
+        var sidebar = document.getElementById('gaSidebarRight');
+        if (sidebar) sidebar.style.display = 'none';
+        var mobile = document.getElementById('gaTocMobile');
+        if (mobile) mobile.style.display = 'none';
+        return;
+    }
+
+    // Update section count in headers
+    var countEl = document.getElementById('gaTocCount');
+    var mobileCountEl = document.getElementById('gaTocMobileCount');
+    var countText = '(' + matched.length + ' section' + (matched.length > 1 ? 's' : '') + ')';
+    if (countEl) countEl.textContent = countText;
+    if (mobileCountEl) mobileCountEl.textContent = countText;
+
+    // --- Collapse/Expand TOC ---
+    var sidebarEl = document.getElementById('gaSidebarRight');
+    var mobileEl = document.getElementById('gaTocMobile');
+    var tocToggle = document.getElementById('gaTocToggle');
+    var mobileToggle = document.getElementById('gaTocMobileToggle');
+    var tocBody = document.getElementById('gaTocBody');
+    var tocMobileBody = document.getElementById('gaTocMobileBody');
+
+    function expandToc() {
+        if (sidebarEl) { sidebarEl.classList.remove('ga-toc-collapsed'); sidebarEl.classList.add('ga-toc-expanded'); }
+        if (tocToggle) tocToggle.setAttribute('aria-expanded', 'true');
+        if (tocBody) { tocBody.style.maxHeight = tocBody.scrollHeight + 'px'; tocBody.style.overflow = 'visible'; }
+        if (mobileEl) { mobileEl.classList.remove('ga-toc-collapsed'); mobileEl.classList.add('ga-toc-expanded'); }
+        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+        if (tocMobileBody) { tocMobileBody.style.maxHeight = tocMobileBody.scrollHeight + 'px'; tocMobileBody.style.overflow = 'visible'; }
+        sessionStorage.setItem('tocExpanded', 'true');
+    }
+
+    function collapseToc() {
+        if (sidebarEl) { sidebarEl.classList.remove('ga-toc-expanded'); sidebarEl.classList.add('ga-toc-collapsed'); }
+        if (tocToggle) tocToggle.setAttribute('aria-expanded', 'false');
+        if (tocBody) { tocBody.style.maxHeight = '0'; tocBody.style.overflow = 'hidden'; }
+        if (mobileEl) { mobileEl.classList.remove('ga-toc-expanded'); mobileEl.classList.add('ga-toc-collapsed'); }
+        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+        if (tocMobileBody) { tocMobileBody.style.maxHeight = '0'; tocMobileBody.style.overflow = 'hidden'; }
+        sessionStorage.setItem('tocExpanded', 'false');
+    }
+
+    function toggleToc() {
+        if (sidebarEl && sidebarEl.classList.contains('ga-toc-expanded')) {
+            collapseToc();
+        } else {
+            expandToc();
+        }
+    }
+
+    // Restore session state
+    if (sessionStorage.getItem('tocExpanded') === 'true') {
+        expandToc();
+    } else {
+        collapseToc();
+    }
+
+    if (tocToggle) tocToggle.addEventListener('click', toggleToc);
+    if (mobileToggle) mobileToggle.addEventListener('click', toggleToc);
+
+    // Clicking a TOC link auto-expands (in case collapsed)
+    tocList.addEventListener('click', function(e) {
+        var link = e.target.closest('a');
+        if (link) expandToc();
+    });
+    if (tocMobileList) {
+        tocMobileList.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (link) expandToc();
+        });
+    }
+
+    // --- Scroll tracking ---
+    var tocLinks = tocList.querySelectorAll('a');
+    var tocMobileLinks = tocMobileList ? tocMobileList.querySelectorAll('a') : [];
+    var progressBar = document.getElementById('gaTocProgressBar');
+
+    var observer = new IntersectionObserver(function(entries) {
+        var activeId = '';
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) activeId = entry.target.id;
+        });
+        tocLinks.forEach(function(l) {
+            l.classList.remove('active');
+            if (l.getAttribute('href') === '#' + activeId) l.classList.add('active');
+        });
+        tocMobileLinks.forEach(function(l) {
+            l.classList.remove('active');
+            if (l.getAttribute('href') === '#' + activeId) l.classList.add('active');
         });
     }, { rootMargin: '-80px 0px -70% 0px' });
-    headings.forEach(function(h) { observer.observe(h); });
 
-    content.querySelectorAll('blockquote').forEach(function(bq) {
-        var text = bq.textContent.trim().toLowerCase();
-        var callout = null;
-        if (text.startsWith('quick summary') || text.startsWith('summary')) {
-            callout = { cls: 'callout-summary', label: 'Quick Summary' };
-        } else if (text.startsWith('key takeaways') || text.startsWith('takeaways')) {
-            callout = { cls: 'callout-takeaways', label: 'Key Takeaways' };
-        } else if (text.startsWith('buying tip') || text.startsWith('tips') || text.startsWith('tip')) {
-            callout = { cls: 'callout-tips', label: 'Buying Tip' };
-        } else if (text.startsWith('common mistakes') || text.startsWith('mistakes') || text.startsWith('mistake')) {
-            callout = { cls: 'callout-mistakes', label: 'Common Mistakes' };
-        } else if (text.startsWith('pro tip')) {
-            callout = { cls: 'callout-pro', label: 'Pro Tip' };
-        } else if (text.startsWith('who should buy')) {
-            callout = { cls: 'callout-buy-yes', label: 'Who Should Buy' };
-        } else if (text.startsWith('who should skip') || text.startsWith('who shouldn\'t buy')) {
-            callout = { cls: 'callout-buy-no', label: 'Who Should Skip' };
-        }
-        if (callout) {
-            bq.classList.add('content-callout', callout.cls);
-            var label = document.createElement('div');
-            label.className = 'callout-label';
-            label.textContent = callout.label;
-            bq.insertBefore(label, bq.firstChild);
-        }
+    matched.forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (el) observer.observe(el);
+    });
+
+    window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = Math.min(progress, 100) + '%';
+    });
+
+    content.querySelectorAll('.ga-faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = this.parentElement;
+            var isActive = item.classList.contains('active');
+            content.querySelectorAll('.ga-faq-item.active').forEach(function(el) {
+                el.classList.remove('active');
+                el.querySelector('.ga-faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                this.setAttribute('aria-expanded', 'true');
+            }
+        });
     });
 })();
 </script>

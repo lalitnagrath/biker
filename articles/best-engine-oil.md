@@ -16,6 +16,13 @@ faq:
     answer: "While not ideal, mixing oils of the same grade and type (both synthetic or both mineral) won't cause immediate damage. However, always try to use the same brand and type for optimal performance."
   - question: "What oil grade should I use?"
     answer: "Always use the oil grade recommended in your motorcycle's owner manual. Common grades in India include 10W-30, 10W-40, and 20W-50 depending on the engine type and riding conditions."
+toc:
+  - "Understanding Engine Oil Basics"
+  - "What to Look For in Engine Oil"
+  - "Top Engine Oil Brands in India"
+  - "Oil Recommendations by Motorcycle Type"
+  - "Change Intervals"
+  - "Product Recommendations"
 ---
 
 # Best Engine Oil for Motorcycles in India (2026)

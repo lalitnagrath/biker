@@ -16,6 +16,13 @@ faq:
     answer: "Riding gloves should fit snugly without restricting movement. Your fingers should reach the tips without being compressed, and the palm should sit flat against your hand."
   - question: "What about summer vs winter gloves?"
     answer: "India typically needs summer gloves with good ventilation. For Himalayan touring or winter rides, insulated waterproof gloves are necessary."
+toc:
+  - "Why Riding Gloves Matter"
+  - "Types of Riding Gloves"
+  - "Key Features"
+  - "Top Brands in India"
+  - "Sizing Guide"
+  - "Product Recommendations"
 ---
 
 # Best Riding Gloves for Indian Motorcyclists

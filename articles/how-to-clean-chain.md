@@ -16,6 +16,13 @@ faq:
     answer: "For most riders, cleaning the chain on the bike is sufficient. Removing the chain is only necessary for deep cleaning or when replacing it. On-bike cleaning with proper technique provides excellent results."
   - question: "What's the difference between chain cleaner and chain degreaser?"
     answer: "Chain cleaners are formulated to dissolve old lube and grime without damaging O-rings, while degreasers are stronger and may damage seals. Always use products specifically designed for motorcycle chains."
+toc:
+  - "Why Chain Maintenance Matters"
+  - "Tools and Products You'll Need"
+  - "Step-by-Step Cleaning Process"
+  - "Cleaning Schedule Guide"
+  - "Common Mistakes to Avoid"
+  - "Pro Tips for Indian Conditions"
 ---
 
 # How to Clean and Lubricate Your Motorcycle Chain

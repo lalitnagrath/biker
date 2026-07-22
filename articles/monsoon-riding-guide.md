@@ -16,6 +16,13 @@ faq:
     answer: "Don't restart the engine immediately. Push the bike to dry ground, check the air filter for water, and have it inspected before starting. Water in the engine can cause severe damage."
   - question: "Are fog lights legal in India?"
     answer: "Aftermarket fog lights are legal if properly installed and used responsibly. Avoid using high beams or blinding other road users. Some states may have specific regulations."
+toc:
+  - "Why Monsoon Riding Requires Special Preparation"
+  - "Essential Rain Gear"
+  - "Bike Protection and Accessories"
+  - "Pre-Ride Monsoon Checklist"
+  - "Riding Techniques for Wet Conditions"
+  - "Post-Ride Maintenance"
 ---
 
 # Monsoon Riding Guide: Essential Gear and Tips

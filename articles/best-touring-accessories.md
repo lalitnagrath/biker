@@ -16,6 +16,13 @@ faq:
     answer: "Both serve different purposes. Tank bags are great for frequently accessed items like phones and wallets. Saddle bags carry more cargo and keep weight lower. Most touring riders use both."
   - question: "Do I need a windscreen for touring?"
     answer: "A windscreen significantly reduces wind blast and rider fatigue on highways. For touring distances over 200 km, a windscreen is highly recommended."
+toc:
+  - "Why Touring Accessories Matter"
+  - "Essential Touring Accessories"
+  - "Comfort Accessories"
+  - "Visibility and Safety"
+  - "Luggage Configuration Guide"
+  - "Budget Guide"
 ---
 
 # Best Touring Accessories for Long Distance Riding

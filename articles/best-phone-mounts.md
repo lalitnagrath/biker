@@ -16,6 +16,13 @@ faq:
     answer: "Handlebar mounts are most common and versatile. Mirror mounts offer better visibility. For touring, tank bag mounts with integrated holders are convenient."
   - question: "Can I use a phone mount in the rain?"
     answer: "Most quality mounts are water-resistant, but you'll need a waterproof phone case or pouch to protect your phone from rain. Some mounts come with integrated waterproof covers."
+toc:
+  - "Why You Need a Phone Mount"
+  - "Types of Phone Mounts"
+  - "Key Features to Consider"
+  - "Top Phone Mount Brands in India"
+  - "Installation Tips"
+  - "Product Recommendations"
 ---
 
 # Best Motorcycle Phone Mounts in India

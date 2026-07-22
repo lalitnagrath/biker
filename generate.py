@@ -89,6 +89,17 @@ except ImportError:
     yaml = None
 
 
+def escape_html(text):
+    """Escape HTML special characters."""
+    if not isinstance(text, str):
+        text = str(text)
+    return (text.replace('&', '&amp;')
+                .replace('<', '&lt;')
+                .replace('>', '&gt;')
+                .replace('"', '&quot;')
+                .replace("'", '&#39;'))
+
+
 # ===== Configuration =====
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / 'data'
@@ -592,79 +603,69 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
     return placeholder_pattern.sub(replace_match, html)
 
 
-def process_article_components(html, base_path='./'):
+def process_article_components(html, base_path='./', products=None):
     """Process custom article component directives embedded as HTML comments.
 
     Supports these directives (each on its own line inside HTML comments):
 
+    Single-line:
     <!-- verdict: text -->
     <!-- tip: text -->
     <!-- warning: text -->
 
-    <!-- gallery
-    image1.jpg
-    image2.jpg
-    -->
-
-    <!-- pros
-    + Pro point
-    - Con point
-    -->
-
-    <!-- who-should-buy
-    - Rider type 1
-    - Rider type 2
-    -->
-
-    <!-- who-should-skip
-    - Rider type 1
-    - Rider type 2
-    -->
-
-    <!-- feature-cards
-    icon|Title|Description
-    icon|Title|Description
-    -->
-
-    <!-- timeline
-    date|Title|Description
-    -->
-
-    <!-- side-by-side
-    image:path/to/img.jpg
-    text:Description text here
-    -->
-
-    <!-- full-width
-    HTML or text content
-    -->
+    Multi-line:
+    <!-- gallery ... -->
+    <!-- pros ... -->
+    <!-- who-should-buy ... -->
+    <!-- who-should-skip ... -->
+    <!-- feature-cards ... -->
+    <!-- timeline ... -->
+    <!-- side-by-side ... -->
+    <!-- full-width ... -->
+    <!-- comparison-table ... -->
+    <!-- checklist ... -->
+    <!-- product-grid ... -->
+    <!-- price-table ... -->
+    <!-- highlight-box ... -->
+    <!-- stat-bar ... -->
+    <!-- image-text ... -->
+    <!-- cta-box ... -->
+    <!-- quote ... -->
+    <!-- section-divider ... -->
+    <!-- author-note ... -->
     """
 
     def make_verdict(text):
         text = text.strip()
         return (
-            '<div class="art-callout art-verdict">'
-            '<div class="art-callout-label">&#9733; Quick Verdict</div>'
-            f'<p class="art-callout-text">{text}</p>'
-            '</div>'
+            '<div class="art-editorial-box art-verdict-box">'
+            '<div class="art-verdict-icon">&#9733;</div>'
+            '<div class="art-verdict-body">'
+            '<div class="art-verdict-label">Quick Verdict</div>'
+            f'<p class="art-verdict-text">{text}</p>'
+            '</div></div>'
         )
 
     def make_tip(text):
         text = text.strip()
         return (
-            '<div class="art-callout art-tip">'
-            '<div class="art-callout-label">&#128161; Expert Tip</div>'
-            f'<p class="art-callout-text">{text}</p>'
-            '</div>'
+            '<div class="art-editorial-box art-tip-box">'
+            '<div class="art-tip-icon">&#128161;</div>'
+            '<div class="art-tip-body">'
+            '<div class="art-tip-label">Expert Tip</div>'
+            f'<p class="art-tip-text">{text}</p>'
+            '</div></div>'
         )
 
     def make_warning(text):
         text = text.strip()
         return (
-            '<div class="art-callout art-warning">'
-            '<div class="art-callout-label">&#9888; Warning</div>'
-            f'<p class="art-callout-text">{text}</p>'
-            '</div>'
+            '<div class="art-editorial-box art-warning-box">'
+            '<div class="art-warning-icon">&#9888;</div>'
+            '<div class="art-warning-body">'
+            '<div class="art-warning-label">Warning</div>'
+            f'<p class="art-warning-text">{text}</p>'
+            '</div></div>'
         )
 
     def make_gallery(lines):
@@ -679,7 +680,7 @@ def process_article_components(html, base_path='./'):
                 f'<img src="{url}" alt="" loading="lazy">'
                 f'</div>'
             )
-        return f'<div class="art-gallery-grid">{"".join(items)}</div>'
+        return f'<!--ART-WIDE--><div class="art-gallery-grid">{"".join(items)}</div><!--/ART-WIDE-->'
 
     def make_pros_cons(lines):
         pros = []
@@ -692,22 +693,28 @@ def process_article_components(html, base_path='./'):
                 cons.append(f'<li>{line[1:].strip()}</li>')
         if not pros and not cons:
             return ''
-        html_out = '<div class="art-pros-cons">'
+        html_out = '<!--ART-WIDE--><div class="art-pros-cons-grid">'
         if pros:
             html_out += (
-                '<div class="art-pros">'
-                '<div class="art-pros-cons-label art-pros-label">&#10003; Pros</div>'
-                f'<ul>{"".join(pros)}</ul>'
+                '<div class="art-pc-col art-pros-col">'
+                '<div class="art-pc-header">'
+                '<span class="art-pc-icon art-pc-icon-pro">&#10003;</span>'
+                '<span class="art-pc-title">Pros</span>'
+                '</div>'
+                f'<ul class="art-pc-list">{"".join(pros)}</ul>'
                 '</div>'
             )
         if cons:
             html_out += (
-                '<div class="art-cons">'
-                '<div class="art-pros-cons-label art-cons-label">&#10007; Cons</div>'
-                f'<ul>{"".join(cons)}</ul>'
+                '<div class="art-pc-col art-cons-col">'
+                '<div class="art-pc-header">'
+                '<span class="art-pc-icon art-pc-icon-con">&#10007;</span>'
+                '<span class="art-pc-title">Cons</span>'
+                '</div>'
+                f'<ul class="art-pc-list">{"".join(cons)}</ul>'
                 '</div>'
             )
-        html_out += '</div>'
+        html_out += '</div><!--/ART-WIDE-->'
         return html_out
 
     def make_who(lines, box_type):
@@ -719,15 +726,22 @@ def process_article_components(html, base_path='./'):
         if not items:
             return ''
         if box_type == 'buy':
-            label = '&#10003; Who Should Buy'
+            label = 'Who Should Buy This'
+            icon = '&#10003;'
             cls = 'art-who-buy'
+            header_cls = 'art-who-header-buy'
         else:
-            label = '&#10007; Who Should Skip'
+            label = 'Who Should Skip This'
+            icon = '&#10007;'
             cls = 'art-who-skip'
+            header_cls = 'art-who-header-skip'
         return (
             f'<div class="art-who-box {cls}">'
-            f'<div class="art-callout-label">{label}</div>'
-            f'<ul>{"".join(items)}</ul>'
+            f'<div class="art-who-header {header_cls}">'
+            f'<span class="art-who-icon">{icon}</span>'
+            f'<span class="art-who-label">{label}</span>'
+            f'</div>'
+            f'<ul class="art-who-list">{"".join(items)}</ul>'
             '</div>'
         )
 
@@ -737,21 +751,21 @@ def process_article_components(html, base_path='./'):
             line = line.strip()
             if not line or '|' not in line:
                 continue
-            parts = line.split('|')
-            icon = parts[0].strip() if len(parts) > 0 else ''
-            title = parts[1].strip() if len(parts) > 1 else ''
-            desc = parts[2].strip() if len(parts) > 2 else ''
+            parts = [p.strip() for p in line.split('|')]
+            icon = parts[0] if len(parts) > 0 else ''
+            title = parts[1] if len(parts) > 1 else ''
+            desc = parts[2] if len(parts) > 2 else ''
             if title:
                 cards.append(
                     f'<div class="art-feature-card">'
-                    f'<div class="art-feature-icon">{icon}</div>'
+                    f'<div class="art-feature-icon-wrap">{icon}</div>'
                     f'<h4 class="art-feature-title">{title}</h4>'
                     f'<p class="art-feature-desc">{desc}</p>'
                     f'</div>'
                 )
         if not cards:
             return ''
-        return f'<div class="art-feature-grid">{"".join(cards)}</div>'
+        return f'<!--ART-WIDE--><div class="art-feature-grid">{"".join(cards)}</div><!--/ART-WIDE-->'
 
     def make_timeline(lines):
         items = []
@@ -759,10 +773,10 @@ def process_article_components(html, base_path='./'):
             line = line.strip()
             if not line or '|' not in line:
                 continue
-            parts = line.split('|')
-            date = parts[0].strip() if len(parts) > 0 else ''
-            title = parts[1].strip() if len(parts) > 1 else ''
-            desc = parts[2].strip() if len(parts) > 2 else ''
+            parts = [p.strip() for p in line.split('|')]
+            date = parts[0] if len(parts) > 0 else ''
+            title = parts[1] if len(parts) > 1 else ''
+            desc = parts[2] if len(parts) > 2 else ''
             if title:
                 items.append(
                     f'<div class="art-timeline-item">'
@@ -776,12 +790,13 @@ def process_article_components(html, base_path='./'):
                 )
         if not items:
             return ''
-        return f'<div class="art-timeline">{"".join(items)}</div>'
+        return f'<!--ART-WIDE--><div class="art-timeline">{"".join(items)}</div><!--/ART-WIDE-->'
 
     def make_side_by_side(lines):
         image = ''
         text = ''
         align = 'right'
+        caption = ''
         for line in lines:
             line = line.strip()
             if line.startswith('image:'):
@@ -791,28 +806,241 @@ def process_article_components(html, base_path='./'):
                 text = line[5:].strip()
             elif line.startswith('align:'):
                 align = line[6:].strip()
+            elif line.startswith('caption:'):
+                caption = line[8:].strip()
         if not image and not text:
             return ''
-        img_html = f'<img src="{image}" alt="" loading="lazy">' if image else ''
+        img_html = f'<img src="{image}" alt="{caption}" loading="lazy">' if image else ''
+        if caption and image:
+            img_html += f'<span class="art-sbs-caption">{caption}</span>'
         text_html = f'<div class="art-sbs-text"><p>{text}</p></div>' if text else ''
         order_class = 'art-sbs-reverse' if align == 'left' else ''
-        return (
-            f'<div class="art-side-by-side {order_class}">'
-            f'<div class="art-sbs-image">{img_html}</div>'
-            f'{text_html}'
-            f'</div>'
-        )
+        if image and text:
+            return (
+                f'<!--ART-WIDE--><div class="art-side-by-side {order_class}">'
+                f'<div class="art-sbs-image">{img_html}</div>'
+                f'{text_html}'
+                f'</div><!--/ART-WIDE-->'
+            )
+        elif image:
+            return (
+                f'<!--ART-WIDE--><div class="art-single-image">'
+                f'{img_html}'
+                f'</div><!--/ART-WIDE-->'
+            )
+        return text_html
 
     def make_full_width(content):
         content = content.strip()
         if not content:
             return ''
-        return f'<div class="art-full-width">{content}</div>'
+        return f'<!--ART-FULL--><div class="art-full-width-content">{content}</div><!--/ART-FULL-->'
+
+    def make_comparison_table(lines):
+        """Convert a comparison-table component into styled comparison cards."""
+        headers = []
+        rows = []
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith('|') and line.endswith('|'):
+                cells = [c.strip() for c in line.strip('|').split('|')]
+                if not headers:
+                    headers = cells
+                else:
+                    rows.append(cells)
+        if not headers or not rows:
+            return ''
+        # Build comparison cards (one per column after first)
+        cards_html = ''
+        for col_idx in range(1, len(headers)):
+            col_name = headers[col_idx]
+            if not col_name or col_name.startswith('-'):
+                continue
+            items = []
+            for row in rows:
+                if len(row) > col_idx and row[col_idx].strip():
+                    label = row[0] if row[0] else ''
+                    value = row[col_idx]
+                    items.append(f'<div class="art-compare-spec"><span class="art-compare-spec-label">{label}</span><span class="art-compare-spec-value">{value}</span></div>')
+            cards_html += (
+                f'<div class="art-compare-card">'
+                f'<div class="art-compare-card-header">{col_name}</div>'
+                f'<div class="art-compare-card-body">{"".join(items)}</div>'
+                f'</div>'
+            )
+        if cards_html:
+            return f'<!--ART-WIDE--><div class="art-compare-grid">{cards_html}</div><!--/ART-WIDE-->'
+        return ''
+
+    def make_checklist(lines):
+        items = []
+        for line in lines:
+            line = line.strip().lstrip('- ')
+            if line:
+                items.append(f'<li class="art-checklist-item"><span class="art-checklist-check">&#10003;</span><span>{line}</span></li>')
+        if not items:
+            return ''
+        return f'<div class="art-checklist"><ul class="art-checklist-list">{"".join(items)}</ul></div>'
+
+    def make_product_grid(lines):
+        """Render a grid of inline product cards from pipe-delimited data.
+        Format: title|price|rating|image|url
+        """
+        items = []
+        for line in lines:
+            line = line.strip()
+            if not line or not line.startswith('|'):
+                continue
+            cells = [c.strip() for c in line.strip('|').split('|')]
+            if len(cells) < 3:
+                continue
+            title = cells[0]
+            price = cells[1] if len(cells) > 1 else ''
+            rating = cells[2] if len(cells) > 2 else ''
+            img = cells[3] if len(cells) > 3 else ''
+            url = cells[4] if len(cells) > 4 else ''
+            img_url = img if img.startswith(('http://', 'https://')) else base_path + img if img else ''
+            img_html = f'<img src="{img_url}" alt="{title}" loading="lazy">' if img_url else '<div class="art-product-card-placeholder">' + title[0] + '</div>'
+            stars = ''
+            try:
+                r = float(rating)
+                stars = '&#9733;' * int(r) + '&#9734;' * (5 - int(r))
+            except (ValueError, TypeError):
+                pass
+            items.append(
+                f'<div class="art-product-mini-card">'
+                f'<div class="art-product-mini-image">{img_html}</div>'
+                f'<div class="art-product-mini-body">'
+                f'<h4 class="art-product-mini-title">{title}</h4>'
+                f'<div class="art-product-mini-rating">{stars} <span>{rating}</span></div>'
+                f'<div class="art-product-mini-price">&#8377;{price}</div>'
+                + (f'<a href="{url}" class="btn btn-sm btn-accent art-product-mini-cta">Check Price</a>' if url else '')
+                + '</div></div>'
+            )
+        if not items:
+            return ''
+        return f'<!--ART-WIDE--><div class="art-product-mini-grid">{"".join(items)}</div><!--/ART-WIDE-->'
+
+    def make_price_table(lines):
+        """Render a price comparison table."""
+        headers = []
+        rows = []
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith('|') and line.endswith('|'):
+                cells = [c.strip() for c in line.strip('|').split('|')]
+                if not headers:
+                    headers = cells
+                else:
+                    rows.append(cells)
+        if not rows:
+            return ''
+        thead = ''
+        if headers:
+            thead = '<thead><tr>' + ''.join(f'<th>{h}</th>' for h in headers) + '</tr></thead>'
+        tbody = '<tbody>'
+        for row in rows:
+            tbody += '<tr>' + ''.join(f'<td>{c}</td>' for c in row) + '</tr>'
+        tbody += '</tbody>'
+        return f'<!--ART-WIDE--><div class="art-price-table-wrap"><table class="art-price-table">{thead}{tbody}</table></div><!--/ART-WIDE-->'
+
+    def make_highlight_box(lines):
+        items = [l.strip() for l in lines if l.strip()]
+        content = ' '.join(items)
+        return (
+            '<div class="art-editorial-box art-highlight-box">'
+            f'<div class="art-highlight-content">{content}</div>'
+            '</div>'
+        )
+
+    def make_stat_bar(lines):
+        items = []
+        for line in lines:
+            line = line.strip()
+            if not line or '|' not in line:
+                continue
+            parts = [p.strip() for p in line.split('|')]
+            label = parts[0] if len(parts) > 0 else ''
+            value = parts[1] if len(parts) > 1 else ''
+            if label and value:
+                items.append(
+                    f'<div class="art-stat-item">'
+                    f'<span class="art-stat-value">{value}</span>'
+                    f'<span class="art-stat-label">{label}</span>'
+                    f'</div>'
+                )
+        if not items:
+            return ''
+        return f'<!--ART-WIDE--><div class="art-stat-bar">{"".join(items)}</div><!--/ART-WIDE-->'
+
+    def make_image_text(lines):
+        image = ''
+        text = ''
+        caption = ''
+        for line in lines:
+            line = line.strip()
+            if line.startswith('image:'):
+                img_path = line[6:].strip()
+                image = img_path if img_path.startswith(('http://', 'https://')) else base_path + img_path
+            elif line.startswith('text:'):
+                text = line[5:].strip()
+            elif line.startswith('caption:'):
+                caption = line[8:].strip()
+        if not image:
+            return ''
+        img_html = f'<figure class="art-image-text-figure"><img src="{image}" alt="{caption}" loading="lazy">{f"<figcaption>{caption}</figcaption>" if caption else ""}</figure>'
+        text_html = f'<div class="art-image-text-body"><p>{text}</p></div>' if text else ''
+        if text:
+            return f'<div class="art-image-text">' + img_html + text_html + '</div>'
+        return f'<!--ART-WIDE-->' + img_html + '<!--/ART-WIDE-->'
+
+    def make_cta_box(lines):
+        text = ''
+        url = ''
+        btn_text = ''
+        for line in lines:
+            line = line.strip()
+            if line.startswith('text:'):
+                text = line[5:].strip()
+            elif line.startswith('url:'):
+                url = line[4:].strip()
+            elif line.startswith('btn:'):
+                btn_text = line[4:].strip()
+        if not text:
+            return ''
+        btn = f'<a href="{url}" class="art-cta-btn" rel="nofollow sponsored" target="_blank">{btn_text}</a>' if url and btn_text else ''
+        cta = (
+            f'<div class="art-cta-box">'
+            f'<p class="art-cta-text">{text}</p>'
+            f'{btn}'
+            f'</div>'
+        )
+        return f'<!--ART-WIDE-->{cta}<!--/ART-WIDE-->'
+
+    def make_quote(lines):
+        text = ''
+        author = ''
+        for line in lines:
+            line = line.strip()
+            if line.startswith('text:'):
+                text = line[5:].strip()
+            elif line.startswith('author:'):
+                author = line[7:].strip()
+        if not text:
+            return ''
+        author_html = f'<cite class="art-quote-author">— {author}</cite>' if author else ''
+        return f'<blockquote class="art-pull-quote"><p class="art-quote-text">&#8220;{text}&#8221;</p>{author_html}</blockquote>'
 
     # Match all component comments
     component_pattern = re.compile(
         r'<!--\s*(verdict|tip|warning|gallery|pros|who-should-buy|who-should-skip'
-        r'|feature-cards|timeline|side-by-side|full-width)\s*'
+        r'|feature-cards|timeline|side-by-side|full-width|comparison-table'
+        r'|checklist|product-grid|price-table|highlight-box|stat-bar'
+        r'|image-text|cta-box|quote|section-divider|author-note)\s*'
         r'(.*?)-->',
         re.DOTALL
     )
@@ -821,48 +1049,197 @@ def process_article_components(html, base_path='./'):
         cmd = match.group(1).strip()
         content = match.group(2).strip()
 
+        # Single-line components
         if cmd in ('verdict', 'tip', 'warning'):
             return {'verdict': make_verdict, 'tip': make_tip, 'warning': make_warning}[cmd](content)
+
+        # section-divider
+        if cmd == 'section-divider':
+            return '<hr class="art-section-divider">'
+
+        if cmd == 'author-note':
+            return f'<div class="art-author-note">{content}</div>'
 
         # Multi-line components
         lines = [l.strip() for l in content.split('\n') if l.strip()]
 
-        if cmd == 'gallery':
-            return make_gallery(lines)
-        elif cmd == 'pros':
-            return make_pros_cons(lines)
-        elif cmd == 'who-should-buy':
-            return make_who(lines, 'buy')
-        elif cmd == 'who-should-skip':
-            return make_who(lines, 'skip')
-        elif cmd == 'feature-cards':
-            return make_feature_cards(lines)
-        elif cmd == 'timeline':
-            return make_timeline(lines)
-        elif cmd == 'side-by-side':
-            return make_side_by_side(lines)
-        elif cmd == 'full-width':
-            return make_full_width(content)
+        handlers = {
+            'gallery': make_gallery,
+            'pros': make_pros_cons,
+            'who-should-buy': lambda ls: make_who(ls, 'buy'),
+            'who-should-skip': lambda ls: make_who(ls, 'skip'),
+            'feature-cards': make_feature_cards,
+            'timeline': make_timeline,
+            'side-by-side': make_side_by_side,
+            'full-width': make_full_width,
+            'comparison-table': make_comparison_table,
+            'checklist': make_checklist,
+            'product-grid': make_product_grid,
+            'price-table': make_price_table,
+            'highlight-box': make_highlight_box,
+            'stat-bar': make_stat_bar,
+            'image-text': make_image_text,
+            'cta-box': make_cta_box,
+            'quote': make_quote,
+        }
+        handler = handlers.get(cmd)
+        if handler:
+            return handler(lines)
 
         return ''
 
     html = component_pattern.sub(replace_component, html)
 
-    # Also detect plain markdown tables and convert them to comparison cards
+    # Convert plain markdown tables to comparison cards
+    def table_to_comparison(match):
+        table_html = match.group(0)
+        # Extract thead and tbody
+        thead_match = re.search(r'<thead>(.*?)</thead>', table_html, re.DOTALL)
+        tbody_match = re.search(r'<tbody>(.*?)</tbody>', table_html, re.DOTALL)
+        if not thead_match or not tbody_match:
+            return '<div class="art-table-wrap">' + table_html + '</div>'
+
+        headers = re.findall(r'<th>(.*?)</th>', thead_match.group(1))
+        rows_html = tbody_match.group(1)
+        rows = []
+        row_pattern = re.compile(r'<tr>(.*?)</tr>', re.DOTALL)
+        for row_match in row_pattern.finditer(rows_html):
+            cells = re.findall(r'<td>(.*?)</td>', row_match.group(1))
+            if cells:
+                rows.append(cells)
+
+        if len(headers) < 2 or len(rows) < 1:
+            return '<div class="art-table-wrap">' + table_html + '</div>'
+
+        # Build comparison cards
+        cards_html = ''
+        for col_idx in range(1, len(headers)):
+            col_name = headers[col_idx]
+            items = []
+            for row in rows:
+                if len(row) > col_idx and row[col_idx].strip():
+                    label = row[0] if row[0] else ''
+                    value = row[col_idx]
+                    items.append(
+                        f'<div class="art-compare-spec">'
+                        f'<span class="art-compare-spec-label">{label}</span>'
+                        f'<span class="art-compare-spec-value">{value}</span>'
+                        f'</div>'
+                    )
+            cards_html += (
+                f'<div class="art-compare-card">'
+                f'<div class="art-compare-card-header">{col_name}</div>'
+                f'<div class="art-compare-card-body">{"".join(items)}</div>'
+                f'</div>'
+            )
+        if cards_html:
+            return f'<!--ART-WIDE--><div class="art-compare-grid">{cards_html}</div><!--/ART-WIDE-->'
+        return '<div class="art-table-wrap">' + table_html + '</div>'
+
     html = re.sub(
-        r'<table>(.*?)</table>',
-        lambda m: '<div class="art-table-wrap">' + m.group(0) + '</div>',
+        r'<table>.*?</table>',
+        table_to_comparison,
+        html,
+        flags=re.DOTALL
+    )
+
+    # Convert long unordered lists to icon feature cards
+    def list_to_feature_cards(match):
+        list_html = match.group(0)
+        items = re.findall(r'<li>(.*?)</li>', list_html)
+        if len(items) < 3:
+            return list_html
+        # Check if these are simple text items (no nested HTML)
+        has_nested = any('<' in item for item in items)
+        if has_nested:
+            return list_html
+        # Build feature cards with auto-icons
+        icons = ['&#9981;', '&#128737;', '&#9881;', '&#128295;', '&#128179;', '&#127758;', '&#128663;', '&#128161;']
+        cards = []
+        for i, item in enumerate(items):
+            icon = icons[i % len(icons)]
+            cards.append(
+                f'<div class="art-feature-card">'
+                f'<div class="art-feature-icon-wrap">{icon}</div>'
+                f'<h4 class="art-feature-title">{item.split(":")[0] if ":" in item else "Feature"}</h4>'
+                f'<p class="art-feature-desc">{item.split(":", 1)[1].strip() if ":" in item else item}</p>'
+                f'</div>'
+            )
+        return f'<!--ART-WIDE--><div class="art-feature-grid">{"".join(cards)}</div><!--/ART-WIDE-->'
+
+    html = re.sub(
+        r'<ul>\s*<li>.*?</li>(\s*<li>.*?</li>){2,}\s*</ul>',
+        list_to_feature_cards,
         html,
         flags=re.DOTALL
     )
 
     # Add IDs to headings for TOC
+    def add_heading_id(match):
+        tag = match.group(1)
+        text = match.group(2)
+        id_str = re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
+        return f'<h{tag} id="{id_str}">{text}</h{tag}>'
+
     html = re.sub(
-        r'<h2>(.*?)</h2>',
-        lambda m: '<h2 id="' + re.sub(r'[^a-z0-9]+', '-', m.group(1).lower()).strip('-') + '">' + m.group(1) + '</h2>',
+        r'<h([23])>(.*?)</h[23]>',
+        add_heading_id,
         html
     )
 
+    # Wrap standalone images in wide containers
+    html = re.sub(
+        r'(<img[^>]+>)',
+        lambda m: '<!--ART-WIDE--><div class="art-single-image">' + m.group(1) + '</div><!--/ART-WIDE-->',
+        html
+    )
+
+    # Apply design system: three-width layout
+    # Markers <!--ART-WIDE-->, <!--/ART-WIDE-->, <!--ART-FULL-->, <!--/ART-FULL-->
+    # are embedded directly by component generators
+
+    def _apply_design_system(html_text):
+        # Step 1: Absorb preceding h2/h3 into wide sections
+        # Use (?:(?!</h[23]>).)* to prevent crossing into other heading tags
+        def merge_heading(m):
+            before = m.group(1)
+            heading = m.group(2)
+            section_tag = m.group(4)
+            return f'{before}{section_tag}\n{heading}\n'
+
+        html_text = re.sub(
+            r'(\s*)(<h[23][^>]*>(?:(?!</h[23]>).)*</h[23]>)(\s*)(<!--ART-WIDE-->)',
+            merge_heading,
+            html_text,
+            flags=re.DOTALL
+        )
+
+        # Step 2: Replace markers with proper <section> wrappers
+        html_text = html_text.replace('<!--ART-WIDE-->', '<section class="art-wide-section">')
+        html_text = html_text.replace('<!--/ART-WIDE-->', '</section>')
+        html_text = html_text.replace('<!--ART-FULL-->', '<section class="art-full-width">')
+        html_text = html_text.replace('<!--/ART-FULL-->', '</section>')
+
+        # Step 3: Split content into reading/wide/full-width blocks
+        BLOCK_PATTERN = re.compile(
+            r'(<section class="art-wide-section"[^>]*>.*?</section>\s*'
+            r'|<section class="art-full-width"[^>]*>.*?</section>\s*'
+            r'|<div class="art-reading">.*?</div>\s*)',
+            re.DOTALL
+        )
+        parts = BLOCK_PATTERN.split(html_text)
+        result = []
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+            if part.startswith(('<section class="art-wide-section"', '<section class="art-full-width"', '<div class="art-reading"')):
+                result.append(part)
+            else:
+                result.append(f'<div class="art-reading">\n{part}\n</div>')
+        return '\n'.join(result)
+
+    html = _apply_design_system(html)
     return html
 
 
@@ -2272,6 +2649,12 @@ class SiteGenerator:
                 context['all_products'] = self.data['products']
                 context['all_motorcycles'] = self.data['motorcycles']
 
+                # Process article components for maintenance pages too
+                html_content = process_article_components(
+                    html_content, base_path=context['base_path'],
+                    products=self.data['products'],
+                )
+
                 content = self.render_template('article.html', context)
                 self.write_page(
                     f'motorcycles/{bike["slug"]}/maintenance/{topic["slug"]}/index.html',
@@ -3084,6 +3467,69 @@ class SiteGenerator:
 {{% endblock %}}"""
         return self.env.from_string(page).render(**context)
 
+    def _make_product_card(self, sp, base_path):
+        """Build an inline product recommendation card."""
+        p = sp['product']
+        title = escape_html(p.get('title', ''))
+        brand = escape_html(p.get('brand', ''))
+        price = p.get('price', 0)
+        try:
+            price_int = int(float(price))
+        except (ValueError, TypeError):
+            price_int = 0
+        rating = p.get('rating', 0)
+        verdict = escape_html(sp.get('reason', 'Recommended'))
+        image = p.get('image', '')
+        slug = p.get('slug', '')
+        affiliate_url = p.get('affiliate_url', '')
+        product_url = f'{base_path}products/{slug}/index.html' if slug else '#'
+
+        stars_html = ''
+        if rating:
+            full = int(float(rating))
+            empty = 5 - full
+            stars_html = '<span class="ga-stars">' + '\u2605' * full + '\u2606' * empty + '</span>'
+
+        img_html = ''
+        if image and 'products/' in image:
+            img_html = f'<img src="{base_path}{image}" alt="{title}" loading="lazy">'
+
+        return f'''<div class="ga-inline-product">
+  <div class="ga-inline-product-image">{img_html}</div>
+  <div class="ga-inline-product-body">
+    <div class="ga-inline-product-brand">{brand}</div>
+    <h4 class="ga-inline-product-title">{title}</h4>
+    <p class="ga-inline-product-verdict">{verdict}</p>
+    <div class="ga-inline-product-price">&#8377;{price_int}</div>
+    <div class="ga-inline-product-rating">{stars_html}</div>
+    <div class="ga-inline-product-actions">
+      {f'<a href="{affiliate_url}" class="ga-btn ga-btn-primary" rel="nofollow sponsored" target="_blank">Check Price</a>' if affiliate_url else ''}
+      <a href="{product_url}" class="ga-btn ga-btn-outline">Read Review</a>
+    </div>
+  </div>
+</div>'''
+
+    def _inject_inline_products(self, html, sidebar_products, base_path):
+        """Insert inline product recommendation cards after h2 headings."""
+        if not sidebar_products:
+            return html
+
+        cards = [self._make_product_card(sp, base_path) for sp in sidebar_products]
+
+        parts = html.split('</h2>')
+        if len(parts) < 2:
+            return html
+
+        result_parts = []
+        for i, part in enumerate(parts):
+            result_parts.append(part)
+            if i < len(parts) - 1:
+                result_parts.append('</h2>')
+            if i < len(cards) and i < len(parts) - 1:
+                result_parts.append(cards[i])
+
+        return ''.join(result_parts)
+
     def generate_article_pages(self):
         """Generate article pages."""
         sorted_articles = sorted(
@@ -3106,13 +3552,13 @@ class SiteGenerator:
                 output_path=f'articles/{slug}/index.html',
             )
             html_content = process_article_components(
-                html_content, base_path=context['base_path']
+                html_content, base_path=context['base_path'],
+                products=self.data['products'],
             )
             html_content = replace_product_placeholders(
                 html_content, self.data['products'], context['base_path']
             )
             context['article'] = article
-            context['article_html'] = html_content
             context['all_products'] = self.data['products']
             context['all_motorcycles'] = self.data['motorcycles']
             context['breadcrumbs'] = [
@@ -3125,13 +3571,16 @@ class SiteGenerator:
             sidebar_products = recommend_sidebar_products(
                 self.data['products'], article=article, max_products=4,
             )
-            context['sidebar_products'] = sidebar_products
             # Debug output
             print(f"    Sidebar [article: {slug}]: {len(sidebar_products)} products")
             for sp in sidebar_products:
                 p = sp['product']
                 print(f"      - [{sp['category']}] {p.get('brand', '')} {p.get('title', '')[:40]} ({sp['reason']})")
 
+            # Inject inline product cards after h2 headings
+            html_content = self._inject_inline_products(html_content, sidebar_products, context['base_path'])
+
+            context['article_html'] = html_content
             context['prev_article'] = prev_article
             context['next_article'] = next_article
 

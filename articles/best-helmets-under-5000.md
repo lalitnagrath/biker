@@ -16,6 +16,13 @@ faq:
     answer: "Replace your helmet every 3-5 years or immediately after any impact, even if there's no visible damage. The inner foam degrades over time."
   - question: "Are expensive helmets worth the investment?"
     answer: "Helmets above ₹5,000 often offer better ventilation, lighter weight, and advanced safety features, but quality options under ₹5,000 are perfectly adequate for most riders."
+toc:
+  - "Understanding Helmet Safety Standards"
+  - "Types of Helmets"
+  - "Best Helmets Under 5,000"
+  - "Brand-by-Brand Breakdown"
+  - "Fit Guide"
+  - "Product Recommendations"
 ---
 
 # Best Motorcycle Helmets Under ₹5,000 in India

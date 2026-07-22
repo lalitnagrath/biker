@@ -16,6 +16,13 @@ faq:
     answer: "While some universal models are DIY-friendly, it's recommended to have crash guards installed by a professional to ensure proper fitment and safety."
   - question: "How much do crash guards cost in India?"
     answer: "Crash guards in India range from ₹1,500 for basic universal models to ₹8,000+ for premium brand-specific guards with sliders."
+toc:
+  - "Why You Need a Crash Guard"
+  - "What to Look For in a Crash Guard"
+  - "Best Crash Guards by Motorcycle Category"
+  - "Top Crash Guard Brands in India"
+  - "Product Recommendations"
+  - "Installation Tips"
 ---
 
 # Best Crash Guards for Motorcycles in India (2026)

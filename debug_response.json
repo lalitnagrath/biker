@@ -1,0 +1,196 @@
+{
+  "searchResult": {
+    "totalResultCount": 1000,
+    "searchURL": "https://www.amazon.in/s?k=motorcycle+helmet&i=automotive&rh=p_n_availability%3A1318484031&tag=helpfulsurfer-21&linkCode=osi",
+    "items": [
+      {
+        "asin": "B0D2NBCP81",
+        "detailPageURL": "https://www.amazon.in/dp/B0D2NBCP81?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+        "images": {
+          "primary": {
+            "medium": {
+              "url": "https://m.media-amazon.com/images/I/41-lzXRP6rL._SL160_.jpg",
+              "height": 128,
+              "width": 160
+            },
+            "large": {
+              "url": "https://m.media-amazon.com/images/I/41-lzXRP6rL._SL500_.jpg",
+              "height": 400,
+              "width": 500
+            }
+          }
+        },
+        "itemInfo": {
+          "title": {
+            "displayValue": "Vega Crux Dual Visor Flip Up Motorcycle Helmet with Lightweight Shell, Flip-Up Chin Guard, Dual Visor System, Shock Absorbing Interior, Ventilated Fit, and Trendy Black Finish Black -L",
+            "label": "Title",
+            "locale": "en_IN"
+          }
+        },
+        "offersV2": {
+          "listings": [
+            {
+              "isBuyBoxWinner": true,
+              "merchantInfo": {
+                "name": "ETrade Online",
+                "id": "A2AL6IVND0I91F"
+              },
+              "price": {
+                "money": {
+                  "amount": 1488.0,
+                  "currency": "INR",
+                  "displayAmount": "₹1,488.00"
+                },
+                "pricePerUnit": {
+                  "amount": 148800.0,
+                  "currency": "INR",
+                  "displayAmount": "₹1,48,800.00 / g"
+                },
+                "savings": {
+                  "money": {
+                    "amount": 252.0,
+                    "currency": "INR",
+                    "displayAmount": "₹252.00"
+                  },
+                  "percentage": 14
+                },
+                "savingBasis": {
+                  "money": {
+                    "amount": 1740.0,
+                    "currency": "INR",
+                    "displayAmount": "₹1,740.00"
+                  },
+                  "savingBasisType": "LIST_PRICE",
+                  "savingBasisTypeLabel": "M.R.P.:"
+                }
+              },
+              "violatesMAP": false
+            }
+          ]
+        }
+      },
+      {
+        "asin": "B07FCKZ4KM",
+        "detailPageURL": "https://www.amazon.in/dp/B07FCKZ4KM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+        "images": {
+          "primary": {
+            "medium": {
+              "url": "https://m.media-amazon.com/images/I/418YTp8pcVL._SL160_.jpg",
+              "height": 160,
+              "width": 160
+            },
+            "large": {
+              "url": "https://m.media-amazon.com/images/I/418YTp8pcVL._SL500_.jpg",
+              "height": 500,
+              "width": 500
+            }
+          }
+        },
+        "itemInfo": {
+          "title": {
+            "displayValue": "Vega Edge ISI Certified Full Face Gloss Finish Helmet for Men and Women with Clear Visor(Black, Size:L)",
+            "label": "Title",
+            "locale": "en_IN"
+          }
+        },
+        "offersV2": {
+          "listings": [
+            {
+              "isBuyBoxWinner": true,
+              "merchantInfo": {
+                "name": "ETrade Online",
+                "id": "A2AL6IVND0I91F"
+              },
+              "price": {
+                "money": {
+                  "amount": 857.0,
+                  "currency": "INR",
+                  "displayAmount": "₹857.00"
+                },
+                "savings": {
+                  "money": {
+                    "amount": 141.0,
+                    "currency": "INR",
+                    "displayAmount": "₹141.00"
+                  },
+                  "percentage": 14
+                },
+                "savingBasis": {
+                  "money": {
+                    "amount": 998.0,
+                    "currency": "INR",
+                    "displayAmount": "₹998.00"
+                  },
+                  "savingBasisType": "LIST_PRICE",
+                  "savingBasisTypeLabel": "M.R.P.:"
+                }
+              },
+              "violatesMAP": false
+            }
+          ]
+        }
+      },
+      {
+        "asin": "B011GOY6HG",
+        "detailPageURL": "https://www.amazon.in/dp/B011GOY6HG?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+        "images": {
+          "primary": {
+            "medium": {
+              "url": "https://m.media-amazon.com/images/I/31OHU9bebcL._SL160_.jpg",
+              "height": 160,
+              "width": 160
+            },
+            "large": {
+              "url": "https://m.media-amazon.com/images/I/31OHU9bebcL._SL500_.jpg",
+              "height": 500,
+              "width": 500
+            }
+          }
+        },
+        "itemInfo": {
+          "title": {
+            "displayValue": "Vega Crux ISI Certified Flip-Up Helmet for Men and Women with Clear Visor(Black, Size:M)",
+            "label": "Title",
+            "locale": "en_IN"
+          }
+        },
+        "offersV2": {
+          "listings": [
+            {
+              "isBuyBoxWinner": true,
+              "merchantInfo": {
+                "name": "ETrade Online",
+                "id": "A2AL6IVND0I91F"
+              },
+              "price": {
+                "money": {
+                  "amount": 848.0,
+                  "currency": "INR",
+                  "displayAmount": "₹848.00"
+                },
+                "savings": {
+                  "money": {
+                    "amount": 150.0,
+                    "currency": "INR",
+                    "displayAmount": "₹150.00"
+                  },
+                  "percentage": 15
+                },
+                "savingBasis": {
+                  "money": {
+                    "amount": 998.0,
+                    "currency": "INR",
+                    "displayAmount": "₹998.00"
+                  },
+                  "savingBasisType": "LIST_PRICE",
+                  "savingBasisTypeLabel": "M.R.P.:"
+                }
+              },
+              "violatesMAP": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

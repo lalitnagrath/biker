@@ -8,6 +8,13 @@ tags: [maintenance, tyres, pressure, safety]
 related_products: [tyre-inflator-roboclean]
 related_motorcycles: [royal-enfield-bullet-350, royal-enfield-classic-350, honda-hness-cb350]
 related_brands: [royal-enfield, honda]
+toc:
+  - "Why Tyre Pressure Matters"
+  - "Recommended Tyre Pressures"
+  - "When to Check Tyre Pressure"
+  - "How to Check and Adjust Tyre Pressure"
+  - "Effects of Incorrect Pressure"
+  - "Recommended Tyre Inflators"
 ---
 
 # Tyre Pressure Guide for Indian Motorcycles

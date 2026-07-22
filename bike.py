@@ -19,11 +19,14 @@ from typing import List, Dict, Any
 
 import requests
 from asin_helper import refresh_product_pricing
+from product_ranking import calculate_quality_score
+from editorial_backend import compute_all_editorial_scores, print_editorial_report
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from creatorsapi_python_sdk.api_client import ApiClient
 from creatorsapi_python_sdk.api.default_api import DefaultApi
 from creatorsapi_python_sdk.models.search_items_request_content import SearchItemsRequestContent
+from creatorsapi_python_sdk.models.search_items_resource import SearchItemsResource
 from creatorsapi_python_sdk.exceptions import ApiException
 from creatorsapi_python_sdk.models.sort_by import SortBy
 
@@ -34,11 +37,9 @@ DEFAULT_CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.c54ce65e63d4bc8d44bf9ec5dbb7a368aa9
 DEFAULT_PARTNER_TAG = "helpfulsurfer-21"
 SEARCH_KEYWORDS = [
     # Helmets & Protection
-    'motorcycle helmet',
-    'bike helmet',
+    'motorcycle helmet',    
     'riding helmet',
     'helmet for bike',
-    'half helmet',
     'full face helmet',
     'modular helmet',
     
@@ -258,6 +259,24 @@ def extract_savings_amount(item_dict: Dict[str, Any]) -> float:
     return best_amount
 
 
+_fetch_candidates_debug_saved = False
+
+def _recursive_search_keys(data, target_words, path=''):
+    """Recursively search dict/list for keys containing any target word."""
+    found = []
+    if isinstance(data, dict):
+        for key, value in data.items():
+            current_path = f'{path}.{key}' if path else key
+            for word in target_words:
+                if word.lower() in key.lower():
+                    found.append((current_path, repr(value)[:120]))
+            found.extend(_recursive_search_keys(value, target_words, current_path))
+    elif isinstance(data, list):
+        for idx, item in enumerate(data):
+            found.extend(_recursive_search_keys(item, target_words, f'{path}[{idx}]'))
+    return found
+
+
 def fetch_candidates(api: DefaultApi, marketplace: str, categories: List[str], partner_tag: str, search_keywords: List[str], per_cat: int = 50, sort_by: SortBy | None = None, max_pages: int = 1) -> List[Dict[str, Any]]:
     resources = [
         'images.primary.large',
@@ -267,9 +286,12 @@ def fetch_candidates(api: DefaultApi, marketplace: str, categories: List[str], p
         'offersV2.listings.price',
         'offersV2.listings.loyaltyPoints',
         'offersV2.listings.merchantInfo',
-        'offersV2.listings.type'
+        'offersV2.listings.type',
+        SearchItemsResource.CUSTOMER_REVIEWS_DOT_COUNT,
+        SearchItemsResource.CUSTOMER_REVIEWS_DOT_STAR_RATING,
     ]
 
+    global _fetch_candidates_debug_saved
     seen = {}
     for keyword in search_keywords:
         for cat in categories:
@@ -286,6 +308,16 @@ def fetch_candidates(api: DefaultApi, marketplace: str, categories: List[str], p
                     resp = api.search_items(x_marketplace=marketplace, search_items_request_content=req)
                     rd = resp.to_dict() if hasattr(resp, 'to_dict') else {}
                     items = (rd.get('searchResult') or {}).get('items') or []
+
+                    # Save complete raw response for the first product
+                    if not _fetch_candidates_debug_saved and items:
+                        import json
+                        debug_path = os.path.join(os.path.dirname(__file__), 'debug_response.json')
+                        with open(debug_path, 'w', encoding='utf-8') as f:
+                            json.dump(rd, f, indent=2, ensure_ascii=False)
+                        print(f'[DEBUG] Saved first raw response to {debug_path}')
+                        _fetch_candidates_debug_saved = True
+
                     if not items:
                         break  # No more results for this keyword/category
                     
@@ -322,9 +354,11 @@ def filter_and_sort(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         savings_amount = extract_savings_amount(it)
         it['_savings_pct'] = pct
         it['_savings_amount'] = savings_amount
+        # Calculate quality score for ranking
+        calculate_quality_score(it)
         deals.append(it)
 
-    deals.sort(key=lambda x: (x.get('_savings_pct', 0.0), x.get('_savings_amount', 0.0)), reverse=True)
+    deals.sort(key=lambda x: x.get('_quality_score', 0.0), reverse=True)
     return deals
 
 
@@ -575,6 +609,9 @@ def main():
             return
         items = load_deals_json(OUTPUT_JSON)
         print('Loaded', len(items), 'deals from JSON')
+        compute_all_editorial_scores(items, SEARCH_KEYWORDS, persist=False)
+        print_editorial_report(items)
+        save_deals_json(items, OUTPUT_JSON)
         ensure_dirs()
         write_html(items, OUTPUT_HTML, args.marketplace, args.partner_tag or DEFAULT_PARTNER_TAG)
         print('Wrote HTML to', OUTPUT_HTML)
@@ -608,6 +645,24 @@ def main():
     candidates = fetch_candidates(api, args.marketplace, categories, partner_tag, SEARCH_KEYWORDS, per_cat=args.per_cat, sort_by=sort_by_param, max_pages=args.max_pages)
     print('Fetched', len(candidates), 'new unique sale items for selected keywords')
 
+    # Investigate rating/review fields in the API response
+    if candidates:
+        sample_size = min(5, len(candidates))
+        print(f'\n[INVESTIGATION] Top-level keys of first {sample_size} products:')
+        for i, prod in enumerate(candidates[:sample_size]):
+            print(f'  Product {i+1} ({prod.get("asin")}): {list(prod.keys())}')
+
+        target_words = ['rating', 'review', 'star', 'customer']
+        all_rating_fields = _recursive_search_keys(candidates[:sample_size], target_words)
+        if all_rating_fields:
+            print(f'\n[INVESTIGATION] Found {len(all_rating_fields)} rating/review-related fields:')
+            for fpath, fval in all_rating_fields[:20]:
+                print(f'  {fpath} = {fval}')
+            if len(all_rating_fields) > 20:
+                print(f'  ... and {len(all_rating_fields) - 20} more')
+        else:
+            print('\nCreators API does not expose ratings for SearchItems.')
+
     deals = filter_and_sort(candidates)
     print('Found', len(deals), 'deals after filtering')
 
@@ -621,7 +676,15 @@ def main():
             else:
                 existing_by_asin[asin] = it
     merged = list(existing_by_asin.values())
-    merged.sort(key=lambda x: (x.get('_savings_pct', 0.0), x.get('_savings_amount', 0.0)), reverse=True)
+    # Recalculate quality scores for merged products
+    for product in merged:
+        calculate_quality_score(product)
+    merged.sort(key=lambda x: x.get('_quality_score', 0.0), reverse=True)
+
+    # Editorial backend: compute decision-support scores (NOT used for ranking)
+    compute_all_editorial_scores(merged, SEARCH_KEYWORDS)
+    print_editorial_report(merged)
+
     top = merged[:args.top]
     print(f'Merged deals: {len(merged)} total ({len(top)} shown in HTML)')
     if not top:

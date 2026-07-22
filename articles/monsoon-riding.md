@@ -8,6 +8,12 @@ tags: [riding, monsoon, safety, tips, rain]
 related_products: [safari-storm-jacket, moto-care-bike-cover]
 related_motorcycles: [royal-enfield-himalayan-450, royal-enfield-bullet-350, royal-enfield-classic-350]
 related_brands: [royal-enfield, honda]
+toc:
+  - "Pre-Monsoon Bike Preparation"
+  - "Riding Gear for Monsoon"
+  - "Riding Techniques for Wet Conditions"
+  - "Post-Ride Care"
+  - "Essential Accessories for Monsoon"
 ---
 
 # Essential Monsoon Riding Tips for Indian Motorcyclists

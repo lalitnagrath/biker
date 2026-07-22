@@ -16,6 +16,13 @@ faq:
     answer: "Chain lube is wetter and penetrates better, while chain wax is thicker and stays on longer. Lube is better for wet conditions, wax for dry, dusty environments."
   - question: "When should I replace my chain and sprockets?"
     answer: "Replace the chain when you can pull it more than 2cm from the rear sprocket, or when sprocket teeth are hooked or pointed. Always replace chain and sprockets as a set."
+toc:
+  - "Understanding Chain Maintenance"
+  - "Types of Chain Lubricant"
+  - "Top Chain Lube Brands in India"
+  - "Chain Maintenance Schedule"
+  - "Product Recommendations"
+  - "Common Mistakes"
 ---
 
 # Best Chain Lube for Motorcycle Maintenance

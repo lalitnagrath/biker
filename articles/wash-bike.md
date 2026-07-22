@@ -8,6 +8,13 @@ tags: [maintenance, cleaning, washing, care]
 related_products: [moto-care-bike-cover]
 related_motorcycles: [royal-enfield-bullet-350, royal-enfield-classic-350]
 related_brands: [royal-enfield, honda]
+toc:
+  - "Why Regular Washing Matters"
+  - "What You'll Need"
+  - "The Washing Process"
+  - "Post-Wash Detailing"
+  - "Cleaning Schedule"
+  - "Common Washing Mistakes"
 ---
 
 # How to Wash Your Motorcycle Like a Pro

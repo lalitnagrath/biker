@@ -8,6 +8,13 @@ tags: [maintenance, chain, care, cleaning]
 related_products: [motul-chain-clean, bajaj-tempo-chain-lube]
 related_motorcycles: [royal-enfield-bullet-350, royal-enfield-classic-350, honda-hness-cb350]
 related_brands: [royal-enfield, honda]
+toc:
+  - "Why Chain Maintenance Matters"
+  - "Step-by-Step Chain Cleaning"
+  - "How to Lubricate Your Chain"
+  - "Chain Tension Adjustment"
+  - "Common Mistakes to Avoid"
+  - "Recommended Products"
 ---
 
 # Complete Guide to Chain Maintenance for Indian Motorcycles

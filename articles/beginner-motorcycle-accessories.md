@@ -16,6 +16,12 @@ faq:
     answer: "Yes, most motorcycle accessories are available online. However, always try helmets and gloves in person if possible to ensure proper fit. Buy from reputable sellers with good return policies."
   - question: "Do I need all these accessories as a beginner?"
     answer: "Start with the absolute essentials (helmet, gloves) and add accessories as you identify your needs. You don't need everything at once, but safety gear should never be skipped."
+toc:
+  - "Safety First: Non-Negotiable Gear"
+  - "Practical Accessories"
+  - "Maintenance Essentials"
+  - "Budget Allocation Guide"
+  - "Tips for New Buyers"
 ---
 
 # Essential Accessories for New Motorcycle Riders

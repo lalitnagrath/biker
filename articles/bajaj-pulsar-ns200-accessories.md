@@ -24,6 +24,13 @@ faq:
     answer: "Absolutely. The NS200's single-cylinder engine produces noticeable vibrations between 4000-6000 RPM. Without vibration dampening, these vibrations can damage your phone's camera stabilizer over time. Invest in a mount with rubber or silicone dampening — it's a ₹200-500 difference that protects a ₹30,000+ phone."
   - question: "What are the best LED headlight upgrades for the NS200?"
     answer: "The NS200 uses a standard H4 headlight socket. Plug-and-play LED bulbs from brands like Philips Ultinon Pro or Hella LED are reliable choices. Look for 6000K color temperature for white light and ensure the bulb has a built-in fan for heat management. Auxiliary fog lights on the crash guard are recommended for highway riding."
+toc:
+  - "Why Accessorize a Pulsar NS200?"
+  - "Crash Guards and Engine Protectors"
+  - "Tank Bags"
+  - "Phone Mounts"
+  - "Chain Lubricants and Maintenance Kits"
+  - "Riding Gear"
 ---
 
 # Bajaj Pulsar NS200 Accessories – Complete Buying Guide
