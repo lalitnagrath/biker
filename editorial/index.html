@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Editorial Dashboard — BikeReview India</title>
+<title>Control Center — BikeReview India</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f4f5f7;--surface:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--accent:#2563eb;--accent2:#1d4ed8;--green:#16a34a;--red:#dc2626;--orange:#ea580c;--gold:#ca8a04;--purple:#7c3aed;--pink:#db2777;--shadow:0 1px 3px rgba(0,0,0,.08);--radius:10px;--radius-sm:6px}
@@ -22,19 +22,31 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .sidebar-header .sub{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
 .sidebar-nav{flex:1;overflow-y:auto;padding:8px 0}
 .sidebar-nav .cat-group{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.3);padding:12px 16px 4px;font-weight:600}
-.sidebar-nav .cat-item{display:flex;align-items:center;gap:8px;padding:8px 16px;color:rgba(255,255,255,.7);font-size:13px;transition:all .12s;cursor:pointer;border-left:3px solid transparent}
+.sidebar-nav .nav-item{display:flex;align-items:center;gap:8px;padding:8px 16px;color:rgba(255,255,255,.7);font-size:13px;transition:all .12s;cursor:pointer;border-left:3px solid transparent}
+.sidebar-nav .nav-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.sidebar-nav .nav-item.active{background:rgba(255,255,255,.12);color:#fff;border-left-color:var(--accent)}
+.sidebar-nav .nav-item .nav-icon{width:18px;height:18px;flex-shrink:0;opacity:.7}
+.sidebar-nav .nav-item.active .nav-icon{opacity:1}
+.sidebar-nav .cat-item{display:flex;align-items:center;gap:8px;padding:8px 16px;color:rgba(255,255,255,.7);font-size:13px;transition:all .12s;cursor:pointer;border-left:3px solid transparent;padding-left:24px}
 .sidebar-nav .cat-item:hover{background:rgba(255,255,255,.06);color:#fff}
 .sidebar-nav .cat-item.active{background:rgba(37,99,235,.2);color:#fff;border-left-color:var(--accent)}
 .sidebar-nav .cat-item .count{font-size:11px;color:rgba(255,255,255,.35);margin-left:auto}
 .sidebar-nav .cat-item .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .sidebar-footer{padding:12px 16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.3)}
 
-/* Main */
+/* Page system */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-.main-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.page{display:none;flex-direction:column;height:100%;overflow:hidden}
+.page.active{display:flex}
+
+/* Main header (shared across pages) */
+.main-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex-shrink:0}
 .main-header h2{font-size:18px;font-weight:700}
 .main-header .stats{font-size:12px;color:var(--text2);margin-left:auto}
-.toolbar{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.main-header .subtitle{font-size:12px;color:var(--text2)}
+.main-header .header-actions{margin-left:auto;display:flex;gap:8px}
+
+.toolbar{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex-shrink:0}
 .toolbar .search-wrap{flex:1;min-width:180px;position:relative}
 .toolbar .search-wrap input{width:100%;padding-left:32px}
 .toolbar .search-wrap .icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text2);font-size:14px}
@@ -50,9 +62,45 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .btn-ghost:hover{background:var(--bg)}
 .btn-sm{padding:4px 10px;font-size:11px}
 
+.page-content{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:20px}
+
+/* Product-specific content (kept from original) */
 .content{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:20px}
 
-/* Top Picks */
+/* Dashboard */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.kpi-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px;display:flex;align-items:center;gap:14px;transition:box-shadow .15s;cursor:default}
+.kpi-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.kpi-card .kpi-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kpi-card .kpi-icon svg{width:20px;height:20px}
+.kpi-card .kpi-body{min-width:0}
+.kpi-card .kpi-value{font-size:22px;font-weight:700;letter-spacing:-.5px;line-height:1.1}
+.kpi-card .kpi-label{font-size:12px;color:var(--text2);margin-top:2px}
+.dash-actions{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:8px}
+.dash-section-title{font-size:14px;font-weight:600;color:var(--text2);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.dash-section-title .dash-count{font-size:12px;font-weight:400;color:var(--text2);background:var(--bg);padding:1px 8px;border-radius:99px}
+.action-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px;display:flex;align-items:center;gap:12px;transition:box-shadow .15s}
+.action-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.action-card .action-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.action-card .action-icon svg{width:18px;height:18px}
+.action-card .action-body{flex:1;min-width:0}
+.action-card .action-title{font-size:13px;font-weight:600}
+.action-card .action-desc{font-size:11px;color:var(--text2);margin-top:1px}
+.action-card .action-btn{flex-shrink:0;font-size:12px;font-weight:600;padding:6px 14px;border-radius:var(--radius-sm);border:none;cursor:pointer;color:#fff;transition:opacity .15s;font-family:inherit}
+.action-card .action-btn:hover{opacity:.85}
+
+/* Placeholder pages */
+.placeholder-page{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:40px;text-align:center}
+.placeholder-page .ph-icon{font-size:48px;margin-bottom:16px;opacity:.3}
+.placeholder-page h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.placeholder-page p{font-size:13px;color:var(--text2);max-width:400px;line-height:1.6}
+
+/* Loading state */
+.loading{text-align:center;padding:40px;color:var(--text2);font-size:14px}
+.loading .spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;margin-bottom:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Top Picks (unchanged from original) */
 .picks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .pick-slot{background:var(--surface);border-radius:var(--radius);border:2px dashed var(--border);padding:14px;text-align:center;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;position:relative}
 .pick-slot:hover{border-color:var(--accent);box-shadow:var(--shadow)}
@@ -68,7 +116,7 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .pick-slot:hover .pick-clear{opacity:1}
 .pick-slot.pick-ec{border-color:var(--gold)}.pick-slot.pick-bv{border-color:var(--green)}.pick-slot.pick-pp{border-color:var(--purple)}.pick-slot.pick-bp{border-color:var(--orange)}
 
-/* Product Grid */
+/* Product Grid (unchanged from original) */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
 .product-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:box-shadow .15s;position:relative}
 .product-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
@@ -103,7 +151,7 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .product-card .restore-btn{font-size:10px;padding:2px 8px;background:var(--bg);color:var(--text2);border:1px solid var(--border);border-radius:4px}
 .product-card .restore-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
-/* Ranking */
+/* Ranking (unchanged from original) */
 .ranking-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px 20px}
 .ranking-section h3{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .ranking-section .rank-note{font-size:11px;color:var(--text2);margin-left:auto;font-weight:400}
@@ -120,7 +168,7 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .rank-item .rank-remove{color:var(--red);font-size:16px;cursor:pointer;flex-shrink:0;padding:0 4px;opacity:.5}
 .rank-item .rank-remove:hover{opacity:1}
 
-/* Preview */
+/* Preview (unchanged from original) */
 .preview-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
 .preview-section .preview-header{display:flex;align-items:center;gap:8px;padding:12px 20px;border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
 .preview-section .preview-body{padding:20px;min-height:200px}
@@ -143,7 +191,7 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .preview-item .pi-price{font-size:12px;font-weight:700;margin-top:2px}
 .preview-item .pi-badge{font-size:9px;font-weight:600;color:var(--text2)}
 
-/* Modal */
+/* Modal (unchanged from original) */
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px}
 .modal{background:var(--surface);border-radius:var(--radius);width:700px;max-width:100%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .modal-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
@@ -161,14 +209,14 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .modal-product .mp-title{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .modal-product .mp-meta{font-size:11px;color:var(--text2);margin-top:2px}
 
-/* Toast */
+/* Toast (unchanged from original) */
 .toast{position:fixed;bottom:24px;right:24px;background:#1a1a2e;color:#fff;padding:12px 20px;border-radius:var(--radius-sm);font-size:13px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.2);display:flex;align-items:center;gap:8px;animation:slideUp .25s ease}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 .toast.success{background:var(--green)}
 .toast.error{background:var(--red)}
 .toast .close-toast{background:none;border:none;color:rgba(255,255,255,.7);font-size:16px;cursor:pointer;padding:0 4px}
 
-/* Excluded filter chip */
+/* Excluded filter chip (unchanged from original) */
 .filter-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:500;background:var(--bg);border:1px solid var(--border);cursor:pointer;transition:all .12s}
 .filter-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .filter-chip .chip-count{font-size:10px;opacity:.7}
@@ -192,16 +240,25 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:8px 18px;font-weight:500;font-size:13px}
 .btn-secondary:hover{background:#e5e7eb}
 
+/* Settings page */
+.settings-group{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
+.settings-group .sg-header{padding:12px 20px;border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
+.settings-group .sg-row{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border)}
+.settings-group .sg-row:last-child{border-bottom:none}
+.settings-group .sg-label{font-size:13px}
+.settings-group .sg-value{font-size:13px;color:var(--text2);font-family:monospace}
+
 @media(max-width:900px){
   .app{flex-direction:column;height:auto;min-height:100vh}
   .sidebar{width:100%;min-width:unset;max-height:200px}
   .sidebar-nav{display:flex;flex-wrap:wrap;gap:4px;padding:8px 12px}
   .sidebar-nav .cat-group{display:none}
-  .sidebar-nav .cat-item{padding:6px 10px;border-left:none;border-radius:var(--radius-sm);font-size:12px}
+  .sidebar-nav .nav-item,.sidebar-nav .cat-item{padding:6px 10px;border-left:none;border-radius:var(--radius-sm);font-size:12px}
   .picks-grid{grid-template-columns:repeat(2,1fr)}
   .preview-top-picks{grid-template-columns:repeat(2,1fr)}
   .main-header{padding:12px 16px}
   .toolbar{padding:10px 16px}
+  .page-content{padding:16px}
   .content{padding:16px}
 }
 @media(max-width:600px){
@@ -212,31 +269,130 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 </head>
 <body>
 <div class="app" id="app">
+
+  <!-- ===== SIDEBAR ===== -->
   <div class="sidebar">
     <div class="sidebar-header">
-      <h1>Editorial Dashboard</h1>
+      <h1>Control Center</h1>
       <div class="sub">BikeReview India</div>
     </div>
-    <div class="sidebar-nav" id="categoryList"></div>
+    <div class="sidebar-nav" id="sidebarNav">
+      <div class="cat-group">Control Center</div>
+      <div class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="nav-item" data-page="products" onclick="navigateTo('products')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Products
+      </div>
+      <div class="nav-item" data-page="motorcycles" onclick="navigateTo('motorcycles')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="18.5" r="3.5"/><circle cx="18.5" cy="18.5" r="3.5"/><path d="M12 18V4l5 3-5 3"/></svg>
+        Motorcycles
+      </div>
+      <div class="nav-item" data-page="collections" onclick="navigateTo('collections')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        Collections
+      </div>
+      <div class="cat-group">System</div>
+      <div class="nav-item" data-page="website" onclick="navigateTo('website')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Website
+      </div>
+      <div class="nav-item" data-page="settings" onclick="navigateTo('settings')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </div>
+      <div id="categorySection">
+        <div class="cat-group">Categories</div>
+        <div id="categoryList"></div>
+      </div>
+    </div>
     <div class="sidebar-footer" id="sidebarFooter"></div>
   </div>
+
+  <!-- ===== MAIN ===== -->
   <div class="main">
-    <div class="main-header">
-      <h2 id="mainTitle">Select a category</h2>
-      <div class="stats" id="statsBar"></div>
-    </div>
-    <div class="toolbar" id="toolbar" style="display:none">
-      <div class="search-wrap">
-        <span class="icon">&#x1F50D;</span>
-        <input id="searchInput" placeholder="Search by title, brand, or ASIN...">
+
+    <!-- PAGE: Dashboard -->
+    <div id="page-dashboard" class="page">
+      <div class="main-header">
+        <h2>Dashboard</h2>
+        <div class="stats" id="dashStats"></div>
+        <div class="header-actions">
+          <button class="btn-ghost btn-sm" onclick="loadDashboard()">&#x21BB; Refresh</button>
+        </div>
       </div>
-      <div class="filter-group" id="filterGroup"></div>
-      <button class="btn-primary" id="saveBtn">&#x1F4BE; Save editorial.json</button>
+      <div class="page-content" id="dashContent">
+        <div class="loading"><div class="spinner"></div><p>Loading dashboard data...</p></div>
+      </div>
     </div>
-    <div class="content" id="content"></div>
+
+    <!-- PAGE: Products (existing editorial editor) -->
+    <div id="page-products" class="page">
+      <div class="main-header">
+        <h2 id="mainTitle">Select a category</h2>
+        <div class="stats" id="statsBar"></div>
+      </div>
+      <div class="toolbar" id="toolbar" style="display:none">
+        <div class="search-wrap">
+          <span class="icon">&#x1F50D;</span>
+          <input id="searchInput" placeholder="Search by title, brand, or ASIN...">
+        </div>
+        <div class="filter-group" id="filterGroup"></div>
+        <button class="btn-primary" id="saveBtn">&#x1F4BE; Save editorial.json</button>
+      </div>
+      <div class="content" id="content"></div>
+    </div>
+
+    <!-- PAGE: Motorcycles -->
+    <div id="page-motorcycles" class="page">
+      <div class="main-header">
+        <h2>Motorcycles</h2>
+        <div class="stats" id="motoStats"></div>
+      </div>
+      <div class="page-content" id="motoContent">
+        <div class="loading"><div class="spinner"></div><p>Loading motorcycles...</p></div>
+      </div>
+    </div>
+
+    <!-- PAGE: Collections -->
+    <div id="page-collections" class="page">
+      <div class="main-header">
+        <h2>Collections</h2>
+        <div class="stats" id="collStats"></div>
+      </div>
+      <div class="page-content" id="collContent">
+        <div class="loading"><div class="spinner"></div><p>Loading collections...</p></div>
+      </div>
+    </div>
+
+    <!-- PAGE: Website -->
+    <div id="page-website" class="page">
+      <div class="main-header">
+        <h2>Website</h2>
+        <div class="stats" id="webStats"></div>
+      </div>
+      <div class="page-content" id="webContent">
+        <div class="loading"><div class="spinner"></div><p>Loading website data...</p></div>
+      </div>
+    </div>
+
+    <!-- PAGE: Settings -->
+    <div id="page-settings" class="page">
+      <div class="main-header">
+        <h2>Settings</h2>
+        <div class="stats" id="setStats"></div>
+      </div>
+      <div class="page-content" id="setContent">
+        <div class="loading"><div class="spinner"></div><p>Loading settings...</p></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
+<!-- Product Picker Modal (unchanged) -->
 <div class="modal-overlay" id="productPickerModal" style="display:none" onclick="if(event.target===this)closePicker()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-header">
@@ -249,6 +405,200 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 </div>
 
 <script>
+// ================================================================
+//  ROUTING
+// ================================================================
+let currentPage = 'dashboard';
+
+function navigateTo(page) {
+  currentPage = page;
+  window.location.hash = '#' + page;
+  showPage(page);
+}
+
+function showPage(page) {
+  // Update nav items
+  document.querySelectorAll('.sidebar-nav .nav-item').forEach(el => el.classList.remove('active'));
+  const navEl = document.querySelector(`.sidebar-nav .nav-item[data-page="${page}"]`);
+  if (navEl) navEl.classList.add('active');
+
+  // Show/hide pages
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  const pageEl = document.getElementById('page-' + page);
+  if (pageEl) pageEl.classList.add('active');
+
+  // Show/hide category section in sidebar
+  const catSection = document.getElementById('categorySection');
+  if (catSection) catSection.style.display = (page === 'products') ? '' : 'none';
+
+  // Load page content
+  if (page === 'dashboard') loadDashboard();
+  else if (page === 'motorcycles') loadMotorcycles();
+  else if (page === 'collections') loadCollections();
+  else if (page === 'website') loadWebsite();
+  else if (page === 'settings') loadSettings();
+  else if (page === 'products') {
+    if (typeof render === 'function') render();
+  }
+}
+
+// Hash-based routing
+window.addEventListener('hashchange', function() {
+  const page = window.location.hash.replace('#', '') || 'dashboard';
+  showPage(page);
+});
+
+// ================================================================
+//  DASHBOARD PAGE
+// ================================================================
+async function loadDashboard() {
+  const el = document.getElementById('dashContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading dashboard data...</p></div>';
+  try {
+    const resp = await fetch('/api/dashboard?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    renderDashboard(data);
+  } catch(e) {
+    // Fallback: show a message if server API isn't available
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">&#x1F4CA;</div><h3>Dashboard</h3><p>Dashboard KPIs require the control center server to be running. Start it with:<br><code style="background:var(--bg);padding:4px 10px;border-radius:4px;font-size:12px">python editorial/server.py</code></p></div>`;
+  }
+}
+
+function renderDashboard(data) {
+  document.getElementById('dashStats').textContent = data.updated_at ? 'Updated ' + new Date(data.updated_at).toLocaleString() : '';
+
+  const cards = [
+    { icon: '📦', label: 'Total Products', value: data.total, color: '#2563eb', bg: '#eff6ff' },
+    { icon: '✅', label: 'Active (approved)', value: data.active, color: '#16a34a', bg: '#f0fdf4' },
+    { icon: '👁', label: 'Hidden', value: data.hidden, color: '#6b7280', bg: '#f9fafb' },
+    { icon: '⚠️', label: 'Needs Review', value: data.review, color: '#ea580c', bg: '#fff7ed' },
+    { icon: '⭐', label: "Editor's Choice", value: data.editors_choice, color: '#ca8a04', bg: '#fefce8' },
+    { icon: '📉', label: 'Price Drops (7d)', value: data.price_drops, color: '#dc2626', bg: '#fef2f2' },
+    { icon: '🖼', label: 'Missing Images', value: data.missing_images, color: '#7c3aed', bg: '#faf5ff' },
+  ];
+
+  let kpiHtml = '<div class="kpi-grid">';
+  for (const c of cards) {
+    kpiHtml += `<div class="kpi-card"><div class="kpi-icon" style="background:${c.bg};color:${c.color}"><span style="font-size:20px">${c.icon}</span></div><div class="kpi-body"><div class="kpi-value">${c.value}</div><div class="kpi-label">${c.label}</div></div></div>`;
+  }
+  kpiHtml += '</div>';
+
+  const actions = [
+    { icon: '📥', title: 'Import Products', desc: 'Import from bike-deals.json into the product library', color: '#2563eb' },
+    { icon: '🌐', title: 'Generate Website', desc: 'Build the complete static site with all pages', color: '#16a34a' },
+    { icon: '⚡', title: 'Deploy', desc: 'Deploy the generated site to production', color: '#7c3aed' },
+    { icon: '🔄', title: 'Sync Amazon', desc: 'Sync latest prices, ratings & availability from Amazon', color: '#ea580c' },
+  ];
+
+  let actionHtml = '<div class="dash-section-title" style="margin-top:20px">Quick Actions</div><div class="dash-actions">';
+  for (const a of actions) {
+    actionHtml += `<div class="action-card"><div class="action-icon" style="background:color-mix(in srgb,${a.color} 12%,transparent);color:${a.color}"><span style="font-size:18px">${a.icon}</span></div><div class="action-body"><div class="action-title">${a.title}</div><div class="action-desc">${a.desc}</div></div></div>`;
+  }
+  actionHtml += '</div>';
+
+  const catCount = data.categories_with_products || 0;
+  document.getElementById('dashContent').innerHTML =
+    `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span style="font-size:12px;color:var(--text2)">${catCount} categories with products</span><span style="font-size:12px;color:var(--text2);background:var(--bg);padding:1px 8px;border-radius:99px">${data.total_in_db} in DB</span></div>` +
+    kpiHtml +
+    actionHtml;
+}
+
+// ================================================================
+//  MOTORCYCLES PAGE
+// ================================================================
+async function loadMotorcycles() {
+  const el = document.getElementById('motoContent');
+  try {
+    const resp = await fetch('/api/motorcycles?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    document.getElementById('motoStats').textContent = data.total + ' motorcycles';
+    let html = '<div class="dash-actions">';
+    for (const b of data.motorcycles) {
+      html += `<div class="action-card"><div class="action-body"><div class="action-title">${b.make} ${b.model}</div><div class="action-desc">${b.year || '—'} &middot; ${b.product_count} compatible products</div></div></div>`;
+    }
+    html += '</div>';
+    el.innerHTML = html || '<div class="empty-state"><div class="big-icon">🏍</div><p>No motorcycles found</p></div>';
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🏍</div><h3>Motorcycles</h3><p>Manage motorcycle compatibility and listings. Start the server to load data.</p></div>`;
+  }
+}
+
+// ================================================================
+//  COLLECTIONS PAGE
+// ================================================================
+async function loadCollections() {
+  const el = document.getElementById('collContent');
+  try {
+    const resp = await fetch('/api/collections?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    document.getElementById('collStats').textContent = data.total + ' collections';
+    let html = '<div class="dash-actions">';
+    for (const c of data.collections) {
+      html += `<div class="action-card"><div class="action-body"><div class="action-title">${c.name}</div><div class="action-desc">${c.description || 'No description'} &middot; ${c.item_count} items</div></div></div>`;
+    }
+    html += '</div>';
+    el.innerHTML = html || '<div class="empty-state"><div class="big-icon">📁</div><p>No collections found</p></div>';
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">📁</div><h3>Collections</h3><p>Manage editorial collections and product groupings. Start the server to load data.</p></div>`;
+  }
+}
+
+// ================================================================
+//  WEBSITE PAGE
+// ================================================================
+async function loadWebsite() {
+  const el = document.getElementById('webContent');
+  try {
+    const resp = await fetch('/api/website?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    document.getElementById('webStats').textContent = data.categories + ' categories';
+    let html = '<div class="kpi-grid" style="margin-bottom:16px">';
+    html += `<div class="kpi-card"><div class="kpi-body"><div class="kpi-value">${data.total_products}</div><div class="kpi-label">Total Products</div></div></div>`;
+    html += `<div class="kpi-card"><div class="kpi-body"><div class="kpi-value">${data.categories}</div><div class="kpi-label">Categories</div></div></div>`;
+    html += `<div class="kpi-card"><div class="kpi-body"><div class="kpi-value">${data.pages_generated}</div><div class="kpi-label">Pages Generated</div></div></div>`;
+    html += '</div>';
+    html += '<div class="dash-section-title">Categories Breakdown</div>';
+    html += '<div class="settings-group">';
+    for (const [cat, info] of Object.entries(data.by_category).sort()) {
+      html += `<div class="sg-row"><span class="sg-label">${cat}</span><span class="sg-value">${info.approved} approved / ${info.total} total</span></div>`;
+    }
+    html += '</div>';
+    el.innerHTML = html;
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🌐</div><h3>Website</h3><p>Website generation stats and category breakdown. Start the server to load data.</p></div>`;
+  }
+}
+
+// ================================================================
+//  SETTINGS PAGE
+// ================================================================
+async function loadSettings() {
+  const el = document.getElementById('setContent');
+  try {
+    const resp = await fetch('/api/settings?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    let html = '<div class="settings-group"><div class="sg-header">System</div>';
+    html += `<div class="sg-row"><span class="sg-label">Database Path</span><span class="sg-value">${data.db_path}</span></div>`;
+    html += `<div class="sg-row"><span class="sg-label">Database Size</span><span class="sg-value">${data.db_size_mb} MB</span></div>`;
+    html += `<div class="sg-row"><span class="sg-label">Product Files</span><span class="sg-value">${data.product_files_count} files</span></div>`;
+    html += `<div class="sg-row"><span class="sg-label">Editorial Config</span><span class="sg-value">${data.editorial_json_exists ? 'Exists' : 'Not found'}</span></div>`;
+    html += '</div>';
+    el.innerHTML = html;
+    document.getElementById('setStats').textContent = 'v1.0';
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">⚙️</div><h3>Settings</h3><p>System configuration and database info. Start the server to load data.</p></div>`;
+  }
+}
+
+// ================================================================
+//  EXISTING EDITORIAL CODE (unchanged)
+// ================================================================
+
 // ===== CONFIG =====
 const PRODUCT_FILES = [
   'accessories.json','alarms.json','bike-covers.json','cameras.json','care.json',
@@ -482,7 +832,7 @@ function render(){
 
 function renderSidebar(){
   const list = document.getElementById('categoryList');
-  let html = '<div class="cat-group">Categories</div>';
+  let html = '';
   for(const cat of categories){
     const active = cat === selectedCategory ? ' active' : '';
     html += `<div class="cat-item${active}" onclick="selectCategory('${cat}')"><span class="dot"></span>${cat}<span class="count">${getCategoryCount(cat)}</span></div>`;
@@ -494,6 +844,7 @@ function renderSidebar(){
 
 function selectCategory(cat){
   selectedCategory = cat;
+  if (currentPage !== 'products') navigateTo('products');
   currentFilter = 'all';
   currentBrandFilter = '';
   document.getElementById('searchInput').value = '';
@@ -647,7 +998,6 @@ function renderRanking(){
   }
   html += `</div></div>`;
   document.getElementById('rankingSection').innerHTML = html;
-  // update editorial manual_order
   ed.manual_order = ordered;
 }
 
@@ -656,7 +1006,6 @@ function renderPreview(){
   const prods = getActiveProducts(selectedCategory);
   const ordered = ed.manual_order && ed.manual_order.length ? ed.manual_order : prods.sort((a,b)=>getAutoScore(b)-getAutoScore(a)).slice(0,10).map(p=>p.asin);
   let html = `<div class="preview-section"><div class="preview-header">&#x1F441; Preview: ${selectedCategory} Page</div><div class="preview-body">`;
-  // top picks preview
   const picks = [
     {key:'editor_choice',label:"Editor's Choice",color:'#ca8a04'},
     {key:'best_value',label:'Best Value',color:'#16a34a'},
@@ -674,7 +1023,6 @@ function renderPreview(){
     }
   }
   html += '</div>';
-  // top products preview
   html += '<h4 style="font-size:13px;font-weight:600;margin-bottom:10px;margin-top:20px">Top Products</h4><div class="preview-grid">';
   const limit = Math.min(ordered.length, 12);
   for(let i=0;i<limit;i++){
@@ -772,7 +1120,6 @@ function excludeProduct(asin){
   if(!ed.excluded.includes(asin)) ed.excluded.push(asin);
   ed.excluded_reasons = ed.excluded_reasons || {};
   ed.excluded_reasons[asin] = reason;
-  // Clear any badges
   for(const key of ['editor_choice','best_value','premium_pick','budget_pick']){
     if(ed[key] === asin) ed[key] = null;
   }
@@ -933,6 +1280,15 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   if(!selectedCategory && categories.length) selectedCategory = categories[0];
   render();
+
+  // Handle initial hash
+  const hash = window.location.hash.replace('#', '');
+  if (hash && ['dashboard','products','motorcycles','collections','website','settings'].includes(hash)) {
+    // Show requested page (dashboard by default)
+    showPage(hash);
+  } else {
+    showPage('dashboard');
+  }
 })();
 
 document.getElementById('saveBtn').addEventListener('click', saveEditorial);

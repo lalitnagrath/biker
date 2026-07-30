@@ -1,104 +1,86 @@
 [
   {
-    "asin": "B0D9QTZYJW",
-    "slug": "bobo-bm4-pro-plus",
-    "title": "BOBO BM4 PRO Plus Jaw-Grip Phone Mount with Vibration Damper",
-    "brand": "BOBO",
-    "category": "Phone Mount",
-    "type": "Handlebar Mount",
+    "asin": "B0877GBDQD",
+    "slug": "bergmann-typhoon-tyre-inflator",
+    "title": "Bergmann Typhoon Digital Tyre Inflator",
+    "brand": "Bergmann",
+    "category": "Tyre Inflator",
+    "type": "Wired",
     "status": "approved",
     "editorial": {
-      "score": 85,
+      "score": 7.7,
       "pros": [
-        "PRO+ vibration damper protects phone camera",
-        "Jaw-grip holds phone securely",
-        "Waterproof design",
-        "1 year warranty"
+        "Heavy-duty metal body",
+        "Auto cut-off",
+        "LED light",
+        "Digital gauge"
       ],
       "cons": [
-        "Vibration damper adds bulk",
-        "Slightly expensive"
+        "Wired only",
+        "Bulky form factor"
       ],
-      "features": [
-        "Vibration damper",
-        "Jaw-grip mechanism",
-        "Waterproof",
-        "1 year warranty"
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 2345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0877GBDQD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/41CED0DU+ML._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Garage use and heavy-duty inflation needs",
+    "verdict": "The Bergmann Typhoon is a robust metal-body inflator with auto cut-off, ideal for regular home garage use."
+  },
+  {
+    "asin": "B093GB5YPK",
+    "slug": "hp-typhoon-tyre-inflator",
+    "title": "HP Typhoon Digital Tyre Inflator",
+    "brand": "HP",
+    "category": "Tyre Inflator",
+    "type": "Wired",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Affordable",
+        "Digital display",
+        "Auto cut-off"
       ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [
-        "touring",
-        "daily-commute",
-        "vloggers"
+      "cons": [
+        "Wired only",
+        "Average motor durability"
       ],
-      "notes": "Best phone mount for riders who need camera vibration protection"
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
     },
     "amazon": {
       "price": 1899,
       "mrp": null,
       "discount": null,
-      "rating": 4.3,
-      "review_count": 2100,
-      "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=xuy0834-21",
-      "image": "images/products/bobo-bm4-pro-plus.jpg",
+      "rating": 4,
+      "review_count": 432,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B093GB5YPK?tag=xuy0834-21",
+      "image": "images/products/hp-typhoon-inflator.jpg",
       "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "Riders wanting secure phone mounting with camera vibration protection",
-    "verdict": "The BOBO BM4 PRO Plus is the best phone mount for riders who want secure jaw-grip holding with vibration dampening to protect phone cameras."
-  },
-  {
-    "asin": "B0D9QR37RC",
-    "slug": "bobo-bm14-pro-plus",
-    "title": "BOBO BM14 PRO Plus Quick Release Phone Mount with Vibration Damper",
-    "brand": "BOBO",
-    "category": "Phone Mount",
-    "type": "Handlebar Mount",
-    "status": "approved",
-    "editorial": {
-      "score": 83,
-      "pros": [
-        "Quick-release mechanism",
-        "PRO+ vibration damper",
-        "Waterproof",
-        "Fits 4-7 inch phones"
-      ],
-      "cons": [
-        "Quick release can feel loose on rough roads",
-        "Premium pricing"
-      ],
-      "features": [
-        "Quick-release mechanism",
-        "Vibration damper",
-        "Waterproof",
-        "4-7 inch phone support"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [
-        "touring",
-        "daily-commute"
-      ],
-      "notes": "Quick-release variant of the BM4 PRO Plus"
-    },
-    "amazon": {
-      "price": 1999,
-      "mrp": null,
-      "discount": null,
-      "rating": 4.4,
-      "review_count": 1800,
-      "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0D9QR37RC?tag=xuy0834-21",
-      "image": "images/products/bobo-bm14-pro-plus.jpg",
-      "last_updated": null
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quick phone attach/detach with vibration protection",
-    "verdict": "The BOBO BM14 PRO Plus offers the convenience of quick-release with the same excellent vibration dampening as the BM4 PRO Plus."
+    "best_for": "Budget buyers wanting a basic digital tyre inflator",
+    "verdict": "The HP Typhoon is an affordable wired inflator with digital display and auto cut-off for basic inflation needs."
   },
   {
     "asin": "B09V334S4L",
@@ -154,8 +136,727 @@
     "verdict": "The Xiaomi Portable Air Compressor 1S is the most compact and lightweight tyre inflator, perfect for motorcycle riders to carry on every ride."
   },
   {
+    "asin": "B0C4J2N8KL",
+    "slug": "raniaco-tyre-inflator",
+    "title": "Raniaco Digital Tyre Inflator",
+    "brand": "Raniaco",
+    "category": "Tyre Inflator",
+    "type": "Cordless",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Good value",
+        "Digital gauge",
+        "Compact design"
+      ],
+      "cons": [
+        "Average battery life",
+        "Build quality could be better"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C4J2N8KL?tag=xuy0834-21",
+      "image": "images/products/raniaco-digital-inflator.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mid-range buyers wanting a compact digital inflator",
+    "verdict": "The Raniaco Digital Inflator offers decent performance with digital accuracy at a mid-range price point."
+  },
+  {
+    "asin": "B0CGTVHPC3",
+    "slug": "tusa-storm-cordless-tyre-inflator",
+    "title": "TUSA Storm X Cordless Tyre Inflator",
+    "brand": "TUSA",
+    "category": "Tyre Inflator",
+    "type": "Cordless",
+    "status": "approved",
+    "editorial": {
+      "score": 7.9,
+      "pros": [
+        "Wired + wireless",
+        "6000 mAh battery",
+        "12V DC car adapter",
+        "Auto cut-off",
+        "Digital display"
+      ],
+      "cons": [
+        "Heavy for pocket carry",
+        "Slow on large tyres"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2996,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CGTVHPC3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/41e9Sxz8dfL._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Emergency roadside inflation with both cordless and car adapter options",
+    "verdict": "The TUSA Storm X offers dual power options (cordless + car adapter) with reliable auto cut-off for hassle-free inflation."
+  },
+  {
+    "asin": "B0CJMVCTRR",
+    "slug": "bobo-bm17-phone",
+    "title": "BOBO BM17 Pro Phone Mount",
+    "brand": "BOBO",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Universal fit",
+        "360° rotation",
+        "Vibration dampening"
+      ],
+      "cons": [
+        "Plastic build",
+        "May not fit thick cases"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 188,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 3456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0BR3TF46R?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/31LR4gwcjlL._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Any motorcycle with handlebar mounting space",
+    "verdict": "The BOBO BM17 Pro fits virtually any motorcycle handlebar, making it a universal phone mount solution."
+  },
+  {
+    "asin": "B0CQXJ7KFN",
+    "slug": "sounce-hydrodock-phone",
+    "title": "Sounce HydroDock Waterproof Phone Mount",
+    "brand": "Sounce",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "IPX5 waterproof rating",
+        "Touchscreen accessible",
+        "Affordable waterproof option"
+      ],
+      "cons": [
+        "Limited to phones under 6.5 inches",
+        "Fogging in extreme humidity"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 1654,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CQXJ7KFN?tag=xuy0834-21",
+      "image": "images/products/sounce-hydrodock.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Monsoon riders needing waterproof phone protection on a budget",
+    "verdict": "The Sounce HydroDock offers reliable waterproofing at a very competitive price for monsoon riding."
+  },
+  {
+    "asin": "B0CW8F4LJH",
+    "slug": "gub-g8-aluminum-phone",
+    "title": "GUB G8 Pro Aluminum Phone Mount",
+    "brand": "GUB",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "Full aluminum alloy body",
+        "Anti-theft locking",
+        "Silicone vibration pad"
+      ],
+      "cons": [
+        "Premium pricing for category",
+        "Slightly complex installation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 2890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CW8F4LJH?tag=xuy0834-21",
+      "image": "images/products/gub-g8-pro.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring and adventure riders wanting premium metal construction",
+    "verdict": "The GUB G8 Pro is a premium all-aluminum mount with anti-theft locking, built to last on any terrain."
+  },
+  {
+    "asin": "B0CWTPL8RK",
+    "slug": "striff-moride1-phone",
+    "title": "STRIFF MoRide1 Motorcycle Phone Mount",
+    "brand": "STRIFF",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "360-degree ball joint",
+        "Lightweight design"
+      ],
+      "cons": [
+        "Flimsy plastic arms",
+        "Not ideal for off-road"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 649,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 1432,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CWTPL8RK?tag=xuy0834-21",
+      "image": "images/products/striff-moride1.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "City commuters on a tight budget",
+    "verdict": "The STRIFF MoRide1 is a bare-bones phone mount that works well on smooth roads at a rock-bottom price."
+  },
+  {
+    "asin": "B0CY5MN3PR",
+    "slug": "walmart-tyre-inflator",
+    "title": "Walmart Mini Portable Tyre Inflator",
+    "brand": "Walmart",
+    "category": "Tyre Inflator",
+    "type": "Cordless",
+    "status": "review",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Ultra compact",
+        "Lightweight",
+        "USB rechargeable"
+      ],
+      "cons": [
+        "Slower inflation",
+        "Small battery capacity"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1499,
+      "mrp": null,
+      "discount": null,
+      "rating": 3.9,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CY5MN3PR?tag=xuy0834-21",
+      "image": "images/products/walmart-mini-inflator.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Emergency pocket-sized inflation on the go",
+    "verdict": "The Walmart Mini is an ultra-compact cordless inflator perfect for emergency top-ups during rides."
+  },
+  {
+    "asin": "B0CYK9MN3V",
+    "slug": "bobo-d15-phone",
+    "title": "BOBO D15 Motorcycle Phone Holder",
+    "brand": "BOBO",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Budget-friendly",
+        "One-hand operation",
+        "Tool-free installation"
+      ],
+      "cons": [
+        "No vibration dampening",
+        "Basic build quality"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 1876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CYK9MN3V?tag=xuy0834-21",
+      "image": "images/products/bobo-d15.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders needing a simple and quick phone mount",
+    "verdict": "The BOBO D15 offers one-hand phone mounting at an entry-level price without premium features."
+  },
+  {
+    "asin": "B0D5GJY7HN",
+    "slug": "bobo-q3-phone",
+    "title": "BOBO Q3 Bike Phone Mount",
+    "brand": "BOBO",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Metal clamp mechanism",
+        "Anti-shake design",
+        "Fits 4.7 to 7 inch phones"
+      ],
+      "cons": [
+        "Slightly heavy",
+        "Clamp needs periodic tightening"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1199,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 2104,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D5GJY7HN?tag=xuy0834-21",
+      "image": "images/products/bobo-q3.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting a sturdy metal-clamp phone mount at mid-range price",
+    "verdict": "The BOBO Q3 bridges the gap between budget and premium with its metal clamp and anti-shake design."
+  },
+  {
+    "asin": "B0D7HN3QWT",
+    "slug": "un1que-150psi-cordless-tyre-inflator",
+    "title": "UN1QUE 150PSI Cordless Tyre Inflator",
+    "brand": "UN1QUE",
+    "category": "Tyre Inflator",
+    "type": "Cordless",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "150PSI max pressure",
+        "Affordable",
+        "Multi-nozzle adapters"
+      ],
+      "cons": [
+        "Newer brand",
+        "Average motor noise"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 189,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D7HN3QWT?tag=xuy0834-21",
+      "image": "images/products/un1que-150psi-inflator.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting high-pressure output at an affordable price",
+    "verdict": "The UN1QUE 150PSI delivers high-pressure inflation capability at an entry-level price point."
+  },
+  {
+    "asin": "B0D8N3KPWM",
+    "slug": "striff-mounter-phone",
+    "title": "STRIFF Mounter Universal Phone Holder",
+    "brand": "STRIFF",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Adjustable clamp width",
+        "Rubber padding for grip",
+        "Easy installation"
+      ],
+      "cons": [
+        "Average vibration damping",
+        "Plastic locking clip"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 987,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D8N3KPWM?tag=xuy0834-21",
+      "image": "images/products/striff-mounter.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Occasional riders needing a simple mount for navigation",
+    "verdict": "The STRIFF Mounter is a step up from basic mounts with adjustable width and rubber-padded grip."
+  },
+  {
+    "asin": "B0D9QR37RC",
+    "slug": "bobo-bm14-release-phone-vibration-damper",
+    "title": "BOBO BM14 PRO Plus Quick Release Phone Mount with Vibration Damper",
+    "brand": "BOBO",
+    "category": "Phone Mount",
+    "type": "Handlebar Mount",
+    "status": "approved",
+    "editorial": {
+      "score": 83,
+      "pros": [
+        "Quick-release mechanism",
+        "PRO+ vibration damper",
+        "Waterproof",
+        "Fits 4-7 inch phones"
+      ],
+      "cons": [
+        "Quick release can feel loose on rough roads",
+        "Premium pricing"
+      ],
+      "features": [
+        "Quick-release mechanism",
+        "Vibration damper",
+        "Waterproof",
+        "4-7 inch phone support"
+      ],
+      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
+      "recommended_for": [
+        "touring",
+        "daily-commute"
+      ],
+      "notes": "Quick-release variant of the BM4 PRO Plus"
+    },
+    "amazon": {
+      "price": 1999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1800,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0D9QR37RC?tag=xuy0834-21",
+      "image": "images/products/bobo-bm14-pro-plus.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting quick phone attach/detach with vibration protection",
+    "verdict": "The BOBO BM14 PRO Plus offers the convenience of quick-release with the same excellent vibration dampening as the BM4 PRO Plus."
+  },
+  {
+    "asin": "B0D9QTZYJW",
+    "slug": "bobo-bm4-jaw-grip-phone-vibration",
+    "title": "BOBO BM4 PRO Plus Jaw-Grip Phone Mount with Vibration Damper",
+    "brand": "BOBO",
+    "category": "Phone Mount",
+    "type": "Handlebar Mount",
+    "status": "approved",
+    "editorial": {
+      "score": 85,
+      "pros": [
+        "PRO+ vibration damper protects phone camera",
+        "Jaw-grip holds phone securely",
+        "Waterproof design",
+        "1 year warranty"
+      ],
+      "cons": [
+        "Vibration damper adds bulk",
+        "Slightly expensive"
+      ],
+      "features": [
+        "Vibration damper",
+        "Jaw-grip mechanism",
+        "Waterproof",
+        "1 year warranty"
+      ],
+      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
+      "recommended_for": [
+        "touring",
+        "daily-commute",
+        "vloggers"
+      ],
+      "notes": "Best phone mount for riders who need camera vibration protection"
+    },
+    "amazon": {
+      "price": 1899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 2100,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0D9QTZYJW?tag=xuy0834-21",
+      "image": "images/products/bobo-bm4-pro-plus.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting secure phone mounting with camera vibration protection",
+    "verdict": "The BOBO BM4 PRO Plus is the best phone mount for riders who want secure jaw-grip holding with vibration dampening to protect phone cameras."
+  },
+  {
+    "asin": "B0DJ3RQKWP",
+    "slug": "torras-phone",
+    "title": "TORRAS Motorcycle Bike Phone Mount",
+    "brand": "TORRAS",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Premium CNC aluminum",
+        "One-hand snap-in mechanism",
+        "Military-grade vibration dampening"
+      ],
+      "cons": [
+        "Expensive for phone mount category",
+        "Limited color options"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DJ3RQKWP?tag=xuy0834-21",
+      "image": "images/products/torras-bike-mount.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Premium riders wanting the best vibration dampening and build quality",
+    "verdict": "The TORRAS Bike Mount delivers military-grade vibration dampening with a premium CNC aluminum body."
+  },
+  {
+    "asin": "B0DKJS2G5T",
+    "slug": "xiaomi-air-compressor",
+    "title": "Xiaomi Portable Air Compressor 2 Pro",
+    "brand": "Xiaomi",
+    "category": "Tyre Inflator",
+    "type": "Cordless",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "Premium build quality",
+        "Fast inflation",
+        "Preset pressure modes",
+        "LED display"
+      ],
+      "cons": [
+        "Expensive",
+        "Heavier than basic models"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.9,
+      "review_count": 41,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DKJS2G5T?tag=xuy0834-21",
+      "image": "images/products/xiaomi-portable-air-pump.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Tech-savvy riders wanting a premium, fast cordless inflator",
+    "verdict": "The Xiaomi Portable Air Pump Pro offers premium build quality with fast inflation and smart preset modes."
+  },
+  {
+    "asin": "B0DKR6TPNY",
+    "slug": "sounce-phone",
+    "title": "Sounce Waterproof Motorcycle Phone Holder",
+    "brand": "Sounce",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "IPX6 waterproof sealed case",
+        "Extra accessory pocket",
+        "Universal fit"
+      ],
+      "cons": [
+        "Touch sensitivity reduced",
+        "Bulkier than open mounts"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 749,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 892,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DKR6TPNY?tag=xuy0834-21",
+      "image": "images/products/sounce-waterproof-phone-mount.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders in heavy rain conditions needing complete phone protection",
+    "verdict": "The Sounce Waterproof mount provides IPX6-level sealed protection with an extra pocket for valuables."
+  },
+  {
+    "asin": "B0DP7MNWQF",
+    "slug": "like-star-c1-phone",
+    "title": "Like Star C1 Motorcycle Phone Holder",
+    "brand": "Like Star",
+    "category": "Phone Mount",
+    "type": "Handlebar",
+    "status": "approved",
+    "editorial": {
+      "score": 7.4,
+      "pros": [
+        "Quick-release lever",
+        "Sturdy clamp grip",
+        "Affordable mid-range option"
+      ],
+      "cons": [
+        "Average vibration dampening",
+        "No waterproofing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 756,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DP7MNWQF?tag=xuy0834-21",
+      "image": "images/products/like-star-c1.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mid-range buyers wanting solid build without premium pricing",
+    "verdict": "The Like Star C1 offers a sturdy build and quick-release mechanism at a sensible mid-range price."
+  },
+  {
     "asin": "B0DYZQ458Q",
-    "slug": "strief-ez-air-inflator",
+    "slug": "striff-ez-air-tyre-inflator-150psi",
     "title": "STRIFF EZ Air Portable Tyre Inflator 150PSI",
     "brand": "STRIFF",
     "category": "Tyre Inflator",
@@ -206,421 +907,26 @@
     "verdict": "The STRIFF EZ Air offers good value with a larger 4000mAh battery and 150PSI capacity at a budget-friendly price."
   },
   {
-    "asin": "B0FKH5VJVP",
-    "slug": "prolet-mobile-storage-case-remote-mobile",
-    "title": "Prolet Wall Mounted Mobile Holder Storage Case for Remote, Wall Mounted Mobile Stand/Multi Purpose Stand with Hole for Phone Charging (White-P4, Pack of 4)",
-    "brand": "Prolet",
+    "asin": "B0F2HJ8NWS",
+    "slug": "gub-g89-phone",
+    "title": "GUB G89 Motorcycle Phone Mount",
+    "brand": "GUB",
     "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
+    "type": "Handlebar",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 8.1,
       "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
+        "Reinforced aluminum arms",
+        "Shock-absorbing rubber insert",
+        "Fits thick phone cases"
       ],
       "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 198,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FKH5VJVP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41b-kCFWl8L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Prolet Wall Mounted Mobile Holder Storage Case for Remote, Wall Mounted Mobile Stand/Multi Purpose Stand with Hole for Phone Charging (White-P4, Pack of 4) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B07N8RQ6W7",
-    "slug": "portronics-modesk-mobile-stand-metal-body",
-    "title": "Portronics MODESK Universal Mobile Holder Stand with Metal Body, Anti Skid Design, Light Weight for All Smartphones, Tablets, Kindle, iPad(Black)",
-    "brand": "Portronics",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
+        "Higher price point",
+        "Overkill for city riding"
       ],
       "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 111,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07N8RQ6W7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41G1BcBFZoL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Portronics MODESK Universal Mobile Holder Stand with Metal Body, Anti Skid Design, Light Weight for All Smartphones, Tablets, Kindle, iPad(Black) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0F6MLBYNF",
-    "slug": "un1que-tyre-inflator-car-150psi-car",
-    "title": "UN1QUE Tyre Inflator for Car, 150PSI Car Air Pump, 12V DC Portable Air Compressor for Tyre, Fast Inflation Speed Inflator Pump with LED Light",
-    "brand": "Un1Que",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "LED light",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 948,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F6MLBYNF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41GkK8Y20iL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Un1Que Tyre Inflator for Car, 150PSI Car Air Pump, 12V DC Portable Air Compressor for Tyre, Fast Inflation Speed Inflator Pump with LED Light is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B0GS74NXQD",
-    "slug": "self-adhesive-storage-mobile-mobile-phone",
-    "title": "Pack of 4 Wall Mount Self-Adhesive Wall Storage Mobile Holder | Mobile Phone Charging Bracket | Multipurpose Organizer Wall Mount Holder for Remotes,Phone (Multicolour)",
-    "brand": "Pack",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 189,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GS74NXQD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31rmy94-nWL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Pack of 4 Wall Mount Self-Adhesive Wall Storage Mobile Holder | Mobile Phone Charging Bracket | Multipurpose Organizer Wall Mount Holder for Remotes,Phone (Multicolour) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0BR3TF46R",
-    "slug": "sounce-phone-shake-stable-360-rotation",
-    "title": "Sounce Waterproof New Bike Phone Mount Anti Shake and Stable 360‚° Rotation Bike Bicycles Accessories for Any Smartphone GPS Other Devices Between 3.5 and 6.5 inches",
-    "brand": "Sounce",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 188,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BR3TF46R?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31LR4gwcjlL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Sounce Waterproof New Bike Phone Mount Anti Shake and Stable 360‚° Rotation Bike Bicycles Accessories for Any Smartphone GPS Other Devices Between 3.5 and 6.5 inches offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0DT4HXKMB",
-    "slug": "striff-moride1-phone-360-rotational-hold",
-    "title": "STRIFF MoRide1 Bike Phone Mount with 360° Rotational, Strong Hold for Scooty/Scooter/Bike/Motorcycle Compatible with 4.7 to 6.8 inch Devices(Black)",
-    "brand": "Striff",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 189,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DT4HXKMB?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31sROBZjiGL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Striff MoRide1 Bike Phone Mount with 360° Rotational, Strong Hold for Scooty/Scooter/Bike/Motorcycle Compatible with 4.7 to 6.8 inch Devices(Black) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0H2S3GLMB",
-    "slug": "phone-360-adjustable-dual-ball-joint",
-    "title": "Waterproof Bike Phone Mount with 360° Adjustable Dual-Ball Joint Arm, Weatherproof Case, Dust and Sun Proof, for Motorcycle Handlebar Navigation",
-    "brand": "Waterproof",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 240,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2S3GLMB?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Qp9TFvwuL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Waterproof Bike Phone Mount with 360° Adjustable Dual-Ball Joint Arm, Weatherproof Case, Dust and Sun Proof, for Motorcycle Handlebar Navigation offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0CW3FJ2RD",
-    "slug": "onelap-quikflate-wired-wireless-real-7800",
-    "title": "Onelap Quikflate Plus™ - Wired + Wireless (Real 7800 mAh Battery) SuperFast Digital Tyre Inflator with inbuilt Pressure Gauge for Cars, SUV, Bikes, Cycle, Balls, Balloons",
-    "brand": "Onelap",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 3372,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CW3FJ2RD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41eieJMA9rL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Onelap Quikflate Plus™ - Wired + Wireless (Real 7800 mAh Battery) SuperFast Digital Tyre Inflator with inbuilt Pressure Gauge for Cars, SUV, Bikes, Cycle, Balls, Balloons is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0C8T487CB",
-    "slug": "wecool-b3-360-rotational-mobile-click",
-    "title": "WeCool B3 360° Rotational Mobile Holder for Bike with One-Click Locking,Secure Grip Design,Mobile Stand for Bike Handle with Cushioning Pads,Phone Holder for mounting map and GPS Navigation Devices",
-    "brand": "Wecool",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 699,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C8T487CB?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41dQhb48nfL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Wecool B3 360° Rotational Mobile Holder for Bike with One-Click Locking,Secure Grip Design,Mobile Stand for Bike Handle with Cushioning Pads,Phone Holder for mounting map and GPS Navigation Devices offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0G6CTZQKR",
-    "slug": "zebronics-tyre-inflator-wired-wireless-150",
-    "title": "Zebronics, Portable Tyre Inflator, Wired and Wireless, 150 PSI Turbo Inflation, Digital Display, 6000 mAh Rechargeable Battery, Type-C & 12V Support, Power Bank, SOS Light, Multi Nozzles (19TI6A)",
-    "brand": "Zebronics,",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
@@ -628,1016 +934,43 @@
       "price": 2199,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.4,
+      "review_count": 1567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G6CTZQKR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41oUtesZndL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B0F2HJ8NWS?tag=xuy0834-21",
+      "image": "images/products/gub-g89.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "royal-enfield-himalayan-450"
     ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Zebronics, Portable Tyre Inflator, Wired and Wireless, 150 PSI Turbo Inflation, Digital Display, 6000 mAh Rechargeable Battery, Type-C & 12V Support, Power Bank, SOS Light, Multi Nozzles (19TI6A) is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0F4XRCRQT",
-    "slug": "portronics-vayu-tyre-inflator-display-4000",
-    "title": "Portronics Vayu 7.0 Tyre Inflator, Full-Size Digital Display, 4000 mAh Battery, 150 PSI Pressure, Preset Modes, Flashlight with SOS, Pressure Detection, for Cars, Bikes, Bicycles & Balls(Black)",
-    "brand": "Portronics",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F4XRCRQT?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/412BaUjeJkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Portronics Vayu 7.0 Tyre Inflator, Full-Size Digital Display, 4000 mAh Battery, 150 PSI Pressure, Preset Modes, Flashlight with SOS, Pressure Detection, for Cars, Bikes, Bicycles & Balls(Black) is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B0H5WVS2HR",
-    "slug": "car-air-compressor-pressure-gauge-12v",
-    "title": "Electric Car Air Compressor with Pressure Gauge, 12V DC Portable Tyre Inflator Air Pump for Car, Trucks, Bus, Bike, Auto & Van,High Pressure Portable Air Compressor for Bike (BLACK)",
-    "brand": "Electric",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H5WVS2HR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51yDikVA7pL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Electric Car Air Compressor with Pressure Gauge, 12V DC Portable Tyre Inflator Air Pump for Car, Trucks, Bus, Bike, Auto & Van,High Pressure Portable Air Compressor for Bike (BLACK) is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B0D83M6FNG",
-    "slug": "portronics-vayu-tyre-inflator-150-psi",
-    "title": "Portronics Vayu 3.0 tyre Inflator with 150 PSI Pressure, 4000 mAh Battery, Digital Display, Pressure Detection, Air Pump Compressor for Cars, Bikes, Bicycles & Balls(Black)",
-    "brand": "Portronics",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1849,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D83M6FNG?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41hmIDlxY+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Portronics Vayu 3.0 tyre Inflator with 150 PSI Pressure, 4000 mAh Battery, Digital Display, Pressure Detection, Air Pump Compressor for Cars, Bikes, Bicycles & Balls(Black) is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0FPQSN47V",
-    "slug": "agaro-atom-cordless-tyre-inflator-150",
-    "title": "AGARO Atom Cordless Tyre Inflator, 150 PSI, 4500mAh Battery, Auto Shut-Off, Digital Display, LED Light, USB-C Charging, 12V DC Output, for Cars, Bikes, Balls & Inflatables",
-    "brand": "Agaro",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FPQSN47V?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41gnvoI-dwL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Agaro Atom Cordless Tyre Inflator, 150 PSI, 4500mAh Battery, Auto Shut-Off, Digital Display, LED Light, USB-C Charging, 12V DC Output, for Cars, Bikes, Balls & Inflatables is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B09LC17PJL",
-    "slug": "agaro-primo-power-tyre-inflator-car",
-    "title": "AGARO Primo High Power Digital Tyre Inflator for Car, Air Inflator Car Accessories, 120 Watt Air Pump with 12V Plug, Upto 150 Psi, Emergency LED Light, Compact & Portable Air Compressor",
-    "brand": "Agaro",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light",
-        "Portable design",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1699,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09LC17PJL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41bxDiEA62L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Agaro Primo High Power Digital Tyre Inflator for Car, Air Inflator Car Accessories, 120 Watt Air Pump with 12V Plug, Upto 150 Psi, Emergency LED Light, Compact & Portable Air Compressor is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0CNYNX7LF",
-    "slug": "portronics-mobike-phone-360-rotational-hold",
-    "title": "Portronics Mobike 4 Bike Phone Mount with 360° Rotational, Strong Hold for Bicycle, Motorcycle Compatible with 4.7 to 6.8 inch Devices(Black)",
-    "brand": "Portronics",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 269,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CNYNX7LF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41uxXNoUIrL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Portronics Mobike 4 Bike Phone Mount with 360° Rotational, Strong Hold for Bicycle, Motorcycle Compatible with 4.7 to 6.8 inch Devices(Black) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0BTDDVB67",
-    "slug": "amazon-basics-dc-tyre-inflator-cars",
-    "title": "Amazon Basics Portable DC Digital Tyre Inflator for Cars & Bikes| 12V DC | 150 PSI Air Pump with Digital Pressure Gauge, Auto Shut Off and Emergency LED Light | 3M Cable Length, 3 Nozzles, Extra Fuse",
-    "brand": "Amazon Basics",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BTDDVB67?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31r9frZY89L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Amazon Basics Portable DC Digital Tyre Inflator for Cars & Bikes| 12V DC | 150 PSI Air Pump with Digital Pressure Gauge, Auto Shut Off and Emergency LED Light | 3M Cable Length, 3 Nozzles, Extra Fuse is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B0CTK2YRWP",
-    "slug": "agaro-regency-cordless-tyre-inflator-rechargeable",
-    "title": "AGARO Regency Cordless Tyre Inflator, Rechargeable, 6000 mAh (3 * 2000) Batteries, Up to 150 PSI Air Pump for Car, Bike, Foot Balls, Inflatables, Portable Air Compressor, Power Bank, Multipurpose Use",
-    "brand": "Agaro",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1939,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CTK2YRWP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41B0d1LnxhL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Agaro Regency Cordless Tyre Inflator, Rechargeable, 6000 mAh (3 * 2000) Batteries, Up to 150 PSI Air Pump for Car, Bike, Foot Balls, Inflatables, Portable Air Compressor, Power Bank, Multipurpose Use is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0GQSG57TF",
-    "slug": "uspot-phone-camera-kit-vibration-handlebar",
-    "title": "USPOT 2-in-1 Bike Phone Mount & Helmet Camera Kit – Anti-Vibration Handlebar Holder & Curved 3M Chin Mount for POV Video – Compatible with iPhone, GoPro Hero 14/13, Insta360 & DJI Action (Black)",
-    "brand": "Uspot",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 605,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GQSG57TF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41sjIyXFnML._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Uspot 2-in-1 Bike Phone Mount & Helmet Camera Kit – Anti-Vibration Handlebar Holder & Curved 3M Chin Mount for POV Video – Compatible with iPhone, GoPro Hero 14/13, Insta360 & DJI Action (Black) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B08HNBP18P",
-    "slug": "lyrovo-160-psi-double-cylinder-foot-B08HNBP18P",
-    "title": "Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Black",
-    "brand": "Lyrovo",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 869,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08HNBP18P?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41s7BWoshjL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Black is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B08LQ29TLV",
-    "slug": "lyrovo-160-psi-double-cylinder-foot-B08LQ29TLV",
-    "title": "Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Red",
-    "brand": "Lyrovo",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 869,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08LQ29TLV?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41l06LimkJL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Red is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B0B6HKCQBC",
-    "slug": "lyrovo-160-psi-double-cylinder-foot-B0B6HKCQBC",
-    "title": "Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Yellow",
-    "brand": "Lyrovo",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 869,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0B6HKCQBC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41rqUH5ShsL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Yellow is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B0CTKPCW4Y",
-    "slug": "portronics-vayu-tyre-inflator-car-cycle",
-    "title": "Portronics Vayu Lite Portable Tyre Inflator for Car, Bike, Cycle with 150 PSI Pressure, Digital Display, Auto Shut-Off, LED Light, 2.7m Cord, Air Pump Compressor for Cigarette Lighter Socket (Black)",
-    "brand": "Portronics",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1305,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CTKPCW4Y?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31sW-gv3V3L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Portronics Vayu Lite Portable Tyre Inflator for Car, Bike, Cycle with 150 PSI Pressure, Digital Display, Auto Shut-Off, LED Light, 2.7m Cord, Air Pump Compressor for Cigarette Lighter Socket (Black) is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B0GH6J74HF",
-    "slug": "panca-cordless-air-pump-tyre-inflator",
-    "title": "PANCA Cordless Air Pump Portable Tyre Inflator with Pressure Gauge, 5000mAh Battery & Multiple Nozzle Attachments | 150 PSI Wireless Mini Air Compressor",
-    "brand": "Panca",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 799,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GH6J74HF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41dTZjkQuRL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Panca Cordless Air Pump Portable Tyre Inflator with Pressure Gauge, 5000mAh Battery & Multiple Nozzle Attachments | 150 PSI Wireless Mini Air Compressor is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B0H62ZXP3N",
-    "slug": "prakalp-mobile-phone-360-rotating-bicycle",
-    "title": "Prakalp Waterproof Bike Mobile Phone Holder – 360° Rotating Bicycle & Motorcycle Phone Mount, Universal Handlebar Smartphone Stand with Touchscreen Access, Shockproof",
-    "brand": "Prakalp",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 449,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H62ZXP3N?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41+gEveDJEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Prakalp Waterproof Bike Mobile Phone Holder – 360° Rotating Bicycle & Motorcycle Phone Mount, Universal Handlebar Smartphone Stand with Touchscreen Access, Shockproof offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0FF26HXDL",
-    "slug": "agaro-marvel-tyre-inflator-cars-12v",
-    "title": "AGARO Marvel Tyre inflator, for Cars, 12V, Upto 150 PSI, 120 W Powerful Motor, Up to 3M Long Cable, Digital Display, Multiple Nozzles",
-    "brand": "Agaro",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1399,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FF26HXDL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41z2lBYylLL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Agaro Marvel Tyre inflator, for Cars, 12V, Upto 150 PSI, 120 W Powerful Motor, Up to 3M Long Cable, Digital Display, Multiple Nozzles is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B0972WB6VJ",
-    "slug": "gomechanic-gusto-tyre-inflator-cars-bikes",
-    "title": "GoMechanic Gusto Digital Tyre Inflator for Cars & Bikes | 150 PSI | 12V DC Portable Air Pump for Tyres with Auto Shut Off | Tyre Pressure Gauge | Multi-Nozzle Compatible | Emergency LED",
-    "brand": "Gomechanic",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0972WB6VJ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41bg+SQa-0L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting portable tyre inflation",
-    "verdict": "The Gomechanic Gusto Digital Tyre Inflator for Cars & Bikes | 150 PSI | 12V DC Portable Air Pump for Tyres with Auto Shut Off | Tyre Pressure Gauge | Multi-Nozzle Compatible | Emergency LED is a tyre inflator offering below average performance at an reasonable price."
-  },
-  {
-    "asin": "B09BL8SDV1",
-    "slug": "hyco-corded-lubricated-air-compressor-100",
-    "title": "Hyco Corded Electric Lubricated Air Compressor with 100% Copper Winding (CK 3HP 50L)",
-    "brand": "Hyco",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 12200,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09BL8SDV1?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41xc0pTwKBL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Hyco Corded Electric Lubricated Air Compressor with 100% Copper Winding (CK 3HP 50L) is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0H4VVHM8K",
-    "slug": "olv-rechargeable-tyre-inflator-multifunctional-jump",
-    "title": "OLV Portable & Rechargeable Tyre Inflator & Multifunctional Jump Starter 8000 mAh Battery, LED Display, Type-C Fast Charging, 150 PSI, For Car, Bike & Sports Balls",
-    "brand": "Olv",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.2,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4998,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H4VVHM8K?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41o49Gg5PAL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "premium riders wanting portable tyre inflation",
-    "verdict": "The Olv Portable & Rechargeable Tyre Inflator & Multifunctional Jump Starter 8000 mAh Battery, LED Display, Type-C Fast Charging, 150 PSI, For Car, Bike & Sports Balls is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0DYY3QWJ2",
-    "slug": "yellowfin-rear-view-mirror-extension-rod",
-    "title": "YELLOWFIN Rear View Mirror Extension Rod for Bike & Scooter, ABS Mirror Mount Extender Bracket for Mobile Holder & GPS, Offset Mirror Base Adapter for Motorcycle Phone Mount",
-    "brand": "Yellowfin",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 209,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DYY3QWJ2?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/21lORygocKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Yellowfin Rear View Mirror Extension Rod for Bike & Scooter, ABS Mirror Mount Extender Bracket for Mobile Holder & GPS, Offset Mirror Base Adapter for Motorcycle Phone Mount offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0GLPJ6ZFV",
-    "slug": "mobile-touchscreen-access-360-rotation-phone",
-    "title": "Motorcycle Waterproof Mobile Holder with Touchscreen Access & 360° Rotation – Universal Bike Phone Mount for GPS Navigation, Compatible with All Smartphones",
-    "brand": "Motorcycle",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 159,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GLPJ6ZFV?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51mzJxmebOL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Motorcycle Waterproof Mobile Holder with Touchscreen Access & 360° Rotation – Universal Bike Phone Mount for GPS Navigation, Compatible with All Smartphones offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0H11QD287",
-    "slug": "fashion-air-pump-car-pump-metal",
-    "title": "Fashion Air Pump,Car Pump Heavy Duty Metal Electric Car Compressor With Pressure Gauge, 12V DC Portable Tyre Inflator For Car, Trucks, Bus, Bike, Auto & Van, Single, 35 Liters Per Minute(A6)",
-    "brand": "Fashion",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 869,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H11QD287?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51scjZfn5VL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Fashion Air Pump,Car Pump Heavy Duty Metal Electric Car Compressor With Pressure Gauge, 12V DC Portable Tyre Inflator For Car, Trucks, Bus, Bike, Auto & Van, Single, 35 Liters Per Minute(A6) is a tyre inflator offering below average performance at an affordable price."
+    "best_for": "Adventure and off-road riders needing maximum phone security",
+    "verdict": "The GUB G89 combines reinforced aluminum construction with shock absorption for serious off-road use."
   },
   {
     "asin": "B0FW4WKL5X",
-    "slug": "portronics-vayu-rechargeable-tyre-inflator-cordless",
-    "title": "Portronics Vayu 9.0 Portable & Rechargeable Tyre Inflator with 2-in-1 Cordless & Corded Modes, 3×2000 mAh Battery, LED Display, Auto Shut-Off, Type-C Fast Charging,150 PSI for Car, Bike & Sports Balls",
+    "slug": "portronics-vayu-tyre-inflator",
+    "title": "Portronics Vayu 9.0 Tyre Inflator",
     "brand": "Portronics",
     "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
+    "type": "Cordless",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 7.4,
       "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
+        "2-in-1 cordless design",
+        "Compact",
+        "Affordable",
+        "Multiple nozzle adapters"
       ],
       "cons": [
-        "Heavy for touring",
-        "Short power cord"
+        "Lower battery life",
+        "Average build quality"
       ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
@@ -1645,1135 +978,17 @@
       "price": 2199,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 234,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0FW4WKL5X?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/413smlcbBsL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Portronics Vayu 9.0 Portable & Rechargeable Tyre Inflator with 2-in-1 Cordless & Corded Modes, 3×2000 mAh Battery, LED Display, Auto Shut-Off, Type-C Fast Charging,150 PSI for Car, Bike & Sports Balls is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0H5XBV8BH",
-    "slug": "kisan-free-silent-air-compressor-hp",
-    "title": "Kisan Oil Free Silent Air Compressor 1 HP | 8 Bar (115 psi) | 550 Watt Motor 10 L Tank size | noiseless | 1440 RPM | Ideal for Pneumatic Tools, Spray Painting & DIY Applications",
-    "brand": "Kisan",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 7799,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H5XBV8BH?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41hakr3rmZL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Kisan Oil Free Silent Air Compressor 1 HP | 8 Bar (115 psi) | 550 Watt Motor 10 L Tank size | noiseless | 1440 RPM | Ideal for Pneumatic Tools, Spray Painting & DIY Applications is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0D6V8F2L3",
-    "slug": "ingco-24l-air-compressor-acs175241-6kw",
-    "title": "Ingco 24L Air Compressor ACS175241, 0.6KW (0.8HP) Silent & Oil Free Air Compresser",
-    "brand": "Ingco",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 9668,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D6V8F2L3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Wx8ZKuvnL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Ingco 24L Air Compressor ACS175241, 0.6KW (0.8HP) Silent & Oil Free Air Compresser is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0H3G1Y243",
-    "slug": "car-tyre-inflator-air-compressor-pump",
-    "title": "Portable Car Tyre Inflator Air Compressor Pump, 12V DC Heavy Duty Air Pump with Pressure Gauge, Fast Tyre Inflation for Car, Bike, Motorcycle, Bicycle & Sports Equipment, Black",
-    "brand": "Portable",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 549,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H3G1Y243?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41N7gKm-GmL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Portable Car Tyre Inflator Air Compressor Pump, 12V DC Heavy Duty Air Pump with Pressure Gauge, Fast Tyre Inflation for Car, Bike, Motorcycle, Bicycle & Sports Equipment, Black is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B0B31H7G6F",
-    "slug": "ingco-auto-air-compressor-12v-10a",
-    "title": "INGCO Auto Air Compressor, 12V | 10A | 140PSI Portable Tyre Inflator Pump, with Cord, Cigarette Lighter, Battery Clips, Adapters, LED Light for Car, Bicycle, Balloons and Other Inflatables",
-    "brand": "Ingco",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "LED light",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1829,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0B31H7G6F?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41J2EWuudKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Ingco Auto Air Compressor, 12V | 10A | 140PSI Portable Tyre Inflator Pump, with Cord, Cigarette Lighter, Battery Clips, Adapters, LED Light for Car, Bicycle, Balloons and Other Inflatables is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0CGTVHPC3",
-    "slug": "tusa-storm-cordless-tyre-inflator-wired",
-    "title": "TUSA Storm X Cordless Tyre Inflator - Wired + Wireless (6000 mAh Battery & 12V Car Port), 2X Faster Inflation, 150PSI Air Compressor for Cars, Bikes, Motorcycles, Balls, and Inflatables (Red)",
-    "brand": "Tusa",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2996,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CGTVHPC3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41e9Sxz8dfL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Tusa Storm X Cordless Tyre Inflator - Wired + Wireless (6000 mAh Battery & 12V Car Port), 2X Faster Inflation, 150PSI Air Compressor for Cars, Bikes, Motorcycles, Balls, and Inflatables (Red) is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0CLLWHCZD",
-    "slug": "grand-pitstop-mobile-bikes-jaw-grip",
-    "title": "GRAND PITSTOP Mobile Holder for Bikes | (Black - Jaw Grip 360° Rotation) | Phone Mount for Motorcycle, Bicycle, Scooter | GPS Navigation Support | Anti-Slip Clamp | Sturdy Build",
-    "brand": "Grand",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 598,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CLLWHCZD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41v8jCARUFL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Grand PITSTOP Mobile Holder for Bikes | (Black - Jaw Grip 360° Rotation) | Phone Mount for Motorcycle, Bicycle, Scooter | GPS Navigation Support | Anti-Slip Clamp | Sturdy Build offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0DYK42BZB",
-    "slug": "sounce-phone-cell-phone-360-rotation",
-    "title": "Sounce Bike Phone Mount Waterproof Cell Phone Holder 360 Rotation Motorcycle Smartphone Case Universal Bicycle Handlebar Sensitive Touch Screen Fit Below 4-7.2 Inches Smartphone (Black)",
-    "brand": "Sounce",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 349,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DYK42BZB?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/516IRXulLnL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Sounce Bike Phone Mount Waterproof Cell Phone Holder 360 Rotation Motorcycle Smartphone Case Universal Bicycle Handlebar Sensitive Touch Screen Fit Below 4-7.2 Inches Smartphone (Black) offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0BH3GMYLD",
-    "slug": "hyco-direct-driven-air-compressor-2hp",
-    "title": "Hyco Direct Driven Air Compressor 2HP 30L 100% Copper Winding Lubricated with Pu pipe (PIPE 8 X 12)",
-    "brand": "Hyco",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 11450,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BH3GMYLD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41FN4RspOxL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Hyco Direct Driven Air Compressor 2HP 30L 100% Copper Winding Lubricated with Pu pipe (PIPE 8 X 12) is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0FVFY89SH",
-    "slug": "pilot-4hp-direct-drive-air-compressor",
-    "title": "Pilot 4HP Direct Drive Air Compressor 80L Tank, 256L/min Air Flow, 8 Bar/115 PSI Max Pressure, Oil Lubricated High Performance Air Compressor for Pneumatic Tools, Automotive, Workshop & Industrial Use",
-    "brand": "Pilot",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 15194,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FVFY89SH?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31xAuBRgmXL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Pilot 4HP Direct Drive Air Compressor 80L Tank, 256L/min Air Flow, 8 Bar/115 PSI Max Pressure, Oil Lubricated High Performance Air Compressor for Pneumatic Tools, Automotive, Workshop & Industrial Use is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0DHWZW8ZX",
-    "slug": "un1que-pt400-tyre-inflator-car-150psi",
-    "title": "UN1QUE PT400 Tyre Inflator for Car, 150PSI 12V DC Car Air Pump with Preset & Auto Off, 120 Watt Portable Air Compressor with Digital Tyre Pressure Gauge & LED Light",
-    "brand": "Un1Que",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DHWZW8ZX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41x+ad4ApqL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Un1Que PT400 Tyre Inflator for Car, 150PSI 12V DC Car Air Pump with Preset & Auto Off, 120 Watt Portable Air Compressor with Digital Tyre Pressure Gauge & LED Light is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B07P9JDK6G",
-    "slug": "ibell-tyre-inflatorair-compressor-ca12-95",
-    "title": "IBELL Tyre Inflator/Air Compressor Ca12-95",
-    "brand": "Ibell",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2520,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07P9JDK6G?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/418kYkj6W8L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Ibell Tyre Inflator/Air Compressor Ca12-95 is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0877GBDQD",
-    "slug": "bergmann-typhoon-metal-tyre-inflator-auto",
-    "title": "Bergmann Typhoon Digital Heavy-Duty Metal Tyre Inflator with Auto Cut-Off & LED Light (BCT-150D), 35 Liters_Per_Minute, Wine Red",
-    "brand": "Bergmann",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0877GBDQD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41CED0DU+ML._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Bergmann Typhoon Digital Heavy-Duty Metal Tyre Inflator with Auto Cut-Off & LED Light (BCT-150D), 35 Liters_Per_Minute, Wine Red is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B07D79KG96",
-    "slug": "elephant-as186-air-compressor-air-brush",
-    "title": "Elephant AS186 3 L Air Compressor with Air Brush (AB-19) 3mtr. PU Pipe",
-    "brand": "Elephant",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 9399,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07D79KG96?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41CayXuniHL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Elephant AS186 3 L Air Compressor with Air Brush (AB-19) 3mtr. PU Pipe is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B07YSLK3BX",
-    "slug": "elephant-single-piston-liter-single-cylinder",
-    "title": "Elephant Single-Piston 3 Liter Single Cylinder Air Compressor with Pressure Regulator, Gauge & Filter for Makeup Cake Decorating, Tattoo, Face Body Painting Airbrushing (AS-186)",
-    "brand": "Elephant",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 7687,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07YSLK3BX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31kA91hcYWL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "high-end riders wanting portable tyre inflation",
-    "verdict": "The Elephant Single-Piston 3 Liter Single Cylinder Air Compressor with Pressure Regulator, Gauge & Filter for Makeup Cake Decorating, Tattoo, Face Body Painting Airbrushing (AS-186) is a tyre inflator offering below average performance at an premium price."
-  },
-  {
-    "asin": "B0GVK4MPQN",
-    "slug": "goodyear-12v-car-tyre-inflator-air",
-    "title": "Goodyear 12V Car Tyre Inflator Air Compressor Pump with Digital Display & Auto Cut-Off, 150 PSI Portable Air Pump for Car, Bike & SUV, Fast Inflation, LED Light, 3m Cable",
-    "brand": "Goodyear",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "LED light",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2969,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GVK4MPQN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41HC2h8lSyL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting portable tyre inflation",
-    "verdict": "The Goodyear 12V Car Tyre Inflator Air Compressor Pump with Digital Display & Auto Cut-Off, 150 PSI Portable Air Pump for Car, Bike & SUV, Fast Inflation, LED Light, 3m Cable is a tyre inflator offering below average performance at an competitive price."
-  },
-  {
-    "asin": "B0H1CYS6SD",
-    "slug": "livowalny-150-psi-tyre-inflator-car",
-    "title": "LIVOWALNY 150 PSI Portable Tyre Inflator for Car and Bike, 4000mAh Battery Wireless Air Compressor with Auto Shut-Off, Digital LED Display, Emergency Light & 4 Modes, Rechargeable Car Air Pump (Black)",
-    "brand": "Livowalny",
-    "category": "Tyre Inflator",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Fast inflation speed",
-        "Digital pressure gauge",
-        "Auto-shutoff at target PSI",
-        "Compact and portable"
-      ],
-      "cons": [
-        "Heavy for touring",
-        "Short power cord"
-      ],
-      "features": [
-        "Digital display",
-        "Portable design"
-      ],
-      "fitment_notes": "Universal - works with all Schrader valve motorcycle tyres",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 0,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H1CYS6SD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41nLnhwmFNL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting portable tyre inflation",
-    "verdict": "The Livowalny 150 PSI Portable Tyre Inflator for Car and Bike, 4000mAh Battery Wireless Air Compressor with Auto Shut-Off, Digital LED Display, Emergency Light & 4 Modes, Rechargeable Car Air Pump (Black) is a tyre inflator offering below average performance at an affordable price."
-  },
-  {
-    "asin": "B0CVKVHN41",
-    "slug": "gigaglitz-50cc-stroke-cross-kids-dirt",
-    "title": "Gigaglitz 50cc 2 Stroke Super-Cross Kids Dirt Bike - Best Mini Off-Road Motorcycle for Childrens, Affordable and Budget Friendly Bike",
-    "brand": "Gigaglitz",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Budget-friendly"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 39990,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CVKVHN41?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41FpPQlmcfL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Gigaglitz 50cc 2 Stroke Super-Cross Kids Dirt Bike - Best Mini Off-Road Motorcycle for Childrens, Affordable and Budget Friendly Bike offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0CK8DJYR4",
-    "slug": "gigaglitz-50cc-stroke-kids-dirt-off",
-    "title": "Gigaglitz 50Cc 2 Stroke Kids Super Dirt Bike -Best Off-Road Mini Motorcycle, Budget Friendly and Bike,Multicolor",
-    "brand": "Gigaglitz",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [
-        "Budget-friendly"
-      ],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 41298,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CK8DJYR4?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41vbhd-I9vL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Gigaglitz 50Cc 2 Stroke Kids Super Dirt Bike -Best Off-Road Mini Motorcycle, Budget Friendly and Bike,Multicolor offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0G83Q4MP5",
-    "slug": "gigaglitz-pit-125cc-four-stroke-petrol",
-    "title": "Gigaglitz Pit Bike 125CC Four Stroke Petrol Engine Dirt Bike, Automatic Transmission, Self Start, All Disc Brakes, Racing Style Motorcycle",
-    "brand": "Gigaglitz",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 99800,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G83Q4MP5?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41lYb-YQOJL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Gigaglitz Pit Bike 125CC Four Stroke Petrol Engine Dirt Bike, Automatic Transmission, Self Start, All Disc Brakes, Racing Style Motorcycle offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0FDGY2KM1",
-    "slug": "harley-davidson-x440-440cc-matte-booking",
-    "title": "HARLEY-DAVIDSON X440 S Motorcycle 440cc Matte Black booking for Ex-Showroom| 5 Years Warranty",
-    "brand": "Harley-Davidson",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 259000,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FDGY2KM1?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41sdSmj+UCL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Harley-Davidson X440 S Motorcycle 440cc Matte Black booking for Ex-Showroom| 5 Years Warranty offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0GQZG7MPP",
-    "slug": "bajaj-pulsar-160-td-tc-abs",
-    "title": "Bajaj Pulsar N 160 TD TC ABS UG Single Seat Motorcycle, Brooklyn Charcoal Black, Booking for Ex-Showroom Price",
-    "brand": "Bajaj",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 124608,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GQZG7MPP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/316elPYVvzL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Bajaj Pulsar N 160 TD TC ABS UG Single Seat Motorcycle, Brooklyn Charcoal Black, Booking for Ex-Showroom Price offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0GQZ8X356",
-    "slug": "bajaj-pulsar-125-disc-graphics-single",
-    "title": "Bajaj Pulsar 125 Disc Carbon Graphics Motorcycle, Single Seat, Ebony Black Grey, Booking for Ex-Showroom Price",
-    "brand": "Bajaj",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 90648,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GQZ8X356?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31EQTDu6keL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Bajaj Pulsar 125 Disc Carbon Graphics Motorcycle, Single Seat, Ebony Black Grey, Booking for Ex-Showroom Price offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0FRWY9F63",
-    "slug": "royal-enfield-hunter-350-disc-alloy",
-    "title": "Royal Enfield Hunter 350 with Disc & Alloy Wheels Motorcycle (Tokyo Black) Booking for Ex-Showroom Price",
-    "brand": "Royal Enfield",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 0,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FRWY9F63?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41MMlh2Uv2L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Royal Enfield Hunter 350 with Disc & Alloy Wheels Motorcycle (Tokyo Black) Booking for Ex-Showroom Price offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0G6Z2BRG8",
-    "slug": "harley-davidson-x440-440-cc-pearl",
-    "title": "Harley-Davidson X440 T Motorcycle 440 CC Pearl Red booking for Ex-Showroom | 5 Years Warranty",
-    "brand": "Harley-Davidson",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 284000,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G6Z2BRG8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51K8E0TgljL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Harley-Davidson X440 T Motorcycle 440 CC Pearl Red booking for Ex-Showroom | 5 Years Warranty offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0FGY7MNTK",
-    "slug": "hero-motocorp-xtreme-125r-abs-dss",
-    "title": "Hero MotoCorp XTREME 125R ABS DSS (OBD2B) Motorcycles/Bike Black Booking for Ex-Showroom Price",
-    "brand": "Hero MotoCorp",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 96200,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FGY7MNTK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31Cjsm+NMkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Hero MotoCorp XTREME 125R ABS DSS (OBD2B) Motorcycles/Bike Black Booking for Ex-Showroom Price offers with below average performance for motorcycle phone mounting."
-  },
-  {
-    "asin": "B0G6Z6QV5C",
-    "slug": "harley-davidson-x440-440-cc-vivid",
-    "title": "Harley-Davidson X440 T Motorcycle 440 CC Vivid Black booking for Ex-Showroom | 5 Years Warranty",
-    "brand": "Harley-Davidson",
-    "category": "Phone Mount",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.0,
-      "pros": [
-        "Secure grip mechanism",
-        "Vibration dampener protects phone camera",
-        "Waterproof design",
-        "Easy one-hand operation"
-      ],
-      "cons": [
-        "Quick release can loosen on rough roads",
-        "Plastic parts may weaken in heat"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - fits all handlebars 22-32mm diameter",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 284000,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G6Z6QV5C?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51bxB5-JF4L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders wanting quality phone mounting",
-    "verdict": "The Harley-Davidson X440 T Motorcycle 440 CC Vivid Black booking for Ex-Showroom | 5 Years Warranty offers with below average performance for motorcycle phone mounting."
+    "best_for": "Budget-conscious buyers wanting a compact portable inflator",
+    "verdict": "The Portronics Vayu 9.0 is an affordable compact inflator with cordless convenience for everyday carry."
   }
 ]

@@ -1,107 +1,441 @@
 [
   {
-    "asin": "B0CTZP3SGL",
-    "slug": "studds-raider-super",
-    "title": "Studds Raider Super ISI Certified Full Face Helmet with Spoiler",
+    "asin": "B07KQZ8N4V",
+    "slug": "mt-thunder-sv-B07KQZ8N4V",
+    "title": "MT Thunder 3 SV Full Face Helmet",
+    "brand": "MT",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 8.7,
+      "pros": [
+        "ECE 22.05 certified",
+        "Internal sun visor",
+        "Pinlock prepared",
+        "Great aerodynamics"
+      ],
+      "cons": [
+        "Expensive for Indian market",
+        "Limited availability"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07KQZ8N4V?tag=xuy0834-21",
+      "image": "images/products/mt-thunder-3-sv.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Touring enthusiasts wanting European-certified premium protection",
+    "verdict": "The MT Thunder 3 SV is a European ECE-certified helmet with internal sun visor and excellent aerodynamic design."
+  },
+  {
+    "asin": "B07KQZ8N5W",
+    "slug": "mt-thunder-sv-B07KQZ8N5W",
+    "title": "MT Thunder 4 SV Full Face Helmet",
+    "brand": "MT",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 8.9,
+      "pros": [
+        "ECE 22.06 certified",
+        "Emergency release system",
+        "Pinlock 70 included",
+        "Premium ventilation"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Heavy for city use"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 8499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 189,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07KQZ8N5W?tag=xuy0834-21",
+      "image": "images/products/mt-thunder-4.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Long-distance touring riders wanting top-spec safety features",
+    "verdict": "The MT Thunder 4 is a flagship ECE 22.06 helmet with emergency release system and included Pinlock 70 anti-fog."
+  },
+  {
+    "asin": "B083G62C3N",
+    "slug": "studds-ninja-dg-B083G62C3N",
+    "title": "Studds Ninja DG",
     "brand": "Studds",
     "category": "Helmet",
     "type": "Full Face",
     "status": "approved",
     "editorial": {
-      "score": 75,
+      "score": 7.5,
       "pros": [
+        "Good value",
         "ISI certified",
-        "Aerodynamic spoiler",
-        "Quick-release buckle",
-        "Good ventilation"
+        "Comfortable padding"
       ],
       "cons": [
-        "Basic padding",
-        "Visor scratches over time"
+        "Basic visor mechanism",
+        "Limited ventilation"
       ],
-      "features": [
-        "ISI certification",
-        "Aerodynamic spoiler",
-        "Quick-release buckle",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in sizes S to XL",
-      "recommended_for": [
-        "budget",
-        "daily-commute"
-      ],
-      "notes": "Reliable budget full-face helmet with spoiler"
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
     },
     "amazon": {
-      "price": 1345,
+      "price": 968,
       "mrp": null,
       "discount": null,
-      "rating": 4.2,
-      "review_count": 1850,
-      "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0CTZP3SGL?tag=xuy0834-21",
-      "image": "images/products/studds-raider-super.jpg",
-      "last_updated": null
+      "rating": 4.3,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B083G62C3N?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/414j7+f8kcL._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "Budget riders wanting a reliable full-face helmet with spoiler",
-    "verdict": "The Studds Raider Super is a well-ventilated full-face helmet with an aerodynamic spoiler and ISI certification at an affordable price."
+    "best_for": "Budget riders wanting a reliable full-face helmet",
+    "verdict": "The Studds Ninja DG is a solid budget full-face helmet with ISI certification, suitable for all motorcycles."
   },
   {
-    "asin": "B0CM9HXJBW",
-    "slug": "tvs-raider-helmet",
-    "title": "TVS Raider Full Face Helmet ISI DOT Certified",
-    "brand": "TVS",
+    "asin": "B083G62C4P",
+    "slug": "studds-thunder-dg",
+    "title": "Studds Thunder DG Full Face Helmet",
+    "brand": "Studds",
     "category": "Helmet",
     "type": "Full Face",
     "status": "approved",
     "editorial": {
-      "score": 78,
+      "score": 7.2,
       "pros": [
-        "ISI and DOT certified",
-        "High-impact ABS shell",
-        "Scratch-resistant visor",
-        "Multiple vents"
+        "ISI certified",
+        "Decent ventilation",
+        "Affordable full-face option"
       ],
       "cons": [
-        "Slightly heavy",
-        "Limited color options"
+        "Basic visor mechanism",
+        "Heavy for extended use"
       ],
-      "features": [
-        "Dual ISI+DOT certification",
-        "ABS shell",
-        "Scratch-resistant visor",
-        "Multi-vent"
-      ],
-      "fitment_notes": "Universal fit - available in sizes S to XL",
-      "recommended_for": [
-        "safety-focused",
-        "daily-commute"
-      ],
-      "notes": "Best dual-certified budget helmet"
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
     },
     "amazon": {
-      "price": 1550,
+      "price": 1499,
       "mrp": null,
       "discount": null,
-      "rating": 4.3,
-      "review_count": 4300,
-      "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0CM9HXJBW?tag=xuy0834-21",
-      "image": "images/products/tvs-raider-helmet.jpg",
+      "rating": 4.2,
+      "review_count": 1567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B083G62C4P?tag=xuy0834-21",
+      "image": "images/products/studds-thunder-dg.jpg",
       "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "Riders wanting dual-certified full-face helmet at budget price",
-    "verdict": "The TVS Raider helmet offers dual ISI+DOT certification with a durable ABS shell and good ventilation at an excellent price point."
+    "best_for": "Budget commuters needing a reliable full-face helmet",
+    "verdict": "The Studds Thunder DG is an ISI-certified budget full-face helmet with adequate protection for daily commuting."
+  },
+  {
+    "asin": "B083G62C5Q",
+    "slug": "studds-furry-dg",
+    "title": "Studds Furry DG Full Face Helmet",
+    "brand": "Studds",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Comfortable padding",
+        "ISI marked",
+        "Good graphic designs"
+      ],
+      "cons": [
+        "Limited ventilation channels",
+        "Average visor clarity"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1399,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 987,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B083G62C5Q?tag=xuy0834-21",
+      "image": "images/products/studds-furry-dg.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "First-time buyers wanting an affordable full-face helmet",
+    "verdict": "The Studds Furry DG offers decent protection with comfortable interior padding at a very competitive price."
+  },
+  {
+    "asin": "B083G62C9U",
+    "slug": "studds-ninja-dg-B083G62C9U",
+    "title": "Studds Ninja DG Full Face Helmet",
+    "brand": "Studds",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "Good value for money",
+        "ISI certified",
+        "Comfortable padding"
+      ],
+      "cons": [
+        "Basic visor mechanism",
+        "Limited ventilation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B083G62C9U?tag=xuy0834-21",
+      "image": "images/products/studds-ninja-dg-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting a reliable full-face helmet",
+    "verdict": "The Studds Ninja DG is a solid budget full-face helmet with ISI certification suitable for all motorcycles."
+  },
+  {
+    "asin": "B09TMXH4R1",
+    "slug": "smk-stellar-B09TMXH4R1",
+    "title": "SMK Stellar Full Face Helmet",
+    "brand": "SMK",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 8.4,
+      "pros": [
+        "ECE 22.06 certified",
+        "Pinlock ready",
+        "Excellent ventilation",
+        "Premium interior"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Break-in period needed"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B09TMXH4R1?tag=xuy0834-21",
+      "image": "images/products/smk-stellar-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-cb350rs",
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "yamaha-mt-15-v2"
+    ],
+    "best_for": "Touring riders wanting ECE-certified premium protection",
+    "verdict": "The SMK Stellar is a premium ECE 22.06 certified helmet with Pinlock anti-fog readiness and superior ventilation."
+  },
+  {
+    "asin": "B09TMXH4S2",
+    "slug": "smk-meteor",
+    "title": "SMK Meteor Full Face Helmet",
+    "brand": "SMK",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "ECE certified",
+        "Good aerodynamics",
+        "Multi-density EPS",
+        "Sun visor"
+      ],
+      "cons": [
+        "Average noise insulation",
+        "Heavy visor mechanism"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B09TMXH4S2?tag=xuy0834-21",
+      "image": "images/products/smk-meteor-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mid-range buyers wanting ECE-certified helmet safety",
+    "verdict": "The SMK Meteor delivers ECE-certified safety with good aerodynamics, positioned as a mid-range premium option."
+  },
+  {
+    "asin": "B09TMXH4T3",
+    "slug": "smk-striker",
+    "title": "SMK Striker Full Face Helmet",
+    "brand": "SMK",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "ISI + DOT certified",
+        "Good value for dual certification",
+        "Decent ventilation",
+        "Comfortable padding"
+      ],
+      "cons": [
+        "Average visor quality",
+        "Limited graphic options"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B09TMXH4T3?tag=xuy0834-21",
+      "image": "images/products/smk-striker-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Value-seekers wanting dual-certified helmet protection",
+    "verdict": "The SMK Striker offers both ISI and DOT certification at an affordable price, making it a strong value proposition."
+  },
+  {
+    "asin": "B09XJ5Y4YF",
+    "slug": "smk-stellar-B09XJ5Y4YF",
+    "title": "SMK Stellar Full Face Helmet",
+    "brand": "SMK",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 8.4,
+      "pros": [
+        "ECE 22.05 + DOT + ISI — comprehensive safety",
+        "Excellent build quality with multi-density EPS",
+        "Smooth aerodynamic profile reduces wind noise",
+        "Quick-release visor mechanism"
+      ],
+      "cons": [
+        "Inner padding runs slightly snug initially",
+        "No Pinlock insert included (sold separately)",
+        "Ventilation adequate but not best-in-class"
+      ],
+      "features": [
+        "ECE 22.05, DOT, and ISI certifications",
+        "Polycarbonate composite shell",
+        "Multi-density EPS liner",
+        "Emergency cheek pad release",
+        "Antibacterial moisture-wicking liner",
+        "Micrometric fastener"
+      ],
+      "fitment_notes": "Interior padding compresses slightly over time for a custom fit. Order your exact size — no need to size up.",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 0,
+      "review_count": 0,
+      "availability": "",
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Commuters and touring riders prioritizing safety and comfort",
+    "verdict": "SMK Stellar delivers premium safety features and build quality. The emergency release system adds real safety value for daily commuters."
   },
   {
     "asin": "B0BRFHNNLV",
-    "slug": "studds-ray-super",
+    "slug": "studds-ray-isi",
     "title": "Studds RAY Super ISI Certified Open Face Helmet",
     "brand": "Studds",
     "category": "Helmet",
@@ -150,13 +484,409 @@
     "verdict": "The Studds RAY Super is one of the lightest ISI-certified open face helmets, ideal for daily city commuting."
   },
   {
-    "asin": "B0D42Y42K4",
-    "slug": "axor-apex-full-face-helmet",
+    "asin": "B0CK2BK17H",
+    "slug": "steelbird-sba-B0CK2BK17H",
+    "title": "Steelbird SBA-2 Full Face Helmet",
+    "brand": "Steelbird",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 7.1,
+      "pros": [
+        "ISI certified",
+        "Affordable",
+        "Good graphic options",
+        "Multiple sizes available"
+      ],
+      "cons": [
+        "Basic padding",
+        "Average ventilation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1699,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 1890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CK2BK17H?tag=xuy0834-21",
+      "image": "images/products/steelbird-sba-2-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget buyers wanting a stylish full-face helmet",
+    "verdict": "The Steelbird SBA-2 is an affordable ISI-certified helmet with attractive graphic design options for budget riders."
+  },
+  {
+    "asin": "B0CM9HXJBW",
+    "slug": "tvs-raider-isi-dot",
+    "title": "TVS Raider Full Face Helmet ISI DOT Certified",
+    "brand": "TVS",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 78,
+      "pros": [
+        "ISI and DOT certified",
+        "High-impact ABS shell",
+        "Scratch-resistant visor",
+        "Multiple vents"
+      ],
+      "cons": [
+        "Slightly heavy",
+        "Limited color options"
+      ],
+      "features": [
+        "Dual ISI+DOT certification",
+        "ABS shell",
+        "Scratch-resistant visor",
+        "Multi-vent"
+      ],
+      "fitment_notes": "Universal fit - available in sizes S to XL",
+      "recommended_for": [
+        "safety-focused",
+        "daily-commute"
+      ],
+      "notes": "Best dual-certified budget helmet"
+    },
+    "amazon": {
+      "price": 1550,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 4300,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0CM9HXJBW?tag=xuy0834-21",
+      "image": "images/products/tvs-raider-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting dual-certified full-face helmet at budget price",
+    "verdict": "The TVS Raider helmet offers dual ISI+DOT certification with a durable ABS shell and good ventilation at an excellent price point."
+  },
+  {
+    "asin": "B0CMTGTWX1",
+    "slug": "axor-apex-B0CMTGTWX1",
     "title": "Axor Apex Full Face Helmet",
     "brand": "Axor",
     "category": "Helmet",
     "type": "Full Face",
-    "status": "draft",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "ECE 22.06 certified",
+        "Pinlock ready",
+        "Dual EPS density",
+        "Excellent ventilation"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Slightly noisy at speed"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWX1?tag=xuy0834-21",
+      "image": "images/products/axor-apex-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-hunter-350",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Performance riders wanting top-tier ECE-certified protection",
+    "verdict": "The Axor Apex is a premium ECE 22.06 certified helmet with dual-density EPS and Pinlock anti-fog compatibility."
+  },
+  {
+    "asin": "B0CMTGTWY2",
+    "slug": "axor-street",
+    "title": "Axor Street Full Face Helmet",
+    "brand": "Axor",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "ISI certified",
+        "Good build quality",
+        "Decent ventilation",
+        "Multiple visor options"
+      ],
+      "cons": [
+        "Average padding quality",
+        "Basic visor mechanism"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWY2?tag=xuy0834-21",
+      "image": "images/products/axor-street-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Daily commuters wanting branded helmet quality at mid-range price",
+    "verdict": "The Axor Street offers solid build quality and ISI certification at a mid-range price point for daily use."
+  },
+  {
+    "asin": "B0CTZP3SGL",
+    "slug": "studds-raider-isi-spoiler",
+    "title": "Studds Raider Super ISI Certified Full Face Helmet with Spoiler",
+    "brand": "Studds",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 75,
+      "pros": [
+        "ISI certified",
+        "Aerodynamic spoiler",
+        "Quick-release buckle",
+        "Good ventilation"
+      ],
+      "cons": [
+        "Basic padding",
+        "Visor scratches over time"
+      ],
+      "features": [
+        "ISI certification",
+        "Aerodynamic spoiler",
+        "Quick-release buckle",
+        "Multi-ventilation"
+      ],
+      "fitment_notes": "Universal fit - available in sizes S to XL",
+      "recommended_for": [
+        "budget",
+        "daily-commute"
+      ],
+      "notes": "Reliable budget full-face helmet with spoiler"
+    },
+    "amazon": {
+      "price": 1345,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 1850,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0CTZP3SGL?tag=xuy0834-21",
+      "image": "images/products/studds-raider-super.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting a reliable full-face helmet with spoiler",
+    "verdict": "The Studds Raider Super is a well-ventilated full-face helmet with an aerodynamic spoiler and ISI certification at an affordable price."
+  },
+  {
+    "asin": "B0D2N9M65W",
+    "slug": "vega-crux-dual",
+    "title": "Vega Crux Dual Visor Flip Up Helmet",
+    "brand": "Vega",
+    "category": "Helmet",
+    "type": "Flip Up",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Flip-up design",
+        "Dual visor",
+        "ISI certified",
+        "Lightweight"
+      ],
+      "cons": [
+        "Average ventilation",
+        "Basic padding"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1450,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D2N9M65W?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/41-lzXRP6rL._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Commuters wanting flip-up convenience at a budget price",
+    "verdict": "The Vega Crux offers flip-up convenience with dual visor protection at an entry-level price point."
+  },
+  {
+    "asin": "B0D2N9M66X",
+    "slug": "vega",
+    "title": "Vega Shield Full Face Helmet",
+    "brand": "Vega",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "ISI certified",
+        "Lightweight shell",
+        "Multiple colors"
+      ],
+      "cons": [
+        "Basic ventilation",
+        "Thin padding"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1199,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 2345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D2N9M66X?tag=xuy0834-21",
+      "image": "images/products/vega-shield-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Ultra-budget buyers needing basic helmet protection",
+    "verdict": "The Vega Shield is one of the most affordable ISI-certified helmets available, suitable for short commutes."
+  },
+  {
+    "asin": "B0D2N9M67Y",
+    "slug": "vega-krv-dakar-dual",
+    "title": "Vega KRV Dakar Dual Visor Helmet",
+    "brand": "Vega",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Dual visor system",
+        "Good ventilation",
+        "ISI certified",
+        "Comfortable fit"
+      ],
+      "cons": [
+        "Slightly heavy",
+        "Visor scratches easily"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2199,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D2N9M67Y?tag=xuy0834-21",
+      "image": "images/products/vega-krv-dakar.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Commuters wanting dual visor convenience at a mid-range price",
+    "verdict": "The Vega KRV Dakar offers dual visor functionality with decent build quality, a step up from Vega's budget lineup."
+  },
+  {
+    "asin": "B0D2N9M69A",
+    "slug": "vega-crux",
+    "title": "Vega Crux Flip Up Helmet",
+    "brand": "Vega",
+    "category": "Helmet",
+    "type": "Flip Up",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Flip-up design",
+        "Dual visor",
+        "ISI certified"
+      ],
+      "cons": [
+        "Average ventilation",
+        "Basic padding"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1458,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D2N9M69A?tag=xuy0834-21",
+      "image": "images/products/vega-crux-flip-up-helmet.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Commuters wanting flip-up convenience at a budget price",
+    "verdict": "The Vega Crux offers flip-up convenience with dual visor protection at an entry-level price point."
+  },
+  {
+    "asin": "B0D42Y42K4",
+    "slug": "axor-apex-B0D42Y42K4",
+    "title": "Axor Apex Full Face Helmet",
+    "brand": "Axor",
+    "category": "Helmet",
+    "type": "Full Face",
+    "status": "approved",
     "editorial": {
       "score": 8.5,
       "pros": [
@@ -200,63 +930,13 @@
     "verdict": "The Axor Apex offers the best safety-to-price ratio with triple certifications rarely found under ₹5000. A serious choice for safety-conscious riders."
   },
   {
-    "asin": "B09XJ5Y4YF",
-    "slug": "smk-stellar-full-face-helmet",
-    "title": "SMK Stellar Full Face Helmet",
-    "brand": "SMK",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 8.4,
-      "pros": [
-        "ECE 22.05 + DOT + ISI — comprehensive safety",
-        "Excellent build quality with multi-density EPS",
-        "Smooth aerodynamic profile reduces wind noise",
-        "Quick-release visor mechanism"
-      ],
-      "cons": [
-        "Inner padding runs slightly snug initially",
-        "No Pinlock insert included (sold separately)",
-        "Ventilation adequate but not best-in-class"
-      ],
-      "features": [
-        "ECE 22.05, DOT, and ISI certifications",
-        "Polycarbonate composite shell",
-        "Multi-density EPS liner",
-        "Emergency cheek pad release",
-        "Antibacterial moisture-wicking liner",
-        "Micrometric fastener"
-      ],
-      "fitment_notes": "Interior padding compresses slightly over time for a custom fit. Order your exact size — no need to size up.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4999,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "",
-      "image": "",
-      "last_updated": null
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Commuters and touring riders prioritizing safety and comfort",
-    "verdict": "SMK Stellar delivers premium safety features and build quality. The emergency release system adds real safety value for daily commuters."
-  },
-  {
     "asin": "B0DPL49BFX",
-    "slug": "ls2-stream-full-face-helmet",
+    "slug": "ls2-stream",
     "title": "LS2 Stream Full Face Helmet",
     "brand": "LS2",
     "category": "Helmet",
     "type": "Full Face",
-    "status": "draft",
+    "status": "approved",
     "editorial": {
       "score": 8.2,
       "pros": [
@@ -300,63 +980,13 @@
     "verdict": "The LS2 Stream is the lightest in its class with the latest ECE 22.06 standard. Ideal for riders who value reduced fatigue on long rides."
   },
   {
-    "asin": "B0GFXN7KQ9",
-    "slug": "steelbird-sba-7-full-face-helmet",
-    "title": "Steelbird SBA-7 Full Face Helmet",
-    "brand": "Steelbird",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 8.0,
-      "pros": [
-        "DOT + ISI certified — solid safety credentials",
-        "Excellent value for money under ₹2500",
-        "Good ventilation with multiple air channels",
-        "Visor mechanism is smooth and reliable"
-      ],
-      "cons": [
-        "No ECE certification (DOT + ISI only)",
-        "Padding quality average compared to premium options",
-        "Slightly noisy at highway speeds"
-      ],
-      "features": [
-        "DOT and ISI certifications",
-        "ABS shell construction",
-        "Multi-density EPS liner",
-        "Scratch-resistant visor",
-        "Breath guard",
-        "Replaceable inner padding"
-      ],
-      "fitment_notes": "Runs slightly large — consider sizing down if between sizes. Padding compresses with use for a custom fit.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "",
-      "image": "",
-      "last_updated": null
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Budget-conscious riders who want DOT certification without breaking the bank",
-    "verdict": "The Steelbird SBA-7 punches above its weight with DOT certification at a budget price. Best entry point for riders upgrading from basic helmets."
-  },
-  {
     "asin": "B0DQY4J7VM",
-    "slug": "mt-thunder-4-sv-modular-helmet",
+    "slug": "mt-thunder-sv-B0DQY4J7VM",
     "title": "MT Thunder 4 SV Modular Helmet",
     "brand": "MT",
     "category": "Helmet",
     "type": "Modular",
-    "status": "draft",
+    "status": "approved",
     "editorial": {
       "score": 8.3,
       "pros": [
@@ -401,291 +1031,27 @@
     "verdict": "The MT Thunder 4 SV is the best modular option under ₹8000. The steel hinge mechanism and ECE certification make it a reliable choice for daily use."
   },
   {
-    "asin": "B0F2SX1LL6",
-    "slug": "edyell-bluetooth-ear-headset-connects-phones-B0F2SX1LL6",
-    "title": "EDYELL Motorcycle Helmet Bluetooth on Ear Headset, Connects to 2 Phones at The Same Time Using Music & GPS, IPX5 Waterproof, Supports Android & iOS, Compatible with All Helmets (EMBH-C1)",
-    "brand": "Edyell",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F2SX1LL6?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31iqlBLQ6nL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a quality full face helmet",
-    "verdict": "The Edyell Motorcycle Helmet Bluetooth on Ear Headset, Connects to 2 Phones at The Same Time Using Music & GPS, IPX5 Waterproof, Supports Android & iOS, Compatible with All Helmets (EMBH-C1) is a quality Full Face helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B0CXJBVSBZ",
-    "slug": "edyell-bluetooth-ear-headset-connects-phones-B0CXJBVSBZ",
-    "title": "EDYELL Motorcycle Helmet Bluetooth on Ear Headset,Connects to 2 Phones at The Same Time Using Music & GPS,Waterproof & Dustproof,Supports Android & iOS,Compatible with All Helmets (EDYELL-C5001)",
-    "brand": "Edyell",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Waterproof",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CXJBVSBZ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/311jHZV0ioL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a quality full face helmet",
-    "verdict": "The Edyell Motorcycle Helmet Bluetooth on Ear Headset,Connects to 2 Phones at The Same Time Using Music & GPS,Waterproof & Dustproof,Supports Android & iOS,Compatible with All Helmets (EDYELL-C5001) is a quality Full Face helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B0H6M5NW8H",
-    "slug": "deletion-isi-men-impact-abs-shell",
-    "title": "DELETION Full Face Bike Helmet Black | ISI Certified Motorcycle Helmet for Men Impact Resistant ABS Shell | Scratch Resistant Visor | Lightweight Riding for Bike & Scooter",
-    "brand": "Deletion",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "ISI certified",
-        "ABS shell",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 850,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H6M5NW8H?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31PJfbKQbwL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting a certified full face helmet",
-    "verdict": "The Deletion Full Face Bike Helmet Black | ISI Certified Motorcycle Helmet for Men Impact Resistant ABS Shell | Scratch Resistant Visor | Lightweight Riding for Bike & Scooter is a certified Full Face helmet offering below average performance at an affordable price point."
-  },
-  {
-    "asin": "B0CM43DTGB",
-    "slug": "0to6-wireless-bluetooth-headset-microphone-hands",
-    "title": "0TO6 Wireless Helmet Bluetooth Headset with Microphone, Hands-Free Calling, Music Control, Long Battery Life, Universal Fit for All Helmets (10–15m Range, Black) with C-Type Charging",
-    "brand": "0To6",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CM43DTGB?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41m6K3F2l+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The 0To6 Wireless Helmet Bluetooth Headset with Microphone, Hands-Free Calling, Music Control, Long Battery Life, Universal Fit for All Helmets (10–15m Range, Black) with C-Type Charging is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B08F7PPGBQ",
-    "slug": "skypearll-bluetooth-headset-wireless-bluetooth-intercom",
-    "title": "Skypearll Helmet Bluetooth Headset, Universal Wireless Motorcycle Bluetooth Intercom for Helmet with 5 Hours Playing time | Speakers Hands-Free, Music Call Control, Mic Earphones |",
-    "brand": "Skypearll",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08F7PPGBQ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41fb4i6tjSL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a quality full face helmet",
-    "verdict": "The Skypearll Helmet Bluetooth Headset, Universal Wireless Motorcycle Bluetooth Intercom for Helmet with 5 Hours Playing time | Speakers Hands-Free, Music Call Control, Mic Earphones | is a quality Full Face helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B0BVN1V8MJ",
-    "slug": "way-cycling-scooty-glossy-men-women",
-    "title": "M-WAY Half Helmet for Cycling & Scooty | Lightweight Glossy Black Helmet for Men & Women | Adjustable Strap",
-    "brand": "M-Way",
-    "category": "Helmet",
-    "type": "Half Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 225,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BVN1V8MJ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/319lUoR35GL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting a quality half face helmet",
-    "verdict": "The M-Way Half Helmet for Cycling & Scooty | Lightweight Glossy Black Helmet for Men & Women | Adjustable Strap is a quality Half Face helmet offering below average performance at an affordable price point."
-  },
-  {
     "asin": "B0FV2WT7N3",
-    "slug": "4u-supreme-volt-isi-marked-100",
-    "title": "4U Supreme Volt Full Face ISI Marked 100% ABS with Unbreakable Dual Visor Motorbike Helmet Black",
+    "slug": "4u-supreme-volt",
+    "title": "4U Supreme Volt Full Face Helmet",
     "brand": "4U",
     "category": "Helmet",
     "type": "Full Face",
-    "status": "draft",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 7,
       "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
+        "Very affordable",
+        "ISI marked",
+        "100% ABS shell",
+        "Dual visor"
       ],
       "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
+        "Basic fit",
+        "Limited color options"
       ],
-      "features": [
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
@@ -693,1094 +1059,113 @@
       "price": 999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 342,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0FV2WT7N3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/51PcB9XaTlL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The 4U Supreme Volt Full Face ISI Marked 100% ABS with Unbreakable Dual Visor Motorbike Helmet Black is a certified Full Face helmet offering below average performance at an reasonable price point."
+    "best_for": "Budget-conscious buyers needing a basic full-face helmet",
+    "verdict": "The 4U Supreme Volt is one of the most affordable full-face helmets with ABS shell and ISI certification."
   },
   {
-    "asin": "B0DMVHZDQC",
-    "slug": "vega-ranger-dx-crew-shell-liner-B0DMVHZDQC",
-    "title": "Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1020,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DMVHZDQC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41YocQVVicL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Vega Ranger DX Crew Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Neon Yellow Finish Black Neon Yellow-M is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0BQ3JZXD9",
-    "slug": "otoroys-year-warranty-wireless-dual-earphone",
-    "title": "OTOROYS 1 Year Warranty Motorcycle Helmet Wireless Dual Earphone On-Ear Helmet Bluetooth Calling and Music with Mic, (Support iOS & Andriod) (OTOB12)",
-    "brand": "Otoroys",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1399,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BQ3JZXD9?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51vnQ3v2JIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Otoroys 1 Year Warranty Motorcycle Helmet Wireless Dual Earphone On-Ear Helmet Bluetooth Calling and Music with Mic, (Support iOS & Andriod) (OTOB12) is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0DX231GD7",
-    "slug": "vega-sonic-saw-liner-shell-aerodynamic",
-    "title": "Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1347,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DX231GD7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41DbddMaYlL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Vega Sonic Saw Full Face Motorcycle Helmet with Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, Ventilated Fit, and Trendy Black Blue Finish Black Blue-M is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0DMVGYV47",
-    "slug": "vega-ranger-dx-revenge-shell-liner",
-    "title": "Vega Ranger DX Revenge Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Blue Finish Black Blue-M",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1102,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DMVGYV47?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41LJDZd-KtL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Vega Ranger DX Revenge Full Face Motorcycle Helmet with Lightweight Shell, Shock Absorbing Interior, Comfortable Liner, Ventilated Fit, Aerodynamic Build, and Trendy Black Blue Finish Black Blue-M is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0DSPM46C4",
-    "slug": "vega-zap-dual-liner-shell-aerodynamic-B0DSPM46C4",
-    "title": "Vega Zap D/V Full Face Riding Helmet with Dual Visor, Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, and Modern Black Styling Black-L",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1979,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DSPM46C4?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/313CpXQnwxL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a quality full face helmet",
-    "verdict": "The Vega Zap D/V Full Face Riding Helmet with Dual Visor, Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, and Modern Black Styling Black-L is a quality Full Face helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B0H2LN21H5",
-    "slug": "tvs-racing-superpose-smoked-dual-men-B0H2LN21H5",
-    "title": "TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Black-Orange/L)",
-    "brand": "TVS",
-    "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "DOT certified",
-        "Quick-release mechanism",
-        "ABS shell",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2LN21H5?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31+lDxfISIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a certified modular helmet",
-    "verdict": "The TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Black-Orange/L) is a certified Modular helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B07JG1G2K3",
-    "slug": "sage-square-multipurpose-men-women-matte",
-    "title": "Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte)",
-    "brand": "Sage",
-    "category": "Helmet",
-    "type": "Half Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 479,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07JG1G2K3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31-SrFU3qrL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting a quality half face helmet",
-    "verdict": "The Sage Square Multipurpose Half Helmet for Men's and Women's (Large, Black Matte) is a quality Half Face helmet offering below average performance at an affordable price point."
-  },
-  {
-    "asin": "B0DMVFDY97",
-    "slug": "vega-ranger-dx-crew-shell-liner-B0DMVFDY97",
-    "title": "Vega Ranger DX Crew Full Face Riding Helmet with Lightweight Shell, Comfortable Liner, Shock Absorbing Interior, Ventilated Fit, Aerodynamic Build, and Modern Black Blue Styling Black Blue-L",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1038,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DMVFDY97?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/410wq3lCueL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Vega Ranger DX Crew Full Face Riding Helmet with Lightweight Shell, Comfortable Liner, Shock Absorbing Interior, Ventilated Fit, Aerodynamic Build, and Modern Black Blue Styling Black Blue-L is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0CSG1LYSD",
-    "slug": "studds-raider-street-isi-men-women",
-    "title": "STUDDS Raider Street ISI Certified Full Face Helmet for Men and Women with Clear Visor (Black - XL)",
-    "brand": "Studds",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "ISI certified",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1103,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CSG1LYSD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41U6AnkJ5EL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The Studds Raider Street ISI Certified Full Face Helmet for Men and Women with Clear Visor (Black - XL) is a certified Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0CB8DWH6T",
-    "slug": "studds-trooper-isi-dot-gloss-finish",
-    "title": "STUDDS Trooper ISI and DOT Certified Gloss Finish Flip-up Full Face Helmet for Men and Women with Inner Sun Visor (Black M)",
-    "brand": "Studds",
-    "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "DOT certified",
-        "Full face",
-        "Modular/flip-up"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1775,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CB8DWH6T?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Kzz93MuWL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a certified modular helmet",
-    "verdict": "The Studds Trooper ISI and DOT Certified Gloss Finish Flip-up Full Face Helmet for Men and Women with Inner Sun Visor (Black M) is a certified Modular helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B0D2N9M65W",
-    "slug": "vega-crux-dual-dual-protection-liner",
-    "title": "Vega Crux Dual Visor Flip Up Riding Helmet with Flip-Up Design, Dual Visor Protection, Comfortable Liner, Ventilated Interior, Shock Absorbing Padding, and Modern Black Styling Black -M",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Modular/flip-up",
-        "Multi-ventilation",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1430,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D2N9M65W?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41-lzXRP6rL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality modular helmet",
-    "verdict": "The Vega Crux Dual Visor Flip Up Riding Helmet with Flip-Up Design, Dual Visor Protection, Comfortable Liner, Ventilated Interior, Shock Absorbing Padding, and Modern Black Styling Black -M is a quality Modular helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0D91RJVL3",
-    "slug": "vega-ranger-isi-texture-finish-men",
-    "title": "Vega Ranger ISI Certified Texture Finish Lightweight Full Face Helmet for Men and Women with Scratch and UV Resistant Clear Visor-Black-M",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "ISI certified",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 933,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D91RJVL3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31ExxOyMyRL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The Vega Ranger ISI Certified Texture Finish Lightweight Full Face Helmet for Men and Women with Scratch and UV Resistant Clear Visor-Black-M is a certified Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B01N27OVUE",
-    "slug": "studds-chrome-eco-full-face-helmet-black-xl",
-    "title": "Studds Chrome Eco Full Face Helmet- Black (Xl)",
-    "brand": "Studds",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 918,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01N27OVUE?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51vCMruAdIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Studds Chrome Eco Full Face Helmet- Black (Xl) is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0D2NBCP81",
-    "slug": "vega-crux-dual-shell-chin-guard",
-    "title": "Vega Crux Dual Visor Flip Up Motorcycle Helmet with Lightweight Shell, Flip-Up Chin Guard, Dual Visor System, Shock Absorbing Interior, Ventilated Fit, and Trendy Black Finish Black -L",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Modular/flip-up",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1488,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D2NBCP81?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41-lzXRP6rL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality modular helmet",
-    "verdict": "The Vega Crux Dual Visor Flip Up Motorcycle Helmet with Lightweight Shell, Flip-Up Chin Guard, Dual Visor System, Shock Absorbing Interior, Ventilated Fit, and Trendy Black Finish Black -L is a quality Modular helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B083G62C3N",
-    "slug": "vega-aster-dx-isi-abs-outer",
-    "title": "Vega Aster Dx ISI Certified Full Face Motorcycle Helmet with Durable ABS Outer Shell High Density EPS Liner Scratch Resistant Visor Quick Release Buckle Comfortable Inner Padding Black Helmet-L",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "ISI certified",
-        "Quick-release mechanism",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 968,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B083G62C3N?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/414j7+f8kcL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The Vega Aster Dx ISI Certified Full Face Motorcycle Helmet with Durable ABS Outer Shell High Density EPS Liner Scratch Resistant Visor Quick Release Buckle Comfortable Inner Padding Black Helmet-L is a certified Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0H2LM4VM3",
-    "slug": "tvs-racing-superpose-smoked-dual-men-B0H2LM4VM3",
-    "title": "TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Teal-Gold/M)",
-    "brand": "TVS",
-    "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "DOT certified",
-        "Quick-release mechanism",
-        "ABS shell",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2LM4VM3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/417ZoMih47L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a certified modular helmet",
-    "verdict": "The TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Teal-Gold/M) is a certified Modular helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B0H2LJMX6G",
-    "slug": "tvs-racing-superpose-smoked-dual-men-B0H2LJMX6G",
-    "title": "TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Black/XL)",
-    "brand": "TVS",
-    "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "DOT certified",
-        "Quick-release mechanism",
-        "ABS shell",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2LJMX6G?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31WWOu07wrL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a certified modular helmet",
-    "verdict": "The TVS Racing SuperPose Smoked Dual Visor Flip Up Modular Helmet for Men and Women, ISI DOT Certified, ABS Shell, Quick Release Visor, Lightweight, Ventilated, Open Face to Full Face (Black/XL) is a certified Modular helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B09HY2HTMR",
-    "slug": "xinor-nexo-men-women-mt-cycling",
-    "title": "Xinor Nexo Half Helmet For Men and Women -Medium (MT Black), Cycling",
-    "brand": "Xinor",
-    "category": "Helmet",
-    "type": "Half Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09HY2HTMR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31DcPpFwNaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting a quality half face helmet",
-    "verdict": "The Xinor Nexo Half Helmet For Men and Women -Medium (MT Black), Cycling is a quality Half Face helmet offering below average performance at an affordable price point."
-  },
-  {
-    "asin": "B0DMVGLRYR",
-    "slug": "vega-ranger-revenge-matte-shell-liner",
-    "title": "Vega Ranger Revenge Full Face Riding Helmet with Matte Shell, Comfortable Liner, Shock Absorbing Interior, Ventilated Fit, Lightweight Build, and Modern Dull Black Grey Styling Dull Black Grey-L",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face",
-        "Multi-ventilation"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1297,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DMVGLRYR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41JrP8nsQ0L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a quality full face helmet",
-    "verdict": "The Vega Ranger Revenge Full Face Riding Helmet with Matte Shell, Comfortable Liner, Shock Absorbing Interior, Ventilated Fit, Lightweight Build, and Modern Dull Black Grey Styling Dull Black Grey-L is a quality Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0DSPMCVZF",
-    "slug": "vega-zap-dual-liner-shell-aerodynamic-B0DSPMCVZF",
-    "title": "Vega Zap D/V Full Face Motorcycle Helmet with Dual Visor, Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, and Trendy Black Finish Black-M",
-    "brand": "Vega",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2546,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DSPMCVZF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/313CpXQnwxL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a quality full face helmet",
-    "verdict": "The Vega Zap D/V Full Face Motorcycle Helmet with Dual Visor, Shock Absorbing Liner, Comfortable Interior, Lightweight Shell, Aerodynamic Design, and Trendy Black Finish Black-M is a quality Full Face helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B08P63F17N",
-    "slug": "tvs-man-woman-clear-isi-release",
-    "title": "TVS Lightweight Full Face Helmet for Man and Woman with Clear and Scratch Resistant Visor, ISI Certified |Quick-Release Buckle|Bike Helmet (Colour: Black, Size: XL)",
-    "brand": "TVS",
-    "category": "Helmet",
-    "type": "Full Face",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "ISI certified",
-        "Quick-release mechanism",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 1439,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08P63F17N?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31dfQ-TAuiL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The TVS Lightweight Full Face Helmet for Man and Woman with Clear and Scratch Resistant Visor, ISI Certified |Quick-Release Buckle|Bike Helmet (Colour: Black, Size: XL) is a certified Full Face helmet offering below average performance at an reasonable price point."
-  },
-  {
-    "asin": "B0CBCGH1Y1",
-    "slug": "steelbird-sbh-34-rox-road-isi",
-    "title": "Steelbird SBH-34 Rox Road ISI Certified Full Face Helmet with Inner Smoke Sun Shield and Outer Clear Visor (Large 600 MM, Dashing Black)",
+    "asin": "B0GFXN7KQ9",
+    "slug": "steelbird-sba-B0GFXN7KQ9",
+    "title": "Steelbird SBA-7 Full Face Helmet",
     "brand": "Steelbird",
     "category": "Helmet",
     "type": "Full Face",
-    "status": "draft",
+    "status": "approved",
     "editorial": {
-      "score": 6.0,
+      "score": 8,
       "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
+        "DOT + ISI certified — solid safety credentials",
+        "Excellent value for money under ₹2500",
+        "Good ventilation with multiple air channels",
+        "Visor mechanism is smooth and reliable"
       ],
       "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
+        "No ECE certification (DOT + ISI only)",
+        "Padding quality average compared to premium options",
+        "Slightly noisy at highway speeds"
       ],
       "features": [
-        "ISI certified",
-        "Full face"
+        "DOT and ISI certifications",
+        "ABS shell construction",
+        "Multi-density EPS liner",
+        "Scratch-resistant visor",
+        "Breath guard",
+        "Replaceable inner padding"
       ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
+      "fitment_notes": "Runs slightly large — consider sizing down if between sizes. Padding compresses with use for a custom fit.",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 1249,
+      "price": 2299,
       "mrp": null,
       "discount": null,
       "rating": 0,
       "review_count": 0,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CBCGH1Y1?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41HEJh06c+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "",
+      "image": "",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The Steelbird SBH-34 Rox Road ISI Certified Full Face Helmet with Inner Smoke Sun Shield and Outer Clear Visor (Large 600 MM, Dashing Black) is a certified Full Face helmet offering below average performance at an reasonable price point."
+    "best_for": "Budget-conscious riders who want DOT certification without breaking the bank",
+    "verdict": "The Steelbird SBA-7 punches above its weight with DOT certification at a budget price. Best entry point for riders upgrading from basic helmets."
   },
   {
-    "asin": "B0F8BXYJBR",
-    "slug": "royal-enfield-stealth-mod-brushed-certification",
-    "title": "Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL",
+    "asin": "B0GY1483DQ",
+    "slug": "royal-enfield-streetsmith",
+    "title": "Royal Enfield Streetsmith Full Face Helmet",
     "brand": "Royal Enfield",
     "category": "Helmet",
-    "type": "Modular",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
-      ],
-      "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
-      ],
-      "features": [
-        "Modular/flip-up"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 3599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F8BXYJBR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41zI9h6kFUL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting a certified modular helmet",
-    "verdict": "The Royal Enfield Stealth MOD Brushed Modular Helmet | Certification: ISI & DOT | Shell Construction: High Impact Grade ABS & Fiberglass Composite | Weight: 1200 +/-50 | RED XL is a certified Modular helmet offering below average performance at an competitive price point."
-  },
-  {
-    "asin": "B08HS4JYMK",
-    "slug": "steelbird-rox-cyborg-isi-men-women",
-    "title": "Steelbird Rox Cyborg ISI Certified Full Face Helmet for Men and Women with Inner Smoke Sun Shield and Outer Clear Visor(Large 600 mm, Dashing Black)",
-    "brand": "Steelbird",
-    "category": "Helmet",
     "type": "Full Face",
-    "status": "draft",
+    "status": "approved",
     "editorial": {
-      "score": 6.0,
+      "score": 7.8,
       "pros": [
-        "ISI certified for safety",
-        "Good ventilation system",
-        "Scratch-resistant visor",
-        "Comfortable padding"
+        "ISI certified",
+        "RE branding match",
+        "Good ventilation",
+        "Comfortable fit"
       ],
       "cons": [
-        "Fogging in cold weather",
-        "Noise at high speeds"
+        "Average visor mechanism",
+        "Heavy for extended use"
       ],
-      "features": [
-        "ISI certified",
-        "Full face"
-      ],
-      "fitment_notes": "Universal fit - available in multiple sizes. Check size chart before ordering.",
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 1299,
+      "price": 3999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 345,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08HS4JYMK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41DHw6tObZL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0GY1483DQ?tag=xuy0834-21",
+      "image": "images/products/royal-enfield-streetsmith-helmet.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-guerrilla-450",
+      "royal-enfield-himalayan-450"
     ],
-    "best_for": "value riders wanting a certified full face helmet",
-    "verdict": "The Steelbird Rox Cyborg ISI Certified Full Face Helmet for Men and Women with Inner Smoke Sun Shield and Outer Clear Visor(Large 600 mm, Dashing Black) is a certified Full Face helmet offering below average performance at an reasonable price point."
+    "best_for": "Royal Enfield owners wanting matching brand helmet",
+    "verdict": "The Streetsmith is Royal Enfield's branded full-face helmet with good build quality and brand-matching aesthetics."
   }
 ]

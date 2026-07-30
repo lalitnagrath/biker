@@ -1,0 +1,4838 @@
+[
+  {
+    "asin": "B07KQZ8N6X",
+    "slug": "tcx-street-shoes",
+    "title": "TCX Street 3 Riding Shoes",
+    "brand": "TCX",
+    "category": "Shoes",
+    "type": "Urban",
+    "status": "approved",
+    "editorial": {
+      "score": 8.7,
+      "pros": [
+        "Premium build quality",
+        "CE certified",
+        "Excellent ankle protection",
+        "Comfortable"
+      ],
+      "cons": [
+        "Very expensive",
+        "Heavy for walking"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07KQZ8N6X?tag=xuy0834-21",
+      "image": "images/products/tcx-street-3-shoes.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Premium buyers wanting CE-certified urban riding shoes",
+    "verdict": "The TCX Street 3 is a premium CE-certified riding shoe with excellent ankle protection and build quality."
+  },
+  {
+    "asin": "B083G62C7S",
+    "slug": "studds-drift-rain-suit",
+    "title": "Studds Drift Rain Suit",
+    "brand": "Studds",
+    "category": "Rain Gear",
+    "type": "Full Suit",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Lightweight",
+        "Compact storage",
+        "Multiple sizes"
+      ],
+      "cons": [
+        "Basic waterproofing",
+        "Average durability"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B083G62C7S?tag=xuy0834-21",
+      "image": "images/products/studds-drift-rain-suit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Ultra-budget commuters needing lightweight rain protection",
+    "verdict": "The Studds Drift is an ultra-affordable lightweight rain suit for budget-conscious daily commuters."
+  },
+  {
+    "asin": "B0B7R9T8P6",
+    "slug": "viaterra-gravity",
+    "title": "Viaterra Gravity Riding Pants",
+    "brand": "Viaterra",
+    "category": "Pants",
+    "type": "Textile",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "CE certified armor",
+        "Good airflow",
+        "Affordable for features"
+      ],
+      "cons": [
+        "Average build quality",
+        "Limited sizing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 178,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0B7R9T8P6?tag=xuy0834-21",
+      "image": "images/products/viaterra-gravity-pants.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting CE-certified textile pants",
+    "verdict": "The Viaterra Gravity offers CE certification with decent airflow at an affordable price point for touring."
+  },
+  {
+    "asin": "B0CJF2QRNM",
+    "slug": "philips-ultinon-h4-led-headlight",
+    "title": "Philips Ultinon Pro H4 LED Headlight",
+    "brand": "Philips",
+    "category": "LED Headlight",
+    "type": "H4",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "6500K daylight white color",
+        "Up to 160% brighter than halogen",
+        "Fanless compact design"
+      ],
+      "cons": [
+        "Expensive for single bulb",
+        "Requires proper beam alignment"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 2345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJF2QRNM?tag=xuy0834-21",
+      "image": "images/products/philips-ultinon-pro-h4.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Riders wanting the best brand-name LED headlight upgrade",
+    "verdict": "The Philips Ultinon Pro H4 delivers up to 160% more brightness with Philips quality and 6500K white light."
+  },
+  {
+    "asin": "B0CJL2QRPN",
+    "slug": "zana-bash-plate-royal-enfield-himalayan",
+    "title": "Zana Bash Plate for Royal Enfield Himalayan",
+    "brand": "Zana",
+    "category": "Bash Plate",
+    "type": "Aluminum",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "5mm thick aluminum",
+        "Direct bolt-on fit",
+        "Covers engine and exhaust header"
+      ],
+      "cons": [
+        "Only fits specific models",
+        "Adds weight"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJL2QRPN?tag=xuy0834-21",
+      "image": "images/products/zana-bash-plate.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-classic-350",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Royal Enfield Himalayan owners wanting robust engine protection for off-road use",
+    "verdict": "The Zana bash plate is a 5mm aluminum shield providing excellent engine and header protection for Himalayan riders."
+  },
+  {
+    "asin": "B0CJN3QLPZ",
+    "slug": "hella-500-series-fog-lights",
+    "title": "Hella 500 Series Fog Lights",
+    "brand": "Hella",
+    "category": "Fog Lights",
+    "type": "Auxiliary",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "German brand reliability",
+        "Wide fog beam pattern",
+        "Durable housing"
+      ],
+      "cons": [
+        "Requires separate relay wiring",
+        "Mounting bracket sold separately"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 1876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJN3QLPZ?tag=xuy0834-21",
+      "image": "images/products/hella-500-series.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Touring riders wanting reliable German fog lights for poor visibility conditions",
+    "verdict": "The Hella 500 Series is the benchmark auxiliary fog light with a wide beam pattern and German reliability."
+  },
+  {
+    "asin": "B0CJQ4RPLN",
+    "slug": "rizoma-spy-rearview-mirror",
+    "title": "Rizoma Spy-R Rearview Mirror",
+    "brand": "Rizoma",
+    "category": "Mirrors",
+    "type": "Bar-end",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "Italian CNC-machined aluminum",
+        "Wide viewing angle",
+        "Anti-vibration damping"
+      ],
+      "cons": [
+        "Very expensive for India",
+        "Bar-end only fitment"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 14999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJQ4RPLN?tag=xuy0834-21",
+      "image": "images/products/rizoma-spy-r-mirror.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-hunter-350",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "yamaha-mt-15-v2"
+    ],
+    "best_for": "Premium riders wanting the best-looking bar-end mirrors available",
+    "verdict": "The Rizoma Spy-R is a CNC-machined Italian masterpiece offering premium aesthetics and wide visibility."
+  },
+  {
+    "asin": "B0CJR5RQPL",
+    "slug": "puig-racing-rearview-mirrors",
+    "title": "Puig Racing Rearview Mirrors",
+    "brand": "Puig",
+    "category": "Mirrors",
+    "type": "Stock Replacement",
+    "status": "approved",
+    "editorial": {
+      "score": 8.4,
+      "pros": [
+        "Spanish racing heritage",
+        "Aerodynamic mirror housing",
+        "Anti-vibration system"
+      ],
+      "cons": [
+        "Very expensive",
+        "Sport-oriented design not for all bikes"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 9999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 654,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJR5RQPL?tag=xuy0834-21",
+      "image": "images/products/puig-racing-mirrors.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Sport and touring riders wanting aerodynamic racing-grade mirrors",
+    "verdict": "The Puig Racing mirrors bring Spanish racing heritage with aerodynamic housing and anti-vibration technology."
+  },
+  {
+    "asin": "B0CJR8PLQW",
+    "slug": "sw-motech-bash-plate-ktm-390",
+    "title": "SW-Motech Bash Plate for KTM 390",
+    "brand": "SW-Motech",
+    "category": "Bash Plate",
+    "type": "Aluminum",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "German engineering quality",
+        "6mm aluminum alloy",
+        "Integrated air channeling"
+      ],
+      "cons": [
+        "Very expensive",
+        "Complex installation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 8499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 654,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJR8PLQW?tag=xuy0834-21",
+      "image": "images/products/sw-motech-bash-plate.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke"
+    ],
+    "best_for": "KTM and Dominar owners wanting premium German-engineered underbody protection",
+    "verdict": "The SW-Motech bash plate delivers German engineering with integrated air channeling for optimal engine cooling."
+  },
+  {
+    "asin": "B0CMTGTWZ6",
+    "slug": "axor-apex-B0CMTGTWZ6",
+    "title": "Axor Apex Riding Pants",
+    "brand": "Axor",
+    "category": "Pants",
+    "type": "Textile",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "CE Level 2 knee armor",
+        "Good ventilation",
+        "Multiple pockets"
+      ],
+      "cons": [
+        "Average fit",
+        "Limited rain protection"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWZ6?tag=xuy0834-21",
+      "image": "images/products/axor-apex-pants.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mid-range riders wanting CE-certified textile pants",
+    "verdict": "The Axor Apex pants deliver CE Level 2 knee armor with decent ventilation for mid-range touring applications."
+  },
+  {
+    "asin": "B0CMTGTWZ7",
+    "slug": "axor-street-shoes",
+    "title": "Axor Street Riding Shoes",
+    "brand": "Axor",
+    "category": "Shoes",
+    "type": "Urban",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Ankle protection",
+        "Casual look",
+        "Oil-resistant sole",
+        "Comfortable"
+      ],
+      "cons": [
+        "Expensive",
+        "Limited weather protection"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWZ7?tag=xuy0834-21",
+      "image": "images/products/axor-street-shoes.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Urban riders wanting stylish riding shoes with ankle protection",
+    "verdict": "The Axor Street combines casual style with riding protection, ideal for urban commuting with ankle safety."
+  },
+  {
+    "asin": "B0D2N9M68Z",
+    "slug": "vega-rain-suit",
+    "title": "Vega Waterproof Rain Suit",
+    "brand": "Vega",
+    "category": "Rain Gear",
+    "type": "Full Suit",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Very affordable",
+        "Waterproof",
+        "Compact",
+        "Multiple sizes"
+      ],
+      "cons": [
+        "Average durability",
+        "Basic seam sealing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D2N9M68Z?tag=xuy0834-21",
+      "image": "images/products/vega-waterproof-rain-suit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget commuters needing basic waterproof rain protection",
+    "verdict": "The Vega Waterproof Rain Suit is an ultra-affordable option for basic rain protection during daily commutes."
+  },
+  {
+    "asin": "B0D4F7G8J3",
+    "slug": "spartan-nexus-B0D4F7G8J3",
+    "title": "Spartan Nexus Pro Riding Pants",
+    "brand": "Spartan",
+    "category": "Pants",
+    "type": "Textile",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Affordable CE certification",
+        "Good knee protection",
+        "Adjustable fit"
+      ],
+      "cons": [
+        "Average ventilation",
+        "Limited durability"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 156,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D4F7G8J3?tag=xuy0834-21",
+      "image": "images/products/spartan-nexus-pro-pants.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting basic CE-certified riding pants",
+    "verdict": "The Spartan Nexus Pro offers affordable CE-certified knee protection for budget-conscious touring riders."
+  },
+  {
+    "asin": "B0D4F7G8K4",
+    "slug": "spartan-storm-rain-suit",
+    "title": "Spartan Storm Rain Suit",
+    "brand": "Spartan",
+    "category": "Rain Gear",
+    "type": "Full Suit",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "Good waterproofing",
+        "Sealed seams",
+        "Reflective elements",
+        "Compact"
+      ],
+      "cons": [
+        "Average breathability",
+        "Slightly heavy"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D4F7G8K4?tag=xuy0834-21",
+      "image": "images/products/spartan-storm-rain-suit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mid-range riders wanting reliable rain protection with safety features",
+    "verdict": "The Spartan Storm offers good waterproofing with sealed seams and reflective elements for mid-range rain protection."
+  },
+  {
+    "asin": "B0D8Q7MJWN",
+    "slug": "gub-usb-charger",
+    "title": "GUB USB Motorcycle Charger",
+    "brand": "GUB",
+    "category": "USB Charger",
+    "type": "Single Port",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Waterproof cap",
+        "LED charge indicator",
+        "Easy handlebar mount"
+      ],
+      "cons": [
+        "Single USB-A port only",
+        "No fast charging"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D8Q7MJWN?tag=xuy0834-21",
+      "image": "images/products/gub-usb-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Basic phone charging needs while riding",
+    "verdict": "The GUB USB Charger is a simple, waterproof single-port solution for basic on-the-go phone charging."
+  },
+  {
+    "asin": "B0DKQ5PRMK",
+    "slug": "hella-led-h4-headlight-bulb",
+    "title": "Hella LED H4 Headlight Bulb",
+    "brand": "Hella",
+    "category": "LED Headlight",
+    "type": "H4",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "German automotive brand",
+        "Precise beam pattern",
+        "ECE R112 compliant"
+      ],
+      "cons": [
+        "Very expensive",
+        "Requires H4 adapter ring"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 987,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DKQ5PRMK?tag=xuy0834-21",
+      "image": "images/products/hella-led-h4.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Riders wanting ECE-compliant LED headlight from a trusted German brand",
+    "verdict": "The Hella LED H4 offers German precision beam patterning with full ECE compliance for road legality."
+  },
+  {
+    "asin": "B0DKR3PQNM",
+    "slug": "shad-bash-plate-adventure-bikes",
+    "title": "SHAD Bash Plate for Adventure Bikes",
+    "brand": "SHAD",
+    "category": "Bash Plate",
+    "type": "Aluminum",
+    "status": "approved",
+    "editorial": {
+      "score": 8.4,
+      "pros": [
+        "Premium 6mm aluminum",
+        "Wider coverage area",
+        "Powder-coated finish"
+      ],
+      "cons": [
+        "Expensive",
+        "Heavy at 3.2kg"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DKR3PQNM?tag=xuy0834-21",
+      "image": "images/products/shad-bash-plate.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Adventure riders wanting premium wide-coverage engine protection",
+    "verdict": "The SHAD bash plate delivers premium 6mm aluminum protection with a durable powder-coated finish."
+  },
+  {
+    "asin": "B0DKS6PQHN",
+    "slug": "portronics-konnect-usb-charger",
+    "title": "Portronics Konnect L USB Charger",
+    "brand": "Portronics",
+    "category": "USB Charger",
+    "type": "Dual Port",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Very affordable dual port",
+        "LED indicator light",
+        "Overcurrent protection"
+      ],
+      "cons": [
+        "Average water resistance",
+        "Plastic body may crack in heat"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 549,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 2345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DKS6PQHN?tag=xuy0834-21",
+      "image": "images/products/portronics-konnect-l.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget-conscious riders wanting dual-port charging at minimal cost",
+    "verdict": "The Portronics Konnect L is the most affordable dual-port charger with overcurrent protection for everyday use."
+  },
+  {
+    "asin": "B0DKT7PQRN",
+    "slug": "philips-ultinon-pro3100-fog-bulbs",
+    "title": "Philips Ultinon Pro3100 Fog Light Bulbs",
+    "brand": "Philips",
+    "category": "Fog Lights",
+    "type": "Bulb",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "3000K warm white ideal for fog",
+        "Philips quality assurance",
+        "Plug-and-play H8/H11 fit"
+      ],
+      "cons": [
+        "Halogen not LED",
+        "Not as bright as LED alternatives"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DKT7PQRN?tag=xuy0834-21",
+      "image": "images/products/philips-ultinon-pro3100.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Riders wanting warm-tone fog bulbs from a trusted brand",
+    "verdict": "The Philips Ultinon Pro3100 delivers 3000K warm white light ideal for fog conditions with Philips reliability."
+  },
+  {
+    "asin": "B0DRL2KVQM",
+    "slug": "autologue-usb-charger-motorcycles",
+    "title": "Autologue USB Charger for Motorcycles",
+    "brand": "Autologue",
+    "category": "USB Charger",
+    "type": "Single Port",
+    "status": "approved",
+    "editorial": {
+      "score": 7.1,
+      "pros": [
+        "OEM-style fit for RE bikes",
+        "Fuse-protected circuit",
+        "Budget-friendly"
+      ],
+      "cons": [
+        "Single port only",
+        "Basic build quality"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 649,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 654,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DRL2KVQM?tag=xuy0834-21",
+      "image": "images/products/autologue-usb-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-hness-cb350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Royal Enfield owners wanting a clean OEM-style USB charging solution",
+    "verdict": "The Autologue USB Charger offers fuse-protected charging with an OEM-style fit for Royal Enfield motorcycles."
+  },
+  {
+    "asin": "B0DST6MJPL",
+    "slug": "autologue-bash-plate-350",
+    "title": "Autologue Bash Plate for Classic 350",
+    "brand": "Autologue",
+    "category": "Bash Plate",
+    "type": "Steel",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Budget steel construction",
+        "Easy bolt-on fit",
+        "Covers engine sump"
+      ],
+      "cons": [
+        "Steel prone to rust without coating",
+        "Thinner than aluminum alternatives"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DST6MJPL?tag=xuy0834-21",
+      "image": "images/products/autologue-bash-plate.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Royal Enfield Classic/Bullet owners on a budget wanting basic engine protection",
+    "verdict": "The Autologue bash plate offers affordable steel construction with easy bolt-on installation for Royal Enfield classics."
+  },
+  {
+    "asin": "B0DTM4KJRN",
+    "slug": "amkette-motocharge-usb-charger",
+    "title": "Amkette MotoCharge USB Charger",
+    "brand": "Amkette",
+    "category": "USB Charger",
+    "type": "Single Port",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "2.4A fast output",
+        "Waterproof rubber cap",
+        "Sleek compact design"
+      ],
+      "cons": [
+        "Single port only",
+        "Slightly higher price for single port"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 1567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DTM4KJRN?tag=xuy0834-21",
+      "image": "images/products/amkette-usb-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting fast single-port charging with a waterproof design",
+    "verdict": "The Amkette MotoCharge delivers 2.4A fast charging through a waterproof cap in a sleek compact package."
+  },
+  {
+    "asin": "B0DTP6NQJR",
+    "slug": "osram-night-breaker-h4-led",
+    "title": "Osram Night Breaker H4 LED",
+    "brand": "Osram",
+    "category": "LED Headlight",
+    "type": "H4",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Up to 200m beam range",
+        "German engineering",
+        "Canbus compatible"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Slight warm-up time"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DTP6NQJR?tag=xuy0834-21",
+      "image": "images/products/osram-led-h4.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-cb350rs",
+      "royal-enfield-classic-350",
+      "tvs-apache-rtr-200-4v"
+    ],
+    "best_for": "Highway riders wanting maximum beam range and canbus compatibility",
+    "verdict": "The Osram Night Breaker H4 delivers up to 200m beam range with canbus compatibility for error-free operation."
+  },
+  {
+    "asin": "B0DVQ2MPRN",
+    "slug": "novsight-h4-led-headlight-bulb",
+    "title": "Novsight H4 LED Headlight Bulb",
+    "brand": "Novsight",
+    "category": "LED Headlight",
+    "type": "H4",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "30000 lumens output",
+        "Built-in cooling fan",
+        "Affordable for lumen output"
+      ],
+      "cons": [
+        "May cause glare if misaligned",
+        "Fan noise at idle"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 3456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DVQ2MPRN?tag=xuy0834-21",
+      "image": "images/products/novsight-h4-led.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Budget riders wanting high lumen output at an affordable price",
+    "verdict": "The Novsight H4 LED packs 30000 lumens with a cooling fan at a fraction of premium brand pricing."
+  },
+  {
+    "asin": "B0DVX6NPQL",
+    "slug": "auxbeam-f16-led-fog-lights",
+    "title": "Auxbeam F16 LED Fog Lights",
+    "brand": "Auxbeam",
+    "category": "Fog Lights",
+    "type": "Auxiliary",
+    "status": "approved",
+    "editorial": {
+      "score": 7.4,
+      "pros": [
+        "Budget-friendly auxiliary LED",
+        "Waterproof IP67",
+        "Includes mounting bracket"
+      ],
+      "cons": [
+        "Average beam quality",
+        "Heat dissipation mediocre"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DVX6NPQL?tag=xuy0834-21",
+      "image": "images/products/auxbeam-f16-led.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "royal-enfield-hunter-350",
+      "royal-enfield-classic-350",
+      "tvs-apache-rtr-200-4v"
+    ],
+    "best_for": "Budget riders wanting auxiliary LED fog lights without premium pricing",
+    "verdict": "The Auxbeam F16 offers budget LED fog lights with IP67 waterproofing and included mounting hardware."
+  },
+  {
+    "asin": "B0DWK3MRSJ",
+    "slug": "beamtech-h4-led-headlight-50w",
+    "title": "Beamtech H4 LED Headlight 50W",
+    "brand": "Beamtech",
+    "category": "LED Headlight",
+    "type": "H4",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Cheapest H4 LED option",
+        "No fanless design heat issues",
+        "CSP chips"
+      ],
+      "cons": [
+        "Lower build quality",
+        "Inconsistent beam pattern"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 2134,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DWK3MRSJ?tag=xuy0834-21",
+      "image": "images/products/beamtech-h4-led.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-cb350rs",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Entry-level buyers trying LED headlights for the first time",
+    "verdict": "The Beamtech H4 is the most affordable LED headlight option, good for first-time LED upgraders."
+  },
+  {
+    "asin": "B0DWL2NQSM",
+    "slug": "cnc-racing-bar-end-mirrors",
+    "title": "CNC Racing Universal Bar-end Mirrors",
+    "brand": "CNC Racing",
+    "category": "Mirrors",
+    "type": "Bar-end",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "CNC aluminum construction",
+        "Universal bar-end fit",
+        "Affordable for CNC quality"
+      ],
+      "cons": [
+        "Mirror glass vibrates at high speed",
+        "Average adjustment range"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DWL2NQSM?tag=xuy0834-21",
+      "image": "images/products/cnc-racing-mirrors.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-cb350rs",
+      "royal-enfield-hunter-350",
+      "royal-enfield-classic-350",
+      "yamaha-mt-15-v2"
+    ],
+    "best_for": "Budget riders wanting CNC aluminum bar-end mirrors without Rizoma pricing",
+    "verdict": "CNC Racing mirrors offer machined aluminum construction at a fraction of premium Italian mirror prices."
+  },
+  {
+    "asin": "B0DWM5MRSJ",
+    "slug": "lamin-fog-protective-covers",
+    "title": "Lamin-x Fog Light Protective Covers",
+    "brand": "Lamin-x",
+    "category": "Fog Lights",
+    "type": "Cover",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Protects fog lights from stone chips",
+        "Tinted options available",
+        "Easy peel-and-stick application"
+      ],
+      "cons": [
+        "Not a light itself",
+        "May reduce light output slightly"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 1567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DWM5MRSJ?tag=xuy0834-21",
+      "image": "images/products/laminx-fog-light-covers.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Riders wanting to protect their fog light lenses from debris",
+    "verdict": "Lamin-x covers protect fog light lenses from chips and scratches with easy peel-and-stick application."
+  },
+  {
+    "asin": "B0DWQ4NTRJ",
+    "slug": "rally-raid-products-guard",
+    "title": "Rally Raid Products Engine Guard",
+    "brand": "Rally Raid Products",
+    "category": "Bash Plate",
+    "type": "Aluminum",
+    "status": "approved",
+    "editorial": {
+      "score": 8.7,
+      "pros": [
+        "Heavy-duty rally-spec protection",
+        "8mm thick aluminum",
+        "Full underbody coverage"
+      ],
+      "cons": [
+        "Very expensive",
+        "Fits Himalayan only"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DWQ4NTRJ?tag=xuy0834-21",
+      "image": "images/products/rally-raid-products-bash-plate.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Himalayan riders doing serious rally and off-road riding",
+    "verdict": "The Rally Raid Products engine guard is rally-spec 8mm aluminum offering maximum underbody protection."
+  },
+  {
+    "asin": "B0DWR4MQTK",
+    "slug": "baja-designs-squadron-sport-fog-lights",
+    "title": "Baja Designs Squadron Sport Fog Lights",
+    "brand": "Baja Designs",
+    "category": "Fog Lights",
+    "type": "Auxiliary",
+    "status": "approved",
+    "editorial": {
+      "score": 8.7,
+      "pros": [
+        "American rally-grade quality",
+        "Amber and white options",
+        "CREE LED technology"
+      ],
+      "cons": [
+        "Very expensive for Indian market",
+        "Overkill for city riding"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 12999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 432,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DWR4MQTK?tag=xuy0834-21",
+      "image": "images/products/baja-designs-squadron.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Adventure riders wanting rally-grade auxiliary lighting",
+    "verdict": "The Baja Designs Squadron Sport is rally-grade American auxiliary lighting with CREE LED technology."
+  },
+  {
+    "asin": "B0DXN5MQSL",
+    "slug": "kewlhouse-cnc-bar-end-mirrors",
+    "title": "Kewlhouse CNC Bar-end Mirrors",
+    "brand": "Kewlhouse",
+    "category": "Mirrors",
+    "type": "Bar-end",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Budget CNC bar-end mirrors",
+        "Wide convex glass",
+        "Lightweight design"
+      ],
+      "cons": [
+        "Average build quality",
+        "Bar clamp may slip"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 987,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DXN5MQSL?tag=xuy0834-21",
+      "image": "images/products/kewlhouse-mirrors.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-cb350rs",
+      "royal-enfield-hunter-350",
+      "royal-enfield-classic-350",
+      "yamaha-mt-15-v2"
+    ],
+    "best_for": "Budget riders wanting the bar-end mirror look without premium pricing",
+    "verdict": "Kewlhouse bar-end mirrors offer wide convex glass at the most affordable CNC bar-end price point."
+  },
+  {
+    "asin": "B0DXY8QPMT",
+    "slug": "oxgord-mirrors",
+    "title": "OxGord Universal Motorcycle Mirrors",
+    "brand": "OxGord",
+    "category": "Mirrors",
+    "type": "Stock Replacement",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Universal M8 thread fit",
+        "Shatter-resistant glass",
+        "Affordable pair pricing"
+      ],
+      "cons": [
+        "Basic appearance",
+        "Vibration at highway speeds"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 3456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DXY8QPMT?tag=xuy0834-21",
+      "image": "images/products/oxgord-mirrors.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Replacement mirror seekers on a budget with universal M8 thread compatibility",
+    "verdict": "OxGord mirrors are affordable shatter-resistant replacements with universal M8 thread compatibility."
+  },
+  {
+    "asin": "B0E5H6I7J4",
+    "slug": "orazo-road-star-shoes",
+    "title": "Orazo Road Star Riding Shoes",
+    "brand": "Orazo",
+    "category": "Shoes",
+    "type": "Touring",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Ankle protection",
+        "Oil-resistant sole",
+        "Comfortable for long rides"
+      ],
+      "cons": [
+        "Heavy for walking",
+        "Break-in period needed"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0E5H6I7J4?tag=xuy0834-21",
+      "image": "images/products/orazo-road-star-shoes.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders wanting ankle-protected riding shoes",
+    "verdict": "The Orazo Road Star offers solid ankle protection with oil-resistant sole for comfortable long-distance touring."
+  },
+  {
+    "asin": "B0E5H6I7K5",
+    "slug": "orazo-hurricane-shoes",
+    "title": "Orazo Hurricane Riding Shoes",
+    "brand": "Orazo",
+    "category": "Shoes",
+    "type": "Touring",
+    "status": "approved",
+    "editorial": {
+      "score": 7.4,
+      "pros": [
+        "Waterproof",
+        "Good ankle support",
+        "Oil-resistant sole"
+      ],
+      "cons": [
+        "Heavy",
+        "Average ventilation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0E5H6I7K5?tag=xuy0834-21",
+      "image": "images/products/orazo-hurricane-shoes.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "All-weather riders wanting waterproof riding shoes",
+    "verdict": "The Orazo Hurricane is a waterproof riding shoe with good ankle support for all-weather touring conditions."
+  },
+  {
+    "asin": "B0E5H6I7L6",
+    "slug": "scala-torino-shoes",
+    "title": "Scala Torino Riding Shoes",
+    "brand": "Scala",
+    "category": "Shoes",
+    "type": "Urban",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Affordable",
+        "Ankle protection",
+        "Lightweight",
+        "Casual design"
+      ],
+      "cons": [
+        "Average durability",
+        "Limited weather resistance"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 189,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0E5H6I7L6?tag=xuy0834-21",
+      "image": "images/products/scala-torino-shoes.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget urban riders wanting lightweight ankle-protected shoes",
+    "verdict": "The Scala Torino is an affordable lightweight riding shoe with ankle protection for casual urban use."
+  },
+  {
+    "asin": "B0E5H6I7M7",
+    "slug": "axe-rain-suit",
+    "title": "Axe Motorcycle Rain Suit",
+    "brand": "Axe",
+    "category": "Rain Gear",
+    "type": "Full Suit",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Affordable",
+        "Good waterproofing",
+        "Ventilation holes",
+        "Easy to wear over gear"
+      ],
+      "cons": [
+        "Average seam sealing",
+        "Limited durability"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0E5H6I7M7?tag=xuy0834-21",
+      "image": "images/products/axe-motorcycle-rain-suit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting reliable rain protection with ventilation",
+    "verdict": "The Axe Rain Suit offers good waterproofing with ventilation holes at an affordable price for regular rain protection."
+  },
+  {
+    "asin": "B0F6RNLQHM",
+    "slug": "gub-dual-usb-charger",
+    "title": "GUB Dual USB Motorcycle Charger",
+    "brand": "GUB",
+    "category": "USB Charger",
+    "type": "Dual Port",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Two USB-A ports",
+        "3.1A total output",
+        "Waterproof and dustproof cap"
+      ],
+      "cons": [
+        "No USB-C port",
+        "Bulkier than single-port version"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1099,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0F6RNLQHM?tag=xuy0834-21",
+      "image": "images/products/gub-dual-usb-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders needing to charge two devices simultaneously",
+    "verdict": "The GUB Dual USB Charger offers two ports with 3.1A total output for charging phone and camera together."
+  },
+  {
+    "asin": "B0F7STNRQP",
+    "slug": "cardo-usb-charger-motorcycles",
+    "title": "Cardo USB-C Fast Charger for Motorcycles",
+    "brand": "Cardo",
+    "category": "USB Charger",
+    "type": "Dual Port",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "USB-C and USB-A combo",
+        "PD fast charging support",
+        "IP67 waterproof rating"
+      ],
+      "cons": [
+        "Expensive for category",
+        "USB-C cable not included"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0F7STNRQP?tag=xuy0834-21",
+      "image": "images/products/cardo-usb-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Tech-savvy riders wanting modern USB-C fast charging on the go",
+    "verdict": "The Cardo USB-C charger brings modern PD fast charging and IP67 waterproofing to motorcycle use."
+  },
+  {
+    "asin": "B0FCY8FBKI",
+    "slug": "rynox-airtex",
+    "title": "Rynox Airtex 3 Riding Pants",
+    "brand": "Rynox",
+    "category": "Pants",
+    "type": "Mesh",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "CE Level 2 knee armor",
+        "Excellent airflow",
+        "Adjustable fit"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Limited color options"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKI?tag=xuy0834-21",
+      "image": "images/products/rynox-airtex-3-pants.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders wanting CE-certified mesh pants for hot climate",
+    "verdict": "The Rynox Airtex 3 delivers CE Level 2 knee armor with excellent airflow for hot climate touring."
+  },
+  {
+    "asin": "B0FCY8FBKJ",
+    "slug": "rynox-raid",
+    "title": "Rynox Raid Riding Pants",
+    "brand": "Rynox",
+    "category": "Pants",
+    "type": "Textile",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "CE Level 2 armor",
+        "All-weather capable",
+        "Multiple adjustment points"
+      ],
+      "cons": [
+        "Heavy for summer",
+        "Expensive"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 189,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKJ?tag=xuy0834-21",
+      "image": "images/products/rynox-raid-pants.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Adventure touring riders wanting all-weather CE-certified pants",
+    "verdict": "The Rynox Raid offers CE Level 2 armor with all-weather capability for serious adventure touring riders."
+  },
+  {
+    "asin": "B0FCY8FBKK",
+    "slug": "rynox-rain-ranger-rain-suit",
+    "title": "Rynox Rain Ranger Rain Suit",
+    "brand": "Rynox",
+    "category": "Rain Gear",
+    "type": "Full Suit",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "100% waterproof",
+        "Sealed seams",
+        "Reflective strips",
+        "Compact storage bag"
+      ],
+      "cons": [
+        "Heavy for summer",
+        "Average breathability"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKK?tag=xuy0834-21",
+      "image": "images/products/rynox-rain-ranger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders needing reliable waterproof rain protection",
+    "verdict": "The Rynox Rain Ranger offers 100% waterproof protection with sealed seams and reflective strips for safety."
+  },
+  {
+    "asin": "B0H2A2B3C5",
+    "slug": "protaper-pillow-grips",
+    "title": "ProTaper Pillow Top Grips",
+    "brand": "ProTaper",
+    "category": "Handle Grip",
+    "type": "Rubber Compound",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Excellent vibration dampening",
+        "Dual compound rubber",
+        "Comfortable for long rides"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Slightly soft for aggressive riding"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H2A2B3C5?tag=xuy0834-21",
+      "image": "images/products/protaper-pillow-tops-grips.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders wanting maximum vibration dampening handlebar grips",
+    "verdict": "The ProTaper Pillow Tops are premium dual-compound grips with exceptional vibration dampening for comfortable long-distance touring."
+  },
+  {
+    "asin": "B0H2D5E6F8",
+    "slug": "protaper-waffle-grips",
+    "title": "ProTaper Half Waffle Grips",
+    "brand": "ProTaper",
+    "category": "Handle Grip",
+    "type": "Waffle Pattern",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Superior grip in wet conditions",
+        "Durable rubber compound",
+        "Classic waffle texture"
+      ],
+      "cons": [
+        "May be too aggressive for touring",
+        "Wears faster than pillow tops"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1099,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H2D5E6F8?tag=xuy0834-21",
+      "image": "images/products/protaper-half-waffle-grips.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Off-road and sport riders wanting maximum grip in all conditions",
+    "verdict": "The ProTaper Half Waffle grips offer superior wet-weather grip with their classic waffle pattern, ideal for off-road and sport riding."
+  },
+  {
+    "asin": "B0H2G8H9I1",
+    "slug": "renthal-dual-compound-grips",
+    "title": "Renthal Dual Compound Grips",
+    "brand": "Renthal",
+    "category": "Handle Grip",
+    "type": "Dual Compound",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Race-proven compound",
+        "Excellent durability",
+        "Lightweight aluminum core"
+      ],
+      "cons": [
+        "Limited color options",
+        "Firm feel not for everyone"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1199,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H2G8H9I1?tag=xuy0834-21",
+      "image": "images/products/renthal-dual-compound-grips.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Performance riders wanting race-proven dual compound grips",
+    "verdict": "Renthal Dual Compound Grips feature a race-proven rubber compound with lightweight aluminum core for consistent performance feel."
+  },
+  {
+    "asin": "B0H2J1K2L4",
+    "slug": "domino-grips-xtp",
+    "title": "Domino Grips XTP",
+    "brand": "Domino",
+    "category": "Handle Grip",
+    "type": "Race Compound",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Italian racing heritage",
+        "Soft compound for grip",
+        "Affordable premium option"
+      ],
+      "cons": [
+        "Wears quickly with heavy use",
+        "Limited vibration dampening"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H2J1K2L4?tag=xuy0834-21",
+      "image": "images/products/domino-grips-xtp.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Sport riders wanting Italian-made race compound grips at a reasonable price",
+    "verdict": "Domino XTP grips bring Italian racing heritage with a soft compound that delivers excellent grip at an accessible price point."
+  },
+  {
+    "asin": "B0H2M4N5O7",
+    "slug": "barkbusters-handguards-grips",
+    "title": "Barkbusters Handguards with Grips",
+    "brand": "Barkbusters",
+    "category": "Handle Grip",
+    "type": "Handguard Combo",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "Aluminum backbone protection",
+        "Wind and weather guards",
+        "Included grips"
+      ],
+      "cons": [
+        "Expensive",
+        "Model-specific mounting hardware"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H2M4N5O7?tag=xuy0834-21",
+      "image": "images/products/barkbusters-handguards-grips.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Adventure and touring riders wanting comprehensive hand protection with grips",
+    "verdict": "Barkbusters handguards combine aluminum backbone crash protection with wind deflectors and included grips for complete hand coverage."
+  },
+  {
+    "asin": "B0H3A2B3C6",
+    "slug": "protaper-bar-risers-inch-B0H3A2B3C6",
+    "title": "ProTaper Bar Risers 1 inch",
+    "brand": "ProTaper",
+    "category": "Handlebar Riser",
+    "type": "1 inch Rise",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "CNC machined aluminum",
+        "1 inch raise for comfort",
+        "Universal clamp fit"
+      ],
+      "cons": [
+        "May need longer cables",
+        "Limited to 1 inch rise"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H3A2B3C6?tag=xuy0834-21",
+      "image": "images/products/protaper-bar-risers-1-inch.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting a subtle handlebar raise for better ergonomics",
+    "verdict": "ProTaper 1 inch risers provide a modest handlebar raise with CNC-machined aluminum construction for improved riding posture."
+  },
+  {
+    "asin": "B0H3D5E6F9",
+    "slug": "protaper-bar-risers-inch-B0H3D5E6F9",
+    "title": "ProTaper Bar Risers 1.5 inch",
+    "brand": "ProTaper",
+    "category": "Handlebar Riser",
+    "type": "1.5 inch Rise",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Generous 1.5 inch raise",
+        "High-strength aluminum",
+        "Anti-vibration design"
+      ],
+      "cons": [
+        "Requires cable check",
+        "Heavier than 1 inch version"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H3D5E6F9?tag=xuy0834-21",
+      "image": "images/products/protaper-bar-risers-1-5-inch.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Tall riders needing more significant handlebar height increase",
+    "verdict": "The ProTaper 1.5 inch risers offer a more generous height increase for taller riders seeking improved upright riding position."
+  },
+  {
+    "asin": "B0H3G8H9I2",
+    "slug": "rox-risers-inch",
+    "title": "Rox Risers 2 inch",
+    "brand": "Rox",
+    "category": "Handlebar Riser",
+    "type": "2 inch Rise",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Premium American brand",
+        "2 inch height increase",
+        "Adjustable angle"
+      ],
+      "cons": [
+        "Expensive",
+        "Cable routing may need attention"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H3G8H9I2?tag=xuy0834-21",
+      "image": "images/products/rox-risers-2-inch.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-hness-cb350",
+      "royal-enfield-classic-350",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Touring riders wanting significant handlebar raise with angle adjustment",
+    "verdict": "Rox Risers are premium American-made risers offering 2 inch raise with adjustable angle for customized touring ergonomics."
+  },
+  {
+    "asin": "B0H3J1K2L5",
+    "slug": "bikemaster-risers-25-inch",
+    "title": "BikeMaster Risers 1.25 inch",
+    "brand": "BikeMaster",
+    "category": "Handlebar Riser",
+    "type": "1.25 inch Rise",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Affordable",
+        "Solid steel construction",
+        "Easy bolt-on installation"
+      ],
+      "cons": [
+        "Basic finish quality",
+        "Limited angle adjustment"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H3J1K2L5?tag=xuy0834-21",
+      "image": "images/products/bikemaster-risers-1-25-inch.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting a basic handlebar raise",
+    "verdict": "BikeMaster Risers offer an affordable handlebar raise with solid steel construction for budget-conscious riders."
+  },
+  {
+    "asin": "B0H3M4N5O8",
+    "slug": "yana-shiki-risers-inch",
+    "title": "Yana Shiki Risers 1.5 inch",
+    "brand": "Yana Shiki",
+    "category": "Handlebar Riser",
+    "type": "1.5 inch Rise",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "Japanese quality",
+        "Anodized finish",
+        "Vibration damping"
+      ],
+      "cons": [
+        "Mid-range pricing",
+        "Limited color options"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H3M4N5O8?tag=xuy0834-21",
+      "image": "images/products/yana-shiki-risers-1-5-inch.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting quality Japanese-made risers with finish durability",
+    "verdict": "Yana Shiki Risers deliver Japanese build quality with anodized finish and built-in vibration damping for daily comfort."
+  },
+  {
+    "asin": "B0H4A2B3C7",
+    "slug": "pivot-pegz-mark",
+    "title": "Pivot Pegz Mark 3",
+    "brand": "Pivot Pegz",
+    "category": "Foot Pegs",
+    "type": "Pivoting Adventure",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "Pivoting design reduces fatigue",
+        "Stainless steel construction",
+        "Adjustable spring tension"
+      ],
+      "cons": [
+        "Very expensive",
+        "Requires specific mount adapters"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 8999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H4A2B3C7?tag=xuy0834-21",
+      "image": "images/products/pivot-pegz-mark-3.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Adventure riders wanting pivoting pegs that reduce leg fatigue on long tours",
+    "verdict": "The Pivot Pegz Mark 3 feature a revolutionary pivoting design that follows your ankle movement, drastically reducing fatigue on long rides."
+  },
+  {
+    "asin": "B0H4D5E6F0",
+    "slug": "fastway-footpegs-series",
+    "title": "Fastway Footpegs Pro Series",
+    "brand": "Fastway",
+    "category": "Foot Pegs",
+    "type": "Adventure Pro",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Wide platform for boots",
+        "Anti-vibration inserts",
+        "Hardened steel teeth"
+      ],
+      "cons": [
+        "Premium price point",
+        "Heavy-duty design adds weight"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H4D5E6F0?tag=xuy0834-21",
+      "image": "images/products/fastway-footpegs-pro-series.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Adventure and off-road riders wanting wide, grippy footpegs",
+    "verdict": "Fastway Pro Series pegs offer a wide toothed platform with anti-vibration inserts for confident standing riding on adventure bikes."
+  },
+  {
+    "asin": "B0H4G8H9I3",
+    "slug": "procycle-footpegs-adventure",
+    "title": "Procycle Footpegs Adventure",
+    "brand": "Procycle",
+    "category": "Foot Pegs",
+    "type": "Adventure",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Mid-range adventure pegs",
+        "Good grip teeth",
+        "Corrosion-resistant coating"
+      ],
+      "cons": [
+        "Average vibration dampening",
+        "Basic spring mechanism"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H4G8H9I3?tag=xuy0834-21",
+      "image": "images/products/procycle-footpegs-adventure.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Mid-budget adventure riders wanting better grip than stock pegs",
+    "verdict": "Procycle Adventure pegs offer a solid upgrade over stock with corrosion-resistant coating and aggressive grip teeth."
+  },
+  {
+    "asin": "B0H4J1K2L6",
+    "slug": "rc-engineering-footpegs",
+    "title": "RC Engineering Footpegs",
+    "brand": "RC Engineering",
+    "category": "Foot Pegs",
+    "type": "Sport",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "CNC machined aluminum",
+        "Lightweight design",
+        "Sport-oriented positioning"
+      ],
+      "cons": [
+        "Narrow platform",
+        "Not ideal for long touring"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 189,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H4J1K2L6?tag=xuy0834-21",
+      "image": "images/products/rc-engineering-footpegs.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Sport riders wanting lightweight CNC machined footpegs",
+    "verdict": "RC Engineering Footpegs deliver CNC machined lightweight aluminum construction with sport-oriented foot positioning."
+  },
+  {
+    "asin": "B0H4M4N5O9",
+    "slug": "tusk-adjustable-footpegs",
+    "title": "Tusk Adjustable Footpegs",
+    "brand": "Tusk",
+    "category": "Foot Pegs",
+    "type": "Adjustable Off-road",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Three-position adjustable",
+        "Wide toothed platform",
+        "Great value for features"
+      ],
+      "cons": [
+        "Average finish quality",
+        "Heavier than premium options"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H4M4N5O9?tag=xuy0834-21",
+      "image": "images/products/tusk-adjustable-footpegs.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Off-road riders wanting adjustable positioning at a reasonable price",
+    "verdict": "Tusk Adjustable Footpegs offer three-position adjustability with a wide toothed platform at an excellent value-for-money price point."
+  },
+  {
+    "asin": "B0H5A2B3C8",
+    "slug": "givi-windscreen-np4017",
+    "title": "Givi Windscreen NP4017",
+    "brand": "Givi",
+    "category": "Windscreen",
+    "type": "Touring",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Italian brand quality",
+        "Scratch-resistant coating",
+        "Improved wind deflection"
+      ],
+      "cons": [
+        "Model-specific fit",
+        "Premium pricing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H5A2B3C8?tag=xuy0834-21",
+      "image": "images/products/givi-windscreen-np4017.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Touring riders wanting Italian-made windscreen with superior wind protection",
+    "verdict": "The Givi NP4017 offers Italian build quality with scratch-resistant coating and excellent wind deflection for touring comfort."
+  },
+  {
+    "asin": "B0H5D5E6F1",
+    "slug": "mra-windscreen-vario",
+    "title": "MRA Windscreen Vario",
+    "brand": "MRA",
+    "category": "Windscreen",
+    "type": "Adjustable Touring",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Adjustable height and angle",
+        "German engineering",
+        "Optically correct shape"
+      ],
+      "cons": [
+        "Very expensive",
+        "Complex adjustment mechanism"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H5D5E6F1?tag=xuy0834-21",
+      "image": "images/products/mra-windscreen-vario.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "ktm-390-duke",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "Serious tourers wanting adjustable windscreen with German precision",
+    "verdict": "The MRA Vario is a premium German-engineered adjustable windscreen that lets you fine-tune height and angle for optimal wind protection."
+  },
+  {
+    "asin": "B0H5G8H9I4",
+    "slug": "puig-racing-screen-naked",
+    "title": "Puig Racing Screen Naked",
+    "brand": "Puig",
+    "category": "Windscreen",
+    "type": "Racing",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Aerodynamic design",
+        "Tinted screen option",
+        "Spanish brand quality"
+      ],
+      "cons": [
+        "Narrow coverage area",
+        "Sport-oriented not touring"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H5G8H9I4?tag=xuy0834-21",
+      "image": "images/products/puig-racing-screen-naked.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke",
+      "yamaha-mt-15-v2"
+    ],
+    "best_for": "Naked bike riders wanting aerodynamic wind deflection with sport styling",
+    "verdict": "Puig Racing Screen brings aerodynamic Spanish-designed wind deflection specifically tailored for naked motorcycles."
+  },
+  {
+    "asin": "B0H5J1K2L7",
+    "slug": "national-cycle-windscreen",
+    "title": "National Cycle Windscreen",
+    "brand": "National Cycle",
+    "category": "Windscreen",
+    "type": "Touring",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "American brand legacy",
+        "F8 hardcoated surface",
+        "Easy installation"
+      ],
+      "cons": [
+        "Average height options",
+        "Limited to specific models"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H5J1K2L7?tag=xuy0834-21",
+      "image": "images/products/national-cycle-windscreen.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-hness-cb350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Classic bike owners wanting a touring windscreen with American build quality",
+    "verdict": "National Cycle Windscreen brings American manufacturing legacy with F8 hardcoated scratch-resistant surface for classic touring."
+  },
+  {
+    "asin": "B0H5M4N5O0",
+    "slug": "zero-gravity-windscreen-sr1",
+    "title": "Zero Gravity Windscreen SR1",
+    "brand": "Zero Gravity",
+    "category": "Windscreen",
+    "type": "Sport Touring",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "Premium Japanese quality",
+        "Optically correct curvature",
+        "Multiple tint options"
+      ],
+      "cons": [
+        "Very expensive",
+        "Sport-oriented height"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 8499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H5M4N5O0?tag=xuy0834-21",
+      "image": "images/products/zero-gravity-windscreen-sr1.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Sport touring riders wanting premium Japanese windscreen with optical clarity",
+    "verdict": "Zero Gravity SR1 delivers premium Japanese-engineered optical clarity with multiple tint options for sport touring riders."
+  },
+  {
+    "asin": "B0H6A2B3C9",
+    "slug": "akrapovic-slip-exhaust",
+    "title": "Akrapovic Slip-On Exhaust",
+    "brand": "Akrapovic",
+    "category": "Exhaust",
+    "type": "Slip-On",
+    "status": "approved",
+    "editorial": {
+      "score": 9,
+      "pros": [
+        "Slovenian premium brand",
+        "Titanium end cap",
+        "Deep bass note"
+      ],
+      "cons": [
+        "Very expensive",
+        "Requires ECU remap for best results"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 32999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.8,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H6A2B3C9?tag=xuy0834-21",
+      "image": "images/products/akrapovic-slip-on-exhaust-classic.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-hness-cb350",
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Premium riders wanting the best exhaust note and performance upgrade",
+    "verdict": "The Akrapovic Slip-On is the gold standard of aftermarket exhausts, delivering deep bass tone with titanium construction from Slovenia."
+  },
+  {
+    "asin": "B0H6D5E6F2",
+    "slug": "yoshimura-77-exhaust",
+    "title": "Yoshimura R-77 Exhaust",
+    "brand": "Yoshimura",
+    "category": "Exhaust",
+    "type": "Slip-On",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "Japanese racing heritage",
+        "Tri-oval design",
+        "Power gain across RPM range"
+      ],
+      "cons": [
+        "Expensive",
+        "Loud for city use"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 28999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H6D5E6F2?tag=xuy0834-21",
+      "image": "images/products/yoshimura-r-77-exhaust.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "ktm-390-duke",
+      "yamaha-mt-15-v2",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Sport riders wanting Japanese racing exhaust with power gains",
+    "verdict": "The Yoshimura R-77 brings decades of Japanese racing heritage with tri-oval design for measurable power gains."
+  },
+  {
+    "asin": "B0H6G8H9I5",
+    "slug": "leovince-lv-10-exhaust",
+    "title": "LeoVince LV-10 Exhaust",
+    "brand": "LeoVince",
+    "category": "Exhaust",
+    "type": "Slip-On",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Italian craftsmanship",
+        "Stainless steel body",
+        "Deep sporty tone"
+      ],
+      "cons": [
+        "Mid-range pricing adds up",
+        "Noisier than stock"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 14999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H6G8H9I5?tag=xuy0834-21",
+      "image": "images/products/leovince-lv-10-exhaust.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke"
+    ],
+    "best_for": "Sport riders wanting Italian-made exhaust with sporty tone at mid-range price",
+    "verdict": "LeoVince LV-10 delivers Italian-made stainless steel construction with a deep sporty exhaust note at a competitive price."
+  },
+  {
+    "asin": "B0H6J1K2L8",
+    "slug": "sc-project-crt-exhaust",
+    "title": "SC Project CRT Exhaust",
+    "brand": "SC Project",
+    "category": "Exhaust",
+    "type": "Full System",
+    "status": "approved",
+    "editorial": {
+      "score": 8.7,
+      "pros": [
+        "MotoGP inspired design",
+        "Full system performance",
+        "Carbon fiber end cap"
+      ],
+      "cons": [
+        "Very expensive",
+        "Race-level noise"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 35999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H6J1K2L8?tag=xuy0834-21",
+      "image": "images/products/sc-project-crt-exhaust.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Track and performance riders wanting MotoGP-inspired full exhaust system",
+    "verdict": "The SC Project CRT brings MotoGP-level exhaust technology with carbon fiber construction for maximum performance and sound."
+  },
+  {
+    "asin": "B0H6M4N5O1",
+    "slug": "hindle-exhaust-storm",
+    "title": "Hindle Exhaust Storm",
+    "brand": "Hindle",
+    "category": "Exhaust",
+    "type": "Slip-On",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Canadian brand quality",
+        "Stainless steel mid-pipe",
+        "Deep aggressive tone"
+      ],
+      "cons": [
+        "Less known in India",
+        "Average finish details"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 18999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H6M4N5O1?tag=xuy0834-21",
+      "image": "images/products/hindle-exhaust-storm.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke"
+    ],
+    "best_for": "Riders wanting a deep-toned exhaust from a respected Canadian brand",
+    "verdict": "Hindle Storm brings Canadian exhaust engineering with stainless steel construction for a deep, aggressive tone upgrade."
+  },
+  {
+    "asin": "B0H7A2B3C0",
+    "slug": "ctek-mxs-battery-charger",
+    "title": "CTEK MXS 5.0 Battery Charger",
+    "brand": "CTEK",
+    "category": "Battery Charger",
+    "type": "Smart Charger",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "8-step charging cycle",
+        "Swedish engineering",
+        "Safe for all lead-acid types"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Slow charge rate for large batteries"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H7A2B3C0?tag=xuy0834-21",
+      "image": "images/products/ctek-mxs-5-battery-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Premium battery maintenance with intelligent 8-step charging",
+    "verdict": "The CTEK MXS 5.0 is a Swedish-engineered smart charger with 8-step charging cycle that optimizes and extends battery life."
+  },
+  {
+    "asin": "B0H7D5E6F3",
+    "slug": "ctek-comfort-connect",
+    "title": "CTEK Comfort Connect",
+    "brand": "CTEK",
+    "category": "Battery Charger",
+    "type": "Smart Charger",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Comfort Connect clamps",
+        "LED status indicator",
+        "Weatherproof housing"
+      ],
+      "cons": [
+        "Lower capacity than MXS 5.0",
+        "Basic display"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H7D5E6F3?tag=xuy0834-21",
+      "image": "images/products/ctek-comfort-connect.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Garage riders wanting easy-connect smart charging",
+    "verdict": "CTEK Comfort Connect offers smart charging with easy-connect clamps and weatherproof construction for regular garage use."
+  },
+  {
+    "asin": "B0H7G8H9I6",
+    "slug": "optimate-dual-battery-charger",
+    "title": "Optimate 4 Dual Battery Charger",
+    "brand": "Optimate",
+    "category": "Battery Charger",
+    "type": "Dual Charger",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Charge two batteries simultaneously",
+        "Smart diagnostics",
+        "Ideal for multi-bike owners"
+      ],
+      "cons": [
+        "Bulky form factor",
+        "Expensive"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 7499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H7G8H9I6?tag=xuy0834-21",
+      "image": "images/products/optimate-4-dual-charger.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Multi-bike owners needing to charge two batteries at once",
+    "verdict": "Optimate 4 Dual is the perfect solution for multi-bike garages, charging and diagnosing two batteries simultaneously with smart technology."
+  },
+  {
+    "asin": "B0H7J1K2L9",
+    "slug": "noco-genius-g3500-charger",
+    "title": "NOCO Genius G3500 Charger",
+    "brand": "NOCO",
+    "category": "Battery Charger",
+    "type": "Smart Charger",
+    "status": "approved",
+    "editorial": {
+      "score": 8.6,
+      "pros": [
+        "Force mode for dead batteries",
+        "IP65 rated",
+        "American brand quality"
+      ],
+      "cons": [
+        "Slightly complex mode selection",
+        "Premium pricing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H7J1K2L9?tag=xuy0834-21",
+      "image": "images/products/noco-genius-g3500.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders needing a rugged charger that can revive completely dead batteries",
+    "verdict": "The NOCO Genius G3500 features force mode to revive dead batteries with IP65 rating for rugged workshop conditions."
+  },
+  {
+    "asin": "B0H7M4N5O2",
+    "slug": "battery-tender-junior",
+    "title": "Battery Tender Junior",
+    "brand": "Battery Tender",
+    "category": "Battery Charger",
+    "type": "Float Charger",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Automatic float mode",
+        "Affordable for quality",
+        "Spark-proof clamps"
+      ],
+      "cons": [
+        "No force mode for dead batteries",
+        "Basic LED indicators"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H7M4N5O2?tag=xuy0834-21",
+      "image": "images/products/battery-tender-junior.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting automatic float-charge maintenance",
+    "verdict": "Battery Tender Junior provides reliable automatic float charging with spark-proof clamps at an accessible price point."
+  },
+  {
+    "asin": "B0H8A2B3C1",
+    "slug": "motul-wash-kit",
+    "title": "Motul Bike Wash Kit",
+    "brand": "Motul",
+    "category": "Cleaning Kit",
+    "type": "Complete Kit",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Complete cleaning kit",
+        "pH neutral formula",
+        "Safe on all surfaces"
+      ],
+      "cons": [
+        "Small bottle sizes",
+        "Premium pricing for quantity"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H8A2B3C1?tag=xuy0834-21",
+      "image": "images/products/motul-bike-wash-kit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting a complete branded cleaning kit with safe formulas",
+    "verdict": "The Motul Bike Wash Kit provides a complete cleaning solution with pH-neutral formulas safe on paint, chrome, and plastic."
+  },
+  {
+    "asin": "B0H8D5E6F4",
+    "slug": "motul-e3-clean-kit",
+    "title": "Motul E3 Clean Kit",
+    "brand": "Motul",
+    "category": "Cleaning Kit",
+    "type": "Eco Kit",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Eco-friendly biodegradable",
+        "Complete cleaning set",
+        "French brand quality"
+      ],
+      "cons": [
+        "Slightly higher price",
+        "Less aggressive on heavy grime"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H8D5E6F4?tag=xuy0834-21",
+      "image": "images/products/motul-e3-clean-kit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Environmentally conscious riders wanting biodegradable cleaning products",
+    "verdict": "The Motul E3 Clean Kit is an eco-friendly biodegradable cleaning solution from French brand Motul for guilt-free bike maintenance."
+  },
+  {
+    "asin": "B0H8G8H9I7",
+    "slug": "muc-off-cleaning-kit",
+    "title": "Muc-Off Motorcycle Cleaning Kit",
+    "brand": "Muc-Off",
+    "category": "Cleaning Kit",
+    "type": "Premium Kit",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Premium cleaning power",
+        "NANO Tech formula",
+        "Includes microfiber cloth"
+      ],
+      "cons": [
+        "Expensive for quantity",
+        "Strong pink color stains surfaces"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H8G8H9I7?tag=xuy0834-21",
+      "image": "images/products/muc-off-motorcycle-kit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Detailing enthusiasts wanting the best premium motorcycle cleaning kit",
+    "verdict": "Muc-Off Motorcycle Kit delivers premium NANO Tech cleaning power with complete accessories for professional-level detailing."
+  },
+  {
+    "asin": "B0H8J1K2L0",
+    "slug": "3m-cleaning-kit",
+    "title": "3M Bike Cleaning Kit",
+    "brand": "3M",
+    "category": "Cleaning Kit",
+    "type": "All-in-One",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "3M brand trust",
+        "Affordable complete set",
+        "Good for regular maintenance"
+      ],
+      "cons": [
+        "Basic formulation",
+        "Average cleaning power on tough grime"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H8J1K2L0?tag=xuy0834-21",
+      "image": "images/products/3m-bike-cleaning-kit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting a trusted brand cleaning kit for regular maintenance",
+    "verdict": "The 3M Bike Cleaning Kit provides reliable cleaning from a globally trusted brand at an affordable all-in-one price."
+  },
+  {
+    "asin": "B0H8M4N5O3",
+    "slug": "washox-cleaning-kit",
+    "title": "Washox Cleaning Kit",
+    "brand": "Washox",
+    "category": "Cleaning Kit",
+    "type": "Value Kit",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Complete basic set",
+        "Easy to use"
+      ],
+      "cons": [
+        "Basic quality products",
+        "Average durability of accessories"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H8M4N5O3?tag=xuy0834-21",
+      "image": "images/products/washox-cleaning-kit.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Ultra-budget riders needing a basic complete cleaning kit",
+    "verdict": "Washox Cleaning Kit is the most affordable complete cleaning set for budget-conscious riders wanting basic maintenance tools."
+  },
+  {
+    "asin": "B0H9A2B3C2",
+    "slug": "motul-wax",
+    "title": "Motul Premium Wax",
+    "brand": "Motul",
+    "category": "Wax Polish",
+    "type": "Carnauba Wax",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Premium carnauba blend",
+        "Long-lasting shine",
+        "UV protective coating"
+      ],
+      "cons": [
+        "Expensive for quantity",
+        "Needs buffing effort"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H9A2B3C2?tag=xuy0834-21",
+      "image": "images/products/motul-premium-wax.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting premium carnauba wax with UV protection",
+    "verdict": "Motul Premium Wax delivers a deep gloss finish with carnauba blend and built-in UV protection for long-lasting shine."
+  },
+  {
+    "asin": "B0H9D5E6F5",
+    "slug": "3m-liquid-wax",
+    "title": "3M Liquid Wax",
+    "brand": "3M",
+    "category": "Wax Polish",
+    "type": "Liquid Synthetic",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Easy liquid application",
+        "3M brand quality",
+        "Good value for money"
+      ],
+      "cons": [
+        "Not carnauba based",
+        "Average longevity"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H9D5E6F5?tag=xuy0834-21",
+      "image": "images/products/3m-liquid-wax.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Regular riders wanting easy-to-apply liquid wax for frequent use",
+    "verdict": "3M Liquid Wax offers convenient synthetic formula with easy application, perfect for regular riders wanting quick shine."
+  },
+  {
+    "asin": "B0H9G8H9I8",
+    "slug": "meguiar-carnauba-wax",
+    "title": "Meguiar's Carnauba Wax",
+    "brand": "Meguiar's",
+    "category": "Wax Polish",
+    "type": "Pure Carnauba",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Pure carnauba formula",
+        "Deep wet-look shine",
+        "American detailing heritage"
+      ],
+      "cons": [
+        "Expensive",
+        "Requires more application effort"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1199,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H9G8H9I8?tag=xuy0834-21",
+      "image": "images/products/meguiars-carnauba-wax.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Detailing enthusiasts wanting pure carnauba deep wet-look shine",
+    "verdict": "Meguiar's Carnauba Wax delivers the deepest wet-look shine with pure carnauba formula from America's trusted detailing brand."
+  },
+  {
+    "asin": "B0H9J1K2L1",
+    "slug": "formula-carnauba-wax-paste",
+    "title": "Formula 1 Carnauba Wax Paste",
+    "brand": "Formula 1",
+    "category": "Wax Polish",
+    "type": "Carnauba Paste",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "Paste formula lasts longer",
+        "Good shine quality",
+        "Widely available"
+      ],
+      "cons": [
+        "Thick paste harder to apply",
+        "Average UV protection"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 699,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H9J1K2L1?tag=xuy0834-21",
+      "image": "images/products/formula-1-wax.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Regular users wanting a reliable paste wax for lasting protection",
+    "verdict": "Formula 1 Carnauba Paste Wax offers lasting protection with a paste formula that stays on longer than liquid alternatives."
+  },
+  {
+    "asin": "B0H9M4N5O4",
+    "slug": "turtle-wax-ice-seal-shine",
+    "title": "Turtle Wax ICE Seal N Shine",
+    "brand": "Turtle Wax",
+    "category": "Wax Polish",
+    "type": "Spray Sealant",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Spray-on ease of use",
+        "Hybrid sealant technology",
+        "Long-lasting protection"
+      ],
+      "cons": [
+        "Not traditional wax feel",
+        "Can streak if over-applied"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0H9M4N5O4?tag=xuy0834-21",
+      "image": "images/products/turtle-wax-ice-seal-n-shine.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Convenience-focused riders wanting spray-on sealant protection",
+    "verdict": "Turtle Wax ICE Seal N Shine combines spray-on convenience with hybrid sealant technology for long-lasting glossy protection."
+  },
+  {
+    "asin": "B0HA2B3C3",
+    "slug": "autosol-metal-polish",
+    "title": "Autosol Metal Polish",
+    "brand": "Autosol",
+    "category": "Metal Polish",
+    "type": "Cream Polish",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "German engineering",
+        "Works on all metals",
+        "Removes tarnish effectively"
+      ],
+      "cons": [
+        "Messy application",
+        "Needs manual buffing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 399,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HA2B3C3?tag=xuy0834-21",
+      "image": "images/products/autosol-metal-polish.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting to restore shine on chrome, aluminum, and steel parts",
+    "verdict": "Autosol Metal Polish is a German-engineered cream polish that effectively restores shine on chrome, aluminum, steel, and brass."
+  },
+  {
+    "asin": "B0HA5D6E7",
+    "slug": "mothers-mag-aluminum-polish",
+    "title": "Mothers Mag & Aluminum Polish",
+    "brand": "Mothers",
+    "category": "Metal Polish",
+    "type": "Liquid Polish",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Premium magnesium and aluminum polish",
+        "Easy to apply",
+        "Long-lasting shine"
+      ],
+      "cons": [
+        "Expensive for quantity",
+        "Not ideal for chrome"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 549,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HA5D6E7?tag=xuy0834-21",
+      "image": "images/products/mothers-mag-polish.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Classic bike owners wanting premium polish for aluminum and magnesium parts",
+    "verdict": "Mothers Mag & Aluminum Polish delivers premium American-made polish specifically formulated for aluminum and magnesium surfaces."
+  },
+  {
+    "asin": "B0HA8G9H0",
+    "slug": "flitz-metal-polish",
+    "title": "Flitz Metal Polish",
+    "brand": "Flitz",
+    "category": "Metal Polish",
+    "type": "Multi-Surface",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Works on metal, plastic, fiberglass",
+        "Non-toxic formula",
+        "Long shelf life"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Average on heavy oxidation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 699,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HA8G9H0?tag=xuy0834-21",
+      "image": "images/products/flitz-metal-polish.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Multi-surface polishing needs across metal, paint, and plastic parts",
+    "verdict": "Flitz Metal Polish is a versatile non-toxic formula that works effectively on metals, plastics, and fiberglass surfaces."
+  },
+  {
+    "asin": "B0HAJ1K2L",
+    "slug": "sim-polish-chrome-polish",
+    "title": "Sim-Polish Chrome Polish",
+    "brand": "Sim-Polish",
+    "category": "Metal Polish",
+    "type": "Chrome Polish",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "Specialized chrome formula",
+        "Quick results",
+        "Affordable"
+      ],
+      "cons": [
+        "Limited to chrome only",
+        "Average on deep scratches"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 449,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HAJ1K2L?tag=xuy0834-21",
+      "image": "images/products/sim-polish-chrome-polish.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting specialized chrome polish for exhaust and trim parts",
+    "verdict": "Sim-Polish Chrome Polish delivers quick, effective results on chrome exhaust shields, mirrors, and trim pieces."
+  },
+  {
+    "asin": "B0HAM4N5O",
+    "slug": "pebeo-metal-polish",
+    "title": "Pebeo Metal Polish",
+    "brand": "Pebeo",
+    "category": "Metal Polish",
+    "type": "Fine Polish",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "French brand quality",
+        "Fine abrasive formula",
+        "Good for delicate surfaces"
+      ],
+      "cons": [
+        "Less known in motorcycle segment",
+        "Average for heavy oxidation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 349,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HAM4N5O?tag=xuy0834-21",
+      "image": "images/products/pebeo-metal-polish.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting fine polish for delicate or lightly tarnished metal surfaces",
+    "verdict": "Pebeo Metal Polish offers French brand quality with fine abrasive formula ideal for delicate metal surfaces and light tarnish."
+  },
+  {
+    "asin": "B0HB2B3C4",
+    "slug": "motul-foam-wash",
+    "title": "Motul Foam Wash",
+    "brand": "Motul",
+    "category": "Foam Wash",
+    "type": "Snow Foam",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Thick clinging foam",
+        "pH neutral formula",
+        "Lifts dirt without scratching"
+      ],
+      "cons": [
+        "Needs foam cannon for best results",
+        "Premium price"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HB2B3C4?tag=xuy0834-21",
+      "image": "images/products/motul-foam-wash.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Detailing enthusiasts wanting professional snow foam pre-wash",
+    "verdict": "Motul Foam Wash creates thick clinging foam that safely lifts dirt and grime before contact washing for scratch-free cleaning."
+  },
+  {
+    "asin": "B0HB5D6E8",
+    "slug": "motul-mo90",
+    "title": "Motul Mo90 Cleaner",
+    "brand": "Motul",
+    "category": "Foam Wash",
+    "type": "Multi-Surface Cleaner",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "Versatile multi-surface",
+        "Quick action formula",
+        "Rinse-free option"
+      ],
+      "cons": [
+        "Not as focused as dedicated foam wash",
+        "Average on heavy dirt"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 449,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HB5D6E8?tag=xuy0834-21",
+      "image": "images/products/motul-mo90-cleaner.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Quick clean-up needs with a versatile multi-surface cleaner spray",
+    "verdict": "Motul Mo90 is a versatile multi-surface cleaner that works quickly for quick clean-ups between full washes."
+  },
+  {
+    "asin": "B0HB8G9H1",
+    "slug": "muc-off-nano-tech-wash",
+    "title": "Muc-Off Nano Tech Bike Wash",
+    "brand": "Muc-Off",
+    "category": "Foam Wash",
+    "type": "Nano Tech",
+    "status": "approved",
+    "editorial": {
+      "score": 8.8,
+      "pros": [
+        "Nano technology cleaning",
+        "Biodegradable formula",
+        "Safe on all materials"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Strong pink color"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 749,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HB8G9H1?tag=xuy0834-21",
+      "image": "images/products/muc-off-nano-tech-bike-wash.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Premium bike owners wanting the best nano-tech cleaning technology",
+    "verdict": "Muc-Off Nano Tech Bike Wash uses nano-sized cleaning particles that penetrate and remove dirt at a molecular level."
+  },
+  {
+    "asin": "B0HBJ1K2M",
+    "slug": "zorrik-foam-wash",
+    "title": "Zorrik Foam Wash",
+    "brand": "Zorrik",
+    "category": "Foam Wash",
+    "type": "Pre-Wash Foam",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Affordable foam wash",
+        "Decent cleaning power",
+        "Good foam cling time"
+      ],
+      "cons": [
+        "Less known brand",
+        "Average cleaning on heavy grime"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 349,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HBJ1K2M?tag=xuy0834-21",
+      "image": "images/products/zorrik-foam-wash.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting an affordable foam wash for regular cleaning",
+    "verdict": "Zorrik Foam Wash offers decent cleaning power with good foam cling time at an accessible price point for regular use."
+  },
+  {
+    "asin": "B0HBM4N5P",
+    "slug": "wavex-foam",
+    "title": "Wavex Foam Cleaner",
+    "brand": "Wavex",
+    "category": "Foam Wash",
+    "type": "Foam Cleaner",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Good foam action",
+        "Easy to use"
+      ],
+      "cons": [
+        "Basic formulation",
+        "Needs more product per wash"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HBM4N5P?tag=xuy0834-21",
+      "image": "images/products/wavex-foam-cleaner.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Ultra-budget riders wanting basic foam cleaning at the lowest price",
+    "verdict": "Wavex Foam Cleaner provides basic foam cleaning action at the most affordable price point in the foam wash category."
+  },
+  {
+    "asin": "B0HC2B3C5",
+    "slug": "motul-motylgear-degreaser",
+    "title": "Motul Motylgear Degreaser",
+    "brand": "Motul",
+    "category": "Degreaser",
+    "type": "Spray Degreaser",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Powerful gear and chain degreaser",
+        "Fast-acting formula",
+        "Safe on O-rings"
+      ],
+      "cons": [
+        "Strong chemical smell",
+        "Premium pricing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 549,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HC2B3C5?tag=xuy0834-21",
+      "image": "images/products/motul-motylgear-degreaser.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting professional-grade gear and chain degreasing",
+    "verdict": "Motul Motylgear Degreaser delivers powerful cleaning action on gears and chains without damaging O-ring seals."
+  },
+  {
+    "asin": "B0HC5D6E9",
+    "slug": "wd-40-specialist-degreaser",
+    "title": "WD-40 Specialist Degreaser",
+    "brand": "WD-40",
+    "category": "Degreaser",
+    "type": "Spray Degreaser",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Trusted global brand",
+        "Multi-purpose degreaser",
+        "Good value for money"
+      ],
+      "cons": [
+        "Not motorcycle-specific",
+        "May need multiple applications"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 399,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HC5D6E9?tag=xuy0834-21",
+      "image": "images/products/wd-40-degreaser.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "General-purpose degreasing with a trusted household brand",
+    "verdict": "WD-40 Specialist Degreaser is a versatile multi-purpose degreaser from a globally trusted brand for general motorcycle maintenance."
+  },
+  {
+    "asin": "B0HC8G9H2",
+    "slug": "3m-degreaser",
+    "title": "3M Heavy Duty Degreaser",
+    "brand": "3M",
+    "category": "Degreaser",
+    "type": "Spray Degreaser",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "3M brand quality",
+        "Effective grease removal",
+        "Quick evaporation"
+      ],
+      "cons": [
+        "Average on heavy grime",
+        "Standard formulation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 449,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HC8G9H2?tag=xuy0834-21",
+      "image": "images/products/3m-degreaser-spray.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Regular maintenance degreasing with a reliable brand",
+    "verdict": "3M Heavy Duty Degreaser provides effective grease removal with quick evaporation for convenient regular maintenance use."
+  },
+  {
+    "asin": "B0HCJ1K2N",
+    "slug": "gunk-degreaser",
+    "title": "Gunk Engine Degreaser",
+    "brand": "Gunk",
+    "category": "Degreaser",
+    "type": "Engine Flush",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Powerful engine degreaser",
+        "Foaming action clings to surfaces",
+        "Affordable"
+      ],
+      "cons": [
+        "Strong chemical smell",
+        "Needs thorough rinsing"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 349,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HCJ1K2N?tag=xuy0834-21",
+      "image": "images/products/gunk-engine-degreaser.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Engine bay and external engine part deep cleaning",
+    "verdict": "Gunk Engine Degreaser delivers powerful foaming action that clings to engine surfaces for effective heavy-duty cleaning."
+  },
+  {
+    "asin": "B0HCM4N5Q",
+    "slug": "wurth",
+    "title": "Wurth Brake Cleaner",
+    "brand": "Wurth",
+    "category": "Degreaser",
+    "type": "Brake Cleaner",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "German professional grade",
+        "Fast evaporation",
+        "Leaves no residue"
+      ],
+      "cons": [
+        "Not for paint surfaces",
+        "Strong chemical smell"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HCM4N5Q?tag=xuy0834-21",
+      "image": "images/products/wurth-brake-cleaner.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mechanics and riders wanting professional-grade brake and parts cleaning",
+    "verdict": "Wurth Brake Cleaner is a professional-grade German cleaner that evaporates fast and leaves no residue on brake components."
+  },
+  {
+    "asin": "B0HD2B3C6",
+    "slug": "ngk-cr8e-spark-plug",
+    "title": "NGK CR8E Spark Plug",
+    "brand": "NGK",
+    "category": "Spark Plug",
+    "type": "Standard",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Japanese OEM quality",
+        "Consistent ignition",
+        "Affordable maintenance part"
+      ],
+      "cons": [
+        "Standard not iridium",
+        "Needs replacement every 10K km"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 149,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HD2B3C6?tag=xuy0834-21",
+      "image": "images/products/ngk-cr8e-spark-plug.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-150",
+      "bajaj-pulsar-ns160",
+      "bajaj-pulsar-ns200",
+      "tvs-apache-rtr-160-4v",
+      "tvs-apache-rtr-200-4v"
+    ],
+    "best_for": "Bajaj and TVS owners needing reliable OEM-spec standard spark plugs",
+    "verdict": "NGK CR8E is the go-to standard spark plug for many Indian motorcycles, delivering consistent ignition from Japanese OEM quality."
+  },
+  {
+    "asin": "B0HD5D6E0",
+    "slug": "ngk-iridium-ix-spark-plug",
+    "title": "NGK Iridium IX Spark Plug",
+    "brand": "NGK",
+    "category": "Spark Plug",
+    "type": "Iridium",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Iridium electrode for longevity",
+        "Better fuel efficiency",
+        "Smoother idle"
+      ],
+      "cons": [
+        "More expensive than standard",
+        "Diminishing returns on older bikes"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 399,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HD5D6E0?tag=xuy0834-21",
+      "image": "images/products/ngk-iridium-ix-spark-plug.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Riders wanting longer-lasting iridium plugs with efficiency gains",
+    "verdict": "NGK Iridium IX delivers extended plug life with improved fuel efficiency and smoother idle from iridium-tipped electrode."
+  },
+  {
+    "asin": "B0HD8G9H3",
+    "slug": "bosch-iridium-spark-plug",
+    "title": "Bosch Iridium Spark Plug",
+    "brand": "Bosch",
+    "category": "Spark Plug",
+    "type": "Iridium",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "German engineering quality",
+        "Iridium fine wire electrode",
+        "Extended service interval"
+      ],
+      "cons": [
+        "Slightly pricey",
+        "Limited compatibility info"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 349,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HD8G9H3?tag=xuy0834-21",
+      "image": "images/products/bosch-spark-plug-iridium.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Riders wanting German-engineered iridium plug for extended service life",
+    "verdict": "Bosch Iridium Spark Plug brings German engineering with fine-wire iridium electrode for extended service intervals and reliable ignition."
+  },
+  {
+    "asin": "B0HDJ1K2O",
+    "slug": "denso-iridium-power-spark-plug",
+    "title": "Denso Iridium Power Spark Plug",
+    "brand": "Denso",
+    "category": "Spark Plug",
+    "type": "Iridium",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Japanese OEM supplier quality",
+        "0.4mm iridium tip",
+        "Improved throttle response"
+      ],
+      "cons": [
+        "Premium pricing for plugs",
+        "Performance gains subtle"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 449,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HDJ1K2O?tag=xuy0834-21",
+      "image": "images/products/denso-iridium-power-plug.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "yamaha-mt-15-v2",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Performance riders wanting Japanese OEM-grade iridium plugs",
+    "verdict": "Denso Iridium Power features a 0.4mm ultra-fine iridium tip from Japan's leading OEM spark plug manufacturer for sharper throttle response."
+  },
+  {
+    "asin": "B0HDM4N5R",
+    "slug": "champion-copper-spark-plug",
+    "title": "Champion Copper Spark Plug",
+    "brand": "Champion",
+    "category": "Spark Plug",
+    "type": "Copper",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Ultra affordable",
+        "Widely available",
+        "Reliable ignition"
+      ],
+      "cons": [
+        "Shorter lifespan than iridium",
+        "Basic copper electrode"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 99,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HDM4N5R?tag=xuy0834-21",
+      "image": "images/products/champion-spark-plug-copper.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-cb-shine",
+      "bajaj-ct-100",
+      "hero-pulsar-150"
+    ],
+    "best_for": "Budget-conscious riders needing reliable affordable spark plugs",
+    "verdict": "Champion Copper Spark Plugs deliver reliable ignition at the most affordable price point for everyday commuter motorcycles."
+  },
+  {
+    "asin": "B0HE2B3C7",
+    "slug": "air-filter-re-350",
+    "title": "K&N Air Filter RE Classic 350",
+    "brand": "K&N",
+    "category": "Air Filter",
+    "type": "Performance Replacement",
+    "status": "approved",
+    "editorial": {
+      "score": 8.5,
+      "pros": [
+        "Washable and reusable",
+        "Improved airflow",
+        "Lifetime warranty"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Needs oiling after cleaning"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HE2B3C7?tag=xuy0834-21",
+      "image": "images/products/kn-air-filter-re-classic.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Royal Enfield Classic owners wanting a lifetime reusable performance air filter",
+    "verdict": "K&N Air Filter for RE Classic is a washable, reusable performance filter with lifetime warranty that improves airflow over stock."
+  },
+  {
+    "asin": "B0HE5D6E1",
+    "slug": "air-filter-pulsar-ns200",
+    "title": "K&N Air Filter Pulsar NS200",
+    "brand": "K&N",
+    "category": "Air Filter",
+    "type": "Performance Replacement",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Direct drop-in replacement",
+        "Washable cotton gauze",
+        "Measurable flow improvement"
+      ],
+      "cons": [
+        "Expensive for filter",
+        "Needs periodic oiling"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HE5D6E1?tag=xuy0834-21",
+      "image": "images/products/kn-air-filter-pulsar.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns160",
+      "bajaj-pulsar-ns200"
+    ],
+    "best_for": "Pulsar NS200 owners wanting drop-in performance air filter upgrade",
+    "verdict": "K&N Air Filter for Pulsar NS is a direct drop-in cotton gauze filter offering measurable airflow improvement over stock paper."
+  },
+  {
+    "asin": "B0HE8G9H4",
+    "slug": "bmc-racing-air-filter",
+    "title": "BMC Racing Air Filter",
+    "brand": "BMC",
+    "category": "Air Filter",
+    "type": "Racing Performance",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Italian racing heritage",
+        "High-flow cotton gauze",
+        "Washable and reusable"
+      ],
+      "cons": [
+        "Expensive",
+        "Race-oriented filtration"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HE8G9H4?tag=xuy0834-21",
+      "image": "images/products/bmc-air-filter-racing.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Performance riders wanting Italian-made racing air filter for maximum flow",
+    "verdict": "BMC Racing Air Filter delivers Italian-made high-flow cotton gauze filtration for maximum engine breathing on performance motorcycles."
+  },
+  {
+    "asin": "B0HEJ1K2P",
+    "slug": "dna-performance-air-filter",
+    "title": "DNA High Performance Air Filter",
+    "brand": "DNA",
+    "category": "Air Filter",
+    "type": "Performance",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "Greek brand quality",
+        "Washable cotton gauze",
+        "Good price-to-performance"
+      ],
+      "cons": [
+        "Less known than K&N",
+        "Moderate flow improvement"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HEJ1K2P?tag=xuy0834-21",
+      "image": "images/products/dna-air-filter-performance.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Budget performance riders wanting a washable air filter without K&N pricing",
+    "verdict": "DNA High Performance Air Filter offers washable cotton gauze filtration at a more accessible price point than premium competitors."
+  },
+  {
+    "asin": "B0HEM4N5S",
+    "slug": "sprint-filter-p08-performance-air-filter",
+    "title": "Sprint Filter P08 Performance Air Filter",
+    "brand": "Sprint Filter",
+    "category": "Air Filter",
+    "type": "Racing",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "MotoGP supplier technology",
+        "Maximum airflow design",
+        "Italian engineering"
+      ],
+      "cons": [
+        "Very expensive",
+        "Race-level filtration"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HEM4N5S?tag=xuy0834-21",
+      "image": "images/products/sprint-filter-performance.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Track riders wanting MotoGP-level air filter technology",
+    "verdict": "Sprint Filter P08 brings MotoGP supplier technology with maximum airflow design for serious performance applications."
+  },
+  {
+    "asin": "B0HF2B3C8",
+    "slug": "filter-re-350",
+    "title": "K&N Oil Filter RE Classic 350",
+    "brand": "K&N",
+    "category": "Oil Filter",
+    "type": "Performance",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "17mm nut for easy removal",
+        "High flow rate",
+        "Heavy-duty canister"
+      ],
+      "cons": [
+        "Expensive for filter",
+        "Overkill for short drain intervals"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 699,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HF2B3C8?tag=xuy0834-21",
+      "image": "images/products/kn-oil-filter-re-classic.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Royal Enfield owners wanting premium reusable oil filter with easy removal",
+    "verdict": "K&N Oil Filter features a 17mm welded nut for easy removal and high-flow construction for RE Classic 350 oil changes."
+  },
+  {
+    "asin": "B0HF5D6E2",
+    "slug": "hiflofiltro-filter",
+    "title": "HiFlofiltro Premium Oil Filter",
+    "brand": "HiFlofiltro",
+    "category": "Oil Filter",
+    "type": "Premium OEM",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "OEM supplier quality",
+        "Excellent filtration",
+        "Widely available"
+      ],
+      "cons": [
+        "Single-use only",
+        "Basic packaging"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 1234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HF5D6E2?tag=xuy0834-21",
+      "image": "images/products/hiflofiltro-oil-filter.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "honda-hness-cb350",
+      "ktm-390-duke",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Regular oil change intervals needing reliable OEM-spec filtration",
+    "verdict": "HiFlofiltro is a trusted OEM supplier delivering excellent filtration quality at an affordable price for regular oil changes."
+  },
+  {
+    "asin": "B0HF8G9H5",
+    "slug": "mann-filter",
+    "title": "Mann Oil Filter",
+    "brand": "Mann",
+    "category": "Oil Filter",
+    "type": "OEM Grade",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "German engineering quality",
+        "Anti-drain back valve",
+        "Consistent filtration"
+      ],
+      "cons": [
+        "Basic paper element",
+        "Not reusable"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 249,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HF8G9H5?tag=xuy0834-21",
+      "image": "images/products/mann-oil-filter-classic.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Riders wanting German-engineered OEM-quality oil filtration",
+    "verdict": "Mann Oil Filter delivers German-engineered filtration with anti-drain back valve for consistent oil pressure on startup."
+  },
+  {
+    "asin": "B0HFJ1K2Q",
+    "slug": "bosch-filter",
+    "title": "Bosch Oil Filter Pro",
+    "brand": "Bosch",
+    "category": "Oil Filter",
+    "type": "Premium",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "German brand trust",
+        "Anti-drain back valve",
+        "Good dirt holding capacity"
+      ],
+      "cons": [
+        "Slightly pricier than basic",
+        "Single-use design"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 349,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HFJ1K2Q?tag=xuy0834-21",
+      "image": "images/products/bosch-oil-filter-pro.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Riders wanting reliable German-branded oil filter for regular maintenance",
+    "verdict": "Bosch Oil Filter Pro provides reliable German-branded filtration with good dirt holding capacity for extended drain intervals."
+  },
+  {
+    "asin": "B0HFM4N5T",
+    "slug": "bmc-filter-performance",
+    "title": "BMC Oil Filter Performance",
+    "brand": "BMC",
+    "category": "Oil Filter",
+    "type": "Racing Performance",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Racing-grade filtration",
+        "High flow rate",
+        "Italian quality"
+      ],
+      "cons": [
+        "Very expensive for filter",
+        "Race-oriented application"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HFM4N5T?tag=xuy0834-21",
+      "image": "images/products/bmc-oil-filter-performance.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Track riders wanting racing-grade oil filtration for high-performance engines",
+    "verdict": "BMC Performance Oil Filter delivers racing-grade filtration with high flow rate for demanding track and performance applications."
+  },
+  {
+    "asin": "B0HG5D6E3",
+    "slug": "domino-way-grips",
+    "title": "Domino Fast Way Grips",
+    "brand": "Domino",
+    "category": "Handle Grip",
+    "type": "Soft Compound",
+    "status": "approved",
+    "editorial": {
+      "score": 7.4,
+      "pros": [
+        "Soft compound for grip",
+        "Italian made",
+        "Very affordable"
+      ],
+      "cons": [
+        "Wears faster than dual compound",
+        "Limited vibration dampening"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 749,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HG5D6E3?tag=xuy0834-21",
+      "image": "images/products/domino-fast-way-grips.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget sport riders wanting Italian-made soft compound grips",
+    "verdict": "Domino Fast Way Grips deliver Italian-made soft compound rubber for excellent grip at a very accessible price point."
+  },
+  {
+    "asin": "B0HG8G9H6",
+    "slug": "turtle-wax-platinum-wax",
+    "title": "Turtle Wax Platinum Classic Wax",
+    "brand": "Turtle Wax",
+    "category": "Wax Polish",
+    "type": "Paste Wax",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Affordable paste wax",
+        "Good gloss finish",
+        "UV protection included"
+      ],
+      "cons": [
+        "Average longevity",
+        "Needs more buffing than premium waxes"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 449,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HG8G9H6?tag=xuy0834-21",
+      "image": "images/products/turtle-wax-platinum-classic-wax.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders wanting paste wax quality at an entry-level price",
+    "verdict": "Turtle Wax Platinum Classic delivers decent gloss with UV protection in a paste wax format at a very competitive price."
+  },
+  {
+    "asin": "B0HGJ1K2R",
+    "slug": "sonax-degreaser",
+    "title": "Sonax Bike Chain Degreaser",
+    "brand": "Sonax",
+    "category": "Degreaser",
+    "type": "Chain Degreaser",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "German engineering quality",
+        "Safe on chain O-rings",
+        "Biodegradable formula"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Needs brushing for heavy grime"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HGJ1K2R?tag=xuy0834-21",
+      "image": "images/products/sonax-bike-degreaser.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Quality-focused riders wanting German-engineered biodegradable chain degreaser",
+    "verdict": "Sonax Bike Chain Degreaser delivers German-engineered cleaning power with a biodegradable formula safe on O-ring sealed chains."
+  },
+  {
+    "asin": "B0HGM4N5U",
+    "slug": "colin-spray",
+    "title": "Colin Motorcycle Spray Cleaner",
+    "brand": "Colin",
+    "category": "Cleaning Kit",
+    "type": "Spray Cleaner",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Very affordable spray cleaner",
+        "Quick cleaning action",
+        "Good for dust removal"
+      ],
+      "cons": [
+        "Not deep cleaning",
+        "Average on heavy dirt"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 349,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0HGM4N5U?tag=xuy0834-21",
+      "image": "images/products/colin-motorcycle-cleaner.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Quick between-wash dust and light grime removal on motorcycles",
+    "verdict": "Colin Motorcycle Spray Cleaner is a quick and affordable solution for removing dust and light grime between full washes."
+  }
+]

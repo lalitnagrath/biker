@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Product Collections - Curated Picks | BikeReview India{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="{{ base_path }}index.html">Home</a>
+            <span class="sep">&rsaquo;</span>
+            <span>Collections</span>
+        </nav>
+        <div class="page-hero-content">
+            <h1>Product Collections</h1>
+            <p class="page-hero-desc">Curated product collections hand-picked by our editorial team. Find the best gear for your riding style.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if collections %}
+        <div class="collection-grid">
+            {% for col in collections %}
+            <a href="{{ base_path }}collections/{{ col.slug }}/index.html" class="collection-card{% if col.is_featured %} featured{% endif %}">
+                {% if col.hero_image %}
+                <div class="collection-card-image">
+                    <img src="{{ col.hero_image }}" alt="{{ col.name }}" loading="lazy">
+                </div>
+                {% else %}
+                <div class="collection-card-image collection-card-image-placeholder">
+                    <span class="placeholder-icon">&#128230;</span>
+                </div>
+                {% endif %}
+                <div class="collection-card-body">
+                    <h3 class="collection-card-title">{{ col.name }}</h3>
+                    {% if col.description %}
+                    <p class="collection-card-desc">{{ col.description[:150] }}</p>
+                    {% endif %}
+                    <div class="collection-card-meta">
+                        <span class="collection-card-count">{{ col.item_count }} products</span>
+                        {% if col.rule_type == 'rule' %}
+                        <span class="collection-card-badge auto">Auto</span>
+                        {% endif %}
+                        {% if col.is_featured %}
+                        <span class="collection-card-badge featured">Featured</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-collection">
+            <div class="empty-icon">&#128230;</div>
+            <h3>No collections yet</h3>
+            <p>Collections will appear here once they are created by the editorial team.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

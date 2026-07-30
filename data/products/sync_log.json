@@ -1,0 +1,249 @@
+[
+  {
+    "timestamp": "2026-07-31T00:13:03.492392",
+    "total_products": 303,
+    "approved_products": 201,
+    "matched": 39,
+    "unmatched": 162,
+    "synced": 39,
+    "fields_updated": 39,
+    "errors": [],
+    "warnings": [],
+    "changes": [
+      {
+        "slug": "bergmann-typhoon-tyre-inflator",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "tusa-storm-cordless-tyre-inflator",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "bobo-bm17-phone",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "portronics-vayu-tyre-inflator",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "tvs-uv-protection",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "autofy-100",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "bluarmor-action-cam-chin-helmets-secure",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "pellking-mobile-phone-chest-harness-strap",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "70mai-a410-dual-dash-cam-2026",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "bobo-bm9h-action-camera-scooter-mobile",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "asryd-chin-mobile-phone-holders-stands",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "70mai-a510-hdr-3k-dual-channel",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "shree-hans-creation-car-windshield-phone",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "redtiger-f7np-2026-4k-front-1080p",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "vantrue-e360-ace-2k-360-panoramic",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "dylect-sense-1080p-single-channel-dash",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "lkmo-action-camera-aluminium-alloy-gopro",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "maizic-smarthome-triplex-4k-channel-dash",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "crossbeats-roadeye-neo-launch-2k-fhd",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "bluetooth-headset-hd-action-camera-1080p",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "hayden-x1-car-dash-camera-4k",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "lrsa-channel-battery-charger-go-hero",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "mereava-car-windshield-phone-navigation-stand",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "cp-dash-cam-car-cp-w310",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "gzrc-yddk-10pcs-double-side-tape",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "qubo-car-dashcam-launch-2k-front",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "dual-usb-charging-charger-5v-4a",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "steelbird-adventure",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "axor-viper-B0FWJMYMB6",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "royal-enfield-street-ace-B0GXZP8C8G",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "studds-ninja-dg-B083G62C3N",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "vega-crux-dual",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "4u-supreme-volt",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "axor-nimbuz-B0CMTGTWZM",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "rynox-air-gt-B0FCY8FBKD",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "royal-enfield-eco-windfarer-B0GY1483CP",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "motul-c1-400ml",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "motul-c2-150ml",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      },
+      {
+        "slug": "bajaj-tempo",
+        "field": "last_updated",
+        "old": "2026-07-31T00:12:34.841914",
+        "new": "2026-07-31T00:13:03.492392"
+      }
+    ]
+  }
+]

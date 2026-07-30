@@ -1575,107 +1575,19 @@ def import_from_deals(
             gen_str = f" (generated: {', '.join(gen_fields)})" if gen_fields else ""
             print(f"    NEW [{category}] {title[:50]}{gen_str}")
 
-    # --- Write new products to files ---
+    # --- Write to DB ---
     if not dry_run:
-        for filename, new_prods in new_products_by_file.items():
-            output_path = products_dir / filename
-
-            # Load existing products from this file
-            file_products = []
-            if output_path.exists():
-                with open(output_path, 'r', encoding='utf-8') as f:
-                    raw = json.load(f)
-                for item in raw:
-                    flat = {}
-                    # Flatten nested format
-                    for field in ('asin', 'slug', 'title', 'brand', 'category', 'type',
-                                  'status', 'compatible_bikes', 'best_for', 'verdict'):
-                        if field in item:
-                            flat[field] = item[field]
-                    ed = item.get('editorial', {})
-                    flat['editor_rating'] = ed.get('score', 0)
-                    flat['pros'] = ed.get('pros', [])
-                    flat['cons'] = ed.get('cons', [])
-                    flat['features'] = ed.get('features', [])
-                    flat['fitment_notes'] = ed.get('fitment_notes', '')
-                    flat['recommended_for'] = ed.get('recommended_for', [])
-                    flat['editorial_notes'] = ed.get('notes', '')
-                    amz = item.get('amazon', {})
-                    flat['price'] = amz.get('price', 0)
-                    flat['mrp'] = amz.get('mrp')
-                    flat['discount'] = amz.get('discount')
-                    flat['rating'] = amz.get('rating', 0)
-                    flat['review_count'] = amz.get('review_count', 0)
-                    flat['availability'] = amz.get('availability', '')
-                    flat['affiliate_url'] = amz.get('affiliate_url', '')
-                    flat['image'] = amz.get('image', '')
-                    flat['last_updated'] = amz.get('last_updated')
-                    file_products.append(flat)
-
-            # Index existing by ASIN and slug
-            existing_file_asins = {
-                (p.get('asin') or '').strip().upper(): p
-                for p in file_products
-            }
-            existing_file_slugs = {
-                p.get('slug', ''): p
-                for p in file_products
-            }
-
-            # Merge: update existing or append new (skip ASIN + slug duplicates)
-            for new_p in new_prods:
-                new_asin = (new_p.get('asin') or '').strip().upper()
-                new_slug = new_p.get('slug', '')
-                if new_asin in existing_file_asins:
-                    dup_count += 1
-                elif new_slug in existing_file_slugs:
-                    dup_count += 1
-                else:
-                    file_products.append(new_p)
-                    existing_file_asins[new_asin] = new_p
-                    existing_file_slugs[new_slug] = new_p
-
-            # Also update existing products in this file with fresh Amazon data
-            for p in file_products:
-                p_asin = (p.get('asin') or '').strip().upper()
-                # Find matching deal for updates
-                for deal in deals:
-                    deal_asin = (deal.get('asin') or '').strip().upper()
-                    if deal_asin == p_asin:
-                        # Update Amazon fields
-                        d_price = extract_feed_price(deal)
-                        d_rating = extract_feed_rating(deal)
-                        d_reviews = extract_feed_review_count(deal)
-                        d_image = extract_feed_image(deal)
-                        d_avail = extract_feed_availability(deal)
-                        d_url = extract_feed_affiliate_url(deal)
-                        if d_price is not None:
-                            p['price'] = d_price
-                        if d_rating is not None:
-                            p['rating'] = d_rating
-                        if d_reviews is not None:
-                            p['review_count'] = d_reviews
-                            p['reviews'] = d_reviews
-                        if d_image:
-                            p['image'] = d_image
-                        if d_avail:
-                            p['availability'] = d_avail
-                        if d_url:
-                            p['affiliate_url'] = d_url
-                        p['last_updated'] = sync_time
-                        break
-
-            # Create backup
-            if output_path.exists():
-                backup_path = output_path.with_suffix('.json.bak')
-                if not backup_path.exists():
-                    import shutil
-                    shutil.copy2(output_path, backup_path)
-
-            # Convert to nested and write
-            nested = [unflatten_product(p) for p in file_products]
-            with open(output_path, 'w', encoding='utf-8') as f:
-                json.dump(nested, f, indent=2, ensure_ascii=False)
+        from db.writer import DatabaseWriter
+        with DatabaseWriter() as writer:
+            # Save updated existing products
+            for asin, product in existing_by_asin.items():
+                if product.get('last_updated') == sync_time:
+                    writer.save_product(product)
+            # Save new products
+            for new_p in new_products_by_file.values():
+                for p in new_p:
+                    writer.save_product(p)
+            writer.commit()
 
     report['updated'] = updated_count
     report['skipped'] = skipped_count

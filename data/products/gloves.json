@@ -1,288 +1,147 @@
 [
   {
-    "asin": "B0D6WGL4HL",
-    "slug": "gocart-logo-tactical-men-hard-shell",
-    "title": "GOCART WITH G LOGO Tactical Gloves for Men, Hard Shell Knuckle Protection Motorcycle Gloves for Outdoor Work Riding Shooting Climbing Training (Design-4)",
-    "brand": "Gocart",
+    "asin": "B083G62C6R",
+    "slug": "studds-sprint",
+    "title": "Studds Sprint Riding Gloves",
+    "brand": "Studds",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Basic knuckle protection",
+        "Good ventilation"
+      ],
+      "cons": [
+        "Average build quality",
+        "Limited touchscreen support"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 509,
+      "price": 599,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D6WGL4HL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41CPy-cBsRL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B083G62C6R?tag=xuy0834-21",
+      "image": "images/products/studds-sprint-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Ultra-budget commuters needing basic hand protection",
+    "verdict": "The Studds Sprint is an ultra-affordable glove offering basic knuckle protection for daily commuters."
   },
   {
-    "asin": "B0C1NY6HJV",
-    "slug": "xtrim-protekt-men-sloping-finger-knuckles-B0C1NY6HJV",
-    "title": "XTRIM Protekt - Universal Bike Riding Gloves for Men (Large) with Sloping Finger Knuckles, Touchscreen Compatible Fingertips, Suede Padding on Palm, Washable & Breathable Fabric (Neon & Black)",
-    "brand": "Xtrim",
+    "asin": "B0B7R9T8L2",
+    "slug": "viaterra-grid",
+    "title": "Viaterra Grid Riding Gloves",
+    "brand": "Viaterra",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.9,
+      "pros": [
+        "CE certified knuckle",
+        "Touchscreen compatible",
+        "Reinforced palm"
+      ],
+      "cons": [
+        "Break-in period needed",
+        "Average ventilation"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 449,
+      "price": 1899,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C1NY6HJV?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41f0-35uaML._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0B7R9T8L2?tag=xuy0834-21",
+      "image": "images/products/viaterra-grid-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Sport riders wanting CE-certified knuckle protection",
+    "verdict": "The Viaterra Grid delivers CE-certified knuckle protection with reinforced palm for sport riding applications."
   },
   {
-    "asin": "B0DFTR4C79",
-    "slug": "badowl-finger-men-women-touchscreen-outdoor",
-    "title": "BADOWL Full Finger Bike Riding Gloves for Men & Women, Touchscreen Compatible Motorcycle Gloves for Bike Riding, Durable and Breathable Outdoor Sports Gloves, Nylon, Grey",
-    "brand": "Badowl",
+    "asin": "B0B7R9T8M3",
+    "slug": "viaterra-tornado",
+    "title": "Viaterra Tornado Riding Gloves",
+    "brand": "Viaterra",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.5,
+      "pros": [
+        "Good airflow",
+        "Touchscreen compatible",
+        "Affordable CE-level protection"
+      ],
+      "cons": [
+        "Not waterproof",
+        "Average winter performance"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 329,
+      "price": 1499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.2,
+      "review_count": 189,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DFTR4C79?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/418SLpIyAuL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0B7R9T8M3?tag=xuy0834-21",
+      "image": "images/products/viaterra-tornado-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0G65F258K",
-    "slug": "eliane-orig-men-racing-2xl",
-    "title": "Eliane Universal Orig Bike Riding Gloves for Men, Motorcycle Bike Racing Riding Gloves, Motorcycle Gloves (2XL)",
-    "brand": "Eliane",
-    "category": "Gloves",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 429,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G65F258K?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51uAD5ar9uL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CL9FZGNZ",
-    "slug": "shivexim-finger-touchscreen-motorbike-camping-climbing",
-    "title": "SHIVEXIM Motorcycle Gloves Full Finger Touchscreen Motorbike Gloves Camping Climbing Hiking Cycling Riding Gloves for Women Men (Size XL) (Black)",
-    "brand": "Shivexim",
-    "category": "Gloves",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 725,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CL9FZGNZ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41vzw9vDpeL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C1NZ46M8",
-    "slug": "xtrim-protekt-men-sloping-finger-knuckles-B0C1NZ46M8",
-    "title": "XTRIM Protekt - Universal Bike Riding Gloves for Men (Medium) Sloping Finger Knuckles, Bike Accessories, Touchscreen Compatible Fingertips, Suede Padding, Gloves for Protection, Washable (Black & Red)",
-    "brand": "Xtrim",
-    "category": "Gloves",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 639,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C1NZ46M8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/413AGLK+8AL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0G5NJSFPN",
-    "slug": "radeya-tactical-finger-men-rubber-knuckle",
-    "title": "RADEYA Tactical Half-Finger Motorcycle Gloves for Men with Rubber Knuckle Guard, Army Colour,Non-Slip Grip, Shock-Absorbing Palm Padding for Riding, Cycling, Gym & Outdoor Adventures (Black)",
-    "brand": "Radeya",
-    "category": "Gloves",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G5NJSFPN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/416sMfQOn1L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B09DYQ7962",
-    "slug": "steelbird-finger-touch-screen-sensitivity-thumb-B09DYQ7962",
-    "title": "Steelbird Polyester Full Finger Bike Riding Gloves with Touch Screen Sensitivity at Thumb & Index Finger, Protective Off-Road Motorbike Racing (Medium, Black Grey, Cycling)",
-    "brand": "Steelbird",
-    "category": "Gloves",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 549,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09DYQ7962?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41tMqNkfKwL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Summer touring riders wanting ventilated CE-level gloves",
+    "verdict": "The Viaterra Tornado offers good airflow with CE-level protection at a competitive price for warm weather touring."
   },
   {
     "asin": "B0CK2BK16G",
-    "slug": "steelbird-adventure-finger-touch-screen-sensitivity-B0CK2BK16G",
-    "title": "Steelbird Polyester Adventure A-2 Full Finger Bike Riding Gloves With Touch Screen Sensitivity At Thumb And Index Finger, Protective Off-Road Motorbike Racing (Xxl, Black), Motorsports",
+    "slug": "steelbird-adventure",
+    "title": "Steelbird Adventure A-2 Riding Gloves",
     "brand": "Steelbird",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.2,
+      "pros": [
+        "Affordable",
+        "Touchscreen compatible",
+        "Good ventilation",
+        "Multiple sizes"
+      ],
+      "cons": [
+        "Basic knuckle protection",
+        "Average build quality"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -292,167 +151,246 @@
       "price": 769,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 432,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0CK2BK16G?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/41U4yDpLE7L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget riders needing basic touchscreen-compatible gloves",
+    "verdict": "The Steelbird A-2 is a value-for-money option with touchscreen support and decent ventilation."
   },
   {
-    "asin": "B0CK2KX352",
-    "slug": "steelbird-adventure-finger-touch-screen-sensitivity-B0CK2KX352",
-    "title": "Steelbird Polyester Adventure A-2 Full Finger Bike Riding Gloves with Touch Screen Sensitivity At Thumb and Index Finger, Protective Off-Road Motorbike Racing (XL, Red), Motorsports",
+    "asin": "B0CK2BK18J",
+    "slug": "steelbird",
+    "title": "Steelbird A-2 Riding Gloves",
     "brand": "Steelbird",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7,
+      "pros": [
+        "Very affordable",
+        "Touchscreen compatible",
+        "Multiple sizes"
+      ],
+      "cons": [
+        "Basic knuckle protection",
+        "Average build quality"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 805,
+      "price": 699,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 678,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CK2KX352?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41hBaCiDDgL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0CK2BK18J?tag=xuy0834-21",
+      "image": "images/products/steelbird-a2-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Ultra-budget riders needing basic touchscreen gloves",
+    "verdict": "The Steelbird A-2 is a value-for-money option with touchscreen support for budget-conscious riders."
   },
   {
-    "asin": "B09DYQP2GG",
-    "slug": "steelbird-finger-touch-screen-sensitivity-thumb-B09DYQP2GG",
-    "title": "Steelbird Full Finger Bike Riding Gloves with Touch Screen Sensitivity at Thumb and Index Finger, Protective Off-Road Motorbike Racing (Large, Black Grey)(Polyester, Cycling)",
+    "asin": "B0CK2BK19K",
+    "slug": "steelbird-smax",
+    "title": "Steelbird SMAX Riding Gloves",
     "brand": "Steelbird",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.3,
+      "pros": [
+        "Carbon fiber knuckle guard",
+        "Touchscreen compatible",
+        "Good ventilation"
+      ],
+      "cons": [
+        "Slightly stiff initially",
+        "Limited color options"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 575,
+      "price": 999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 345,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09DYQP2GG?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41tMqNkfKwL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0CK2BK19K?tag=xuy0834-21",
+      "image": "images/products/steelbird-smax-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget riders wanting carbon-look knuckle protection",
+    "verdict": "The Steelbird SMAX offers carbon fiber knuckle protection with touchscreen support at an affordable price."
   },
   {
-    "asin": "B0DB62Z4Q7",
-    "slug": "eliane-rg3-finger-touch-screen-protective",
-    "title": "Eliane RG3 Full Finger Bike Riding Gloves with Touch Screen Protective Knuckle Breathable Washable Suede Padding Tactical Hand Protection for Off Road Motorbike Racing Cycling Motorcycle Glove (L)",
-    "brand": "Eliane",
+    "asin": "B0CMTGTWZ3",
+    "slug": "axor-sprint",
+    "title": "Axor Sprint Riding Gloves",
+    "brand": "Axor",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.4,
+      "pros": [
+        "Good ventilation",
+        "Touchscreen compatible",
+        "Affordable for brand quality"
+      ],
+      "cons": [
+        "Average knuckle protection",
+        "Limited winter use"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 429,
+      "price": 1499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 456,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DB62Z4Q7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/515Q2mniu-L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWZ3?tag=xuy0834-21",
+      "image": "images/products/axor-sprint-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Summer commuters wanting ventilated touchscreen-compatible gloves",
+    "verdict": "The Axor Sprint offers good airflow and touchscreen support at a mid-range price for warm weather riding."
   },
   {
-    "asin": "B0C1NZZP5H",
-    "slug": "xtrim-protekt-men-sloping-finger-knuckles-B0C1NZZP5H",
-    "title": "XTRIM Protekt - Universal Bike Riding Gloves for Men (Large), Sloping Finger Knuckles, Bike Accessories, Touchscreen Compatible Fingertips, Suede Padding, Gloves for Protection, Washable (Black & Red)",
-    "brand": "Xtrim",
+    "asin": "B0FCY8FBKE",
+    "slug": "rynox-storm-evo",
+    "title": "Rynox Storm EVO 3 Riding Gloves",
+    "brand": "Rynox",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.2,
+      "pros": [
+        "Waterproof membrane",
+        "CE certified protection",
+        "Touchscreen compatible",
+        "Good winter insulation"
+      ],
+      "cons": [
+        "Heavy for summer",
+        "Slightly expensive"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 675,
+      "price": 2299,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.4,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C1NZZP5H?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/413AGLK+8AL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKE?tag=xuy0834-21",
+      "image": "images/products/rynox-storm-evo-3-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "All-weather riders needing waterproof gloves with CE protection",
+    "verdict": "The Rynox Storm EVO 3 is a waterproof all-season glove with CE-certified protection and touchscreen compatibility."
+  },
+  {
+    "asin": "B0FCY8FBKF",
+    "slug": "rynox-helium",
+    "title": "Rynox Helium Riding Gloves",
+    "brand": "Rynox",
+    "category": "Gloves",
+    "type": "Full Finger",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Lightweight mesh",
+        "Good ventilation",
+        "Touchscreen compatible",
+        "Affordable"
+      ],
+      "cons": [
+        "Basic knuckle protection",
+        "Not waterproof"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1699,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKF?tag=xuy0834-21",
+      "image": "images/products/rynox-helium-gloves.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Summer touring riders wanting lightweight ventilated gloves",
+    "verdict": "The Rynox Helium is a lightweight mesh glove with excellent ventilation for hot weather touring."
   },
   {
     "asin": "B0FWJMYMB6",
-    "slug": "axor-viper-touch-screen-wiper-fingertips",
-    "title": "Axor Viper Riding Gloves,Touch Screen Compatible, & Visor Wiper Fingertips-Premium Bike Gloves Black Red-M",
+    "slug": "axor-viper-B0FWJMYMB6",
+    "title": "Axor Viper Riding Gloves",
     "brand": "Axor",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.2,
+      "pros": [
+        "Touchscreen compatible",
+        "Visor wiper fingertips",
+        "Premium leather",
+        "Knuckle protection"
+      ],
+      "cons": [
+        "Expensive",
+        "Break-in period needed"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -462,31 +400,81 @@
       "price": 2622,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 234,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0FWJMYMB6?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/41yuLF5A0mL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Touring and sport riders wanting premium hand protection",
+    "verdict": "The Axor Viper is a premium touring glove with touchscreen compatibility and visor wiper fingertips."
+  },
+  {
+    "asin": "B0FWJMYMB7",
+    "slug": "axor-viper-B0FWJMYMB7",
+    "title": "Axor Viper Pro Riding Gloves",
+    "brand": "Axor",
+    "category": "Gloves",
+    "type": "Full Finger",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "Premium leather construction",
+        "Touchscreen compatible",
+        "Reinforced knuckle protection"
+      ],
+      "cons": [
+        "Expensive",
+        "Break-in period needed",
+        "Runs small"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FWJMYMB7?tag=xuy0834-21",
+      "image": "images/products/axor-viper-gloves-pro.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders wanting premium leather gloves with full protection",
+    "verdict": "The Axor Viper Pro is a premium leather touring glove with touchscreen compatibility and reinforced knuckle protection."
   },
   {
     "asin": "B0GXZP8C8G",
-    "slug": "royal-enfield-street-ace-tpr-knuckle",
-    "title": "Royal Enfield Street Ace 2.0 Riding Gloves | TPR Knuckle Protection | Air Mesh Ventilation | Microsuede Grip Patch | Palm Reinforcement | Poly Stretch Fabric | Impact & Abrasion Resistant RED 2XL",
+    "slug": "royal-enfield-street-ace-B0GXZP8C8G",
+    "title": "Royal Enfield Street Ace 2.0 Gloves",
     "brand": "Royal Enfield",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.8,
+      "pros": [
+        "TPR knuckle protection",
+        "Air mesh ventilation",
+        "Touchscreen compatible",
+        "Brand match for RE bikes"
+      ],
+      "cons": [
+        "Limited sizing",
+        "Average grip"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -496,51 +484,66 @@
       "price": 1199,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.2,
+      "review_count": 156,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0GXZP8C8G?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/41RuAQTNT2L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
-      "*"
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-guerrilla-450",
+      "royal-enfield-himalayan-450"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Royal Enfield owners wanting matching brand gear",
+    "verdict": "The Street Ace 2.0 offers solid protection with air mesh ventilation, ideal for Royal Enfield motorcycles."
   },
   {
-    "asin": "B0H2W8P6GY",
-    "slug": "rynox-air-gt-short-cuff-impact",
-    "title": "Rynox Air GT 2 Gloves | Short-Cuff Motorcycle Riding Gloves with Impact Protection | Black Red, 2XL",
-    "brand": "Rynox",
+    "asin": "B0GXZP8C9H",
+    "slug": "royal-enfield-street-ace-B0GXZP8C9H",
+    "title": "Royal Enfield Street Ace 2.0 Riding Gloves",
+    "brand": "Royal Enfield",
     "category": "Gloves",
-    "type": "",
-    "status": "draft",
+    "type": "Full Finger",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.7,
+      "pros": [
+        "TPR knuckle protection",
+        "Air mesh ventilation",
+        "Brand match for RE bikes"
+      ],
+      "cons": [
+        "Limited sizing options",
+        "Average grip in wet conditions"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 3650,
+      "price": 1299,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2W8P6GY?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41R9k2J9W9L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0GXZP8C9H?tag=xuy0834-21",
+      "image": "images/products/royal-enfield-street-ace-2-gloves.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-guerrilla-450",
+      "royal-enfield-himalayan-450"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Royal Enfield owners wanting matching brand gloves",
+    "verdict": "The Street Ace 2.0 offers solid protection with air mesh ventilation, ideal for Royal Enfield motorcycle riders."
   }
 ]

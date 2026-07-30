@@ -1,1172 +1,116 @@
 [
   {
-    "asin": "B0CW65VTDG",
-    "slug": "fuzicon-scooty-honda-activa-125-6g",
-    "title": "Fuzicon Scooty Cover for Honda Activa 125/6G - Water Resistant Bike Body Cover",
-    "brand": "Fuzicon",
+    "asin": "B001AV4VPG",
+    "slug": "oxford-weather",
+    "title": "Oxford All Weather Motorcycle Cover",
+    "brand": "Oxford",
     "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
+    "type": "All Weather",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.2,
+      "pros": [
+        "Premium quality",
+        "UV and waterproof",
+        "Breathable fabric",
+        "Lock holes"
+      ],
+      "cons": [
+        "Expensive",
+        "Heavy for folding"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 130,
+      "price": 1299,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.4,
+      "review_count": 789,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CW65VTDG?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Itrn9jn+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B001AV4VPG?tag=xuy0834-21",
+      "image": "images/products/oxford-all-weather-bike-cover.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Premium all-weather protection for expensive motorcycles",
+    "verdict": "Oxford All Weather is a premium cover with breathable fabric and excellent UV/waterproof protection for valuable bikes."
   },
   {
-    "asin": "B0CVXQJ5PL",
-    "slug": "fuzicon-bajaj-pulsar-150-body-scooty",
-    "title": "FUZICON Bajaj Pulsar 150 Bike Body Cover | SCOOTY Cover Water Resistant (Blue)",
-    "brand": "Fuzicon",
+    "asin": "B08P61HXSX",
+    "slug": "tvs-uv-protection",
+    "title": "TVS Bike Cover with UV Protection",
+    "brand": "TVS",
     "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Waterproof",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.3,
+      "pros": [
+        "Brand reliability",
+        "UV protection",
+        "Universal fit",
+        "Dustproof"
+      ],
+      "cons": [
+        "Average waterproofing",
+        "Thin material"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 130,
+      "price": 685,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 987,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CVXQJ5PL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41HYqtQAnpL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B08P61HXSX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/41uc9cpEifL._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
-      "*"
+      "honda-cb350rs",
+      "honda-hness-cb350",
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
     ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CW19ZJ7D",
-    "slug": "fuzicon-hero-splendor-water",
-    "title": "FUZICON Bike Cover for Hero Splendor Plus - Water Resistant",
-    "brand": "Fuzicon",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 130,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CW19ZJ7D?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51xeAtvCaxL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CW1GY67T",
-    "slug": "fuzicon-hero-hf-deluxe-body-water",
-    "title": "Fuzicon Hero HF Deluxe Bike Body Cover - Water Resistant",
-    "brand": "Fuzicon",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 130,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CW1GY67T?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/512+vBoES-L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FLVKTTW6",
-    "slug": "lubanaz-water-yamaha-fz-hybrid-weather",
-    "title": "LUBANAZ Water Resistant Bike Cover for Yamaha FZ S Hybrid All Weather, UV Heat Resistant, Dustproof, Triple Stitched, Windproof Elastic Bottom",
-    "brand": "Lubanaz",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 230,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FLVKTTW6?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41TgOAYak8L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0DFTRQBP3",
-    "slug": "sulfar-uv-protection-dustproof-body-wheeler",
-    "title": "Sulfar Universal Bike Cover UV Protection & Dustproof Bike Body Cover for Two Wheeler Bike Scooter Scooty Activa (Black)",
-    "brand": "Sulfar",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 230,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DFTRQBP3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31R4bKeTR9L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FVFSQ1D2",
-    "slug": "puroma-body-access-125-dustproof-scratchproof",
-    "title": "Puroma Bike Body Cover Compatible for Access 125 Dustproof Scratchproof - Motorcycle Cover for Two Wheeler, Outdoor Full Bike Cover with UV, Rain Protection Heavy Duty (Black Aqua Pipe)",
-    "brand": "Puroma",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FVFSQ1D2?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31F2PB82AKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FY3FXTW5",
-    "slug": "kayme-350-water-resistance-taffeta-uv",
-    "title": "Kayme Classic 350 Water Resistance Bike Cover Heavy Duty Premium Taffeta Motorcycle Cover | UV Protection, Dustproof, All Weather, Scratchproof, Two Wheeler Body Cover with Elastic Bottom | For",
-    "brand": "Kayme",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FY3FXTW5?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41IQI8k6yiL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GX9RHN83",
-    "slug": "sulfar-hero-motocorp-mavrick-440-roadster",
-    "title": "Sulfar Bike Cover for Hero MotoCorp Mavrick 440 (Roadster (Upcoming)) | Waterproof, Dustproof & UV Protected | All Weather Two Wheeler Cover (Silver) New 2026 Variants",
-    "brand": "Sulfar",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 152,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GX9RHN83?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/518aF+RsRoL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FHWHFGYD",
-    "slug": "oxtaul-water-dustproof-uv-protection-body",
-    "title": "Oxtaul Water Resistant Bike Cover Dustproof UV Protection Bike Body Cover for Honda SP 125 All-Weather Protection with Red Piping - Black",
-    "brand": "Oxtaul",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 229,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FHWHFGYD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41rrwGnlzxL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FTMFQKCT",
-    "slug": "drakowish-honda-shine-weather-protection-rain",
-    "title": "DRAKOWISH Waterproof Bike Cover for Honda Shine | All Weather Protection from Rain, Dust, UV Rays & Scratches with Mirror Pockets & Buckle Belt | Shine Bike Cover",
-    "brand": "Drakowish",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 209,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FTMFQKCT?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41NF7u4GMPL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GY8YNPTF",
-    "slug": "safecovers-body-pulsar-150-rain-dust",
-    "title": "SafeCovers Bike Body Cover for Pulsar 150 Cover for Rain & Dust | Water Resistant, Dustproof, UV Protection, Scratchproof | Heavy Duty Outdoor Motorcycle Cover with Elastic & Windproof Design",
-    "brand": "Safecovers",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 399,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GY8YNPTF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/412a1kmVUsL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GK2LTC3M",
-    "slug": "y3h-hero-splendor-weather-protect-dust",
-    "title": "Y3H Bike Cover Compatible with Hero Splendor All | All Weather Protect from Dust, UV Rays & Scratches with Mirror Pocket & Belt-Buckle | Two Wheeler Covers - Grey",
-    "brand": "Y3H",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 209,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GK2LTC3M?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/410nogVEneL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GS3PTZG1",
-    "slug": "hero-splendor-weather-protection-rain-dust",
-    "title": "Heavy Duty Waterproof Bike Cover for Hero Splendor Plus | All Weather Protection from Rain, Dust, Sun & Scratches | Universal Fit for All Bike & scooty | Black Red Piping | Splendor Bike Cover",
-    "brand": "Heavy",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 269,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GS3PTZG1?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41QLseOWBRL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GSZKJDLP",
-    "slug": "altrr-scooty-tvs-jupiter-110-uv",
-    "title": "Altrr Heavy Duty Waterproof Scooty & Bike Cover for Tvs Jupiter 110 – UV Resistant, Dustproof & Rain Protection, All-Weather Outdoor Cover for Bikes & Scooty with Buckle Straps",
-    "brand": "Altrr",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 205,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GSZKJDLP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/413lAoC80qL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0H2YZC8CM",
-    "slug": "bajaj-pulsar-model-upto-400cc-weather",
-    "title": "Waterproof Bike Cover for All Bajaj Pulsar Model Upto 400CC | All Weather Protection from Rain, Dust, Sun & Scratches | Black Red Piping | Universal Fit for All Bike & Scooty",
-    "brand": "Waterproof",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 279,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2YZC8CM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41nDyLKIZJL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GS3R2713",
-    "slug": "body-re-bullet-dustproof-scratchproof-wheeler",
-    "title": "Waterproof Bike Body Cover Compatible with RE Bullet Dustproof Scratchproof - Motorcycle Cover for Two Wheeler, Outdoor Full Cover with UV, Duty, Rain Protection (Olive with Black)",
-    "brand": "Waterproof",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GS3R2713?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41MbwdLQOQL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B09HHK5MYS",
-    "slug": "unaitic-water-body-honda-shine-125",
-    "title": "UNAITIC Water Resistant Bike Body Cover Compatible with Honda Shine 125 BS6 | Bike Accessories | Motorcycle Cover | Two Wheeler Cover (Navy Blue)",
-    "brand": "Unaitic",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 269,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09HHK5MYS?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51DtC7Ft4hL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GMY8CYBC",
-    "slug": "wheeler-tvs-apache-rtr-water-dust",
-    "title": "Two Wheeler Bike Cover Compatible for TVS Apache RTR Bike Cover with Water-Resistant and Dust Proof Premium Colour RedStrip",
-    "brand": "Two",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 252,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GMY8CYBC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41beCCpW0ZL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0F9YSY9KP",
-    "slug": "whipone-wheelers-body-honda-cb-unicorn",
-    "title": "WHIPONE Two Wheelers Bike Body Cover Compatible for Honda CB Unicorn 150, UV Resistant, Dustproof, Triple Stitched, Elastic Bottom, Red Piping Motorcycle Cover (Black, Pack of 1)",
-    "brand": "Whipone",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 193,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F9YSY9KP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41cr4Cr+FDL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FPQQZ9F3",
-    "slug": "kerwa-rain-yamaha-fz-fi-weather",
-    "title": "Kerwa Bike Cover for Rain for Yamaha FZ FI All-Weather Proof, Triple-Stitched Durable Design, Windproof Elastic Bottom, UV & Dust Protection",
-    "brand": "Kerwa",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FPQQZ9F3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/415oSyzJrdL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GJD6XW26",
-    "slug": "robustt-dust-uv-protection-fit-125cc",
-    "title": "Robustt Bike Cover for Dust with UV Protection, Universal Fit (125cc to 150cc), Water Resistant & All Weather Protection with Two Wheeler Cover | Keeps Bike Cool | Perfect Bike Body Cover",
-    "brand": "Robustt",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 279,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GJD6XW26?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41U0pdfa3pL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GGSD4R7Z",
-    "slug": "favy-rain-uv-protection-dustproof-fit",
-    "title": "FAVY Bike Cover for Rain with UV Protection & Dustproof, Universal Fit, Water Resistant & All Weather Protection with Two Wheeler Cover |Motorcycle Cover (Silver Black)",
-    "brand": "Favy",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 329,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GGSD4R7Z?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41k77amOoEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0D37S4Y82",
-    "slug": "kozdiko-dust-body-mirror-pockets-wine",
-    "title": "Kozdiko Dust & Waterproof Bike Body Cover with Mirror Pockets (Wine Color) for TVS Apache RTR 160 4V",
-    "brand": "Kozdiko",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D37S4Y82?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Q2q3gbsmL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FN4C3CZH",
-    "slug": "cabius-uv-protection-dustproof-body-wheeler",
-    "title": "CABIUS Universal Motorcycle Cover, UV Protection, Dustproof Bike Body Cover for Two Wheeler, Scooter, Bike, Scooty, Activa, Motorcycle (Black)",
-    "brand": "Cabius",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FN4C3CZH?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31Ciilv1NiL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FTMD198W",
-    "slug": "drakowish-hero-splendor-weather-protection-rain",
-    "title": "DRAKOWISH Waterproof Bike Cover for Hero Splendor Plus | All Weather Protection from Rain, Dust, UV Rays & Scratches with Mirror Pockets & Buckle Belt | Splendor Plus Bike Cover",
-    "brand": "Drakowish",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 205,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FTMD198W?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41w3xYodKqL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B07JBL1SXJ",
-    "slug": "amazon-brand-solimo-water-dark",
-    "title": "Amazon Brand - Solimo Universal Bike Water Resistant Bike Cover (Dark Blue & Silver)",
-    "brand": "Amazon",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 379,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07JBL1SXJ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41UuWwd-vQL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FHKFK91T",
-    "slug": "vellon-body-royal-enfield-bullet-350",
-    "title": "VELLON Bike Body Cover Compatible with Royal Enfield Bullet 350 Waterproof, Dust Proof, UV Rays Protective, Triple Stitching & Lightweight - Black with Red",
-    "brand": "Vellon",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 278,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FHKFK91T?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41KFwJ1oVwL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C7KNPR2P",
-    "slug": "kozdiko-dust-body-mirror-pockets-honda",
-    "title": "Kozdiko Dust & Waterproof Bike Body Cover with Mirror Pockets for Honda CB Hornet 160R",
-    "brand": "Kozdiko",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C7KNPR2P?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41haWzzyFHL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GRVGRW34",
-    "slug": "uv-protection-dustproof-body-wheeler-scooter",
-    "title": "Universal Motorcycle Cover, UV Protection, Dustproof Bike Body Cover for Two Wheeler, Scooter, Bike, Scooty, Activa, Motorcycle (Black)",
-    "brand": "Universal",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 175,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GRVGRW34?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31QnCq4I6AL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0BW41JN16",
-    "slug": "allextreme-100-tested-scooty-activa-maestro",
-    "title": "AllExtreme 100% Tested Waterproof Scooty Cover Compatible with Activa Maestro and All Two Wheeler Scooter Dustproof Indoor Outdoor UV Protection Heavy Duty Polyester Rain Bike Body Cover (Army Green)",
-    "brand": "Allextreme",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BW41JN16?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/61PLouuVcIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C7KPG7RL",
-    "slug": "kozdiko-dust-body-mirror-pockets-scooty",
-    "title": "Kozdiko Dust & Waterproof Bike Body Cover with Mirror Pockets for All Scooty Models and All Bike Models (Doesnot Fit Royal Enfield Models)",
-    "brand": "Kozdiko",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 219,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C7KPG7RL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/3108L1LWhzL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0H2HBNH44",
-    "slug": "exblack-dust-uv-protection-fit-125cc",
-    "title": "EXBLACK Bike Cover for Dust with UV Protection, Universal Fit (125cc to 150cc), Water Resistant & All Weather Protection with Two Wheeler Cover | Keeps Bike Cool | Perfect Bike Body Cover",
-    "brand": "Exblack",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 149,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H2HBNH44?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31+NAIUbhdL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0BQ6W8D7K",
-    "slug": "brencco-dustproof-uv-protected-minimalistic-minimalistic",
-    "title": "Brencco Motorcycle Cover Waterproof, Dustproof And UV Protected for Motorcycle Cover, Black, Standard Size, Minimalistic, Black, One Size, Minimalistic",
-    "brand": "Brencco",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BQ6W8D7K?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31CKKoKITlL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget outdoor parking with moderate rain exposure",
+    "verdict": "A TVS-branded cover offering decent protection at a budget price point with universal fit."
   },
   {
     "asin": "B091ZCK72F",
-    "slug": "autofy-100-tested-re-dustproof-uv",
-    "title": "Autofy 100% Waterproof (Tested) for RE Size Bike Cover Dustproof UV Protection Bike Body Cover for All Two Wheeler Bikes for RE Size with Carry Bag [Model Name: CAPE-03]",
+    "slug": "autofy-100",
+    "title": "Autofy 100% Waterproof Bike Cover",
     "brand": "Autofy",
     "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Waterproof",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.8,
+      "pros": [
+        "100% waterproof (tested)",
+        "UV protection",
+        "Dustproof",
+        "Universal fit"
+      ],
+      "cons": [
+        "No mirror pockets",
+        "Basic elastic hem"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -1176,153 +120,243 @@
       "price": 489,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 1567,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B091ZCK72F?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/31GZv61-ccL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "honda-cb350rs",
+      "honda-hness-cb350",
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-guerrilla-450",
+      "royal-enfield-himalayan-450"
+    ],
+    "best_for": "All-weather outdoor parking protection",
+    "verdict": "The Autofy cover offers tested waterproof protection with UV and dust resistance at a competitive price."
+  },
+  {
+    "asin": "B0B3L8Y4NK",
+    "slug": "honda-probiker",
+    "title": "Honda ProBiker Waterproof Bike Cover",
+    "brand": "Honda",
+    "category": "Bike Cover",
+    "type": "Waterproof",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Honda OEM quality",
+        "Good waterproofing",
+        "Universal fit"
+      ],
+      "cons": [
+        "Limited to Honda branding",
+        "Average UV resistance"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 543,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0B3L8Y4NK?tag=xuy0834-21",
+      "image": "images/products/honda-probiker-bike-cover.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-cb350rs",
+      "honda-hness-cb350",
+      "honda-cb-shine",
+      "honda-cbr250rr"
+    ],
+    "best_for": "Honda motorcycle owners wanting brand-matched outdoor cover",
+    "verdict": "The Honda ProBiker cover provides reliable waterproof protection with Honda's brand quality assurance."
+  },
+  {
+    "asin": "B0C3DQR8YP",
+    "slug": "kayme",
+    "title": "Kayme Classic Heavy-Duty Motorcycle Cover",
+    "brand": "Kayme",
+    "category": "Bike Cover",
+    "type": "Heavy Duty",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "Thick material",
+        "Waterproof coating",
+        "Reflective strips",
+        "Storage bag included"
+      ],
+      "cons": [
+        "Slightly bulky",
+        "Color fades over time"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 649,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C3DQR8YP?tag=xuy0834-21",
+      "image": "images/products/kayme-classic-bike-cover.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-ns200",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "tvs-apache-rtr-200-4v"
+    ],
+    "best_for": "Outdoor parking with good all-round protection and reflective safety strips",
+    "verdict": "Kayme Classic offers thick waterproof material with reflective strips for enhanced visibility and protection."
+  },
+  {
+    "asin": "B0C6X2L5QM",
+    "slug": "puroma",
+    "title": "Puroma Waterproof Motorcycle Cover",
+    "brand": "Puroma",
+    "category": "Bike Cover",
+    "type": "Waterproof",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Budget-friendly",
+        "Lightweight",
+        "Compact storage"
+      ],
+      "cons": [
+        "Thin material",
+        "Basic elastic hem"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C6X2L5QM?tag=xuy0834-21",
+      "image": "images/products/puroma-bike-cover.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget buyers needing lightweight waterproof bike protection",
+    "verdict": "Puroma offers a lightweight and affordable waterproof cover for occasional outdoor parking protection."
   },
   {
-    "asin": "B091Z9PN17",
-    "slug": "autofy-100-tested-dustproof-uv-protection",
-    "title": "Autofy 100% Waterproof (Tested) Bike Cover Dustproof UV Protection Bike Body Cover for All Two Wheeler Bikes Upto Pulsar 180cc Size with Carry Bag [Model Name: Cape- 02]",
+    "asin": "B0C7HN6VTK",
+    "slug": "fuzicon",
+    "title": "Fuzicon Heavy-Duty Waterproof Bike Cover",
+    "brand": "Fuzicon",
+    "category": "Bike Cover",
+    "type": "Waterproof",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Good value",
+        "Waterproof",
+        "Universal fit",
+        "Windproof straps"
+      ],
+      "cons": [
+        "Average stitching quality",
+        "No mirror pockets"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 549,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C7HN6VTK?tag=xuy0834-21",
+      "image": "images/products/fuzicon-bike-cover.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-150",
+      "tvs-apache-rtr-160-4v",
+      "honda-cb-shine",
+      "yamaha-fz-s-v3"
+    ],
+    "best_for": "Budget outdoor parking with windproof security straps",
+    "verdict": "Fuzicon offers decent waterproof protection with windproof straps at an affordable price point."
+  },
+  {
+    "asin": "B0C8Y9T2MP",
+    "slug": "autofy",
+    "title": "Autofy Premium Heavy-Duty Bike Cover",
     "brand": "Autofy",
     "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Heavy Duty",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8,
+      "pros": [
+        "Heavy-duty material",
+        "UV and waterproof",
+        "Mirror pockets",
+        "Secure lock holes"
+      ],
+      "cons": [
+        "Slightly heavier",
+        "Pricier than basic covers"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 479,
+      "price": 749,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 876,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B091Z9PN17?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31GZv61-ccL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0C8Y9T2MP?tag=xuy0834-21",
+      "image": "images/products/autofy-premium-bike-cover.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "honda-cb350rs",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
     ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0983XZJGX",
-    "slug": "autofy-uv-protection-dustproof-body-wheeler-B0983XZJGX",
-    "title": "Autofy Universal Bike Cover UV Protection & Dustproof Bike Body Cover for Two Wheeler Bike Scooter Scooty Activa (Black)",
-    "brand": "Autofy",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 245,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0983XZJGX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31JDO9Q+kLS._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B08P61HXSX",
-    "slug": "tvs-rain-uv-protection-dustproof-fit",
-    "title": "TVS Bike Cover for Rain with UV Protection & Dustproof, Universal Fit, Water Resistant & All Weather Protection with Two Wheeler Cover|Keeps Bike Cool|Perfect Bike Body Cover|Easy to Use- Black",
-    "brand": "TVS",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 485,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08P61HXSX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41uc9cpEifL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B08X1QCYJR",
-    "slug": "autofy-uv-protection-dustproof-body-wheeler-B08X1QCYJR",
-    "title": "Autofy Universal Bike Cover UV Protection & Dustproof Bike Body Cover for Two Wheeler Bike Scooter Scooty Activa with Carry Bag",
-    "brand": "Autofy",
-    "category": "Bike Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 248,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08X1QCYJR?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/3159j8qFCkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders wanting premium all-weather protection with extra features",
+    "verdict": "The Autofy Premium offers heavy-duty all-weather protection with mirror pockets and lock holes for added convenience."
   }
 ]

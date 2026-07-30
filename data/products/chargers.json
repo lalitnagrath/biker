@@ -6,7 +6,7 @@
     "brand": "Dual",
     "category": "Charger",
     "type": "",
-    "status": "draft",
+    "status": "review",
     "editorial": {
       "score": 0,
       "pros": [],
@@ -25,7 +25,7 @@
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0H761T81W?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/31DRW5uQDGL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"

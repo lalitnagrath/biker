@@ -1,7 +1,139 @@
 [
   {
+    "asin": "B000KPUK0S",
+    "slug": "maxima-wax",
+    "title": "Maxima Premium Chain Wax",
+    "brand": "Maxima",
+    "category": "Chain Lube",
+    "type": "Wax",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Wax-based formula",
+        "Excellent fling resistance",
+        "All-weather protection"
+      ],
+      "cons": [
+        "Requires chain to be warm",
+        "Higher price point"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 650,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B000KPUK0S?tag=xuy0834-21",
+      "image": "images/products/maxima-chain-wax.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Touring riders wanting all-weather chain protection with minimal mess",
+    "verdict": "Maxima Chain Wax uses a unique wax formula that bonds to chain links for long-lasting, clean lubrication."
+  },
+  {
+    "asin": "B0077ASLCU",
+    "slug": "motul-c1-400ml",
+    "title": "Motul C1 Chain Cleaner 400ml",
+    "brand": "Motul",
+    "category": "Chain Cleaner",
+    "type": "Spray",
+    "status": "approved",
+    "editorial": {
+      "score": 85,
+      "pros": [
+        "Powerful degreasing action",
+        "Safe for O-Ring chains",
+        "Fast-acting formula",
+        "400ml bottle"
+      ],
+      "cons": [
+        "Strong chemical smell",
+        "Needs proper ventilation during use"
+      ],
+      "features": [
+        "Powerful degreaser",
+        "O-Ring safe",
+        "Fast-acting",
+        "400ml bottle"
+      ],
+      "fitment_notes": "Universal - safe for all motorcycle chains",
+      "recommended_for": [
+        "maintenance",
+        "deep-clean"
+      ],
+      "notes": "Go-to chain cleaner for deep cleaning"
+    },
+    "amazon": {
+      "price": 479,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 6890,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B0077ASLCU?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/31ttD3BSg3L._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders doing thorough chain maintenance",
+    "verdict": "Motul C1 is the go-to chain cleaner for deep cleaning motorcycle chains, effectively removing old lube, dirt, and grime."
+  },
+  {
+    "asin": "B008KJT2SE",
+    "slug": "motul-c5-paste-lubricant",
+    "title": "Motul C5 Chain Paste Lubricant",
+    "brand": "Motul",
+    "category": "Chain Lube",
+    "type": "Paste",
+    "status": "approved",
+    "editorial": {
+      "score": 8.2,
+      "pros": [
+        "Paste formula sticks well",
+        "Minimal fling-off",
+        "Long-lasting"
+      ],
+      "cons": [
+        "Harder to apply than spray",
+        "Messy application"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 520,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 43,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B008KJT2SE?tag=xuy0834-21",
+      "image": "images/products/motul-chain-paste.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders who want minimal fling-off and long-lasting chain lubrication",
+    "verdict": "Motul Chain Paste adheres tightly to chain links, reducing fling-off and extending lubrication intervals."
+  },
+  {
     "asin": "B00C72MCUU",
-    "slug": "motul-7100-10w40",
+    "slug": "motul-7100-4t-fully-synthetic-10w",
     "title": "Motul 7100 4T Fully Synthetic Engine Oil 10W-40",
     "brand": "Motul",
     "category": "Engine Oil",
@@ -51,8 +183,246 @@
     "verdict": "Motul 7100 is the gold standard for fully synthetic motorcycle engine oil in India, offering ester-based technology for superior protection and performance."
   },
   {
+    "asin": "B00L2LON2M",
+    "slug": "castrol-activ-20w-50-4t",
+    "title": "Castrol Activ 20W-50 4T Motorcycle Engine Oil",
+    "brand": "Castrol",
+    "category": "Engine Oil",
+    "type": "Mineral",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Good for older engines",
+        "Widely available"
+      ],
+      "cons": [
+        "Thick grade not for all bikes",
+        "Mineral base oil"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 320,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 1654,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B00L2LON2M?tag=xuy0834-21",
+      "image": "images/products/castrol-activ-20w50.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-cb-shine",
+      "hero-ignitor-125",
+      "bajaj-ct-100",
+      "tvs-star-city-plus",
+      "yamaha-saluto-125",
+      "hero-pulsar-150",
+      "bajaj-platina-100"
+    ],
+    "best_for": "Older motorcycles and small commuters needing thicker 20W-50 grade oil",
+    "verdict": "Castrol Activ 20W-50 is a budget-friendly mineral oil suited for older engines that need a thicker viscosity grade."
+  },
+  {
+    "asin": "B00LIXLWJA",
+    "slug": "motul-5100-10w-40-4t-semi",
+    "title": "Motul 5100 10W-40 4T Semi Synthetic Engine Oil",
+    "brand": "Motul",
+    "category": "Engine Oil",
+    "type": "Semi Synthetic",
+    "status": "approved",
+    "editorial": {
+      "score": 7.6,
+      "pros": [
+        "Affordable Motul quality",
+        "Good for daily use",
+        "JASO MA2 certified"
+      ],
+      "cons": [
+        "Basic additive package",
+        "Not ideal for high-revving engines"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 480,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 1534,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B00LIXLWJA?tag=xuy0834-21",
+      "image": "images/products/motul-5100-10w40.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-150",
+      "bajaj-pulsar-ns200",
+      "royal-enfield-bullet-350",
+      "tvs-apache-rtr-160-4v",
+      "honda-cb-shine",
+      "yamaha-fz-s-v3",
+      "hero-ignitor-125"
+    ],
+    "best_for": "Budget-conscious riders wanting Motul brand quality for everyday use",
+    "verdict": "The Motul 5100 provides reliable semi-synthetic protection for daily commuters at an entry-level Motul price."
+  },
+  {
+    "asin": "B00N5RD3XC",
+    "slug": "shell-advance-ax3-10w-30-mineral",
+    "title": "Shell Advance AX3 10W-30 Mineral Engine Oil",
+    "brand": "Shell",
+    "category": "Engine Oil",
+    "type": "Mineral",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Very affordable",
+        "Shell brand trust",
+        "Good for small engines"
+      ],
+      "cons": [
+        "Mineral base",
+        "Shorter drain intervals"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 310,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 987,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B00N5RD3XC?tag=xuy0834-21",
+      "image": "images/products/shell-advance-ax3-10w30.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "honda-sp-125",
+      "honda-cb-shine",
+      "hero-ignitor-125",
+      "bajaj-ct-100",
+      "tvs-star-city-plus",
+      "yamaha-saluto-125",
+      "hero-pulser-150"
+    ],
+    "best_for": "Small displacement commuters on a tight budget",
+    "verdict": "Shell AX3 is a reliable mineral oil from a trusted brand, perfect for everyday commuter motorcycles."
+  },
+  {
+    "asin": "B01ESPB2VI",
+    "slug": "motul-c2-150ml",
+    "title": "Motul C2 Chain Lube 150ml",
+    "brand": "Motul",
+    "category": "Chain Lube",
+    "type": "Spray",
+    "status": "approved",
+    "editorial": {
+      "score": 85,
+      "pros": [
+        "Works on O-Ring/X-Ring/Z-Ring chains",
+        "Weather and water resistant",
+        "Reduces friction",
+        "Easy spray application"
+      ],
+      "cons": [
+        "150ml lasts about 3-4 applications",
+        "Can attract dust in dusty conditions"
+      ],
+      "features": [
+        "O/X/Z-Ring compatible",
+        "Weather resistant",
+        "Spray application",
+        "150ml can"
+      ],
+      "fitment_notes": "Universal - works with all chain types",
+      "recommended_for": [
+        "maintenance",
+        "all-riders"
+      ],
+      "notes": "India's most popular chain lube"
+    },
+    "amazon": {
+      "price": 199,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 8900,
+      "availability": "In Stock",
+      "affiliate_url": "https://www.amazon.in/dp/B01ESPB2VI?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
+      "image": "https://m.media-amazon.com/images/I/41LMeRSYbkL._SL500_.jpg",
+      "last_updated": "2026-07-31T00:13:03.492392"
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "All riders needing reliable chain lubrication",
+    "verdict": "Motul C2 is India's most popular chain lube, compatible with all chain types and providing excellent weather resistance."
+  },
+  {
+    "asin": "B01GKMIU2O",
+    "slug": "castrol-power1-10w-40-4t-synthetic",
+    "title": "Castrol Power1 10W-40 4T Synthetic Technology Engine Oil",
+    "brand": "Castrol",
+    "category": "Engine Oil",
+    "type": "Semi Synthetic",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Wet clutch protection",
+        "Power Release formula",
+        "Affordable"
+      ],
+      "cons": [
+        "Average cold-start performance",
+        "Can get noisy at high RPM"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 475,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 2012,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B01GKMIU2O?tag=xuy0834-21",
+      "image": "images/products/castrol-power1-10w40.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-150",
+      "bajaj-pulsar-ns200",
+      "royal-enfield-bullet-350",
+      "tvs-apache-rtr-160-4v",
+      "tvs-apache-rtr-200-4v",
+      "honda-cb-shine",
+      "yamaha-fz-s-v3"
+    ],
+    "best_for": "Street bikes needing balanced performance and protection",
+    "verdict": "Castrol Power1 delivers decent performance protection with its Power Release formula at a competitive price."
+  },
+  {
     "asin": "B01IDHDF1C",
-    "slug": "motul-3100-10w30",
+    "slug": "motul-3100-4t-gold-semi-synthetic",
     "title": "Motul 3100 4T Gold Semi Synthetic Engine Oil 10W-30",
     "brand": "Motul",
     "category": "Engine Oil",
@@ -101,215 +471,166 @@
     "verdict": "Motul 3100 4T Gold offers excellent value as a semi-synthetic option with API SL certification for reliable everyday protection."
   },
   {
-    "asin": "B01ESPB2VI",
-    "slug": "motul-c2-chain-lube",
-    "title": "Motul C2 Chain Lube 150ml",
-    "brand": "Motul",
+    "asin": "B01N7LBQ6Q",
+    "slug": "castrol-activ",
+    "title": "Castrol Activ Chain Lube",
+    "brand": "Castrol",
     "category": "Chain Lube",
     "type": "Spray",
     "status": "approved",
     "editorial": {
-      "score": 85,
+      "score": 7,
       "pros": [
-        "Works on O-Ring/X-Ring/Z-Ring chains",
-        "Weather and water resistant",
-        "Reduces friction",
-        "Easy spray application"
+        "Affordable",
+        "Widely available",
+        "Good penetration"
       ],
       "cons": [
-        "150ml lasts about 3-4 applications",
-        "Can attract dust in dusty conditions"
-      ],
-      "features": [
-        "O/X/Z-Ring compatible",
-        "Weather resistant",
-        "Spray application",
-        "150ml can"
-      ],
-      "fitment_notes": "Universal - works with all chain types",
-      "recommended_for": [
-        "maintenance",
-        "all-riders"
-      ],
-      "notes": "India's most popular chain lube"
-    },
-    "amazon": {
-      "price": 229,
-      "mrp": null,
-      "discount": null,
-      "rating": 4.4,
-      "review_count": 8900,
-      "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B01ESPB2VI?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41LMeRSYbkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "All riders needing reliable chain lubrication",
-    "verdict": "Motul C2 is India's most popular chain lube, compatible with all chain types and providing excellent weather resistance."
-  },
-  {
-    "asin": "B0077ASLCU",
-    "slug": "motul-c1-chain-cleaner",
-    "title": "Motul C1 Chain Cleaner 400ml",
-    "brand": "Motul",
-    "category": "Chain Cleaner",
-    "type": "Spray",
-    "status": "approved",
-    "editorial": {
-      "score": 85,
-      "pros": [
-        "Powerful degreasing action",
-        "Safe for O-Ring chains",
-        "Fast-acting formula",
-        "400ml bottle"
-      ],
-      "cons": [
-        "Strong chemical smell",
-        "Needs proper ventilation during use"
-      ],
-      "features": [
-        "Powerful degreaser",
-        "O-Ring safe",
-        "Fast-acting",
-        "400ml bottle"
-      ],
-      "fitment_notes": "Universal - safe for all motorcycle chains",
-      "recommended_for": [
-        "maintenance",
-        "deep-clean"
-      ],
-      "notes": "Go-to chain cleaner for deep cleaning"
-    },
-    "amazon": {
-      "price": 479,
-      "mrp": null,
-      "discount": null,
-      "rating": 4.4,
-      "review_count": 6890,
-      "availability": "In Stock",
-      "affiliate_url": "https://www.amazon.in/dp/B0077ASLCU?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31ttD3BSg3L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "Riders doing thorough chain maintenance",
-    "verdict": "Motul C1 is the go-to chain cleaner for deep cleaning motorcycle chains, effectively removing old lube, dirt, and grime."
-  },
-  {
-    "asin": "B0H3Q1N71V",
-    "slug": "cleaning-brush-150ml-microfiber-duster-complete",
-    "title": "Bike Chain Cleaning Brush with Chain Cleaner & Chain Lube 150ml Each + Microfiber Duster | Complete Motorcycle Chain Cleaning Kit | Bicycle, Scooter & Cycle Maintenance Accessories",
-    "brand": "Bike",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 299,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H3Q1N71V?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51o8STX+p7L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Bike Chain Cleaning Brush with Chain Cleaner & Chain Lube 150ml Each + Microfiber Duster | Complete Motorcycle Chain Cleaning Kit | Bicycle, Scooter & Cycle Maintenance Accessories is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0CRZ5RL94",
-    "slug": "mikanix-lubricant-spray-cleaning-brush-bicycle",
-    "title": "MIKANIX Bike Chain Lubricant and Chain Cleaner Spray with Cleaning Brush for Motorcycle and Bicycle (300 ml)",
-    "brand": "Mikanix",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
+        "Average longevity",
+        "Can attract dust in dusty areas"
       ],
       "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 289,
+      "price": 310,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 678,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CRZ5RL94?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41m7KppJKaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B01N7LBQ6Q?tag=xuy0834-21",
+      "image": "images/products/castrol-activ-chain-lube.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Mikanix Bike Chain Lubricant and Chain Cleaner Spray with Cleaning Brush for Motorcycle and Bicycle (300 ml) is a chain cleaner that below average performance for motorcycle chain maintenance."
+    "best_for": "Budget riders wanting a reliable chain lube from a trusted brand",
+    "verdict": "Castrol Activ Chain Lube is an affordable option that provides adequate chain protection for everyday riding."
   },
   {
-    "asin": "B0D31SYW4T",
-    "slug": "mikanix-combo-liquid-polish-cleaning-brush",
-    "title": "MIKANIX Combo of Chain Cleaner + Chain Lube + All In One Liquid Polish Cleaner | Cleaning Brush | Cleans | Shines Bike | Car & Protects Bike Chain (550 ml, Pack of 4)",
-    "brand": "Mikanix",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
+    "asin": "B075GSDC1N",
+    "slug": "motul-7100-10w-50",
+    "title": "Motul 7100 10W-50 Engine Oil",
+    "brand": "Motul",
+    "category": "Engine Oil",
+    "type": "Fully Synthetic",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 9,
       "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
+        "Premium fully synthetic",
+        "Excellent engine protection",
+        "Smooth shifting"
       ],
       "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Expensive",
+        "Overkill for small commuters"
       ],
-      "features": [
-        "Premium build"
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 799,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.7,
+      "review_count": 2345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B075GSDC1N?tag=xuy0834-21",
+      "image": "images/products/motul-7100.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "bajaj-pulsar-ns200",
+      "honda-cb350rs",
+      "honda-hness-cb350",
+      "royal-enfield-hunter-350",
+      "ktm-250-duke",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-meteor-350",
+      "tvs-apache-rtr-200-4v",
+      "yamaha-mt-15-v2",
+      "yamaha-r15-v4"
+    ],
+    "best_for": "Performance and mid-capacity motorcycles needing 10W-50 grade",
+    "verdict": "The Motul 7100 is a premium fully synthetic engine oil ideal for mid to high-performance motorcycles."
+  },
+  {
+    "asin": "B07NQFKW8T",
+    "slug": "bajaj-dts-10w-50-4t",
+    "title": "Bajaj DTS-i Oil 10W-50 4T Engine Oil",
+    "brand": "Bajaj",
+    "category": "Engine Oil",
+    "type": "Semi Synthetic",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "OEM recommended",
+        "Affordable",
+        "Good for Bajaj engines"
       ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "cons": [
+        "Not ideal for non-Bajaj bikes",
+        "Basic formulation"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 350,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 890,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07NQFKW8T?tag=xuy0834-21",
+      "image": "images/products/bajaj-dts-i-oil-10w50.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "bajaj-pulsar-150",
+      "bajaj-pulsar-ns160",
+      "bajaj-pulsar-ns200",
+      "ktm-390-duke",
+      "bajaj-v15"
+    ],
+    "best_for": "Bajaj motorcycle owners wanting OEM-recommended engine oil",
+    "verdict": "Bajaj DTS-i Oil is the factory-recommended lubricant for Bajaj motorcycles, tuned for their DTS-i engines."
+  },
+  {
+    "asin": "B07PDKWYBH",
+    "slug": "wd-40-degreaser",
+    "title": "WD-40 Bike Chain Cleaner & Degreaser",
+    "brand": "WD-40",
+    "category": "Chain Cleaner",
+    "type": "Spray Degreaser",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "Trusted brand",
+        "Good value",
+        "Multi-purpose use"
+      ],
+      "cons": [
+        "Not as powerful as dedicated cleaners",
+        "Needs multiple applications"
+      ],
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
@@ -317,43 +638,267 @@
       "price": 385,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.2,
+      "review_count": 890,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D31SYW4T?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41SEh6gllKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B07PDKWYBH?tag=xuy0834-21",
+      "image": "images/products/wd40-bike-chain-cleaner.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Mikanix Combo of Chain Cleaner + Chain Lube + All In One Liquid Polish Cleaner | Cleaning Brush | Cleans | Shines Bike | Car & Protects Bike Chain (550 ml, Pack of 4) is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "General-purpose chain cleaning with a trusted household brand",
+    "verdict": "WD-40 Bike Chain Cleaner is a versatile degreaser from a trusted brand, good for regular chain maintenance."
   },
   {
-    "asin": "B08TZTCP37",
-    "slug": "spinlay-chain-lube-spray-500ml",
-    "title": "SPINLAY Chain Lube Spray (500ml)",
-    "brand": "Spinlay",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
+    "asin": "B07QFR1HTG",
+    "slug": "motul-3100-10w-40-semi-synthetic",
+    "title": "Motul 3100 10W-40 Semi Synthetic Engine Oil",
+    "brand": "Motul",
+    "category": "Engine Oil",
+    "type": "Semi Synthetic",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 8,
       "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
+        "Great value semi-synthetic",
+        "Wet clutch compatible",
+        "Engine protection"
+      ],
+      "cons": [
+        "Not fully synthetic",
+        "Requires regular changes"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 520,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 1876,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07QFR1HTG?tag=xuy0834-21",
+      "image": "images/products/motul-3100-10w40.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-150",
+      "bajaj-pulsar-ns200",
+      "honda-sp-125",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "tvs-apache-rtr-160-4v",
+      "honda-cb-shine",
+      "yamaha-fz-s-v3"
+    ],
+    "best_for": "Mid-range commuters and naked bikes needing reliable 10W-40 protection",
+    "verdict": "The Motul 3100 offers semi-synthetic performance at a reasonable price, suitable for a wide range of motorcycles."
+  },
+  {
+    "asin": "B07WJQX1BK",
+    "slug": "tvs-tru4-10w-30-4t-synthetic",
+    "title": "TVS TRU4 10W-30 4T Synthetic Blend Engine Oil",
+    "brand": "TVS",
+    "category": "Engine Oil",
+    "type": "Semi Synthetic",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "TVS OEM quality",
+        "Good fuel economy",
+        "Smooth engine operation"
+      ],
+      "cons": [
+        "Limited to lighter viscosity",
+        "Not fully synthetic"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 330,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 765,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07WJQX1BK?tag=xuy0834-21",
+      "image": "images/products/tvs-tru4-10w30.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "tvs-apache-rtr-160-4v",
+      "tvs-apache-rtr-200-4v",
+      "honda-cb-shine",
+      "hero-ignitor-125",
+      "tvs-star-city-plus",
+      "tvs-jupiter"
+    ],
+    "best_for": "TVS bike owners and commuters wanting OEM-grade oil",
+    "verdict": "TVS TRU4 10W-30 is a synthetic blend engineered for TVS engines, offering smooth operation and fuel efficiency."
+  },
+  {
+    "asin": "B07YFXBQR5",
+    "slug": "scottoiler-xsr-oiler",
+    "title": "Scottoiler XSR Automatic Chain Oiler",
+    "brand": "Scottoiler",
+    "category": "Chain Lube",
+    "type": "Automatic",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "Automatic chain lubrication",
+        "Adjustable flow rate",
+        "Hands-free operation"
+      ],
+      "cons": [
+        "Expensive",
+        "Installation required",
+        "Needs periodic refill"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 3200,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B07YFXBQR5?tag=xuy0834-21",
+      "image": "images/products/scottoiler-xsr.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Touring riders wanting hands-free automatic chain lubrication",
+    "verdict": "The Scottoiler XSR automatically lubricates your chain while riding, eliminating the need for manual application."
+  },
+  {
+    "asin": "B08BFJY9V7",
+    "slug": "liqui-moly-motorbike-10w-50-4t",
+    "title": "Liqui Moly Motorbike 10W-50 4T Synthetic Engine Oil",
+    "brand": "Liqui Moly",
+    "category": "Engine Oil",
+    "type": "Fully Synthetic",
+    "status": "approved",
+    "editorial": {
+      "score": 8.3,
+      "pros": [
+        "German engineering",
+        "PAO-based synthetic",
+        "Excellent shear stability"
+      ],
+      "cons": [
+        "Expensive",
+        "Limited dealer network in India"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 920,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.6,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B08BFJY9V7?tag=xuy0834-21",
+      "image": "images/products/liqui-moly-10w50.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "ktm-250-duke",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "yamaha-mt-15-v2"
+    ],
+    "best_for": "Premium bike owners wanting German-made synthetic oil",
+    "verdict": "Liqui Moly 10W-50 is a premium German synthetic oil with excellent shear stability for demanding riding conditions."
+  },
+  {
+    "asin": "B08QHN6GVL",
+    "slug": "muc-off-spray",
+    "title": "Muc-Off Chain Cleaner Spray",
+    "brand": "Muc-Off",
+    "category": "Chain Cleaner",
+    "type": "Spray Degreaser",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Fast-acting formula",
+        "Safe on all chain types",
+        "Pink color shows coverage"
       ],
       "cons": [
         "Premium pricing",
-        "Spray nozzle can clog"
+        "Strong chemical smell"
       ],
-      "features": [
-        "Compact size"
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 550,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.4,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B08QHN6GVL?tag=xuy0834-21",
+      "image": "images/products/muc-off-chain-cleaner.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting a premium, fast-acting chain cleaner",
+    "verdict": "Muc-Off Chain Cleaner quickly dissolves grime and is safe on O-rings, X-rings, and Z-rings."
+  },
+  {
+    "asin": "B08TZTCP37",
+    "slug": "bajaj-tempo",
+    "title": "Bajaj Tempo Chain Lube",
+    "brand": "Bajaj",
+    "category": "Chain Lube",
+    "type": "Spray",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Affordable",
+        "Good lubrication",
+        "Easy to apply"
       ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "cons": [
+        "Can attract dust",
+        "Needs frequent reapplication"
+      ],
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
@@ -361,1094 +906,169 @@
       "price": 250,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 890,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B08TZTCP37?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/31ayvOq+FfL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "value riders wanting long-lasting chain protection",
-    "verdict": "The Spinlay Chain Lube Spray (500ml) is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "All chain-driven motorcycles",
+    "verdict": "A budget-friendly chain lube that works well on all chain-driven motorcycles."
   },
   {
-    "asin": "B004YF1Z4M",
-    "slug": "michelin-spray-400ml-powerful-degreaser-motorbike",
-    "title": "MICHELIN Bike Chain Cleaner Spray 400ml | Powerful Degreaser for Motorbike & Bicycle Chains | Easily Removes Grease, Dirt & Grime | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains",
-    "brand": "Michelin",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
+    "asin": "B09HKXJ7MV",
+    "slug": "3m-spray",
+    "title": "3M Chain Lube Spray",
+    "brand": "3M",
+    "category": "Chain Lube",
+    "type": "Spray",
+    "status": "approved",
     "editorial": {
-      "score": 6.0,
+      "score": 7.3,
       "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
+        "3M quality",
+        "Good penetration",
+        "Rust prevention"
       ],
       "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "X-ring compatible"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 479,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B004YF1Z4M?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41MhsZMHquL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Michelin Bike Chain Cleaner Spray 400ml | Powerful Degreaser for Motorbike & Bicycle Chains | Easily Removes Grease, Dirt & Grime | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0D8T9CCDN",
-    "slug": "oto2eye-cleaning-maintenance-kit-150ml-150ml",
-    "title": "OTO2EYE Motorcycle Chain Cleaning & Maintenance Kit Chain Cleaner (150ml), Chain Lube (150ml), Bike Polish Spray (200ml), Chain Cleaning Brush & Microfiber Cloth | All-in-One Bike Care Accessories",
-    "brand": "Oto2Eye",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 292,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0D8T9CCDN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/517fVpu0kUL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Oto2Eye Motorcycle Chain Cleaning & Maintenance Kit Chain Cleaner (150ml), Chain Lube (150ml), Bike Polish Spray (200ml), Chain Cleaning Brush & Microfiber Cloth | All-in-One Bike Care Accessories is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0GFTYJYB3",
-    "slug": "cleaning-brush-microfiber-cloths-bristles-ideal",
-    "title": "Chain Cleaning Brush with Microfiber Cloths | 2-in-1 Bike & Motorcycle Chain Cleaner | Heavy Duty Nylon Bristles | Ideal for Bicycle, Bike & Cycle Maintenance",
-    "brand": "Chain",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
+        "Average film retention",
+        "Standard formulation"
       ],
       "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 192,
+      "price": 350,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 534,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GFTYJYB3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41ySTSzjX+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B09HKXJ7MV?tag=xuy0834-21",
+      "image": "images/products/3m-chain-lube.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "value riders wanting effective chain cleaning",
-    "verdict": "The Chain Cleaning Brush with Microfiber Cloths | 2-in-1 Bike & Motorcycle Chain Cleaner | Heavy Duty Nylon Bristles | Ideal for Bicycle, Bike & Cycle Maintenance is a chain cleaner that below average performance for motorcycle chain maintenance."
+    "best_for": "Riders wanting a reliable chain lube from a globally trusted brand",
+    "verdict": "3M Chain Lube provides dependable lubrication backed by 3M's reputation for quality adhesive and lubricant products."
   },
   {
-    "asin": "B07CLZZQFG",
-    "slug": "kangaroo-combo-500ml-maintenance-lubrication-powerful",
-    "title": "Kangaroo Chain Lube & Chain Cleaner Combo | 500ml Each for Motorcycle & Bike Chain Maintenance | Advanced Lubrication & Powerful Degreaser | Complete Chain Care Solution",
-    "brand": "Kangaroo",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
+    "asin": "B09HKXM5BN",
+    "slug": "3m-parts-spray",
+    "title": "3M Chain & Parts Cleaner Spray",
+    "brand": "3M",
+    "category": "Chain Cleaner",
+    "type": "Spray Degreaser",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 7.2,
       "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
+        "3M brand quality",
+        "Good degreasing action",
+        "Versatile use"
       ],
       "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 505,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07CLZZQFG?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51J9uX8oJgL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Kangaroo Chain Lube & Chain Cleaner Combo | 500ml Each for Motorcycle & Bike Chain Maintenance | Advanced Lubrication & Powerful Degreaser | Complete Chain Care Solution is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B01ESPB3PI",
-    "slug": "motul-combo-c2-400-ml-c1",
-    "title": "Motul Combo of C2 Chain Lube (400 ml) and C1 Chain Clean for All Bikes (400 ml) (LBCH014)",
-    "brand": "Motul",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.7,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Average cleaning strength",
+        "Standard formulation"
       ],
       "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 725,
+      "price": 340,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 456,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01ESPB3PI?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51H7z5BGMaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B09HKXM5BN?tag=xuy0834-21",
+      "image": "images/products/3m-chain-cleaner.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "premium riders wanting long-lasting chain protection",
-    "verdict": "The Motul Combo of C2 Chain Lube (400 ml) and C1 Chain Clean for All Bikes (400 ml) (LBCH014) is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "Everyday chain cleaning with a reliable brand name",
+    "verdict": "3M Chain & Parts Cleaner is a dependable degreaser that handles routine chain cleaning effectively."
   },
   {
-    "asin": "B08R5XJNLP",
-    "slug": "motomax-aerosol-spray-200-ml-provides",
-    "title": "Motomax Chain Lube Aerosol Spray 200 ml |Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life",
-    "brand": "Motomax",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
+    "asin": "B09WXMBYPG",
+    "slug": "shell-advance-10w-40-fully-synthetic",
+    "title": "Shell Advance Ultra 10W-40 Fully Synthetic Engine Oil",
+    "brand": "Shell",
+    "category": "Engine Oil",
+    "type": "Fully Synthetic",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 8.5,
       "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
+        "Shell PurePlus technology",
+        "Excellent thermal stability",
+        "Long drain intervals"
       ],
       "cons": [
         "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Multi-ventilation",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08R5XJNLP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41UPEu533iL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting long-lasting chain protection",
-    "verdict": "The Motomax Chain Lube Aerosol Spray 200 ml |Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B09475LGXK",
-    "slug": "kangaroo-lubricant-spray-of2-500-ml",
-    "title": "Kangaroo Chain Lubricant Spray (Pack of2) of 500 Ml Each | Chain Lube Grease| Multipurpose Spray, Rust Remover, Lubricant, Stain Remover, Degreaser, And Cleaning Agent,Chain Lubrication",
-    "brand": "Kangaroo",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Limited availability in small towns"
       ],
       "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 582,
+      "price": 850,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.6,
+      "review_count": 1123,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09475LGXK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51ujilcXm-S._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B09WXMBYPG?tag=xuy0834-21",
+      "image": "images/products/shell-advance-ultra-10w40.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "ktm-250-duke",
+      "ktm-390-duke",
+      "royal-enfield-classic-350",
+      "tvs-apache-rtr-200-4v",
+      "yamaha-mt-15-v2"
     ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Kangaroo Chain Lubricant Spray (Pack of2) of 500 Ml Each | Chain Lube Grease| Multipurpose Spray, Rust Remover, Lubricant, Stain Remover, Degreaser, And Cleaning Agent,Chain Lubrication is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "Performance bikes needing top-tier synthetic protection with extended drain intervals",
+    "verdict": "Shell Advance Ultra uses PurePlus gas-to-liquid technology for superior engine cleanliness and protection."
   },
   {
-    "asin": "B091PQV2VZ",
-    "slug": "kangaroo-spray-degreaser-cycle-driven-machines",
-    "title": "Kangaroo Motorcycle Bike Chain Cleaner Spray Degreaser For Cycle Motorcycle & Chain Driven Machines 500Ml (Pack Of 1).",
-    "brand": "Kangaroo",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 288,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B091PQV2VZ?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41BfSBKqoPL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Kangaroo Motorcycle Bike Chain Cleaner Spray Degreaser For Cycle Motorcycle & Chain Driven Machines 500Ml (Pack Of 1). is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B07JDF3ZSK",
-    "slug": "wuerth-500-ml-german-engineered-spray",
-    "title": "Wuerth Chain Cleaner - 500 ml | German Engineered Spray Cleaner for Motorcycle & Bicycle Chains | O-Ring Safe | Fast Drying, Residue Free Degreaser",
-    "brand": "Wuerth",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "O-ring safe"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07JDF3ZSK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31Gdge1MWaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Wuerth Chain Cleaner - 500 ml | German Engineered Spray Cleaner for Motorcycle & Bicycle Chains | O-Ring Safe | Fast Drying, Residue Free Degreaser is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B01NAVOSE5",
-    "slug": "kangaroo-spray-bikes-500-ml-long",
-    "title": "Kangaroo Chain Lube Spray For Bikes (500 Ml) Long-lasting Lubrication | Anti-rust & Corrosion Protection | High Performance In All Weather | For All Motorcycle Chain Types",
-    "brand": "Kangaroo",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 303,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01NAVOSE5?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/412+jsa+ubL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Kangaroo Chain Lube Spray For Bikes (500 Ml) Long-lasting Lubrication | Anti-rust & Corrosion Protection | High Performance In All Weather | For All Motorcycle Chain Types is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0F22L7S2L",
-    "slug": "c1-150-ml-road-c2-150",
-    "title": "Chain Cleaner C1 (150 ml) & Chain Lube Road C2 (150 ml) Chain Cleaner Brush | Chain Oil (300 ml, Pack of 3)",
-    "brand": "Chain",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F22L7S2L?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Ebhd1s0mL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Chain Cleaner C1 (150 ml) & Chain Lube Road C2 (150 ml) Chain Cleaner Brush | Chain Oil (300 ml, Pack of 3) is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B01J7GE5PS",
-    "slug": "vista-auto-care-spray-500-ml",
-    "title": "Vista Auto Care Chain Lube Spray 500 ml | High-Performance All Weather Chain Lubricant for Bike & Motorcycles | Reduces Friction & Wear, Rust Protection",
-    "brand": "Vista",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 409,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01J7GE5PS?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31QlfC02XDL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Vista Auto Care Chain Lube Spray 500 ml | High-Performance All Weather Chain Lubricant for Bike & Motorcycles | Reduces Friction & Wear, Rust Protection is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0CX2MC38X",
-    "slug": "gulf-penetration-water-wash-resistance-ring",
-    "title": "Gulf PRO CHAIN LUBE High Penetration, Water Wash Resistance Chain Lube| Compatible with O, X, Z-Ring Chain Oil [150 ml]",
-    "brand": "Gulf",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CX2MC38X?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31gzAJDQr7L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting long-lasting chain protection",
-    "verdict": "The Gulf PRO CHAIN LUBE High Penetration, Water Wash Resistance Chain Lube| Compatible with O, X, Z-Ring Chain Oil [150 ml] is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0G5PL8VNL",
-    "slug": "vista-auto-care-care-combo-kleen",
-    "title": "Vista Auto Care Chain Care Combo | Chain Kleen + Chain Lube + Brush | Premium Bike Chain Cleaner & Lubricant Kit | Removes Tough Grease | Prevents Rust | Enhances Chain Life (Chain Care Combo Micro)",
-    "brand": "Vista",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "Multi-ventilation",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 599,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G5PL8VNL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41w9T0kNpYL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Vista Auto Care Chain Care Combo | Chain Kleen + Chain Lube + Brush | Premium Bike Chain Cleaner & Lubricant Kit | Removes Tough Grease | Prevents Rust | Enhances Chain Life (Chain Care Combo Micro) is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B005PW0OUE",
-    "slug": "michelin-spray-400ml-long-lasting-weather",
-    "title": "Michelin Bike Chain Lube Spray 400ml | Long-Lasting Weather Proof Chain Lube Reduces Friction & Wear With Anti-Rust & Corrosion Protection | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains",
-    "brand": "Michelin",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "X-ring compatible",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B005PW0OUE?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41PKbwTdsyL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Michelin Bike Chain Lube Spray 400ml | Long-Lasting Weather Proof Chain Lube Reduces Friction & Wear With Anti-Rust & Corrosion Protection | Safe on Standard, O-Ring, X-Ring & Z-Ring Chains is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0CR7K8Y4R",
-    "slug": "kelvinn-150ml-lubricant-smooth-ride-rust",
-    "title": "KELVINN Bike Chain Lube 150ml, Motorcycle Chain Lubricant Oil for Smooth Ride, Anti Rust Corrosion Protection, No Sling Formula, Noise Reduction Wear Protection for All Bikes O Ring X Ring Chains",
-    "brand": "Kelvinn",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "X-ring compatible",
-        "Premium build",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 176,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CR7K8Y4R?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31niSo0i83L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting long-lasting chain protection",
-    "verdict": "The Kelvinn Bike Chain Lube 150ml, Motorcycle Chain Lubricant Oil for Smooth Ride, Anti Rust Corrosion Protection, No Sling Formula, Noise Reduction Wear Protection for All Bikes O Ring X Ring Chains is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0G93SFDQF",
-    "slug": "castrol-bikes-150ml-protects-wear-corrosion",
-    "title": "Castrol Chain Lube for Bikes (150ml) | Protects Chain from Wear and Corrosion | Excellent Lubrication + Chain Cleaner for Bikes (150ml) | Instantly Loosens Oil, Grease and Dirt",
-    "brand": "Castrol",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "Premium build",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 451,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G93SFDQF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/415YvyQZ0BL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Castrol Chain Lube for Bikes (150ml) | Protects Chain from Wear and Corrosion | Excellent Lubrication + Chain Cleaner for Bikes (150ml) | Instantly Loosens Oil, Grease and Dirt is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B01ESPB2V8",
-    "slug": "motul-c1-spray-150ml-bikes-removes",
-    "title": "Motul C1 Chain Cleaner Spray 150ml for Bikes | Removes Grease, Oil & Dirt | High-Performance Chain Cleaning | Safe for O-Ring, X-Ring & Z-Ring Motorcycle Chains",
+    "asin": "B0BQFGN2WT",
+    "slug": "motul-clean-eco-degreaser",
+    "title": "Motul Chain Clean E+ Eco Degreaser",
     "brand": "Motul",
     "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
+    "type": "Spray Degreaser",
+    "status": "approved",
     "editorial": {
-      "score": 6.0,
+      "score": 7.8,
       "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
+        "Eco-friendly formula",
+        "Biodegradable",
+        "Effective cleaning"
       ],
       "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "X-ring compatible",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 229,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01ESPB2V8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41t3-IUGmkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting effective chain cleaning",
-    "verdict": "The Motul C1 Chain Cleaner Spray 150ml for Bikes | Removes Grease, Oil & Dirt | High-Performance Chain Cleaning | Safe for O-Ring, X-Ring & Z-Ring Motorcycle Chains is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B01M28DAFN",
-    "slug": "sheeba-spray-friction-fluid-lubricates-reduces",
-    "title": "SHEEBA Bike Chain Lube Spray I Heavy Duty - High Friction Fluid I Lubricates-Reduces Friction and Noise I Anti Corrosion I Good Adhesion - Excellent Resistance I Water Repellent I Long Life-160mL Pack",
-    "brand": "Sheeba",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Slightly less aggressive than standard",
+        "Higher price"
       ],
       "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 146,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01M28DAFN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41LgSJPYNRL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting long-lasting chain protection",
-    "verdict": "The Sheeba Bike Chain Lube Spray I Heavy Duty - High Friction Fluid I Lubricates-Reduces Friction and Noise I Anti Corrosion I Good Adhesion - Excellent Resistance I Water Repellent I Long Life-160mL Pack is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B07D6V3MB9",
-    "slug": "wuerth-lubricant-500ml-pressure-spray-ring",
-    "title": "Wuerth Chain Lubricant - 500ml | High Pressure Resistant Motorcycle Bike Chain Lube Spray, O-Ring & X-Ring Safe, Anti-Rust, Water Resistant, Quick Dry Wax Film, Reduces Wear & Chain Noise",
-    "brand": "Wuerth",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "X-ring compatible",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 549,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07D6V3MB9?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31ld1KfkwNL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Wuerth Chain Lubricant - 500ml | High Pressure Resistant Motorcycle Bike Chain Lube Spray, O-Ring & X-Ring Safe, Anti-Rust, Water Resistant, Quick Dry Wax Film, Reduces Wear & Chain Noise is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0F7Y74YNW",
-    "slug": "oswe-lubricant-115ml-long-lasting-wet",
-    "title": "Oswe Lube Bike Chain Lubricant 115ml | Long-Lasting Wet Chain Oil for All Weather & Terrain | Smooth, Silent Friction-less Bicycle Bike Chain Lube | Drip Squeeze Bottle",
-    "brand": "Oswe",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 245,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F7Y74YNW?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31ZzysDdZ5L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting long-lasting chain protection",
-    "verdict": "The Oswe Lube Bike Chain Lubricant 115ml | Long-Lasting Wet Chain Oil for All Weather & Terrain | Smooth, Silent Friction-less Bicycle Bike Chain Lube | Drip Squeeze Bottle is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0FHWQHW4L",
-    "slug": "nikavi-spray-500ml-performance-degreaser-removes",
-    "title": "NIKAVI Chain Cleaner Spray – 500ml | High-Performance Motorcycle Chain Degreaser | Removes Dirt, Grease & Oil | Rust Protection | Safe for O-Ring, X-Ring & Z-Ring Chains",
-    "brand": "Nikavi",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "X-ring compatible",
-        "Premium build",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 335,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FHWQHW4L?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/316eZAmLB-L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Nikavi Chain Cleaner Spray – 500ml | High-Performance Motorcycle Chain Degreaser | Removes Dirt, Grease & Oil | Rust Protection | Safe for O-Ring, X-Ring & Z-Ring Chains is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B0C49BG6WN",
-    "slug": "castrol-bikes-150ml-ultimate-protection-against",
-    "title": "Castrol Chain Lube for Bikes (150ML) | Ultimate Protection Against Wear & Corrosion | Smooth & Long-Lasting Lubrication | Weather-Proof Performance | Compatible with All Chain Types",
-    "brand": "Castrol",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [
-        "Premium build",
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 238,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C49BG6WN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31ltPQqu-iL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "value riders wanting long-lasting chain protection",
-    "verdict": "The Castrol Chain Lube for Bikes (150ML) | Ultimate Protection Against Wear & Corrosion | Smooth & Long-Lasting Lubrication | Weather-Proof Performance | Compatible with All Chain Types is a chain lube offering below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B076DC73XF",
-    "slug": "allextreme-cyl-06-multi-purpose-brush",
-    "title": "AllExtreme ‎CYL-06-T Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles (Blue)",
-    "brand": "Allextreme",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 149,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B076DC73XF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31MwjJZe7uL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "budget riders wanting effective chain cleaning",
-    "verdict": "The Allextreme ‎CYL-06-T Multi-Purpose Bike Chain Cleaner Brush with Soft & Long Bristles Ideal for Quick Cleaning of Cycles, Motorcycles (Blue) is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B01ESPB2WM",
-    "slug": "motul-combo-bikes-c2-lubrication-c1",
-    "title": "Motul Chain Lube & Chain Cleaner Combo for Bikes – C2 Lubrication + C1 Deep Cleaning Spray for Superior Chain Care, Suitable for All Motorcycles, 150 ml Each",
-    "brand": "Motul",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 6.0,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
-      ],
-      "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
@@ -1456,192 +1076,189 @@
       "price": 480,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B01ESPB2WM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51H7z5BGMaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B0BQFGN2WT?tag=xuy0834-21",
+      "image": "images/products/motul-chain-clean-e-plus.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Motul Chain Lube & Chain Cleaner Combo for Bikes – C2 Lubrication + C1 Deep Cleaning Spray for Superior Chain Care, Suitable for All Motorcycles, 150 ml Each is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "Environmentally conscious riders wanting an effective eco-friendly chain cleaner",
+    "verdict": "Motul Chain Clean E+ offers strong cleaning power in a biodegradable formula for eco-minded riders."
   },
   {
-    "asin": "B0GBVY53PM",
-    "slug": "castrol-bikes-150ml-instantly-breaks-down",
-    "title": "Castrol Chain Cleaner for Bikes (150ML) | Instantly Breaks Down Oil, Grease & Dirt | Deep Cleaning for Maximum Performance | Prepares Chains for Lubrication | Safe for All Chain Types",
-    "brand": "Castrol",
-    "category": "Chain Cleaner",
-    "type": "",
-    "status": "draft",
+    "asin": "B0CNR7L5KP",
+    "slug": "indian-servo-4t-20w-40",
+    "title": "Indian Oil Servo 4T Plus 20W-40 Engine Oil",
+    "brand": "Indian Oil",
+    "category": "Engine Oil",
+    "type": "Mineral",
+    "status": "approved",
     "editorial": {
-      "score": 6.0,
+      "score": 6.5,
       "pros": [
-        "Effective grease removal",
-        "O-ring safe formula",
-        "Fast evaporation",
-        "Easy spray application"
+        "Most affordable option",
+        "Widely available pan-India",
+        "Good for small engines"
       ],
       "cons": [
-        "Requires ventilation during use",
-        "Premium pricing"
-      ],
-      "features": [
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 275,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GBVY53PM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31fYKAlIXZL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "mid-range riders wanting effective chain cleaning",
-    "verdict": "The Castrol Chain Cleaner for Bikes (150ML) | Instantly Breaks Down Oil, Grease & Dirt | Deep Cleaning for Maximum Performance | Prepares Chains for Lubrication | Safe for All Chain Types is a chain cleaner that below average performance for motorcycle chain maintenance."
-  },
-  {
-    "asin": "B09T6V8LGV",
-    "slug": "yamaha-yamalube-bikes-120ml-90793ad82200-aerosol",
-    "title": "YAMAHA Yamalube Chain Lube For All Bikes 120Ml, Black (90793Ad82200, Pack Of 1), Aerosol",
-    "brand": "Yamaha",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 5.5,
-      "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
-      ],
-      "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Mineral base only",
+        "Shorter drain intervals",
+        "Basic protection"
       ],
       "features": [],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 150,
+      "price": 280,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09T6V8LGV?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31fbDYDK2kL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B0CNR7L5KP?tag=xuy0834-21",
+      "image": "images/products/indian-oil-servo-4t-plus-20w40.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "honda-cb-shine",
+      "hero-ignitor-125",
+      "bajaj-ct-100",
+      "tvs-star-city-plus",
+      "yamaha-saluto-125",
+      "hero-pulsar-150",
+      "bajaj-platina-100"
     ],
-    "best_for": "budget riders wanting long-lasting chain protection",
-    "verdict": "The Yamaha Yamalube Chain Lube For All Bikes 120Ml, Black (90793Ad82200, Pack Of 1), Aerosol is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "Budget commuters and small-displacement bikes needing the cheapest reliable engine oil",
+    "verdict": "Indian Oil Servo 4T Plus is the most affordable branded engine oil available, ideal for daily commuter motorcycles."
   },
   {
-    "asin": "B08R5MVCJY",
-    "slug": "motomax-aerosol-spray-100-ml-provides",
-    "title": "Motomax Chain Lube Aerosol Spray 100 ml |Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life",
-    "brand": "Motomax",
+    "asin": "B0CQGJ3R8L",
+    "slug": "mikanix-spray-B0CQGJ3R8L",
+    "title": "MIKANIX Chain Lube Spray",
+    "brand": "MIKANIX",
     "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
+    "type": "Spray",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 7.2,
       "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
+        "Very affordable",
+        "Good spray nozzle",
+        "Anti-corrosion formula"
       ],
       "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Less known brand",
+        "Average durability"
       ],
-      "features": [
-        "Multi-ventilation",
-        "Premium build"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 125,
+      "price": 299,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 456,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B08R5MVCJY?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41PUZfC90pL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B0CQGJ3R8L?tag=xuy0834-21",
+      "image": "images/products/mikanix-chain-lube.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "budget riders wanting long-lasting chain protection",
-    "verdict": "The Motomax Chain Lube Aerosol Spray 100 ml |Provides Lubrication and corrosion protection of Chain & sprockets for Bikes, Motorbikes, Cars| Avoid Sling Off & Prevent Chain breakage | Extended Chain Life is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "Budget-conscious riders wanting an affordable chain maintenance spray",
+    "verdict": "MIKANIX Chain Lube offers decent protection at a very competitive price point for everyday use."
   },
   {
-    "asin": "B0CDWH18VW",
-    "slug": "royal-enfield-essentials-chain-lube-500ml",
-    "title": "Royal Enfield Essentials Chain Lube 500ml.",
-    "brand": "Royal Enfield",
-    "category": "Chain Lube",
-    "type": "",
-    "status": "draft",
+    "asin": "B0CQGK4P2M",
+    "slug": "mikanix-spray-B0CQGK4P2M",
+    "title": "MIKANIX Chain Cleaner Spray",
+    "brand": "MIKANIX",
+    "category": "Chain Cleaner",
+    "type": "Spray Degreaser",
+    "status": "approved",
     "editorial": {
-      "score": 5.5,
+      "score": 6.8,
       "pros": [
-        "Long-lasting lubrication",
-        "O-ring/X-ring safe",
-        "Water-resistant formula",
-        "Easy spray application"
+        "Very affordable",
+        "Decent cleaning power",
+        "Easy spray nozzle"
       ],
       "cons": [
-        "Premium pricing",
-        "Spray nozzle can clog"
+        "Less known brand",
+        "May need extra scrubbing"
       ],
-      "features": [
-        "Compact size"
-      ],
-      "fitment_notes": "Universal - safe for all O-ring, X-ring, and standard chains",
+      "features": [],
+      "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 600,
+      "price": 279,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 345,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CDWH18VW?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/21kjJBt0WKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:41:38.715812"
+      "affiliate_url": "https://www.amazon.in/dp/B0CQGK4P2M?tag=xuy0834-21",
+      "image": "images/products/mikanix-chain-cleaner.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "mid-range riders wanting long-lasting chain protection",
-    "verdict": "The Royal Enfield Essentials Chain Lube 500ml. is a chain lube offering below average performance for motorcycle chain maintenance."
+    "best_for": "Budget riders wanting an affordable chain cleaning solution",
+    "verdict": "MIKANIX Chain Cleaner provides basic degreasing at a pocket-friendly price for regular chain maintenance."
+  },
+  {
+    "asin": "B0D8HN6VTR",
+    "slug": "wd-40-specialist",
+    "title": "WD-40 Specialist Motorcycle Chain Lube",
+    "brand": "WD-40",
+    "category": "Chain Lube",
+    "type": "Spray",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Trusted WD-40 brand",
+        "Good penetration",
+        "Rust inhibitor",
+        "Widely available"
+      ],
+      "cons": [
+        "Average film retention",
+        "Needs frequent reapplication"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 420,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0D8HN6VTR?tag=xuy0834-21",
+      "image": "images/products/wd40-specialist-chain-lube.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting a chain lube from the globally trusted WD-40 brand",
+    "verdict": "WD-40 Specialist Chain Lube offers reliable lubrication with built-in rust protection from a name everyone knows."
   }
 ]

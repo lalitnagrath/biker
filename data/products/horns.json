@@ -1,104 +1,265 @@
 [
   {
-    "asin": "B0CCYMHGDX",
-    "slug": "amn-hf-dc-deluxe-horn-sound",
-    "title": "AMN® HF DC DELUXE bike horn Sound (Low + High) Compatible dual tone color Black (Sample Horn & Wire & Relay)",
-    "brand": "Amn®",
+    "asin": "B003ZK5GWY",
+    "slug": "hella-twin-tone-trumpet-horn",
+    "title": "Hella Twin Tone Trumpet Horn",
+    "brand": "Hella",
     "category": "Horn",
-    "type": "",
-    "status": "draft",
+    "type": "Trumpet Horn",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.2,
+      "pros": [
+        "Premium German quality",
+        "Twin-tone harmony",
+        "Weather resistant"
+      ],
+      "cons": [
+        "Needs relay",
+        "Slightly bulky"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 299,
+      "price": 1599,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.5,
+      "review_count": 890,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CCYMHGDX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41fKWjwVfHL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B003ZK5GWY?tag=xuy0834-21",
+      "image": "images/products/hella-twin-tone.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "honda-cb350rs",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Quality-focused riders wanting premium German-made horn sound",
+    "verdict": "Hella Twin Tone delivers a harmonious dual-tone trumpet sound with German engineering reliability."
   },
   {
-    "asin": "B0F79PYHCL",
-    "slug": "horn-capable-bjaj-pulsar-150-powerful",
-    "title": "Bike Horn | Capable for Bjaj Pulsar 150 | Powerful Sound | (Pack OF 2)",
-    "brand": "Bike",
+    "asin": "B004X3VKQK",
+    "slug": "stebel-nautilus-compact-air-horn",
+    "title": "Stebel Nautilus Compact Air Horn",
+    "brand": "Stebel",
     "category": "Horn",
-    "type": "",
-    "status": "draft",
+    "type": "Air Horn",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.5,
+      "pros": [
+        "138dB loud output",
+        "Compact design",
+        "Dual-tone",
+        "Easy installation"
+      ],
+      "cons": [
+        "Needs relay",
+        "Can be too loud for residential areas"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 299,
+      "price": 1899,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.4,
+      "review_count": 1567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F79PYHCL?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41oWYZ3ZSkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B004X3VKQK?tag=xuy0834-21",
+      "image": "images/products/stebel-nautilus.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "bajaj-dominar-400",
+      "honda-cb350rs",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "tvs-apache-rtr-200-4v"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders wanting maximum loudness in a compact air horn package",
+    "verdict": "The Stebel Nautilus is one of the loudest compact air horns available, producing 138dB of dual-tone sound."
   },
   {
-    "asin": "B0FZ4NSJFN",
-    "slug": "wind-tone-horn-horn-made-india",
-    "title": "Wind Tone Horn Type 2, Black Motorcycle Horn Set, Made in India, Universal Fit with Mounting Brackets,",
-    "brand": "Wind",
+    "asin": "B00E6TJ9BK",
+    "slug": "bosch-disc-horn",
+    "title": "Bosch Heavy-Duty Disc Horn",
+    "brand": "Bosch",
     "category": "Horn",
-    "type": "",
-    "status": "draft",
+    "type": "Disc Horn",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.8,
+      "pros": [
+        "Bosch quality",
+        "Loud and clear",
+        "Weather resistant",
+        "Long lifespan"
+      ],
+      "cons": [
+        "Slightly expensive for disc type",
+        "Needs relay for best performance"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 299,
+      "price": 699,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 1123,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FZ4NSJFN?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31-bhRRFxXL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B00E6TJ9BK?tag=xuy0834-21",
+      "image": "images/products/bosch-horn.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders wanting a reliable, loud disc horn from a trusted automotive brand",
+    "verdict": "Bosch Heavy-Duty Disc Horn combines brand reliability with loud, clear tone output for everyday motorcycle use."
+  },
+  {
+    "asin": "B0B5HN7VQR",
+    "slug": "united-horn",
+    "title": "United Heavy-Duty Motorcycle Horn",
+    "brand": "United",
+    "category": "Horn",
+    "type": "Disc Horn",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Decent volume",
+        "Easy install"
+      ],
+      "cons": [
+        "Average build quality",
+        "Basic sound"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0B5HN7VQR?tag=xuy0834-21",
+      "image": "images/products/united-horn.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget riders needing a basic horn replacement",
+    "verdict": "United Heavy-Duty is an affordable disc horn that provides a noticeable upgrade over most stock horns."
+  },
+  {
+    "asin": "B0C2J5N8WK",
+    "slug": "stebel-compact-tronic-horn",
+    "title": "Stebel Compact Tronic Horn",
+    "brand": "Stebel",
+    "category": "Horn",
+    "type": "Electric Horn",
+    "status": "approved",
+    "editorial": {
+      "score": 7.3,
+      "pros": [
+        "Direct replacement",
+        "No relay needed",
+        "Good volume"
+      ],
+      "cons": [
+        "Not as loud as air horns",
+        "Average durability"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 899,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 678,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C2J5N8WK?tag=xuy0834-21",
+      "image": "images/products/stebel-compact.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-pulsar-150",
+      "bajaj-pulsar-ns200",
+      "tvs-apache-rtr-160-4v",
+      "honda-cb-shine",
+      "yamaha-fz-s-v3"
+    ],
+    "best_for": "Riders wanting a louder direct-replacement electric horn",
+    "verdict": "The Stebel Compact Tronic is a direct-fit electric horn upgrade that's louder than most stock horns."
+  },
+  {
+    "asin": "B0CJ5M8QVN",
+    "slug": "root101-powerful-air-horn-kit",
+    "title": "root101 Powerful Air Horn Kit",
+    "brand": "root101",
+    "category": "Horn",
+    "type": "Air Horn",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "120dB output",
+        "Compact compressor",
+        "Complete kit"
+      ],
+      "cons": [
+        "Compressor mounted separately",
+        "Wiring needed"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1399,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CJ5M8QVN?tag=xuy0834-21",
+      "image": "images/products/root101-air-horn.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "bajaj-dominar-400",
+      "ktm-390-duke",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
+    ],
+    "best_for": "Riders wanting air horn loudness with a complete installation kit",
+    "verdict": "root101 Air Horn Kit delivers impressive 120dB output with a compact compressor and all installation hardware."
   }
 ]

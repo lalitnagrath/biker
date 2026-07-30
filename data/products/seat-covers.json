@@ -1,410 +1,250 @@
 [
   {
-    "asin": "B0H63FQJH5",
-    "slug": "khamni-enterprises-seat-3d-cushion-protector",
-    "title": "KHAMNI ENTERPRISES Universal Bike Seat Cover – Waterproof Black 3D Mesh Cushion | Breathable, Anti-Scratch Protector from Cat, Dust | Waterproof Sheet Cover for All Petrol and Electric Bike",
-    "brand": "Khamni",
+    "asin": "B0H1A2B3C4",
+    "slug": "autologue-seat-re",
+    "title": "Autologue Design Seat Cover RE Classic",
+    "brand": "Autologue Design",
     "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Custom Fit",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.8,
+      "pros": [
+        "Precise fit for RE Classic",
+        "Premium leatherette material",
+        "Water-resistant finish"
+      ],
+      "cons": [
+        "Limited to RE Classic only",
+        "No gel padding"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 219,
+      "price": 1499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H63FQJH5?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31mjYoGrhIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0H1A2B3C4?tag=xuy0834-21",
+      "image": "images/products/autologue-design-seat-cover-re-classic.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Royal Enfield Classic 350 owners wanting a tailored seat cover",
+    "verdict": "The Autologue Design seat cover offers a precise custom fit with premium leatherette material specifically designed for Royal Enfield Classic 350."
   },
   {
-    "asin": "B0DGPZ9H8B",
-    "slug": "seat-pu-seat-protector-motorbike-seat",
-    "title": "Motorcycle Seat Cover,Breathable PU Leather Motorcycle Seat Protector,Motorbike Seat Cover with Elastic, Motorcycle Rain Seat Cover for Motorcycle Scooter Seat (Black - High Stretch Leather)",
-    "brand": "Motorcycle",
+    "asin": "B0H1D5E6F7",
+    "slug": "autologue-seat-pulsar-ns200",
+    "title": "Autologue Seat Cover Pulsar NS200",
+    "brand": "Autologue Design",
     "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Custom Fit",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.3,
+      "pros": [
+        "Tailored for Pulsar NS",
+        "Anti-slip surface",
+        "Easy to install"
+      ],
+      "cons": [
+        "Basic padding",
+        "Color may fade over time"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 195,
+      "price": 1299,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 345,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DGPZ9H8B?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31w4XXGNNWL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0H1D5E6F7?tag=xuy0834-21",
+      "image": "images/products/autologue-seat-cover-pulsar.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "bajaj-pulsar-ns160",
+      "bajaj-pulsar-ns200"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Pulsar NS200 owners wanting a fitted seat cover",
+    "verdict": "The Autologue Seat Cover Pulsar offers a snug custom fit with anti-slip surface for Bajaj Pulsar NS200 riders."
   },
   {
-    "asin": "B0GZPZRC4X",
-    "slug": "seat-cd-110-protective-seat",
-    "title": "Bike Seat Cover for CD 110, Black, Protective Motorcycle Seat Cover",
-    "brand": "Bike",
+    "asin": "B0H1G8H9I0",
+    "slug": "taurus-comfort-seat",
+    "title": "Taurus Comfort Seat Cover",
+    "brand": "Taurus",
     "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Universal Gel",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8,
+      "pros": [
+        "Thick gel padding",
+        "Universal fit",
+        "Anti-vibration design"
+      ],
+      "cons": [
+        "Expensive for category",
+        "Adds seat height"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 249,
+      "price": 2499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.4,
+      "review_count": 890,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GZPZRC4X?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41ycWivZxvL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0H1G8H9I0?tag=xuy0834-21",
+      "image": "images/products/taurus-comfort-seat-cover.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Touring riders wanting maximum seat comfort with gel padding",
+    "verdict": "The Taurus Comfort Seat Cover delivers thick gel padding with anti-vibration design for long-distance touring comfort on any motorcycle."
   },
   {
-    "asin": "B0F92STJYF",
-    "slug": "carbox-campatibal-dio-removable-washable-pu",
-    "title": "CARBOX,Campatibal with [ Dio ] Bike Removable & Washable PU Leather Waterproof Single Bike Seat Cover for Honda Dio (Black)",
-    "brand": "Carbox,Campatibal",
+    "asin": "B0H1J1K2L3",
+    "slug": "seat-solutions-gel-pad",
+    "title": "Seat Solutions Gel Pad",
+    "brand": "Seat Solutions",
     "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Gel Pad",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.2,
+      "pros": [
+        "Medical-grade gel",
+        "Universal fitment",
+        "Reduces pressure points"
+      ],
+      "cons": [
+        "Slightly heavy",
+        "Needs strap adjustment"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 209,
+      "price": 1999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.5,
+      "review_count": 1234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0F92STJYF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51-Pt3V2VmL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0H1J1K2L3?tag=xuy0834-21",
+      "image": "images/products/seat-solutions-gel-pad.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders with back pain needing pressure-relieving gel seat pad",
+    "verdict": "The Seat Solutions Gel Pad uses medical-grade gel to relieve pressure points, ideal for riders suffering from back pain during long rides."
   },
   {
-    "asin": "B0H4NPHWW9",
-    "slug": "fenke-seat-65-35-cm-pu",
-    "title": "Fenke Universal Bike Seat Cover 65 x 35 cm | PU & 3D Mesh Seat Cushion Cover | Removable Washable Seat Protector for Daily Riding | Dust Resistant & Anti Scratch | Black",
-    "brand": "Fenke",
+    "asin": "B0H1M4N5O6",
+    "slug": "biker-seat",
+    "title": "Pro Biker Seat Cover",
+    "brand": "Pro Biker",
     "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Waterproof",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7,
+      "pros": [
+        "Very affordable",
+        "Waterproof material",
+        "Universal fit"
+      ],
+      "cons": [
+        "Basic comfort",
+        "Thin material"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 219,
+      "price": 799,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 678,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H4NPHWW9?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31t2-9wukYL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0H1M4N5O6?tag=xuy0834-21",
+      "image": "images/products/pro-biker-seat-cover.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget riders wanting basic waterproof seat protection",
+    "verdict": "The Pro Biker Seat Cover is an ultra-affordable waterproof option for basic seat protection on any motorcycle."
   },
   {
-    "asin": "B0FSDV9VS3",
-    "slug": "motorbike-rain-seat-flexible-single-seat",
-    "title": "Motorbike Rain Seat Cover Universal Flexible Waterproof Cover Single Bike Seat Cover for Universal for Bike Access 125 Pack of 1",
-    "brand": "Motorbike",
+    "asin": "B0HG2B3C9",
+    "slug": "comfort-seats-gel-seat-pad",
+    "title": "Comfort Seats Gel Seat Pad Universal",
+    "brand": "Comfort Seats",
     "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
+    "type": "Gel Pad",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.6,
+      "pros": [
+        "Thick memory gel layer",
+        "Non-slip base",
+        "Universal strap-on fit"
+      ],
+      "cons": [
+        "Adds seat height slightly",
+        "Can feel warm in summer"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 299,
+      "price": 1599,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.2,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FSDV9VS3?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31yq7YxtEIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0HG2B3C9?tag=xuy0834-21",
+      "image": "images/products/comfort-seats-gel-seat-pad.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0H4TYH33C",
-    "slug": "gruhaura-seat-fit-seat-protector-dustproof",
-    "title": "GRUHAURA Premium Waterproof Motorcycle Seat Cover, Universal Fit Bike Seat Protector Dustproof UV Resistant Seat Shield, All-Weather Protection for Motorcycles, Scooters,",
-    "brand": "Gruhaura",
-    "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 229,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H4TYH33C?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/21p8wDqkb7L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B07B3VZS4T",
-    "slug": "a2d-net-seat-cushion-sweat-free",
-    "title": "A2D Mesh Net Bike Seat Cover Cushion for Sweat Free Comfortable Riding for Hero Passion Pro ES, Black, Nylon",
-    "brand": "A2D",
-    "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 229,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07B3VZS4T?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41tFRSkuPML._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0G6CVWW9J",
-    "slug": "ronish-faux-single-seat-single-seat",
-    "title": "RONISH Waterproof Durable Faux Leather Single Bike Seat Cover Single Bike Seat Cover for Splendor, Splendor Plus, Splendor Pro",
-    "brand": "Ronish",
-    "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G6CVWW9J?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/311U9nNjMEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0G6KV87T7",
-    "slug": "seat-motorbike-seat-elastic-pu-seat",
-    "title": "Motorcycle Seat Cover, Universal Motorbike Seat Cover with Elastic, Breathable PU Leather Motorcycle Seat Protector, Motorcycle Rain Seat Cover for Most Motorcycle Scooter Seat",
-    "brand": "Motorcycle",
-    "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G6KV87T7?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/21Jo4itCU9L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GLYZS9ZF",
-    "slug": "etradezone-single-seat-bajaj-platina",
-    "title": "ETRADEZONE Single Bike Seat Cover for Bajaj Platina, Black",
-    "brand": "Etradezone",
-    "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 189,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GLYZS9ZF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41tZfRVe8-L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQRN2J44",
-    "slug": "tvs-seat-ntorq-sweat-free-absorbs",
-    "title": "TVS Bike Seat Cover NTORQ for Sweat Free Comfortable Riding |Absorbs Micro-Shocks and Road Jerks | Heat Protection | Nylon | Black-Red",
-    "brand": "TVS",
-    "category": "Seat Cover",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 293,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQRN2J44?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41-zMjOynTL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Commuters wanting affordable gel comfort without a full seat cover replacement",
+    "verdict": "Comfort Seats Gel Pad adds a thick memory gel layer to any stock seat for improved comfort on daily commutes."
   }
 ]

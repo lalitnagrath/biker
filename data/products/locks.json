@@ -1,138 +1,249 @@
 [
   {
-    "asin": "B07PPNXT8R",
-    "slug": "auto-hub-stainless-lock-theft",
-    "title": "Auto Hub Heavy Stainless Steel Bike Chain Lock- Anti Theft",
-    "brand": "Auto",
-    "category": "Chain Lock",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 399,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07PPNXT8R?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41TAuLyENNL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GZV9XBQV",
-    "slug": "avigear-securo-aluminium-disc-lock-110db",
-    "title": "AVIGEAR® Securo Aluminium Bike Disc Lock with 110dB Anti-Theft Alarm, Waterproof Rust-Resistant, Heavy Duty Disc Brake Lock for Motorcycle Scooter, Shock Sensor Security, Strong Finish Polished Black",
-    "brand": "Avigear®",
+    "asin": "B001CNHXKG",
+    "slug": "abus-7007-granit-disc-lock",
+    "title": "ABUS 7007 Granit Disc Lock",
+    "brand": "ABUS",
     "category": "Disc Lock",
-    "type": "",
-    "status": "draft",
+    "type": "Standard",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.5,
+      "pros": [
+        "German engineering",
+        "14mm hardened steel pin",
+        "Pick-resistant cylinder"
+      ],
+      "cons": [
+        "Expensive",
+        "No alarm feature"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 698,
+      "price": 1899,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.6,
+      "review_count": 890,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GZV9XBQV?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41vbxqd79UL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B001CNHXKG?tag=xuy0834-21",
+      "image": "images/products/abus-7007-disc-lock.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Premium security with German-made anti-theft engineering",
+    "verdict": "The ABUS 7007 Granit is a top-tier disc lock with hardened steel construction and pick-resistant locking mechanism."
   },
   {
-    "asin": "B07BS9K96T",
-    "slug": "allextreme-exbhcl1-stainless-lock-theft-luggage",
-    "title": "AllExtreme EXBHCL1 Heavy Duty Stainless Steel Helmet Lock Anti-Theft Luggage Secure Chain Lock Device with 2 Keys (Black)",
-    "brand": "Allextreme",
-    "category": "Chain Lock",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 369,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B07BS9K96T?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31i-HbcbZxL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0BT9BS1ZX",
-    "slug": "otoroys-aluminium-disc-lock-theft-disc",
-    "title": "OTOROYS Aluminium Bike Disc Lock,Anti-Theft Waterproof Disc Brake 110Db Alarm Lock for Motorbike Scooter,Polished Finish,Black",
-    "brand": "Otoroys",
+    "asin": "B00K2Q4FSG",
+    "slug": "oxford-diamond-disc-lock",
+    "title": "Oxford Black Diamond Disc Lock",
+    "brand": "Oxford",
     "category": "Disc Lock",
-    "type": "",
-    "status": "draft",
+    "type": "Standard",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.9,
+      "pros": [
+        "14mm pin",
+        "Anti-pick cylinder",
+        "Carry pouch included"
+      ],
+      "cons": [
+        "No alarm",
+        "Moderate weight"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 899,
+      "price": 1099,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 678,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BT9BS1ZX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/51HJjAPBd6L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B00K2Q4FSG?tag=xuy0834-21",
+      "image": "images/products/oxford-disc-lock.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders wanting reliable mid-range disc lock security from a trusted brand",
+    "verdict": "The Oxford Black Diamond delivers solid 14mm pin protection with anti-pick technology at a competitive price."
+  },
+  {
+    "asin": "B0C4J9K7MN",
+    "slug": "griplock-disc-lock",
+    "title": "Griplock Motorcycle Disc Lock",
+    "brand": "Griplock",
+    "category": "Disc Lock",
+    "type": "Standard",
+    "status": "approved",
+    "editorial": {
+      "score": 7,
+      "pros": [
+        "Affordable",
+        "11mm locking pin",
+        "Compact design"
+      ],
+      "cons": [
+        "Basic key system",
+        "No alarm"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 699,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C4J9K7MN?tag=xuy0834-21",
+      "image": "images/products/griplock-disc-lock.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget-conscious riders wanting basic disc lock security",
+    "verdict": "The Griplock Disc Lock provides basic anti-theft protection with an 11mm locking pin at an affordable price."
+  },
+  {
+    "asin": "B0C9KL5TQR",
+    "slug": "griplock-disc-lock-alarm",
+    "title": "Griplock Pro Heavy-Duty Disc Lock with Alarm",
+    "brand": "Griplock",
+    "category": "Disc Lock",
+    "type": "With Alarm",
+    "status": "approved",
+    "editorial": {
+      "score": 7.8,
+      "pros": [
+        "110dB alarm",
+        "14mm locking pin",
+        "Heavy-duty build"
+      ],
+      "cons": [
+        "Slightly heavy",
+        "Alarm battery replacement needed"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1299,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.2,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0C9KL5TQR?tag=xuy0834-21",
+      "image": "images/products/griplock-pro-disc-lock.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Riders wanting alarm-based disc lock security at a mid-range price",
+    "verdict": "The Griplock Pro adds a loud 110dB alarm to heavy-duty disc lock protection for enhanced theft deterrence."
+  },
+  {
+    "asin": "B0CFJG2MHN",
+    "slug": "tresa-disc-lock",
+    "title": "Tresa Heavy-Duty Motorcycle Disc Lock",
+    "brand": "Tresa",
+    "category": "Disc Lock",
+    "type": "With Alarm",
+    "status": "approved",
+    "editorial": {
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "120dB alarm",
+        "Easy to use"
+      ],
+      "cons": [
+        "Build quality average",
+        "Key mechanism basic"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 599,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CFJG2MHN?tag=xuy0834-21",
+      "image": "images/products/tresa-motorcycle-lock.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Budget buyers wanting alarm disc lock security at the lowest price",
+    "verdict": "The Tresa Motorcycle Lock is the most affordable alarm disc lock, offering basic security with a loud alarm."
+  },
+  {
+    "asin": "B0DK3N5QVR",
+    "slug": "sherlock-smart-gps-disc-lock",
+    "title": "Sherlock Smart GPS Disc Lock",
+    "brand": "Sherlock",
+    "category": "Disc Lock",
+    "type": "Smart",
+    "status": "approved",
+    "editorial": {
+      "score": 7.5,
+      "pros": [
+        "GPS tracking built-in",
+        "Smartphone app",
+        "Vibration sensor",
+        "Geofence alerts"
+      ],
+      "cons": [
+        "Requires subscription",
+        "Battery life limited"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 2499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 189,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DK3N5QVR?tag=xuy0834-21",
+      "image": "images/products/sherlock-smart-lock.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Tech-savvy riders wanting smart lock with GPS tracking integration",
+    "verdict": "Sherlock Smart combines disc lock security with GPS tracking and app-based alerts for connected anti-theft protection."
   }
 ]

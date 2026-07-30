@@ -1,492 +1,23 @@
 [
   {
-    "asin": "B0DHLCYQMK",
-    "slug": "rider-men-jackets-bomber-men-length",
-    "title": "JUST RIDER men jackets || bomber jacket for men || Polyester Standard Length Riding Jacket || Biker Lightweight Outwear Sportswear Bomber Jacket (J4-6) (IN, Alpha, XL, Regular, Black)",
-    "brand": "Just",
+    "asin": "B0B7R9T8N4",
+    "slug": "viaterra-spencer",
+    "title": "Viaterra Spencer Riding Jacket",
+    "brand": "Viaterra",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 799,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DHLCYQMK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31aX5eLgtTL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FXVRZ94S",
-    "slug": "blaq-ash-men-faux-hooded-zip-B0FXVRZ94S",
-    "title": "Blaq Ash Men's Faux Leather Hooded Motorcycle Jacket, Zip-Up, with Pocket (IN, Alpha, XL, Brown)",
-    "brand": "Blaq",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FXVRZ94S?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41O5fWV0C-L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FXVW2KY1",
-    "slug": "blaq-ash-men-faux-hooded-zip-B0FXVW2KY1",
-    "title": "Blaq Ash Men's Faux Leather Hooded Motorcycle Jacket, Zip-Up, with Pocket (IN, Alpha, S, Brown)",
-    "brand": "Blaq",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FXVW2KY1?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41O5fWV0C-L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C3MJV637",
-    "slug": "allextreme-speedo-racer-armour-back-elbows-B0C3MJV637",
-    "title": "Allextreme SPEEDO Bike Riding Jacket Mesh Fabric Racer Motorcycle Armour Back Elbows Shoulders Protection with All Season Night Visibility Sticker for Men (3XL, Neon Green)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 3899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C3MJV637?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/417giVBeJEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CHMGZTBT",
-    "slug": "royal-enfield-unisex-adult-streetwind-v3-B0CHMGZTBT",
-    "title": "Royal Enfield Unisex-Adult Streetwind V3 Polyester Standard Length Riding Jacket Black (L) 42 Cm Ergo Pro-Tech Ce Level 2 Protectors At Shoulder & Elbow & Pocket For Back Protectors",
-    "brand": "Royal Enfield",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 3867,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CHMGZTBT?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41mi8ovUM7L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B09W2L2T55",
-    "slug": "xts-speedway-protective-impact-protection-abrasion",
-    "title": "Xts Speedway Riding Jacket I Mesh Protective Motorcycle Riding Jacket With Impact Protection And Abrasion Resistance - White Blue, Large",
-    "brand": "Xts",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4199,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09W2L2T55?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/318xwiQ0N0L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQTLZGZC",
-    "slug": "allextreme-tripper-men-back-elbows-shoulder-B0CQTLZGZC",
-    "title": "Allextreme TRIPPER Bike Riding Jacket for Men with Back Elbows Shoulder Protection Armour | Mesh Fabric Motorcycle Rider Jacket for Bikers | Biker Protective Gear with Reflector (S, Red & Black)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQTLZGZC?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41MhRvRLtpL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQTMZDPW",
-    "slug": "allextreme-tripper-men-back-elbows-shoulder-B0CQTMZDPW",
-    "title": "Allextreme TRIPPER Bike Riding Jacket for Men with Back Elbows Shoulder Protection Armour | Mesh Fabric Motorcycle Rider Jacket for Bikers | Biker Protective Gear with Reflector (N Green & Black, M)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQTMZDPW?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Rh-JNPsIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQTLSYCM",
-    "slug": "allextreme-tripper-men-back-elbows-shoulder-B0CQTLSYCM",
-    "title": "Allextreme TRIPPER Bike Riding Jacket for Men with Back Elbows Shoulder Protection Armour | Mesh Fabric Motorcycle Rider Jacket for Bikers | Biker Protective Gear with Reflector (M, Grey & Black)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQTLSYCM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41GhFG0KxjL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FYD21MP8",
-    "slug": "harley-davidson-urbanx-edge-men-100",
-    "title": "HARLEY-DAVIDSON X UrbanX Edge Riding Jacket for Men | 100% Polyester with Breathable Mesh Lining | Protector Compartments for Elbow, Shoulder & Back | Comfortable & Stylish Motorcycle Jacket_XL",
-    "brand": "Harley-Davidson",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 5899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FYD21MP8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31PIKoOx0WL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C3MKWSDX",
-    "slug": "allextreme-speedo-racer-armour-back-elbows-B0C3MKWSDX",
-    "title": "Allextreme SPEEDO Bike Riding Jacket Mesh Fabric Racer Motorcycle Armour Back Elbows Shoulders Protection with All Season Night Visibility Sticker for Men (M, Red)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 3899,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C3MKWSDX?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41mv2bST5hL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C3MKYFDP",
-    "slug": "allextreme-turbo-racer-back-elbows-shoulders-B0C3MKYFDP",
-    "title": "Allextreme TURBO Bike Riding Jacket Mesh Fabric Racer Motorcycle with Back Elbows Shoulders Protection and All Season Night Visibility Sticker for Men (L, Red)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4377,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C3MKYFDP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41mnl0JZpEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CMTL8P8Q",
-    "slug": "axor-nimbuz-men-equipped-safetech-level-B0CMTL8P8Q",
-    "title": "Axor Nimbuz Riding Jacket for Men equipped with Safetech Level 2-Chest armor/Back/Shoulder and Level-1 elbow and Mesh Interior for relaxed Fit-Black-S",
-    "brand": "Axor",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 6002,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CMTL8P8Q?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41SrgaFQaKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0BS3VXCR8",
-    "slug": "tvs-impact-resistance-abrasion-challenger-layer",
-    "title": "TVS Riding Jacket with Impact Resistance& High Abrasion, Challenger 3-Layer with All Weather Adaptability, CE Level 2 Armour Protection- Bike Jackets for Men, Tailored Comfort - (White-XL)",
-    "brand": "TVS",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 7584,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BS3VXCR8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41JSOW+ihCL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0C3ML7BS8",
-    "slug": "allextreme-turbo-racer-back-elbows-shoulders-B0C3ML7BS8",
-    "title": "Allextreme TURBO Bike Riding Jacket Mesh Fabric Racer Motorcycle with Back Elbows Shoulders Protection and All Season Night Visibility Sticker for Men (2XL, Red)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.8,
+      "pros": [
+        "CE Level 2 armor",
+        "Good airflow",
+        "Rain liner included"
+      ],
+      "cons": [
+        "Average fit",
+        "Basic ventilation design"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -496,99 +27,121 @@
       "price": 4499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.2,
+      "review_count": 234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C3ML7BS8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41mnl0JZpEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0B7R9T8N4?tag=xuy0834-21",
+      "image": "images/products/viaterra-spencer-jacket.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Mid-range buyers wanting CE Level 2 protection with rain liner",
+    "verdict": "The Viaterra Spencer delivers CE Level 2 armor protection with included rain liner at a competitive mid-range price."
   },
   {
-    "asin": "B0CB31HNG9",
-    "slug": "axor-diva-maxtec-600-textile-women",
-    "title": "Axor Diva Riding Jacket MaxTec 600-D Textile for Women equipped with -Tech C.E. level 2 protectors at the elbows/shoulders/back and high tenacity mesh fabric for maximum ventilation-Black Orange-L",
-    "brand": "Axor",
+    "asin": "B0B7R9T8O5",
+    "slug": "viaterra-miller",
+    "title": "Viaterra Miller Riding Jacket",
+    "brand": "Viaterra",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.4,
+      "pros": [
+        "Affordable CE certification",
+        "Good ventilation",
+        "Multiple pockets"
+      ],
+      "cons": [
+        "Average armor quality",
+        "Limited color options"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 5321,
+      "price": 3499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 189,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CB31HNG9?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/417dmPkytpL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0B7R9T8O5?tag=xuy0834-21",
+      "image": "images/products/viaterra-miller-jacket.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget riders wanting basic CE-certified mesh jacket",
+    "verdict": "The Viaterra Miller offers affordable CE certification with decent ventilation for budget-conscious touring riders."
   },
   {
-    "asin": "B0CMTFPJX6",
-    "slug": "axor-nimbuz-men-equipped-safetech-level-B0CMTFPJX6",
-    "title": "Axor Nimbuz Riding Jacket for Men equipped with Safetech Level 2-Chest armor/Back/Shoulder and Level-1 elbow and Mesh Interior for relaxed Fit-Grey-S",
-    "brand": "Axor",
+    "asin": "B0CK2BK20L",
+    "slug": "steelbird-sb-43",
+    "title": "Steelbird SB-43 Riding Jacket",
+    "brand": "Steelbird",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.2,
+      "pros": [
+        "Very affordable",
+        "Good ventilation",
+        "Multiple pockets",
+        "Rain liner included"
+      ],
+      "cons": [
+        "Average armor quality",
+        "Basic fit"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 6139,
+      "price": 2499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 456,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CMTFPJX6?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/4147NmI9HaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0CK2BK20L?tag=xuy0834-21",
+      "image": "images/products/steelbird-sb-43-jacket.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget riders wanting an affordable mesh jacket with rain liner",
+    "verdict": "The Steelbird SB-43 is a budget-friendly mesh jacket with rain liner and decent ventilation for daily commuting."
   },
   {
-    "asin": "B0CMTGTWZM",
-    "slug": "axor-nimbuz-men-equipped-safetech-level-B0CMTGTWZM",
-    "title": "Axor Nimbuz Riding Jacket for Men equipped with Safetech Level 2-Chest armor/Back/Shoulder and Level-1 elbow and Mesh Interior for relaxed Fit-Black-XL",
+    "asin": "B0CMTGTWZ4",
+    "slug": "axor-nimbuz-B0CMTGTWZ4",
+    "title": "Axor Nimbuz Mesh Riding Jacket",
     "brand": "Axor",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.1,
+      "pros": [
+        "Safetech Level 2 armor",
+        "Good airflow",
+        "Multiple pockets"
+      ],
+      "cons": [
+        "Average fit",
+        "No rain liner included"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -598,235 +151,205 @@
       "price": 6275,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 456,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWZ4?tag=xuy0834-21",
+      "image": "images/products/axor-nimbuz-jacket-pro.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "All-round riders wanting CE Level 2 protection at mid-range price",
+    "verdict": "The Axor Nimbuz delivers premium Safetech Level 2 armor protection with excellent airflow at a competitive price."
+  },
+  {
+    "asin": "B0CMTGTWZ5",
+    "slug": "axor-scope",
+    "title": "Axor Scope Riding Jacket",
+    "brand": "Axor",
+    "category": "Jackets",
+    "type": "Mesh",
+    "status": "approved",
+    "editorial": {
+      "score": 7.7,
+      "pros": [
+        "CE certified",
+        "Good ventilation",
+        "Multiple pockets",
+        "Reflective inserts"
+      ],
+      "cons": [
+        "Average armor quality",
+        "Basic rain protection"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 4999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.1,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWZ5?tag=xuy0834-21",
+      "image": "images/products/axor-scope-jacket.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Mid-range buyers wanting CE-certified jacket with good ventilation",
+    "verdict": "The Axor Scope offers CE certification with decent ventilation and reflective inserts for improved visibility."
+  },
+  {
+    "asin": "B0CMTGTWZM",
+    "slug": "axor-nimbuz-B0CMTGTWZM",
+    "title": "Axor Nimbuz Riding Jacket",
+    "brand": "Axor",
+    "category": "Jackets",
+    "type": "Mesh",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "Safetech Level 2 chest/back armor",
+        "Good airflow",
+        "Multiple pockets",
+        "Reflected inserts"
+      ],
+      "cons": [
+        "Average fit",
+        "No rain liner included"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 6275,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 312,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0CMTGTWZM?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/41SrgaFQaKL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "All-round riders wanting CE Level 2 protection at mid-range price",
+    "verdict": "The Axor Nimbuz delivers premium Safetech Level 2 armor protection with excellent airflow at a competitive price."
   },
   {
-    "asin": "B0H4RQ1PC1",
-    "slug": "tvs-ronin-men-ce-level-back",
-    "title": "TVS Ronin Edition Mesh Riding Jacket for Men | CE Level 2 Lightweight Back, Shoulder & Elbow Armours, 600D Protection, Lightweight Summer Motorcycle Jacket for Touring, City Riding (Brown/XL)",
-    "brand": "TVS",
+    "asin": "B0D4F7G8H1",
+    "slug": "spartan-nexus-B0D4F7G8H1",
+    "title": "Spartan Nexus Riding Jacket",
+    "brand": "Spartan",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.5,
+      "pros": [
+        "CE certified armor",
+        "Good airflow",
+        "Reflective inserts"
+      ],
+      "cons": [
+        "Average build quality",
+        "Limited sizing"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 4699,
+      "price": 3999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 345,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0H4RQ1PC1?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Kw0X7pkEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0D4F7G8H1?tag=xuy0834-21",
+      "image": "images/products/spartan-nexus-jacket.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Mid-range riders wanting CE-certified protection with good visibility",
+    "verdict": "The Spartan Nexus offers CE-certified protection with reflective inserts for improved visibility at a mid-range price."
   },
   {
-    "asin": "B0C3MJXR35",
-    "slug": "allextreme-turbo-racer-armour-back-elbows",
-    "title": "Allextreme TURBO Bike Riding Jacket Mesh Fabric Racer Motorcycle Armour Back Elbows Shoulders Protection with All Season Night Visibility Sticker for Men (M, Red)",
-    "brand": "Allextreme",
+    "asin": "B0D4F7G8I2",
+    "slug": "nation-stryker",
+    "title": "Biking Nation Stryker Riding Jacket",
+    "brand": "Biking Nation",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.2,
+      "pros": [
+        "Affordable CE certification",
+        "Good ventilation",
+        "Multiple pockets"
+      ],
+      "cons": [
+        "Average armor quality",
+        "Basic rain protection"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 4499,
+      "price": 2999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0C3MJXR35?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41mnl0JZpEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0D4F7G8I2?tag=xuy0834-21",
+      "image": "images/products/biking-nation-stryker-jacket.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQTLZGZB",
-    "slug": "allextreme-tripper-men-back-elbows-shoulder-B0CQTLZGZB",
-    "title": "Allextreme TRIPPER Bike Riding Jacket for Men with Back Elbows Shoulder Protection Armour | Mesh Fabric Motorcycle Rider Jacket for Bikers | Biker Protective Gear with Reflector (S, Blue & Black)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2399,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQTLZGZB?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41aokUYwkwL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CKL6SXV5",
-    "slug": "allextreme-bazooka-racer-back-elbows-shoulders",
-    "title": "Allextreme BAZOOKA Bike Riding Jacket Mesh Fabric Racer Motorcycle with Back Elbows Shoulders Protection and All Season Night Visibility Sticker for Men (L, Grey/Red)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4699,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CKL6SXV5?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Ee7KFAjaL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CHMFKJS4",
-    "slug": "royal-enfield-unisex-adult-streetwind-v3-B0CHMFKJS4",
-    "title": "Royal Enfield Unisex-Adult Streetwind V3 Polyester Standard Length Riding Jacket Black (2Xl) 46 Cm Ergo Pro-Tech Ce Level 2 Protectors At Shoulder & Elbow & Pocket For Back Protectors",
-    "brand": "Royal Enfield",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 6268,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CHMFKJS4?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41mi8ovUM7L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0G4WKVNX8",
-    "slug": "cramster-viper-impact-protection-abrasion-resistance",
-    "title": "Cramster Viper Jacket - Motorcycle Riding Jacket | Impact Protection | Abrasion Resistance - Black, Large",
-    "brand": "Cramster",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4798,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0G4WKVNX8?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31KT38tjU5L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget riders wanting basic CE-certified mesh protection",
+    "verdict": "The Biking Nation Stryker offers affordable CE certification with decent ventilation for budget touring riders."
   },
   {
     "asin": "B0FCY8FBKD",
-    "slug": "rynox-air-gt-ce-class-impact-B0FCY8FBKD",
-    "title": "Rynox Air GT 4 Jacket - CE Certified Class A | Motorcycle Riding Jacket | Impact Protection | Abrasion Resistance - Black White, 5XL",
+    "slug": "rynox-air-gt-B0FCY8FBKD",
+    "title": "Rynox Air GT 4 Riding Jacket",
     "brand": "Rynox",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.3,
+      "pros": [
+        "CE Class A certified",
+        "Impact protectors included",
+        "Excellent mesh airflow",
+        "Hydrating rain liner"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Sizing runs small"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -836,31 +359,122 @@
       "price": 8350,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.5,
+      "review_count": 178,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKD?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/31NFzPkwdpL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Hot climate touring with CE-certified impact protection",
+    "verdict": "The Rynox Air GT 4 is a top-tier mesh jacket with CE certification and included rain liner for all-weather touring."
+  },
+  {
+    "asin": "B0FCY8FBKG",
+    "slug": "rynox-air-gt-B0FCY8FBKG",
+    "title": "Rynox Air GT 4 Mesh Riding Jacket",
+    "brand": "Rynox",
+    "category": "Jackets",
+    "type": "Mesh",
+    "status": "approved",
+    "editorial": {
+      "score": 8.4,
+      "pros": [
+        "CE Class A certified",
+        "Impact protectors included",
+        "Excellent mesh airflow"
+      ],
+      "cons": [
+        "Premium pricing",
+        "Sizing runs small"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 8350,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.5,
+      "review_count": 345,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKG?tag=xuy0834-21",
+      "image": "images/products/rynox-air-gt4-jacket-pro.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Hot climate touring with CE-certified impact protection",
+    "verdict": "The Rynox Air GT 4 is a top-tier mesh jacket with CE certification and excellent airflow for all-weather touring."
+  },
+  {
+    "asin": "B0FCY8FBKH",
+    "slug": "rynox-eclipse",
+    "title": "Rynox Eclipse 3 Riding Jacket",
+    "brand": "Rynox",
+    "category": "Jackets",
+    "type": "Mesh",
+    "status": "approved",
+    "editorial": {
+      "score": 8,
+      "pros": [
+        "CE certified",
+        "Good airflow",
+        "Rain liner included",
+        "Multiple pockets"
+      ],
+      "cons": [
+        "Average armor quality",
+        "Heavy for summer"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 5499,
+      "mrp": null,
+      "discount": null,
+      "rating": 4.3,
+      "review_count": 567,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0FCY8FBKH?tag=xuy0834-21",
+      "image": "images/products/rynox-eclipse-3-jacket.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "All-round riders wanting CE-certified mesh jacket with rain liner",
+    "verdict": "The Rynox Eclipse 3 offers CE certification with included rain liner, making it versatile for varying weather conditions."
   },
   {
     "asin": "B0GY1483CP",
-    "slug": "royal-enfield-eco-windfarer-ce-class",
-    "title": "Royal Enfield ECO WINDFARER Riding Jacket | CE Class A | Ergo Protech CE Level 2 Armor | 100% Recycled Mesh | 600D Reinforcement | Reflective Elements | YKK Zippers | Cargo Pockets",
+    "slug": "royal-enfield-eco-windfarer-B0GY1483CP",
+    "title": "Royal Enfield ECO WINDFARER Riding Jacket",
     "brand": "Royal Enfield",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.5,
+      "pros": [
+        "CE Class A certified",
+        "Ergo Protech Level 2 armor",
+        "Excellent ventilation",
+        "Premium build"
+      ],
+      "cons": [
+        "Very expensive",
+        "Heavy for summer"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
@@ -870,289 +484,66 @@
       "price": 10670,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.4,
+      "review_count": 89,
       "availability": "",
       "affiliate_url": "https://www.amazon.in/dp/B0GY1483CP?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
       "image": "https://m.media-amazon.com/images/I/41Oy0sVPAfL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "last_updated": "2026-07-31T00:13:03.492392"
     },
     "compatible_bikes": [
-      "*"
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-guerrilla-450",
+      "royal-enfield-himalayan-450"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Touring riders wanting CE-certified premium protection",
+    "verdict": "The ECO WINDFARER is Royal Enfield's premium offering with top-tier CE Level 2 armor and excellent ventilation."
   },
   {
-    "asin": "B0GXZWX435",
-    "slug": "royal-enfield-urbanite-ce-class-ergo",
-    "title": "Royal Enfield URBANITE Riding Jacket | CE Class A | Ergo Protech CE Level 2 Armor | Norman Tech Level 2 Back | 600D Reinforcement | Stretch Softshell | Reflective Elements | Zip Pockets",
+    "asin": "B0GY1483CR",
+    "slug": "royal-enfield-eco-windfarer-B0GY1483CR",
+    "title": "Royal Enfield ECO WINDFARER Mesh Riding Jacket",
     "brand": "Royal Enfield",
     "category": "Jackets",
-    "type": "",
-    "status": "draft",
+    "type": "Mesh",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8.6,
+      "pros": [
+        "CE Class A certified",
+        "Ergo Protech Level 2 armor",
+        "Excellent ventilation"
+      ],
+      "cons": [
+        "Very expensive",
+        "Heavy for summer use"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 9600,
+      "price": 10670,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.6,
+      "review_count": 178,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GXZWX435?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31RxN-LUlCL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0GY1483CR?tag=xuy0834-21",
+      "image": "images/products/royal-enfield-ecowindfarer-jacket-pro.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "royal-enfield-hunter-350",
+      "royal-enfield-bullet-350",
+      "royal-enfield-classic-350",
+      "royal-enfield-guerrilla-450",
+      "royal-enfield-himalayan-450"
     ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQTL68W2",
-    "slug": "allextreme-tripper-men-back-elbows-shoulder-B0CQTL68W2",
-    "title": "Allextreme TRIPPER Bike Riding Jacket for Men with Back Elbows Shoulder Protection Armour | Mesh Fabric Motorcycle Rider Jacket for Bikers | Biker Protective Gear with Reflector (3XL, N Green & Black)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQTL68W2?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41Rh-JNPsIL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0CQTKJ54B",
-    "slug": "allextreme-tripper-men-back-elbows-shoulder-B0CQTKJ54B",
-    "title": "Allextreme TRIPPER Bike Riding Jacket for Men with Back Elbows Shoulder Protection Armour | Mesh Fabric Motorcycle Rider Jacket for Bikers | Biker Protective Gear with Reflector (XL, Grey & Black)",
-    "brand": "Allextreme",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 2499,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CQTKJ54B?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41GhFG0KxjL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0BVRD5DGY",
-    "slug": "rynox-cypher-gt-impact-protection-abrasion-B0BVRD5DGY",
-    "title": "Rynox Cypher GT Jacket - Mesh Motorcycle Riding Jacket | Impact Protection | Abrasion Resistance - Black, XL",
-    "brand": "Rynox",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 5200,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0BVRD5DGY?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31w26emL5+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0FM8JJTCK",
-    "slug": "rynox-air-gt-ce-class-impact-B0FM8JJTCK",
-    "title": "Rynox Air GT 4 Jacket - CE Certified Class A | Motorcycle Riding Jacket | Impact Protection | Abrasion Resistance - Hi-Viz Orange, Medium",
-    "brand": "Rynox",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 8350,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0FM8JJTCK?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31Fmo72dX0L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B09JZKMMZF",
-    "slug": "raida-bolt-ce-level-armors-abrasion",
-    "title": "Raida Bolt Motorcycle Jacket | CE Level 2 Armors | Abrasion Resistance Fabric | Lightweight (M, Red)",
-    "brand": "Raida",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 6250,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B09JZKMMZF?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/414fco3zSGL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0GZ47YSXT",
-    "slug": "rynox-cypher-gt-impact-protection-abrasion-B0GZ47YSXT",
-    "title": "Rynox Cypher GT 2 Jacket - Mesh Motorcycle Riding Jacket | Impact Protection | Abrasion Resistance - Black, 2XL",
-    "brand": "Rynox",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 5950,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0GZ47YSXT?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/31kPR8QbciL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
-  },
-  {
-    "asin": "B0DQPZCC1G",
-    "slug": "raida-tourer-level-armors-abrasion-resistance",
-    "title": "Raida Tourer Motorcycle Jacket | Level 2 Armors | Lightweight | Abrasion resistance. (IN, Alpha, S, Regular, Red/black)",
-    "brand": "Raida",
-    "category": "Jackets",
-    "type": "",
-    "status": "draft",
-    "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
-      "features": [],
-      "fitment_notes": "",
-      "recommended_for": [],
-      "notes": ""
-    },
-    "amazon": {
-      "price": 4950,
-      "mrp": null,
-      "discount": null,
-      "rating": 0,
-      "review_count": 0,
-      "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DQPZCC1G?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/316hjRRKbgL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
-    },
-    "compatible_bikes": [
-      "*"
-    ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Touring riders wanting CE-certified premium RE-branded protection",
+    "verdict": "The ECO WINDFARER is Royal Enfield's premium offering with top-tier CE Level 2 armor and excellent ventilation."
   }
 ]

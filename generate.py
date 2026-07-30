@@ -27,10 +27,9 @@ from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
 import url_builders
+from db.smart_collections import SmartCollectionService
 from product_library import (
-    load_products as load_product_library,
     approved_products,
-    get_quality_dashboard,
     print_quality_dashboard,
     category_display,
     category_slug,
@@ -162,9 +161,10 @@ def load_all_data():
             bike = load_json_file(f)
             data['motorcycles'].append(bike)
 
-    # Load products via the product library (handles nested JSON + flattening)
-    products_dir = DATA_DIR / 'products'
-    data['products'] = load_product_library(products_dir)
+    # Load products via ProductService (reads from SQLite, returns flat dicts)
+    from db.product_service import ProductService
+    _product_service = ProductService()
+    data['products'] = _product_service.load_all()
 
     # Attach a baseline editorial recommendation tier to every product so no
     # template ever falls back to a misleading "0/5" or "(0 reviews)".  Tiers
@@ -180,7 +180,7 @@ def load_all_data():
             _p.pop('editorial', None)
 
     # Print quality dashboard
-    dashboard = get_quality_dashboard()
+    dashboard = _product_service.get_quality_dashboard()
     if dashboard:
         print_quality_dashboard(dashboard)
 
@@ -1399,6 +1399,12 @@ class SiteGenerator:
         merged = merge_bike_deals(self.data['products'], self.deals_by_asin)
         print(f"  Merged {merged} products with Amazon data")
         
+        # Load collections (smart collections + static)
+        self._collection_service = SmartCollectionService()
+        self.collections = self._collection_service.get_visible_collections()
+        self.featured_collections = self._collection_service.get_featured_collections()
+        print(f"  Loaded {len(self.collections)} collections ({len(self.featured_collections)} featured)")
+        
         self.categories = build_product_categories(self.data['products'])
         self.env = Environment(
             loader=FileSystemLoader(str(TEMPLATES_DIR)),
@@ -1486,6 +1492,8 @@ class SiteGenerator:
             'nav_accessory_categories': accessory_nav_items,
             'nav_guide_categories': guide_categories,
             'nav_accessory_brands': accessory_brands,
+            'collections': self.collections,
+            'featured_collections': self.featured_collections,
             'garage_bikes': garage_bikes,
             'meta_title': meta_title,
             'meta_description': meta_description,
@@ -3530,6 +3538,51 @@ class SiteGenerator:
 
         return ''.join(result_parts)
 
+    def generate_collection_pages(self):
+        """Generate collection pages from SmartCollectionService."""
+        for col in self.collections:
+            slug = col["slug"]
+            context = self.build_base_context(
+                meta_title=col.get("seo_title", f"{col['name']} - Product Collections | BikeReview India"),
+                meta_description=col.get("seo_description", f"Curated collection of {col['name']} products for your motorcycle."),
+                canonical_url=f"{self.base_url}/collections/{slug}/",
+                output_path=f'collections/{slug}/index.html',
+            )
+            context['collection'] = col
+            context['breadcrumbs'] = [
+                {'name': 'Collections', 'url': f'{self.base_url}/collections/'},
+                {'name': col['name']},
+            ]
+
+            # Enrich product data for templates
+            all_products = self.data['products']
+            all_by_asin = {p.get('asin'): p for p in all_products if p.get('asin')}
+            enriched = []
+            for p in col.get('products', []):
+                fp = all_by_asin.get(p.get('asin'))
+                if fp:
+                    enriched.append(dict(fp, **{
+                        '_badge': p.get('badge', ''),
+                        '_notes': p.get('notes', ''),
+                        '_sort_order': p.get('sort_order', 0),
+                        '_is_featured': p.get('is_featured', False),
+                    }))
+            context['collection_products'] = enriched
+
+            content = self.render_template('collection.html', context)
+            self.write_page(f'collections/{slug}/index.html', content)
+
+        # Collections index page
+        context = self.build_base_context(
+            meta_title='Product Collections - Curated Picks | BikeReview India',
+            meta_description='Explore curated product collections hand-picked by our editorial team.',
+            canonical_url=f"{self.base_url}/collections/",
+            output_path='collections/index.html',
+        )
+        context['collections'] = self.collections
+        content = self.render_template('collections.html', context)
+        self.write_page('collections/index.html', content)
+
     def generate_article_pages(self):
         """Generate article pages."""
         sorted_articles = sorted(
@@ -3697,6 +3750,11 @@ class SiteGenerator:
             # Budget sub-pages
             for bs in budget_slugs:
                 urls.append(f'{self.base_url}/categories/{slug}/{bs}/')
+
+        # Collections
+        urls.append(f'{self.base_url}/collections/')
+        for col in self.collections:
+            urls.append(f'{self.base_url}/collections/{col["slug"]}/')
 
         # Buying Guides
         guide_slugs = ['helmet', 'phone-mount', 'engine-oil',
@@ -4067,6 +4125,9 @@ Sitemap: {self.base_url}/sitemap.xml
         self.generate_bestof_pages()
         from product_engine import CATEGORY_GUIDE_SLUGS
         print(f"    * {len(CATEGORY_GUIDE_SLUGS)} best-of guide pages")
+
+        self.generate_collection_pages()
+        print(f"    * {len(self.collections) + 1} collection pages")
 
         self.generate_article_pages()
         print(f"    * {len(self.data['articles'])} article pages")

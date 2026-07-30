@@ -48,6 +48,8 @@ from product_library import (
     RECOMMENDABLE_STATUSES,
 )
 
+from db.writer import DatabaseWriter
+
 
 # ===== Amazon Feed Loading =====
 
@@ -452,9 +454,11 @@ def sync_products(
         if errors:
             all_errors.extend(errors)
 
-    # --- Save updated products ---
+    # --- Save updated products (DB) ---
     if not dry_run and result.synced > 0:
-        _save_products(products_dir, products)
+        with DatabaseWriter() as writer:
+            for p in products:
+                writer.save_product(p)
 
     # --- Record sync log ---
     if not dry_run:

@@ -1,0 +1,79 @@
+  BikeReview Control Center → http://localhost:8765
+  Dashboard                  http://localhost:8765/#dashboard
+  Products (Editorial)       http://localhost:8765/#products
+INFO:     127.0.0.1:57148 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57149 - "GET /data/products/bike-covers.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57151 - "GET /data/products/cameras.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57150 - "GET /data/products/accessories.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57148 - "GET /data/products/alarms.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57152 - "GET /data/products/care.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57148 - "GET /data/products/chargers.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57149 - "GET /data/products/gloves.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57152 - "GET /data/products/gps-trackers.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57150 - "GET /data/products/footrests.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57151 - "GET /data/products/ear-plugs.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /data/products/helmets.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57148 - "GET /data/products/handlebar-accessories.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57152 - "GET /data/products/horns.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57150 - "GET /data/products/jackets.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57148 - "GET /data/products/locks.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57151 - "GET /data/products/lighting.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /data/products/luggage.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57150 - "GET /data/products/maintenance.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57152 - "GET /data/products/mirrors.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57150 - "GET /editorial.json?1785439296419 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57151 - "GET /data/products/riding-pants.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57148 - "GET /data/products/tools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /data/products/windshields.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57152 - "GET /data/products/seat-covers.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57150 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/mt-thunder-3-sv.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57151 - "GET /images/products/mt-thunder-4.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57152 - "GET /images/products/studds-thunder-dg.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/studds-furry-dg.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/studds-ninja-dg-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/studds-raider-super.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/vega-krv-dakar.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/royal-enfield-streetsmith-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/steelbird-sba-2-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/studds-ray-super.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/smk-striker-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/smk-stellar-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/tvs-raider-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/vega-crux-flip-up-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/smk-meteor-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/axor-apex-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/vega-shield-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57149 - "GET /images/products/axor-street-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57150 - "GET /api/dashboard?_=1785439296518 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57170 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57170 - "GET /data/products/alarms.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57171 - "GET /data/products/care.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57170 - "GET /data/products/ear-plugs.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57172 - "GET /data/products/handlebar-accessories.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57173 - "GET /data/products/footrests.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57174 - "GET /data/products/lighting.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57175 - "GET /data/products/mirrors.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57170 - "GET /data/products/tools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57171 - "GET /data/products/riding-pants.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57173 - "GET /editorial.json?1785439325583 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57172 - "GET /data/products/windshields.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57175 - "GET /images/products/mt-thunder-3-sv.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57171 - "GET /images/products/mt-thunder-4.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57173 - "GET /images/products/studds-thunder-dg.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57172 - "GET /images/products/studds-furry-dg.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57170 - "GET /images/products/studds-ninja-dg-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57175 - "GET /images/products/studds-raider-super.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57171 - "GET /images/products/vega-crux-flip-up-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57173 - "GET /images/products/smk-meteor-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57172 - "GET /images/products/tvs-raider-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57175 - "GET /images/products/axor-apex-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57171 - "GET /images/products/smk-stellar-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57173 - "GET /images/products/smk-striker-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57172 - "GET /images/products/vega-shield-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57175 - "GET /images/products/royal-enfield-streetsmith-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57171 - "GET /images/products/studds-ray-super.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57173 - "GET /images/products/steelbird-sba-2-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57172 - "GET /images/products/vega-krv-dakar.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57175 - "GET /images/products/axor-street-helmet.jpg HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57174 - "GET /api/dashboard?_=1785439325649 HTTP/1.1" 200 OK

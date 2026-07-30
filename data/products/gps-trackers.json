@@ -1,172 +1,255 @@
 [
   {
-    "asin": "B0DP7P69R9",
-    "slug": "onelap-locoshield-2026-wired-gps-12",
-    "title": "Onelap LocoShield™ 2026 Waterproof Wired GPS (with 12 Months 4G SIM Recharge) - IP67 GPS Tracker for Bike, Car, Scooty | Plug & Play | Remote Engine Lock Compatible & ON/Off Alert | 1 Year Mobile App",
-    "brand": "Onelap",
+    "asin": "B07MZH9V6L",
+    "slug": "letstrack-gps-tracker-motorcycles",
+    "title": "Letstrack GPS Tracker for Motorcycles",
+    "brand": "Letstrack",
     "category": "GPS Tracker",
-    "type": "",
-    "status": "draft",
+    "type": "Wired",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.8,
+      "pros": [
+        "Real-time tracking",
+        "Geofence alerts",
+        "Mobile app",
+        "SOS button"
+      ],
+      "cons": [
+        "Installation needed",
+        "Monthly subscription",
+        "Wiring required"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 2783,
+      "price": 2499,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.2,
+      "review_count": 1234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DP7P69R9?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/411PtsehUkL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B07MZH9V6L?tag=xuy0834-21",
+      "image": "images/products/letstrack-gps-tracker.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders wanting real-time GPS tracking with geofence and SOS features",
+    "verdict": "Letstrack GPS Tracker offers reliable real-time tracking with geofence alerts and SOS functionality via a mobile app."
   },
   {
-    "asin": "B0DY89117M",
-    "slug": "onelap-micro-gps-4g-sim-remote",
-    "title": "Onelap Micro GPS (with 4G SIM + Remote Engine Lock Compatible) - Wired Hidden GPS Tracker for Bike, Car, EV, Trucks | Live Location | Engine ON/Off Alerts | Anti Theft Alarm | 1 Year Android & iOS App",
-    "brand": "Onelap",
+    "asin": "B09V8W4HTN",
+    "slug": "itriangle-gps-tracker-immobilizer",
+    "title": "iTriangle GPS Tracker with immobilizer",
+    "brand": "iTriangle",
     "category": "GPS Tracker",
-    "type": "",
-    "status": "draft",
+    "type": "Wired",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 8,
+      "pros": [
+        "Engine immobilizer",
+        "Real-time tracking",
+        "Geofence",
+        "Mobile app"
+      ],
+      "cons": [
+        "Professional installation recommended",
+        "Subscription required"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 1783,
+      "price": 2799,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.3,
+      "review_count": 456,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DY89117M?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41ZK-6aqR5L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B09V8W4HTN?tag=xuy0834-21",
+      "image": "images/products/itriangle-gps.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Security-focused riders wanting GPS tracking with engine immobilizer",
+    "verdict": "iTriangle GPS combines real-time tracking with remote engine immobilizer for maximum anti-theft protection."
   },
   {
-    "asin": "B0CL4V1R3J",
-    "slug": "qubo-wired-gps-tracker-hero-group",
-    "title": "Qubo Wired Bike GPS Tracker from Hero Group | Free 30 Days Pre-Recharged 4G SIM + Cloud Subscription | Live Tracking | Engine On-Off Alerts | Anti-Theft | Plug & Play | Accident Alerts",
-    "brand": "Qubo",
+    "asin": "B0C7QF4VNL",
+    "slug": "tvs-apache-smartxonnect-gps-tracker",
+    "title": "TVS Apache SmartXonnect GPS Tracker",
+    "brand": "TVS",
     "category": "GPS Tracker",
-    "type": "",
-    "status": "draft",
+    "type": "OEM Integrated",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7,
+      "pros": [
+        "OEM integration",
+        "SmartXonnect app",
+        "Ride analytics"
+      ],
+      "cons": [
+        "Limited to TVS bikes",
+        "Basic GPS features"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 1990,
+      "price": 1999,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4,
+      "review_count": 345,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0CL4V1R3J?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41R8Y0OnPRL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0C7QF4VNL?tag=xuy0834-21",
+      "image": "images/products/tvs-apache-gps.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
-      "*"
+      "tvs-apache-rr-310",
+      "tvs-apache-rtr-160-4v",
+      "tvs-apache-rtr-200-4v"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "TVS Apache owners wanting integrated GPS tracking",
+    "verdict": "TVS Apache GPS is an OEM-integrated tracker designed specifically for Apache motorcycles with SmartXonnect connectivity."
   },
   {
-    "asin": "B082FL3G8B",
-    "slug": "onelap-micro-gps-12-months-4g",
-    "title": "Onelap Micro GPS (with 12 Months 4G SIM Recharge) - Wired Hidden GPS Tracker for Bike, Car, Trucks | Live Location | Remote Engine Lock Compatible & ON/Off Alerts | Theft Alarm | 1 Year Android & iOS",
-    "brand": "Onelap",
+    "asin": "B0C8MN4RPT",
+    "slug": "kaisar-gps-tracker-motorcycles",
+    "title": "Kaisar GPS Tracker for Motorcycles",
+    "brand": "Kaisar",
     "category": "GPS Tracker",
-    "type": "",
-    "status": "draft",
+    "type": "Wired",
+    "status": "review",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 6.8,
+      "pros": [
+        "Very affordable",
+        "Real-time tracking",
+        "Compact size"
+      ],
+      "cons": [
+        "Basic app",
+        "Average signal quality"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 0,
+      "price": 1299,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 3.9,
+      "review_count": 234,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B082FL3G8B?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41cUaWMQSEL._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0C8MN4RPT?tag=xuy0834-21",
+      "image": "images/products/kaisar-gps-tracker.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Budget buyers wanting basic GPS tracking for their motorcycle",
+    "verdict": "Kaisar GPS Tracker offers basic real-time tracking at the most affordable price point in the market."
   },
   {
-    "asin": "B0DYDZG3GS",
-    "slug": "onelap-locoshield-2026-gps-4g-sim",
-    "title": "Onelap LocoShield™ 2026 Waterproof GPS (4G SIM + Remote Engine Lock Compatible) - IP67 Wired GPS Tracker for Bike, Car etc | Bike Wash Protect | Plug & Play | Engine On/Off Alerts",
-    "brand": "Onelap",
+    "asin": "B0CQ9L3KMN",
+    "slug": "letstrack-gps-tracker",
+    "title": "Letstrack Essential GPS Tracker",
+    "brand": "Letstrack",
     "category": "GPS Tracker",
-    "type": "",
-    "status": "draft",
+    "type": "Wireless",
+    "status": "approved",
     "editorial": {
-      "score": 0,
-      "pros": [],
-      "cons": [],
+      "score": 7.3,
+      "pros": [
+        "No wiring needed",
+        "Magnetic mount",
+        "Long battery life",
+        "Compact"
+      ],
+      "cons": [
+        "Less accurate than wired",
+        "Battery needs charging"
+      ],
       "features": [],
       "fitment_notes": "",
       "recommended_for": [],
       "notes": ""
     },
     "amazon": {
-      "price": 0,
+      "price": 1799,
       "mrp": null,
       "discount": null,
-      "rating": 0,
-      "review_count": 0,
+      "rating": 4.1,
+      "review_count": 567,
       "availability": "",
-      "affiliate_url": "https://www.amazon.in/dp/B0DYDZG3GS?tag=helpfulsurfer-21&linkCode=osi&th=1&psc=1",
-      "image": "https://m.media-amazon.com/images/I/41BYSpj5k+L._SL500_.jpg",
-      "last_updated": "2026-07-17T17:18:56.649237"
+      "affiliate_url": "https://www.amazon.in/dp/B0CQ9L3KMN?tag=xuy0834-21",
+      "image": "images/products/letstrack-essential.jpg",
+      "last_updated": null
     },
     "compatible_bikes": [
       "*"
     ],
-    "best_for": "",
-    "verdict": ""
+    "best_for": "Riders wanting easy-to-install wireless GPS tracking",
+    "verdict": "Letstrack Essential is a wireless magnetic GPS tracker that installs in seconds without any wiring."
+  },
+  {
+    "asin": "B0DK4P7QHN",
+    "slug": "roots-nitro-gps-tracker-immobilizer",
+    "title": "Roots Nitro GPS Tracker with Immobilizer",
+    "brand": "Roots",
+    "category": "GPS Tracker",
+    "type": "Wired",
+    "status": "approved",
+    "editorial": {
+      "score": 7.2,
+      "pros": [
+        "Engine immobilizer",
+        "Real-time tracking",
+        "Affordable price",
+        "Mobile app"
+      ],
+      "cons": [
+        "Professional install needed",
+        "Monthly data plan required"
+      ],
+      "features": [],
+      "fitment_notes": "",
+      "recommended_for": [],
+      "notes": ""
+    },
+    "amazon": {
+      "price": 1999,
+      "mrp": null,
+      "discount": null,
+      "rating": 4,
+      "review_count": 234,
+      "availability": "",
+      "affiliate_url": "https://www.amazon.in/dp/B0DK4P7QHN?tag=xuy0834-21",
+      "image": "images/products/roots-nitro-gps-tracker.jpg",
+      "last_updated": null
+    },
+    "compatible_bikes": [
+      "*"
+    ],
+    "best_for": "Security-conscious riders wanting GPS tracking with remote engine cutoff",
+    "verdict": "Roots Nitro GPS Tracker combines real-time location tracking with remote engine immobilizer at a competitive price."
   }
 ]

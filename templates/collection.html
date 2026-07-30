@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}{{ collection.seo_title | default(collection.name ~ ' - Product Collections | BikeReview India') }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="{{ base_path }}index.html">Home</a>
+            <span class="sep">&rsaquo;</span>
+            <a href="{{ base_path }}collections/index.html">Collections</a>
+            <span class="sep">&rsaquo;</span>
+            <span>{{ collection.name }}</span>
+        </nav>
+        {% if collection.hero_image %}
+        <div class="hero-image-wrapper">
+            <img src="{{ collection.hero_image }}" alt="{{ collection.name }}" class="hero-bg-img">
+        </div>
+        {% endif %}
+        <div class="page-hero-content">
+            <h1>{{ collection.name }}</h1>
+            {% if collection.description %}
+            <p class="page-hero-desc">{{ collection.description }}</p>
+            {% endif %}
+            <div class="page-hero-meta">
+                <span class="meta-item">{{ collection.item_count }} products</span>
+                {% if collection.is_featured %}
+                <span class="meta-badge featured">Featured</span>
+                {% endif %}
+                {% if collection.rule_type == 'rule' %}
+                <span class="meta-badge auto">Auto-Updated</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if collection_products %}
+        <div class="product-grid">
+            {% for product in collection_products %}
+            <div class="product-card-wrapper{% if product._is_featured %} featured{% endif %}">
+                <div class="product-card">
+                    {% if product._badge %}
+                    <span class="product-badge">{{ product._badge }}</span>
+                    {% endif %}
+                    {% if product._is_featured %}
+                    <span class="product-badge featured-badge">Featured</span>
+                    {% endif %}
+                    <a href="{{ url_builders.product_url(product.slug, base_path) }}" class="product-card-image">
+                        {% if product.image and 'images/' in product.image %}
+                        <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                        {% else %}
+                        <div class="product-card-placeholder">{{ product.title[:2] }}</div>
+                        {% endif %}
+                    </a>
+                    <div class="product-card-body">
+                        <div class="product-card-brand">{{ product.brand }}</div>
+                        <h3 class="product-card-title">
+                            <a href="{{ url_builders.product_url(product.slug, base_path) }}">{{ product.title }}</a>
+                        </h3>
+                        <div class="product-card-rating">
+                            {% if product.rating %}
+                            <span class="stars">{{ '★' * product.rating|int }}{{ '☆' * (5 - product.rating|int) }}</span>
+                            <span class="rating-value">{{ product.rating }}</span>
+                            <span class="review-count">({{ product.review_count }})</span>
+                            {% endif %}
+                        </div>
+                        <div class="product-card-price">₹{{ product.price }}</div>
+                        {% if product._notes %}
+                        <p class="product-card-notes">{{ product._notes }}</p>
+                        {% endif %}
+                        <div class="product-card-actions">
+                            <a href="{{ url_builders.product_url(product.slug, base_path) }}" class="btn btn-sm">Details</a>
+                            {% if product.affiliate_url %}
+                            <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-collection">
+            <div class="empty-icon">&#128230;</div>
+            <h3>This collection is empty</h3>
+            <p>Products will appear here once they are added to this collection.</p>
+            <a href="{{ base_path }}index.html" class="btn btn-primary">Browse Products</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% if collection.related %}
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Related Collections</h2>
+        <div class="collection-grid">
+            {% for rel in collection.related %}
+            <a href="{{ base_path }}collections/{{ rel.slug }}/index.html" class="collection-card">
+                {% if rel.hero_image %}
+                <div class="collection-card-image">
+                    <img src="{{ rel.hero_image }}" alt="{{ rel.name }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="collection-card-body">
+                    <h3 class="collection-card-title">{{ rel.name }}</h3>
+                    {% if rel.description %}
+                    <p class="collection-card-desc">{{ rel.description[:120] }}</p>
+                    {% endif %}
+                    <span class="collection-card-count">{{ rel.item_count }} products</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
