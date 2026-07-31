@@ -28,6 +28,7 @@ from db.motorcycle_service import MotorcycleService
 from db.collection_service import CollectionService
 from db.amazon_search_service import AmazonSearchError, AmazonSearchService
 from db.import_service import ProductImportService
+from db.models import Motorcycle
 
 HERE = Path(__file__).parent
 PROJECT = HERE.parent
@@ -188,6 +189,45 @@ def api_import(payload: Dict[str, Any]):
     svc = ProductImportService()
     report = svc.import_products(products, download_images=download_images)
     return report
+
+
+# ---- API: Product compatibility update ----
+@app.put("/api/products/{asin}/compatibility")
+def api_update_compatibility(asin: str, payload: Dict[str, Any]):
+    universal = bool(payload.get("universal", False))
+    compatible_bikes = payload.get("compatible_bikes", [])
+    if not isinstance(compatible_bikes, list):
+        return JSONResponse({"error": "compatible_bikes must be a list"}, status_code=400)
+    for i, slug in enumerate(compatible_bikes):
+        compatible_bikes[i] = str(slug).strip()
+    compatible_bikes = [s for s in compatible_bikes if s]
+
+    from sqlalchemy.orm import Session
+    from db.base import engine
+    from db.models import Product, ProductMotorcycle
+
+    with Session(engine) as session:
+        product = session.query(Product).filter_by(asin=asin).first()
+        if not product:
+            return JSONResponse({"error": "Product not found"}, status_code=404)
+
+        product.universal = universal
+        product.compatible_bikes = compatible_bikes if compatible_bikes else None
+
+        # Update junction table
+        session.query(ProductMotorcycle).filter_by(product_id=product.id).delete()
+        for slug in compatible_bikes:
+            bike = session.query(Motorcycle).filter_by(slug=slug).first()
+            if bike:
+                session.add(ProductMotorcycle(
+                    product_id=product.id,
+                    motorcycle_id=bike.id,
+                    match_strategy="editorial",
+                ))
+
+        session.commit()
+
+    return {"success": True, "asin": asin, "universal": universal, "compatible_bikes": compatible_bikes}
 
 
 # ---- API: Website stats ----

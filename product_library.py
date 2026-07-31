@@ -1730,6 +1730,7 @@ def _flatten_product(raw: dict, source_file: str = '') -> Optional[dict]:
 
     # --- Compatibility ---
     product['compatible_bikes'] = raw.get('compatible_bikes', ['*'])
+    product['universal'] = bool(raw.get('universal', False))
 
     # --- Presentation ---
     product['best_for'] = raw.get('best_for', '')
@@ -2221,6 +2222,7 @@ def _migrate_legacy_product(raw: dict) -> dict:
         'editorial': editorial,
         'amazon': amazon,
         'compatible_bikes': raw.get('compatible_bikes', ['*']),
+        'universal': bool(raw.get('universal', False)),
         'best_for': raw.get('best_for', ''),
         'verdict': raw.get('verdict', ''),
     }

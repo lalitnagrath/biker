@@ -1255,12 +1255,31 @@ def build_product_categories(products):
 
 
 def match_products_to_motorcycle(bike, products):
-    """Match products to a motorcycle using product_engine.
+    """Match products to a motorcycle using strict compatibility filtering.
 
-    Delegates entirely to product_engine.filter_compatible_products.
-    Returns products sorted by compatibility priority + ranking score.
+    Only includes products where:
+        - universal is True, OR
+        - compatible_bikes contains the current bike slug
+
+    Products are sorted by ranking score (existing score sorting).
     """
-    return filter_compatible_products(products, bike)
+    bike_slug = bike.get('slug', '').lower()
+    matched = []
+    for product in products:
+        if product.get('status', 'approved') not in ('approved', 'review'):
+            continue
+        compat = product.get('compatible_bikes', [])
+        is_universal = product.get('universal', False) or '*' in [c.lower() for c in compat]
+        slug_match = bike_slug in [c.lower() for c in compat]
+        if is_universal or slug_match:
+            product_copy = dict(product)
+            product_copy['normalized_category'] = normalize_category(
+                product.get('category', '')
+            )
+            matched.append(product_copy)
+
+    matched.sort(key=lambda p: ranking_score(p, bike), reverse=True)
+    return matched
 
 
 def get_products_by_category(products: list, category: str) -> list:
@@ -2135,7 +2154,7 @@ class SiteGenerator:
         """Generate individual motorcycle pages."""
         for bike in self.data['motorcycles']:
             context = self.build_base_context(
-                meta_title=f"{bike['brand']} {bike['model']} - Specs, Reviews & Best Accessories | BikeReview India",
+                meta_title=f"{bike['brand']} {bike['model']} Accessories Buying Guide | BikeReview India",
                 meta_description=f"Complete guide to {bike['brand']} {bike['model']}. Specifications, best accessories, buying guides, and maintenance tips.",
                 canonical_url=f"{self.base_url}/motorcycles/{bike['slug']}/",
                 output_path=f'motorcycles/{bike["slug"]}/index.html',
@@ -2189,7 +2208,7 @@ class SiteGenerator:
             # Must Have Accessories — 15 categories across 5 groups
             # Uses recommend_for_motorcycle from product_engine for scoring and deduplication
             must_have_data = recommend_for_motorcycle(
-                self.data['products'], bike, editorial=editorial,
+                matched, bike, editorial=editorial,
             )
             seen_slugs = set()
             for item in must_have_data:
@@ -2211,7 +2230,7 @@ class SiteGenerator:
 
             # ===== Sidebar products (excludes products shown in Must Have) =====
             sidebar_products = recommend_sidebar_products(
-                self.data['products'], bike=bike, max_products=5,
+                matched, bike=bike, max_products=5,
             )
             sidebar_products = [
                 sp for sp in sidebar_products
@@ -2594,7 +2613,7 @@ class SiteGenerator:
 
             content = self.render_template('motorcycle.html', context)
             content = replace_product_placeholders(
-                content, self.data['products'], context['base_path'],
+                content, matched, context['base_path'],
                 exclude_slugs=seen_slugs,
             )
             self.write_page(f'motorcycles/{bike["slug"]}/index.html', content)

@@ -5,9 +5,9 @@ from sqlalchemy import or_
 from sqlalchemy.orm import Session, joinedload
 
 from db.models import (
-    Brand, Category, Collection, CollectionItem, EditorialScore,
-    Image, Motorcycle, PriceHistory, Product, ProductCategory,
-    ProductMotorcycle, ProductTag, Setting,
+    AccessoryType, Brand, Category, Collection, CollectionItem,
+    EditorialScore, Image, Motorcycle, PriceHistory, Product,
+    ProductCategory, ProductMotorcycle, ProductTag, Setting,
 )
 
 
@@ -502,6 +502,84 @@ class ProductRepository:
                              "editorial_notes")
                 })
             )
+
+    # ------------------------------------------------------------------
+    # Compatibility queries
+    # ------------------------------------------------------------------
+
+    def get_compatible_motorcycles_for_product(
+        self, product_id: int,
+    ) -> List[Motorcycle]:
+        """Return motorcycles compatible with a product using a single query."""
+        return (
+            self.session.query(Motorcycle)
+            .join(ProductMotorcycle, Motorcycle.id == ProductMotorcycle.motorcycle_id)
+            .filter(ProductMotorcycle.product_id == product_id)
+            .all()
+        )
+
+    def get_products_for_motorcycle(
+        self,
+        motorcycle_id: int,
+        offset: int = 0,
+        limit: int = 100,
+    ) -> Tuple[List[Product], int]:
+        """Return products compatible with a motorcycle with pagination."""
+        q = (
+            self.session.query(Product)
+            .join(ProductMotorcycle, Product.id == ProductMotorcycle.product_id)
+            .filter(ProductMotorcycle.motorcycle_id == motorcycle_id)
+        )
+        total = q.count()
+        products = (
+            q.options(
+                joinedload(Product.brand),
+                joinedload(Product.accessory_type),
+                joinedload(Product.categories),
+                joinedload(Product.images),
+            )
+            .order_by(Product.updated_at.desc())
+            .offset(offset)
+            .limit(limit)
+            .all()
+        )
+        return products, total
+
+    def get_products_for_motorcycle_grouped_by_accessory_type(
+        self,
+        motorcycle_id: int,
+    ) -> Dict[str, List[Product]]:
+        """Return products compatible with a motorcycle grouped by AccessoryType name."""
+        product_ids = [
+            r[0]
+            for r in self.session.query(ProductMotorcycle.product_id)
+            .filter(ProductMotorcycle.motorcycle_id == motorcycle_id)
+            .distinct()
+            .all()
+        ]
+        if not product_ids:
+            return {}
+
+        rows = (
+            self.session.query(Product, AccessoryType)
+            .outerjoin(
+                AccessoryType, Product.accessory_type_id == AccessoryType.id
+            )
+            .filter(Product.id.in_(product_ids))
+            .options(
+                joinedload(Product.brand),
+                joinedload(Product.categories),
+                joinedload(Product.images),
+            )
+            .all()
+        )
+
+        grouped: Dict[str, List[Product]] = {}
+        for product, atype in rows:
+            key = atype.name if atype else "Uncategorized"
+            grouped.setdefault(key, []).append(product)
+
+        return grouped
 
 
 

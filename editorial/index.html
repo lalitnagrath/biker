@@ -248,6 +248,54 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .settings-group .sg-label{font-size:13px}
 .settings-group .sg-value{font-size:13px;color:var(--text2);font-family:monospace}
 
+/* Compatibility Section */
+.compatibility-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-top:8px}
+.compatibility-section .comp-header{padding:12px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600}
+.compatibility-section .comp-body{padding:16px 20px}
+.compatibility-section .comp-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.compatibility-section .comp-row:last-child{margin-bottom:0}
+.compatibility-section .comp-label{font-size:13px;font-weight:500;min-width:120px}
+.compatibility-section .comp-value{font-size:13px;color:var(--text2)}
+.compatibility-section .universal-check{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.compatibility-section .universal-check input{width:16px;height:16px;accent-color:var(--accent)}
+.compatibility-section .bike-selector{display:flex;flex-direction:column;gap:8px}
+.compatibility-section .bike-search{position:relative}
+.compatibility-section .bike-search input{width:100%;padding-left:32px}
+.compatibility-section .bike-search .icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text2);font-size:14px}
+.compatibility-section .bike-chips{display:flex;flex-wrap:wrap;gap:6px;min-height:32px}
+.compatibility-section .bike-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:500;background:var(--bg);border:1px solid var(--border);cursor:default}
+.compatibility-section .bike-chip .chip-remove{background:none;border:none;font-size:14px;cursor:pointer;color:var(--text2);padding:0 2px;line-height:1}
+.compatibility-section .bike-chip .chip-remove:hover{color:var(--red)}
+.compatibility-section .bike-list{max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-sm)}
+.compatibility-section .bike-option{display:flex;align-items:center;gap:8px;padding:6px 10px;font-size:13px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--border)}
+.compatibility-section .bike-option:last-child{border-bottom:none}
+.compatibility-section .bike-option:hover{background:var(--bg)}
+.compatibility-section .bike-option.selected{background:#eff6ff;color:var(--accent)}
+.compatibility-section .bike-option input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+.compatibility-section .bike-option .bike-info{flex:1;min-width:0}
+.compatibility-section .bike-option .bike-name{font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.compatibility-section .bike-option .bike-meta{font-size:11px;color:var(--text2)}
+.compatibility-section .bike-empty{text-align:center;padding:12px;color:var(--text2);font-size:12px}
+.compatibility-section .comp-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.compatibility-section .comp-status{font-size:12px;color:var(--text2);margin-top:8px}
+.compatibility-section .comp-status.success{color:var(--green)}
+.compatibility-section .comp-status.error{color:var(--red)}
+
+/* Bike Selector Modal */
+.bike-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px}
+.bike-modal .modal{background:var(--surface);border-radius:var(--radius);width:600px;max-width:100%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.bike-modal .modal-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.bike-modal .modal-header h3{font-size:15px;font-weight:700;flex:1}
+.bike-modal .modal-close{background:var(--bg);border:none;width:32px;height:32px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text2);cursor:pointer}
+.bike-modal .modal-close:hover{background:#e5e7eb}
+.bike-modal .modal-search{padding:10px 20px;border-bottom:1px solid var(--border)}
+.bike-modal .modal-search input{width:100%}
+.bike-modal .modal-body{flex:1;overflow-y:auto;padding:10px 20px 20px}
+.bike-modal .modal-footer{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.bike-modal .selected-bikes{padding:10px 20px;border-bottom:1px solid var(--border)}
+.bike-modal .selected-bikes .sb-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.bike-modal .selected-bikes .sb-count{font-size:11px;color:var(--text2);margin-left:8px}
+
 /* Amazon Import page */
 .amz-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:8px}
 .amz-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s}
@@ -521,6 +569,31 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
     <div style="padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px">
       <button class="btn-ghost" onclick="closeAmzPreview()">Cancel</button>
       <button class="btn-primary" onclick="importAmazonSelected()">&#x2B07; Confirm import</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bike Selector Modal -->
+<div class="bike-modal" id="bikeSelectorModal" style="display:none" onclick="if(event.target===this)closeBikeSelector()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="bikeModalTitle">Select Compatible Bikes</h3>
+      <button class="modal-close" onclick="closeBikeSelector()">&times;</button>
+    </div>
+    <div class="modal-search">
+      <span class="icon">&#x1F50D;</span>
+      <input id="bikeSearchInput" placeholder="Search bikes by make or model..." oninput="filterBikeOptions()">
+    </div>
+    <div class="selected-bikes" id="bikeSelectedBikes">
+      <span class="sb-label">Selected</span><span class="sb-count" id="bikeSelectedCount">0</span>
+      <div class="bike-chips" id="bikeChips"></div>
+    </div>
+    <div class="modal-body" id="bikeList">
+      <div class="loading"><div class="spinner"></div><p>Loading bikes...</p></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeBikeSelector()">Cancel</button>
+      <button class="btn-primary" onclick="confirmBikeSelection()">Done</button>
     </div>
   </div>
 </div>
@@ -1346,6 +1419,272 @@ function renderCompatibility() {
 }
 
 // ================================================================
+//  COMPATIBILITY MANAGEMENT (Product Maintenance)
+// ================================================================
+let allMotorcycles = [];
+let bikeSelectorAsin = null;
+let bikeSelectedSlugs = new Set();
+let bikeSearchQuery = '';
+
+async function renderCompatibilitySection() {
+  const el = document.getElementById('compatibilitySection');
+  if (!el) return;
+  if (currentPage !== 'products' || !selectedCategory) {
+    el.innerHTML = '';
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="compatibility-section">
+      <div class="comp-header">
+        <span>&#x1F517;</span> Compatibility Management
+      </div>
+      <div class="comp-body">
+        <div class="comp-row">
+          <span class="comp-label">Product:</span>
+          <select id="compProductSelect" style="flex:1;min-width:200px" onchange="loadProductCompatibility(this.value)">
+            <option value="">-- Select a product --</option>
+          </select>
+        </div>
+        <div id="compatibilityControls" style="display:none">
+          <div class="comp-row">
+            <span class="comp-label">Universal:</span>
+            <label class="universal-check">
+              <input type="checkbox" id="compUniversal" onchange="handleUniversalChange()">
+              This product fits all bikes
+            </label>
+          </div>
+          <div class="comp-row">
+            <span class="comp-label">Compatible Bikes:</span>
+            <div class="bike-selector">
+              <div class="bike-chips" id="compSelectedBikes"></div>
+              <button class="btn-secondary btn-sm" onclick="openBikeSelector()" style="align-self:flex-start">&#x1F517; Manage Bikes</button>
+            </div>
+          </div>
+          <div class="comp-actions">
+            <button class="btn-primary" onclick="saveProductCompatibility()">&#x1F4BE; Save Compatibility</button>
+          </div>
+          <div class="comp-status" id="compStatus"></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Load products for the selector
+  const products = allProducts.filter(p => p.category === selectedCategory);
+  const select = document.getElementById('compProductSelect');
+  for (const p of products) {
+    const opt = document.createElement('option');
+    opt.value = p.asin;
+    opt.textContent = `${p.title} (${p.brand || 'Unknown'})`;
+    select.appendChild(opt);
+  }
+}
+
+async function loadProductCompatibility(asin) {
+  const controls = document.getElementById('compatibilityControls');
+  const status = document.getElementById('compStatus');
+  if (!asin) {
+    controls.style.display = 'none';
+    return;
+  }
+  controls.style.display = '';
+  status.textContent = '';
+  status.className = 'comp-status';
+
+  try {
+    const resp = await fetch('/api/products?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    const product = (data.products || []).find(p => p.asin === asin);
+    if (!product) return;
+
+    const universalCheck = document.getElementById('compUniversal');
+    universalCheck.checked = !!product.universal;
+
+    const compatibleBikes = product.compatible_bikes || [];
+    bikeSelectedSlugs = new Set(compatibleBikes);
+    renderSelectedBikes();
+  } catch(e) {
+    status.textContent = 'Error loading compatibility data';
+    status.className = 'comp-status error';
+  }
+}
+
+function handleUniversalChange() {
+  // Universal state is tracked in memory, saved on save click
+}
+
+function renderSelectedBikes() {
+  const container = document.getElementById('compSelectedBikes');
+  if (!container) return;
+  if (bikeSelectedSlugs.size === 0) {
+    container.innerHTML = '<span style="font-size:12px;color:var(--text2)">No bikes selected</span>';
+    return;
+  }
+  let html = '';
+  for (const slug of bikeSelectedSlugs) {
+    html += `<span class="bike-chip">${esc(slug)} <button class="chip-remove" onclick="removeBike('${esc(slug)}')" title="Remove">&times;</button></span>`;
+  }
+  container.innerHTML = html;
+}
+
+function openBikeSelector() {
+  bikeSelectorAsin = document.getElementById('compProductSelect')?.value;
+  if (!bikeSelectorAsin) {
+    showToast('Select a product first', 'error');
+    return;
+  }
+  bikeSelectedSlugs = new Set(bikeSelectedSlugs);
+  document.getElementById('bikeSelectorModal').style.display = 'flex';
+  document.getElementById('bikeModalTitle').textContent = 'Select Compatible Bikes';
+  document.getElementById('bikeSearchInput').value = '';
+  bikeSearchQuery = '';
+  renderBikeSelectedCount();
+  renderBikeChips();
+  loadAllMotorcycles();
+}
+
+function closeBikeSelector() {
+  document.getElementById('bikeSelectorModal').style.display = 'none';
+  bikeSelectorAsin = null;
+}
+
+async function loadAllMotorcycles() {
+  const listEl = document.getElementById('bikeList');
+  try {
+    const resp = await fetch('/api/motorcycles?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    allMotorcycles = data.motorcycles || [];
+    renderBikeOptions();
+  } catch(e) {
+    listEl.innerHTML = '<div class="bike-empty">Could not load motorcycles</div>';
+  }
+}
+
+function renderBikeOptions() {
+  const listEl = document.getElementById('bikeList');
+  const query = bikeSearchQuery.toLowerCase().trim();
+
+  let filtered = allMotorcycles;
+  if (query) {
+    filtered = allMotorcycles.filter(m =>
+      (m.make || '').toLowerCase().includes(query) ||
+      (m.model || '').toLowerCase().includes(query) ||
+      (m.year || '').toString().includes(query)
+    );
+  }
+
+  if (!filtered.length) {
+    listEl.innerHTML = '<div class="bike-empty">No bikes found</div>';
+    return;
+  }
+
+  let html = '';
+  for (const bike of filtered) {
+    const slug = bike.slug || '';
+    const isSelected = bikeSelectedSlugs.has(slug);
+    const yearStr = bike.year ? `(${bike.year})` : '';
+    html += `
+      <div class="bike-option${isSelected ? ' selected' : ''}" onclick="toggleBike('${esc(slug)}')">
+        <input type="checkbox" ${isSelected ? 'checked' : ''} onclick="event.stopPropagation();toggleBike('${esc(slug)}')">
+        <div class="bike-info">
+          <div class="bike-name">${esc(bike.make)} ${esc(bike.model)} ${yearStr}</div>
+          <div class="bike-meta">${esc(bike.category || '')} ${bike.product_count ? '• ' + bike.product_count + ' products' : ''}</div>
+        </div>
+      </div>`;
+  }
+  listEl.innerHTML = html;
+}
+
+function filterBikeOptions() {
+  bikeSearchQuery = document.getElementById('bikeSearchInput')?.value || '';
+  renderBikeOptions();
+}
+
+function toggleBike(slug) {
+  if (bikeSelectedSlugs.has(slug)) {
+    bikeSelectedSlugs.delete(slug);
+  } else {
+    bikeSelectedSlugs.add(slug);
+  }
+  renderBikeOptions();
+  renderBikeChips();
+  renderBikeSelectedCount();
+}
+
+function removeBike(slug) {
+  bikeSelectedSlugs.delete(slug);
+  renderSelectedBikes();
+  renderBikeOptions();
+  renderBikeChips();
+  renderBikeSelectedCount();
+}
+
+function renderBikeChips() {
+  const container = document.getElementById('bikeChips');
+  if (!container) return;
+  if (bikeSelectedSlugs.size === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  let html = '';
+  for (const slug of bikeSelectedSlugs) {
+    html += `<span class="bike-chip">${esc(slug)} <button class="chip-remove" onclick="event.stopPropagation();removeBike('${esc(slug)}')" title="Remove">&times;</button></span>`;
+  }
+  container.innerHTML = html;
+}
+
+function renderBikeSelectedCount() {
+  const countEl = document.getElementById('bikeSelectedCount');
+  if (countEl) countEl.textContent = bikeSelectedSlugs.size;
+}
+
+function confirmBikeSelection() {
+  closeBikeSelector();
+  renderSelectedBikes();
+}
+
+async function saveProductCompatibility() {
+  const asin = document.getElementById('compProductSelect')?.value;
+  if (!asin) {
+    showToast('Select a product first', 'error');
+    return;
+  }
+
+  const universal = document.getElementById('compUniversal')?.checked || false;
+  const compatibleBikes = [...bikeSelectedSlugs];
+
+  const status = document.getElementById('compStatus');
+  status.textContent = 'Saving...';
+  status.className = 'comp-status';
+
+  try {
+    const resp = await fetch('/api/products/' + encodeURIComponent(asin) + '/compatibility', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ universal, compatible_bikes: compatibleBikes }),
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'Save failed');
+    status.textContent = 'Compatibility saved successfully!';
+    status.className = 'comp-status success';
+    showToast('Compatibility saved', 'success');
+    // Refresh the product data
+    const product = allProducts.find(p => p.asin === asin);
+    if (product) {
+      product.universal = universal;
+      product.compatible_bikes = compatibleBikes;
+    }
+  } catch(e) {
+    status.textContent = 'Error: ' + e.message;
+    status.className = 'comp-status error';
+    showToast('Save failed: ' + e.message, 'error');
+  }
+}
+
+// ================================================================
 //  SETTINGS PAGE
 // ================================================================
 async function loadSettings() {
@@ -1595,11 +1934,12 @@ function render(){
   document.getElementById('statsBar').innerHTML = products.length+' products'+(edCount ? ' | '+edCount+' excluded' : '');
   renderToolbar();
   const bannerHtml = editorialLoaded ? '' : '<div class="editorial-banner"><div class="banner-icon">&#x26A0;&#xFE0F;</div><div class="banner-text"><h4>No editorial configuration found</h4><p>editorial.json was not loaded. Select a product and use Import above to load an existing file, or start fresh and Save to create one.</p></div><button class="btn-import" onclick="document.getElementById(\'importInput\').click()">&#x1F4C2; Import Editorial JSON</button></div>';
-  document.getElementById('content').innerHTML = bannerHtml + '<div id="topPicksSection"></div><div id="productGridSection"></div><div id="rankingSection"></div><div id="previewSection"></div>';
-  renderTopPicks();
-  renderProductGrid();
-  renderRanking();
-  renderPreview();
+document.getElementById('content').innerHTML = bannerHtml + '<div id="topPicksSection"></div><div id="productGridSection"></div><div id="rankingSection"></div><div id="previewSection"></div><div id="compatibilitySection"></div>';
+    renderTopPicks();
+    renderProductGrid();
+    renderRanking();
+    renderPreview();
+    renderCompatibilitySection();
 }
 
 function renderSidebar(){

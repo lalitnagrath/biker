@@ -57,8 +57,8 @@
             </div>
             <div class="moto-hero-content">
                 <span class="moto-hero-brand">{{ motorcycle.brand }}</span>
-                <h1>{{ motorcycle.brand }} {{ motorcycle.model }} Buying Guide</h1>
-                <p class="moto-hero-subtitle">{{ motorcycle.type }} &middot; {{ motorcycle.engine }} &middot; {{ motorcycle.power }} &middot; &#8377;{{ motorcycle.price }} ex-showroom</p>
+                <h1>{{ motorcycle.brand }} {{ motorcycle.model }} Accessories Buying Guide</h1>
+                <p class="moto-hero-subtitle">Handpicked accessories, riding gear and maintenance essentials for the {{ motorcycle.brand }} {{ motorcycle.model }}</p>
 
                 <div class="moto-hero-meta-row">
                     <div class="moto-hero-meta-badges">
@@ -147,8 +147,8 @@
 <div class="moto-toc-bar" id="motoTocBar">
     <div class="container">
         <nav class="moto-toc-nav">
-            <a href="#must-have" class="moto-toc-link active">Must Have</a>
             <a href="#new-owner" class="moto-toc-link">New Owner</a>
+            <a href="#must-have" class="moto-toc-link active">Must Have</a>
             <a href="#ownership" class="moto-toc-link">Ownership</a>
             <a href="#maintenance" class="moto-toc-link">Maintenance</a>
             <a href="#problems" class="moto-toc-link">Problems</a>
@@ -165,7 +165,34 @@
         <div class="moto-layout">
             <div class="moto-main">
 
-                {# ===== SECTION 1: MUST HAVE ACCESSORIES ===== #}
+                {# ===== SECTION 1: NEW OWNER TIPS ===== #}
+                {% if editorial.get('new_owner_tips') %}
+                <section class="moto-section" id="new-owner">
+                    <div class="moto-section-header">
+                        <h2>New Owner Tips</h2>
+                        <p>Quick tips for new {{ motorcycle.model }} owners.</p>
+                    </div>
+
+                    <div class="moto-new-owner-grid">
+                        {% for tip in editorial.new_owner_tips %}
+                        <div class="moto-new-owner-card">
+                            <div class="moto-new-owner-icon">{{ tip.icon | safe }}</div>
+                            <div class="moto-new-owner-content">
+                                <h3>{{ tip.title }}</h3>
+                                <p>{{ tip.description }}</p>
+                                {% if tip.get('link') %}
+                                <a href="{{ base_path }}{{ tip.link }}" class="moto-new-owner-link">{{ tip.link_text }} &rarr;</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <hr class="moto-section-divider">
+                {% endif %}
+
+                {# ===== SECTION 2: MUST HAVE ACCESSORIES ===== #}
                 <section class="moto-section" id="must-have">
                     <div class="moto-section-header">
                         <h2>Must Have Accessories</h2>
@@ -268,33 +295,6 @@
                 </section>
 
                 <hr class="moto-section-divider">
-
-                {# ===== SECTION 2: NEW OWNER TIPS ===== #}
-                {% if editorial.get('new_owner_tips') %}
-                <section class="moto-section" id="new-owner">
-                    <div class="moto-section-header">
-                        <h2>New Owner Tips</h2>
-                        <p>Quick tips for new {{ motorcycle.model }} owners.</p>
-                    </div>
-
-                    <div class="moto-new-owner-grid">
-                        {% for tip in editorial.new_owner_tips %}
-                        <div class="moto-new-owner-card">
-                            <div class="moto-new-owner-icon">{{ tip.icon | safe }}</div>
-                            <div class="moto-new-owner-content">
-                                <h3>{{ tip.title }}</h3>
-                                <p>{{ tip.description }}</p>
-                                {% if tip.get('link') %}
-                                <a href="{{ base_path }}{{ tip.link }}" class="moto-new-owner-link">{{ tip.link_text }} &rarr;</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </section>
-
-                <hr class="moto-section-divider">
-                {% endif %}
 
                 {# ===== SECTION 3: OWNERSHIP GUIDE ===== #}
                 <section class="moto-section" id="ownership">

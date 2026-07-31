@@ -93,6 +93,8 @@ class Product(Base):
     score = Column(Float, default=0.0)
     status = Column(String(20), default="active")
     is_featured = Column(Boolean, default=False)
+    compatible_bikes = Column(JSON, nullable=True)
+    universal = Column(Boolean, default=False, nullable=False)
     last_sync_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

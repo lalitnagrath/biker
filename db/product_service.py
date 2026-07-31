@@ -9,15 +9,16 @@ product_library.load_products() returns (the "flat product" format).
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, joinedload
 
 from db.models import (
-    Brand, Category, EditorialScore, Image, Motorcycle,
-    PriceHistory, Product, ProductCategory, ProductMotorcycle,
+    AccessoryType, Brand, Category, EditorialScore, Image,
+    Motorcycle, PriceHistory, Product, ProductCategory, ProductMotorcycle,
 )
+from db.compatibility_service import CompatibilityService
 
 DB_URL = os.getenv("DB_URL", "sqlite:///bikereview.db")
 CURRENCY = "INR"
@@ -90,6 +91,15 @@ class ProductService:
         self._by_slug: Dict[str, dict] = {}
         self._by_category: Dict[str, List[dict]] = {}
         self._quality_dashboard: Optional[dict] = None
+        self._compat_service: Optional[CompatibilityService] = None
+
+    @property
+    def _compat(self) -> CompatibilityService:
+        if self._compat_service is None:
+            self._compat_service = CompatibilityService(
+                Session(self._engine)
+            )
+        return self._compat_service
 
     # ------------------------------------------------------------------
     # Public API matching generator needs
@@ -169,6 +179,71 @@ class ProductService:
             )
             asins = [p.asin for p in products_in_db if p.asin]
             return [self._by_asin.get(a, {}) for a in asins if a in self._by_asin]
+
+    def get_compatible_bikes_for_product(self, product_slug: str) -> List[dict]:
+        """Return compatible motorcycles for a product (used on product pages)."""
+        product = self._by_slug.get(product_slug)
+        if not product:
+            return []
+        asin = product.get("asin", "")
+        if not asin:
+            return []
+        product_row = self._fetch_product_by_asin(asin)
+        if not product_row:
+            return []
+        bikes = self._compat.get_compatible_bikes_for_product(product_row.id)
+        return [
+            {
+                "id": b["id"],
+                "make": b["make"],
+                "model": b["model"],
+                "slug": b["slug"],
+                "year_start": b.get("year_start"),
+                "year_end": b.get("year_end"),
+                "type": b.get("type"),
+            }
+            for b in bikes
+        ]
+
+    def get_motorcycle_products_grouped(
+        self, bike_slug: str,
+    ) -> Dict[str, List[dict]]:
+        """Return products compatible with a motorcycle grouped by AccessoryType."""
+        with Session(self._engine) as session:
+            bike = session.query(Motorcycle).filter_by(slug=bike_slug).first()
+            if not bike:
+                return {}
+            return self._compat.get_products_for_motorcycle_grouped(bike.id)
+
+    def get_products_by_accessory_type_for_motorcycle(
+        self,
+        bike_slug: str,
+        accessory_type_slug: str,
+        offset: int = 0,
+        limit: int = 20,
+    ) -> Tuple[List[dict], int]:
+        """Return products for a motorcycle filtered by AccessoryType slug."""
+        with Session(self._engine) as session:
+            bike = session.query(Motorcycle).filter_by(slug=bike_slug).first()
+            if not bike:
+                return [], 0
+            return self._compat.get_products_for_motorcycle_by_accessory_type(
+                bike.id, accessory_type_slug, offset, limit
+            )
+
+    def _fetch_product_by_asin(self, asin: str) -> Optional[Product]:
+        with Session(self._engine) as session:
+            return (
+                session.query(Product)
+                .options(
+                    joinedload(Product.brand),
+                    joinedload(Product.accessory_type),
+                    joinedload(Product.categories),
+                    joinedload(Product.images),
+                )
+                .filter(Product.asin == asin)
+                .first()
+            )
 
     def get_budget_products(self, max_price: float = 2000) -> List[dict]:
         return [p for p in self._products if (p.get("price") or 0) <= max_price]
@@ -286,7 +361,8 @@ class ProductService:
             "category": category,
             "type": ptype,
             "status": _REVERSE_STATUS.get(product.status, "approved"),
-            "compatible_bikes": [m.slug for m in product.motorcycles] if product.motorcycles else ["*"],
+            "compatible_bikes": product.compatible_bikes or ([m.slug for m in product.motorcycles] if product.motorcycles else ["*"]),
+            "universal": bool(product.universal),
             "best_for": best_for,
             "verdict": verdict,
             "editor_rating": _maybe_int(editor_score),
