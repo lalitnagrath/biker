@@ -88,9 +88,10 @@ def _raw_item(asin="B0RAW01", title="Steelbird Helmet",
 class FakeApi:
     """Canned CreatorsAPI stub."""
 
-    def __init__(self, items, error=None):
+    def __init__(self, items, error=None, total=None):
         self.items = items
         self.error = error
+        self.total = total
         self.calls = []
 
     def search_items(self, x_marketplace, search_items_request_content):
@@ -98,7 +99,10 @@ class FakeApi:
                            "request": search_items_request_content})
         if self.error:
             raise self.error
-        return {"searchResult": {"items": self.items}}
+        result = {"items": self.items}
+        if self.total is not None:
+            result["totalResultCount"] = self.total
+        return {"searchResult": result}
 
 
 def _make_service(items, error=None, **kwargs):
@@ -182,6 +186,87 @@ def test_search_passes_request_args():
     assert call["request"].item_count == 30
     assert call["request"].page == 2
     print("OK test_search_passes_request_args")
+
+
+# ------------------------------------------------------------------
+# category / brand filters (Phase 8.2)
+# ------------------------------------------------------------------
+
+def test_search_category_filter():
+    svc = _make_service([
+        _raw_item("B0RAW01", title="Steelbird Helmet"),
+        _raw_item("B0RAW02", title="Vega Gloves"),
+        _raw_item("B0RAW03", title="Motul Chain Lube"),
+    ])
+    result = svc.search("gear", category="Helmet")
+    assert [p["asin"] for p in result["results"]] == ["B0RAW01"]
+    assert result["count"] == 1
+    print("OK test_search_category_filter")
+
+
+def test_search_category_filter_accepts_canonical():
+    svc = _make_service([_raw_item("B0RAW01", title="Steelbird Helmet")])
+    result = svc.search("gear", category="helmet")
+    assert [p["asin"] for p in result["results"]] == ["B0RAW01"]
+    print("OK test_search_category_filter_accepts_canonical")
+
+
+def test_search_brand_filter():
+    svc = _make_service([
+        _raw_item("B0RAW01", title="Steelbird Helmet", brand="Steelbird"),
+        _raw_item("B0RAW02", title="Vega Gloves", brand="Vega"),
+    ])
+    result = svc.search("gear", brand="vega")
+    assert [p["asin"] for p in result["results"]] == ["B0RAW02"]
+    print("OK test_search_brand_filter")
+
+
+def test_search_filters_combine():
+    svc = _make_service([
+        _raw_item("B0RAW01", title="Steelbird Helmet", brand="Steelbird"),
+        _raw_item("B0RAW02", title="Vega Helmet", brand="Vega"),
+    ])
+    result = svc.search("helmet", category="Helmet", brand="Vega")
+    assert [p["asin"] for p in result["results"]] == ["B0RAW02"]
+    print("OK test_search_filters_combine")
+
+
+def test_search_filter_no_matches_keeps_facets():
+    svc = _make_service([
+        _raw_item("B0RAW01", title="Steelbird Helmet", brand="Steelbird"),
+        _raw_item("B0RAW02", title="Vega Gloves", brand="Vega"),
+    ])
+    result = svc.search("gear", brand="nonexistent")
+    assert result["count"] == 0
+    assert result["results"] == []
+    assert result["categories"] == ["Gloves", "Helmet"]
+    assert result["brands"] == ["Steelbird", "Vega"]
+    print("OK test_search_filter_no_matches_keeps_facets")
+
+
+# ------------------------------------------------------------------
+# pagination metadata (Phase 8.2)
+# ------------------------------------------------------------------
+
+def test_search_returns_total_and_facets():
+    fake = FakeApi([
+        _raw_item("B0RAW01", title="Steelbird Helmet", brand="Steelbird"),
+        _raw_item("B0RAW02", title="Vega Gloves", brand="Vega"),
+    ], total=42)
+    svc = AmazonSearchService(api=fake, credential_id="cid",
+                              credential_secret="csec")
+    result = svc.search("gear")
+    assert result["total"] == 42
+    assert result["categories"] == ["Gloves", "Helmet"]
+    assert result["brands"] == ["Steelbird", "Vega"]
+    print("OK test_search_returns_total_and_facets")
+
+
+def test_search_total_falls_back_to_count():
+    svc = _make_service([_raw_item()])
+    result = svc.search("helmet")
+    assert result["total"] == result["count"] == 1
+    print("OK test_search_total_falls_back_to_count")
 
 
 # ------------------------------------------------------------------

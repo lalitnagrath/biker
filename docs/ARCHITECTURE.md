@@ -25,11 +25,11 @@ This repository contains a motorcycle recommendation platform that generates sta
 - **GeneratorEngine** (`db/generator_engine.py`) - Data-driven page data provider
 - **Site Generator** (`generate.py`) - Static site generator
 
-### Control Center (Phase 8.1)
-- **AmazonSearchService** (`db/amazon_search_service.py`) - Keyword search against Amazon, returns import-ready flat dicts
+### Control Center (Phase 8.1 + 8.2)
+- **AmazonSearchService** (`db/amazon_search_service.py`) - Keyword search against Amazon with optional category/brand filters, pagination total, and facet lists; returns import-ready flat dicts
 - **ProductImportService** (`db/import_service.py`) - Writes selected products to SQLite, downloads images
 - **Control Center API** (`editorial/server.py`) - FastAPI endpoints `/api/amazon/search` and `/api/import`
-- **Control Center UI** (`editorial/index.html`) - "Amazon Import" page with keyword search and multi-select import
+- **Control Center UI** (`editorial/index.html`) - "Amazon Import" page with keyword search, filters, pagination, preview-before-import, and multi-select import
 
 ### Recommendation & Filtering
 - **ProductEngine** (`product_engine.py`) - Product selection, ranking, and filtering
@@ -86,10 +86,10 @@ This repository contains a motorcycle recommendation platform that generates sta
 - `test_smart_collections.py` - 21 tests for SmartCollections
 - `test_recommendation_engine.py` - 8 tests for ProductEngine
 - `test_knowledge_graph.py` - 24 tests for KnowledgeGraph
-- `test_amazon_search_service.py` - 11 tests for AmazonSearchService (Phase 8.1)
+- `test_amazon_search_service.py` - 18 tests for AmazonSearchService (Phase 8.1 + 8.2)
 - `test_product_import_service.py` - 9 tests for ProductImportService (Phase 8.1)
-- `test_control_center_api.py` - 5 tests for Control Center API (Phase 8.1)
+- `test_control_center_api.py` - 6 tests for Control Center API (Phase 8.1 + 8.2)
 
-Total: 102 tests (run test files individually with system `python3`; a single
+Total: 110 tests (run test files individually with system `python3`; a single
 `pytest test_*.py` invocation hits a pre-existing `sys.modules` stub collision
 between `test_recommendation_engine.py` and `test_smart_collections.py`).

@@ -95,11 +95,13 @@ def api_collections():
     return {"total": len(colls := svc.load_all()), "collections": colls}
 
 
-# ---- API: Amazon product discovery (Phase 8.1) ----
+# ---- API: Amazon product discovery (Phase 8.1 + 8.2) ----
 @app.get("/api/amazon/search")
 def api_amazon_search(keyword: Optional[str] = Query(None),
                       item_count: int = Query(20, ge=1, le=50),
-                      page: int = Query(1, ge=1)):
+                      page: int = Query(1, ge=1),
+                      category: Optional[str] = Query(None),
+                      brand: Optional[str] = Query(None)):
     if not keyword or not keyword.strip():
         return JSONResponse({"error": "Keyword is required"}, status_code=400)
     try:
@@ -110,6 +112,8 @@ def api_amazon_search(keyword: Optional[str] = Query(None),
             item_count=item_count,
             page=page,
             known_asins=import_svc.existing_asins(),
+            category=category,
+            brand=brand,
         )
         return result
     except AmazonSearchError as exc:

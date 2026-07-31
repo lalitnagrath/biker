@@ -69,10 +69,10 @@
 - **SmartCollections**: 21 tests  
 - **ProductEngine**: 8 tests
 - **KnowledgeGraph**: 24 tests
-- **AmazonSearchService** (Phase 8.1): 11 tests
+- **AmazonSearchService** (Phase 8.1 + 8.2): 18 tests
 - **ProductImportService** (Phase 8.1): 9 tests
-- **Control Center API** (Phase 8.1): 5 tests
-- **Total**: 102 tests pass (run individually with system `python3`)
+- **Control Center API** (Phase 8.1 + 8.2): 6 tests
+- **Total**: 110 tests pass (run individually with system `python3`)
 
 > Note: running all files in one `pytest test_*.py` invocation still hits the
 > pre-existing `sys.modules` stub collision between `test_recommendation_engine.py`
@@ -81,7 +81,7 @@
 ## Phase 8.1 — Product Discovery & Import Center
 
 ### Implementation Status
-- **Milestone doc** (`MILESTONE_8.md`) defines Phase 8.1 scope; later phases planned
+- **Milestone doc** (`MILESTONE_8.md`) defines Phase 8.1 + 8.2 scope
 - **`db/amazon_search_service.py`** — keyword search (NOT URL) via CreatorsAPI SDK,
   returns import-ready flat dicts (category inferred, slug generated, status `draft`,
   affiliate URL built). Credentials from `AMAZON_CREATOR_CREDENTIAL_ID` /
@@ -99,6 +99,26 @@
 - Existing ASINs are **never modified**; reported as `skipped_existing`
 - No HTML generation — templates are presentation-only
 - Search by keyword only (URL-based import is a later phase)
+
+## Phase 8.2 — Full Discovery Workflow
+
+### Implementation Status
+- **Filters**: `/api/amazon/search` accepts `category` and `brand` query params;
+  `db/amazon_search_service.search()` filters the current page via `_matches_filters()`
+  (category matches display name or canonical form; brand is case-insensitive exact).
+- **Pagination**: search returns `total` (Amazon `totalResultCount`, falls back to
+  count), plus `categories` / `brands` facet lists from the unfiltered page so
+  dropdowns stay stable while filtering.
+- **UI** (`editorial/index.html`): category + brand dropdowns, pagination bar
+  (Prev/Next, page info), ASIN shown on every product card, and a **Preview
+  before import** modal (full product details, cancel/confirm).
+- **Duplicate detection**: ASIN-based; existing products show an "Already in
+  library" badge and are reported as `skipped_existing` by the import service.
+
+### Key Rules (Phase 8.2)
+- Imported products are always **Draft**; editorial fields remain empty until reviewed
+- Filters/pagination are server-side; the Control Center never filters client-side
+- Amazon discovery is the **primary** way new products enter the system
 
 ## Migration Status
 

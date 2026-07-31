@@ -162,14 +162,24 @@ class AmazonSearchService:
         item_count: Optional[int] = None,
         page: int = 1,
         known_asins: Optional[set] = None,
+        category: Optional[str] = None,
+        brand: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Search Amazon by keyword.
+        """Search Amazon by keyword with optional category/brand filters.
+
+        Category and brand filters are applied to the current page of results
+        after the Amazon API call. Facets (`categories`, `brands`) are derived
+        from the unfiltered page so the Control Center dropdowns stay stable
+        while filtering.
 
         Returns:
             {
                 "keyword": str,
                 "page": int,
                 "count": int,
+                "total": int,        # Amazon totalResultCount (may be None)
+                "categories": [...],  # distinct categories on this page
+                "brands": [...],      # distinct brands on this page
                 "results": [flat product dicts],
             }
         """
@@ -197,11 +207,21 @@ class AmazonSearchService:
             raise AmazonSearchError(f"Amazon search failed: {exc}") from exc
 
         raw = self._to_dict(resp)
-        items = ((raw.get("searchResult") or {}).get("items")) or []
-        results = [
+        search_result = raw.get("searchResult") or {}
+        total = search_result.get("totalResultCount")
+        items = search_result.get("items") or []
+        flat_items = [
             self._raw_to_flat(item)
             for item in items
             if item.get("asin")
+        ]
+
+        categories = sorted({p.get("category") for p in flat_items if p.get("category")})
+        brands = sorted({p.get("brand") for p in flat_items if p.get("brand")})
+
+        results = [
+            p for p in flat_items
+            if self._matches_filters(p, category=category, brand=brand)
         ]
 
         if known_asins:
@@ -212,6 +232,9 @@ class AmazonSearchService:
             "keyword": keyword.strip(),
             "page": page,
             "count": len(results),
+            "total": total if total is not None else len(results),
+            "categories": categories,
+            "brands": brands,
             "results": results,
         }
 
@@ -314,6 +337,26 @@ class AmazonSearchService:
             domain = domain.split("//", 1)[-1]
         domain = domain.split("/")[0]
         return f"https://{domain}/dp/{asin}/?tag={self.partner_tag}"
+
+    def _matches_filters(self, flat: Dict[str, Any],
+                         category: Optional[str] = None,
+                         brand: Optional[str] = None) -> bool:
+        """Apply optional category/brand filters to a flat product dict.
+
+        Category matches the display name or the inferred canonical category.
+        Brand matches the exact (case-insensitive) brand name.
+        """
+        if category:
+            wanted = category.strip().lower().replace("-", "_")
+            display = (flat.get("category") or "").lower()
+            canonical = infer_category_from_title(flat.get("title") or "").lower()
+            if display != wanted and canonical != wanted:
+                return False
+        if brand:
+            wanted = brand.strip().lower()
+            if (flat.get("brand") or "").lower() != wanted:
+                return False
+        return True
 
     @staticmethod
     def _to_dict(resp: Any) -> Dict[str, Any]:

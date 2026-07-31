@@ -8,7 +8,9 @@ No more editing JSON files by hand. An editor searches Amazon by keyword,
 reviews the results, selects the products worth curating, and imports them
 straight into the database.
 
-Milestone 8 is split into phases. **This document covers Phase 8.1.**
+Milestone 8 is split into phases. **Phase 8.1** built the search + import
+foundation; **Phase 8.2** completed the discovery workflow (filters,
+pagination, preview).
 
 ### Phase 8.1 Scope
 
@@ -164,6 +166,53 @@ python test_control_center_api.py      # FastAPI endpoints
 - [ ] Live credentials wired in the running environment (search returns 502 until
       `AMAZON_CREATOR_CREDENTIAL_ID` / `AMAZON_CREATOR_CREDENTIAL_SECRET` are set)
 - [ ] Live smoke test of an actual Amazon import against the production DB
+
+## Phase 8.2 — Full Discovery Workflow
+
+### Scope
+
+Complete the Amazon product discovery workflow so it becomes the **primary way
+new products enter the system**:
+
+- Search Amazon by keyword.
+- Optional **category filter** and **brand filter**.
+- **Pagination** with total result count.
+- Product cards with image, title, price, rating, review count and **ASIN**.
+- Show whether a product **already exists** in the database (`in_library`).
+- **Preview before import** (detail modal, confirm step).
+- Import one or multiple selected products.
+- Duplicate detection via ASIN (existing ASINs skipped, never modified).
+- Imported products are created as **Draft**; editorial fields stay empty until
+  reviewed.
+- Preserve the existing service/repository architecture.
+
+### Changes
+
+| File | Change |
+|---|---|
+| `db/amazon_search_service.py` | `search()` accepts `category`/`brand` filters, returns `total` (Amazon `totalResultCount`), `categories`, `brands` facets; `_matches_filters()` helper |
+| `editorial/server.py` | `/api/amazon/search` accepts `category` and `brand` query params |
+| `editorial/index.html` | Filter dropdowns (category/brand), pagination bar, ASIN on cards, Preview modal + confirm-import flow |
+
+### API
+
+```text
+GET /api/amazon/search?keyword=motorcycle+helmet&item_count=20&page=2&category=Helmet&brand=Steelbird
+     # returns { keyword, page, count, total, categories, brands, results }
+```
+
+- `category` matches the display name or canonical form (e.g. `Helmet` or `helmet`).
+- `brand` matches the exact brand name (case-insensitive).
+- `categories`/`brands` facets come from the unfiltered page so dropdowns stay
+  stable while filtering.
+
+### Tests
+
+```bash
+python test_amazon_search_service.py   # + category filter, brand filter, combined filters, facets, total
+python test_control_center_api.py      # + category/brand/pagination params forwarded
+python test_product_import_service.py  # unchanged
+```
 
 ## Future Phases (not in this milestone)
 

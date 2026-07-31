@@ -49,12 +49,15 @@ class FakeSearchService:
         self.error = error
         self.last_kwargs = None
 
-    def search(self, keyword, item_count=20, page=1, known_asins=None):
+    def search(self, keyword, item_count=20, page=1, known_asins=None,
+               category=None, brand=None):
         self.last_kwargs = {
             "keyword": keyword,
             "item_count": item_count,
             "page": page,
             "known_asins": known_asins,
+            "category": category,
+            "brand": brand,
         }
         if self.error:
             raise self.error
@@ -171,6 +174,20 @@ def test_search_returns_502_on_error(monkeypatch):
     assert resp.status_code == 502
     assert "credentials" in resp.json()["error"]
     print("OK test_search_returns_502_on_error")
+
+
+def test_search_forwards_category_brand_and_pagination(monkeypatch):
+    fake = FakeSearchService()
+    _patch(monkeypatch, search=fake)
+    resp = _client().get(
+        "/api/amazon/search?keyword=helmet&category=Helmet&brand=Steelbird&page=3&item_count=10"
+    )
+    assert resp.status_code == 200
+    assert fake.last_kwargs["category"] == "Helmet"
+    assert fake.last_kwargs["brand"] == "Steelbird"
+    assert fake.last_kwargs["page"] == 3
+    assert fake.last_kwargs["item_count"] == 10
+    print("OK test_search_forwards_category_brand_and_pagination")
 
 
 # ------------------------------------------------------------------
