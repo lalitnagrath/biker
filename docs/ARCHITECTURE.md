@@ -16,10 +16,10 @@ This repository contains a motorcycle recommendation platform that generates sta
 - **SmartCollectionService** (`db/smart_collections.py`) - Handles smart collections with rule evaluation
 
 ### Product Management
-- **ProductModel** (`product_model.py`) - Defines immutable identity + mutable commerce fields
-- **ProductLibrary** (`product_library.py`) - Loads, filters, validates, and manages products
+- **Product** (`product_model.py`) - Defines immutable identity + mutable commerce fields (`class Product`)
+- **product_library** (`product_library.py`) - Loads, filters, validates, and manages products (function module)
 - **ProductMatcher** (`product_matcher.py`) - Deterministic product matching from commerce feeds
-- **SyncEngine** (`sync_engine.py`) - Daily sync from Amazon data into product library
+- **sync_engine** (`sync_engine.py`) - Daily sync from Amazon data into product library (function module)
 
 ### Site Generation
 - **GeneratorEngine** (`db/generator_engine.py`) - Data-driven page data provider
@@ -31,8 +31,15 @@ This repository contains a motorcycle recommendation platform that generates sta
 - **Control Center API** (`editorial/server.py`) - FastAPI endpoints `/api/amazon/search` and `/api/import`
 - **Control Center UI** (`editorial/index.html`) - "Amazon Import" page with keyword search, filters, pagination, preview-before-import, and multi-select import
 
+### Amazon Credentials (single source of truth)
+- **amazon_credentials** (`amazon_credentials.py`) - Shared by `bike.py`, `honda-cb350.py`
+  and `db/amazon_search_service.py`. Resolves CreatorsAPI credentials (explicit
+  args, then `AMAZON_CREATOR_CREDENTIAL_ID` / `AMAZON_CREATOR_CREDENTIAL_SECRET`
+  env vars, then built-in defaults) and the affiliate partner tag. Secrets live
+  here only — never duplicated elsewhere.
+
 ### Recommendation & Filtering
-- **ProductEngine** (`product_engine.py`) - Product selection, ranking, and filtering
+- **product_engine** (`product_engine.py`) - Product selection, ranking, and filtering (function module)
 
 ## Data Flow
 
@@ -40,7 +47,7 @@ This repository contains a motorcycle recommendation platform that generates sta
 2. **Product Library**: Loads/ validates/ filters products by status
 3. **Database Sync**: Writes flat dicts to SQLite via `DatabaseWriter`
 4. **Website Generation**: GeneratorEngine reads from services, produce static HTML
-5. **Daily Sync**: SyncEngine updates Amazon data, writes to DB
+5. **Daily Sync**: `sync_engine` updates Amazon data, writes to DB
 
 ## Architecture Patterns
 
@@ -73,6 +80,7 @@ This repository contains a motorcycle recommendation platform that generates sta
 - `editorial/index.html` - Control Center UI, incl. Amazon Import page (Phase 8.1)
 
 ### Application
+- `amazon_credentials.py` - Amazon CreatorsAPI credentials (single source of truth)
 - `product_model.py` - Product data model
 - `product_library.py` - Product library
 - `product_matcher.py` - Product matcher
@@ -84,7 +92,7 @@ This repository contains a motorcycle recommendation platform that generates sta
 
 - `test_generator_engine.py` - 24 tests for GeneratorEngine
 - `test_smart_collections.py` - 21 tests for SmartCollections
-- `test_recommendation_engine.py` - 8 tests for ProductEngine
+- `test_recommendation_engine.py` - 8 tests for `product_engine`
 - `test_knowledge_graph.py` - 24 tests for KnowledgeGraph
 - `test_amazon_search_service.py` - 18 tests for AmazonSearchService (Phase 8.1 + 8.2)
 - `test_product_import_service.py` - 9 tests for ProductImportService (Phase 8.1)

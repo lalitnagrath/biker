@@ -10,6 +10,8 @@ import sys
 import types
 from unittest.mock import MagicMock
 
+import amazon_credentials
+
 _project_root = os.path.dirname(os.path.abspath(__file__))
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
@@ -276,6 +278,8 @@ def test_search_total_falls_back_to_count():
 def test_get_api_without_credentials_raises(monkeypatch):
     monkeypatch.delenv("AMAZON_CREATOR_CREDENTIAL_ID", raising=False)
     monkeypatch.delenv("AMAZON_CREATOR_CREDENTIAL_SECRET", raising=False)
+    monkeypatch.setattr(amazon_credentials, "DEFAULT_CREDENTIAL_ID", None)
+    monkeypatch.setattr(amazon_credentials, "DEFAULT_CREDENTIAL_SECRET", None)
     svc = AmazonSearchService(credential_id=None, credential_secret=None)
     try:
         svc.get_api()

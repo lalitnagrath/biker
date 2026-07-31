@@ -9,14 +9,16 @@ Usage:
     svc = AmazonSearchService()
     result = svc.search("motorcycle helmet", item_count=20)
 
-Credentials come from AMAZON_CREATOR_CREDENTIAL_ID /
-AMAZON_CREATOR_CREDENTIAL_SECRET env vars, or may be passed explicitly.
+Credentials resolve through amazon_credentials — the single source of truth
+shared with bike.py: explicit args, then AMAZON_CREATOR_CREDENTIAL_ID /
+AMAZON_CREATOR_CREDENTIAL_SECRET env vars, then the built-in defaults.
 An injected `api` object may be supplied for tests.
 """
 
 import os
 from typing import Any, Dict, List, Optional
 
+from amazon_credentials import get_credentials, get_partner_tag
 from product_library import category_display, generate_slug, infer_category_from_title
 
 from creatorsapi_python_sdk.api.default_api import DefaultApi
@@ -27,7 +29,6 @@ from creatorsapi_python_sdk.models.search_items_response_content import (
 )
 
 MARKETPLACE = os.getenv("AMAZON_MARKETPLACE", "www.amazon.in")
-PARTNER_TAG = os.getenv("AMAZON_PARTNER_TAG", "helpfulsurfer-21")
 SEARCH_INDEX = "Automotive"
 DEFAULT_ITEM_COUNT = 20
 
@@ -137,18 +138,16 @@ class AmazonSearchService:
     def __init__(
         self,
         marketplace: str = MARKETPLACE,
-        partner_tag: str = PARTNER_TAG,
+        partner_tag: Optional[str] = None,
         credential_id: Optional[str] = None,
         credential_secret: Optional[str] = None,
         api: Any = None,
         item_count: int = DEFAULT_ITEM_COUNT,
     ):
         self.marketplace = marketplace
-        self.partner_tag = partner_tag
-        self.credential_id = credential_id or os.getenv("AMAZON_CREATOR_CREDENTIAL_ID")
-        self.credential_secret = credential_secret or os.getenv(
-            "AMAZON_CREATOR_CREDENTIAL_SECRET"
-        )
+        self.partner_tag = get_partner_tag(partner_tag)
+        self.credential_id = credential_id
+        self.credential_secret = credential_secret
         self._api = api
         self.item_count = item_count
 
@@ -242,15 +241,13 @@ class AmazonSearchService:
         """Return the CreatorsAPI DefaultApi (builds it lazily if needed)."""
         if self._api is not None:
             return self._api
-        if not self.credential_id or not self.credential_secret:
-            raise AmazonSearchError(
-                "Amazon credentials not configured. Set "
-                "AMAZON_CREATOR_CREDENTIAL_ID and "
-                "AMAZON_CREATOR_CREDENTIAL_SECRET."
-            )
+        try:
+            cid, csecret = get_credentials(self.credential_id, self.credential_secret)
+        except RuntimeError as exc:
+            raise AmazonSearchError(str(exc)) from exc
         client = ApiClient(
-            credential_id=self.credential_id,
-            credential_secret=self.credential_secret,
+            credential_id=cid,
+            credential_secret=csecret,
             version="3.2",
         )
         self._api = DefaultApi(client)

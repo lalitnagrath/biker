@@ -67,7 +67,7 @@
 
 - **GeneratorEngine**: 24 tests
 - **SmartCollections**: 21 tests  
-- **ProductEngine**: 8 tests
+- **product_engine**: 8 tests
 - **KnowledgeGraph**: 24 tests
 - **AmazonSearchService** (Phase 8.1 + 8.2): 18 tests
 - **ProductImportService** (Phase 8.1): 9 tests
@@ -84,8 +84,9 @@
 - **Milestone doc** (`MILESTONE_8.md`) defines Phase 8.1 + 8.2 scope
 - **`db/amazon_search_service.py`** — keyword search (NOT URL) via CreatorsAPI SDK,
   returns import-ready flat dicts (category inferred, slug generated, status `draft`,
-  affiliate URL built). Credentials from `AMAZON_CREATOR_CREDENTIAL_ID` /
-  `AMAZON_CREATOR_CREDENTIAL_SECRET` env vars. Injected `api` for tests.
+  affiliate URL built). Credentials resolve through `amazon_credentials.py` — the
+  single source of truth shared with `bike.py` / `honda-cb350.py` (explicit args,
+  then env vars, then built-in defaults). Injected `api` for tests.
 - **`db/import_service.py`** — writes flat dicts straight into SQLite via
   `DatabaseWriter`; skips existing ASINs untouched; downloads images to
   `static/images/products/{slug}.jpg` and links them via the `Image` model.
@@ -137,7 +138,7 @@
 1. **Database migration**: `product_library.import_from_legacy()` not implemented
 2. **CLI implementation**: `products.py` commands not implemented
 3. **Product Library migration**: 11 products not migrated to new structure
-4. **Status filtering**: Not yet applied to ProductEngine
+4. **Status filtering**: Not yet applied to `product_engine`
 5. **Template updates**: No changes needed (templates accept flat dicts)
 
 ## Recommendation Engine Status

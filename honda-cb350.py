@@ -3,8 +3,9 @@
 Fetch top Honda CB350 deals using the CreatorsAPI SDK and output JSON + HTML.
 
 Usage:
-  Set environment variables `AMAZON_CREATOR_CREDENTIAL_ID` and `AMAZON_CREATOR_CREDENTIAL_SECRET`.
-  Then run: python honda-cb350.py
+  Credentials resolve from amazon_credentials (explicit args, then
+  AMAZON_CREATOR_CREDENTIAL_ID / AMAZON_CREATOR_CREDENTIAL_SECRET env vars,
+  then the built-in defaults). Then run: python honda-cb350.py
 
 The script will write:
   - honda-cb350-deals.json  (consumed by zz11 site generator)
@@ -21,6 +22,7 @@ from datetime import datetime
 from typing import List, Dict, Any
 
 import requests
+import amazon_credentials
 from asin_helper import refresh_product_pricing
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -31,8 +33,6 @@ from creatorsapi_python_sdk.models.search_items_request_content import SearchIte
 from creatorsapi_python_sdk.exceptions import ApiException
 from creatorsapi_python_sdk.models.sort_by import SortBy
 
-DEFAULT_CREDENTIAL_ID = "amzn1.application-oa2-client.b9b4e4acd8b145de93d67e30964552f6"
-DEFAULT_CREDENTIAL_SECRET = "amzn1.oa2-cs.v1.c54ce65e63d4bc8d44bf9ec5dbb7a368aa943b0cc84bb89a32eb77afbb0ca028"
 DEFAULT_PARTNER_TAG = "xuy0834-21"
 
 SEARCH_KEYWORDS = [
@@ -66,21 +66,11 @@ SEEN_ASINS_FILE = os.path.join(os.path.dirname(__file__), 'honda-cb350-seen_asin
 
 
 def get_credentials(credential_id: str | None = None, credential_secret: str | None = None):
-    cid = credential_id or DEFAULT_CREDENTIAL_ID or os.environ.get('AMAZON_CREATOR_CREDENTIAL_ID')
-    csecret = credential_secret or DEFAULT_CREDENTIAL_SECRET or os.environ.get('AMAZON_CREATOR_CREDENTIAL_SECRET')
-    if not cid or not csecret:
-        raise RuntimeError(
-            'Please set AMAZON_CREATOR_CREDENTIAL_ID and AMAZON_CREATOR_CREDENTIAL_SECRET environment variables, '
-            'or assign DEFAULT_CREDENTIAL_ID / DEFAULT_CREDENTIAL_SECRET in the script.'
-        )
-    return cid, csecret
+    return amazon_credentials.get_credentials(credential_id, credential_secret)
 
 
 def get_partner_tag(partner_tag: str | None = None) -> str:
-    tag = partner_tag or DEFAULT_PARTNER_TAG or os.environ.get('AMAZON_PARTNER_TAG')
-    if not tag or not tag.strip():
-        raise RuntimeError('Please set AMAZON_PARTNER_TAG or provide --partner-tag')
-    return tag.strip()
+    return amazon_credentials.get_partner_tag(partner_tag or DEFAULT_PARTNER_TAG)
 
 
 def ensure_dirs():
