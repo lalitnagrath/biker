@@ -1,5 +1,45 @@
 # AI Rules
 
+## Session Startup (Read First)
+
+Before making any code changes:
+
+1. Read instructions/START_HERE.md and follow the file order it lists.
+2. Read docs/CURRENT_STATE.md.
+3. Read instructions/ROADMAP.md.
+4. Read the current milestone document at the repository root (MILESTONE_8.md).
+5. Review uncommitted git changes.
+6. Read docs/ARCHITECTURE.md only when modifying architecture, database models, services, or generators.
+7. Read only the files needed for the current milestone.
+8. Continue from the current milestone.
+9. Do not explore unrelated parts of the project.
+10. Never rewrite working architecture without explicit instruction.
+11. Prefer extending existing code over creating duplicate systems.
+12. Before creating a new file, search the project to ensure an equivalent implementation does not already exist.
+
+## Milestone Rules
+
+- Always continue from the current milestone in instructions/ROADMAP.md.
+- Finish the current milestone before starting another.
+- Never implement future milestones unless explicitly instructed.
+- Update docs/CURRENT_STATE.md after completing a milestone.
+
+---
+
+## Project Principles
+
+- Database is the single source of truth.
+- UI never accesses the database directly.
+- All business logic belongs in Service classes.
+- Repositories only perform database operations.
+- Generate static HTML only through GeneratorEngine.
+- Never duplicate existing functionality.
+- Keep modules small and focused.
+- Write tests for new business logic.
+- Update docs/CURRENT_STATE.md when completing significant work.
+
+---
+
 This file is the source of truth for the project.
 
 Always follow these rules unless explicitly told otherwise.
@@ -10,9 +50,17 @@ Load this file before every coding task.
 
 Additional instruction files:
 
-* CONTENT_RULES.md → Content generation
-* BUILD_RULES.md → Website generation
-* IMAGE_RULES.md → Image acquisition & processing
+* instructions/START_HERE.md → Session startup sequence
+* instructions/PROJECT.md → Project overview
+* instructions/ROADMAP.md → Versioned roadmap + milestone documents
+* instructions/CODING_RULES.md → Coding standards
+* instructions/PRODUCT_RULES.md → Product data rules
+* instructions/CONTENT_RULES.md → Content generation
+* instructions/BUILD_RULES.md → Website generation
+* instructions/IMAGE_RULES.md → Image acquisition & processing
+* docs/ARCHITECTURE.md → System architecture
+* docs/CURRENT_STATE.md → Current implementation state
+* MILESTONE_8.md → Current milestone (at repository root)
 
 Only load additional instruction files when relevant.
 

@@ -146,7 +146,7 @@
 - **Deterministic matching** - Uses product_matcher.py
 
 ### Current Limitations
-- **No database integration** - sync_results.json file logging only
+- **No database integration** - `data/products/sync_log.json` file logging only
 - **No backup** - products/*.json.bak backups not implemented
 - **No CLI commands** - sync_engine not exposed via CLI
 - **Limited logging** - sync results not fully tracked

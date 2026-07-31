@@ -1,0 +1,19 @@
+- Products originate from Amazon imports.
+- Product IDs never change.
+- ASIN is immutable.
+- Never delete products automatically.
+- Hide products instead of deleting when possible.
+- Images are stored on disk, paths in DB.
+- HTML is always generated from the database.
+- Products originate from Amazon imports.
+- Product IDs never change.
+- ASIN is immutable.
+- Never delete products automatically.
+- Hide products instead of deleting when possible.
+- Images are stored on disk, paths in DB.
+- HTML is always generated from the database.
+- Generated HTML is never edited manually.
+- Editorial data is never overwritten during imports.
+- Preserve historical price data.
+- One product per ASIN.
+- Imports must be idempotent.

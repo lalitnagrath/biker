@@ -6,13 +6,15 @@ python generate.py
 
 Output
 
-/output
+site/
 
 Data
 
-bike.json
+data/products/ (product catalog)
 
-motorcycles.json
+data/motorcycles/ (motorcycle data)
+
+data/all-motorcycles-india.json (motorcycle index)
 
 Articles
 

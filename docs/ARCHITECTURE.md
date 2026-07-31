@@ -25,6 +25,12 @@ This repository contains a motorcycle recommendation platform that generates sta
 - **GeneratorEngine** (`db/generator_engine.py`) - Data-driven page data provider
 - **Site Generator** (`generate.py`) - Static site generator
 
+### Control Center (Phase 8.1)
+- **AmazonSearchService** (`db/amazon_search_service.py`) - Keyword search against Amazon, returns import-ready flat dicts
+- **ProductImportService** (`db/import_service.py`) - Writes selected products to SQLite, downloads images
+- **Control Center API** (`editorial/server.py`) - FastAPI endpoints `/api/amazon/search` and `/api/import`
+- **Control Center UI** (`editorial/index.html`) - "Amazon Import" page with keyword search and multi-select import
+
 ### Recommendation & Filtering
 - **ProductEngine** (`product_engine.py`) - Product selection, ranking, and filtering
 
@@ -59,6 +65,12 @@ This repository contains a motorcycle recommendation platform that generates sta
 - `db/smart_collections.py` - Smart collections service
 - `db/generator_engine.py` - Generator engine
 - `db/writer.py` - Database writer
+- `db/amazon_search_service.py` - Amazon keyword search (Phase 8.1)
+- `db/import_service.py` - Product import into SQLite (Phase 8.1)
+
+### Control Center
+- `editorial/server.py` - FastAPI server (Phase 8.1 API endpoints)
+- `editorial/index.html` - Control Center UI, incl. Amazon Import page (Phase 8.1)
 
 ### Application
 - `product_model.py` - Product data model
@@ -74,5 +86,10 @@ This repository contains a motorcycle recommendation platform that generates sta
 - `test_smart_collections.py` - 21 tests for SmartCollections
 - `test_recommendation_engine.py` - 8 tests for ProductEngine
 - `test_knowledge_graph.py` - 24 tests for KnowledgeGraph
+- `test_amazon_search_service.py` - 11 tests for AmazonSearchService (Phase 8.1)
+- `test_product_import_service.py` - 9 tests for ProductImportService (Phase 8.1)
+- `test_control_center_api.py` - 5 tests for Control Center API (Phase 8.1)
 
-Total: 77 tests
+Total: 102 tests (run test files individually with system `python3`; a single
+`pytest test_*.py` invocation hits a pre-existing `sys.modules` stub collision
+between `test_recommendation_engine.py` and `test_smart_collections.py`).
