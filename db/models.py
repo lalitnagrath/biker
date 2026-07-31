@@ -127,6 +127,11 @@ class Product(Base):
         secondary="product_upgrade_sections",
         back_populates="products",
     )
+    upgrade_collections = relationship(
+        "UpgradeCollection",
+        secondary="product_upgrade_collections",
+        back_populates="products",
+    )
 
 
 __all__.append("Product")
@@ -508,6 +513,55 @@ class ProductUpgradeSection(Base):
 
 
 __all__.append("ProductUpgradeSection")
+
+
+class UpgradeCollection(Base):
+    """Pimp My Ride recommendation layer.
+
+    A curated upgrade collection that products can belong to.
+    This is orthogonal to categories; it sits on top of them.
+    """
+
+    __tablename__ = "upgrade_collections"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
+    slug = Column(String(255), nullable=False, unique=True, index=True)
+    description = Column(Text, nullable=True)
+    icon = Column(String(100), nullable=True)
+    sort_order = Column(Integer, default=0)
+    enabled = Column(Boolean, default=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    products = relationship(
+        "Product",
+        secondary="product_upgrade_collections",
+        back_populates="upgrade_collections",
+    )
+
+
+__all__.append("UpgradeCollection")
+
+
+class ProductUpgradeCollection(Base):
+    __tablename__ = "product_upgrade_collections"
+    __table_args__ = (
+        UniqueConstraint("product_id", "upgrade_collection_id",
+                         name="uq_product_upgrade_collection"),
+        Index("ix_product_upgrade_collections_collection", "upgrade_collection_id"),
+    )
+
+    id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, ForeignKey("products.id", ondelete="CASCADE"),
+                        nullable=False)
+    upgrade_collection_id = Column(
+        Integer, ForeignKey("upgrade_collections.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+
+
+__all__.append("ProductUpgradeCollection")
 
 
 class MotorcycleRecommendedProduct(Base):

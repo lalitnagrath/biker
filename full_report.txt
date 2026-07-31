@@ -1,0 +1,91 @@
+==================================================================
+  Upgrade Collection Assignment Report
+==================================================================
+
+  Products processed:          383
+  Products assigned:           383
+  Products already assigned:   0  (manual, untouched)
+  Products skipped:            0  (mapped collection not in DB)
+  Products with no collection: 0
+  Unknown categories:          14
+  Unknown keywords:            0
+
+  --- Count per Upgrade Collection ---
+    protection     138
+    touring        129
+    maintenance    75
+    technology     52
+    comfort        45
+    security       16
+    lighting       9
+    styling        5
+    cleaning       3
+
+  --- Products assigned ---
+  - BOBO BM4 PRO Plus Jaw-Grip Phone Mount with Vibration Damper [Phone Mount] category -> technology, touring
+  - BOBO BM14 PRO Plus Quick Release Phone Mount with Vibration Damper [Phone Mount] category -> technology, touring
+  - Xiaomi Portable Electric Air Compressor 1S [Tyre Inflator] category -> maintenance, touring
+  - STRIFF EZ Air Portable Tyre Inflator 150PSI [Tyre Inflator] category -> maintenance, touring
+  - Prolet Wall Mounted Mobile Holder Storage Case for Remote, Wall Mounted Mobile Stand/Multi Purpose Stand with  [Phone Mount] category -> technology, touring
+  - Portronics MODESK Universal Mobile Holder Stand with Metal Body, Anti Skid Design, Light Weight for All Smartp [Phone Mount] category -> technology, touring
+  - UN1QUE Tyre Inflator for Car, 150PSI Car Air Pump, 12V DC Portable Air Compressor for Tyre, Fast Inflation Spe [Tyre Inflator] category -> maintenance, touring
+  - Pack of 4 Wall Mount Self-Adhesive Wall Storage Mobile Holder | Mobile Phone Charging Bracket | Multipurpose O [Phone Mount] category -> technology, touring
+  - Sounce Waterproof New Bike Phone Mount Anti Shake and Stable 360‚° Rotation Bike Bicycles Accessories for Any  [Phone Mount] category -> technology, touring
+  - STRIFF MoRide1 Bike Phone Mount with 360° Rotational, Strong Hold for Scooty/Scooter/Bike/Motorcycle Compatibl [Phone Mount] category -> technology, touring
+  - Waterproof Bike Phone Mount with 360° Adjustable Dual-Ball Joint Arm, Weatherproof Case, Dust and Sun Proof, f [Phone Mount] category -> technology, touring
+  - Onelap Quikflate Plus™ - Wired + Wireless (Real 7800 mAh Battery) SuperFast Digital Tyre Inflator with inbuilt [Tyre Inflator] category -> maintenance, touring
+  - WeCool B3 360° Rotational Mobile Holder for Bike with One-Click Locking,Secure Grip Design,Mobile Stand for Bi [Phone Mount] category -> technology, touring
+  - Zebronics, Portable Tyre Inflator, Wired and Wireless, 150 PSI Turbo Inflation, Digital Display, 6000 mAh Rech [Tyre Inflator] category -> maintenance, touring
+  - Portronics Vayu 7.0 Tyre Inflator, Full-Size Digital Display, 4000 mAh Battery, 150 PSI Pressure, Preset Modes [Tyre Inflator] category -> maintenance, touring
+  - Electric Car Air Compressor with Pressure Gauge, 12V DC Portable Tyre Inflator Air Pump for Car, Trucks, Bus,  [Tyre Inflator] category -> maintenance, touring
+  - Portronics Vayu 3.0 tyre Inflator with 150 PSI Pressure, 4000 mAh Battery, Digital Display, Pressure Detection [Tyre Inflator] category -> maintenance, touring
+  - AGARO Atom Cordless Tyre Inflator, 150 PSI, 4500mAh Battery, Auto Shut-Off, Digital Display, LED Light, USB-C  [Tyre Inflator] category -> maintenance, touring
+  - AGARO Primo High Power Digital Tyre Inflator for Car, Air Inflator Car Accessories, 120 Watt Air Pump with 12V [Tyre Inflator] category -> maintenance, touring
+  - Portronics Mobike 4 Bike Phone Mount with 360° Rotational, Strong Hold for Bicycle, Motorcycle Compatible with [Phone Mount] category -> technology, touring
+  - Amazon Basics Portable DC Digital Tyre Inflator for Cars & Bikes| 12V DC | 150 PSI Air Pump with Digital Press [Tyre Inflator] category -> maintenance, touring
+  - AGARO Regency Cordless Tyre Inflator, Rechargeable, 6000 mAh (3 * 2000) Batteries, Up to 150 PSI Air Pump for  [Tyre Inflator] category -> maintenance, touring
+  - USPOT 2-in-1 Bike Phone Mount & Helmet Camera Kit – Anti-Vibration Handlebar Holder & Curved 3M Chin Mount for [Phone Mount] category -> technology, touring
+  - Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Black [Tyre Inflator] category -> maintenance, touring
+  - Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Red [Tyre Inflator] category -> maintenance, touring
+  - Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Yellow [Tyre Inflator] category -> maintenance, touring
+  - Portronics Vayu Lite Portable Tyre Inflator for Car, Bike, Cycle with 150 PSI Pressure, Digital Display, Auto  [Tyre Inflator] category -> maintenance, touring
+  - PANCA Cordless Air Pump Portable Tyre Inflator with Pressure Gauge, 5000mAh Battery & Multiple Nozzle Attachme [Tyre Inflator] category -> maintenance, touring
+  - Prakalp Waterproof Bike Mobile Phone Holder – 360° Rotating Bicycle & Motorcycle Phone Mount, Universal Handle [Phone Mount] category -> technology, touring
+  - AGARO Marvel Tyre inflator, for Cars, 12V, Upto 150 PSI, 120 W Powerful Motor, Up to 3M Long Cable, Digital Di [Tyre Inflator] category -> maintenance, touring
+  - GoMechanic Gusto Digital Tyre Inflator for Cars & Bikes | 150 PSI | 12V DC Portable Air Pump for Tyres with Au [Tyre Inflator] category -> maintenance, touring
+  - Hyco Corded Electric Lubricated Air Compressor with 100% Copper Winding (CK 3HP 50L) [Tyre Inflator] category -> maintenance, touring
+  - OLV Portable & Rechargeable Tyre Inflator & Multifunctional Jump Starter 8000 mAh Battery, LED Display, Type-C [Tyre Inflator] category -> maintenance, touring
+  - YELLOWFIN Rear View Mirror Extension Rod for Bike & Scooter, ABS Mirror Mount Extender Bracket for Mobile Hold [Phone Mount] category -> technology, touring
+  - Motorcycle Waterproof Mobile Holder with Touchscreen Access & 360° Rotation – Universal Bike Phone Mount for G [Phone Mount] category -> technology, touring
+  - Fashion Air Pump,Car Pump Heavy Duty Metal Electric Car Compressor With Pressure Gauge, 12V DC Portable Tyre I [Tyre Inflator] category -> maintenance, touring
+  - Portronics Vayu 9.0 Portable & Rechargeable Tyre Inflator with 2-in-1 Cordless & Corded Modes, 3×2000 mAh Batt [Tyre Inflator] category -> maintenance, touring
+  - Kisan Oil Free Silent Air Compressor 1 HP | 8 Bar (115 psi) | 550 Watt Motor 10 L Tank size | noiseless | 1440 [Tyre Inflator] category -> maintenance, touring
+  - Ingco 24L Air Compressor ACS175241, 0.6KW (0.8HP) Silent & Oil Free Air Compresser [Tyre Inflator] category -> maintenance, touring
+  - Portable Car Tyre Inflator Air Compressor Pump, 12V DC Heavy Duty Air Pump with Pressure Gauge, Fast Tyre Infl [Tyre Inflator] category -> maintenance, touring
+  ... and 343 more
+
+  --- Products already assigned (manual, untouched) ---
+
+  --- Products skipped (mapped collection missing from DB) ---
+
+  --- Unknown categories (not discarded) ---
+    Ear Plugs  (23 products)
+    Seat Cover  (12 products)
+    Riding Pants  (10 products)
+    Handlebar Grip  (8 products)
+    Windshield  (6 products)
+    GPS Tracker  (5 products)
+    Indicator  (5 products)
+    Mirror  (5 products)
+    Alarm  (3 products)
+    Horn  (3 products)
+    Polish  (3 products)
+    Chain Lock  (2 products)
+    Footrest  (2 products)
+    Spray  (2 products)
+
+  --- Unknown keywords (candidates to add to keyword tables) ---
+    (none)
+
+  --- Products with no collection ---
+

@@ -143,6 +143,26 @@
     </div>
 </section>
 
+{# ===== PIMP MY RIDE ===== #}
+<section class="pmr-section" id="pimp-my-ride" data-moto-slug="{{ motorcycle.slug }}" data-base-path="{{ base_path }}">
+    <div class="container">
+        <div class="pmr-header">
+            <h2 class="pmr-title">&#127941; Pimp My Ride</h2>
+            <p class="pmr-subtitle">Upgrade your motorcycle with compatible accessories.</p>
+        </div>
+        <div class="pmr-card-grid" id="pmrCardGrid" aria-live="polite">
+            <div class="pmr-state" id="pmrState">
+                <span class="pmr-spinner"></span>
+                <span id="pmrStateText">Finding curated upgrades for your {{ motorcycle.model }}...</span>
+            </div>
+        </div>
+        <div class="pmr-panels" id="pmrPanels"></div>
+        <noscript>
+            <div class="pmr-state">Enable JavaScript to browse curated upgrades for your {{ motorcycle.model }}.</div>
+        </noscript>
+    </div>
+</section>
+
 {# ===== STICKY TABLE OF CONTENTS ===== #}
 <div class="moto-toc-bar" id="motoTocBar">
     <div class="container">

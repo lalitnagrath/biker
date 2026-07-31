@@ -1,0 +1,147 @@
+============================================================
+  Compatibility Builder Report
+============================================================
+
+  Products matched to bikes:  29
+  Products marked universal:  182
+  Products for manual review: 179
+  Already had compatibility (skipped): 0
+  Min confidence threshold:   0.7
+
+  --- Matched to bikes ---
+  - HARLEY-DAVIDSON X440 S Motorcycle 440cc Matte Black booking for Ex-Showroom| 5 Years Warranty [Phone Mount] -> harley-davidson-x440
+  - Royal Enfield Hunter 350 with Disc & Alloy Wheels Motorcycle (Tokyo Black) Booking for Ex-Showroom P [Phone Mount] -> royal-enfield-hunter-350
+  - Harley-Davidson X440 T Motorcycle 440 CC Pearl Red booking for Ex-Showroom | 5 Years Warranty [Phone Mount] -> harley-davidson-x440
+  - Harley-Davidson X440 T Motorcycle 440 CC Vivid Black booking for Ex-Showroom | 5 Years Warranty [Phone Mount] -> harley-davidson-x440
+  - FUZICON Bajaj Pulsar 150 Bike Body Cover | SCOOTY Cover Water Resistant (Blue) [Bike Cover] -> bajaj-pulsar-150
+  - FUZICON Bike Cover for Hero Splendor Plus - Water Resistant [Bike Cover] -> hero-splendor-plus
+  - Kayme Classic 350 Water Resistance Bike Cover Heavy Duty Premium Taffeta Motorcycle Cover | UV Prote [Bike Cover] -> royal-enfield-classic-350
+  - Sulfar Bike Cover for Hero MotoCorp Mavrick 440 (Roadster (Upcoming)) | Waterproof, Dustproof & UV P [Bike Cover] -> hero-mavrick-440
+  - Oxtaul Water Resistant Bike Cover Dustproof UV Protection Bike Body Cover for Honda SP 125 All-Weath [Bike Cover] -> honda-sp-125
+  - SafeCovers Bike Body Cover for Pulsar 150 Cover for Rain & Dust | Water Resistant, Dustproof, UV Pro [Bike Cover] -> bajaj-pulsar-150
+  - Y3H Bike Cover Compatible with Hero Splendor All | All Weather Protect from Dust, UV Rays & Scratche [Bike Cover] -> hero-splendor-plus
+  - Heavy Duty Waterproof Bike Cover for Hero Splendor Plus | All Weather Protection from Rain, Dust, Su [Bike Cover] -> hero-splendor-plus
+  - UNAITIC Water Resistant Bike Body Cover Compatible with Honda Shine 125 BS6 | Bike Accessories | Mot [Bike Cover] -> honda-shine-125
+  - WHIPONE Two Wheelers Bike Body Cover Compatible for Honda CB Unicorn 150, UV Resistant, Dustproof, T [Bike Cover] -> honda-unicorn
+  - Kozdiko Dust & Waterproof Bike Body Cover with Mirror Pockets (Wine Color) for TVS Apache RTR 160 4V [Bike Cover] -> tvs-apache-rtr-160-4v
+  - DRAKOWISH Waterproof Bike Cover for Hero Splendor Plus | All Weather Protection from Rain, Dust, UV  [Bike Cover] -> hero-splendor-plus
+  - VELLON Bike Body Cover Compatible with Royal Enfield Bullet 350 Waterproof, Dust Proof, UV Rays Prot [Bike Cover] -> royal-enfield-bullet-350
+  - Handlebar Grips for Hero Splendor, Black and Blue, Rubber, Non-Slip Textured, Set of 2 Pairs [Handlebar Grip] -> hero-splendor-plus
+  - Motorcycle Handlebar Grips, Black Rubber, Compatible with Royal Enfield Classic 350, Standard 350, E [Handlebar Grip] -> royal-enfield-classic-350
+  - Bike Horn | Capable for Bjaj Pulsar 150 | Powerful Sound | (Pack OF 2) [Horn] -> bajaj-pulsar-150
+  - TVS Ronin Edition Mesh Riding Jacket for Men | CE Level 2 Lightweight Back, Shoulder & Elbow Armours [Jackets] -> tvs-ronin
+  - Pure Biking Motorcycle Saddle Bag, Heavy Duty, Compatible with RE Classic Bullet 350/500cc (Army TB) [Saddle Bag] -> royal-enfield-bullet-350
+  - Seize The Ride Motorcycle Saddle Bag Capacity, Heavy Fabric, Compatible with RE Classic Bullet 350/5 [Saddle Bag] -> royal-enfield-bullet-350
+  - Seize The Ride Motorcycle Saddle Bag Capacity, Heavy Fabric, Compatible with Royal Enfield Classic B [Saddle Bag] -> royal-enfield-bullet-350
+  - CARBOX,Campatibal with [ Dio ] Bike Removable & Washable PU Leather Waterproof Single Bike Seat Cove [Seat Cover] -> honda-dio
+  - RONISH Waterproof Durable Faux Leather Single Bike Seat Cover Single Bike Seat Cover for Splendor, S [Seat Cover] -> hero-splendor-plus
+  - Mv Motorcycle Windshield Visor, Black Glass Headlight Protector, UWind Deflector for Hunter 350 [Windshield] -> royal-enfield-hunter-350
+  - Dhe Best Front Motorcycle Windshield Visor Wind Screen Glass Shield Reduces Air Resistance Comfortab [Windshield] -> tvs-ronin
+  - TVS Bike Windshield Visor Compatible for Apache 4V BS4, Black Premium Polycarbonate Material|Hunter  [Windshield] -> royal-enfield-hunter-350
+
+  --- Marked universal ---
+  - BOBO BM4 PRO Plus Jaw-Grip Phone Mount with Vibration Damper [Phone Mount] -> universal
+  - BOBO BM14 PRO Plus Quick Release Phone Mount with Vibration Damper [Phone Mount] -> universal
+  - Xiaomi Portable Electric Air Compressor 1S [Tyre Inflator] -> universal
+  - STRIFF EZ Air Portable Tyre Inflator 150PSI [Tyre Inflator] -> universal
+  - Prolet Wall Mounted Mobile Holder Storage Case for Remote, Wall Mounted Mobile Stand/Multi Purpose S [Phone Mount] -> universal
+  - Portronics MODESK Universal Mobile Holder Stand with Metal Body, Anti Skid Design, Light Weight for  [Phone Mount] -> universal
+  - UN1QUE Tyre Inflator for Car, 150PSI Car Air Pump, 12V DC Portable Air Compressor for Tyre, Fast Inf [Tyre Inflator] -> universal
+  - Pack of 4 Wall Mount Self-Adhesive Wall Storage Mobile Holder | Mobile Phone Charging Bracket | Mult [Phone Mount] -> universal
+  - Sounce Waterproof New Bike Phone Mount Anti Shake and Stable 360‚° Rotation Bike Bicycles Accessorie [Phone Mount] -> universal
+  - STRIFF MoRide1 Bike Phone Mount with 360° Rotational, Strong Hold for Scooty/Scooter/Bike/Motorcycle [Phone Mount] -> universal
+  - Waterproof Bike Phone Mount with 360° Adjustable Dual-Ball Joint Arm, Weatherproof Case, Dust and Su [Phone Mount] -> universal
+  - Onelap Quikflate Plus™ - Wired + Wireless (Real 7800 mAh Battery) SuperFast Digital Tyre Inflator wi [Tyre Inflator] -> universal
+  - WeCool B3 360° Rotational Mobile Holder for Bike with One-Click Locking,Secure Grip Design,Mobile St [Phone Mount] -> universal
+  - Zebronics, Portable Tyre Inflator, Wired and Wireless, 150 PSI Turbo Inflation, Digital Display, 600 [Tyre Inflator] -> universal
+  - Portronics Vayu 7.0 Tyre Inflator, Full-Size Digital Display, 4000 mAh Battery, 150 PSI Pressure, Pr [Tyre Inflator] -> universal
+  - Electric Car Air Compressor with Pressure Gauge, 12V DC Portable Tyre Inflator Air Pump for Car, Tru [Tyre Inflator] -> universal
+  - Portronics Vayu 3.0 tyre Inflator with 150 PSI Pressure, 4000 mAh Battery, Digital Display, Pressure [Tyre Inflator] -> universal
+  - AGARO Atom Cordless Tyre Inflator, 150 PSI, 4500mAh Battery, Auto Shut-Off, Digital Display, LED Lig [Tyre Inflator] -> universal
+  - AGARO Primo High Power Digital Tyre Inflator for Car, Air Inflator Car Accessories, 120 Watt Air Pum [Tyre Inflator] -> universal
+  - Portronics Mobike 4 Bike Phone Mount with 360° Rotational, Strong Hold for Bicycle, Motorcycle Compa [Phone Mount] -> universal
+  - Amazon Basics Portable DC Digital Tyre Inflator for Cars & Bikes| 12V DC | 150 PSI Air Pump with Dig [Tyre Inflator] -> universal
+  - AGARO Regency Cordless Tyre Inflator, Rechargeable, 6000 mAh (3 * 2000) Batteries, Up to 150 PSI Air [Tyre Inflator] -> universal
+  - USPOT 2-in-1 Bike Phone Mount & Helmet Camera Kit – Anti-Vibration Handlebar Holder & Curved 3M Chin [Phone Mount] -> universal
+  - Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Black [Tyre Inflator] -> universal
+  - Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Red [Tyre Inflator] -> universal
+  - Lyrovo 160 PSI Double Cylinder Portable Foot Pump Air Tyre Inflator for car Bike and Cycle, Yellow [Tyre Inflator] -> universal
+  - Portronics Vayu Lite Portable Tyre Inflator for Car, Bike, Cycle with 150 PSI Pressure, Digital Disp [Tyre Inflator] -> universal
+  - PANCA Cordless Air Pump Portable Tyre Inflator with Pressure Gauge, 5000mAh Battery & Multiple Nozzl [Tyre Inflator] -> universal
+  - Prakalp Waterproof Bike Mobile Phone Holder – 360° Rotating Bicycle & Motorcycle Phone Mount, Univer [Phone Mount] -> universal
+  - AGARO Marvel Tyre inflator, for Cars, 12V, Upto 150 PSI, 120 W Powerful Motor, Up to 3M Long Cable,  [Tyre Inflator] -> universal
+  - GoMechanic Gusto Digital Tyre Inflator for Cars & Bikes | 150 PSI | 12V DC Portable Air Pump for Tyr [Tyre Inflator] -> universal
+  - Hyco Corded Electric Lubricated Air Compressor with 100% Copper Winding (CK 3HP 50L) [Tyre Inflator] -> universal
+  - OLV Portable & Rechargeable Tyre Inflator & Multifunctional Jump Starter 8000 mAh Battery, LED Displ [Tyre Inflator] -> universal
+  - YELLOWFIN Rear View Mirror Extension Rod for Bike & Scooter, ABS Mirror Mount Extender Bracket for M [Phone Mount] -> universal
+  - Motorcycle Waterproof Mobile Holder with Touchscreen Access & 360° Rotation – Universal Bike Phone M [Phone Mount] -> universal
+  - Fashion Air Pump,Car Pump Heavy Duty Metal Electric Car Compressor With Pressure Gauge, 12V DC Porta [Tyre Inflator] -> universal
+  - Portronics Vayu 9.0 Portable & Rechargeable Tyre Inflator with 2-in-1 Cordless & Corded Modes, 3×200 [Tyre Inflator] -> universal
+  - Kisan Oil Free Silent Air Compressor 1 HP | 8 Bar (115 psi) | 550 Watt Motor 10 L Tank size | noisel [Tyre Inflator] -> universal
+  - Ingco 24L Air Compressor ACS175241, 0.6KW (0.8HP) Silent & Oil Free Air Compresser [Tyre Inflator] -> universal
+  - Portable Car Tyre Inflator Air Compressor Pump, 12V DC Heavy Duty Air Pump with Pressure Gauge, Fast [Tyre Inflator] -> universal
+  - INGCO Auto Air Compressor, 12V | 10A | 140PSI Portable Tyre Inflator Pump, with Cord, Cigarette Ligh [Tyre Inflator] -> universal
+  - TUSA Storm X Cordless Tyre Inflator - Wired + Wireless (6000 mAh Battery & 12V Car Port), 2X Faster  [Tyre Inflator] -> universal
+  - GRAND PITSTOP Mobile Holder for Bikes | (Black - Jaw Grip 360° Rotation) | Phone Mount for Motorcycl [Phone Mount] -> universal
+  - Sounce Bike Phone Mount Waterproof Cell Phone Holder 360 Rotation Motorcycle Smartphone Case Univers [Phone Mount] -> universal
+  - Hyco Direct Driven Air Compressor 2HP 30L 100% Copper Winding Lubricated with Pu pipe (PIPE 8 X 12) [Tyre Inflator] -> universal
+  - Pilot 4HP Direct Drive Air Compressor 80L Tank, 256L/min Air Flow, 8 Bar/115 PSI Max Pressure, Oil L [Tyre Inflator] -> universal
+  - UN1QUE PT400 Tyre Inflator for Car, 150PSI 12V DC Car Air Pump with Preset & Auto Off, 120 Watt Port [Tyre Inflator] -> universal
+  - IBELL Tyre Inflator/Air Compressor Ca12-95 [Tyre Inflator] -> universal
+  - Bergmann Typhoon Digital Heavy-Duty Metal Tyre Inflator with Auto Cut-Off & LED Light (BCT-150D), 35 [Tyre Inflator] -> universal
+  - Elephant AS186 3 L Air Compressor with Air Brush (AB-19) 3mtr. PU Pipe [Tyre Inflator] -> universal
+  ... and 132 more
+
+  --- Manual review ---
+  - WSDCAM USB Rechargeable Bike Alarm with Remote, 110dB Loud Wireless Anti Theft Vibration Motion Sens [Alarm] -> manual review
+  - Quick Sense Wireless Bike Alarm 113dB | Anti-Theft Vibration Sensor with Remote | Adjustable Sensiti [Alarm] -> manual review
+  - PRS Bike Alarm Security System, Button Remote Key Anti-Theft Alarm for Universal Bike [Alarm] -> manual review
+  - Fuzicon Scooty Cover for Honda Activa 125/6G - Water Resistant Bike Body Cover [Bike Cover] -> manual review
+  - Fuzicon Hero HF Deluxe Bike Body Cover - Water Resistant [Bike Cover] -> manual review
+  - LUBANAZ Water Resistant Bike Cover for Yamaha FZ S Hybrid All Weather, UV Heat Resistant, Dustproof, [Bike Cover] -> manual review
+  - Sulfar Universal Bike Cover UV Protection & Dustproof Bike Body Cover for Two Wheeler Bike Scooter S [Bike Cover] -> manual review
+  - Puroma Bike Body Cover Compatible for Access 125 Dustproof Scratchproof - Motorcycle Cover for Two W [Bike Cover] -> manual review
+  - DRAKOWISH Waterproof Bike Cover for Honda Shine | All Weather Protection from Rain, Dust, UV Rays &  [Bike Cover] -> manual review
+  - Altrr Heavy Duty Waterproof Scooty & Bike Cover for Tvs Jupiter 110 – UV Resistant, Dustproof & Rain [Bike Cover] -> manual review
+  - Waterproof Bike Cover for All Bajaj Pulsar Model Upto 400CC | All Weather Protection from Rain, Dust [Bike Cover] -> manual review
+  - Waterproof Bike Body Cover Compatible with RE Bullet Dustproof Scratchproof - Motorcycle Cover for T [Bike Cover] -> manual review
+  - Two Wheeler Bike Cover Compatible for TVS Apache RTR Bike Cover with Water-Resistant and Dust Proof  [Bike Cover] -> manual review
+  - Kerwa Bike Cover for Rain for Yamaha FZ FI All-Weather Proof, Triple-Stitched Durable Design, Windpr [Bike Cover] -> manual review
+  - Robustt Bike Cover for Dust with UV Protection, Universal Fit (125cc to 150cc), Water Resistant & Al [Bike Cover] -> manual review
+  - FAVY Bike Cover for Rain with UV Protection & Dustproof, Universal Fit, Water Resistant & All Weathe [Bike Cover] -> manual review
+  - CABIUS Universal Motorcycle Cover, UV Protection, Dustproof Bike Body Cover for Two Wheeler, Scooter [Bike Cover] -> manual review
+  - Amazon Brand - Solimo Universal Bike Water Resistant Bike Cover (Dark Blue & Silver) [Bike Cover] -> manual review
+  - Kozdiko Dust & Waterproof Bike Body Cover with Mirror Pockets for Honda CB Hornet 160R [Bike Cover] -> manual review
+  - Universal Motorcycle Cover, UV Protection, Dustproof Bike Body Cover for Two Wheeler, Scooter, Bike, [Bike Cover] -> manual review
+  - AllExtreme 100% Tested Waterproof Scooty Cover Compatible with Activa Maestro and All Two Wheeler Sc [Bike Cover] -> manual review
+  - Kozdiko Dust & Waterproof Bike Body Cover with Mirror Pockets for All Scooty Models and All Bike Mod [Bike Cover] -> manual review
+  - EXBLACK Bike Cover for Dust with UV Protection, Universal Fit (125cc to 150cc), Water Resistant & Al [Bike Cover] -> manual review
+  - Brencco Motorcycle Cover Waterproof, Dustproof And UV Protected for Motorcycle Cover, Black, Standar [Bike Cover] -> manual review
+  - Autofy 100% Waterproof (Tested) for RE Size Bike Cover Dustproof UV Protection Bike Body Cover for A [Bike Cover] -> manual review
+  - Autofy 100% Waterproof (Tested) Bike Cover Dustproof UV Protection Bike Body Cover for All Two Wheel [Bike Cover] -> manual review
+  - Autofy Universal Bike Cover UV Protection & Dustproof Bike Body Cover for Two Wheeler Bike Scooter S [Bike Cover] -> manual review
+  - TVS Bike Cover for Rain with UV Protection & Dustproof, Universal Fit, Water Resistant & All Weather [Bike Cover] -> manual review
+  - Autofy Universal Bike Cover UV Protection & Dustproof Bike Body Cover for Two Wheeler Bike Scooter S [Bike Cover] -> manual review
+  - Crossbeats RoadEye Neo| New Launch| 2K FHD+ Dash Cam for Car| WiFi APP Mic Loop Record| 170° Wide An [Dash Cam] -> manual review
+  - GZRC-YDDK 10PCS Double Side Tape Heavy Duty, Double Tape, Double Side Tape Dash Cam Sticker for Car, [Action Camera] -> manual review
+  - LKMO Action Camera Aluminium Alloy Holder Compatible with gopro Bike Mount with Two 360° rotational  [Action Camera] -> manual review
+  - PellKing Mobile Phone Chest Mount Harness Strap Holder Cell Phone Clip Action Camera Pov For Samsung [Action Camera] -> manual review
+  - Mereava Car Windshield Phone Holder Navigation Stand Auto Dashboard Suction Cup Car Holder Cell Phon [Action Camera] -> manual review
+  - Bluetooth Motorcycle Helmet Headset with HD Action Camera 1080P Video/Photo, Hands-Free Communicatio [Action Camera] -> manual review
+  - Asryd Motorcycle Helmet Chin Mobile Phone Holders Stands for Moto DJI Mountain Dog Action Camera Rec [Action Camera] -> manual review
+  - HAYDEN X1 Car Dash Camera 4K QHD 1440p Metal Body Car Dash Cam Front | 4MP, 170° Wide Angle, Night V [Dash Cam] -> manual review
+  - Qubo Car Dashcam [New Launch] Pro 2K Front + Rear by Hero Group | Dual Channel Dash Cam | Wide Angle [Dash Cam] -> manual review
+  - LRSA 3-Channel Battery Charger Compatible for Go Pro Hero 13 Black with Type-C Cable | Multi-Functio [Action Camera] -> manual review
+  - SHREE HANS CREATION Car Windshield Phone Holder Navigation Stand Auto Dashboard Suction Cup Car Hold [Action Camera] -> manual review
+  - Dylect® Sense Classic 1080p Single Channel Dash Cam with Night Vision, 140° Wide-Angle Lens, G-Senso [Dash Cam] -> manual review
+  - REDTIGER New F7NP [2026 Edition] 4K Front and 1080P Rear Dash Cam, STARVIS 2 IMX675 Sensor, 5.8GHz U [Dash Cam] -> manual review
+  - Maizic Smarthome Triplex 4K 3 Channel Dash Cam WiFi Built-in G-Sensor, 1296P+1080P+1080P Front and R [Dash Cam] -> manual review
+  - BOBO BM9H Action Camera Waterproof Bike/Motorcycle/Scooter Mobile Phone Holder Mount, Ideal for Maps [Action Camera] -> manual review
+  - CP PLUS Dash Cam for Car CP-W310 | 3MP Full HD+ Single Channel Dashcam | 1296P Recording | Built-in  [Dash Cam] -> manual review
+  - 70mai A510 HDR 3K Dual Channel Dash Cam, STARVIS 2 IMX675 Sensor, ADAS, Built-in GPS Logger, Route R [Dash Cam] -> manual review
+  - 70mai A410 Dual Dash Cam [2026 New Launch], Made in India, 2.5K HDR Front & 1080P Rear, in-Built WiF [Dash Cam] -> manual review
+  - Vantrue E360 ACE 5.2K 360° Panoramic WiFi Dash Cam, Handheld Action Camera, STARVIS 2, HDR, IR Night [Action Camera] -> manual review
+  - BluArmor Action-cam Compatible Chin Mount for Motorcycle Helmets | Secure and Convenient for GoPro a [Action Camera] -> manual review
+  - IIVAAS Multipurpose Spray Polish 200ml | Car & Bike Polish for Instant Shine | Cleans, Polishes & Pr [Polish] -> manual review
+  ... and 129 more
+

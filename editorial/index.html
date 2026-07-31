@@ -340,6 +340,46 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
   .picks-grid,.preview-top-picks{grid-template-columns:1fr}
   .product-grid{grid-template-columns:1fr}
 }
+
+/* ===== Upgrade Collections (Pimp My Ride) ===== */
+.uc-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.uc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:10px;transition:box-shadow .15s,transform .12s;position:relative}
+.uc-card:hover{box-shadow:0 6px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
+.uc-card .uc-head{display:flex;align-items:center;gap:12px}
+.uc-card .uc-icon{width:44px;height:44px;border-radius:10px;background:#f8f9fa;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.uc-card .uc-title{font-size:15px;font-weight:700}
+.uc-card .uc-count-badge{position:absolute;top:14px;right:14px;font-size:11px;color:var(--text2);background:var(--bg);padding:2px 8px;border-radius:99px}
+.uc-card .uc-desc{font-size:12px;color:var(--text2);min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.uc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.uc-stat{text-align:center;background:var(--bg);border-radius:8px;padding:8px 4px}
+.uc-stat .v{font-size:17px;font-weight:700;line-height:1.1}
+.uc-stat .l{font-size:10px;color:var(--text2);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.uc-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:99px;white-space:nowrap}
+.uc-badge.universal{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+.uc-badge.specific{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.uc-badge.off{background:#f3f4f6;color:#6b7280;border:1px solid var(--border)}
+.uc-table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.uc-table th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);text-align:left;padding:10px 12px;background:#fafbfc;border-bottom:1px solid var(--border);white-space:nowrap}
+.uc-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle;font-size:13px}
+.uc-table tr:last-child td{border-bottom:none}
+.uc-table tr:hover td{background:#fafbfc}
+.uc-table .uc-img{width:46px;height:46px;object-fit:contain;border-radius:6px;background:#f8f9fa;border:1px solid var(--border);flex-shrink:0}
+.uc-table .uc-img-ph{width:46px;height:46px;border-radius:6px;background:#f8f9fa;border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#cbd5e1;font-size:16px}
+.uc-table .uc-name{font-weight:600;max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.uc-table .uc-meta{font-size:11px;color:var(--text2)}
+.uc-bikechips{display:flex;flex-wrap:wrap;gap:4px;max-width:260px}
+.uc-bikechips .chip{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:99px;padding:2px 7px;color:var(--text2);display:inline-flex;align-items:center;gap:4px}
+.uc-bikechips .chip button{border:none;background:none;color:var(--text2);font-size:12px;line-height:1;padding:0;cursor:pointer}
+.uc-bikechips .chip button:hover{color:var(--red)}
+.uc-bulkbar{background:var(--accent);color:#fff;border-radius:var(--radius-sm);padding:10px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.uc-bulkbar .count{font-weight:700}
+.uc-bulkbar button{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.uc-bulkbar button:hover{background:rgba(255,255,255,.28)}
+.uc-bulkbar .dismiss{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.8);font-size:16px}
+.uc-sort-sel{min-width:170px}
+.uc-empty{color:var(--text2);padding:28px;text-align:center;background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius)}
+.uc-coll-chip{font-size:11px;background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;border-radius:99px;padding:2px 8px;margin:1px 2px;display:inline-block;white-space:nowrap}
+.uc-row-actions{display:flex;gap:6px;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -372,6 +412,10 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
       <div class="nav-item" data-page="collections" onclick="navigateTo('collections')">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Collections
+      </div>
+      <div class="nav-item" data-page="upgrade-collections" onclick="navigateTo('upgrade-collections')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m13.95-5.95-2.12 2.12M9.17 15.83l-2.12 2.12m12.02-2.12-2.12-2.12M9.17 8.17 7.05 6.05M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+        Upgrade Collections
       </div>
       <div class="nav-item" data-page="amazon" onclick="navigateTo('amazon')">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
@@ -472,6 +516,17 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
       </div>
       <div class="page-content" id="collContent">
         <div class="loading"><div class="spinner"></div><p>Loading collections...</p></div>
+      </div>
+    </div>
+
+    <!-- PAGE: Upgrade Collections (Pimp My Ride) -->
+    <div id="page-upgrade-collections" class="page">
+      <div class="main-header">
+        <h2 id="ucTitle">Upgrade Collections</h2>
+        <div class="stats" id="ucStats"></div>
+      </div>
+      <div class="page-content" id="ucContent">
+        <div class="loading"><div class="spinner"></div><p>Loading upgrade collections...</p></div>
       </div>
     </div>
 
@@ -598,6 +653,46 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
   </div>
 </div>
 
+<!-- Upgrade Collections: Motorcycle Selector Modal -->
+<div class="modal-overlay" id="ucBikeModal" style="display:none" onclick="if(event.target===this)closeUcBikeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="ucBikeModalTitle">Select Compatible Bikes</h3>
+      <button class="modal-close" onclick="closeUcBikeModal()">&times;</button>
+    </div>
+    <div class="modal-search">
+      <span class="icon">&#x1F50D;</span>
+      <input id="ucBikeSearch" placeholder="Search bikes by make or model..." oninput="ucBikeSearchQuery=this.value;renderUcBikeOptions()">
+    </div>
+    <div class="selected-bikes">
+      <span class="sb-label">Selected</span><span class="sb-count" id="ucBikeSelectedCount">0</span>
+      <div class="bike-chips" id="ucBikeChips"></div>
+    </div>
+    <div class="modal-body" id="ucBikeList">
+      <div class="loading"><div class="spinner"></div><p>Loading bikes...</p></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeUcBikeModal()">Cancel</button>
+      <button class="btn-primary" onclick="confirmUcBikeSelection()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Upgrade Collections: Change Collections Modal -->
+<div class="modal-overlay" id="ucCollModal" style="display:none" onclick="if(event.target===this)closeUcCollModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="ucCollModalTitle">Change Upgrade Collections</h3>
+      <button class="modal-close" onclick="closeUcCollModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="ucCollList"></div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeUcCollModal()">Cancel</button>
+      <button class="btn-primary" onclick="confirmUcCollSelection()">Apply</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ================================================================
 //  ROUTING
@@ -630,6 +725,7 @@ function showPage(page) {
   else if (page === 'motorcycles') loadMotorcycles();
   else if (page === 'compatibility') loadCompatibility();
   else if (page === 'collections') loadCollections();
+  else if (page === 'upgrade-collections') loadUpgradeCollections();
   else if (page === 'amazon') loadAmazon();
   else if (page === 'website') loadWebsite();
   else if (page === 'settings') loadSettings();
@@ -703,22 +799,180 @@ function renderDashboard(data) {
 // ================================================================
 //  MOTORCYCLES PAGE
 // ================================================================
+// ================================================================
+//  MOTORCYCLES PAGE — compatibility management
+// ================================================================
+let motoDetailData = null;
+let motoDetailFilter = { search: '', category: '' };
+
 async function loadMotorcycles() {
   const el = document.getElementById('motoContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading motorcycles...</p></div>';
   try {
     const resp = await fetch('/api/motorcycles?_=' + Date.now());
     if (!resp.ok) throw new Error('API not available');
     const data = await resp.json();
     document.getElementById('motoStats').textContent = data.total + ' motorcycles';
-    let html = '<div class="dash-actions">';
+    let html = `
+      <div class="toolbar" style="margin-bottom:12px">
+        <div class="search-wrap"><span class="icon">&#x1F50D;</span><input id="motoSearch" placeholder="Search motorcycles..." oninput="filterMotorcycleList()"></div>
+        <div class="filter-count" style="margin-left:auto">Click a motorcycle to manage compatibility</div>
+      </div>
+      <div id="motoGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">`;
     for (const b of data.motorcycles) {
-      html += `<div class="action-card"><div class="action-body"><div class="action-title">${b.make} ${b.model}</div><div class="action-desc">${b.year || '—'} &middot; ${b.product_count} compatible products</div></div></div>`;
+      const searchText = `${b.make} ${b.model} ${b.year || ''}`.toLowerCase();
+      html += `
+        <div class="action-card" data-search="${searchText}" onclick="openMotorcycleManagement('${b.slug}')" style="cursor:pointer;flex-direction:column;align-items:stretch">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-size:14px;font-weight:600">${b.make} ${b.model}</span>
+            <span style="font-size:11px;color:var(--text2)">${b.year || ''}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div style="text-align:center;background:var(--bg);border-radius:6px;padding:8px 4px"><div style="font-size:18px;font-weight:700;color:var(--accent2)">${b.bike_specific}</div><div style="font-size:11px;color:var(--text2)">Bike Specific</div></div>
+            <div style="text-align:center;background:var(--bg);border-radius:6px;padding:8px 4px"><div style="font-size:18px;font-weight:700;color:var(--green)">${b.universal}</div><div style="font-size:11px;color:var(--text2)">Universal</div></div>
+            <div style="text-align:center;background:var(--accent);color:#fff;border-radius:6px;padding:8px 4px"><div style="font-size:18px;font-weight:700">${b.total}</div><div style="font-size:11px;opacity:.85">Total</div></div>
+          </div>
+        </div>`;
     }
     html += '</div>';
-    el.innerHTML = html || '<div class="empty-state"><div class="big-icon">🏍</div><p>No motorcycles found</p></div>';
+    el.innerHTML = html;
   } catch(e) {
     el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🏍</div><h3>Motorcycles</h3><p>Could not load motorcycle data. Check the server logs for details.</p></div>`;
   }
+}
+
+function filterMotorcycleList() {
+  const s = (document.getElementById('motoSearch').value || '').toLowerCase().trim();
+  document.querySelectorAll('#motoGrid .action-card').forEach(card => {
+    card.style.display = card.dataset.search.includes(s) ? '' : 'none';
+  });
+}
+
+async function openMotorcycleManagement(slug) {
+  const el = document.getElementById('motoContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading compatibility...</p></div>';
+  try {
+    const resp = await fetch('/api/motorcycles/' + encodeURIComponent(slug) + '?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    motoDetailData = await resp.json();
+    motoDetailFilter = { search: '', category: '' };
+    document.getElementById('motoStats').textContent = 'Compatibility management';
+    renderMotoDetail();
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🏍</div><h3>Motorcycles</h3><p>Could not load motorcycle data. Check the server logs for details.</p></div>`;
+  }
+}
+
+function renderMotoDetail() {
+  const d = motoDetailData;
+  if (!d || !d.bike) return;
+  const bike = d.bike;
+  const counts = d.counts;
+  const catOptions = d.categories.map(c => `<option value="${c}">${c}</option>`).join('');
+  document.getElementById('motoContent').innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+      <button class="btn-ghost btn-sm" onclick="loadMotorcycles()">&#8592; All Motorcycles</button>
+    </div>
+    <div style="margin-bottom:16px">
+      <h2 style="font-size:18px;font-weight:700">${bike.make} ${bike.model}</h2>
+      <div style="font-size:12px;color:var(--text2)">Compatibility Management</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-body"><div class="kpi-value" style="color:var(--accent2)">${counts.bike_specific}</div><div class="kpi-label">Bike Specific</div></div></div>
+      <div class="kpi-card"><div class="kpi-body"><div class="kpi-value" style="color:var(--green)">${counts.universal}</div><div class="kpi-label">Universal</div></div></div>
+      <div class="kpi-card"><div class="kpi-body"><div class="kpi-value">${counts.total}</div><div class="kpi-label">Total Compatible</div></div></div>
+    </div>
+
+    <div class="dash-section-title" style="margin-top:18px">Bike Specific <span class="dash-count">${d.bike_specific.length}</span></div>
+    <div id="motoSpecific" style="display:flex;flex-direction:column;gap:6px">
+      ${renderMotoProductList(d.bike_specific, 'specific')}
+    </div>
+
+    <div class="dash-section-title" style="margin-top:18px">Universal <span class="dash-count">${d.universal.length}</span></div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:8px">Universal products already appear on every motorcycle page.</div>
+    <div id="motoUniversal" style="display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto">
+      ${renderMotoProductList(d.universal, 'universal')}
+    </div>
+
+    <div class="dash-section-title" style="margin-top:18px">Unassigned Products <span class="dash-count">${d.unassigned.length}</span></div>
+    <div class="toolbar" style="margin-bottom:12px;border:1px solid var(--border);border-radius:var(--radius-sm)">
+      <div class="search-wrap"><span class="icon">&#x1F50D;</span><input id="motoUnassignedSearch" placeholder="Search unassigned products by title, brand or ASIN..." oninput="motoDetailFilter.search=this.value;renderMotoUnassigned()"></div>
+      <div class="filter-group">
+        <select id="motoUnassignedCat" onchange="motoDetailFilter.category=this.value;renderMotoUnassigned()">
+          <option value="">All categories</option>
+          ${catOptions}
+        </select>
+      </div>
+    </div>
+    <div id="motoUnassigned" style="display:flex;flex-direction:column;gap:6px">
+      ${renderMotoUnassigned()}
+    </div>`;
+}
+
+function renderMotoUnassigned() {
+  const d = motoDetailData;
+  const s = (motoDetailFilter.search || '').toLowerCase().trim();
+  const c = motoDetailFilter.category || '';
+  const filtered = d.unassigned.filter(p =>
+    (!c || p.category === c) &&
+    (!s || (p.title || '').toLowerCase().includes(s) || (p.brand || '').toLowerCase().includes(s) || (p.asin || '').toLowerCase().includes(s))
+  );
+  return renderMotoProductList(filtered, 'unassigned')
+    || '<div style="color:var(--text2);padding:12px">No products match your filters.</div>';
+}
+
+function renderMotoProductList(products, kind) {
+  if (!products || !products.length) {
+    return kind === 'universal'
+      ? '<div style="color:var(--text2);padding:8px 2px">No universal products.</div>'
+      : '<div style="color:var(--text2);padding:8px 2px">None yet.</div>';
+  }
+  return products.map(p => {
+    const img = p.image
+      ? `<img src="${p.image}" onerror="this.style.display='none'" style="width:40px;height:40px;object-fit:contain;border-radius:6px;background:#f8f9fa;flex-shrink:0">`
+      : '<div style="width:40px;height:40px;background:#f8f9fa;border-radius:6px;flex-shrink:0"></div>';
+    let action = '';
+    if (kind === 'specific') {
+      action = `<button class="btn-sm btn-danger" onclick="removeProductFromBike('${p.asin}')">Remove</button>`;
+    } else if (kind === 'unassigned') {
+      action = `<button class="btn-sm btn-primary" onclick="assignProductToBike('${p.asin}')">Assign</button>`;
+    } else {
+      action = `<span style="font-size:11px;color:var(--green);font-weight:600">Universal</span>`;
+    }
+    return `
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:6px;background:var(--surface)">
+        ${img}
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${(p.title || p.slug).replace(/"/g, '&quot;')}">${p.title || p.slug}</div>
+          <div style="font-size:11px;color:var(--text2)">${p.brand || ''}${p.category ? ' &middot; ' + p.category : ''}${p.status !== 'approved' ? ' &middot; ' + p.status : ''}</div>
+        </div>
+        ${action}
+      </div>`;
+  }).join('');
+}
+
+async function assignProductToBike(asin) {
+  const slug = motoDetailData.bike.slug;
+  const resp = await fetch(`/api/motorcycles/${encodeURIComponent(slug)}/products/${asin}`, { method: 'PUT' });
+  const body = await resp.json().catch(() => ({}));
+  if (!resp.ok) {
+    showToast((body && body.error) || 'Assign failed', 'error');
+    return;
+  }
+  showToast('Assigned product to ' + slug, 'success');
+  openMotorcycleManagement(slug);
+}
+
+async function removeProductFromBike(asin) {
+  const slug = motoDetailData.bike.slug;
+  const resp = await fetch(`/api/motorcycles/${encodeURIComponent(slug)}/products/${asin}`, { method: 'DELETE' });
+  const body = await resp.json().catch(() => ({}));
+  if (!resp.ok) {
+    showToast((body && body.error) || 'Remove failed', 'error');
+    return;
+  }
+  showToast('Removed product from ' + slug, 'success');
+  openMotorcycleManagement(slug);
 }
 
 // ================================================================
@@ -993,23 +1247,6 @@ function filterMotorcycles() {
   });
 }
 
-// Update the showPage function to include compatibility
-function showPage(page) {
-  // ... existing code ...
-  
-  // Load page content
-  if (page === 'dashboard') loadDashboard();
-  else if (page === 'motorcycles') loadMotorcycles();
-  else if (page === 'compatibility') loadCompatibility();
-  else if (page === 'collections') loadCollections();
-  else if (page === 'amazon') loadAmazon();
-  else if (page === 'website') loadWebsite();
-  else if (page === 'settings') loadSettings();
-  else if (page === 'products') {
-    if (typeof render === 'function') render();
-  }
-}
-
 // ================================================================
 //  COLLECTIONS PAGE
 // ================================================================
@@ -1029,6 +1266,496 @@ async function loadCollections() {
   } catch(e) {
     el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">📁</div><h3>Collections</h3><p>Could not load collections data. Check the server logs for details.</p></div>`;
   }
+}
+
+// ================================================================
+//  UPGRADE COLLECTIONS PAGE (Pimp My Ride)
+// ================================================================
+let ucData = null;
+let ucFilter = { search: '', category: '', type: '' };
+let ucSort = 'name';
+let ucSelected = new Set();
+let ucBikeTarget = null;          // {mode:'single', asin} | {mode:'bulk', asins}
+let ucBikeSelectedSlugs = new Set();
+let ucBikeSearchQuery = '';
+let ucCollTarget = null;          // {mode:'single', asin, current} | {mode:'bulk', asins, current}
+
+async function loadUpgradeCollections() {
+  const el = document.getElementById('ucContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading upgrade collections...</p></div>';
+  document.getElementById('ucTitle').textContent = 'Upgrade Collections';
+  try {
+    const resp = await fetch('/api/upgrade-collections?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    document.getElementById('ucStats').textContent = data.total + ' collections · ' + data.products_total + ' products';
+    let html = '<div class="uc-cards">';
+    for (const c of data.collections) {
+      const pct = data.products_total ? Math.round(c.product_count / data.products_total * 100) : 0;
+      html += `
+        <div class="uc-card" onclick="openUpgradeCollection('${esc(c.slug)}')" title="${esc(c.name)}">
+          <span class="uc-count-badge">${pct}% of catalog</span>
+          <div class="uc-head">
+            <div class="uc-icon">${c.icon ? esc(c.icon) : '&#x1F48E;'}</div>
+            <div>
+              <div class="uc-title">${esc(c.name)}</div>
+              <div style="font-size:11px;color:var(--text2)">${c.enabled ? 'Enabled' : 'Disabled'}${c.sort_order ? ' · rank ' + c.sort_order : ''}</div>
+            </div>
+          </div>
+          <div class="uc-desc">${esc(c.description || 'No description')}</div>
+          <div class="uc-stats">
+            <div class="uc-stat"><div class="v" style="color:var(--accent2)">${c.product_count}</div><div class="l">Products</div></div>
+            <div class="uc-stat"><div class="v" style="color:var(--green)">${c.universal_count}</div><div class="l">Universal</div></div>
+            <div class="uc-stat"><div class="v" style="color:var(--orange)">${c.bike_specific_count}</div><div class="l">Bike Specific</div></div>
+          </div>
+        </div>`;
+    }
+    html += '</div>';
+    el.innerHTML = html || '<div class="empty-state"><div class="big-icon">&#x1F48E;</div><p>No upgrade collections found.</p></div>';
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">&#x1F48E;</div><h3>Upgrade Collections</h3><p>Could not load upgrade collections. Check the server logs for details.</p></div>`;
+  }
+}
+
+async function openUpgradeCollection(slug) {
+  const el = document.getElementById('ucContent');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading collection...</p></div>';
+  try {
+    const resp = await fetch('/api/upgrade-collections/' + encodeURIComponent(slug) + '?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    ucData = await resp.json();
+    ucFilter = { search: '', category: '', type: '' };
+    ucSort = 'name';
+    ucSelected = new Set();
+    renderUpgradeCollectionPage();
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">&#x1F48E;</div><h3>Upgrade Collections</h3><p>Could not load collection data. Check the server logs for details.</p></div>`;
+  }
+}
+
+function ucVisibleProducts() {
+  if (!ucData) return [];
+  const s = (ucFilter.search || '').toLowerCase().trim();
+  const c = ucFilter.category || '';
+  const t = ucFilter.type || '';
+  let list = ucData.products.filter(p =>
+    (!c || p.category === c) &&
+    (!t || (t === 'universal' ? p.universal : !p.universal)) &&
+    (!s || (p.title || '').toLowerCase().includes(s) ||
+           (p.brand || '').toLowerCase().includes(s) ||
+           (p.asin || '').toLowerCase().includes(s))
+  );
+  const key = {
+    name: p => (p.title || '').toLowerCase(),
+    name_desc: p => -(p.title || '').toLowerCase(),
+    brand: p => ((p.brand || '').toLowerCase() + ' ' + (p.title || '').toLowerCase()),
+    category: p => ((p.category || '').toLowerCase() + ' ' + (p.title || '').toLowerCase()),
+    asin: p => (p.asin || ''),
+    universal: p => (p.universal ? 0 : 1) + ' ' + (p.title || '').toLowerCase(),
+  }[ucSort] || (p => (p.title || '').toLowerCase());
+  list.sort((a, b) => {
+    const ka = key(a), kb = key(b);
+    if (typeof ka === 'number') return ka - kb;
+    return ka < kb ? -1 : ka > kb ? 1 : 0;
+  });
+  return list;
+}
+
+function renderUpgradeCollectionPage() {
+  if (!ucData) return;
+  const coll = ucData.collection;
+  const counts = ucData.counts;
+  document.getElementById('ucTitle').textContent = 'Upgrade Collections';
+  document.getElementById('ucStats').textContent = coll.name;
+
+  const catOptions = ucData.categories.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  const selCount = ucSelected.size;
+
+  document.getElementById('ucContent').innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+      <button class="btn-ghost btn-sm" onclick="loadUpgradeCollections()">&#8592; All Collections</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+      <div style="width:52px;height:52px;border-radius:12px;background:#f8f9fa;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:26px">${coll.icon ? esc(coll.icon) : '&#x1F48E;'}</div>
+      <div>
+        <h2 style="font-size:20px;font-weight:700">${esc(coll.name)}</h2>
+        <div style="font-size:12px;color:var(--text2)">${esc(coll.description || '')}</div>
+      </div>
+    </div>
+    <div class="kpi-grid" style="margin-top:14px">
+      <div class="kpi-card"><div class="kpi-body"><div class="kpi-value">${counts.total}</div><div class="kpi-label">Products</div></div></div>
+      <div class="kpi-card"><div class="kpi-body"><div class="kpi-value" style="color:var(--green)">${counts.universal}</div><div class="kpi-label">Universal</div></div></div>
+      <div class="kpi-card"><div class="kpi-body"><div class="kpi-value" style="color:var(--orange)">${counts.bike_specific}</div><div class="kpi-label">Bike Specific</div></div></div>
+    </div>
+
+    <div class="toolbar" style="margin-top:14px;border:1px solid var(--border);border-radius:var(--radius-sm)">
+      <div class="search-wrap">
+        <span class="icon">&#x1F50D;</span>
+        <input id="ucSearch" placeholder="Search by title, brand or ASIN..." oninput="ucFilter.search=this.value;renderUpgradeTable()">
+      </div>
+      <div class="filter-group">
+        <select id="ucCatFilter" onchange="ucFilter.category=this.value;renderUpgradeTable()">
+          <option value="">All categories</option>
+          ${catOptions}
+        </select>
+        <button class="filter-btn${ucFilter.type===''?' active':''}" onclick="ucFilter.type='';renderUpgradeTable();updateUcFilterBtns()">All</button>
+        <button class="filter-btn${ucFilter.type==='universal'?' active':''}" onclick="ucFilter.type='universal';renderUpgradeTable();updateUcFilterBtns()">Universal</button>
+        <button class="filter-btn${ucFilter.type==='specific'?' active':''}" onclick="ucFilter.type='specific';renderUpgradeTable();updateUcFilterBtns()">Bike Specific</button>
+        <select id="ucSortSel" class="uc-sort-sel" onchange="ucSort=this.value;renderUpgradeTable()">
+          <option value="name">Sort: Name A-Z</option>
+          <option value="name_desc">Sort: Name Z-A</option>
+          <option value="brand">Sort: Brand</option>
+          <option value="category">Sort: Category</option>
+          <option value="universal">Sort: Universal first</option>
+          <option value="asin">Sort: ASIN</option>
+        </select>
+      </div>
+      <div class="filter-count" style="margin-left:auto" id="ucResultCount"></div>
+    </div>
+
+    <div id="ucBulkbar" class="uc-bulkbar" style="display:none"></div>
+
+    <div id="ucTableWrap">${ucTableHtml()}</div>
+  `;
+  updateUcFilterBtns();
+  updateUcResultCount();
+  renderUcBulkbar();
+}
+
+function updateUcFilterBtns() {
+  document.querySelectorAll('#ucContent .filter-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === (ucFilter.type === 'universal' ? 'Universal' : ucFilter.type === 'specific' ? 'Bike Specific' : 'All'));
+  });
+}
+
+function updateUcResultCount() {
+  const el = document.getElementById('ucResultCount');
+  if (el) el.textContent = ucVisibleProducts().length + ' of ' + ucData.products.length + ' products';
+}
+
+function ucTableHtml() {
+  if (!ucData) return '';
+  const rows = ucVisibleProducts();
+  if (!rows.length) return '<div class="uc-empty">No products match your filters.</div>';
+  const collLookup = {};
+  (ucData.collections || []).forEach(c => collLookup[c.slug] = c);
+  let html = `
+    <table class="uc-table">
+      <thead>
+        <tr>
+          <th style="width:28px"><input type="checkbox" onchange="ucToggleAll(this.checked)" ${rows.length===ucSelected.size&&rows.length?'checked':''}></th>
+          <th style="width:60px">Image</th>
+          <th>Product Name</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Type</th>
+          <th>Motorcycle Compatibility</th>
+          <th>ASIN</th>
+          <th>Upgrade Collections</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>`;
+  for (const p of rows) {
+    const img = p.image
+      ? `<img class="uc-img" src="${esc(p.image)}" loading="lazy" onerror="this.style.display='none'">`
+      : `<div class="uc-img-ph">&#x1F5BC;&#xFE0F;</div>`;
+    const badge = p.universal
+      ? '<span class="uc-badge universal">&#x1F30D; Universal</span>'
+      : '<span class="uc-badge specific">&#x1F3CD;&#xFE0F; Bike Specific</span>';
+    const bikeChips = (p.compatible_bikes || []).length
+      ? p.compatible_bikes.map(b => `<span class="chip">${esc(b)}<button title="Remove motorcycle" onclick="event.stopPropagation();ucRemoveBike('${esc(p.asin)}','${esc(b)}')">&times;</button></span>`).join('')
+      : (p.universal ? '' : '<span style="font-size:11px;color:var(--text2)">No bikes assigned</span>');
+    const collChips = (p.collections || []).map(s => `<span class="uc-coll-chip">${collLookup[s] ? esc(collLookup[s].icon) + ' ' : ''}${esc(s)}</span>`).join('');
+    html += `
+      <tr>
+        <td><input type="checkbox" onchange="ucToggleRow('${esc(p.asin)}', this.checked)" ${ucSelected.has(p.asin)?'checked':''}></td>
+        <td>${img}</td>
+        <td><span class="uc-name" title="${esc(p.title||p.slug)}">${esc(p.title || p.slug)}</span><span class="uc-meta">${esc(p.status || '')}</span></td>
+        <td>${esc(p.brand || '')}</td>
+        <td>${esc(p.category || '')}</td>
+        <td>${badge}</td>
+        <td><div class="uc-bikechips">${bikeChips}</div><button class="btn-sm btn-ghost" style="margin-top:4px" onclick="ucOpenBikeModal('${esc(p.asin)}')">&#x1F517; Assign Motorcycles</button></td>
+        <td style="font-size:12px;color:var(--text2)">${esc(p.asin || '')}</td>
+        <td><div>${collChips || '<span style="font-size:11px;color:var(--text2)">—</span>'}</div></td>
+        <td><div class="uc-row-actions">
+          <button class="btn-sm btn-ghost" onclick="ucOpenCollModal('${esc(p.asin)}')">&#x1F4CE; Collections</button>
+          <button class="btn-sm btn-danger" onclick="ucRemoveFromCollection('${esc(p.asin)}')">Remove</button>
+        </div></td>
+      </tr>`;
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderUpgradeTable() {
+  const wrap = document.getElementById('ucTableWrap');
+  if (wrap) wrap.innerHTML = ucTableHtml();
+  updateUcResultCount();
+  renderUcBulkbar();
+}
+
+function updateUcBulkbar() {
+  renderUcBulkbar();
+}
+
+function renderUcBulkbar() {
+  const bar = document.getElementById('ucBulkbar');
+  if (!bar) return;
+  const n = ucSelected.size;
+  bar.style.display = n ? 'flex' : 'none';
+  bar.innerHTML = `
+    <span class="count">${n} selected</span>
+    <button onclick="ucOpenCollModal(null)">&#x1F4CE; Change Collections</button>
+    <button onclick="ucOpenBikeModal(null)">&#x1F517; Assign Motorcycles</button>
+    <button onclick="ucBulkRemoveFromCollection()">&#x1F5D1;&#xFE0F; Remove from collection</button>
+    <button class="dismiss" title="Clear selection" onclick="ucSelected.clear();renderUpgradeTable();ucSyncSelectAll()">&times;</button>
+  `;
+}
+
+function ucSyncSelectAll() {
+  const rows = ucVisibleProducts();
+  const chk = document.querySelector('#ucTableWrap thead input[type=checkbox]');
+  if (chk) chk.checked = rows.length > 0 && rows.length === ucSelected.size;
+}
+
+function ucToggleAll(checked) {
+  if (checked) ucVisibleProducts().forEach(p => ucSelected.add(p.asin));
+  else ucVisibleProducts().forEach(p => ucSelected.delete(p.asin));
+  renderUpgradeTable();
+}
+
+function ucToggleRow(asin, checked) {
+  if (checked) ucSelected.add(asin); else ucSelected.delete(asin);
+  renderUpgradeTable();
+}
+
+async function refreshUcDetail() {
+  if (!ucData) return;
+  const slug = ucData.collection.slug;
+  ucSelected = new Set();
+  const resp = await fetch('/api/upgrade-collections/' + encodeURIComponent(slug) + '?_=' + Date.now());
+  if (resp.ok) {
+    ucData = await resp.json();
+    renderUpgradeCollectionPage();
+  }
+}
+
+// ---- Motorcycle assignment (single or bulk) ----
+function ucOpenBikeModal(asinOrNull) {
+  if (asinOrNull) {
+    const p = ucData.products.find(x => x.asin === asinOrNull);
+    ucBikeTarget = { mode: 'single', asin: asinOrNull };
+    ucBikeSelectedSlugs = new Set((p && p.compatible_bikes) || []);
+    document.getElementById('ucBikeModalTitle').textContent = 'Assign Motorcycles — ' + (p ? p.title.slice(0, 40) : asinOrNull);
+  } else {
+    ucBikeTarget = { mode: 'bulk', asins: [...ucSelected] };
+    ucBikeSelectedSlugs = new Set();
+    document.getElementById('ucBikeModalTitle').textContent = 'Assign Motorcycles to ' + ucSelected.size + ' selected product(s)';
+  }
+  ucBikeSearchQuery = '';
+  document.getElementById('ucBikeSearch').value = '';
+  document.getElementById('ucBikeModal').style.display = 'flex';
+  renderUcBikeChips();
+  renderUcBikeCount();
+  loadUcMotorcycles();
+}
+
+function closeUcBikeModal() {
+  document.getElementById('ucBikeModal').style.display = 'none';
+  ucBikeTarget = null;
+}
+
+async function loadUcMotorcycles() {
+  try {
+    const resp = await fetch('/api/motorcycles?_=' + Date.now());
+    if (resp.ok) {
+      const data = await resp.json();
+      ucData.motorcycles = data.motorcycles || ucData.motorcycles || [];
+    }
+  } catch(e) { /* keep cached list */ }
+  renderUcBikeOptions();
+}
+
+function renderUcBikeOptions() {
+  const listEl = document.getElementById('ucBikeList');
+  const bikes = (ucData.motorcycles || []);
+  const q = (ucBikeSearchQuery || '').toLowerCase().trim();
+  const filtered = q
+    ? bikes.filter(m => (m.make||'').toLowerCase().includes(q) || (m.model||'').toLowerCase().includes(q) || (m.year||'').toString().includes(q))
+    : bikes;
+  if (!filtered.length) {
+    listEl.innerHTML = '<div class="bike-empty">No bikes found</div>';
+    return;
+  }
+  listEl.innerHTML = filtered.map(m => {
+    const slug = m.slug || '';
+    const sel = ucBikeSelectedSlugs.has(slug);
+    return `
+      <div class="bike-option${sel?' selected':''}" onclick="ucToggleBike('${esc(slug)}')">
+        <input type="checkbox" ${sel?'checked':''} onclick="event.stopPropagation();ucToggleBike('${esc(slug)}')">
+        <div class="bike-info">
+          <div class="bike-name">${esc(m.make)} ${esc(m.model)} ${m.year ? '(' + esc(m.year) + ')' : ''}</div>
+          <div class="bike-meta">${esc(m.category || '')}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function ucToggleBike(slug) {
+  if (ucBikeSelectedSlugs.has(slug)) ucBikeSelectedSlugs.delete(slug);
+  else ucBikeSelectedSlugs.add(slug);
+  renderUcBikeOptions();
+  renderUcBikeChips();
+  renderUcBikeCount();
+}
+
+function renderUcBikeChips() {
+  const cont = document.getElementById('ucBikeChips');
+  if (!cont) return;
+  if (!ucBikeSelectedSlugs.size) { cont.innerHTML = ''; return; }
+  cont.innerHTML = [...ucBikeSelectedSlugs].map(s =>
+    `<span class="bike-chip">${esc(s)} <button class="chip-remove" onclick="event.stopPropagation();ucRemoveBikeFromSel('${esc(s)}')" title="Remove">&times;</button></span>`).join('');
+}
+
+function ucRemoveBikeFromSel(slug) {
+  ucBikeSelectedSlugs.delete(slug);
+  renderUcBikeChips();
+  renderUcBikeCount();
+  renderUcBikeOptions();
+}
+
+function renderUcBikeCount() {
+  const el = document.getElementById('ucBikeSelectedCount');
+  if (el) el.textContent = ucBikeSelectedSlugs.size;
+}
+
+async function confirmUcBikeSelection() {
+  const bikes = [...ucBikeSelectedSlugs];
+  if (!ucBikeTarget) return;
+  let resp;
+  if (ucBikeTarget.mode === 'single') {
+    resp = await fetch(`/api/upgrade-collections/${encodeURIComponent(ucData.collection.slug)}/products/${ucBikeTarget.asin}/motorcycles`, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ compatible_bikes: bikes }),
+    });
+  } else {
+    resp = await fetch('/api/upgrade-collections/products/bulk-motorcycles', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ asins: ucBikeTarget.asins, compatible_bikes: bikes }),
+    });
+  }
+  const body = await resp.json().catch(() => ({}));
+  closeUcBikeModal();
+  if (!resp.ok) { showToast((body && body.error) || 'Assign motorcycles failed', 'error'); return; }
+  showToast(bikes.length ? 'Motorcycles assigned' : 'Motorcycles cleared', 'success');
+  refreshUcDetail();
+}
+
+async function ucRemoveBike(asin, motoSlug) {
+  const resp = await fetch(`/api/upgrade-collections/${encodeURIComponent(ucData.collection.slug)}/products/${asin}/motorcycles/${encodeURIComponent(motoSlug)}`, { method: 'DELETE' });
+  const body = await resp.json().catch(() => ({}));
+  if (!resp.ok) { showToast((body && body.error) || 'Remove motorcycle failed', 'error'); return; }
+  showToast('Motorcycle removed', 'success');
+  refreshUcDetail();
+}
+
+// ---- Change collections (single or bulk) ----
+function ucOpenCollModal(asinOrNull) {
+  if (!ucData) return;
+  if (asinOrNull) {
+    const p = ucData.products.find(x => x.asin === asinOrNull);
+    ucCollTarget = { mode: 'single', asin: asinOrNull, current: new Set((p && p.collections) || []) };
+    document.getElementById('ucCollModalTitle').textContent = 'Change Collections — ' + (p ? p.title.slice(0, 40) : asinOrNull);
+  } else {
+    const common = new Set();
+    let first = true;
+    ucData.products.forEach(p => {
+      if (!ucSelected.has(p.asin)) return;
+      const set = new Set(p.collections || []);
+      if (first) { set.forEach(s => common.add(s)); first = false; }
+      else { [...common].forEach(s => { if (!set.has(s)) common.delete(s); }); }
+    });
+    ucCollTarget = { mode: 'bulk', asins: [...ucSelected], current: common };
+    document.getElementById('ucCollModalTitle').textContent = 'Change Collections for ' + ucSelected.size + ' selected product(s)';
+  }
+  document.getElementById('ucCollModal').style.display = 'flex';
+  const list = document.getElementById('ucCollList');
+  list.innerHTML = (ucData.collections || []).map(c => {
+    const on = ucCollTarget.current.has(c.slug);
+    return `
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;cursor:pointer;${on?'background:#eff6ff':''}" onclick="ucToggleColl('${esc(c.slug)}')">
+        <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();ucToggleColl('${esc(c.slug)}')" style="accent-color:var(--accent)">
+        <span style="font-size:18px">${c.icon ? esc(c.icon) : ''}</span>
+        <span style="font-weight:600">${esc(c.name)}</span>
+        <span style="font-size:11px;color:var(--text2);margin-left:auto">${esc(c.slug)}</span>
+      </div>`;
+  }).join('');
+}
+
+function closeUcCollModal() {
+  document.getElementById('ucCollModal').style.display = 'none';
+  ucCollTarget = null;
+}
+
+function ucToggleColl(slug) {
+  if (ucCollTarget.current.has(slug)) ucCollTarget.current.delete(slug);
+  else ucCollTarget.current.add(slug);
+  const list = document.getElementById('ucCollList');
+  list.innerHTML = (ucData.collections || []).map(c => {
+    const on = ucCollTarget.current.has(c.slug);
+    return `
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;cursor:pointer;${on?'background:#eff6ff':''}" onclick="ucToggleColl('${esc(c.slug)}')">
+        <input type="checkbox" ${on?'checked':''} onclick="event.stopPropagation();ucToggleColl('${esc(c.slug)}')" style="accent-color:var(--accent)">
+        <span style="font-size:18px">${c.icon ? esc(c.icon) : ''}</span>
+        <span style="font-weight:600">${esc(c.name)}</span>
+        <span style="font-size:11px;color:var(--text2);margin-left:auto">${esc(c.slug)}</span>
+      </div>`;
+  }).join('');
+}
+
+async function confirmUcCollSelection() {
+  if (!ucCollTarget) return;
+  const slugs = [...ucCollTarget.current];
+  let resp;
+  if (ucCollTarget.mode === 'single') {
+    resp = await fetch(`/api/upgrade-collections/${encodeURIComponent(ucData.collection.slug)}/products/${ucCollTarget.asin}/collections`, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ collections: slugs }),
+    });
+  } else {
+    resp = await fetch('/api/upgrade-collections/products/bulk-collections', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ asins: ucCollTarget.asins, collections: slugs }),
+    });
+  }
+  const body = await resp.json().catch(() => ({}));
+  closeUcCollModal();
+  if (!resp.ok) { showToast((body && body.error) || 'Change collections failed', 'error'); return; }
+  showToast('Upgrade collections updated', 'success');
+  refreshUcDetail();
+}
+
+async function ucRemoveFromCollection(asin) {
+  if (!confirm('Remove this product from the collection?')) return;
+  const resp = await fetch(`/api/upgrade-collections/${encodeURIComponent(ucData.collection.slug)}/products/${asin}`, { method: 'DELETE' });
+  const body = await resp.json().catch(() => ({}));
+  if (!resp.ok) { showToast((body && body.error) || 'Remove failed', 'error'); return; }
+  showToast('Product removed from collection', 'success');
+  refreshUcDetail();
+}
+
+async function ucBulkRemoveFromCollection() {
+  if (!ucSelected.size) return;
+  if (!confirm('Remove ' + ucSelected.size + ' product(s) from this collection?')) return;
+  const resp = await fetch(`/api/upgrade-collections/${encodeURIComponent(ucData.collection.slug)}/products/bulk-remove`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ asins: [...ucSelected] }),
+  });
+  const body = await resp.json().catch(() => ({}));
+  if (!resp.ok) { showToast((body && body.error) || 'Bulk remove failed', 'error'); return; }
+  showToast('Removed ' + (body.removed || 0) + ' product(s)', 'success');
+  refreshUcDetail();
 }
 
 // ================================================================
@@ -1458,7 +2185,7 @@ async function renderCompatibilitySection() {
             <span class="comp-label">Compatible Bikes:</span>
             <div class="bike-selector">
               <div class="bike-chips" id="compSelectedBikes"></div>
-              <button class="btn-secondary btn-sm" onclick="openBikeSelector()" style="align-self:flex-start">&#x1F517; Manage Bikes</button>
+              <button class="btn-secondary btn-sm" id="manageBikesBtn" onclick="openBikeSelector()" style="align-self:flex-start">&#x1F517; Manage Bikes</button>
             </div>
           </div>
           <div class="comp-actions">
@@ -1500,11 +2227,13 @@ async function loadProductCompatibility(asin) {
     if (!product) return;
 
     const universalCheck = document.getElementById('compUniversal');
-    universalCheck.checked = !!product.universal;
+    const isUniversal = !!product.universal;
+    universalCheck.checked = isUniversal;
 
     const compatibleBikes = product.compatible_bikes || [];
-    bikeSelectedSlugs = new Set(compatibleBikes);
+    bikeSelectedSlugs = isUniversal ? new Set() : new Set(compatibleBikes);
     renderSelectedBikes();
+    syncCompatibilityControls();
   } catch(e) {
     status.textContent = 'Error loading compatibility data';
     status.className = 'comp-status error';
@@ -1512,7 +2241,24 @@ async function loadProductCompatibility(asin) {
 }
 
 function handleUniversalChange() {
-  // Universal state is tracked in memory, saved on save click
+  // When Universal is ON, the product fits all bikes, so the
+  // compatible-bikes selection is cleared and disabled.
+  const universalCheck = document.getElementById('compUniversal');
+  if (universalCheck && universalCheck.checked) {
+    bikeSelectedSlugs.clear();
+    renderSelectedBikes();
+  }
+  syncCompatibilityControls();
+}
+
+function syncCompatibilityControls() {
+  const universalCheck = document.getElementById('compUniversal');
+  const manageBtn = document.getElementById('manageBikesBtn');
+  if (!universalCheck || !manageBtn) return;
+  const isUniversal = universalCheck.checked;
+  manageBtn.disabled = isUniversal;
+  manageBtn.style.opacity = isUniversal ? '0.5' : '1';
+  manageBtn.style.cursor = isUniversal ? 'not-allowed' : 'pointer';
 }
 
 function renderSelectedBikes() {
@@ -1530,6 +2276,11 @@ function renderSelectedBikes() {
 }
 
 function openBikeSelector() {
+  const universalCheck = document.getElementById('compUniversal');
+  if (universalCheck && universalCheck.checked) {
+    showToast('Universal products fit all bikes; bike selection is disabled', 'error');
+    return;
+  }
   bikeSelectorAsin = document.getElementById('compProductSelect')?.value;
   if (!bikeSelectorAsin) {
     showToast('Select a product first', 'error');
@@ -1654,9 +2405,18 @@ async function saveProductCompatibility() {
   }
 
   const universal = document.getElementById('compUniversal')?.checked || false;
-  const compatibleBikes = [...bikeSelectedSlugs];
 
   const status = document.getElementById('compStatus');
+  if (!universal && bikeSelectedSlugs.size === 0) {
+    status.textContent = 'Select at least one compatible bike (or enable Universal).';
+    status.className = 'comp-status error';
+    showToast('Select at least one compatible bike', 'error');
+    return;
+  }
+
+  // When Universal is ON, compatible_bikes is cleared automatically.
+  const compatibleBikes = universal ? [] : [...bikeSelectedSlugs];
+
   status.textContent = 'Saving...';
   status.className = 'comp-status';
 
@@ -2401,7 +3161,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // Handle initial hash
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['dashboard','products','motorcycles','collections','amazon','website','settings'].includes(hash)) {
+  if (hash && ['dashboard','products','motorcycles','collections','upgrade-collections','amazon','website','settings'].includes(hash)) {
     // Show requested page (dashboard by default)
     showPage(hash);
   } else {

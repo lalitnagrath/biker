@@ -82,6 +82,18 @@ Affiliate products should support the content, never dominate it.
 
 ---
 
+# Verification
+
+Never claim something was tested unless it actually was.
+
+Clearly distinguish between:
+
+- Code verification
+- Browser verification
+- Visual verification
+
+If verification cannot be performed, explicitly say so.
+
 # Tech Stack
 
 * Python 3

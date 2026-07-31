@@ -361,7 +361,7 @@ class ProductService:
             "category": category,
             "type": ptype,
             "status": _REVERSE_STATUS.get(product.status, "approved"),
-            "compatible_bikes": product.compatible_bikes or ([m.slug for m in product.motorcycles] if product.motorcycles else ["*"]),
+            "compatible_bikes": product.compatible_bikes or ([m.slug for m in product.motorcycles] if product.motorcycles else []),
             "universal": bool(product.universal),
             "best_for": best_for,
             "verdict": verdict,

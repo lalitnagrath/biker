@@ -47,7 +47,7 @@
                     {% if product._is_featured %}
                     <span class="product-badge featured-badge">Featured</span>
                     {% endif %}
-                    <a href="{{ url_builders.product_url(product.slug, base_path) }}" class="product-card-image">
+                    <a href="{{ URL.product(product.slug, base_path) }}" class="product-card-image">
                         {% if product.image and 'images/' in product.image %}
                         <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
                         {% else %}
@@ -57,7 +57,7 @@
                     <div class="product-card-body">
                         <div class="product-card-brand">{{ product.brand }}</div>
                         <h3 class="product-card-title">
-                            <a href="{{ url_builders.product_url(product.slug, base_path) }}">{{ product.title }}</a>
+                            <a href="{{ URL.product(product.slug, base_path) }}">{{ product.title }}</a>
                         </h3>
                         <div class="product-card-rating">
                             {% if product.rating %}
@@ -71,7 +71,7 @@
                         <p class="product-card-notes">{{ product._notes }}</p>
                         {% endif %}
                         <div class="product-card-actions">
-                            <a href="{{ url_builders.product_url(product.slug, base_path) }}" class="btn btn-sm">Details</a>
+                            <a href="{{ URL.product(product.slug, base_path) }}" class="btn btn-sm">Details</a>
                             {% if product.affiliate_url %}
                             <a href="{{ product.affiliate_url }}" class="btn btn-sm btn-accent" rel="nofollow sponsored" target="_blank">Check Price</a>
                             {% endif %}
