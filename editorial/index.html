@@ -317,6 +317,10 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="18.5" r="3.5"/><circle cx="18.5" cy="18.5" r="3.5"/><path d="M12 18V4l5 3-5 3"/></svg>
         Motorcycles
       </div>
+      <div class="nav-item" data-page="compatibility" onclick="navigateTo('compatibility')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7.5l-9-5.25L3 7.5v9l9 5.25 9-5.25V7.5zM21 12v7.5l-9 5.25-9-5.25V12l9-5.25 9 5.25zM12 22V12"/></svg>
+        Compatibility
+      </div>
       <div class="nav-item" data-page="collections" onclick="navigateTo('collections')">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Collections
@@ -384,6 +388,31 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
       </div>
       <div class="page-content" id="motoContent">
         <div class="loading"><div class="spinner"></div><p>Loading motorcycles...</p></div>
+      </div>
+    </div>
+
+    <!-- PAGE: Compatibility -->
+    <div id="page-compatibility" class="page">
+      <div class="main-header">
+        <h2>Compatibility</h2>
+        <div class="stats" id="compStats"></div>
+      </div>
+      <div class="page-content" id="compContent">
+        <div class="toolbar" style="margin-bottom:12px">
+          <div class="search-wrap">
+            <span class="icon">&#x1F50D;</span>
+            <input id="compSearch" placeholder="Search motorcycles or products..." oninput="renderCompatibility()">
+          </div>
+          <div class="filter-group">
+            <select id="compCategory" onchange="renderCompatibility()">
+              <option value="">All categories</option>
+            </select>
+            <select id="compBrand" onchange="renderCompatibility()">
+              <option value="">All brands</option>
+            </select>
+          </div>
+        </div>
+        <div class="loading"><div class="spinner"></div><p>Loading compatibility data...</p></div>
       </div>
     </div>
 
@@ -526,6 +555,7 @@ function showPage(page) {
   // Load page content
   if (page === 'dashboard') loadDashboard();
   else if (page === 'motorcycles') loadMotorcycles();
+  else if (page === 'compatibility') loadCompatibility();
   else if (page === 'collections') loadCollections();
   else if (page === 'amazon') loadAmazon();
   else if (page === 'website') loadWebsite();
@@ -615,6 +645,295 @@ async function loadMotorcycles() {
     el.innerHTML = html || '<div class="empty-state"><div class="big-icon">🏍</div><p>No motorcycles found</p></div>';
   } catch(e) {
     el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🏍</div><h3>Motorcycles</h3><p>Could not load motorcycle data. Check the server logs for details.</p></div>`;
+  }
+}
+
+// ================================================================
+//  COMPATIBILITY PAGE
+// ================================================================
+let selectedMotorcycles = new Set();
+let compatibilityData = {};
+
+async function loadCompatibility() {
+  const el = document.getElementById('compContent');
+  try {
+    const resp = await fetch('/api/compatibility?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    compatibilityData = await resp.json();
+    
+    // Load selected motorcycles from localStorage
+    loadSelectedMotorcycles();
+    
+    document.getElementById('compStats').textContent = `${compatibilityData.total_motorcycles} motorcycles & ${compatibilityData.total_products} products`;
+    
+    renderCompatibilityUI();
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🔗</div><h3>Compatibility</h3><p>Could not load compatibility data. Check the server logs for details.</p></div>`;
+  }
+}
+
+function loadSelectedMotorcycles() {
+  try {
+    const saved = localStorage.getItem('bike_review_selected_motorcycles');
+    if (saved) {
+      selectedMotorcycles = new Set(JSON.parse(saved));
+    }
+  } catch(e) {
+    selectedMotorcycles = new Set();
+  }
+}
+
+function saveSelectedMotorcycles() {
+  try {
+    localStorage.setItem('bike_review_selected_motorcycles', JSON.stringify([...selectedMotorcycles]));
+  } catch(e) {}
+}
+
+function renderCompatibilityUI() {
+  const el = document.getElementById('compContent');
+  
+  const toolbar = document.createElement('div');
+  toolbar.className = 'toolbar';
+  toolbar.style.marginBottom = '12px';
+  
+  const searchWrap = document.createElement('div');
+  searchWrap.className = 'search-wrap';
+  searchWrap.innerHTML = `
+    <span class="icon">&#x1F50D;</span>
+    <input id="compSearch" placeholder="Search motorcycles..." oninput="filterMotorcycles()">
+  `;
+  
+  const filterGroup = document.createElement('div');
+  filterGroup.className = 'filter-group';
+  
+  const buttonGroup = document.createElement('div');
+  buttonGroup.style.display = 'flex';
+  buttonGroup.style.gap = '8px';
+  buttonGroup.innerHTML = `
+    <button class="btn-secondary" onclick="selectAllMotorcycles()">Select All</button>
+    <button class="btn-secondary" onclick="clearAllMotorcycles()">Clear All</button>
+    <button class="btn-secondary" onclick="invertSelection()">Invert Selection</button>
+    <span style="align-self:center;font-size:12px;color:var(--text2);margin-left:8px;">Selected: <span id="selectedCount">0</span></span>
+  `;
+  
+  filterGroup.appendChild(searchWrap);
+  filterGroup.appendChild(buttonGroup);
+  toolbar.appendChild(filterGroup);
+  
+  // Main selection area
+  const mainContent = document.createElement('div');
+  mainContent.style.display = 'grid';
+  mainContent.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+  mainContent.style.gap = '16px';
+  
+  // Group motorcycles by manufacturer
+  const motorcyclesByBrand = {};
+  compatibilityData.motorcycles?.forEach(moto => {
+    if (!motorcyclesByBrand[moto.make]) {
+      motorcyclesByBrand[moto.make] = [];
+    }
+    motorcyclesByBrand[moto.make].push(moto);
+  });
+  
+  Object.keys(motorcyclesByBrand).sort().forEach(brand => {
+    const brandSection = document.createElement('div');
+    brandSection.className = 'brand-section';
+    
+    const brandHeader = document.createElement('h3');
+    brandHeader.style.fontSize = '16px';
+    brandHeader.style.fontWeight = '600';
+    brandHeader.style.marginBottom = '12px';
+    brandHeader.style.padding = '8px 16px';
+    brandHeader.style.background = 'var(--bg)';
+    brandHeader.style.borderRadius = 'var(--radius-sm)';
+    brandHeader.textContent = brand;
+    
+    const motoGrid = document.createElement('div');
+    motoGrid.style.display = 'grid';
+    motoGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+    motoGrid.style.gap = '12px';
+    
+    motorcyclesByBrand[brand].sort((a, b) => a.model.localeCompare(b.model)).forEach(moto => {
+      const motoCard = document.createElement('div');
+      motoCard.className = 'moto-card';
+      motoCard.dataset.id = moto.id;
+      motoCard.dataset.make = moto.make;
+      motoCard.dataset.model = moto.model;
+      motoCard.style.border = '1px solid var(--border)';
+      motoCard.style.borderRadius = 'var(--radius)';
+      motoCard.style.background = 'var(--surface)';
+      motoCard.style.padding = '16px';
+      motoCard.style.transition = 'all 0.2s ease';
+      motoCard.style.cursor = 'pointer';
+      
+      if (selectedMotorcycles.has(moto.id)) {
+        motoCard.style.borderColor = 'var(--accent)';
+        motoCard.style.background = '#eff6ff';
+      }
+      
+      const motoHeader = document.createElement('div');
+      motoHeader.style.display = 'flex';
+      motoHeader.style.alignItems = 'center';
+      motoHeader.style.gap = '12px';
+      motoHeader.style.marginBottom = '8px';
+      
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = selectedMotorcycles.has(moto.id);
+      checkbox.style.width = '18px';
+      checkbox.style.height = '18px';
+      checkbox.style.cursor = 'pointer';
+      checkbox.onchange = () => toggleMotorcycleSelection(moto.id, motoCard);
+      
+      const motoInfo = document.createElement('div');
+      motoInfo.style.flex = '1';
+      
+      const motoTitle = document.createElement('div');
+      motoTitle.style.fontSize = '14px';
+      motoTitle.style.fontWeight = '600';
+      motoTitle.style.marginBottom = '4px';
+      motoTitle.textContent = `${moto.make} ${moto.model}`;
+      
+      const motoMeta = document.createElement('div');
+      motoMeta.style.fontSize = '12px';
+      motoMeta.style.color = 'var(--text2)';
+      motoMeta.textContent = `${moto.year || ''} ${moto.category ? '• ' + moto.category : ''} • ${moto.product_count || 0} compatible products`;
+      
+      motoInfo.appendChild(motoTitle);
+      motoInfo.appendChild(motoMeta);
+      
+      motoHeader.appendChild(checkbox);
+      motoHeader.appendChild(motoInfo);
+      
+      motoCard.appendChild(motoHeader);
+      
+      // Add hover effect
+      motoCard.onmouseover = () => {
+        motoCard.style.borderColor = 'var(--accent)';
+        motoCard.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+      };
+      motoCard.onmouseout = () => {
+        if (!selectedMotorcycles.has(moto.id)) {
+          motoCard.style.borderColor = '';
+        }
+        motoCard.style.boxShadow = '';
+      };
+      
+      motoCard.onclick = (e) => {
+        if (e.target !== checkbox) {
+          toggleMotorcycleSelection(moto.id, motoCard);
+        }
+      };
+      
+      motoGrid.appendChild(motoCard);
+    });
+    
+    brandSection.appendChild(brandHeader);
+    brandSection.appendChild(motoGrid);
+    mainContent.appendChild(brandSection);
+  });
+  
+  el.innerHTML = '';
+  el.appendChild(toolbar);
+  el.appendChild(mainContent);
+  
+  updateSelectedCount();
+}
+
+function toggleMotorcycleSelection(motoId, motoCard) {
+  if (selectedMotorcycles.has(motoId)) {
+    selectedMotorcycles.delete(motoId);
+    motoCard.style.borderColor = '';
+    motoCard.style.background = '';
+  } else {
+    selectedMotorcycles.add(motoId);
+    motoCard.style.borderColor = 'var(--accent)';
+    motoCard.style.background = '#eff6ff';
+  }
+  
+  saveSelectedMotorcycles();
+  updateSelectedCount();
+  
+  // Highlight unsaved changes
+  const indicator = document.getElementById('unsavedIndicator');
+  if (indicator) {
+    indicator.style.display = 'flex';
+    setTimeout(() => indicator.style.display = 'none', 3000);
+  }
+}
+
+function selectAllMotorcycles() {
+  compatibilityData.motorcycles?.forEach(moto => selectedMotorcycles.add(moto.id));
+  saveSelectedMotorcycles();
+  renderCompatibilityUI();
+}
+
+function clearAllMotorcycles() {
+  selectedMotorcycles.clear();
+  saveSelectedMotorcycles();
+  renderCompatibilityUI();
+}
+
+function invertSelection() {
+  const allMotoIds = compatibilityData.motorcycles?.map(m => m.id) || [];
+  const newSelected = new Set(allMotoIds);
+  
+  allMotoIds.forEach(id => {
+    if (selectedMotorcycles.has(id)) {
+      newSelected.delete(id);
+    }
+  });
+  
+  selectedMotorcycles = newSelected;
+  saveSelectedMotorcycles();
+  renderCompatibilityUI();
+}
+
+function updateSelectedCount() {
+  const countEl = document.getElementById('selectedCount');
+  if (countEl) {
+    countEl.textContent = selectedMotorcycles.size;
+  }
+}
+
+function filterMotorcycles() {
+  const search = document.getElementById('compSearch')?.value.toLowerCase().trim() || '';
+  const brandSections = document.querySelectorAll('.brand-section');
+  
+  brandSections.forEach(section => {
+    const motoCards = section.querySelectorAll('.moto-card');
+    let hasVisible = false;
+    
+    motoCards.forEach(card => {
+      const make = card.dataset.make.toLowerCase();
+      const model = card.dataset.model.toLowerCase();
+      const isVisible = make.includes(search) || model.includes(search);
+      
+      card.style.display = isVisible ? '' : 'none';
+      if (isVisible) hasVisible = true;
+    });
+    
+    const title = section.querySelector('h3');
+    if (title) {
+      title.style.display = hasVisible ? '' : 'none';
+    }
+  });
+}
+
+// Update the showPage function to include compatibility
+function showPage(page) {
+  // ... existing code ...
+  
+  // Load page content
+  if (page === 'dashboard') loadDashboard();
+  else if (page === 'motorcycles') loadMotorcycles();
+  else if (page === 'compatibility') loadCompatibility();
+  else if (page === 'collections') loadCollections();
+  else if (page === 'amazon') loadAmazon();
+  else if (page === 'website') loadWebsite();
+  else if (page === 'settings') loadSettings();
+  else if (page === 'products') {
+    if (typeof render === 'function') render();
   }
 }
 
@@ -907,6 +1226,123 @@ async function loadWebsite() {
   } catch(e) {
     el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🌐</div><h3>Website</h3><p>Could not load website data. Check the server logs for details.</p></div>`;
   }
+}
+
+// ================================================================
+//  COMPATIBILITY PAGE
+// ================================================================
+async function loadCompatibility() {
+  const el = document.getElementById('compContent');
+  try {
+    const resp = await fetch('/api/compatibility?_=' + Date.now());
+    if (!resp.ok) throw new Error('API not available');
+    const data = await resp.json();
+    document.getElementById('compStats').textContent = `${data.total_motorcycles} motorcycles & ${data.total_products} compatible products`;
+    let html = '<div class="toolbar" style="margin-bottom:12px">';
+    html += `<div class="search-wrap"><span class="icon">&#x1F50D;</span><input id="compSearch" placeholder="Search motorcycles or products..." oninput="renderCompatibility()"></div>`;
+    html += '<div class="filter-group">';
+    html += '<select id="compCategory" onchange="renderCompatibility()"><option value="">All categories</option>' +
+      data.categories.map(c => `<option value="${c}">${c}</option>`).join('') + '</select>';
+    html += '<select id="compBrand" onchange="renderCompatibility()"><option value="">All brands</option>' +
+      data.brands.map(b => `<option value="${b}">${b}</option>`).join('') + '</select>';
+    html += '</div></div>';
+    
+    if (!data.motorcycles.length) {
+      el.innerHTML = '<div class="empty-state"><div class="big-icon">🏍</div><p>No motorcycles found</p></div>';
+      return;
+    }
+    
+    html += '<div class="accordion" id="compatibilityAccordion">';
+    for (const bike of data.motorcycles) {
+      html += `<div class="accordion-item" data-category="${bike.category}" data-brand="${bike.make}"><div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-header-content">
+          <div class="accordion-header-title">${bike.make} ${bike.model} (${bike.year})</div>
+          <div class="accordion-header-meta">${bike.category} &middot; ${bike.product_count} compatible products</div>
+        </div>
+        <span class="accordion-icon">+</span>
+      </div><div class="accordion-content">`;
+      
+      const bikeProducts = data.motorcycleProducts[bike.id] || [];
+      if (bikeProducts.length) {
+        html += '<div class="grid grid-3">';
+        for (const p of bikeProducts) {
+          const badges = [];
+          if (p.is_featured) badges.push('<span class="badge-feature">Featured</span>');
+          if (p.is_imported) badges.push('<span class="badge-imported">Imported</span>');
+          if (p.score && p.score >= 8) badges.push('<span class="badge-high-score">HD</span>');
+          html += `<div class="card">
+            <div class="card-header">
+              <div class="card-title">${p.title}</div>
+              <div class="card-badges">${badges.join('')}</div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="card-brand">${p.brand}</span>
+                <span class="card-category">${p.category}</span>
+              </div>
+              <div class="card-description">${p.description || 'No description'}</div>
+              <div class="card-footer">
+                <div class="card-price">${p.price ? '&#8377;' + Number(p.price).toLocaleString() : 'Price not available'}</div>
+                <div class="card-rating">${p.rating ? '&#9733; ' + p.rating : '—'}</div>
+              </div>
+            </div>
+          </div>`;
+        }
+        html += '</div>';
+      } else {
+        html += '<div class="empty-state"><p>No compatible products for this motorcycle</p></div>';
+      }
+      html += '</div></div>';
+    }
+    html += '</div>';
+    el.innerHTML = html;
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.style.cursor = 'pointer';
+    });
+  } catch(e) {
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🔗</div><h3>Compatibility</h3><p>Could not load compatibility data. Check the server logs for details.</p></div>`;
+  }
+}
+
+function toggleAccordion(header) {
+  const content = header.nextElementSibling;
+  const icon = header.querySelector('.accordion-icon');
+  if (content.style.display === 'block') {
+    content.style.display = 'none';
+    icon.textContent = '+';
+  } else {
+    content.style.display = 'block';
+    icon.textContent = '-';
+  }
+}
+
+function renderCompatibility() {
+  // Filter based on search and filters
+  const search = document.getElementById('compSearch')?.value.toLowerCase() || '';
+  const category = document.getElementById('compCategory')?.value || '';
+  const brand = document.getElementById('compBrand')?.value || '';
+  
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    let show = true;
+    
+    if (search) {
+      const title = item.querySelector('.accordion-header-title')?.textContent.toLowerCase() || '';
+      const meta = item.querySelector('.accordion-header-meta')?.textContent.toLowerCase() || '';
+      if (!title.includes(search) && !meta.includes(search)) show = false;
+    }
+    
+    if (category) {
+      const itemCategory = item.dataset.category || '';
+      if (itemCategory !== category) show = false;
+    }
+    
+    if (brand) {
+      const itemBrand = item.dataset.brand || '';
+      if (itemBrand !== brand) show = false;
+    }
+    
+    item.style.display = show ? 'block' : 'none';
+  });
 }
 
 // ================================================================

@@ -88,6 +88,64 @@ def api_motorcycles():
     return {"total": len(bikes := svc.load_all()), "motorcycles": bikes}
 
 
+# ---- API: Compatibility ----
+@app.get("/api/compatibility")
+def api_compatibility():
+    moto_svc = MotorcycleService()
+    products_svc = ProductService()
+    
+    motorcycles = moto_svc.load_all()
+    all_products = products_svc.get_all()
+    
+    # Build compatibility mapping
+    compatibility_map = {}
+    for bike in motorcycles:
+        compatible_products = []
+        bike_categories = []
+        
+        # Get bike's compatible product categories from engine size/rating filters
+        # This is a simplified compatibility logic - in real implementation,
+        # this would check actual fitment data
+        for product in all_products:
+            compatible = False
+            
+            # Example compatibility logic based on product category and bike
+            # This can be expanded with real fitment rules
+            if bike.category == 'all-terrain' and product.category in ['off-road', 'dual-sport']:
+                compatible = True
+            elif bike.category == 'commuter' and product.category == 'accessory':
+                compatible = True
+            elif bike.category == 'touring' and product.category in ['luggage', 'accessory']:
+                compatible = True
+            
+            if compatible:
+                compatible_products.append(product)
+        
+        compatibility_map[bike.id] = {
+            "bike": bike,
+            "products": compatible_products[:10],  # Limit for performance
+            "total_count": len(compatible_products)
+        }
+    
+    # Extract unique brands and categories
+    all_brands = set()
+    all_categories = set()
+    for bike_data in compatibility_map.values():
+        bike = bike_data['bike']
+        for product in bike_data['products']:
+            all_brands.add(product.get('brand') or '')
+            all_categories.add(product.get('category') or '')
+    
+    return {
+        "total_motorcycles": len(motorcycles),
+        "total_products": len(all_products),
+        "motorcycles": motorcycles,
+        "motorcycle_products": compatibility_map,
+        "brands": sorted([b for b in all_brands if b]),
+        "categories": sorted([c for c in all_categories if c])
+    }
+
+
 # ---- API: Collections ----
 @app.get("/api/collections")
 def api_collections():

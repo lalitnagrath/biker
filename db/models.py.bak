@@ -320,6 +320,28 @@ class EditorialScore(Base):
 __all__.append("EditorialScore")
 
 
+class ProductMotorcycle(Base):
+    __tablename__ = "product_motorcycle"
+    __table_args__ = (
+        UniqueConstraint("product_id", "motorcycle_id",
+                         name="uq_product_motorcycle"),
+        Index("ix_product_motorcycle_motorcycle", "motorcycle_id"),
+    )
+
+    id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, ForeignKey("products.id", ondelete="CASCADE"),
+                        nullable=False)
+    motorcycle_id = Column(Integer,
+                           ForeignKey("motorcycles.id", ondelete="CASCADE"),
+                           nullable=False)
+    confidence = Column(Float, default=0.0)
+    match_strategy = Column(String(50), nullable=True)
+    notes = Column(Text, nullable=True)
+
+
+__all__.append("ProductMotorcycle")
+
+
 class Motorcycle(Base):
     __tablename__ = "motorcycles"
     __table_args__ = (

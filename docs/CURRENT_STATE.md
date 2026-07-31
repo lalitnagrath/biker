@@ -33,9 +33,9 @@
 - **Logging**: Sync log with timestamped entries
 
 ### Limitations
-- No database writer integration
-- No CLI commands
-- No sync log writing to database
+- **No database writer integration**
+- **No CLI commands**
+- **No sync log writing to database**
 
 ## CLI Tool
 
@@ -192,3 +192,152 @@
 - **Safe updates**: Only touch SYNCABLE_FIELDS
 - **Validation**: _validate_sync_safety() prevents edits to editorial fields
 - **Logging**: All changes logged with old/new values
+
+## Motorcycle Compatibility Engine — Milestone 9
+
+### Implementation Status
+- **In Progress** — Building compatibility system
+
+### Current Database Schema
+- **Motorcycles** table (`db/models.py`) — motorcycle entities with specs
+- **Products** table (`db/models.py`) — product catalog (helmets, gloves, etc.)
+- **ProductMotorcycle** table (`db/models.py:354`) — existing compatibility link
+  - Simple product-to-motorcycle connection
+  - Fields: `id`, `product_id`, `motorcycle_id`, `confidence`, `match_strategy`, `notes`
+  - Supports universal products (helmets, gloves) + category-specific matching
+
+### Scope for Phase 9
+
+#### 1. Create Accessory Type Model
+- Model: `AccessoryType` (
+  - `id`: Primary key
+  - `name`: Unique, like "Crash Guard", "Leg Guard", etc.
+  - `slug`: URL-friendly identifier
+  - `description`: Optional details
+  - `created_at`: Timestamp
+- Product belongs to one AccessoryType (optional for universal products)
+
+#### 2. Enhance ProductCompatibility Model
+- **File**: `db/models.py`
+- **Base on**: `ProductMotorcycle` with enhanced fields
+- Fields:
+  - `product_id`, `motorcycle_id` (Foreign keys)
+  - `fitment_status`: Enum with "Verified", "Manufacturer Confirmed", "AI Suggested", "Universal", "Requires Modification", "Not Compatible"
+  - `confidence`: Float (0.0-1.0)
+  - `verified`: Boolean flag
+  - `installation_notes`: Text
+  - `source`: String ("manual", "ai", "manufacturer")
+  - `created_at`: Timestamp
+
+#### 3. Create Supporting Models
+- `FitmentStatus` — Enum (INSERT after AccessoryType)
+
+#### 4. Extend Repositories & Services
+- `ProductCompatibilityRepository` — service for compatibility operations
+- `AccessoryTypeRepository` — service for accessory type management
+- Update `MotorcycleService` — add compatible products filtering
+- Update `ProductService` — add motorcycles filtering by accessory type
+
+#### 5. Add Tests
+
+#### 6. Update Documentation
+- Current State document
+- API documentation
+- Feature documentation
+
+### Architecture Notes
+
+#### Relationships
+- **One-to-Many**: AccessoryType → Products (optional)
+- **Many-to-Many**: Product ↔ Motorcycle (via ProductCompatibility)
+
+#### Query Patterns
+```python
+# Find compatible products for a motorcycle
+service.find_compatible_products(motorcycle_id)
+
+# Find motorcycles that accept a product
+service.find_motorcycles_for_product(product_id)
+
+# Filter by accessory type
+service.find_compatible_by_accessory_type(accessory_type_id)
+
+# Get compatibility details
+service.get_compatibility_details(product_id, motorcycle_id)
+```
+
+#### Service Layer Design
+```python
+class ProductCompatibilityService:
+    def find_compatible_products(self, motorcycle_id: int, **filters) -> List[Product]:
+
+    def find_motorcycles_for_product(self, product_id: int, **filters) -> List[Motorcycle]:
+
+    def add_compatibility(self, product_id: int, motorcycle_id: int, data: dict) -> ProductCompatibility:
+
+    def update_compatibility(self, product_id: int, motorcycle_id: int, data: dict) -> ProductCompatibility:
+
+    def delete_compatibility(self, product_id: int, motorcycle_id: int) -> bool
+```
+
+### Integration Points
+
+#### Motorcycle Pages
+- **Filter by accessory type**: Show compatible products by type (crash guards, leg guards, etc.)
+- **Quick access**: Direct product links with installation notes
+
+#### Product Pages
+- **Show compatibility**: Multiple motorcycles and fitment details
+- **Filter by type**: Products for specific accessory types
+
+#### Amazon Import
+- **Import with compatibility**: Set default fitment_status as "AI Suggested"
+- **Modify existing**: Update ProductMotorcycle entries during sync
+
+#### Upgrade Garage
+- **Manage compatibility**: Add/edit compatibility relationships
+- **Filter by vehicle**: Find suitable upgrades for specific bikes
+
+#### Bike Configurator
+- **Enforce rules**: Validate compatibility based on fitment_status
+- **Recommend parts**: Suggest compatible accessories based on vehicle specs
+
+### Implementation Plan
+
+#### Phase 1: Database Models
+1. **Create `AccessoryType` model** in `db/models.py`
+2. **Extend `ProductMotorcycle`** with new fields
+3. **Create `FitmentStatus` enum** for status values
+
+#### Phase 2: Repository Layer
+1. **`ProductCompatibilityRepository`** in `db/motorcycle_repository.py`
+2. **`AccessoryTypeRepository`** in new `db/accessory_type_repository.py`
+
+#### Phase 3: Service Layer
+1. **`ProductCompatibilityService`** in new `db/product_compatibility_service.py`
+2. **`AccessoryTypeService`** in new `db/accessory_type_service.py`
+
+#### Phase 4: Tests
+1. **Unit tests** for new models and services
+2. **Integration tests** for compatibility features
+3. **E2E tests** for UI integration
+
+#### Phase 5: Updates
+1. **`CURRENT_STATE.md`** — Update with milestone 9 progress
+2. **Documentation** — Add architecture and API docs
+
+### Key Design Decisions
+
+#### Separation of Concerns
+- **Compatibility**: Filtered by accessory type + fitment status
+- **Installation**: Notes and confidence scores
+- **Source tracking**: Manual vs AI vs manufacturer data
+
+#### Query Optimization
+- **Index**: Composite indexes on `(product_id, motorcycle_id)` and `(motorcycle_id, fitment_status)`
+- **Filtering**: Support efficient lookups by accessory type, status, and motorcycle
+
+#### Backward Compatibility
+- **Reuse**: Existing `ProductMotorcycle` table with enhanced structure
+- **Migration**: Phase 9 migration script to add new columns
+- **Optional**: AccessoryType association remains optional (universal products)
