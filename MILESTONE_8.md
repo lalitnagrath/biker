@@ -61,7 +61,7 @@ editorial/index.html (Control Center)
 ## AmazonSearchService
 
 ```python
-svc = AmazonSearchService()            # credentials from env / constants
+svc = AmazonSearchService()            # credentials from amazon_credentials (single source of truth)
 result = svc.search("motorcycle helmet", item_count=20)
 
 # -> {
@@ -163,8 +163,8 @@ python test_control_center_api.py      # FastAPI endpoints
 - [x] Control Center UI: "Amazon Import" page (search, multi-select, import report)
 - [x] Tests: 11 search + 9 import + 5 API (all pass with system `python3`)
 - [x] Docs: `docs/CURRENT_STATE.md` updated
-- [ ] Live credentials wired in the running environment (search returns 502 until
-      `AMAZON_CREATOR_CREDENTIAL_ID` / `AMAZON_CREATOR_CREDENTIAL_SECRET` are set)
+- [x] Credentials consolidated into `amazon_credentials.py` — built-in defaults
+      work out of the box, no environment setup required (env vars override)
 - [ ] Live smoke test of an actual Amazon import against the production DB
 
 ## Phase 8.2 — Full Discovery Workflow

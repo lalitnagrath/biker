@@ -186,7 +186,7 @@ def test_search_passes_request_args():
     assert call["marketplace"].startswith("www.amazon")
     assert call["request"].keywords == "riding jacket"
     assert call["request"].item_count == 30
-    assert call["request"].page == 2
+    assert call["request"].item_page == 2
     print("OK test_search_passes_request_args")
 
 
@@ -276,8 +276,8 @@ def test_search_total_falls_back_to_count():
 # ------------------------------------------------------------------
 
 def test_get_api_without_credentials_raises(monkeypatch):
-    monkeypatch.delenv("AMAZON_CREATOR_CREDENTIAL_ID", raising=False)
-    monkeypatch.delenv("AMAZON_CREATOR_CREDENTIAL_SECRET", raising=False)
+    monkeypatch.delenv(amazon_credentials._CREDENTIAL_ID_ENV, raising=False)
+    monkeypatch.delenv(amazon_credentials._CREDENTIAL_SECRET_ENV, raising=False)
     monkeypatch.setattr(amazon_credentials, "DEFAULT_CREDENTIAL_ID", None)
     monkeypatch.setattr(amazon_credentials, "DEFAULT_CREDENTIAL_SECRET", None)
     svc = AmazonSearchService(credential_id=None, credential_secret=None)

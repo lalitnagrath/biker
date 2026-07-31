@@ -3,9 +3,9 @@
 Fetch top deals using the CreatorsAPI SDK, download images and emit an HTML file.
 
 Usage:
-  Credentials resolve from amazon_credentials (explicit args, then
-  AMAZON_CREATOR_CREDENTIAL_ID / AMAZON_CREATOR_CREDENTIAL_SECRET env vars,
-  then the built-in defaults). Then run: python examples/fetch_deals.py
+  Credentials resolve from amazon_credentials — the single source of truth
+  (explicit args, standard env vars, or built-in defaults).
+  Then run: python examples/fetch_deals.py
 
 The script will write `examples/deals.html` and an `examples/images/` folder with images.
 """

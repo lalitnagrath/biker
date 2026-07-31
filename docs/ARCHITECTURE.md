@@ -34,9 +34,8 @@ This repository contains a motorcycle recommendation platform that generates sta
 ### Amazon Credentials (single source of truth)
 - **amazon_credentials** (`amazon_credentials.py`) - Shared by `bike.py`, `honda-cb350.py`
   and `db/amazon_search_service.py`. Resolves CreatorsAPI credentials (explicit
-  args, then `AMAZON_CREATOR_CREDENTIAL_ID` / `AMAZON_CREATOR_CREDENTIAL_SECRET`
-  env vars, then built-in defaults) and the affiliate partner tag. Secrets live
-  here only — never duplicated elsewhere.
+  args, standard env vars, then built-in defaults) and the affiliate partner tag.
+  Secrets live here only — never duplicated elsewhere.
 
 ### Recommendation & Filtering
 - **product_engine** (`product_engine.py`) - Product selection, ranking, and filtering (function module)

@@ -553,8 +553,8 @@ async function loadDashboard() {
     const data = await resp.json();
     renderDashboard(data);
   } catch(e) {
-    // Fallback: show a message if server API isn't available
-    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">&#x1F4CA;</div><h3>Dashboard</h3><p>Dashboard KPIs require the control center server to be running. Start it with:<br><code style="background:var(--bg);padding:4px 10px;border-radius:4px;font-size:12px">python editorial/server.py</code></p></div>`;
+    // Only shown when the dashboard API request actually fails
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">&#x1F4CA;</div><h3>Dashboard</h3><p>Could not load dashboard data. Check the server logs for details.</p></div>`;
   }
 }
 
@@ -614,7 +614,7 @@ async function loadMotorcycles() {
     html += '</div>';
     el.innerHTML = html || '<div class="empty-state"><div class="big-icon">🏍</div><p>No motorcycles found</p></div>';
   } catch(e) {
-    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🏍</div><h3>Motorcycles</h3><p>Manage motorcycle compatibility and listings. Start the server to load data.</p></div>`;
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🏍</div><h3>Motorcycles</h3><p>Could not load motorcycle data. Check the server logs for details.</p></div>`;
   }
 }
 
@@ -635,7 +635,7 @@ async function loadCollections() {
     html += '</div>';
     el.innerHTML = html || '<div class="empty-state"><div class="big-icon">📁</div><p>No collections found</p></div>';
   } catch(e) {
-    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">📁</div><h3>Collections</h3><p>Manage editorial collections and product groupings. Start the server to load data.</p></div>`;
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">📁</div><h3>Collections</h3><p>Could not load collections data. Check the server logs for details.</p></div>`;
   }
 }
 
@@ -711,7 +711,7 @@ async function searchAmazon(page) {
     }
   } catch(e) {
     stats.textContent = '';
-    el.innerHTML = `<div class="editorial-banner"><div class="banner-icon">&#x26A0;&#xFE0F;</div><div class="banner-text"><h4>Amazon search unavailable</h4><p>${e.message}. Set AMAZON_CREATOR_CREDENTIAL_ID and AMAZON_CREATOR_CREDENTIAL_SECRET environment variables, then restart the server.</p></div></div>`;
+    el.innerHTML = `<div class="editorial-banner"><div class="banner-icon">&#x26A0;&#xFE0F;</div><div class="banner-text"><h4>Amazon search unavailable</h4><p>${esc(e.message || 'Search failed. Check the server logs for details.')}</p></div></div>`;
   }
 }
 
@@ -905,7 +905,7 @@ async function loadWebsite() {
     html += '</div>';
     el.innerHTML = html;
   } catch(e) {
-    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🌐</div><h3>Website</h3><p>Website generation stats and category breakdown. Start the server to load data.</p></div>`;
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">🌐</div><h3>Website</h3><p>Could not load website data. Check the server logs for details.</p></div>`;
   }
 }
 
@@ -927,7 +927,7 @@ async function loadSettings() {
     el.innerHTML = html;
     document.getElementById('setStats').textContent = 'v1.0';
   } catch(e) {
-    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">⚙️</div><h3>Settings</h3><p>System configuration and database info. Start the server to load data.</p></div>`;
+    el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">⚙️</div><h3>Settings</h3><p>Could not load settings. Check the server logs for details.</p></div>`;
   }
 }
 

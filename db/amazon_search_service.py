@@ -10,8 +10,7 @@ Usage:
     result = svc.search("motorcycle helmet", item_count=20)
 
 Credentials resolve through amazon_credentials — the single source of truth
-shared with bike.py: explicit args, then AMAZON_CREATOR_CREDENTIAL_ID /
-AMAZON_CREATOR_CREDENTIAL_SECRET env vars, then the built-in defaults.
+shared with bike.py: explicit args, standard env vars, or built-in defaults.
 An injected `api` object may be supplied for tests.
 """
 
@@ -192,7 +191,7 @@ class AmazonSearchService:
             search_index=SEARCH_INDEX,
             item_count=item_count or self.item_count,
             resources=_RESOURCES,
-            page=page,
+            item_page=page,
         )
 
         try:

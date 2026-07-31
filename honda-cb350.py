@@ -3,9 +3,9 @@
 Fetch top Honda CB350 deals using the CreatorsAPI SDK and output JSON + HTML.
 
 Usage:
-  Credentials resolve from amazon_credentials (explicit args, then
-  AMAZON_CREATOR_CREDENTIAL_ID / AMAZON_CREATOR_CREDENTIAL_SECRET env vars,
-  then the built-in defaults). Then run: python honda-cb350.py
+  Credentials resolve from amazon_credentials — the single source of truth
+  (explicit args, standard env vars, or built-in defaults).
+  Then run: python honda-cb350.py
 
 The script will write:
   - honda-cb350-deals.json  (consumed by zz11 site generator)

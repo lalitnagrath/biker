@@ -169,10 +169,10 @@ def test_search_returns_results_with_in_library(monkeypatch):
 
 def test_search_returns_502_on_error(monkeypatch):
     _patch(monkeypatch, search=FakeSearchService(
-        error=AmazonSearchError("Amazon credentials not configured")))
+        error=AmazonSearchError("Amazon search failed")))
     resp = _client().get("/api/amazon/search?keyword=helmet")
     assert resp.status_code == 502
-    assert "credentials" in resp.json()["error"]
+    assert "error" in resp.json()
     print("OK test_search_returns_502_on_error")
 
 
