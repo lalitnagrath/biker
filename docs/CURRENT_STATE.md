@@ -69,7 +69,36 @@
 - **SmartCollections**: 21 tests  
 - **ProductEngine**: 8 tests
 - **KnowledgeGraph**: 24 tests
-- **Total**: 77 tests pass
+- **AmazonSearchService** (Phase 8.1): 11 tests
+- **ProductImportService** (Phase 8.1): 9 tests
+- **Control Center API** (Phase 8.1): 5 tests
+- **Total**: 102 tests pass (run individually with system `python3`)
+
+> Note: running all files in one `pytest test_*.py` invocation still hits the
+> pre-existing `sys.modules` stub collision between `test_recommendation_engine.py`
+> (stubs `db.smart_collections`) and `test_smart_collections.py`.
+
+## Phase 8.1 — Product Discovery & Import Center
+
+### Implementation Status
+- **Milestone doc** (`MILESTONE_8.md`) defines Phase 8.1 scope; later phases planned
+- **`db/amazon_search_service.py`** — keyword search (NOT URL) via CreatorsAPI SDK,
+  returns import-ready flat dicts (category inferred, slug generated, status `draft`,
+  affiliate URL built). Credentials from `AMAZON_CREATOR_CREDENTIAL_ID` /
+  `AMAZON_CREATOR_CREDENTIAL_SECRET` env vars. Injected `api` for tests.
+- **`db/import_service.py`** — writes flat dicts straight into SQLite via
+  `DatabaseWriter`; skips existing ASINs untouched; downloads images to
+  `static/images/products/{slug}.jpg` and links them via the `Image` model.
+- **Control Center**: `GET /api/amazon/search?keyword=...` returns results with
+  `in_library` flag; `POST /api/import` returns `{submitted, imported,
+  skipped_existing, failed, images}` report. New "Amazon Import" page in
+  `editorial/index.html` (keyword search, multi-select, select all, import report).
+
+### Key Rules (Phase 8.1)
+- New products always enter with `status = "draft"` — editorial review before site visibility
+- Existing ASINs are **never modified**; reported as `skipped_existing`
+- No HTML generation — templates are presentation-only
+- Search by keyword only (URL-based import is a later phase)
 
 ## Migration Status
 

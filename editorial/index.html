@@ -248,6 +248,33 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
 .settings-group .sg-label{font-size:13px}
 .settings-group .sg-value{font-size:13px;color:var(--text2);font-family:monospace}
 
+/* Amazon Import page */
+.amz-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:8px}
+.amz-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s}
+.amz-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.amz-card.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.amz-card.in-library{opacity:.55}
+.amz-thumb{height:150px;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.amz-thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.amz-thumb .no-img{font-size:28px;opacity:.25}
+.amz-body{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:6px}
+.amz-title{font-size:13px;font-weight:600;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.amz-brand{font-size:11px;color:var(--text2)}
+.amz-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.amz-price{font-size:14px;font-weight:700}
+.amz-mrp{font-size:12px;color:var(--text2);text-decoration:line-through}
+.amz-off{font-size:11px;color:var(--green);font-weight:600}
+.amz-rating{font-size:12px;color:var(--text2)}
+.amz-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.amz-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--bg);color:var(--text2);border:1px solid var(--border)}
+.amz-badge.cat{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+.amz-badge.lib{background:#fef2f2;color:var(--red);border-color:#fecaca}
+.amz-card .amz-check{position:absolute;top:10px;left:10px;width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.amz-thumb{position:relative}
+.amz-report{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-top:16px}
+.amz-report h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.amz-report .amz-report-line{font-size:13px;color:var(--text2);padding:3px 0}
+
 @media(max-width:900px){
   .app{flex-direction:column;height:auto;min-height:100vh}
   .sidebar{width:100%;min-width:unset;max-height:200px}
@@ -293,6 +320,10 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
       <div class="nav-item" data-page="collections" onclick="navigateTo('collections')">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Collections
+      </div>
+      <div class="nav-item" data-page="amazon" onclick="navigateTo('amazon')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        Amazon Import
       </div>
       <div class="cat-group">System</div>
       <div class="nav-item" data-page="website" onclick="navigateTo('website')">
@@ -367,6 +398,26 @@ select:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 
       </div>
     </div>
 
+    <!-- PAGE: Amazon Import -->
+    <div id="page-amazon" class="page">
+      <div class="main-header">
+        <h2>Amazon Import</h2>
+        <div class="stats" id="amzStats"></div>
+      </div>
+      <div class="toolbar" id="amzToolbar" style="display:flex">
+        <div class="search-wrap" style="flex:1">
+          <span class="icon">&#x1F50D;</span>
+          <input id="amzKeyword" placeholder="Search Amazon by keyword (e.g. riding jacket, balaclava)...">
+        </div>
+        <div class="filter-group" id="amzFilterGroup"></div>
+        <button class="btn-primary" id="amzSearchBtn">Search</button>
+        <button class="btn-ghost" id="amzImportBtn" style="display:none">&#x2B07; Import selected (<span id="amzSelCount">0</span>)</button>
+      </div>
+      <div class="page-content" id="amzContent">
+        <div class="empty-state"><div class="big-icon">&#x1F50D;</div><p>Search Amazon for motorcycle gear by keyword, then select products to import into the library.</p></div>
+      </div>
+    </div>
+
     <!-- PAGE: Website -->
     <div id="page-website" class="page">
       <div class="main-header">
@@ -435,6 +486,7 @@ function showPage(page) {
   if (page === 'dashboard') loadDashboard();
   else if (page === 'motorcycles') loadMotorcycles();
   else if (page === 'collections') loadCollections();
+  else if (page === 'amazon') loadAmazon();
   else if (page === 'website') loadWebsite();
   else if (page === 'settings') loadSettings();
   else if (page === 'products') {
@@ -544,6 +596,170 @@ async function loadCollections() {
   } catch(e) {
     el.innerHTML = `<div class="placeholder-page"><div class="ph-icon">📁</div><h3>Collections</h3><p>Manage editorial collections and product groupings. Start the server to load data.</p></div>`;
   }
+}
+
+// ================================================================
+//  AMAZON IMPORT PAGE
+// ================================================================
+let amzResults = [];
+
+function loadAmazon() {
+  const el = document.getElementById('amzContent');
+  const stats = document.getElementById('amzStats');
+  stats.textContent = amzResults.length ? amzResults.length + ' results' : '';
+  if (!amzResults.length) {
+    el.innerHTML = '<div class="empty-state"><div class="big-icon">&#x1F50D;</div><p>Search Amazon for motorcycle gear by keyword, then select products to import into the library.</p></div>';
+  } else {
+    renderAmazonResults();
+  }
+  const btn = document.getElementById('amzImportBtn');
+  if (btn) btn.style.display = getAmzSelected().length ? '' : 'none';
+}
+
+function buildAmzFilterGroup() {
+  const group = document.getElementById('amzFilterGroup');
+  group.innerHTML = `
+    <label style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;white-space:nowrap">
+      <input type="checkbox" id="amzDownloadImages" checked style="accent-color:var(--accent)">
+      Download images
+    </label>
+    <select id="amzItemCount" style="border:1px solid var(--border);border-radius:6px;background:var(--surface);padding:8px 10px;font-size:13px;color:var(--text);font-family:inherit">
+      <option value="20">20 results</option>
+      <option value="10">10 results</option>
+      <option value="50">50 results</option>
+    </select>`;
+}
+
+async function searchAmazon() {
+  const keyword = document.getElementById('amzKeyword').value.trim();
+  if (!keyword) { showToast('Enter a keyword to search', 'error'); return; }
+  const itemCount = parseInt(document.getElementById('amzItemCount').value, 10) || 20;
+  const el = document.getElementById('amzContent');
+  const stats = document.getElementById('amzStats');
+  el.innerHTML = '<div class="loading"><div class="spinner"></div><p>Searching Amazon for "' + keyword + '"...</p></div>';
+  stats.textContent = 'Searching...';
+  try {
+    const resp = await fetch('/api/amazon/search?keyword=' + encodeURIComponent(keyword) + '&item_count=' + itemCount + '&_=' + Date.now());
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'Search failed');
+    amzResults = data.results || [];
+    document.getElementById('amzImportBtn').style.display = 'none';
+    renderAmazonResults();
+    stats.textContent = data.count + ' results for "' + data.keyword + '"';
+    if (!amzResults.length) {
+      el.innerHTML = '<div class="empty-state"><div class="big-icon">&#x1F50D;</div><p>No results for "' + data.keyword + '". Try a different keyword.</p></div>';
+    }
+  } catch(e) {
+    stats.textContent = '';
+    el.innerHTML = `<div class="editorial-banner"><div class="banner-icon">&#x26A0;&#xFE0F;</div><div class="banner-text"><h4>Amazon search unavailable</h4><p>${e.message}. Set AMAZON_CREATOR_CREDENTIAL_ID and AMAZON_CREATOR_CREDENTIAL_SECRET environment variables, then restart the server.</p></div></div>`;
+  }
+}
+
+function renderAmazonResults() {
+  const el = document.getElementById('amzContent');
+  if (!amzResults.length) {
+    el.innerHTML = '<div class="empty-state"><div class="big-icon">&#x1F50D;</div><p>No results yet.</p></div>';
+    return;
+  }
+  let html = '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">';
+  html += '<button class="btn-secondary" onclick="amzSelectAll()">Select all</button>';
+  html += '<button class="btn-secondary" onclick="amzSelectNone()">Clear selection</button>';
+  html += '</div>';
+  html += '<div class="amz-results">';
+  for (const p of amzResults) {
+    const inLibrary = !!p.in_library;
+    const off = p.discount ? `<span class="amz-off">${p.discount}% off</span>` : '';
+    const price = p.price ? '&#8377;' + Number(p.price).toLocaleString('en-IN') : '';
+    const mrp = p.mrp ? '<span class="amz-mrp">&#8377;' + Number(p.mrp).toLocaleString('en-IN') + '</span>' : '';
+    const rating = p.rating ? `&#9733; ${p.rating} (${p.review_count || 0})` : '';
+    const img = p.image ? `<img src="${p.image}" alt="" loading="lazy">` : '<span class="no-img">&#x1F4E6;</span>';
+    const check = inLibrary ? '' : `<input type="checkbox" class="amz-check" data-asin="${p.asin}" onchange="updateAmzSelection()">`;
+    html += `
+      <div class="amz-card${inLibrary ? ' in-library' : ''}">
+        <div class="amz-thumb">${check}${img}</div>
+        <div class="amz-body">
+          <div class="amz-title">${p.title || 'Untitled'}</div>
+          <div class="amz-brand">${p.brand || '—'}</div>
+          <div class="amz-meta">${price} ${mrp} ${off}</div>
+          <div class="amz-rating">${rating}</div>
+          <div class="amz-badges">
+            ${p.category ? `<span class="amz-badge cat">${p.category}</span>` : ''}
+            ${inLibrary ? '<span class="amz-badge lib">Already in library</span>' : ''}
+          </div>
+        </div>
+      </div>`;
+  }
+  html += '</div>';
+  el.innerHTML = html;
+  updateAmzSelection();
+}
+
+function getAmzSelected() {
+  const checks = document.querySelectorAll('#amzContent .amz-check:checked');
+  const asins = new Set(Array.from(checks).map(c => c.dataset.asin));
+  return amzResults.filter(p => asins.has(p.asin));
+}
+
+function amzSelectAll() {
+  document.querySelectorAll('#amzContent .amz-check').forEach(c => c.checked = true);
+  updateAmzSelection();
+}
+
+function amzSelectNone() {
+  document.querySelectorAll('#amzContent .amz-check').forEach(c => c.checked = false);
+  updateAmzSelection();
+}
+
+function updateAmzSelection() {
+  const btn = document.getElementById('amzImportBtn');
+  const count = getAmzSelected().length;
+  document.getElementById('amzSelCount').textContent = count;
+  btn.style.display = count ? '' : 'none';
+}
+
+async function importAmazonSelected() {
+  const selected = getAmzSelected();
+  if (!selected.length) { showToast('Select at least one product', 'error'); return; }
+  const downloadImages = document.getElementById('amzDownloadImages').checked;
+  const el = document.getElementById('amzContent');
+  document.getElementById('amzImportBtn').disabled = true;
+  try {
+    const resp = await fetch('/api/import', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ products: selected, download_images: downloadImages })
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'Import failed');
+    renderAmazonReport(data);
+    const importedAsins = new Set((data.imported || []).map(p => p.asin));
+    amzResults = amzResults.map(p => importedAsins.has(p.asin) ? { ...p, in_library: true } : p);
+    document.getElementById('amzImportBtn').style.display = 'none';
+    document.getElementById('amzStats').textContent = (data.imported || []).length + ' imported';
+    showToast((data.imported || []).length + ' product(s) imported', 'success');
+  } catch(e) {
+    showToast('Import failed: ' + e.message, 'error');
+  } finally {
+    document.getElementById('amzImportBtn').disabled = false;
+  }
+}
+
+function renderAmazonReport(data) {
+  const el = document.getElementById('amzContent');
+  const img = data.images || {};
+  let html = `<div class="amz-report"><h4>&#x1F4BE; Import report</h4>`;
+  html += `<div class="amz-report-line">Imported: <strong>${(data.imported || []).length}</strong> new product(s)</div>`;
+  html += `<div class="amz-report-line">Skipped (already in library): <strong>${(data.skipped_existing || []).length}</strong></div>`;
+  html += `<div class="amz-report-line">Failed: <strong>${(data.failed || []).length}</strong></div>`;
+  html += `<div class="amz-report-line">Images downloaded: <strong>${img.downloaded || 0}</strong> &middot; skipped: <strong>${img.skipped || 0}</strong> &middot; failed: <strong>${img.failed || 0}</strong></div>`;
+  if ((data.failed || []).length) {
+    html += '<div class="amz-report-line" style="color:var(--red)">' + (data.failed || []).map(f => `${f.asin}: ${f.error}`).join('<br>') + '</div>';
+  }
+  if ((data.imported || []).length) {
+    html += '<div style="margin-top:10px"><button class="btn-primary" onclick="renderAmazonResults()">&#x21BB; Back to results</button></div>';
+  }
+  html += '</div>';
+  el.innerHTML = html;
 }
 
 // ================================================================
@@ -1266,6 +1482,12 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('searchInput').addEventListener('input', function(){
     renderProductGrid();
   });
+  buildAmzFilterGroup();
+  document.getElementById('amzSearchBtn').addEventListener('click', searchAmazon);
+  document.getElementById('amzKeyword').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') searchAmazon();
+  });
+  document.getElementById('amzImportBtn').addEventListener('click', importAmazonSelected);
 });
 
 // ===== INIT =====
@@ -1283,7 +1505,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // Handle initial hash
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['dashboard','products','motorcycles','collections','website','settings'].includes(hash)) {
+  if (hash && ['dashboard','products','motorcycles','collections','amazon','website','settings'].includes(hash)) {
     // Show requested page (dashboard by default)
     showPage(hash);
   } else {

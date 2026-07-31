@@ -14,7 +14,7 @@ import sys
 import webbrowser
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 import uvicorn
 from fastapi import FastAPI, Query
@@ -26,6 +26,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from db.product_service import ProductService
 from db.motorcycle_service import MotorcycleService
 from db.collection_service import CollectionService
+from db.amazon_search_service import AmazonSearchError, AmazonSearchService
+from db.import_service import ProductImportService
 
 HERE = Path(__file__).parent
 PROJECT = HERE.parent
@@ -91,6 +93,39 @@ def api_motorcycles():
 def api_collections():
     svc = CollectionService()
     return {"total": len(colls := svc.load_all()), "collections": colls}
+
+
+# ---- API: Amazon product discovery (Phase 8.1) ----
+@app.get("/api/amazon/search")
+def api_amazon_search(keyword: Optional[str] = Query(None),
+                      item_count: int = Query(20, ge=1, le=50),
+                      page: int = Query(1, ge=1)):
+    if not keyword or not keyword.strip():
+        return JSONResponse({"error": "Keyword is required"}, status_code=400)
+    try:
+        search_svc = AmazonSearchService()
+        import_svc = ProductImportService()
+        result = search_svc.search(
+            keyword=keyword,
+            item_count=item_count,
+            page=page,
+            known_asins=import_svc.existing_asins(),
+        )
+        return result
+    except AmazonSearchError as exc:
+        return JSONResponse({"error": str(exc)}, status_code=502)
+
+
+# ---- API: Product import (Phase 8.1) ----
+@app.post("/api/import")
+def api_import(payload: Dict[str, Any]):
+    products = payload.get("products") or []
+    download_images = bool(payload.get("download_images", True))
+    if not isinstance(products, list) or not products:
+        return JSONResponse({"error": "No products to import"}, status_code=400)
+    svc = ProductImportService()
+    report = svc.import_products(products, download_images=download_images)
+    return report
 
 
 # ---- API: Website stats ----
