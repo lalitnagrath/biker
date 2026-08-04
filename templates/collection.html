@@ -48,8 +48,9 @@
                     <span class="product-badge featured-badge">Featured</span>
                     {% endif %}
                     <a href="{{ URL.product(product.slug, base_path) }}" class="product-card-image">
-                        {% if product.image and 'images/' in product.image %}
-                        <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                        {% set prod_img = product.image or product.amazon_image_url or '' %}
+                        {% if prod_img and ('images/' in prod_img or prod_img.startswith('http')) %}
+                        <img src="{% if prod_img.startswith('http') %}{{ prod_img }}{% else %}{{ base_path }}{{ prod_img }}{% endif %}" alt="{{ product.title }}" loading="lazy">
                         {% else %}
                         <div class="product-card-placeholder">{{ product.title[:2] }}</div>
                         {% endif %}

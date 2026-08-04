@@ -145,8 +145,9 @@
                         <div class="guide-quick-card guide-quick-editors">
                             <span class="guide-quick-badge guide-quick-badge-editors">&#127942; Editor's Choice</span>
                             <a href="{{ URL.product(editors_product.slug, base_path) }}" class="guide-quick-image">
-                                {% if editors_product.image and 'products/' in editors_product.image %}
-                                <img src="{{ base_path }}{{ editors_product.image }}" alt="{{ editors_product.title }}" loading="lazy">
+                                {% set ep_image = editors_product.image or editors_product.amazon_image_url or '' %}
+                                {% if ep_image and ('products/' in ep_image or ep_image.startswith('http')) %}
+                                <img src="{% if ep_image.startswith('http') %}{{ ep_image }}{% else %}{{ base_path }}{{ ep_image }}{% endif %}" alt="{{ editors_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ editors_product.brand }}</div>
                                 {% endif %}
@@ -174,8 +175,9 @@
                         <div class="guide-quick-card guide-quick-value">
                             <span class="guide-quick-badge guide-quick-badge-value">&#128176; Best Value</span>
                             <a href="{{ URL.product(value_product.slug, base_path) }}" class="guide-quick-image">
-                                {% if value_product.image and 'products/' in value_product.image %}
-                                <img src="{{ base_path }}{{ value_product.image }}" alt="{{ value_product.title }}" loading="lazy">
+                                {% set vp_image = value_product.image or value_product.amazon_image_url or '' %}
+                                {% if vp_image and ('products/' in vp_image or vp_image.startswith('http')) %}
+                                <img src="{% if vp_image.startswith('http') %}{{ vp_image }}{% else %}{{ base_path }}{{ vp_image }}{% endif %}" alt="{{ value_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ value_product.brand }}</div>
                                 {% endif %}
@@ -203,8 +205,9 @@
                         <div class="guide-quick-card guide-quick-premium">
                             <span class="guide-quick-badge guide-quick-badge-premium">&#11088; Premium Pick</span>
                             <a href="{{ URL.product(premium_product.slug, base_path) }}" class="guide-quick-image">
-                                {% if premium_product.image and 'products/' in premium_product.image %}
-                                <img src="{{ base_path }}{{ premium_product.image }}" alt="{{ premium_product.title }}" loading="lazy">
+                                {% set pp_img = premium_product.image or premium_product.amazon_image_url or '' %}
+                                {% if pp_img and ('products/' in pp_img or pp_img.startswith('http')) %}
+                                <img src="{% if pp_img.startswith('http') %}{{ pp_img }}{% else %}{{ base_path }}{{ pp_img }}{% endif %}" alt="{{ premium_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ premium_product.brand }}</div>
                                 {% endif %}
@@ -232,8 +235,9 @@
                         <div class="guide-quick-card guide-quick-popular">
                             <span class="guide-quick-badge guide-quick-badge-popular">&#128293; Most Popular</span>
                             <a href="{{ URL.product(popular_product.slug, base_path) }}" class="guide-quick-image">
-                                {% if popular_product.image and 'products/' in popular_product.image %}
-                                <img src="{{ base_path }}{{ popular_product.image }}" alt="{{ popular_product.title }}" loading="lazy">
+                                {% set pop_img = popular_product.image or popular_product.amazon_image_url or '' %}
+                                {% if pop_img and ('products/' in pop_img or pop_img.startswith('http')) %}
+                                <img src="{% if pop_img.startswith('http') %}{{ pop_img }}{% else %}{{ base_path }}{{ pop_img }}{% endif %}" alt="{{ popular_product.title }}" loading="lazy">
                                 {% else %}
                                 <div class="placeholder-image product-placeholder">{{ popular_product.brand }}</div>
                                 {% endif %}
@@ -327,8 +331,9 @@
                         <div class="guide-card-badge guide-rec-{{ p_badge.badge_type }}">{{ p_badge.icon }} {{ p_badge.badge }}</div>
                         {% endif %}
                         <a href="{{ URL.product(product.slug, base_path) }}">
-                            {% if product.image and 'products/' in product.image %}
-                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                            {% set prod_img = product.image or product.amazon_image_url or '' %}
+                            {% if prod_img and ('products/' in prod_img or prod_img.startswith('http')) %}
+                            <img src="{% if prod_img.startswith('http') %}{{ prod_img }}{% else %}{{ base_path }}{{ prod_img }}{% endif %}" alt="{{ product.title }}" loading="lazy">
                             {% else %}
                             <div class="placeholder-image product-placeholder">{{ product.brand }}</div>
                             {% endif %}

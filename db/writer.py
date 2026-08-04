@@ -10,6 +10,7 @@ Usage:
 """
 
 import os
+import urllib.request
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -171,6 +172,8 @@ class DatabaseWriter:
                 product.last_sync_at = last_sync_at
             product.url = flat.get("affiliate_url", product.url)
             product.editorial_verdict = flat.get("editorial_verdict", product.editorial_verdict)
+            product.image = flat.get("image", product.image)
+            product.amazon_image_url = flat.get("amazon_image_url", product.amazon_image_url)
             is_new = False
         else:
             product = Product(
@@ -191,6 +194,8 @@ class DatabaseWriter:
                 last_sync_at=last_sync_at,
                 score=0.0,
                 is_featured=False,
+                image=flat.get("image"),
+                amazon_image_url=flat.get("amazon_image_url"),
             )
             self.session.add(product)
             is_new = True
@@ -200,13 +205,13 @@ class DatabaseWriter:
 
         if is_new:
             self._set_categories(pid, flat.get("category"), flat.get("type"))
-            self._set_images(pid, flat.get("image"))
+            self._set_images(pid, flat.get("image"), flat.get("amazon_image_url"))
             self._set_compatibility(pid, flat.get("compatible_bikes", []))
             self._set_tags(pid, flat)
 
         self._upsert_editorial(pid, flat)
         self._add_price_history(pid, flat.get("price"), flat.get("mrp"))
-        self._set_images(pid, flat.get("image"))
+        self._set_images(pid, flat.get("image"), flat.get("amazon_image_url"))
 
         return product, is_new
 
@@ -230,16 +235,53 @@ class DatabaseWriter:
                 self.session.add(
                     ProductCategory(product_id=product_id, category_id=cat_id))
 
-    def _set_images(self, product_id: int, image_url: Optional[str]):
+    def _set_images(self, product_id: int, image_url: Optional[str], amazon_image_url: Optional[str] = None):
         self.session.query(Image).filter_by(product_id=product_id).delete()
+        all_urls = []
         if image_url:
+            all_urls.append(image_url)
+        if amazon_image_url and amazon_image_url not in all_urls:
+            all_urls.append(amazon_image_url)
+        for i, url in enumerate(all_urls):
+            if not url:
+                continue
+            local_path = None
+            if not url.startswith("http"):
+                local_path = url
+            else:
+                local_path = self._download_image(url, product_id, i)
             self.session.add(Image(
                 product_id=product_id,
-                url=image_url,
+                url=url,
+                local_path=local_path,
                 variant="full",
-                is_primary=True,
-                local_path=image_url if not image_url.startswith("http") else None,
+                is_primary=(i == 0),
+                sort_order=i,
             ))
+
+    def _download_image(self, url: str, product_id: int, index: int) -> Optional[str]:
+        import urllib.request
+        import urllib.error
+        products_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "static", "images", "products")
+        os.makedirs(products_dir, exist_ok=True)
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = resp.read()
+            ext = ".jpg"
+            content_type = resp.headers.get("Content-Type", "")
+            if "png" in content_type:
+                ext = ".png"
+            elif "webp" in content_type:
+                ext = ".webp"
+            filename = f"product-{product_id}-{index}{ext}"
+            filepath = os.path.join(products_dir, filename)
+            with open(filepath, "wb") as f:
+                f.write(data)
+            local_path = f"images/products/{filename}"
+            return local_path
+        except Exception:
+            return None
 
     def _upsert_editorial(self, product_id: int, flat: dict):
         score = self.session.query(EditorialScore).filter_by(

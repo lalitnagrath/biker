@@ -145,7 +145,8 @@ class DatabaseWriter:
         if product:
             for field in ("slug", "title", "description", "url", "price", "mrp",
                           "currency", "rating", "review_count", "availability",
-                          "score", "editorial_verdict", "status", "is_featured"):
+                          "score", "editorial_verdict", "status", "is_featured",
+                          "image", "amazon_image_url"):
                 val = data.get(field)
                 if val is not None:
                     setattr(product, field, val)
@@ -178,6 +179,8 @@ class DatabaseWriter:
                     ),
                     status=data.get("status", "active"),
                     is_featured=bool(data.get("is_featured")),
+                    image=data.get("image"),
+                    amazon_image_url=data.get("amazon_image_url"),
             )
             self.session.add(product)
             is_new = True
@@ -331,6 +334,7 @@ def parse_products_file(path: Path) -> List[dict]:
             "availability": amazon.get("availability"),
             "url": amazon.get("affiliate_url"),
             "image": amazon.get("image"),
+            "amazon_image_url": amazon.get("image"),
             "last_updated": amazon.get("last_updated"),
             "score": editorial.get("score", 0),
             "editorial_verdict": editorial.get("verdict_label", ""),
@@ -631,15 +635,53 @@ def build_tags(pid: int, rec: dict, writer: DatabaseWriter):
 def build_images(pid: int, rec: dict, writer: DatabaseWriter):
     images = []
     img = rec.get("image")
+    amazon_img = rec.get("amazon_image_url")
+    all_urls = []
     if img:
+        all_urls.append(img)
+    if amazon_img and amazon_img not in all_urls:
+        all_urls.append(amazon_img)
+    for i, url in enumerate(all_urls):
+        if not url:
+            continue
+        local_path = None
+        if not url.startswith("http"):
+            local_path = url
+        else:
+            local_path = _download_image(url, pid, i)
         images.append({
-            "url": img,
+            "url": url,
+            "local_path": local_path,
             "variant": "full",
-            "is_primary": True,
-            "local_path": img if not img.startswith("http") else None,
+            "is_primary": (i == 0),
+            "sort_order": i,
         })
     if images:
         writer.set_images(pid, images)
+
+
+def _download_image(url: str, product_id: int, index: int) -> str:
+    import urllib.request
+    import urllib.error
+    products_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "images", "products")
+    os.makedirs(products_dir, exist_ok=True)
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = resp.read()
+        ext = ".jpg"
+        content_type = resp.headers.get("Content-Type", "")
+        if "png" in content_type:
+            ext = ".png"
+        elif "webp" in content_type:
+            ext = ".webp"
+        filename = f"product-{product_id}-{index}{ext}"
+        filepath = os.path.join(products_dir, filename)
+        with open(filepath, "wb") as f:
+            f.write(data)
+        return f"images/products/{filename}"
+    except Exception:
+        return ""
 
 
 def build_editorial(pid: int, rec: dict, writer: DatabaseWriter):

@@ -106,8 +106,9 @@
                 {% set rp = item.product %}
                 <div class="ga-qp-card">
                     <div class="ga-qp-card-image">
-                        {% if rp.image and 'products/' in rp.image %}
-                        <img src="{{ base_path }}{{ rp.image }}" alt="{{ rp.title }}" loading="lazy">
+                        {% set rp_img = rp.image or rp.amazon_image_url or '' %}
+                        {% if rp_img and ('products/' in rp_img or rp_img.startswith('http')) %}
+                        <img src="{% if rp_img.startswith('http') %}{{ rp_img }}{% else %}{{ base_path }}{{ rp_img }}{% endif %}" alt="{{ rp.title }}" loading="lazy">
                         {% else %}
                         <div class="ga-qp-placeholder">{{ rp.brand[0] }}</div>
                         {% endif %}

@@ -1,7 +1,10 @@
 /* ==============================================
    Pimp My Ride - Upgrade Collections explorer
-   Renders curated upgrade collections for the
-   current motorcycle using the editorial API.
+   UI-only behaviour: expand/collapse panels, tab
+   switching and animations. All data is generated
+   at build time and embedded in the page as
+   window.PIMP_MY_RIDE_DATA — no fetch() calls,
+   no API routes, no network requests.
    ============================================== */
 (function () {
     'use strict';
@@ -15,15 +18,14 @@
     };
 
     var state = {
-        apiBase: null,
-        products: {},
+        collectionsBySlug: {},
         expanded: {}
     };
 
     var grid = document.getElementById('pmrCardGrid');
+    var moreGrid = document.getElementById('pmrMoreGrid');
     var panelsWrap = document.getElementById('pmrPanels');
-    var stateBox = document.getElementById('pmrState');
-    var stateText = document.getElementById('pmrStateText');
+    var viewMoreBtn = document.getElementById('pmrViewMore');
 
     function escapeHtml(str) {
         if (str == null) return '';
@@ -54,48 +56,6 @@
         return s;
     }
 
-    function usableImage(url) {
-        var s = String(url || '');
-        if (s.indexOf('http://') === 0 || s.indexOf('https://') === 0 || s.indexOf('//') === 0) return s;
-        if (s.indexOf('.') === -1) return '';
-        var base = String(s).replace(/^.*[\\\/]/, '');
-        if (!base) return '';
-        return config.basePath + 'static/images/products/' + base;
-    }
-
-    function normalizeProduct(p) {
-        if (!p) return null;
-        var rawImg = p.image || p.amazon_image_url || '';
-        return {
-            slug: p.slug || p.asin || '',
-            asin: p.asin || '',
-            title: p.title || '',
-            brand: p.brand || '',
-            category: p.category || '',
-            universal: !!p.universal,
-            compatible_bikes: p.compatible_bikes || [],
-            status: p.status || '',
-            price: Number(p.price) || 0,
-            mrp: Number(p.mrp) || 0,
-            rating: Number(p.rating) || 0,
-            review_count: Number(p.review_count) || 0,
-            editor_rating: Number(p.editor_rating) || 0,
-            editorial_verdict: p.editorial_verdict || '',
-            editors_choice: !!p.editors_choice,
-            image: usableImage(rawImg),
-            affiliate_url: p.affiliate_url || ''
-        };
-    }
-
-    function isCompatible(p) {
-        if (!p) return false;
-        if (p.universal) return true;
-        var cb = p.compatible_bikes || [];
-        if (typeof cb === 'string') return cb.split(',').indexOf(config.motoSlug) !== -1;
-        if (Array.isArray(cb)) return cb.indexOf(config.motoSlug) !== -1;
-        return false;
-    }
-
     function scoreProduct(p) {
         if (!p) return 0;
         var s = 0;
@@ -118,48 +78,6 @@
         return list.slice().sort(function (a, b) {
             return scoreProduct(b) - scoreProduct(a);
         });
-    }
-
-    function pickHero(coll) {
-        var withImg = coll.compatibleProducts.filter(function (p) { return p.image; });
-        var pool = withImg.length ? withImg : coll.compatibleProducts;
-        return sortByScore(pool)[0] || null;
-    }
-
-    function minPrice(coll) {
-        var prices = coll.compatibleProducts
-            .map(function (p) { return Number(p.price) || 0; })
-            .filter(function (n) { return n > 0; });
-        return prices.length ? Math.min.apply(null, prices) : null;
-    }
-
-    function cardHTML(coll) {
-        var hero = pickHero(coll);
-        var heroImg = hero && hero.image ? hero.image : '';
-        var price = minPrice(coll);
-        var count = coll.compatibleProducts.length;
-        var icon = coll.icon || '&#127930;';
-        var countLabel = count + ' product' + (count === 1 ? '' : 's');
-        var priceHTML = price
-            ? '<span class="pmr-card-price">&#8377;' + formatINR(price) + '</span><span class="pmr-card-price-label">starting at</span>'
-            : '<span class="pmr-card-price-label">Prices on request</span>';
-        var mediaHTML = heroImg
-            ? '<span class="pmr-card-media" style="background-image:url(\'' + quoteAttr(heroImg) + '\')"></span>'
-            : '<span class="pmr-card-media pmr-card-media-empty"><span class="pmr-card-empty-icon">' + icon + '</span></span>';
-
-        return '<button type="button" class="pmr-card" data-slug="' + escapeHtml(coll.slug) + '" aria-expanded="false">' +
-            mediaHTML +
-            '<span class="pmr-card-body">' +
-                '<span class="pmr-card-icon-chip">' + icon + '</span>' +
-                '<span class="pmr-card-name">' + escapeHtml(coll.name) + '</span>' +
-                '<span class="pmr-card-desc">' + escapeHtml((coll.description || '').slice(0, 120)) + '</span>' +
-                '<span class="pmr-card-meta">' +
-                    '<span class="pmr-card-count">' + countLabel + '</span>' +
-                    '<span class="pmr-card-price-wrap">' + priceHTML + '</span>' +
-                '</span>' +
-                '<span class="pmr-card-cta"><span>Explore</span><span class="pmr-card-chevron">&#9662;</span></span>' +
-            '</span>' +
-        '</button>';
     }
 
     function tabData(coll) {
@@ -250,7 +168,7 @@
 
     function panelHTML(coll) {
         var count = coll.compatibleProducts.length;
-        var price = minPrice(coll);
+        var price = coll.startingPrice;
         var icon = coll.icon || '&#127930;';
         var priceLabel = price ? 'starting at &#8377;' + formatINR(price) : '';
         return '<div class="pmr-panel-wrap" data-panel-slug="' + escapeHtml(coll.slug) + '" data-open="false">' +
@@ -260,6 +178,7 @@
                         '<div class="pmr-panel-title-wrap">' +
                             '<span class="pmr-panel-icon">' + icon + '</span>' +
                             '<div>' +
+                                (coll.badge ? '<span class="pmr-panel-badge">' + escapeHtml(coll.badge) + '</span>' : '') +
                                 '<h3 class="pmr-panel-title">' + escapeHtml(coll.name) + '</h3>' +
                                 '<p class="pmr-panel-desc">' + escapeHtml(coll.description || '') + '</p>' +
                             '</div>' +
@@ -285,7 +204,8 @@
 
     function togglePanel(slug, open) {
         var wrap = panelsWrap.querySelector('[data-panel-slug="' + slug + '"]');
-        var card = grid.querySelector('.pmr-card[data-slug="' + slug + '"]');
+        var card = (grid && grid.querySelector('.pmr-card[data-slug="' + slug + '"]')) ||
+            (moreGrid && moreGrid.querySelector('.pmr-card[data-slug="' + slug + '"]'));
         if (!wrap) return;
         var willOpen = typeof open === 'boolean' ? open : wrap.getAttribute('data-open') !== 'true';
         state.expanded[slug] = willOpen;
@@ -295,6 +215,11 @@
             wrap.classList.add('pmr-open');
             card.setAttribute('aria-expanded', 'true');
             renderProducts(slug, 'editors');
+            setTimeout(function () {
+                if (wrap.scrollIntoView) {
+                    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 30);
         } else {
             wrap.setAttribute('data-open', 'false');
             wrap.classList.remove('pmr-open');
@@ -302,20 +227,48 @@
         }
     }
 
-    function renderCards(collections) {
+    function init(collections) {
+        if (!grid || !panelsWrap) return;
         state.collectionsBySlug = {};
         collections.forEach(function (c) {
             state.collectionsBySlug[c.slug] = c;
         });
-        var cards = collections.map(cardHTML).join('');
-        panelsWrap.innerHTML = collections.map(panelHTML).join('');
-        grid.innerHTML = cards;
 
-        grid.addEventListener('click', function (e) {
-            var card = e.target.closest('.pmr-card');
-            if (!card) return;
-            togglePanel(card.getAttribute('data-slug'));
-        });
+        // Collection cards are pre-rendered in the HTML by the generator so
+        // crawlers see them; the panels (product rows + tabs) are rendered
+        // here on demand.
+        panelsWrap.innerHTML = collections.map(panelHTML).join('');
+
+        if (grid) {
+            grid.addEventListener('click', function (e) {
+                var card = e.target.closest('.pmr-card');
+                if (!card) return;
+                if (e.preventDefault) e.preventDefault();
+                togglePanel(card.getAttribute('data-slug'));
+            });
+        }
+
+        if (moreGrid) {
+            moreGrid.addEventListener('click', function (e) {
+                var card = e.target.closest('.pmr-card');
+                if (!card) return;
+                if (e.preventDefault) e.preventDefault();
+                togglePanel(card.getAttribute('data-slug'));
+            });
+        }
+
+        if (viewMoreBtn) {
+            viewMoreBtn.addEventListener('click', function (e) {
+                var willShow = moreGrid.hidden;
+                moreGrid.hidden = !willShow;
+                moreGrid.classList.toggle('is-visible', willShow);
+                viewMoreBtn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
+                var label = viewMoreBtn.querySelector('.pmr-view-more-label');
+                if (label) label.textContent = willShow ? 'Show Less' : 'View More Collections';
+                var chevron = viewMoreBtn.querySelector('.pmr-view-more-chevron');
+                if (chevron) chevron.innerHTML = willShow ? '&#9652;' : '&#9662;';
+            });
+        }
 
         panelsWrap.addEventListener('click', function (e) {
             var tab = e.target.closest('.pmr-tab');
@@ -341,85 +294,8 @@
         });
     }
 
-    function showState(html) {
-        if (!stateBox) return;
-        stateBox.innerHTML = html;
+    var buildData = window.PIMP_MY_RIDE_DATA;
+    if (buildData && Array.isArray(buildData.collections) && buildData.collections.length) {
+        init(buildData.collections);
     }
-
-    var apiBaseResolved = null;
-    var apiBasePromise = null;
-
-    function tryBase(base) {
-        return fetch(base + '/api/upgrade-collections').then(function (r) {
-            if (!r.ok) throw new Error('HTTP ' + r.status);
-            return base;
-        });
-    }
-
-    function getApiBase() {
-        if (apiBaseResolved) return Promise.resolve(apiBaseResolved);
-        if (apiBasePromise) return apiBasePromise;
-        apiBasePromise = tryBase('')
-            .catch(function () { return tryBase('http://localhost:8765'); })
-            .then(function (base) {
-                apiBaseResolved = base;
-                return base;
-            });
-        return apiBasePromise;
-    }
-
-    function fetchJSON(path) {
-        return getApiBase().then(function (base) {
-            return fetch(base + path).then(function (r) {
-                if (!r.ok) throw new Error('HTTP ' + r.status);
-                return r.json();
-            });
-        });
-    }
-
-    function loadData() {
-        showState('<span class="pmr-spinner"></span><span>Finding curated upgrades for ' + escapeHtml(config.motoSlug) + '...</span>');
-        return fetchJSON('/api/upgrade-collections')
-            .then(function (listData) {
-                var list = (listData.collections || listData).filter(function (c) { return c.enabled !== false; });
-                var detailJobs = list.map(function (col) {
-                    return fetchJSON('/api/upgrade-collections/' + encodeURIComponent(col.slug)).then(function (d) {
-                        return mergeCollection(col, d.products || []);
-                    }).catch(function () {
-                        return null;
-                    });
-                });
-                return Promise.all(detailJobs);
-            })
-            .then(function (cols) {
-                state.collections = cols
-                    .filter(Boolean)
-                    .filter(function (c) { return c.compatibleProducts.length > 0; })
-                    .sort(function (a, b) {
-                        return (a.sort_order || 0) - (b.sort_order || 0) || (a.name || '').localeCompare(b.name || '');
-                    });
-                if (!state.collections.length) {
-                    showState('<span class="pmr-empty-icon">&#127937;</span><span>No curated upgrade collections match your ' + escapeHtml(config.motoSlug) + ' yet. Check back soon!</span>');
-                    return;
-                }
-                renderCards(state.collections);
-            });
-    }
-
-    function mergeCollection(col, detailProducts) {
-        col.compatibleProducts = detailProducts
-            .map(normalizeProduct)
-            .map(function (p) { return p && state.products[p.slug] ? state.products[p.slug] : null; })
-            .filter(Boolean)
-            .filter(function (p) { return p.status !== 'rejected' && isCompatible(p); });
-        return col;
-    }
-
-    fetchJSON('/api/products').then(function (data) {
-        var all = (data.products || []).map(normalizeProduct);
-        all.forEach(function (p) { if (p && p.slug) state.products[p.slug] = p; });
-        return loadData();
-    }).catch(function () {
-        showState('<span class="pmr-empty-icon">&#9888;</span><span>Could not load upgrades. Please refresh the page.</span>');
-    });
 })();

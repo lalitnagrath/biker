@@ -36,6 +36,7 @@ class ProductImportService:
                  image_dir: Optional[Path] = None):
         self.db_url = db_url or DB_URL
         self.image_dir = Path(image_dir) if image_dir else IMAGE_DIR
+        self.project_root = PROJECT_ROOT
 
     # ------------------------------------------------------------------
     # Public API
@@ -125,7 +126,7 @@ class ProductImportService:
         Returns one of "downloaded", "skipped", "failed".
         """
         amazon_url = (flat.get("amazon_image_url") or flat.get("image") or "")
-        if not amazon_url or not amazon_url.startswith("http"):
+        if not amazon_url:
             return "skipped"
 
         asin = (flat.get("asin") or "").strip().upper()
@@ -136,8 +137,16 @@ class ProductImportService:
 
         try:
             if not dest.exists() or dest.stat().st_size == 0:
-                if not _download_image(amazon_url, dest):
-                    return "failed"
+                if amazon_url.startswith("http"):
+                    if not _download_image(amazon_url, dest):
+                        return "failed"
+                else:
+                    src = self.project_root / amazon_url
+                    if src.exists():
+                        import shutil
+                        shutil.copy2(src, dest)
+                    else:
+                        return "skipped"
         except Exception:
             return "failed"
 

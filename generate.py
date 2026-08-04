@@ -27,6 +27,7 @@ from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
 import url_builders
+from pmr_static import build_pimp_my_ride, load_upgrade_collections
 from db.smart_collections import SmartCollectionService
 from product_library import (
     approved_products,
@@ -475,7 +476,7 @@ def replace_product_placeholders(html, products, base_path='./', exclude_slugs=N
         best_for = product.get('best_for', '')
         verdict = product.get('verdict', '')
         affiliate_url = product.get('affiliate_url', '')
-        image = product.get('image', '')
+        image = product.get('image', '') or product.get('amazon_image_url', '')
 
         # Per AI_INSTRUCTIONS.md: never render a product card without a real image
         if not image or 'images/' not in image:
@@ -1407,6 +1408,26 @@ def validate_motorcycles(motorcycles: list) -> List[str]:
     return warnings
 
 
+def format_inr(value):
+    """Format a number with Indian (lakh/crore) grouping."""
+    try:
+        num = int(value or 0)
+    except (TypeError, ValueError):
+        num = 0
+    if num < 0:
+        return '-' + format_inr(-num)
+    s = str(num)
+    if len(s) <= 3:
+        return s
+    last3 = s[-3:]
+    rest = s[:-3]
+    groups = []
+    while rest:
+        groups.append(rest[-2:])
+        rest = rest[:-2]
+    return ','.join(g for g in reversed(groups)) + ',' + last3
+
+
 class SiteGenerator:
     def __init__(self, base_url, output_dir):
         self.base_url = base_url.rstrip('/')
@@ -1423,6 +1444,11 @@ class SiteGenerator:
         self.collections = self._collection_service.get_visible_collections()
         self.featured_collections = self._collection_service.get_featured_collections()
         print(f"  Loaded {len(self.collections)} collections ({len(self.featured_collections)} featured)")
+
+        # Pimp My Ride upgrade collections — read once at build time and
+        # injected into each motorcycle page as window.PIMP_MY_RIDE_DATA.
+        self.upgrade_collections = load_upgrade_collections()
+        print(f"  Loaded {len(self.upgrade_collections)} Pimp My Ride upgrade collections")
         
         self.categories = build_product_categories(self.data['products'])
         self.env = Environment(
@@ -1433,6 +1459,7 @@ class SiteGenerator:
         self.env.globals['site_url'] = self.base_url + '/'
         self.env.globals['category_to_guide_url'] = category_to_guide_url
         self.env.globals['URL'] = url_builders.URL
+        self.env.filters['inr'] = format_inr
         self.page_count = 0
         self.images_downloaded = 0
 
@@ -2170,6 +2197,13 @@ class SiteGenerator:
 
             # Match products to motorcycle (used for main content + sidebar)
             matched = match_products_to_motorcycle(bike, self.data['products'])
+
+            # Pimp My Ride: fully static data generated at build time. The
+            # rendered page contains everything the section needs; the browser
+            # makes zero API requests.
+            context['pimp_my_ride_data'] = build_pimp_my_ride(
+                self.upgrade_collections, matched, context['base_path'], bike
+            )
 
             # Related articles
             related = []
@@ -3506,7 +3540,7 @@ class SiteGenerator:
             price_int = 0
         rating = p.get('rating', 0)
         verdict = escape_html(sp.get('reason', 'Recommended'))
-        image = p.get('image', '')
+        image = p.get('image', '') or p.get('amazon_image_url', '')
         slug = p.get('slug', '')
         affiliate_url = p.get('affiliate_url', '')
         product_url = f'{base_path}products/{slug}/index.html' if slug else '#'

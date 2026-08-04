@@ -633,7 +633,11 @@ def api_amazon_search(keyword: Optional[str] = Query(None),
                       item_count: int = Query(20, ge=1, le=50),
                       page: int = Query(1, ge=1),
                       category: Optional[str] = Query(None),
-                      brand: Optional[str] = Query(None)):
+                      brand: Optional[str] = Query(None),
+                      rating: float = Query(0.0, ge=0.0, le=5.0),
+                      reviews: int = Query(0, ge=0),
+                      discount: int = Query(0, ge=0, le=100),
+                      sort: str = Query("quality")):
     if not keyword or not keyword.strip():
         return JSONResponse({"error": "Keyword is required"}, status_code=400)
     try:
@@ -646,6 +650,10 @@ def api_amazon_search(keyword: Optional[str] = Query(None),
             known_asins=import_svc.existing_asins(),
             category=category,
             brand=brand,
+            min_rating=rating,
+            min_reviews=reviews,
+            min_discount=discount,
+            sort=sort,
         )
         return result
     except AmazonSearchError as exc:

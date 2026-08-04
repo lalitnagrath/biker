@@ -30,6 +30,18 @@ _default_api.DefaultApi = MagicMock
 _api_client.ApiClient = MagicMock
 _models_pkg.SearchItemsRequestContent = MagicMock
 _models_pkg.SearchItemsResource = MagicMock()
+
+
+class _GetItemsRequestContent:
+    """Real minimal stand-in so item_ids/resources survive round-trip."""
+
+    def __init__(self, **kwargs):
+        self.item_ids = kwargs.get("item_ids", [])
+        self.resources = kwargs.get("resources", [])
+
+
+_models_pkg.GetItemsRequestContent = _GetItemsRequestContent
+_models_pkg.GetItemsResource = MagicMock()
 _enum_names = [
     "ITEM_INFO_DOT_TITLE",
     "ITEM_INFO_DOT_BY_LINE_INFO",
@@ -39,6 +51,8 @@ _enum_names = [
     "IMAGES_DOT_PRIMARY_DOT_HIGH_RES",
     "OFFERS_V2_DOT_LISTINGS_DOT_PRICE",
     "OFFERS_V2_DOT_LISTINGS_DOT_AVAILABILITY",
+    "OFFERS_V2_DOT_LISTINGS_DOT_IS_BUY_BOX_WINNER",
+    "OFFERS_V2_DOT_LISTINGS_DOT_DEAL_DETAILS",
     "CUSTOMER_REVIEWS_DOT_COUNT",
     "CUSTOMER_REVIEWS_DOT_STAR_RATING",
 ]
@@ -142,7 +156,12 @@ def test_search_returns_flat_results():
 
 
 def test_search_flags_in_library():
-    svc = _make_service([_raw_item("B0RAW01"), _raw_item("B0RAW02")])
+    svc = _make_service([
+        _raw_item("B0RAW01", title="Steelbird Helmet",
+                  image_url="https://m.media-amazon.com/images/I/1.jpg"),
+        _raw_item("B0RAW02", title="Steelbird Riding Gloves",
+                  image_url="https://m.media-amazon.com/images/I/2.jpg"),
+    ])
     result = svc.search("helmet", known_asins={"B0RAW02"})
     flags = {p["asin"]: p["in_library"] for p in result["results"]}
     assert flags == {"B0RAW01": False, "B0RAW02": True}
@@ -332,3 +351,223 @@ def test_raw_to_flat_bad_rating():
     assert flat["rating"] == 0
     assert flat["review_count"] == 0
     print("OK test_raw_to_flat_bad_rating")
+
+
+# ------------------------------------------------------------------
+# Quality curation: filters, scoring, dedupe, fallback, badges
+# ------------------------------------------------------------------
+
+_WORD_POOL = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf",
+              "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November",
+              "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform",
+              "Victor", "Whiskey", "Xray", "Yankee", "Zulu", "Atlas", "Beacon",
+              "Comet", "Drift", "Ember", "Falcon", "Glide", "Harbor", "Ivy",
+              "Jaguar", "Kite", "Lumen", "Mosaic", "Nimbus", "Orbit", "Pulse",
+              "Quartz", "Raven", "Sable", "Talon", "Umbra", "Voyage", "Willow",
+              "Zephyr"]
+
+
+def _items_rating(rating, count, prefix="Item"):
+    return [_raw_item(f"B0R{i:04d}",
+                      title=f"{prefix} {_WORD_POOL[i]}",
+                      rating=rating,
+                      image_url=f"https://m.media-amazon.com/images/I/{prefix}{i}.jpg")
+            for i in range(count)]
+
+
+def _quality_items(count, rating=4.1, reviews=60, discount=25):
+    return [_raw_item(f"B0Q{i:04d}",
+                      title=f"Quality {_WORD_POOL[i]}",
+                      rating=rating,
+                      review_count=reviews,
+                      discount_pct=discount,
+                      image_url=f"https://m.media-amazon.com/images/I/q{i}.jpg")
+            for i in range(count)]
+
+
+def test_search_min_rating_filter():
+    items = _items_rating(4.2, 10) + _items_rating(3.5, 3)
+    result = _make_service(items).search("helmet", min_rating=4.0, min_reviews=0)
+    assert result["count"] == 10
+    assert all(p["rating"] >= 4.0 for p in result["results"])
+    assert result["filters"]["rating"] == 4.0
+    assert result["fallback"] is False
+    print("OK test_search_min_rating_filter")
+
+
+def test_search_min_reviews_filter():
+    items = _quality_items(10, reviews=60) + _quality_items(3, reviews=10)
+    result = _make_service(items).search("helmet", min_rating=0, min_reviews=30)
+    assert result["count"] == 10
+    assert all(p["review_count"] >= 30 for p in result["results"])
+    print("OK test_search_min_reviews_filter")
+
+
+def test_search_min_discount_filter():
+    items = _quality_items(10, discount=25) + _quality_items(3, discount=5)
+    result = _make_service(items).search("helmet", min_rating=0, min_discount=20)
+    assert result["count"] == 10
+    assert all(p["discount"] >= 20 for p in result["results"])
+    print("OK test_search_min_discount_filter")
+
+
+def test_search_quality_sort_desc():
+    items = [
+        _raw_item("B0R01", title="Low", rating=3.9, review_count=40),
+        _raw_item("B0R02", title="High", rating=4.7, review_count=2000),
+        _raw_item("B0R03", title="Mid", rating=4.3, review_count=300),
+    ]
+    for _ in range(12):  # pad so the fallback never kicks in
+        items.append(_raw_item(f"B0P{len(items):04d}", title=f"Pad {len(items)}",
+                               rating=4.0, review_count=100))
+    result = _make_service(items).search("helmet", min_rating=0)
+    scores = [p["score"] for p in result["results"]]
+    assert scores == sorted(scores, reverse=True), scores
+    # the highest-quality item must be first
+    assert result["results"][0]["asin"] == "B0R02"
+    print("OK test_search_quality_sort_desc")
+
+
+def test_search_dedupe_keeps_highest_score():
+    items = []
+    for i in range(10):
+        brand = "Steelbird" + _WORD_POOL[i]
+        items.append(_raw_item(f"B0G{i:04d}", title="Flip Up Helmet",
+                               brand=brand, rating=4.2, review_count=100))
+        items.append(_raw_item(f"B0H{i:04d}", title="Flip Up Helmet",
+                               brand=brand, rating=4.5, review_count=200))
+    result = _make_service(items).search("helmet", min_rating=0)
+    # every duplicate pair collapses to the better-rated version
+    assert result["count"] == 10
+    assert all(p["rating"] >= 4.4 for p in result["results"])
+    print("OK test_search_dedupe_keeps_highest_score")
+
+
+def test_search_smart_fallback_relaxes_rating():
+    items = _items_rating(4.5, 5, prefix="Tier") + _items_rating(3.9, 9, prefix="Base")
+    result = _make_service(items).search("helmet", min_rating=4.0, min_reviews=0)
+    assert result["fallback"] is True
+    assert result["filters"]["rating"] == 3.9
+    assert result["count"] >= 10
+    print("OK test_search_smart_fallback_relaxes_rating")
+
+
+def test_search_no_fallback_below_floor_for_low_request():
+    items = _items_rating(4.0, 5)
+    result = _make_service(items).search("helmet", min_rating=3.5, min_reviews=0)
+    assert result["fallback"] is False
+    assert result["filters"]["rating"] == 3.5
+    assert result["count"] == 5
+    print("OK test_search_no_fallback_below_floor_for_low_request")
+
+
+def test_search_badges_attached():
+    items = [
+        _raw_item("B0B01", title="Top Helmet", rating=4.8, review_count=5000,
+                  discount_pct=30),
+        _raw_item("B0B02", title="Meh Helmet", rating=3.8, review_count=5,
+                  discount_pct=0),
+    ]
+    for _ in range(11):
+        items.append(_raw_item(f"B0X{len(items):04d}", title=f"Fill {len(items)}",
+                               rating=4.0, review_count=90))
+    result = _make_service(items).search("helmet", min_rating=0)
+    top = result["results"][0]
+    assert top["asin"] == "B0B01"
+    assert any(b["label"] == "Best Rated" for b in top["badges"])
+    assert any(b["label"] == "Popular" for b in top["badges"])
+    print("OK test_search_badges_attached")
+
+
+def test_search_no_rating_data_falls_back_to_discount_ranking():
+    # Source returns items with no review data at all (rating=0, count=0).
+    items = [
+        _raw_item("B0N01", title="A Helmet", brand="Steelbird", rating=0,
+                  review_count=0, discount_pct=40),
+        _raw_item("B0N02", title="B Helmet", brand="Vega", rating=0,
+                  review_count=0, discount_pct=5),
+        _raw_item("B0N03", title="C Helmet", brand="Studds", rating=0,
+                  review_count=0, discount_pct=20),
+    ]
+    result = _make_service(items).search("helmet", min_rating=4.0, min_reviews=30)
+    assert result["no_rating_data"] is True
+    assert result["fallback"] is False
+    assert result["filters"]["rating"] == 0.0
+    # rating/review filters skipped; discount still enforced
+    assert result["count"] == 3
+    assert result["results"][0]["asin"] == "B0N01"  # highest discount first
+    assert result["results"][-1]["asin"] == "B0N02"
+    print("OK test_search_no_rating_data_falls_back_to_discount_ranking")
+
+
+def test_search_no_rating_data_still_applies_discount_filter():
+    items = [
+        _raw_item("B0N10", title="A Helmet", rating=0, review_count=0,
+                  discount_pct=40),
+        _raw_item("B0N11", title="B Helmet", rating=0, review_count=0,
+                  discount_pct=5),
+    ]
+    result = _make_service(items).search("helmet", min_rating=4.0,
+                                         min_reviews=30, min_discount=15)
+    assert result["no_rating_data"] is True
+    assert [p["asin"] for p in result["results"]] == ["B0N10"]
+    print("OK test_search_no_rating_data_still_applies_discount_filter")
+
+
+class ReviewEnrichingFakeApi(FakeApi):
+    """FakeApi variant whose search omits reviews but get_items supplies them."""
+
+    def __init__(self, items, reviews, **kwargs):
+        super().__init__(items, **kwargs)
+        self.reviews = reviews
+
+    def get_items(self, x_marketplace, get_items_request_content):
+        self.calls.append({"marketplace": x_marketplace,
+                           "request": get_items_request_content})
+        ids = get_items_request_content.item_ids
+        return {"itemsResult": {
+            "items": [
+                {"asin": asin, "customerReviews": {
+                    "starRating": rating, "count": count}}
+                for asin, (rating, count) in self.reviews.items()
+                if asin in ids
+            ]
+        }}
+
+
+def test_search_enriches_reviews_via_get_items():
+    svc = AmazonSearchService(
+        api=ReviewEnrichingFakeApi(
+            [_raw_item("B0E01", title="A Helmet", rating=0, review_count=0),
+             _raw_item("B0E02", title="B Helmet", rating=0, review_count=0)],
+            reviews={"B0E01": (4.5, 210), "B0E02": (3.7, 12)},
+        ),
+        credential_id="cid",
+        credential_secret="csec",
+    )
+    result = svc.search("helmet", min_rating=4.0, min_reviews=30)
+    # ratings arrive via enrichment, so the normal path runs (no no_rating_data)
+    assert result["no_rating_data"] is False
+    assert result["count"] == 1
+    item = result["results"][0]
+    assert item["asin"] == "B0E01"
+    assert item["rating"] == 4.5
+    assert item["review_count"] == 210
+    print("OK test_search_enriches_reviews_via_get_items")
+
+
+def test_search_enrichment_failure_is_ignored():
+    class FailingFakeApi(FakeApi):
+        def get_items(self, x_marketplace, get_items_request_content):
+            raise RuntimeError("boom")
+
+    svc = AmazonSearchService(
+        api=FailingFakeApi([_raw_item("B0F01", title="A Helmet",
+                                      rating=0, review_count=0)]),
+        credential_id="cid",
+        credential_secret="csec",
+    )
+    result = svc.search("helmet", min_rating=4.0)
+    assert result["no_rating_data"] is True
+    assert result["count"] == 1  # still falls back gracefully
+    print("OK test_search_enrichment_failure_is_ignored")

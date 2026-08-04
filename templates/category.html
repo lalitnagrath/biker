@@ -346,8 +346,13 @@
                     <div class="bg-card-badge bg-badge-reviewed">Reviewed</div>
                     {% endif %}
                     <a href="{{ URL.product(p.slug, base_path) }}">
-                        {% if p.image and p.image != '' %}
-                        <img src="{{ base_path }}{{ p.image }}" alt="{{ p.title }}" loading="lazy">
+                        {% set p_image = p.image or p.amazon_image_url or '' %}
+                        {% if p_image %}
+                        {% if p_image.startswith('http') %}
+                        <img src="{{ p_image }}" alt="{{ p.title }}" loading="lazy">
+                        {% else %}
+                        <img src="{{ base_path }}{{ p_image }}" alt="{{ p.title }}" loading="lazy">
+                        {% endif %}
                         {% else %}
                         <div class="bg-card-placeholder">{{ p.brand }}</div>
                         {% endif %}

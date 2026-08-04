@@ -1540,6 +1540,7 @@ def import_from_deals(
             'availability': availability or '',
             'affiliate_url': affiliate_url or '',
             'image': image_url or '',
+            'amazon_image_url': image_url or '',
             'compatible_bikes': ['*'],
             'editor_rating': 0,
             'pros': [],

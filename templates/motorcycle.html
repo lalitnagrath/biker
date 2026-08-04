@@ -144,19 +144,98 @@
 </section>
 
 {# ===== PIMP MY RIDE ===== #}
+{% if pimp_my_ride_data and pimp_my_ride_data.collections %}
+<script>
+    window.PIMP_MY_RIDE_DATA = {{ pimp_my_ride_data | tojson }};
+</script>
+{% endif %}
 <section class="pmr-section" id="pimp-my-ride" data-moto-slug="{{ motorcycle.slug }}" data-base-path="{{ base_path }}">
     <div class="container">
         <div class="pmr-header">
             <h2 class="pmr-title">&#127941; Pimp My Ride</h2>
             <p class="pmr-subtitle">Build your perfect motorcycle with carefully selected compatible upgrades.</p>
         </div>
+        {% if pimp_my_ride_data and pimp_my_ride_data.collections %}
+        {% set featured_cards = pimp_my_ride_data.collections | selectattr('featured') | list %}
+        {% set more_cards = pimp_my_ride_data.collections | rejectattr('featured') | list %}
         <div class="pmr-card-grid" id="pmrCardGrid" aria-live="polite">
-            <div class="pmr-state" id="pmrState">
-                <span class="pmr-spinner"></span>
-                <span id="pmrStateText">Finding curated upgrades for your {{ motorcycle.model }}...</span>
+            {% for card in featured_cards %}
+            <a class="pmr-card" href="#pmr-{{ card.slug }}" data-slug="{{ card.slug }}" aria-expanded="false">
+                {% if card.badge %}<span class="pmr-card-badge">{{ card.badge }}</span>{% endif %}
+                {% if card.heroImage %}
+                <span class="pmr-card-media" style="background-image:url('{{ card.heroImage }}')"></span>
+                {% else %}
+                <span class="pmr-card-media pmr-card-media-empty"><span class="pmr-card-empty-icon">{{ card.icon }}</span></span>
+                {% endif %}
+                <span class="pmr-card-body">
+                    <span class="pmr-card-icon-chip">{{ card.icon }}</span>
+                    <h3 class="pmr-card-name">{{ card.name }}</h3>
+                    <span class="pmr-card-desc">{{ card.cardDescription }}</span>
+                    <span class="pmr-card-meta">
+                        <span class="pmr-card-count">{{ card.count }} product{{ 's' if card.count != 1 }}</span>
+                        <span class="pmr-card-price-wrap">
+                            {% if card.startingPrice %}
+                            <span class="pmr-card-price">&#8377;{{ card.startingPrice | inr }}</span>
+                            <span class="pmr-card-price-label">starting at</span>
+                            {% else %}
+                            <span class="pmr-card-price-label">Prices on request</span>
+                            {% endif %}
+                        </span>
+                    </span>
+                    <span class="pmr-card-cta"><span>Explore</span><span class="pmr-card-chevron">&#9662;</span></span>
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+        {% if more_cards %}
+        <div class="pmr-view-more-wrap">
+            <button class="pmr-view-more" id="pmrViewMore" type="button" aria-expanded="false">
+                <span class="pmr-view-more-icon">&#9776;</span>
+                <span class="pmr-view-more-label">View More Collections</span>
+                <span class="pmr-view-more-count">{{ more_cards | length }} more</span>
+                <span class="pmr-view-more-chevron">&#9662;</span>
+            </button>
+        </div>
+        <div class="pmr-card-grid pmr-more-grid" id="pmrMoreGrid" aria-live="polite" hidden>
+            {% for card in more_cards %}
+            <a class="pmr-card" href="#pmr-{{ card.slug }}" data-slug="{{ card.slug }}" aria-expanded="false">
+                {% if card.badge %}<span class="pmr-card-badge">{{ card.badge }}</span>{% endif %}
+                {% if card.heroImage %}
+                <span class="pmr-card-media" style="background-image:url('{{ card.heroImage }}')"></span>
+                {% else %}
+                <span class="pmr-card-media pmr-card-media-empty"><span class="pmr-card-empty-icon">{{ card.icon }}</span></span>
+                {% endif %}
+                <span class="pmr-card-body">
+                    <span class="pmr-card-icon-chip">{{ card.icon }}</span>
+                    <h3 class="pmr-card-name">{{ card.name }}</h3>
+                    <span class="pmr-card-desc">{{ card.cardDescription }}</span>
+                    <span class="pmr-card-meta">
+                        <span class="pmr-card-count">{{ card.count }} product{{ 's' if card.count != 1 }}</span>
+                        <span class="pmr-card-price-wrap">
+                            {% if card.startingPrice %}
+                            <span class="pmr-card-price">&#8377;{{ card.startingPrice | inr }}</span>
+                            <span class="pmr-card-price-label">starting at</span>
+                            {% else %}
+                            <span class="pmr-card-price-label">Prices on request</span>
+                            {% endif %}
+                        </span>
+                    </span>
+                    <span class="pmr-card-cta"><span>Explore</span><span class="pmr-card-chevron">&#9662;</span></span>
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="pmr-panels" id="pmrPanels"></div>
+        {% else %}
+        <div class="pmr-card-grid" id="pmrCardGrid" aria-live="polite">
+            <div class="pmr-state">
+                <span class="pmr-empty-icon">&#127937;</span>
+                <span>No curated upgrade collections match your {{ motorcycle.model }} yet. Check back soon!</span>
             </div>
         </div>
         <div class="pmr-panels" id="pmrPanels"></div>
+        {% endif %}
         <noscript>
             <div class="pmr-state">Enable JavaScript to browse curated upgrades for your {{ motorcycle.model }}.</div>
         </noscript>
@@ -254,11 +333,16 @@
 
                                     <a href="{{ product.get('affiliate_url') or URL.product(product.slug, base_path) }}" class="moto-product-link" target="_blank" rel="nofollow sponsored">
                                         <div class="moto-product-image">
-                                            {% if product.get('image') %}
-                                            <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
-                                            {% else %}
-                                            <div class="moto-product-no-image">&#128737;</div>
-                                            {% endif %}
+                                        {% set product_image = product.get('image') or product.get('amazon_image_url') or '' %}
+                                        {% if product_image %}
+                                        {% if product_image.startswith('http') %}
+                                        <img src="{{ product_image }}" alt="{{ product.title }}" loading="lazy">
+                                        {% else %}
+                                        <img src="{{ base_path }}{{ product_image }}" alt="{{ product.title }}" loading="lazy">
+                                        {% endif %}
+                                        {% else %}
+                                        <div class="moto-product-no-image">&#128737;</div>
+                                        {% endif %}
                                         </div>
 
                                         <div class="moto-product-info">
@@ -645,11 +729,12 @@
                     <div class="moto-toppicks-grid">
                         {% for sp in sidebar_products %}
                         <a href="{{ URL.product(sp.product.slug, base_path) }}" class="moto-toppick-card">
-                            {% if sp.product.get('image') %}
-                            <div class="moto-toppick-image">
-                                <img src="{{ base_path }}{{ sp.product.image }}" alt="{{ sp.product.title }}" loading="lazy">
-                            </div>
-                            {% endif %}
+                             {% set sp_image = sp.product.get('image') or sp.product.get('amazon_image_url') or '' %}
+                             {% if sp_image %}
+                             <div class="moto-toppick-image">
+                                 <img src="{% if sp_image.startswith('http') %}{{ sp_image }}{% else %}{{ base_path }}{{ sp_image }}{% endif %}" alt="{{ sp.product.title }}" loading="lazy">
+                             </div>
+                             {% endif %}
                             <div class="moto-toppick-info">
                                 <span class="moto-toppick-title">{{ sp.product.title }}</span>
                                 <span class="moto-toppick-meta">{{ sp.product.brand }} &middot; {% if sp.product.get('price') %}&#8377;{{ "{:,}".format(sp.product.price|int) }}{% endif %}</span>

@@ -1,0 +1,411 @@
+{
+  "_comment": "Pimp My Ride upgrade-hub collection config. Data-driven: adding a collection here automatically makes it appear on motorcycle pages at next build. Categories are the normalized product.category values produced by ProductService.load_all(). Controls tune editorial curation: dedup, diversification, min sizes, and how many collections show up front.",
+  "controls": {
+    "min_products": 4,
+    "target_products": 6,
+    "max_visible": 8,
+    "max_appearances": 2,
+    "max_same_brand": 2,
+    "max_same_category": 2,
+    "always_show": [
+      "emergency-kit",
+      "security"
+    ],
+    "essential_categories": [
+      "helmet",
+      "helmet_accessories",
+      "bicycle_helmet",
+      "tyre_inflator",
+      "chain_lube",
+      "chain_cleaner",
+      "disc_lock",
+      "chain_lock",
+      "bike_cover",
+      "phone_mount"
+    ]
+  },
+  "collections": [
+    {
+      "slug": "must-have-accessories",
+      "name": "Must Have Accessories",
+      "description": "The essentials every owner buys first - helmet, phone mount, disc lock, chain lube, bike cover and a tyre inflator.",
+      "icon": "🔥",
+      "sort_order": 1,
+      "badge": "Most Popular",
+      "categories": [
+        "helmet",
+        "helmet_accessories",
+        "bicycle_helmet",
+        "phone_mount",
+        "disc_lock",
+        "chain_lube",
+        "bike_cover",
+        "tyre_inflator"
+      ]
+    },
+    {
+      "slug": "new-owner-starter-pack",
+      "name": "New Owner Starter Pack",
+      "description": "Start with these five - protect your head, secure your bike and keep the chain happy from day one.",
+      "icon": "🆕",
+      "sort_order": 2,
+      "badge": "New",
+      "categories": [
+        "helmet",
+        "helmet_accessories",
+        "phone_mount",
+        "disc_lock",
+        "chain_lube"
+      ]
+    },
+    {
+      "slug": "riding-gear",
+      "name": "Riding Gear",
+      "description": "Helmets, gloves, jackets and riding pants that keep you protected on every ride, in every season.",
+      "icon": "🧤",
+      "sort_order": 4,
+      "badge": "Editor's Choice",
+      "categories": [
+        "helmet",
+        "helmet_accessories",
+        "bicycle_helmet",
+        "gloves",
+        "jackets",
+        "riding_pants",
+        "ear_plugs"
+      ]
+    },
+    {
+      "slug": "emergency-kit",
+      "name": "Emergency Kit",
+      "description": "Puncture-safe essentials - a tyre inflator and a compact tool kit for the roadside.",
+      "icon": "🚑",
+      "sort_order": 12,
+      "badge": "",
+      "allow_overlap": true,
+      "categories": [
+        "tyre_inflator",
+        "tool_kit"
+      ]
+    },
+    {
+      "slug": "monsoon-essentials",
+      "name": "Monsoon Essentials",
+      "description": "Waterproof covers, rust-proofing chain care and weather-ready luggage for the rainy season.",
+      "icon": "🌧️",
+      "sort_order": 13,
+      "badge": "Trending",
+      "categories": [
+        "bike_cover",
+        "chain_lube",
+        "saddle_bag",
+        "tail_bag",
+        "tank_bag",
+        "polish"
+      ]
+    },
+    {
+      "slug": "budget-picks",
+      "name": "Budget Picks",
+      "description": "Genuinely useful upgrades under ₹2,000 - the best value pick of the lot.",
+      "icon": "💰",
+      "sort_order": 14,
+      "badge": "Best Value",
+      "allow_overlap": true,
+      "price_max": 2000,
+      "max_products": 12
+    },
+    {
+      "slug": "editors-choice",
+      "name": "Editor's Choice",
+      "description": "The highest-rated upgrades our editors would buy for this bike.",
+      "icon": "⭐",
+      "sort_order": 15,
+      "badge": "Editor's Choice",
+      "allow_overlap": true,
+      "min_rating": 4.0,
+      "max_products": 12
+    }
+  ],
+  "db_collection_display_order": {
+    "protection": 3,
+    "bike-styling": 5,
+    "touring-gear": 6,
+    "lighting": 7,
+    "smart-rider": 8,
+    "bike-care": 9,
+    "security": 10,
+    "detailing": 11,
+    "rider-comfort": 16,
+    "performance": 17
+  },
+  "db_collection_badges": {
+    "touring-gear": "Trending",
+    "bike-care": "Best Value"
+  },
+  "bike_specific": {
+    "Adventure": {
+      "slug": "adventure-ready",
+      "name": "Adventure Ready",
+      "description": "Luggage, navigation and trail-ready gear picked for adventure bikes.",
+      "icon": "🏍️",
+      "sort_order": 100,
+      "badge": "Trending",
+      "categories": [
+        "saddle_bag",
+        "tail_bag",
+        "tank_bag",
+        "gps_tracker",
+        "action_camera",
+        "dash_cam",
+        "tyre_inflator",
+        "tool_kit",
+        "helmet",
+        "gloves",
+        "jackets",
+        "mirror"
+      ]
+    },
+    "Supersport": {
+      "slug": "track-and-sport",
+      "name": "Track & Sport",
+      "description": "Grips, gloves, riding pants and cameras tuned for fast, focused riding.",
+      "icon": "🏁",
+      "sort_order": 101,
+      "badge": "",
+      "categories": [
+        "handlebar_grip",
+        "gloves",
+        "riding_pants",
+        "mirror",
+        "action_camera",
+        "dash_cam",
+        "ear_plugs",
+        "helmet"
+      ]
+    },
+    "Cruiser": {
+      "slug": "cruiser-comfort",
+      "name": "Cruiser Comfort",
+      "description": "Saddlebags, windscreens and seat comfort built for lazy long hauls.",
+      "icon": "🛣️",
+      "sort_order": 102,
+      "badge": "",
+      "categories": [
+        "saddle_bag",
+        "tail_bag",
+        "tank_bag",
+        "windshield",
+        "seat_cover",
+        "footrest",
+        "helmet",
+        "gloves",
+        "jackets",
+        "mirror"
+      ]
+    },
+    "Scooter": {
+      "slug": "scooter-essentials",
+      "name": "Scooter Essentials",
+      "description": "Seat covers, phone mounts and practical luggage for daily scooter commutes.",
+      "icon": "🛵",
+      "sort_order": 103,
+      "badge": "",
+      "categories": [
+        "seat_cover",
+        "phone_mount",
+        "saddle_bag",
+        "tail_bag",
+        "tank_bag",
+        "handlebar_grip",
+        "mirror",
+        "footrest",
+        "helmet",
+        "gloves",
+        "jackets"
+      ]
+    },
+    "Touring": {
+      "slug": "long-ride-ready",
+      "name": "Long-Ride Ready",
+      "description": "Panniers, wind protection and navigation to make long rides effortless.",
+      "icon": "🧳",
+      "sort_order": 104,
+      "badge": "Trending",
+      "categories": [
+        "saddle_bag",
+        "tail_bag",
+        "tank_bag",
+        "windshield",
+        "gps_tracker",
+        "action_camera",
+        "dash_cam",
+        "tyre_inflator",
+        "ear_plugs",
+        "tool_kit",
+        "helmet",
+        "gloves",
+        "jackets"
+      ]
+    },
+    "Commuter": {
+      "slug": "everyday-commuter",
+      "name": "Everyday Commuter",
+      "description": "Practical everyday upgrades for city riding - mounts, covers and grips.",
+      "icon": "🚦",
+      "sort_order": 105,
+      "badge": "",
+      "categories": [
+        "phone_mount",
+        "seat_cover",
+        "handlebar_grip",
+        "mirror",
+        "bike_cover",
+        "saddle_bag",
+        "chain_lube",
+        "helmet",
+        "gloves",
+        "jackets"
+      ]
+    }
+  },
+  "type_priorities": {
+    "Adventure": [
+      "touring-gear",
+      "protection",
+      "emergency-kit",
+      "adventure-ready",
+      "smart-rider",
+      "riding-gear",
+      "must-have-accessories",
+      "bike-care",
+      "editors-choice",
+      "budget-picks",
+      "monsoon-essentials",
+      "new-owner-starter-pack",
+      "security",
+      "bike-styling",
+      "detailing",
+      "rider-comfort",
+      "performance",
+      "lighting"
+    ],
+    "Supersport": [
+      "riding-gear",
+      "protection",
+      "track-and-sport",
+      "bike-styling",
+      "smart-rider",
+      "must-have-accessories",
+      "bike-care",
+      "performance",
+      "editors-choice",
+      "budget-picks",
+      "monsoon-essentials",
+      "new-owner-starter-pack",
+      "security",
+      "touring-gear",
+      "detailing",
+      "rider-comfort",
+      "lighting"
+    ],
+    "Cruiser": [
+      "touring-gear",
+      "cruiser-comfort",
+      "bike-styling",
+      "protection",
+      "must-have-accessories",
+      "rider-comfort",
+      "security",
+      "editors-choice",
+      "budget-picks",
+      "smart-rider",
+      "bike-care",
+      "new-owner-starter-pack",
+      "monsoon-essentials",
+      "emergency-kit",
+      "detailing",
+      "lighting",
+      "performance"
+    ],
+    "Scooter": [
+      "must-have-accessories",
+      "scooter-essentials",
+      "bike-care",
+      "security",
+      "monsoon-essentials",
+      "smart-rider",
+      "new-owner-starter-pack",
+      "editors-choice",
+      "budget-picks",
+      "riding-gear",
+      "protection",
+      "touring-gear",
+      "bike-styling",
+      "emergency-kit",
+      "detailing",
+      "rider-comfort",
+      "lighting",
+      "performance"
+    ],
+    "Commuter": [
+      "must-have-accessories",
+      "everyday-commuter",
+      "bike-care",
+      "security",
+      "new-owner-starter-pack",
+      "riding-gear",
+      "monsoon-essentials",
+      "editors-choice",
+      "budget-picks",
+      "smart-rider",
+      "protection",
+      "touring-gear",
+      "bike-styling",
+      "emergency-kit",
+      "detailing",
+      "rider-comfort",
+      "lighting",
+      "performance"
+    ],
+    "Touring": [
+      "touring-gear",
+      "long-ride-ready",
+      "protection",
+      "emergency-kit",
+      "rider-comfort",
+      "smart-rider",
+      "riding-gear",
+      "editors-choice",
+      "budget-picks",
+      "must-have-accessories",
+      "bike-care",
+      "monsoon-essentials",
+      "new-owner-starter-pack",
+      "security",
+      "bike-styling",
+      "detailing",
+      "lighting",
+      "performance"
+    ]
+  },
+  "default_priority": [
+    "must-have-accessories",
+    "protection",
+    "riding-gear",
+    "touring-gear",
+    "smart-rider",
+    "bike-care",
+    "new-owner-starter-pack",
+    "editors-choice",
+    "budget-picks",
+    "monsoon-essentials",
+    "emergency-kit",
+    "security",
+    "bike-styling",
+    "detailing",
+    "rider-comfort",
+    "lighting",
+    "performance"
+  ]
+}

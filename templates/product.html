@@ -31,8 +31,13 @@
     <div class="container">
         <div class="product-hero-grid">
             <div class="product-hero-image">
-                {% if product.image and 'products/' in product.image %}
-                <img src="{{ base_path }}{{ product.image }}" alt="{{ product.title }}" loading="lazy">
+                {% set product_image = product.image or product.amazon_image_url or '' %}
+                {% if product_image %}
+                {% if product_image.startswith('http') %}
+                <img src="{{ product_image }}" alt="{{ product.title }}" loading="lazy">
+                {% else %}
+                <img src="{{ base_path }}{{ product_image }}" alt="{{ product.title }}" loading="lazy">
+                {% endif %}
                 {% else %}
                 <div class="placeholder-image product-placeholder-lg">{{ product.brand }}</div>
                 {% endif %}

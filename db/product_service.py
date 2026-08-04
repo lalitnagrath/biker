@@ -384,7 +384,7 @@ class ProductService:
             "availability": product.availability or "",
             "affiliate_url": product.url or "",
             "image": image_url,
-            "amazon_image_url": image_url,
+            "amazon_image_url": product.amazon_image_url or image_url,
             "last_updated": last_updated_str,
             "pricing": _build_pricing(
                 current=_maybe_int(product.price),

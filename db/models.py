@@ -95,7 +95,11 @@ class Product(Base):
     is_featured = Column(Boolean, default=False)
     compatible_bikes = Column(JSON, nullable=True)
     universal = Column(Boolean, default=False, nullable=False)
+    compatibility_type = Column(String(10), nullable=True)
+    classification_confidence = Column(String(10), nullable=True)
     last_sync_at = Column(DateTime, nullable=True)
+    image = Column(String(1024), nullable=True)
+    amazon_image_url = Column(String(2048), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

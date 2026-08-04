@@ -1,0 +1,42 @@
+{
+  "helmet": {
+    "editor_choice": null,
+    "best_value": null,
+    "premium_pick": "B07KQZ8N4V",
+    "budget_pick": null,
+    "manual_order": [
+      "B0CM9HXJBW",
+      "B0CTZP3SGL",
+      "B0BRFHNNLV",
+      "B07KQZ8N5W",
+      "B07KQZ8N4V",
+      "B0CMTGTWX1",
+      "B0D42Y42K4",
+      "B09TMXH4R1",
+      "B09XJ5Y4YF",
+      "B0DQY4J7VM"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  },
+  "gloves": {
+    "editor_choice": null,
+    "best_value": null,
+    "premium_pick": null,
+    "budget_pick": null,
+    "manual_order": [
+      "B0FWJMYMB7",
+      "B0FCY8FBKE",
+      "B0FWJMYMB6",
+      "B0B7R9T8L2",
+      "B0GXZP8C8G",
+      "B0GXZP8C9H",
+      "B0FCY8FBKF",
+      "B0B7R9T8M3",
+      "B0CMTGTWZ3",
+      "B0CK2BK19K"
+    ],
+    "excluded": [],
+    "excluded_reasons": {}
+  }
+}
