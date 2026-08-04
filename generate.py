@@ -229,23 +229,39 @@ def load_bike_deals():
     return deals_by_asin
 
 
-def download_image(url, save_path, timeout=30):
-    """Download image from URL and save locally."""
+def download_image(url, save_path, timeout=30, min_width=800):
+    """Download image from URL and save locally.
+
+    Validates minimum width to reject low-resolution thumbnails.
+    """
     try:
-        # Create parent directory
         save_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        # Download with user-agent header
         req = urllib.request.Request(url, headers={
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
         })
         with urllib.request.urlopen(req, timeout=timeout) as response:
             data = response.read()
-        
-        # Save to file
+        # Validate dimensions before saving
+        import io
+        from PIL import Image
+        img = Image.open(io.BytesIO(data))
+        w, h = img.size
+        if w < min_width:
+            print(f"    Skipping {url}: width {w}px < {min_width}px minimum")
+            return False
         with open(save_path, 'wb') as f:
             f.write(data)
-        
+        return True
+    except ImportError:
+        # PIL not available - save without dimension check
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            data = response.read()
+        with open(save_path, 'wb') as f:
+            f.write(data)
         return True
     except Exception as e:
         print(f"    Warning: Failed to download {url}: {e}")
@@ -3918,6 +3934,15 @@ Sitemap: {self.base_url}/sitemap.xml
                 shutil.rmtree(img_dst)
             shutil.copytree(img_src, img_dst)
 
+        # Copy brand logo SVGs to site/images/brands/ (referenced without static/ prefix)
+        brand_src = STATIC_DIR / 'images' / 'brands'
+        brand_dst = self.output_dir / 'images' / 'brands'
+        if brand_src.exists():
+            os.makedirs(brand_dst.parent, exist_ok=True)
+            if brand_dst.exists():
+                shutil.rmtree(brand_dst)
+            shutil.copytree(brand_src, brand_dst)
+
     def generate_search_page(self):
         """Generate a search page."""
         context = self.build_base_context(
@@ -4070,11 +4095,43 @@ Sitemap: {self.base_url}/sitemap.xml
                     best_deal = deal
             
             if best_deal and best_score >= 10:
-                # Get image URL
-                images = best_deal.get('images', {})
-                primary = images.get('primary', {})
-                large_img = primary.get('large', {})
-                image_url = large_img.get('url', '')
+                # Get highest-resolution image URL available.
+                # Prefer hiRes, then large, then medium, then check 'all' list.
+                primary = best_deal.get('images', {}).get('primary', {})
+                image_url = ''
+                for size_key in ('hiRes', 'large', 'medium'):
+                    size_data = primary.get(size_key)
+                    if isinstance(size_data, dict):
+                        candidate = size_data.get('url', '')
+                        if candidate:
+                            image_url = candidate
+                            break
+                    elif isinstance(size_data, str) and size_data:
+                        image_url = size_data
+                        break
+                # Also check 'all' images list for highest width
+                all_images = primary.get('all', [])
+                if all_images:
+                    sortable = []
+                    for img in all_images:
+                        if isinstance(img, dict):
+                            w = img.get('width', 0) or 0
+                            url = img.get('url', '')
+                            if url and w:
+                                sortable.append((int(w), url))
+                    if sortable:
+                        sortable.sort(reverse=True)
+                        for w, url in sortable:
+                            if w >= 800:
+                                image_url = url
+                                break
+                
+                # Filter out non-motorcycle images (banners, logos, factory photos)
+                skip_keywords = ('banner', 'header', 'logo', 'factory', 'building', 'og:image', 'ogimage',
+                                 'hero_img', 'hero-', 'thumbnail', 'thumb', 'icon', 'favicon',
+                                 'watermark', 'placeholder', 'map', 'location', 'showroom', 'aerial')
+                if image_url and any(kw in image_url.lower() for kw in skip_keywords):
+                    image_url = ''
                 
                 if image_url:
                     filename = f"{slug}.jpg"

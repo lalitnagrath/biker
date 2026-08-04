@@ -199,8 +199,6 @@
                     <h4>Accessories</h4>
                     <ul>
                         <li><a href="{{ URL.bestof('helmet', base_path) }}">Best Helmets</a></li>
-                        <li><a href="{{ URL.bestof('gloves', base_path) }}">Best Riding Gloves</a></li>
-                        <li><a href="{{ URL.bestof('jackets', base_path) }}">Best Riding Jackets</a></li>
                         <li><a href="{{ URL.bestof('phone-mount', base_path) }}">Best Phone Mounts</a></li>
                         <li><a href="{{ URL.bestof('engine-oil', base_path) }}">Best Engine Oil</a></li>
                         <li class="footer-viewall"><a href="{{ URL.category_index(base_path) }}">View All Accessories &rarr;</a></li>
@@ -242,12 +240,7 @@
         </div>
     </footer>
 
-    <div class="sticky-cta" id="stickyCta">
-        <a href="#" class="sticky-cta-btn" id="stickyCtaBtn" rel="nofollow sponsored" target="_blank">
-            <span>Check Price on Amazon</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-        </a>
-    </div>
+    {% block sticky_cta %}{% endblock %}
 
     <script>
     window.__navModels = {
